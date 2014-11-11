@@ -130,6 +130,11 @@ namespace Klarna.Rest.Tests.OrderManagement
             var responseMock = TestsHelper.Mock(HttpMethod.Get, this.order.Location.ToString(), string.Empty, HttpStatusCode.OK, this.connectorMock);
             responseMock.Stub(x => x.Data<OrderData>()).Return(orderData);
 
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers[HttpResponseHeader.ContentType] = "application/json";
+
+            responseMock.Stub(x => x.Headers).Return(headers);
+
             // Act
             var returnedCheckoutOrder = this.order.Fetch();
 
@@ -148,10 +153,7 @@ namespace Klarna.Rest.Tests.OrderManagement
             TestsHelper.Mock(HttpMethod.Post, this.order.Location + "/acknowledge", string.Empty, HttpStatusCode.NoContent, this.connectorMock);
 
             // Act
-            var resource = this.order.Acknowledge();
-
-            // Assert
-            Assert.AreEqual(resource, this.order);
+            this.order.Acknowledge();
         }
 
         /// <summary>
@@ -163,10 +165,7 @@ namespace Klarna.Rest.Tests.OrderManagement
             // Arrange
             TestsHelper.Mock(HttpMethod.Post, this.order.Location + "/cancel", string.Empty, HttpStatusCode.NoContent, this.connectorMock);
 
-            var resource = this.order.Cancel();
-
-            // Assert
-            Assert.AreEqual(resource, this.order);
+            this.order.Cancel();
         }
 
         /// <summary>
@@ -180,10 +179,7 @@ namespace Klarna.Rest.Tests.OrderManagement
 
             TestsHelper.Mock(HttpMethod.Patch, this.order.Location + "/authorization", updateAuthorization.ConvertToJson(), HttpStatusCode.NoContent, this.connectorMock);
 
-            var resource = this.order.UpdateAuthorization(updateAuthorization);
-
-            // Assert
-            Assert.AreEqual(resource, this.order);
+            this.order.UpdateAuthorization(updateAuthorization);
         }
 
         /// <summary>
@@ -195,10 +191,7 @@ namespace Klarna.Rest.Tests.OrderManagement
             // Arrange
             TestsHelper.Mock(HttpMethod.Post, this.order.Location + "/extend-authorization-time", string.Empty, HttpStatusCode.NoContent, this.connectorMock);
 
-            var resource = this.order.ExtendAuthorizationTime();
-
-            // Assert
-            Assert.AreEqual(resource, this.order);
+            this.order.ExtendAuthorizationTime();
         }
 
         /// <summary>
@@ -213,10 +206,7 @@ namespace Klarna.Rest.Tests.OrderManagement
             TestsHelper.Mock(HttpMethod.Patch, this.order.Location + "/merchant-references", updateMerchantReferences.ConvertToJson(), HttpStatusCode.NoContent, this.connectorMock);
 
             // Act
-            var resource = this.order.UpdateMerchantReferences(updateMerchantReferences);
-
-            // Assert
-            Assert.AreEqual(resource, this.order);
+            this.order.UpdateMerchantReferences(updateMerchantReferences);
         }
 
         /// <summary>
@@ -230,10 +220,7 @@ namespace Klarna.Rest.Tests.OrderManagement
 
             TestsHelper.Mock(HttpMethod.Patch, this.order.Location + "/customer-details", updateCustomerDetails.ConvertToJson(), HttpStatusCode.NoContent, this.connectorMock);
 
-            var resource = this.order.UpdateCustomerDetails(updateCustomerDetails);
-
-            // Assert
-            Assert.AreEqual(resource, this.order);
+            this.order.UpdateCustomerDetails(updateCustomerDetails);
         }
 
         /// <summary>
@@ -247,10 +234,7 @@ namespace Klarna.Rest.Tests.OrderManagement
 
             TestsHelper.Mock(HttpMethod.Post, this.order.Location + "/refunds", refund.ConvertToJson(), HttpStatusCode.NoContent, this.connectorMock);
 
-            var resource = this.order.Refund(refund);
-
-            // Assert
-            Assert.AreEqual(resource, this.order);
+            this.order.Refund(refund);
         }
 
         /// <summary>
@@ -262,10 +246,7 @@ namespace Klarna.Rest.Tests.OrderManagement
             // Arrange
             TestsHelper.Mock(HttpMethod.Post, this.order.Location + "/release-remaining-authorization", string.Empty, HttpStatusCode.NoContent, this.connectorMock);
 
-            var resource = this.order.ReleaseRemainingAuthorization();
-
-            // Assert
-            Assert.AreEqual(resource, this.order);
+            this.order.ReleaseRemainingAuthorization();
         }
 
         #endregion

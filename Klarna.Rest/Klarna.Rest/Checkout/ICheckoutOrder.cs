@@ -1,6 +1,6 @@
 ﻿#region Copyright Header
 //-----------------------------------------------------------------------
-// <copyright file="IConnector.cs" company="Klarna AB">
+// <copyright file="ICheckoutOrder.cs" company="Klarna AB">
 //     Copyright 2014 Klarna AB
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,35 +18,36 @@
 // </copyright>
 //-----------------------------------------------------------------------
 #endregion
-namespace Klarna.Rest.Transport
+namespace Klarna.Rest.Checkout
 {
-    using System.Net;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using Klarna.Rest.Models;
 
     /// <summary>
-    /// HTTP transport connector interface used to authenticate and make HTTP requests against the Klarna APIs.
+    /// Checkout order resource interface.
     /// </summary>
-    public interface IConnector
+    public interface ICheckoutOrder : IResource
     {
         /// <summary>
-        /// Gets the user agent.
+        /// Creates the resource.
         /// </summary>
-        UserAgent UserAgent { get; }
+        /// <param name="checkoutOrderData">the order data</param>
+        void Create(CheckoutOrderData checkoutOrderData);
 
         /// <summary>
-        /// Creates a request object.
+        /// Updates the resource.
         /// </summary>
-        /// <param name="url">the url</param>
-        /// <param name="method">the HTTP method</param>
-        /// <param name="payload">the payload</param>
-        /// <returns>the HTTP request</returns>
-        HttpWebRequest CreateRequest(string url, HttpMethod method, string payload);
+        /// <param name="checkoutOrderData">the order data</param>
+        /// <returns>the updated checkout order data</returns>
+        CheckoutOrderData Update(CheckoutOrderData checkoutOrderData);
 
         /// <summary>
-        /// Sends the request.
+        /// Fetches the resource.
         /// </summary>
-        /// <param name="request">the request</param>
-        /// <param name="payload">the payload</param>
-        /// <returns>the response</returns>
-        IResponse Send(HttpWebRequest request, string payload);
+        /// <returns>the checkout order data</returns>
+        CheckoutOrderData Fetch();
     }
 }

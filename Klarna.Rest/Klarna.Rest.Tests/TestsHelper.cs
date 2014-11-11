@@ -42,14 +42,17 @@ namespace Klarna.Rest.Tests
         /// <param name="url">the url</param>
         /// <param name="data">the data</param>
         /// <param name="statusCode">the status code</param>
-        /// <param name="connectorMock"> the mocked connector</param>
+        /// <param name="connectorMock">the mocked connector</param>
         /// <returns>the mocked response</returns>
         public static IResponse Mock(HttpMethod method, string url, string data, HttpStatusCode statusCode, IConnector connectorMock)
         {
             HttpWebRequest requestMock = (HttpWebRequest)HttpWebRequest.Create("http://testtest.test");
             connectorMock.Stub(x => x.CreateRequest(url.ToString(), method, data)).Return(requestMock);
+
             IResponse responseMock = MockRepository.GenerateStub<IResponse>();
-            connectorMock.Stub(x => x.Send(requestMock, data, statusCode)).Return(responseMock);
+            responseMock.Stub(x => x.Status).Return(statusCode);
+
+            connectorMock.Stub(x => x.Send(requestMock, data)).Return(responseMock);
 
             return responseMock;
         }
@@ -69,18 +72,17 @@ namespace Klarna.Rest.Tests
             string authorization = string.Concat("basic ", base64);
 
             Assert.That(httpWebRequest.Method, Is.EqualTo(method.ToString().ToUpper()));
-            Assert.That(httpWebRequest.UserAgent, Is.EqualTo(new UserAgent().ToString()));
+            Assert.That(httpWebRequest.UserAgent, Is.EqualTo(UserAgent.WithDefaultFields().ToString()));
 
             Assert.That(((NetworkCredential)httpWebRequest.Credentials).Password, Is.EqualTo(secret));
             Assert.That(((NetworkCredential)httpWebRequest.Credentials).UserName, Is.EqualTo(merchantId));
-            Assert.That(httpWebRequest.ContentType, Is.EqualTo("application/json"));
             Assert.IsFalse(httpWebRequest.AllowAutoRedirect);
         }
 
         /// <summary>
         /// Get update customer details.
         /// </summary>
-        /// <returns> a update customer details</returns>
+        /// <returns>a update customer details</returns>
         public static UpdateCustomerDetails GetUpdateCustomerDetails()
         {
             UpdateCustomerDetails updateCustomerDetails = new UpdateCustomerDetails()
@@ -164,7 +166,7 @@ namespace Klarna.Rest.Tests
         /// <summary>
         /// Get add shipping info.
         /// </summary>
-        /// <returns> a shipping info</returns>
+        /// <returns>a shipping info</returns>
         public static AddShippingInfo GetAddShippingInfo()
         {
             ShippingInfo shippingInfo = new ShippingInfo()

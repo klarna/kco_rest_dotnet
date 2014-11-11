@@ -28,47 +28,15 @@ namespace Klarna.Rest.Transport
     public class ConnectorFactory
     {
         /// <summary>
-        /// API base URL.
-        /// </summary>
-        private static readonly string BASEURL = "https://api.klarna.com";
-
-        /// <summary>
-        /// Testing API base URL.
-        /// </summary>
-        private static readonly string TESTBASEURL = "https://api.playground.klarna.com";
-
-        /// <summary>
-        /// Gets the base url
-        /// </summary>
-        public static Uri BaseUrl 
-        {
-            get 
-            {
-                return new Uri(BASEURL);
-            }
-        }
-
-        /// <summary>
-        /// Gets the test base url
-        /// </summary>
-        public static Uri TestBaseUrl
-        {
-            get
-            {
-                return new Uri(TESTBASEURL);
-            }
-        }
-
-        /// <summary>
         /// Creates a connector.
         /// </summary>
         /// <param name="merchantId">the merchant url</param>
-        /// <param name="secret">The shared secret.</param>
+        /// <param name="secret">the shared secret</param>
         /// <param name="baseUrl">the base url</param>
         /// <returns>the connector</returns>
         public static IConnector Create(string merchantId, string secret, Uri baseUrl)
         {
-            return Create(new RequestFactory(), merchantId, secret, new UserAgent(), baseUrl);
+            return Create(new RequestFactory(), merchantId, secret, UserAgent.WithDefaultFields(), baseUrl);
         }
 
         /// <summary>
@@ -76,11 +44,11 @@ namespace Klarna.Rest.Transport
         /// </summary>
         /// <param name="request">the HTTP request factory</param>
         /// <param name="merchantId">the merchant url</param>
-        /// <param name="secret">The shared secret.</param>
-        /// <param name="userAgent"> the user agent</param>
+        /// <param name="secret">the shared secret</param>
+        /// <param name="userAgent">the user agent</param>
         /// <param name="baseUrl">the base url</param>
         /// <returns>the connector</returns>
-        public static IConnector Create(IRequestFactory request, string merchantId, string secret, UserAgent userAgent, Uri baseUrl)
+        internal static IConnector Create(IRequestFactory request, string merchantId, string secret, UserAgent userAgent, Uri baseUrl)
         {
             return new Connector(request, merchantId, secret, userAgent, baseUrl);
         }

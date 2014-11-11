@@ -65,7 +65,7 @@ namespace Klarna.Rest.Tests.OrderManagement
         /// <summary>
         /// The HTTP request.
         /// </summary>
-        private UserAgent userAgent = new UserAgent();
+        private UserAgent userAgent = UserAgent.WithDefaultFields();
 
         /// <summary>
         /// The HTTP request.
@@ -129,9 +129,12 @@ namespace Klarna.Rest.Tests.OrderManagement
             this.requestMock.Expect(x => x.CreateRequest(this.baseUrl.ToString().TrimEnd('/') + this.orderUrl + this.path + "/1002")).Return(this.httpWebRequest);
 
             string json = "{\r\n  \"capture_id\": \"" + this.captureId + "\",\r\n  \"description\": \"" + description + "\",\r\n  }";
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers[HttpResponseHeader.ContentType] = "application/json";
 
-            IResponse response = new Response(json, this.location);
-            this.requestMock.Expect(x => x.Send(this.httpWebRequest, string.Empty, HttpStatusCode.OK)).Return(response);
+            HttpStatusCode status = HttpStatusCode.OK;
+            IResponse response = new Response(status, headers, json);
+            this.requestMock.Expect(x => x.Send(this.httpWebRequest, string.Empty)).Return(response);
 
             // Act
             CaptureData captureData = this.capture.Fetch();
@@ -159,16 +162,18 @@ namespace Klarna.Rest.Tests.OrderManagement
                 Description = "the desc...",
                 CapturedAmount = 111
             };
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers["Location"] = this.location;
 
-            IResponse response = new Response(string.Empty, this.location);
-            this.requestMock.Expect(x => x.Send(this.httpWebRequest, captureData.ConvertToJson(), HttpStatusCode.Created)).Return(response);
+            IResponse response = new Response(HttpStatusCode.Created, headers, string.Empty);
+            this.requestMock.Expect(x => x.Send(this.httpWebRequest, captureData.ConvertToJson())).Return(response);
 
             // Act
-            Klarna.Rest.OrderManagement.Capture capture = this.capture.Create(captureData);
+            this.capture.Create(captureData);
 
             // Assert
             this.requestMock.VerifyAllExpectations();
-            Assert.AreEqual(capture.Location, this.location);
+            Assert.AreEqual(this.capture.Location, this.location);
             Assert.AreEqual(this.httpWebRequest.ContentLength, captureData.ConvertToJson().Length);
             TestsHelper.AssertRequest(this.merchantId, this.secret, this.httpWebRequest, HttpMethod.Post);
         }
@@ -184,12 +189,14 @@ namespace Klarna.Rest.Tests.OrderManagement
 
             var shippingInfo = TestsHelper.GetAddShippingInfo();
             string json = shippingInfo.ConvertToJson();
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers["Location"] = this.location;
 
-            IResponse response = new Response(string.Empty, this.location);
-            this.requestMock.Expect(x => x.Send(this.httpWebRequest, json, HttpStatusCode.NoContent)).Return(response);
+            IResponse response = new Response(HttpStatusCode.NoContent, headers, string.Empty);
+            this.requestMock.Expect(x => x.Send(this.httpWebRequest, json)).Return(response);
 
             // Act
-            Klarna.Rest.OrderManagement.Capture capture = this.capture.AddShippingInfo(shippingInfo);
+            this.capture.AddShippingInfo(shippingInfo);
 
             // Assert
             this.requestMock.VerifyAllExpectations();
@@ -211,11 +218,14 @@ namespace Klarna.Rest.Tests.OrderManagement
                 BillingAddress = TestsHelper.GetAddress1()
             };
 
-            IResponse response = new Response(string.Empty, this.location);
-            this.requestMock.Expect(x => x.Send(this.httpWebRequest, updateCustomerDetails.ConvertToJson(), HttpStatusCode.NoContent)).Return(response);
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers["Location"] = this.location;
+
+            IResponse response = new Response(HttpStatusCode.NoContent, headers, string.Empty);
+            this.requestMock.Expect(x => x.Send(this.httpWebRequest, updateCustomerDetails.ConvertToJson())).Return(response);
 
             // Act
-            Klarna.Rest.OrderManagement.Capture capture = this.capture.UpdateCustomerDetails(updateCustomerDetails);
+            this.capture.UpdateCustomerDetails(updateCustomerDetails);
 
             // Assert
             this.requestMock.VerifyAllExpectations();
@@ -232,11 +242,14 @@ namespace Klarna.Rest.Tests.OrderManagement
             // Arrange
             this.requestMock.Expect(x => x.CreateRequest(this.baseUrl.ToString().TrimEnd('/') + this.orderUrl + this.path + "/" + this.captureId + "/trigger-send-out")).Return(this.httpWebRequest);
 
-            IResponse response = new Response(string.Empty, this.location);
-            this.requestMock.Expect(x => x.Send(this.httpWebRequest, string.Empty, HttpStatusCode.NoContent)).Return(response);
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers["Location"] = this.location;
+
+            IResponse response = new Response(HttpStatusCode.NoContent, headers, string.Empty);
+            this.requestMock.Expect(x => x.Send(this.httpWebRequest, string.Empty)).Return(response);
 
             // Act
-            Klarna.Rest.OrderManagement.Capture capture = this.capture.TriggerSendOut();
+            this.capture.TriggerSendOut();
 
             // Assert
             TestsHelper.AssertRequest(this.merchantId, this.secret, this.httpWebRequest, HttpMethod.Post);

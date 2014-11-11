@@ -58,7 +58,7 @@ namespace Klarna.Rest.Tests.Checkout
         /// <summary>
         /// The HTTP request.
         /// </summary>
-        private UserAgent userAgent = new UserAgent();
+        private UserAgent userAgent = UserAgent.WithDefaultFields();
 
         /// <summary>
         /// The HTTP request.
@@ -79,7 +79,7 @@ namespace Klarna.Rest.Tests.Checkout
         /// The order.
         /// </summary>
         private Klarna.Rest.Checkout.CheckoutOrder checkoutOrder;
-        
+
         /// <summary>
         /// A location.
         /// </summary>
@@ -115,9 +115,11 @@ namespace Klarna.Rest.Tests.Checkout
             // Arrange
             CheckoutOrderData orderData = TestsHelper.GetCheckoutOrderData1();
             this.requestMock.Expect(x => x.CreateRequest(this.baseUrl + this.path.TrimStart('/'))).Return(this.httpWebRequest);
-
-            IResponse response = new Response(string.Empty, this.location);
-            this.requestMock.Expect(x => x.Send(this.httpWebRequest, orderData.ConvertToJson(), HttpStatusCode.Created)).Return(response);
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers["Location"] = this.location;
+            HttpStatusCode status = HttpStatusCode.Created;
+            IResponse response = new Response(status, headers, string.Empty);
+            this.requestMock.Expect(x => x.Send(this.httpWebRequest, orderData.ConvertToJson())).Return(response);
 
             // Act
             this.checkoutOrder.Create(orderData);
@@ -140,18 +142,23 @@ namespace Klarna.Rest.Tests.Checkout
             CheckoutOrderData orderData2 = TestsHelper.GetCheckoutOrderData2();
 
             this.requestMock.Expect(x => x.CreateRequest(this.baseUrl + this.path.TrimStart('/'))).Return(this.httpWebRequest);
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers[HttpResponseHeader.Location] = this.location;
 
-            IResponse response = new Response(string.Empty, this.location);
-            this.requestMock.Expect(x => x.Send(this.httpWebRequest, orderData1.ConvertToJson(), HttpStatusCode.Created)).Return(response);
+            IResponse response = new Response(HttpStatusCode.Created, headers, string.Empty);
+            this.requestMock.Expect(x => x.Send(this.httpWebRequest, orderData1.ConvertToJson())).Return(response);
 
             this.httpWebRequest = (HttpWebRequest)WebRequest.Create(this.baseUrl);
             this.requestMock.Expect(x => x.CreateRequest(this.baseUrl + this.location)).Return(this.httpWebRequest);
 
-            IResponse response2 = new Response(orderData2.ConvertToJson(), this.location);
-            this.requestMock.Expect(x => x.Send(this.httpWebRequest, orderData2.ConvertToJson(), HttpStatusCode.OK)).Return(response2);
+            WebHeaderCollection headers2 = new WebHeaderCollection();
+            headers2[HttpResponseHeader.ContentType] = "application/json";
+
+            IResponse response2 = new Response(HttpStatusCode.OK, headers2, orderData2.ConvertToJson());
+            this.requestMock.Expect(x => x.Send(this.httpWebRequest, orderData2.ConvertToJson())).Return(response2);
 
             // Act
-            this.checkoutOrder = this.checkoutOrder.Create(orderData1);
+            this.checkoutOrder.Create(orderData1);
             CheckoutOrderData updatedCheckoutOrderData = this.checkoutOrder.Update(orderData2);
 
             // Assert
@@ -176,9 +183,11 @@ namespace Klarna.Rest.Tests.Checkout
             this.requestMock.Expect(x => x.CreateRequest(orderUrl.ToString())).Return(this.httpWebRequest);
 
             string json = "{\r\n  \"order_id\": \"" + orderId + "\",\r\n  \"order_amount\": " + orderAmount + ",\r\n }";
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers[HttpResponseHeader.ContentType] = "application/json";
 
-            IResponse response = new Response(json, this.location);
-            this.requestMock.Expect(x => x.Send(this.httpWebRequest, string.Empty, HttpStatusCode.OK)).Return(response);
+            IResponse response = new Response(HttpStatusCode.OK, headers, json);
+            this.requestMock.Expect(x => x.Send(this.httpWebRequest, string.Empty)).Return(response);
 
             // Act
             this.checkoutOrder = new Klarna.Rest.Checkout.CheckoutOrder(this.connector, orderUrl);

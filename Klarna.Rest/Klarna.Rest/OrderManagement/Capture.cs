@@ -29,7 +29,7 @@ namespace Klarna.Rest.OrderManagement
     /// <summary>
     /// Capture resource.
     /// </summary>
-    public class Capture : Resource
+    internal class Capture : Resource, ICapture
     {
         #region Constructors
 
@@ -39,7 +39,7 @@ namespace Klarna.Rest.OrderManagement
         /// <param name="connector">the connector</param>
         /// <param name="orderUrl">the order url</param>
         /// <param name="captureId">the capture id</param>
-        public Capture(IConnector connector, Uri orderUrl, string captureId)
+        internal Capture(IConnector connector, Uri orderUrl, string captureId)
             : base(connector)
         {
             string location = orderUrl + this.Path;
@@ -53,12 +53,12 @@ namespace Klarna.Rest.OrderManagement
 
         #endregion
 
-        #region Implementation of Resource
+        #region Implementation of ICapture
 
         /// <summary>
-        /// The orders path.
+        /// The captures path.
         /// </summary>
-        public override string Path
+        internal override string Path
         {
             get
             {
@@ -66,64 +66,56 @@ namespace Klarna.Rest.OrderManagement
             }
         }
 
-        #endregion
-
-        #region Methods
-
         /// <summary>
         /// Creates the resource.
         /// </summary>
-        /// <param name="captureData">the capture</param>
-        /// <returns>this resource</returns>
-        public Capture Create(CaptureData captureData)
+        /// <param name="captureData">the capture data</param>
+        public void Create(CaptureData captureData)
         {
-            this.Location = Post(Location.ToString(), captureData, HttpStatusCode.Created).Location;
-
-            return this;
+            this.Location = this.Post(Location.ToString(), captureData)
+                .Status(HttpStatusCode.Created)
+                .Location;
         }
 
         /// <summary>
         /// Fetches the capture.
         /// </summary>
-        /// <returns>this resource</returns>
+        /// <returns>the capture data</returns>
         public CaptureData Fetch()
         {
-            return Get(Location.ToString(), HttpStatusCode.OK).Data<CaptureData>();
+            return Get(Location.ToString())
+                .Status(HttpStatusCode.OK)
+                .ContentType("application/json")
+                .Response.Data<CaptureData>();
         }
 
         /// <summary>
         /// Appends shipping information to the capture.
         /// </summary>
-        /// <param name="shippingInfo">the shippingInfo</param>
-        /// <returns>this resource</returns>
-        public Capture AddShippingInfo(AddShippingInfo shippingInfo)
+        /// <param name="shippingInfo">the shipping info</param>
+        public void AddShippingInfo(AddShippingInfo shippingInfo)
         {
-            this.Post(this.Location + "/shipping-info", shippingInfo, HttpStatusCode.NoContent);
-
-            return this;
+            this.Post(this.Location + "/shipping-info", shippingInfo)
+                .Status(HttpStatusCode.NoContent);
         }
 
         /// <summary>
         /// Updates the customers details.
         /// </summary>
-        /// <param name="updateCustomerDetails">the updateCustomerDetails</param>
-        /// <returns>this resource</returns>
-        public Capture UpdateCustomerDetails(UpdateCustomerDetails updateCustomerDetails)
+        /// <param name="updateCustomerDetails">the customer details</param>
+        public void UpdateCustomerDetails(UpdateCustomerDetails updateCustomerDetails)
         {
-            this.Patch(this.Location + "/customer-details", updateCustomerDetails, HttpStatusCode.NoContent);
-
-            return this;
+            this.Patch(this.Location + "/customer-details", updateCustomerDetails)
+                .Status(HttpStatusCode.NoContent);
         }
 
         /// <summary>
         /// Trigger send outs for this capture.
         /// </summary>
-        /// <returns>this resource</returns>
-        public Capture TriggerSendOut()
+        public void TriggerSendOut()
         {
-            this.Post(this.Location + "/trigger-send-out", null, HttpStatusCode.NoContent);
-
-            return this;
+            this.Post(this.Location + "/trigger-send-out", null)
+                .Status(HttpStatusCode.NoContent);
         }
 
         #endregion

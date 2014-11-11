@@ -21,49 +21,41 @@
 namespace Klarna.Rest.Transport
 {
     using System;
+    using System.Net;
     using Newtonsoft.Json;
 
     /// <summary>
-    /// HTTP response validator helper class. 
+    /// HTTP response data class.
     /// </summary>
-    public class Response : IResponse
+    internal class Response : IResponse
     {
-        /// <summary>
-        /// The response data.
-        /// </summary>
-        private string json;
-
-        /// <summary>
-        /// The response location.
-        /// </summary>
-        private string location;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Response" /> class.
         /// </summary>
-        /// <param name="json">the JSON data</param>
-        /// <param name="location">the location</param>
-        public Response(string json, string location)
+        /// <param name="status">the response status</param>
+        /// <param name="headers">the response headers</param>
+        /// <param name="payload">the response data</param>
+        public Response(HttpStatusCode status, WebHeaderCollection headers, string payload)
         {
-            this.json = json;
-            this.location = location;
+            this.Status = status;
+            this.Headers = headers;
+            this.Payload = payload;
         }
 
         /// <summary>
-        /// Gets the location.
+        /// Gets the response status.
         /// </summary>
-        public Uri Location
-        {
-            get
-            {
-                if (this.location == null)
-                {
-                    throw new Exception("Response contains location that is null");
-                }
+        public HttpStatusCode Status { get; private set; }
 
-                return new Uri(this.location);
-            }
-        }
+        /// <summary>
+        /// Gets the response headers.
+        /// </summary>
+        public WebHeaderCollection Headers { get; private set; }
+
+        /// <summary>
+        /// Gets the raw response payload.
+        /// </summary>
+        public string Payload { get; private set; }
 
         /// <summary>
         /// Gets the JSON data.
@@ -72,7 +64,7 @@ namespace Klarna.Rest.Transport
         /// <returns>the generic data object</returns>
         public T Data<T>()
         {
-            return JsonConvert.DeserializeObject<T>(this.json);
+            return JsonConvert.DeserializeObject<T>(this.Payload);
         }
     }
 }

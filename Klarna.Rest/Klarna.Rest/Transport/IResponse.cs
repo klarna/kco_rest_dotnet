@@ -21,6 +21,7 @@
 namespace Klarna.Rest.Transport
 {
     using System;
+    using System.Net;
 
     /// <summary>
     /// Response interface.
@@ -28,9 +29,19 @@ namespace Klarna.Rest.Transport
     public interface IResponse
     {
         /// <summary>
-        /// Gets the location
+        /// Gets the response status code.
         /// </summary>
-        Uri Location { get; }
+        HttpStatusCode Status { get; }
+
+        /// <summary>
+        /// Gets the response headers.
+        /// </summary>
+        WebHeaderCollection Headers { get; }
+
+        /// <summary>
+        /// Gets the raw response payload.
+        /// </summary>
+        string Payload { get; }
 
         /// <summary>
         /// Gets the JSON data.

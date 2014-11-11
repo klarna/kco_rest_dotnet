@@ -23,14 +23,14 @@ namespace Klarna.Rest.Models
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// The current state of an order.
     /// </summary>
     public class OrderData : Model
     {
         /// <summary>
-        /// Gets the unique order ID.
+        /// Gets the unique order id.
         /// </summary>
         [JsonProperty("order_id")]
         public string OrderId { get; private set; }
@@ -100,14 +100,14 @@ namespace Klarna.Rest.Models
         /// </summary>
         [JsonProperty("merchant_reference2")]
         public string MerchantReference2 { get; set; }
-        
+
         /// <summary>
-        /// Gets the Klarna reference. 
-        /// Customer friendly reference id, used as order reference when communicating with the customer
+        /// Gets the Klarna reference.
+        /// Customer friendly reference id, used as order reference when communicating with the customer.
         /// </summary>
         [JsonProperty("klarna_reference")]
         public string KlarnaReference { get; private set; }
-        
+
         /// <summary>
         /// Gets or sets the billing address.
         /// </summary>

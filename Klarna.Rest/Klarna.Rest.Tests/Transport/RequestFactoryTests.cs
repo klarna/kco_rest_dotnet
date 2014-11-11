@@ -1,6 +1,6 @@
 ﻿#region Copyright Header
 //-----------------------------------------------------------------------
-// <copyright file="IConnector.cs" company="Klarna AB">
+// <copyright file="RequestFactoryTests.cs" company="Klarna AB">
 //     Copyright 2014 Klarna AB
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,35 +18,56 @@
 // </copyright>
 //-----------------------------------------------------------------------
 #endregion
-namespace Klarna.Rest.Transport
+namespace Klarna.Rest.Tests.Transport
 {
+    using System;
     using System.Net;
+    using Klarna.Rest.Transport;
+    using NUnit.Framework;
+    using Rhino.Mocks;
 
     /// <summary>
-    /// HTTP transport connector interface used to authenticate and make HTTP requests against the Klarna APIs.
+    /// Tests the RequestFactory class.
     /// </summary>
-    public interface IConnector
+    [TestFixture]
+    public class RequestFactoryTests
     {
-        /// <summary>
-        /// Gets the user agent.
-        /// </summary>
-        UserAgent UserAgent { get; }
+        #region Private Fields
 
         /// <summary>
-        /// Creates a request object.
+        /// The request factory.
         /// </summary>
-        /// <param name="url">the url</param>
-        /// <param name="method">the HTTP method</param>
-        /// <param name="payload">the payload</param>
-        /// <returns>the HTTP request</returns>
-        HttpWebRequest CreateRequest(string url, HttpMethod method, string payload);
+        private RequestFactory factory;
+
+        #endregion
+
+        #region Set Up
 
         /// <summary>
-        /// Sends the request.
+        /// The set up before each test.
         /// </summary>
-        /// <param name="request">the request</param>
-        /// <param name="payload">the payload</param>
-        /// <returns>the response</returns>
-        IResponse Send(HttpWebRequest request, string payload);
+        [SetUp]
+        public void SetUp()
+        {
+            this.factory = new RequestFactory();
+        }
+
+        #endregion
+
+        #region Tests
+
+        /// <summary>
+        /// Basic test of CreateRequest.
+        /// </summary>
+        [Test]
+        public void Transport_RequestFactory_CreateRequest()
+        {
+            const string Url = "https://localhost/path";
+            HttpWebRequest request = this.factory.CreateRequest(Url);
+
+            Assert.That(Url, Is.EqualTo(request.RequestUri));
+        }
+
+        #endregion
     }
 }

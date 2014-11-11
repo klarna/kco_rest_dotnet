@@ -32,8 +32,8 @@ namespace Klarna.Rest.Transport
         /// <summary>
         /// Creates a HttpWebRequest object.
         /// </summary>
-        /// <param name="url"> the url</param>
-        /// <returns> a HTTP request</returns>
+        /// <param name="url">request url</param>
+        /// <returns>a HTTP request object</returns>
         public System.Net.HttpWebRequest CreateRequest(string url)
         {
             // Create the request with correct method to use
@@ -45,11 +45,10 @@ namespace Klarna.Rest.Transport
         /// <summary>
         /// Performs a HTTP request.
         /// </summary>
-        /// <param name="request">The HTTP request to send.</param>
-        /// <param name="payload">The payload to send if this is a POST or a PATCH.</param>
-        /// <param name="httpStatusCode">the http status code</param>
+        /// <param name="request">the HTTP request to send</param>
+        /// <param name="payload">the payload to send if this is a POST or a PATCH</param>
         /// <returns>the response</returns>
-        public IResponse Send(System.Net.HttpWebRequest request, string payload, HttpStatusCode httpStatusCode)
+        public IResponse Send(System.Net.HttpWebRequest request, string payload)
         {
             if (!string.IsNullOrEmpty(payload))
             {
@@ -59,12 +58,12 @@ namespace Klarna.Rest.Transport
                 using (Stream requestStream = request.GetRequestStream())
                 {
                     requestStream.Write(bytes, 0, bytes.Length);
-                } 
+                }
             }
 
             using (var response = (HttpWebResponse)request.GetResponse())
             {
-                return this.VerifyResponse(response, httpStatusCode);
+                return new Response(response.StatusCode, response.Headers, this.Json(response));
             }
         }
 
@@ -78,21 +77,6 @@ namespace Klarna.Rest.Transport
             Stream webStream = response.GetResponseStream();
             StreamReader responseReader = new StreamReader(webStream);
             return responseReader.ReadToEnd();
-        }
-
-        /// <summary>
-        /// Verify the response.
-        /// </summary>
-        /// <param name="response">the response</param>
-        /// <param name="httpStatusCode">the http status code</param>
-        /// <returns>the verified response</returns>
-        private IResponse VerifyResponse(HttpWebResponse response, HttpStatusCode httpStatusCode)
-        {
-            ResponseValidator responseValidator = new ResponseValidator();
-
-            responseValidator.StatusCode(response.StatusCode, httpStatusCode).ContentType(response.ContentType, "application/json");
-
-            return new Response(this.Json(response), response.GetResponseHeader("Location"));
         }
     }
 }

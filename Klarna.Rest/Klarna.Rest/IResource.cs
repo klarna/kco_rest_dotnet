@@ -1,6 +1,6 @@
 ﻿#region Copyright Header
 //-----------------------------------------------------------------------
-// <copyright file="AddShippingInfo.cs" company="Klarna AB">
+// <copyright file="IResource.cs" company="Klarna AB">
 //     Copyright 2014 Klarna AB
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,20 +18,21 @@
 // </copyright>
 //-----------------------------------------------------------------------
 #endregion
-namespace Klarna.Rest.Models.Requests
+namespace Klarna.Rest
 {
+    using System;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Linq;
+    using System.Text;
 
     /// <summary>
-    /// The add shipping info model.
+    /// Resource interface.
     /// </summary>
-    public class AddShippingInfo : Model
+    public interface IResource
     {
         /// <summary>
-        /// Gets or sets the shipping info list.
+        /// Gets or sets the URL of the resource.
         /// </summary>
-        [JsonProperty("shipping_info")]
-        public IList<ShippingInfo> ShippingInfo { get; set; }
+        Uri Location { get; set; }
     }
 }

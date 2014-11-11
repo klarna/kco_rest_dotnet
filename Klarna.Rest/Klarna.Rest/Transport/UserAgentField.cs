@@ -23,36 +23,36 @@ namespace Klarna.Rest.Transport
     using System.Text;
 
     /// <summary>
-    /// A user agent field, for example OS/Linux_3.1.2.
+    /// A user agent field, for example Language/Java_1.7.0
     /// </summary>
     public class UserAgentField
     {
         /// <summary>
-        /// The key
+        /// The key.
         /// </summary>
         private string key;
 
         /// <summary>
-        /// The name
+        /// The name.
         /// </summary>
         private string name;
 
         /// <summary>
-        /// The version
+        /// The version.
         /// </summary>
         private string version;
 
         /// <summary>
-        /// The options
+        /// The options.
         /// </summary>
         private string[] options;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UserAgentField"/> class.
         /// </summary>
-        /// <param name="key">The key</param>
-        /// <param name="name">The name</param>
-        /// <param name="version">The version</param>
+        /// <param name="key">the key</param>
+        /// <param name="name">the name</param>
+        /// <param name="version">the version</param>
         /// <param name="options">the options</param>
         public UserAgentField(string key, string name, string version, string[] options)
         {
@@ -63,7 +63,7 @@ namespace Klarna.Rest.Transport
         }
 
         /// <summary>
-        /// Gets the key
+        /// Gets the key.
         /// </summary>
         public string Key
         {
@@ -77,7 +77,7 @@ namespace Klarna.Rest.Transport
         /// ToString override. Appends the key, name, version and options of the field and returns it
         /// in correct format.
         /// </summary>
-        /// <returns> the string</returns>
+        /// <returns>the string</returns>
         public override string ToString()
         {
             var optionsString = new StringBuilder();
@@ -88,7 +88,7 @@ namespace Klarna.Rest.Transport
                 optionsString.Append(")");
             }
 
-            return string.Format("{0}/{1}_{2} {3}", this.key, this.name, this.version, optionsString);
+            return string.Format("{0}/{1}_{2} {3}", this.Key, this.name, this.version, optionsString);
         }
     }
 }

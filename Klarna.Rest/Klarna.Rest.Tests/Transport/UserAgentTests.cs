@@ -48,12 +48,25 @@ namespace Klarna.Rest.Tests.Transport
         [SetUp]
         public void SetUp()
         {
-            this.userAgent = new UserAgent();
+            this.userAgent = UserAgent.WithDefaultFields();
         }
 
         #endregion
 
         #region Tests
+
+        /// <summary>
+        /// Tests an empty UA string.
+        /// </summary>
+        [Test]
+        public void UserAgent_Empty()
+        {
+            UserAgent userAgent = new UserAgent();
+            string userAgentString = userAgent.ToString();
+
+            Assert.That(userAgentString, Is.Not.Null);
+            Assert.That(userAgentString, Is.Empty);
+        }
 
         /// <summary>
         /// Tests Default UA string.
@@ -90,6 +103,19 @@ namespace Klarna.Rest.Tests.Transport
             this.userAgent.AddField("Module", "Magento", "5.0", options);
             var userAgentString = this.userAgent.ToString();
             Assert.That(Regex.IsMatch(userAgentString, @"^.*Module\/Magento_5.0 \(LanguagePack\/7 ; JsLib\/2.0\).*"), Is.True);
+        }
+
+        /// <summary>
+        /// Test to add a field with null options.
+        /// </summary>
+        [Test]
+        public void UserAgent_AddFieldWithNullOptions()
+        {
+            string[] options = null;
+
+            this.userAgent.AddField("Module", "Magento", "5.0", options);
+            var userAgentString = this.userAgent.ToString();
+            Assert.That(Regex.IsMatch(userAgentString, @"^.*Module\/Magento_5.0.*"), Is.True);
         }
 
         /// <summary>

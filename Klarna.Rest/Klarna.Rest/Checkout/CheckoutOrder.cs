@@ -22,12 +22,13 @@ namespace Klarna.Rest.Checkout
 {
     using System;
     using System.Net;
+    using Klarna.Rest.Models;
     using Klarna.Rest.Transport;
 
     /// <summary>
     /// Checkout order resource.
     /// </summary>
-    public class CheckoutOrder : Resource
+    internal class CheckoutOrder : Resource, ICheckoutOrder
     {
         #region Constructors
 
@@ -35,8 +36,8 @@ namespace Klarna.Rest.Checkout
         /// Initializes a new instance of the <see cref="CheckoutOrder" /> class.
         /// </summary>
         /// <param name="connector">the connector</param>
-        /// <param name="orderUrl">the order id</param>
-        public CheckoutOrder(IConnector connector, Uri orderUrl)
+        /// <param name="orderUrl">the order url</param>
+        internal CheckoutOrder(IConnector connector, Uri orderUrl)
             : base(connector)
         {
             this.Location = orderUrl;
@@ -44,12 +45,12 @@ namespace Klarna.Rest.Checkout
 
         #endregion
 
-        #region Implementation of Resource
+        #region Implementation of ICheckoutOrder
 
         /// <summary>
         /// The orders path.
         /// </summary>
-        public override string Path
+        internal override string Path
         {
             get
             {
@@ -57,39 +58,40 @@ namespace Klarna.Rest.Checkout
             }
         }
 
-        #endregion        
-
-        #region Methods
-
         /// <summary>
         /// Creates the resource.
         /// </summary>
-        /// <param name="checkoutOrderData">the order</param>
-        /// <returns>the resource</returns>
-        public CheckoutOrder Create(Klarna.Rest.Models.CheckoutOrderData checkoutOrderData)
+        /// <param name="checkoutOrderData">the order data</param>
+        public void Create(CheckoutOrderData checkoutOrderData)
         {
-            this.Location = Post(this.Path, checkoutOrderData, HttpStatusCode.Created).Location;
-
-            return this;
+            this.Location = Post(this.Path, checkoutOrderData)
+                .Status(HttpStatusCode.Created)
+                .Location;
         }
 
         /// <summary>
         /// Updates the resource.
         /// </summary>
-        /// <param name="checkoutOrderData">the order</param>
-        /// <returns>the resource</returns>
-        public Models.CheckoutOrderData Update(Klarna.Rest.Models.CheckoutOrderData checkoutOrderData)
+        /// <param name="checkoutOrderData">the order data</param>
+        /// <returns>the updated checkout order data</returns>
+        public CheckoutOrderData Update(CheckoutOrderData checkoutOrderData)
         {
-            return Post(this.Location.ToString(), checkoutOrderData, HttpStatusCode.OK).Data<Models.CheckoutOrderData>();
+            return Post(this.Location.ToString(), checkoutOrderData)
+                .Status(HttpStatusCode.OK)
+                .ContentType("application/json")
+                .Response.Data<CheckoutOrderData>();
         }
 
         /// <summary>
         /// Fetches the resource.
         /// </summary>
-        /// <returns>the Checkout order</returns>
-        public Models.CheckoutOrderData Fetch()
+        /// <returns>the checkout order data</returns>
+        public CheckoutOrderData Fetch()
         {
-            return Get(this.Location.ToString(), HttpStatusCode.OK).Data<Models.CheckoutOrderData>();
+            return Get(this.Location.ToString())
+                .Status(HttpStatusCode.OK)
+                .ContentType("application/json")
+                .Response.Data<CheckoutOrderData>();
         }
 
         #endregion

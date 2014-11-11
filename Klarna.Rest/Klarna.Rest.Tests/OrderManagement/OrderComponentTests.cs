@@ -70,7 +70,7 @@ namespace Klarna.Rest.Tests.OrderManagement
         /// <summary>
         /// The HTTP request.
         /// </summary>
-        private UserAgent userAgent = new UserAgent();
+        private UserAgent userAgent = UserAgent.WithDefaultFields();
 
         /// <summary>
         /// The HTTP request.
@@ -132,8 +132,11 @@ namespace Klarna.Rest.Tests.OrderManagement
             string json = "{\r\n  \"order_id\": \"" + this.orderId + "\",\r\n  \"order_amount\": " + orderAmount + ",\r\n  \"captures\": [\r\n    {\r\n      \"capture_id\": \"" + this.captureId + "\",\r\n       \"description\": \"" + description + "\",\r\n    }\r\n  ],\r\n}";
             string captureJson = JsonConvert.DeserializeObject<Klarna.Rest.Models.OrderData>(json).Captures[0].ConvertToJson();
 
-            IResponse fetchResponse = new Response(json, this.location);
-            this.requestMock.Expect(x => x.Send(this.httpWebRequest, string.Empty, HttpStatusCode.OK)).Return(fetchResponse);
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers[HttpResponseHeader.ContentType] = "application/json";
+
+            IResponse fetchResponse = new Response(HttpStatusCode.OK, headers, json);
+            this.requestMock.Expect(x => x.Send(this.httpWebRequest, string.Empty)).Return(fetchResponse);
 
             // Act
             Models.OrderData orderData = this.order.Fetch();
@@ -157,9 +160,11 @@ namespace Klarna.Rest.Tests.OrderManagement
         {
             // Arrange
             this.requestMock.Stub(x => x.CreateRequest(this.baseUrl.ToString().TrimEnd('/') + this.path + '/' + this.orderId + "/acknowledge")).Return(this.httpWebRequest);
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers["Location"] = this.location;
 
-            IResponse response = new Response(string.Empty, this.location);
-            this.requestMock.Expect(x => x.Send(this.httpWebRequest, string.Empty, HttpStatusCode.NoContent)).Return(response);
+            IResponse response = new Response(HttpStatusCode.NoContent, headers, string.Empty);
+            this.requestMock.Expect(x => x.Send(this.httpWebRequest, string.Empty)).Return(response);
 
             // Act
             this.order.Acknowledge();
@@ -178,9 +183,11 @@ namespace Klarna.Rest.Tests.OrderManagement
         {
             // Arrange
             this.requestMock.Expect(x => x.CreateRequest(this.baseUrl.ToString().TrimEnd('/') + this.path + '/' + this.orderId + "/cancel")).Return(this.httpWebRequest);
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers["Location"] = this.location;
 
-            IResponse response = new Response(string.Empty, this.location);
-            this.requestMock.Expect(x => x.Send(this.httpWebRequest, string.Empty, HttpStatusCode.NoContent)).Return(response);
+            IResponse response = new Response(HttpStatusCode.NoContent, headers, string.Empty);
+            this.requestMock.Expect(x => x.Send(this.httpWebRequest, string.Empty)).Return(response);
 
             // Act
             this.order.Cancel();
@@ -199,9 +206,11 @@ namespace Klarna.Rest.Tests.OrderManagement
         {
             // Arrange
             this.requestMock.Expect(x => x.CreateRequest(this.baseUrl.ToString().TrimEnd('/') + this.path + '/' + this.orderId + "/extend-authorization-time")).Return(this.httpWebRequest);
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers["Location"] = this.location;
 
-            IResponse response = new Response(string.Empty, this.location);
-            this.requestMock.Expect(x => x.Send(this.httpWebRequest, string.Empty, HttpStatusCode.NoContent)).Return(response);
+            IResponse response = new Response(HttpStatusCode.NoContent, headers, string.Empty);
+            this.requestMock.Expect(x => x.Send(this.httpWebRequest, string.Empty)).Return(response);
 
             // Act
             this.order.ExtendAuthorizationTime();
@@ -221,8 +230,11 @@ namespace Klarna.Rest.Tests.OrderManagement
             // Arrange
             this.requestMock.Expect(x => x.CreateRequest(this.baseUrl.ToString().TrimEnd('/') + this.path + '/' + this.orderId + "/release-remaining-authorization")).Return(this.httpWebRequest);
 
-            IResponse response = new Response(string.Empty, this.location);
-            this.requestMock.Expect(x => x.Send(this.httpWebRequest, string.Empty, HttpStatusCode.NoContent)).Return(response);
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers["Location"] = this.location;
+
+            IResponse response = new Response(HttpStatusCode.NoContent, headers, string.Empty);
+            this.requestMock.Expect(x => x.Send(this.httpWebRequest, string.Empty)).Return(response);
 
             // Act
             this.order.ReleaseRemainingAuthorization();
@@ -247,8 +259,11 @@ namespace Klarna.Rest.Tests.OrderManagement
 
             this.requestMock.Expect(x => x.CreateRequest(this.baseUrl.ToString().TrimEnd('/') + this.path + '/' + this.orderId + "/authorization")).Return(this.httpWebRequest);
 
-            IResponse response = new Response(string.Empty, this.location);
-            this.requestMock.Expect(x => x.Send(this.httpWebRequest, updateAuthorization.ConvertToJson(), HttpStatusCode.NoContent)).Return(response);
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers["Location"] = this.location;
+
+            IResponse response = new Response(HttpStatusCode.NoContent, headers, string.Empty);
+            this.requestMock.Expect(x => x.Send(this.httpWebRequest, updateAuthorization.ConvertToJson())).Return(response);
 
             // Act
             this.order.UpdateAuthorization(updateAuthorization);
@@ -274,8 +289,11 @@ namespace Klarna.Rest.Tests.OrderManagement
 
             this.requestMock.Expect(x => x.CreateRequest(this.baseUrl.ToString().TrimEnd('/') + this.path + '/' + this.orderId + "/merchant-references")).Return(this.httpWebRequest);
 
-            IResponse response = new Response(string.Empty, this.location);
-            this.requestMock.Expect(x => x.Send(this.httpWebRequest, updateMerchantReferences.ConvertToJson(), HttpStatusCode.NoContent)).Return(response);
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers["Location"] = this.location;
+
+            IResponse response = new Response(HttpStatusCode.NoContent, headers, string.Empty);
+            this.requestMock.Expect(x => x.Send(this.httpWebRequest, updateMerchantReferences.ConvertToJson())).Return(response);
 
             // Act
             this.order.UpdateMerchantReferences(updateMerchantReferences);
@@ -301,8 +319,11 @@ namespace Klarna.Rest.Tests.OrderManagement
 
             this.requestMock.Expect(x => x.CreateRequest(this.baseUrl.ToString().TrimEnd('/') + this.path + '/' + this.orderId + "/customer-details")).Return(this.httpWebRequest);
 
-            IResponse response = new Response(string.Empty, this.location);
-            this.requestMock.Expect(x => x.Send(this.httpWebRequest, updateCustomerDetails.ConvertToJson(), HttpStatusCode.NoContent)).Return(response);
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers["Location"] = this.location;
+
+            IResponse response = new Response(HttpStatusCode.NoContent, headers, string.Empty);
+            this.requestMock.Expect(x => x.Send(this.httpWebRequest, updateCustomerDetails.ConvertToJson())).Return(response);
 
             // Act
             this.order.UpdateCustomerDetails(updateCustomerDetails);
@@ -328,8 +349,11 @@ namespace Klarna.Rest.Tests.OrderManagement
 
             this.requestMock.Expect(x => x.CreateRequest(this.baseUrl.ToString().TrimEnd('/') + this.path + '/' + this.orderId + "/refunds")).Return(this.httpWebRequest);
 
-            IResponse response = new Response(string.Empty, this.location);
-            this.requestMock.Expect(x => x.Send(this.httpWebRequest, refund.ConvertToJson(), HttpStatusCode.NoContent)).Return(response);
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers["Location"] = this.location;
+
+            IResponse response = new Response(HttpStatusCode.NoContent, headers, string.Empty);
+            this.requestMock.Expect(x => x.Send(this.httpWebRequest, refund.ConvertToJson())).Return(response);
 
             // Act
             this.order.Refund(refund);
@@ -337,80 +361,6 @@ namespace Klarna.Rest.Tests.OrderManagement
             // Assert
             this.requestMock.VerifyAllExpectations();
             Assert.AreEqual(this.httpWebRequest.ContentLength, refund.ConvertToJson().Length);
-            TestsHelper.AssertRequest(this.merchantId, this.secret, this.httpWebRequest, HttpMethod.Post);
-        }
-
-        /// <summary>
-        /// Make sure that the request sent is correct and that the location is updated when creating an order.
-        /// </summary>
-        [Test]
-        public void TestCreateCapture()
-        {
-            // Arrange
-            CaptureData captureData = new CaptureData()
-            {
-                BillingAddress = TestsHelper.GetAddress1(),
-                Description = "capture description"
-            };
-
-            this.requestMock.Expect(x => x.CreateRequest(this.baseUrl.ToString().TrimEnd('/') + this.path + '/' + this.orderId + "/captures")).Return(this.httpWebRequest);
-
-            string location = "http://somewhere/a-path";
-            IResponse response = new Response(string.Empty, location);
-            this.requestMock.Expect(x => x.Send(this.httpWebRequest, captureData.ConvertToJson(), HttpStatusCode.Created)).Return(response);
-
-            // Act
-            Klarna.Rest.OrderManagement.Capture capture = this.order.CreateCapture(captureData);
-
-            // Assert
-            this.requestMock.VerifyAllExpectations();
-            Assert.AreEqual(capture.Location, location);
-            Assert.AreEqual(this.httpWebRequest.ContentLength, captureData.ConvertToJson().Length);
-            TestsHelper.AssertRequest(this.merchantId, this.secret, this.httpWebRequest, HttpMethod.Post);
-        }
-
-        /// <summary>
-        /// Make sure that the request sent and retrieved data is correct when fetching a capture.
-        /// </summary>
-        [Test]
-        public void TestFetchCapture()
-        {
-            // Arrange
-
-            // Act
-            Klarna.Rest.OrderManagement.Capture capture = this.order.FetchCapture(this.captureId);
-
-            // Assert
-            Assert.AreEqual(capture.Location, this.path + '/' + this.orderId + "/captures" + "/" + this.captureId);
-        }
-
-        /// <summary>
-        /// Make sure that the request sent and retrieved data is correct when fetching a capture that exists in the captures list.
-        /// </summary>
-        [Test]
-        public void TestFetchCaptureExisting()
-        {
-            // Arrange
-            string json = "{\r\n  \"capture_id\": \"" + this.captureId + "\",\r\n  \"description\": \"capture description\",\r\n  }";
-            CaptureData captureData = JsonConvert.DeserializeObject<CaptureData>(json);
-
-            this.requestMock.Expect(x => x.CreateRequest(this.baseUrl.ToString().TrimEnd('/') + this.path + '/' + this.orderId + "/captures")).Return(this.httpWebRequest);
-
-            string location = "http://somewhere/a-path";
-            IResponse response = new Response(string.Empty, location);
-            this.requestMock.Expect(x => x.Send(this.httpWebRequest, captureData.ConvertToJson(), HttpStatusCode.Created)).Return(response);
-
-            this.requestMock.AssertWasNotCalled(x => x.CreateRequest(this.baseUrl.ToString().TrimEnd('/') + this.path + '/' + this.orderId + "/captures/" + this.captureId));
-
-            this.requestMock.AssertWasNotCalled(x => x.Send(this.httpWebRequest, string.Empty, HttpStatusCode.OK));
-
-            // Act
-            this.order.CreateCapture(captureData);
-            Klarna.Rest.OrderManagement.Capture capture = this.order.FetchCapture(this.captureId);
-
-            // Assert
-            this.requestMock.VerifyAllExpectations();
-            Assert.AreEqual(this.httpWebRequest.ContentLength, captureData.ConvertToJson().Length);
             TestsHelper.AssertRequest(this.merchantId, this.secret, this.httpWebRequest, HttpMethod.Post);
         }
 

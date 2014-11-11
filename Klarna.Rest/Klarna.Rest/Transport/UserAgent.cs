@@ -34,14 +34,14 @@ namespace Klarna.Rest.Transport
         #region Private Fields
 
         /// <summary>
-        /// Name of the SDK
+        /// Name of the SDK.
         /// </summary>
         private const string NAME = "kco_rest_dotnet";
 
         /// <summary>
         /// Components of the user agent.
         /// </summary>
-        private readonly List<UserAgentField> fields = new List<UserAgentField>();
+        private readonly List<UserAgentField> fields;
 
         #endregion
 
@@ -55,11 +55,6 @@ namespace Klarna.Rest.Transport
         public UserAgent()
         {
             this.fields = new List<UserAgentField>();
-            this.fields.Add(new UserAgentField("Library", NAME, Assembly.GetExecutingAssembly().GetName().Version.ToString(3), new string[0]));
-            var os = Environment.OSVersion;
-            this.fields.Add(new UserAgentField("OS", os.Platform.ToString(), os.Version.ToString(), new string[0]));
-            this.fields.Add(new UserAgentField("Language", ".Net", Environment.Version.ToString(), new string[0]));
-            this.fields.Add(new UserAgentField("Webserver", "IIS", this.IisVersion(), new string[0]));
         }
 
         #endregion
@@ -67,17 +62,28 @@ namespace Klarna.Rest.Transport
         #region Methods
 
         /// <summary>
+        /// Creates a new instance of the <see cref="UserAgent"/> class with the default fields.
+        /// </summary>
+        /// <returns>the user agent</returns>
+        public static UserAgent WithDefaultFields()
+        {
+            UserAgent agent = new UserAgent();
+
+            agent.fields.Add(new UserAgentField("Library", NAME, Assembly.GetExecutingAssembly().GetName().Version.ToString(3), new string[0]));
+            var os = Environment.OSVersion;
+            agent.fields.Add(new UserAgentField("OS", os.Platform.ToString(), os.Version.ToString(), new string[0]));
+            agent.fields.Add(new UserAgentField("Language", ".Net", Environment.Version.ToString(), new string[0]));
+            agent.fields.Add(new UserAgentField("Webserver", "IIS", IisVersion(), new string[0]));
+
+            return agent;
+        }
+
+        /// <summary>
         /// Adds a field to the field collection.
         /// </summary>
-        /// <param name="field">
-        /// The field name.
-        /// </param>
-        /// <param name="name">
-        /// The name.
-        /// </param>
-        /// <param name="version">
-        /// The version.
-        /// </param>
+        /// <param name="field">the field name</param>
+        /// <param name="name">the name</param>
+        /// <param name="version">the version</param>
         /// <exception cref="ArgumentException">
         /// Thrown if field already exists.
         /// </exception>
@@ -89,18 +95,10 @@ namespace Klarna.Rest.Transport
         /// <summary>
         /// Adds a field to the field collection.
         /// </summary>
-        /// <param name="field">
-        /// The field name.
-        /// </param>
-        /// <param name="name">
-        /// The name.
-        /// </param>
-        /// <param name="version">
-        /// The version.
-        /// </param>
-        /// <param name="options">
-        /// The options.
-        /// </param>
+        /// <param name="field">the field name</param>
+        /// <param name="name">the name</param>
+        /// <param name="version">the version</param>
+        /// <param name="options">the options</param>
         /// <exception cref="ArgumentException">
         /// Thrown if field already exists.
         /// </exception>
@@ -122,7 +120,7 @@ namespace Klarna.Rest.Transport
         /// </returns>
         public override string ToString()
         {
-            var builder = new StringBuilder();
+            var builder = new StringBuilder(string.Empty);
             foreach (var field in this.fields)
             {
                 builder.Append(field.ToString());
@@ -131,17 +129,13 @@ namespace Klarna.Rest.Transport
             return builder.ToString().TrimEnd(' ');
         }
 
-        #endregion
-
-        #region Private Methods
-
         /// <summary>
         /// Gets IIS version.
         /// </summary>
         /// <returns>
         /// The <see cref="string"/>.
         /// </returns>
-        private string IisVersion()
+        private static string IisVersion()
         {
             var iisVersion = "Unknown_0.0";
             using (var iisKey = Registry.LocalMachine.OpenSubKey(@"Software\Microsoft\InetStp\"))

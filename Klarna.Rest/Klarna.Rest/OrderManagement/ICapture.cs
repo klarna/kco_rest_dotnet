@@ -1,6 +1,6 @@
 ﻿#region Copyright Header
 //-----------------------------------------------------------------------
-// <copyright file="MerchantUrls.cs" company="Klarna AB">
+// <copyright file="ICapture.cs" company="Klarna AB">
 //     Copyright 2014 Klarna AB
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,44 +18,47 @@
 // </copyright>
 //-----------------------------------------------------------------------
 #endregion
-namespace Klarna.Rest.Models
+namespace Klarna.Rest.OrderManagement
 {
     using System;
-    using Newtonsoft.Json;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using Klarna.Rest.Models;
+    using Klarna.Rest.Models.Requests;
 
     /// <summary>
-    /// The merchant URLs.
+    /// Capture resource interface.
     /// </summary>
-    public class MerchantUrls : Model
+    public interface ICapture : IResource
     {
         /// <summary>
-        /// Gets or sets the terms.
+        /// Creates the resource.
         /// </summary>
-        [JsonProperty("terms")]
-        public Uri Terms { get; set; }
+        /// <param name="captureData">the capture data</param>
+        void Create(CaptureData captureData);
 
         /// <summary>
-        /// Gets or sets the checkout.
+        /// Fetches the capture.
         /// </summary>
-        [JsonProperty("checkout")]
-        public Uri Checkout { get; set; }
+        /// <returns>the capture data</returns>
+        CaptureData Fetch();
 
         /// <summary>
-        /// Gets or sets the confirmation.
+        /// Appends shipping information to the capture.
         /// </summary>
-        [JsonProperty("confirmation")]
-        public Uri Confirmation { get; set; }
+        /// <param name="shippingInfo">the shipping info</param>
+        void AddShippingInfo(AddShippingInfo shippingInfo);
 
         /// <summary>
-        /// Gets or sets the push.
+        /// Updates the customers details.
         /// </summary>
-        [JsonProperty("push")]
-        public Uri Push { get; set; }
+        /// <param name="updateCustomerDetails">the customer details</param>
+        void UpdateCustomerDetails(UpdateCustomerDetails updateCustomerDetails);
 
         /// <summary>
-        /// Gets or sets the validation.
+        /// Trigger send outs for this capture.
         /// </summary>
-        [JsonProperty("validation")]
-        public Uri Validation { get; set; }
+        void TriggerSendOut();
     }
 }

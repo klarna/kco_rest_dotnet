@@ -28,17 +28,8 @@ namespace Klarna.Rest
     /// <summary>
     /// Abstract resource class.
     /// </summary>
-    public abstract class Resource
+    internal abstract class Resource : IResource
     {
-        #region Private Fields
-
-        /// <summary>
-        /// HTTP transport connector instance.
-        /// </summary>
-        private IConnector connector;
-
-        #endregion
-
         #region Constructors
 
         /// <summary>
@@ -47,12 +38,12 @@ namespace Klarna.Rest
         /// <param name="connector">the connector</param>
         public Resource(IConnector connector)
         {
-            this.connector = connector;
+            this.Connector = connector;
         }
 
         #endregion
 
-        #region Properties
+        #region Properties of IResource
 
         /// <summary>
         /// Gets or sets the URL of the resource.
@@ -62,18 +53,16 @@ namespace Klarna.Rest
         /// <summary>
         /// Gets the path to the resource endpoint.
         /// </summary>
-        public abstract string Path { get; }
+        internal abstract string Path { get; }
+
+        #endregion
+
+        #region Properties
 
         /// <summary>
         /// Gets the connector.
         /// </summary>
-        protected IConnector Connector
-        {
-            get
-            {
-                return this.connector;
-            }
-        }
+        protected IConnector Connector { get; private set; }
 
         #endregion
 
@@ -82,12 +71,11 @@ namespace Klarna.Rest
         /// <summary>
         /// Sends a HTTP GET request to the specified url.
         /// </summary>
-        /// <param name="url"> the url</param>
-        /// <param name="httpStatusCode">the http status code</param>
+        /// <param name="url">the url</param>
         /// <returns>the response</returns>
-        protected IResponse Get(string url, HttpStatusCode httpStatusCode)
+        protected ResponseValidator Get(string url)
         {
-            return this.Request(url, null, HttpMethod.Get, httpStatusCode);
+            return this.Request(url, null, HttpMethod.Get);
         }
 
         /// <summary>
@@ -95,11 +83,10 @@ namespace Klarna.Rest
         /// </summary>
         /// <param name="url">the url</param>
         /// <param name="data">the checkout order data</param>
-        /// <param name="httpStatusCode">the http status code</param>
         /// <returns>the response</returns>
-        protected IResponse Patch(string url, Model data, HttpStatusCode httpStatusCode)
+        protected ResponseValidator Patch(string url, Model data)
         {
-            return this.Request(url, data, HttpMethod.Patch, httpStatusCode);
+            return this.Request(url, data, HttpMethod.Patch);
         }
 
         /// <summary>
@@ -107,27 +94,29 @@ namespace Klarna.Rest
         /// </summary>
         /// <param name="url">the url</param>
         /// <param name="data">the checkout order data</param>
-        /// <param name="statusCode">the status code</param>
         /// <returns>the response</returns>
-        protected IResponse Post(string url, Model data, HttpStatusCode statusCode)
+        protected ResponseValidator Post(string url, Model data)
         {
-            return this.Request(url, data, HttpMethod.Post, statusCode);
+            return this.Request(url, data, HttpMethod.Post);
         }
 
         /// <summary>
-        /// The request.
+        /// Sends the request to the specified url.
         /// </summary>
         /// <param name="url">the url</param>
         /// <param name="data">the checkout order data</param>
         /// <param name="httpMethod">the http method</param>
-        /// <param name="statusCode">the status code</param>
         /// <returns>the response</returns>
-        private IResponse Request(string url, Model data, HttpMethod httpMethod, HttpStatusCode statusCode)
+        private ResponseValidator Request(string url, Model data, HttpMethod httpMethod)
         {
             string json = data != null ? data.ConvertToJson() : string.Empty;
-            var request = this.connector.CreateRequest(url, httpMethod, json);
+            var request = this.Connector.CreateRequest(url, httpMethod, json);
+            if (data != null)
+            {
+                request.ContentType = "application/json";
+            }
 
-            return this.connector.Send(request, json, statusCode);
+            return new ResponseValidator(this.Connector.Send(request, json));
         }
 
         #endregion

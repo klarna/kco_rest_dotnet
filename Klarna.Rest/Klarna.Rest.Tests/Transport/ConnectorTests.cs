@@ -60,7 +60,7 @@ namespace Klarna.Rest.Tests.Transport
         private UserAgent userAgent;
 
         /// <summary>
-        /// the base url.
+        /// The base url.
         /// </summary>
         private Uri baseUrl;
 
@@ -77,7 +77,7 @@ namespace Klarna.Rest.Tests.Transport
             this.requestMock = MockRepository.GenerateStub<IRequestFactory>();
             this.merchantId = "merchantId";
             this.secret = "secret";
-            this.userAgent = new UserAgent();
+            this.userAgent = UserAgent.WithDefaultFields();
             this.baseUrl = new Uri("https://dummytesturi.test");
             this.connector = ConnectorFactory.Create(this.requestMock, this.merchantId, this.secret, this.userAgent, this.baseUrl);
         }
@@ -156,16 +156,25 @@ namespace Klarna.Rest.Tests.Transport
         {
             // Arrange
             string payload = "payload";
-            HttpStatusCode statusCode = HttpStatusCode.OK;
             var request = (HttpWebRequest)WebRequest.Create("https://somerandomuri.test");
             IResponse responseValidatorMock = MockRepository.GenerateStub<IResponse>();
-            this.requestMock.Stub(x => x.Send(request, payload, statusCode)).Return(responseValidatorMock);
+            this.requestMock.Stub(x => x.Send(request, payload)).Return(responseValidatorMock);
 
             // Act
-            var responseValidator = this.connector.Send(request, payload, statusCode);
+            var responseValidator = this.connector.Send(request, payload);
 
             // Assert
             Assert.AreEqual(responseValidatorMock, responseValidator);
+        }
+
+        /// <summary>
+        /// Test get property UserAgent.
+        /// </summary>
+        [Test]
+        public void Transport_Connector_Get_UserAgent()
+        {
+            Assert.That(this.connector.UserAgent, Is.Not.Null);
+            Assert.That(this.userAgent, Is.SameAs(this.connector.UserAgent));
         }
 
         #endregion

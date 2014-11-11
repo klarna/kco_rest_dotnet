@@ -1,6 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>true</DelaySign>
+    <AssemblyOriginatorKeyFile>..\private.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -9,8 +14,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Klarna.Rest</RootNamespace>
     <AssemblyName>Klarna.Rest</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\'))</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,20 +33,14 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;RELEASE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="StyleCop">
-      <HintPath>..\packages\StyleCop.4.7.49.0\lib\net35\StyleCop.dll</HintPath>
-    </Reference>
-    <Reference Include="StyleCop.CSharp">
-      <HintPath>..\packages\StyleCop.4.7.49.0\lib\net35\StyleCop.CSharp.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,6 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Checkout\CheckoutOrder.cs" />
+    <Compile Include="Checkout\ICheckoutOrder.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="IResource.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Requests\AddShippingInfo.cs" />
     <Compile Include="Models\CaptureData.cs" />
@@ -66,6 +71,8 @@
     <Compile Include="Models\Requests\UpdateCustomerDetails.cs" />
     <Compile Include="Models\Requests\UpdateMerchantReferences.cs" />
     <Compile Include="OrderManagement\Capture.cs" />
+    <Compile Include="OrderManagement\ICapture.cs" />
+    <Compile Include="OrderManagement\IOrder.cs" />
     <Compile Include="OrderManagement\Order.cs" />
     <Compile Include="Transport\ConnectorFactory.cs" />
     <Compile Include="Resource.cs" />
@@ -84,13 +91,40 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" />
+  <Import Project="..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets" Condition="Exists('..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\StyleCop.MSBuild.4.7.49.0\build\StyleCop.MSBuild.Targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
   </Target>
   -->
+  <PropertyGroup>
+    <SignKey>$(AssemblyOriginatorKeyFile)</SignKey>
+    <Assembly>$(SolutionDir)Klarna.Rest\$(OutDir)$(AssemblyName).dll</Assembly>
+  </PropertyGroup>
+  <Choose>
+    <When Condition=" '$(Configuration)'=='Debug' And !Exists('$(SignKey)') ">
+      <PropertyGroup>
+        <SignCommand>sn.exe -Vr $(Assembly)</SignCommand>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <SignCommand>sn.exe -R $(Assembly) $(SignKey)</SignCommand>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+  <Target Name="Sign">
+    <Error Condition=" !Exists('$(SignKey)') And '$(Configuration)'=='Release' " Text="Sign key missing" />
+    <Exec Command="$(SignCommand)" />
+  </Target>
 </Project>

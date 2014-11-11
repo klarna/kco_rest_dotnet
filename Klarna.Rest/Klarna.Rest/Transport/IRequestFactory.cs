@@ -25,22 +25,21 @@ namespace Klarna.Rest.Transport
     /// <summary>
     /// The HTTP request factory interface.
     /// </summary>
-    public interface IRequestFactory
+    internal interface IRequestFactory
     {
         /// <summary>
         /// Creates a HttpWebRequest object.
         /// </summary>
-        /// <param name="url"> the url</param>
-        /// <returns> a HTTP request</returns>
+        /// <param name="url">request url</param>
+        /// <returns>a HTTP request object</returns>
         HttpWebRequest CreateRequest(string url);
 
         /// <summary>
         /// Performs a HTTP request.
         /// </summary>
-        /// <param name="request">The HTTP request to send.</param>
-        /// <param name="payload">The payload to send if this is a POST.</param>
-        /// <param name="httpStatusCode">the http status code</param>
+        /// <param name="request">the HTTP request to send</param>
+        /// <param name="payload">the payload to send if this is a POST</param>
         /// <returns>the response</returns>
-        IResponse Send(HttpWebRequest request, string payload, HttpStatusCode httpStatusCode);
+        IResponse Send(HttpWebRequest request, string payload);
     }
 }

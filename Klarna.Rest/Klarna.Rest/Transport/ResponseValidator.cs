@@ -29,16 +29,40 @@ namespace Klarna.Rest.Transport
     internal class ResponseValidator
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="ResponseValidator" /> class.
+        /// </summary>
+        /// <param name="response">the response</param>
+        public ResponseValidator(IResponse response)
+        {
+            this.Response = response;
+        }
+
+        /// <summary>
+        /// Gets the location.
+        /// </summary>
+        public Uri Location
+        {
+            get
+            {
+                return new Uri(this.Response.Headers[HttpResponseHeader.Location]);
+            }
+        }
+
+        /// <summary>
+        /// Gets the internal response instance.
+        /// </summary>
+        public IResponse Response { get; private set; }
+
+        /// <summary>
         /// Asserts the HTTP response status code.
         /// </summary>
-        /// <param name="responseStatusCode">the status code</param>
-        /// <param name="httpStatusCode">the expected http status code</param>
+        /// <param name="status">the expected HTTP status code</param>
         /// <returns>this response validator</returns>
-        public ResponseValidator StatusCode(HttpStatusCode responseStatusCode, HttpStatusCode httpStatusCode)
+        public ResponseValidator Status(HttpStatusCode status)
         {
-            if (responseStatusCode != httpStatusCode)
+            if (!this.Response.Status.Equals(status))
             {
-                throw new Exception(string.Format("Response has wrong StatusCode. Should be {0} but is {1}", (int)httpStatusCode, (int)responseStatusCode));
+                throw new Exception(string.Format("Response has wrong StatusCode. Should be {0} but is {1}", (int)status, (int)this.Response.Status));
             }
 
             return this;
@@ -47,14 +71,18 @@ namespace Klarna.Rest.Transport
         /// <summary>
         /// Asserts the content type header.
         /// </summary>
-        /// <param name="responseContentType">the content type</param>
         /// <param name="contentType">the expected content type</param>
         /// <returns>this response validator</returns>
-        public ResponseValidator ContentType(string responseContentType, string contentType)
+        public ResponseValidator ContentType(string contentType)
         {
-            if (!responseContentType.Equals(contentType))
+            if (string.IsNullOrEmpty(this.Response.Headers[HttpResponseHeader.ContentType]))
             {
-                throw new Exception("Response has wrong ContentType");
+                throw new Exception("Response has no Content-Type header.");
+            }
+
+            if (!this.Response.Headers[HttpResponseHeader.ContentType].Equals(contentType))
+            {
+                throw new Exception(string.Format("Response has wrong Content-Type. Should be {0} but is {1}", contentType, this.Response.Headers[HttpResponseHeader.ContentType]));
             }
 
             return this;

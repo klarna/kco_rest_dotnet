@@ -29,7 +29,7 @@ namespace Klarna.Rest.OrderManagement
     /// <summary>
     /// Checkout order resource.
     /// </summary>
-    public class Order : Resource
+    internal class Order : Resource, IOrder
     {
         #region Constructors
 
@@ -38,7 +38,7 @@ namespace Klarna.Rest.OrderManagement
         /// </summary>
         /// <param name="connector">the connector</param>
         /// <param name="orderId">the order id</param>
-        public Order(IConnector connector, string orderId)
+        internal Order(IConnector connector, string orderId)
             : base(connector)
         {
             if (string.IsNullOrEmpty(orderId))
@@ -53,12 +53,12 @@ namespace Klarna.Rest.OrderManagement
 
         #endregion
 
-        #region Implementation of Resource
+        #region Implementation of IOrder
 
         /// <summary>
         /// The orders path.
         /// </summary>
-        public override string Path
+        internal override string Path
         {
             get
             {
@@ -66,136 +66,94 @@ namespace Klarna.Rest.OrderManagement
             }
         }
 
-        #endregion   
-
-        #region Methods
-
         /// <summary>
         /// Fetches the order.
         /// </summary>
         /// <returns>the order data object</returns>
-        public Models.OrderData Fetch()
+        public OrderData Fetch()
         {
-            return this.Get(this.Location.ToString(), HttpStatusCode.OK).Data<Models.OrderData>();
+            return this.Get(this.Location.ToString())
+                .Status(HttpStatusCode.OK)
+                .ContentType("application/json")
+                .Response.Data<OrderData>();
         }
 
         /// <summary>
         /// Acknowledges the order.
         /// </summary>
-        /// <returns>this resource</returns>
-        public Order Acknowledge()
+        public void Acknowledge()
         {
-            this.Post(this.Location + "/acknowledge", null, HttpStatusCode.NoContent);
-
-            return this;
+            this.Post(this.Location + "/acknowledge", null)
+                .Status(HttpStatusCode.NoContent);
         }
 
         /// <summary>
         /// Cancels the order.
         /// </summary>
-        /// <returns>this resource</returns>
-        public Order Cancel()
+        public void Cancel()
         {
-            this.Post(this.Location + "/cancel", null, HttpStatusCode.NoContent);
-
-            return this;
+            this.Post(this.Location + "/cancel", null)
+                .Status(HttpStatusCode.NoContent);
         }
 
         /// <summary>
-        /// Updates the authorization data
+        /// Updates the authorization data.
         /// </summary>
         /// <param name="updateAuthorization">the updateAuthorization</param>
-        /// <returns>this resource</returns>
-        public Order UpdateAuthorization(UpdateAuthorization updateAuthorization)
+        public void UpdateAuthorization(UpdateAuthorization updateAuthorization)
         {
-            this.Patch(this.Location + "/authorization", updateAuthorization, HttpStatusCode.NoContent);
-
-            return this;
+            this.Patch(this.Location + "/authorization", updateAuthorization)
+                .Status(HttpStatusCode.NoContent);
         }
 
         /// <summary>
         /// Extends the authorization time.
         /// </summary>
-        /// <returns>this resource</returns>
-        public Order ExtendAuthorizationTime()
+        public void ExtendAuthorizationTime()
         {
-            this.Post(this.Location + "/extend-authorization-time", null, HttpStatusCode.NoContent);
-
-            return this;
+            this.Post(this.Location + "/extend-authorization-time", null)
+                .Status(HttpStatusCode.NoContent);
         }
 
         /// <summary>
         /// Update the merchant references.
         /// </summary>
         /// <param name="updateMerchantReferences">the update merchant references</param>
-        /// <returns>this resource</returns>
-        public Order UpdateMerchantReferences(UpdateMerchantReferences updateMerchantReferences)
+        public void UpdateMerchantReferences(UpdateMerchantReferences updateMerchantReferences)
         {
-            this.Patch(this.Location + "/merchant-references", updateMerchantReferences, HttpStatusCode.NoContent);
-
-            return this;
+            this.Patch(this.Location + "/merchant-references", updateMerchantReferences)
+                .Status(HttpStatusCode.NoContent);
         }
 
         /// <summary>
         /// Updates the customer details.
         /// </summary>
         /// <param name="updateCustomerDetails">the order</param>
-        /// <returns>this resource</returns>
-        public Order UpdateCustomerDetails(UpdateCustomerDetails updateCustomerDetails)
+        public void UpdateCustomerDetails(UpdateCustomerDetails updateCustomerDetails)
         {
-            this.Patch(this.Location + "/customer-details", updateCustomerDetails, HttpStatusCode.NoContent);
-
-            return this;
+            this.Patch(this.Location + "/customer-details", updateCustomerDetails)
+                .Status(HttpStatusCode.NoContent);
         }
 
         /// <summary>
         /// Refunds an amount of a captured order.
         /// </summary>
         /// <param name="order">the order</param>
-        /// <returns>this resource</returns>
-        public Order Refund(Refund order)
+        public void Refund(Refund order)
         {
-            this.Post(this.Location + "/refunds", order, HttpStatusCode.NoContent);
-
-            return this;
+            this.Post(this.Location + "/refunds", order)
+                .Status(HttpStatusCode.NoContent);
         }
 
         /// <summary>
         /// Release the remaining authorization for an order.
         /// </summary>
-        /// <returns>this resource</returns>
-        public Order ReleaseRemainingAuthorization()
+        public void ReleaseRemainingAuthorization()
         {
-            this.Post(this.Location + "/release-remaining-authorization", null, HttpStatusCode.NoContent);
-
-            return this;
+            this.Post(this.Location + "/release-remaining-authorization", null)
+                .Status(HttpStatusCode.NoContent);
         }
 
-        /// <summary>
-        /// Capture all or part of an order.
-        /// </summary>
-        /// <param name="captureData">the capture</param>
-        /// <returns>this resource</returns>
-        public Capture CreateCapture(CaptureData captureData)
-        {
-            Capture capture = new Capture(this.Connector, Location, string.Empty);
-            capture.Create(captureData);
-
-            return capture;
-        }
-
-        /// <summary>
-        /// Fetches the specified capture.
-        /// </summary>
-        /// <param name="captureId">the capture id</param>
-        /// <returns>this resource</returns>
-        public Capture FetchCapture(string captureId)
-        {
-            Capture capture = new Capture(this.Connector, Location, captureId);
-
-            return capture;
-        }
-
-        #endregion   
+        #endregion
     }
 }

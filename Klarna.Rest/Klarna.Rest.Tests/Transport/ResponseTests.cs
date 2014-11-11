@@ -21,6 +21,7 @@
 namespace Klarna.Rest.Tests.Transport
 {
     using System;
+    using System.Net;
     using Klarna.Rest.Transport;
     using NUnit.Framework;
 
@@ -31,11 +32,6 @@ namespace Klarna.Rest.Tests.Transport
     public class ResponseTests
     {
         #region Private Fields
-
-        /// <summary>
-        /// The response data
-        /// </summary>
-        private string json;
 
         /// <summary>
         /// The response location
@@ -52,7 +48,6 @@ namespace Klarna.Rest.Tests.Transport
         [SetUp]
         public void SetUp()
         {
-            this.json = "jsondata";
             this.location = "https://testlocation.com";
         }
 
@@ -61,34 +56,38 @@ namespace Klarna.Rest.Tests.Transport
         #region Tests
 
         /// <summary>
-        /// Basic test of Location
+        /// Basic test of headers
         /// </summary>
         [Test]
-        public void Transport_Response_Location_Basic()
+        public void Transport_Response_Headers()
         {
             // Arrange
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers["Location"] = this.location;
+            HttpStatusCode status = HttpStatusCode.OK;
 
             // Act
-            Response responseValidator = new Response(this.json, this.location);
+            Response response = new Response(status, headers, string.Empty);
 
             // Assert
-            Assert.AreEqual(responseValidator.Location, this.location);
+            Assert.AreEqual(response.Headers["Location"], this.location);
         }
 
         /// <summary>
-        /// Exception test of Location
+        /// Test of Location
         /// </summary>
         [Test]
-        [ExpectedException(typeof(Exception), ExpectedMessage = "Response contains location that is null")]
-        public void Transport_Response_Location_Exception()
+        public void Transport_Response_Location_Null()
         {
             // Arrange
+            WebHeaderCollection headers = new WebHeaderCollection();
+            HttpStatusCode status = HttpStatusCode.OK;
 
             // Act
-            Response responseValidator = new Response(this.json, null);
+            Response response = new Response(status, headers, string.Empty);
 
             // Assert
-            var location = responseValidator.Location;
+            Assert.That(response.Headers["Location"], Is.Null);
         }
 
         /// <summary>
@@ -101,10 +100,10 @@ namespace Klarna.Rest.Tests.Transport
             Models.CheckoutOrderData checkoutOrderData = TestsHelper.GetCheckoutOrderData1();
 
             // Act
-            Response responseValidator = new Response(checkoutOrderData.ConvertToJson(), this.location);
+            Response response = new Response(HttpStatusCode.OK, new WebHeaderCollection(), checkoutOrderData.ConvertToJson());
 
             // Assert
-            var data = responseValidator.Data<Models.CheckoutOrderData>();
+            var data = response.Data<Models.CheckoutOrderData>();
             Assert.AreEqual(data.PurchaseCountry, checkoutOrderData.PurchaseCountry);
             Assert.AreEqual(data.PurchaseCurrency, checkoutOrderData.PurchaseCurrency);
         }

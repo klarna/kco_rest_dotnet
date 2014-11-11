@@ -24,14 +24,14 @@ namespace Klarna.Rest.Models
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Serialization;
-    
+
     /// <summary>
     /// The Checkout order.
     /// </summary>
     public class CheckoutOrderData : Model
     {
         /// <summary>
-        /// Gets the id
+        /// Gets the id.
         /// </summary>
         [JsonProperty("order_id")]
         public string OrderId { get; private set; }
@@ -103,7 +103,7 @@ namespace Klarna.Rest.Models
         public MerchantUrls MerchantUrls { get; set; }
 
         /// <summary>
-        /// Gets the HTML snippet that is used to render the checkout in an iFrame.
+        /// Gets the HTML snippet that is used to render the checkout in an iframe.
         /// </summary>
         [JsonProperty("html_snippet")]
         public string HtmlSnippet { get; private set; }

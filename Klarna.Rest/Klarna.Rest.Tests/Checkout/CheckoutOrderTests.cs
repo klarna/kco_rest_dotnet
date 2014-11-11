@@ -26,9 +26,9 @@ namespace Klarna.Rest.Tests.Checkout
     using Klarna.Rest.Transport;
     using NUnit.Framework;
     using Rhino.Mocks;
-    
+
     /// <summary>
-    /// Tests the Order class.
+    /// Tests the CheckoutOrder class.
     /// </summary>
     [TestFixture]
     public class CheckoutOrderTests
@@ -79,11 +79,6 @@ namespace Klarna.Rest.Tests.Checkout
         [Test]
         public void CheckoutOrder_Constructor_OrderUrl()
         {
-            // Arrange
-
-            // Act
-
-            // Assert
             Assert.AreEqual(this.order.Location, this.testUrl);
         }
 
@@ -93,13 +88,9 @@ namespace Klarna.Rest.Tests.Checkout
         [Test]
         public void CheckoutOrder_Constructor_NoOrderUrl()
         {
-            // Arrange
-
-            // Act
             this.order = new Klarna.Rest.Checkout.CheckoutOrder(this.connectorMock, null);
 
-            // Assert
-            Assert.AreEqual(this.order.Location, null);
+            Assert.That(this.order.Location, Is.Null);
         }
 
         /// <summary>
@@ -108,12 +99,8 @@ namespace Klarna.Rest.Tests.Checkout
         [Test]
         public void CheckoutOrder_Path_Basic()
         {
-            // Arrange
-
-            // Act
             this.order = new Klarna.Rest.Checkout.CheckoutOrder(this.connectorMock, null);
 
-            // Assert
             Assert.AreEqual(this.order.Path, this.path);
         }
 
@@ -130,14 +117,16 @@ namespace Klarna.Rest.Tests.Checkout
 
             var responseMock = TestsHelper.Mock(HttpMethod.Post, this.order.Path, checkoutOrderData.ConvertToJson(), HttpStatusCode.Created, this.connectorMock);
 
-            responseMock.Stub(x => x.Location).Return(newTestLocation);
-            responseMock.Stub(x => x.Data<CheckoutOrderData>()).Return(checkoutOrderData);
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers[HttpResponseHeader.Location] = newTestLocation.ToString();
+
+            responseMock.Stub(x => x.Headers).Return(headers);
 
             // Act
-            var resource = this.order.Create(checkoutOrderData);
+            this.order.Create(checkoutOrderData);
 
             // Assert
-            Assert.AreEqual(resource.Location, newTestLocation);
+            Assert.AreEqual(this.order.Location, newTestLocation);
         }
 
         /// <summary>
@@ -153,6 +142,11 @@ namespace Klarna.Rest.Tests.Checkout
 
             var responseMock = TestsHelper.Mock(HttpMethod.Post, this.order.Location.ToString(), checkoutOrderData1.ConvertToJson(), HttpStatusCode.OK, this.connectorMock);
             responseMock.Stub(x => x.Data<CheckoutOrderData>()).Return(checkoutOrderData2);
+
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers[HttpResponseHeader.ContentType] = "application/json";
+
+            responseMock.Stub(x => x.Headers).Return(headers);
 
             // Act
             var returnedCheckoutOrderData = this.order.Update(checkoutOrderData1);
@@ -173,6 +167,11 @@ namespace Klarna.Rest.Tests.Checkout
 
             var responseMock = TestsHelper.Mock(HttpMethod.Get, this.order.Location.ToString(), string.Empty, HttpStatusCode.OK, this.connectorMock);
             responseMock.Stub(x => x.Data<CheckoutOrderData>()).Return(checkoutOrderData);
+
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers[HttpResponseHeader.ContentType] = "application/json";
+
+            responseMock.Stub(x => x.Headers).Return(headers);
 
             // Act
             var returnedCheckoutOrderData = this.order.Fetch();

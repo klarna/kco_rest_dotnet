@@ -41,11 +41,6 @@ namespace Klarna.Rest.Transport
         private string secret;
 
         /// <summary>
-        /// Http user agent.
-        /// </summary>
-        private UserAgent userAgent;
-
-        /// <summary>
         /// Base url.
         /// </summary>
         private Uri baseUrl;
@@ -57,11 +52,13 @@ namespace Klarna.Rest.Transport
 
         #endregion
 
+        #region Constructors
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Connector" /> class.
         /// </summary>
-        /// <param name="request"> The HTTP request factory</param>
-        /// <param name="merchantId"> the merchant id</param>
+        /// <param name="request">the HTTP request factory</param>
+        /// <param name="merchantId">the merchant id</param>
         /// <param name="secret">the shared secret</param>
         /// <param name="userAgent">the user agent</param>
         /// <param name="baseUrl">the base url</param>
@@ -70,11 +67,18 @@ namespace Klarna.Rest.Transport
             this.request = request;
             this.merchantId = merchantId;
             this.secret = secret;
-            this.userAgent = userAgent;
+            this.UserAgent = userAgent;
             this.baseUrl = baseUrl;
         }
 
+        #endregion
+
         #region Implementation of IConnector
+
+        /// <summary>
+        /// Gets the user agent.
+        /// </summary>
+        public UserAgent UserAgent { get; private set; }
 
         /// <summary>
         /// Creates a request object.
@@ -94,11 +98,10 @@ namespace Klarna.Rest.Transport
             var request = this.request.CreateRequest(url);
             request.AllowAutoRedirect = false;
             request.Method = method.ToString().ToUpper();
-            request.ContentType = "application/json";
             request.ContentLength = payload.Length;
 
             // Set HTTP Headers
-            request.UserAgent = this.userAgent.ToString();
+            request.UserAgent = this.UserAgent.ToString();
 
             request.Credentials = new NetworkCredential(this.merchantId, this.secret);
 
@@ -110,11 +113,10 @@ namespace Klarna.Rest.Transport
         /// </summary>
         /// <param name="request">the HTTP request</param>
         /// <param name="payload">the payload</param>
-        /// <param name="httpStatusCode">the HTTP status code</param>
         /// <returns>the response</returns>
-        public IResponse Send(HttpWebRequest request, string payload, HttpStatusCode httpStatusCode)
+        public IResponse Send(HttpWebRequest request, string payload)
         {
-            return this.request.Send(request, payload, httpStatusCode);
+            return this.request.Send(request, payload);
         }
 
         #endregion

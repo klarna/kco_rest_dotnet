@@ -36,7 +36,7 @@ namespace Klarna.Rest.Models
         public string CaptureId { get; private set; }
 
         /// <summary>
-        /// Gets the Klarna reference. 
+        /// Gets the Klarna reference.
         /// Customer friendly reference id, used as order reference when communicating with the customer.
         /// </summary>
         [JsonProperty("klarna_reference")]

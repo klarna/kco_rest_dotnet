@@ -1,5 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\private.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,8 +14,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Klarna.Rest.Tests</RootNamespace>
     <AssemblyName>Klarna.Rest.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\'))</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,14 +32,14 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;RELEASE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
@@ -51,13 +58,16 @@
   <ItemGroup>
     <Compile Include="Checkout\CheckoutOrderComponentTests.cs" />
     <Compile Include="Checkout\CheckoutOrderTests.cs" />
+    <Compile Include="ClientTests.cs" />
     <Compile Include="OrderManagement\CaptureComponentTests.cs" />
     <Compile Include="OrderManagement\CaptureTests.cs" />
     <Compile Include="OrderManagement\OrderComponentTests.cs" />
     <Compile Include="OrderManagement\OrderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestsHelper.cs" />
+    <Compile Include="Transport\ConnectorFactoryTests.cs" />
     <Compile Include="Transport\ConnectorTests.cs" />
+    <Compile Include="Transport\RequestFactoryTests.cs" />
     <Compile Include="Transport\ResponseTests.cs" />
     <Compile Include="Transport\ResponseValidatorTests.cs" />
     <Compile Include="Transport\UserAgentTests.cs" />
@@ -74,13 +84,41 @@
       <Name>Klarna.Rest</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <PropertyGroup>
+    <NUnitExePath Condition=" '$(NUnitExePath)' == '' ">$(SolutionDir)packages\NUnit.Runners.2.6.3\tools\nunit-console.exe</NUnitExePath>
+    <TestAssembly Condition=" '$(TestAssembly)' == '' ">$(OutputPath)$(AssemblyName).dll</TestAssembly>
+    <OpenCoverExePath Condition=" '$(OpenCoverExePath)' == '' ">$(SolutionDir)packages\OpenCover.4.5.3207\OpenCover.Console.exe</OpenCoverExePath>
+    <CoberturaConvExePath Condition=" '$(CoberturaConvExePath)' == '' ">$(SolutionDir)packages\OpenCoverToCoberturaConverter.0.2.0.0\OpenCoverToCoberturaConverter.exe</CoberturaConvExePath>
+    <ReportGenExePath Condition=" '$(ReportGenExePath)' == '' ">$(SolutionDir)packages\ReportGenerator.2.0.1.0\ReportGenerator.exe</ReportGenExePath>
+    <OpenCoverRegister Condition=" '$(OpenCoverRegister)' == '' ">user</OpenCoverRegister>
+  </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
+  </Target> -->
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
-  -->
+  <PropertyGroup>
+    <SignKey>$(AssemblyOriginatorKeyFile)</SignKey>
+    <Assembly>$(SolutionDir)Klarna.Rest.Tests\$(OutDir)Klarna.Rest.dll</Assembly>
+  </PropertyGroup>
+  <Target Name="SignAssemblies" Condition=" '$(Configuration)' == 'Release' ">
+    <Error Condition=" !Exists('$(SignKey)') " Text="Sign key missing" />
+    <Exec Command="sn.exe -R $(TestAssembly) $(SignKey)" />
+    <Exec Command="sn.exe -R $(Assembly) $(SignKey)" />
+  </Target>
+  <Target Name="Tests">
+    <CallTarget Targets="SignAssemblies" />
+    <Exec Command="$(OpenCoverExePath) -target:$(NUnitExePath) -targetargs:&quot;$(AssemblyName).dll /noshadow /domain=single /xml=$(SolutionDir)test-result.xml&quot; -register:$(OpenCoverRegister) -output:coverage.xml -targetdir:.\Klarna.Rest.Tests\$(OutputPath) -filter:&quot;+[Klarna.Rest]* -[Klarna.Rest.Tests]*&quot;" WorkingDirectory="$(SolutionDir)" />
+    <Exec Command="$(CoberturaConvExePath) -input:coverage.xml -output:cobertura.xml -sources:." WorkingDirectory="$(SolutionDir)" />
+    <Exec Command="$(ReportGenExePath) -reports:coverage.xml -targetDir:.\coverage" WorkingDirectory="$(SolutionDir)" />
+  </Target>
 </Project>

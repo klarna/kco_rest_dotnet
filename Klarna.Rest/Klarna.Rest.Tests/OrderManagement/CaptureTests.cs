@@ -131,15 +131,17 @@ namespace Klarna.Rest.Tests.OrderManagement
             CaptureData captureData = TestsHelper.GetCapture();
 
             Uri newTestLocation = new Uri("https://newTestLocation.test");
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers["Location"] = newTestLocation.OriginalString;
 
             var responseMock = TestsHelper.Mock(HttpMethod.Post, this.capture.Location.ToString(), captureData.ConvertToJson(), HttpStatusCode.Created, this.connectorMock);
-            responseMock.Stub(x => x.Location).Return(newTestLocation);
+            responseMock.Stub(x => x.Headers).Return(headers);
 
             // Act
-            var resource = this.capture.Create(captureData);
+            this.capture.Create(captureData);
 
             // Assert
-            Assert.AreEqual(resource.Location, newTestLocation);
+            Assert.AreEqual(this.capture.Location, newTestLocation);
         }
 
         /// <summary>
@@ -153,6 +155,11 @@ namespace Klarna.Rest.Tests.OrderManagement
 
             var responseMock = TestsHelper.Mock(HttpMethod.Get, this.capture.Location.ToString(), string.Empty, HttpStatusCode.OK, this.connectorMock);
             responseMock.Stub(x => x.Data<CaptureData>()).Return(captureData);
+
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers["Content-Type"] = "application/json";
+
+            responseMock.Stub(x => x.Headers).Return(headers);
 
             // Act
             var returnedCheckoutOrder = this.capture.Fetch();
@@ -172,12 +179,9 @@ namespace Klarna.Rest.Tests.OrderManagement
             // Arrange
             var shippingInfo = TestsHelper.GetAddShippingInfo();
 
-            TestsHelper.Mock(HttpMethod.Post, this.capture.Location + "/shipping-info", shippingInfo.ConvertToJson(), HttpStatusCode.NoContent, this.connectorMock);
+            IResponse response = TestsHelper.Mock(HttpMethod.Post, this.capture.Location + "/shipping-info", shippingInfo.ConvertToJson(), HttpStatusCode.NoContent, this.connectorMock);
 
-            var resource = this.capture.AddShippingInfo(shippingInfo);
-
-            // Assert
-            Assert.AreEqual(resource, this.capture);
+            this.capture.AddShippingInfo(shippingInfo);
         }
 
         /// <summary>
@@ -191,10 +195,7 @@ namespace Klarna.Rest.Tests.OrderManagement
 
             TestsHelper.Mock(HttpMethod.Patch, this.capture.Location + "/customer-details", updateCustomerDetails.ConvertToJson(), HttpStatusCode.NoContent, this.connectorMock);
 
-            var resource = this.capture.UpdateCustomerDetails(updateCustomerDetails);
-
-            // Assert
-            Assert.AreEqual(resource, this.capture);
+            this.capture.UpdateCustomerDetails(updateCustomerDetails);
         }
 
         /// <summary>
@@ -206,10 +207,7 @@ namespace Klarna.Rest.Tests.OrderManagement
             // Arrange
             TestsHelper.Mock(HttpMethod.Post, this.capture.Location + "/trigger-send-out", string.Empty, HttpStatusCode.NoContent, this.connectorMock);
 
-            var resource = this.capture.TriggerSendOut();
-
-            // Assert
-            Assert.AreEqual(resource, this.capture);
+            this.capture.TriggerSendOut();
         }
 
         #endregion

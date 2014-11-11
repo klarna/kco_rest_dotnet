@@ -2,6 +2,7 @@
   <GlobalSettings>
     <CollectionProperty Name="RecognizedWords">
       <Value>Klarna</Value>
+      <Value>iframe</Value>
     </CollectionProperty>
   </GlobalSettings>
 </StyleCopSettings>

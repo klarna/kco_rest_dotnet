@@ -44,6 +44,16 @@ namespace Klarna.Rest.Tests.Transport
         private string contentType;
 
         /// <summary>
+        /// The response headers.
+        /// </summary>
+        private WebHeaderCollection headers;
+
+        /// <summary>
+        /// The response.
+        /// </summary>
+        private Response response;
+
+        /// <summary>
         /// The response validator.
         /// </summary>
         private ResponseValidator responseValidator;
@@ -60,7 +70,10 @@ namespace Klarna.Rest.Tests.Transport
         {
             this.statusCode = HttpStatusCode.OK;
             this.contentType = "application/json";
-            this.responseValidator = new ResponseValidator();
+            this.headers = new WebHeaderCollection();
+            this.headers["Content-Type"] = this.contentType;
+            this.response = new Response(this.statusCode, this.headers, string.Empty);
+            this.responseValidator = new ResponseValidator(this.response);
         }
 
         #endregion
@@ -68,17 +81,12 @@ namespace Klarna.Rest.Tests.Transport
         #region Tests
 
         /// <summary>
-        /// Basic test of StatusCode.
+        /// Basic test of Status.
         /// </summary>
         [Test]
-        public void ResponseValidator_StatusCode_Basic()
+        public void ResponseValidator_Status_Basic()
         {
-            // Arrange
-
-            // Act
-
-            // Assert
-            Assert.AreEqual(this.responseValidator.StatusCode(this.statusCode, this.statusCode), this.responseValidator);
+            Assert.AreEqual(this.responseValidator.Status(this.statusCode), this.responseValidator);
         }
 
         /// <summary>
@@ -87,19 +95,14 @@ namespace Klarna.Rest.Tests.Transport
         [Test]
         public void ResponseValidator_StatusCode_Exception()
         {
-            // Arrange
-
-            // Act
-
-            // Assert
             try
             {
-                this.responseValidator.StatusCode(HttpStatusCode.NotModified, this.statusCode);
+                this.responseValidator.Status(HttpStatusCode.NotModified);
                 Assert.Fail("No exception was thrown");
             }
             catch (Exception ex)
             {
-                string expectedMessage = string.Format("Response has wrong StatusCode. Should be {0} but is {1}", (int)this.statusCode, (int)HttpStatusCode.NotModified);
+                string expectedMessage = string.Format("Response has wrong StatusCode. Should be {0} but is {1}", (int)HttpStatusCode.NotModified, (int)this.statusCode);
                 Assert.AreEqual(ex.Message, expectedMessage);
             }
         }
@@ -110,27 +113,35 @@ namespace Klarna.Rest.Tests.Transport
         [Test]
         public void ResponseValidator_ContentType_Basic()
         {
-            // Arrange
-
-            // Act
-
-            // Assert
-            Assert.AreEqual(this.responseValidator.ContentType(this.contentType, this.contentType), this.responseValidator);
+            Assert.AreEqual(this.responseValidator.ContentType(this.contentType), this.responseValidator);
         }
 
         /// <summary>
         /// Exception test of ContentType.
         /// </summary>
         [Test]
-        [ExpectedException(typeof(Exception), ExpectedMessage = "Response has wrong ContentType")]
         public void ResponseValidator_ContentType_Exception()
         {
-            // Arrange
+            try
+            {
+                this.responseValidator.ContentType("different/contentType");
+            }
+            catch (Exception ex)
+            {
+                string expectedMessage = string.Format("Response has wrong Content-Type. Should be {0} but is {1}", "different/contentType", this.headers[HttpResponseHeader.ContentType]);
+                Assert.AreEqual(ex.Message, expectedMessage);
+            }
+        }
 
-            // Act
-
-            // Assert
-            this.responseValidator.ContentType("different/contentType", this.contentType);
+        /// <summary>
+        /// Exception test of ContentType.
+        /// </summary>
+        [Test]
+        [ExpectedException(typeof(Exception), ExpectedMessage = "Response has no Content-Type header.")]
+        public void ResponseValidator_ContentType_ExceptionMissing()
+        {
+            this.headers.Clear();
+            this.responseValidator.ContentType("different/contentType");
         }
 
         #endregion
