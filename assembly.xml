@@ -11,7 +11,7 @@
     </files>
     <fileSets>
         <fileSet>
-            <directory>${project.basedir}/src/main/java/com/klarna/rest/api/examples</directory>
+            <directory>${project.basedir}/src/main/java/examples</directory>
             <outputDirectory>examples</outputDirectory>
         </fileSet>
     </fileSets>

@@ -17,4 +17,4 @@
 /**
  * Examples package.
  */
-package com.klarna.rest.api.examples;
+package examples;
