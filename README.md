@@ -22,7 +22,7 @@ payments worldwide and change the way the world shops online.
 
 ## Usage
 Example files can be found in the
-[examples](src/main/java/com/klarna/rest/api/examples/) package.
+[examples](src/main/java/examples/) package.
 
 
 ## Documentation

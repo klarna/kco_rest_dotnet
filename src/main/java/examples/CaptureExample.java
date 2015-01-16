@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.klarna.rest.api.examples;
+package examples;
 
 import com.klarna.rest.api.Capture;
 import com.klarna.rest.api.DefaultClient;
