@@ -1,24 +1,25 @@
 <assembly>
-    <id>package-libs</id>
+    <id>complete</id>
     <formats>
         <format>zip</format>
     </formats>
     <includeBaseDirectory>false</includeBaseDirectory>
     <files>
         <file>
-            <source>${project.basedir}/target/${project.name}-${project.version}.jar</source>
-        </file>
-        <file>
             <source>${project.basedir}/README.md</source>
-        </file>
-        <file>
-            <source>${project.basedir}/CHANGELOG</source>
         </file>
     </files>
     <fileSets>
         <fileSet>
-            <directory>${project.basedir}/target/dependency</directory>
-            <outputDirectory>lib</outputDirectory>
+            <directory>${project.basedir}/src/main/java/com/klarna/rest/api/examples</directory>
+            <outputDirectory>examples</outputDirectory>
         </fileSet>
     </fileSets>
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>lib</outputDirectory>
+            <useProjectArtifact>true</useProjectArtifact>
+            <useTransitiveDependencies>true</useTransitiveDependencies>
+        </dependencySet>
+   </dependencySets>
 </assembly>
