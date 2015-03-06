@@ -43,6 +43,12 @@ namespace Klarna.Rest.Models
         public string PurchaseCountry { get; set; }
 
         /// <summary>
+        /// Gets or sets the shipping countries.
+        /// </summary>
+        [JsonProperty("shipping_countries")]
+        public IList<string> ShippingCountries { get; set; }
+
+        /// <summary>
         /// Gets or sets the purchase currency.
         /// </summary>
         [JsonProperty("purchase_currency")]

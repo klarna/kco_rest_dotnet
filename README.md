@@ -1,6 +1,6 @@
 # Klarna Checkout REST .NET SDK
-Klarna Checkout is a revolutionary new payment solution that is changing the way
-people shop online. First, consumers verify their purchase with a minimal
+Klarna Checkout is a revolutionary payment solution that is changing the way
+people shop online. First, consumers verify their purchase with the minimum
 amount of information through intelligent identification, securing your order
 immediately, and then complete their payment afterwards – separating buying
 from paying and dramatically increasing conversion. Klarna Checkout also allows

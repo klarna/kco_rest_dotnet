@@ -70,6 +70,12 @@ namespace Klarna.Rest.Models
         public string City { get; set; }
 
         /// <summary>
+        /// Gets or sets the region.
+        /// </summary>
+        [JsonProperty("region")]
+        public string Region { get; set; }
+
+        /// <summary>
         /// Gets or sets the country.
         /// </summary>
         [JsonProperty("country")]

@@ -105,9 +105,10 @@ namespace Klarna.Rest.Tests
             {
                 GivenName = "GivenName",
                 FamilyName = "FamilyName",
-                StreetAddress = "PostalCode",
+                StreetAddress = "StreetAddress",
                 PostalCode = "PostalCode",
                 City = "City",
+                Region = "Region",
                 Country = "Country",
                 Email = "Email",
                 Phone = "Phone"
@@ -124,9 +125,10 @@ namespace Klarna.Rest.Tests
             {
                 GivenName = "GivenName2",
                 FamilyName = "FamilyName2",
-                StreetAddress = "PostalCode2",
+                StreetAddress = "StreetAddress2",
                 PostalCode = "PostalCode2",
                 City = "City2",
+                Region = "Region2",
                 Country = "Country2",
                 Email = "Email2",
                 Phone = "Phone2"
