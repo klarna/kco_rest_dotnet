@@ -72,6 +72,11 @@ public class Address extends Model {
     private String phone;
 
     /**
+     * Customers region.
+     */
+    private String region;
+
+    /**
      * Gets the customers title.
      *
      * @return Title
@@ -277,6 +282,27 @@ public class Address extends Model {
      */
     public Address setPhone(final String phone) {
         this.phone = phone;
+
+        return this;
+    }
+
+    /**
+     * Gets the region.
+     *
+     * @return Region
+     */
+    public String getRegion() {
+        return this.region;
+    }
+
+    /**
+     * Sets the region.
+     *
+     * @param region Region
+     * @return Same instance
+     */
+    public Address setRegion(final String region) {
+        this.region = region;
 
         return this;
     }

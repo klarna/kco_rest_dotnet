@@ -48,6 +48,16 @@ public class CheckoutOrderDataTest extends TestCase {
     }
 
     @Test
+    public void testGetShippingCountries() {
+        List<String> countries = new ArrayList<String>();
+
+        assertNull(data.getShippingCountries());
+
+        data.setShippingCountries(countries);
+        assertSame(countries, data.getShippingCountries());
+    }
+
+    @Test
     public void testGetPurchaseCurrency() {
         assertNull(data.getPurchaseCurrency());
 

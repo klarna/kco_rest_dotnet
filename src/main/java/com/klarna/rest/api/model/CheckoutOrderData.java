@@ -44,6 +44,11 @@ public class CheckoutOrderData extends Model {
     private String purchaseCurrency;
 
     /**
+     * Shipping countries.
+     */
+    private List<String> shippingCountries;
+
+    /**
      * Customer's locale.
      */
     private String locale;
@@ -149,6 +154,27 @@ public class CheckoutOrderData extends Model {
      */
     public CheckoutOrderData setPurchaseCountry(final String country) {
         this.purchaseCountry = country;
+
+        return this;
+    }
+
+    /**
+     * Gets the shipping countries.
+     *
+     * @return Shipping countries.
+     */
+    public List<String> getShippingCountries() {
+        return this.shippingCountries;
+    }
+
+    /**
+     * Sets the shipping countries.
+     *
+     * @param countries Shipping countries;
+     * @return Same instance
+     */
+    public CheckoutOrderData setShippingCountries(final List<String> countries) {
+        this.shippingCountries = countries;
 
         return this;
     }

@@ -114,4 +114,12 @@ public class AddressTest extends TestCase {
         address.setPhone("Phone");
         assertEquals("Phone", address.getPhone());
     }
+
+    @Test
+    public void testGetRegion() {
+        assertNull(address.getRegion());
+
+        address.setRegion("Region");
+        assertEquals("Region", address.getRegion());
+    }
 }
