@@ -26,7 +26,7 @@ public interface Client {
     /**
      * API library client version.
      */
-    String VERSION = "1.0.0";
+    String VERSION = "1.0.1";
 
     /**
      * API base URL.
