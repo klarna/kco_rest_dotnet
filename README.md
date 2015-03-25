@@ -1,4 +1,7 @@
 ## Klarna Checkout REST Java SDK
+[![Build Status][travis-image]](https://travis-ci.org/klarna/kco_rest_java)
+[![Coverage Status][coveralls-image]](https://coveralls.io/r/klarna/kco_rest_java?branch=v1.0)
+
 Klarna Checkout is a revolutionary new payment solution that is changing the way
 people shop online. First, consumers verify their purchase with a minimal
 amount of information through intelligent identification, securing your order
@@ -56,3 +59,6 @@ please contact [integration@klarna.com](mailto:integration@klarna.com).
 ## License
 The Klarna Checkout REST Java SDK is released under
 [Apache License, Version 2.0](http://www.apache.org/LICENSE-2.0)
+
+[travis-image]: https://img.shields.io/travis/klarna/kco_rest_java/v1.0.svg?style=flat
+[coveralls-image]: https://img.shields.io/coveralls/klarna/kco_rest_java/v1.0.svg?style=flat
