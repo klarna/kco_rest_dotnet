@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.klarna</groupId>
-    <artifactId>kco-rest-java</artifactId>
+    <artifactId>kco-rest</artifactId>
     <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>kco-rest-java</name>
+    <name>kco-rest</name>
     <url>https://developers.klarna.com</url>
-    <description>Klarna Order Management SDK</description>
+    <description>Klarna Checkout and Order Management SDK</description>
 
     <developers>
         <developer>
@@ -123,6 +123,23 @@
             </plugin>
         </plugins>
     </reporting>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
+    <scm>
+        <connection>scm:git:git@github.com:klarna/kco_rest_java.git</connection>
+        <developerConnection>scm:git:git@github.com:klarna/kco_rest_java.git</developerConnection>
+        <url>git@github.com:klarna/kco_rest_java.git</url>
+    </scm>
 
     <build>
         <plugins>
