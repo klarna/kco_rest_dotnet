@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>
+    <projectUrl>https://github.com/klarna/kco_rest_dotnet.git</projectUrl>
+    <iconUrl>http://cdn.klarna.com/public/images/global/icons/v1/basic/global_basic_icon_std_blue.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Releasing Klarna Checkout to NuGet</releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>Klarna Checkout Payments SDK</tags>
+  </metadata>
+</package>
