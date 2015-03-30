@@ -12,7 +12,10 @@
     <name>kco-rest</name>
     <url>https://developers.klarna.com</url>
     <description>Klarna Checkout and Order Management SDK</description>
-
+    <organization>
+      <name>Klarna AB</name>
+      <url>http://www.klarna.com</url>
+    </organization>
     <developers>
         <developer>
             <name>Klarna AB</name>
@@ -35,6 +38,7 @@
         <commons-lang.version>3.1</commons-lang.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
+        <javadoc.plugin.version>2.10.2</javadoc.plugin.version>
     </properties>
 
     <dependencies>
@@ -97,6 +101,15 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>2.13</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${javadoc.plugin.version}</version>
+                <configuration>
+                    <stylesheetfile>javadoc/styles.css</stylesheetfile>
+                    <excludePackageNames>examples</excludePackageNames>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -207,11 +220,6 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9.1</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>2.3</version>
                 <configuration>
@@ -262,7 +270,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>2.9.1</version>
+                        <version>${javadoc.plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>attach-javadocs</id>
