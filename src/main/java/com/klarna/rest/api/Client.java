@@ -48,10 +48,10 @@ public interface Client {
     /**
      * Constructs a new checkout order resource.
      *
-     * @param url Absolute URL to the resource
+     * @param checkoutOrderId Resource ID.
      * @return A new checkout order resource
      */
-    CheckoutOrder newCheckoutOrder(URI url);
+    CheckoutOrder newCheckoutOrder(String checkoutOrderId);
 
     /**
      * Constructs a new order resource.

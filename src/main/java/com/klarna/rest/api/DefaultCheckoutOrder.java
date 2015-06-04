@@ -39,6 +39,17 @@ import static javax.ws.rs.core.HttpHeaders.LOCATION;
         this.setWebResource(root.path(PATH));
     }
 
+    /**
+     * Constructs a checkout order resource instance with an ID.
+     *
+     * @param root Base url for the resource
+     * @param checkoutOrderId The resource id
+     */
+    /* package */ DefaultCheckoutOrder(
+            final WebResource root, final String checkoutOrderId) {
+        this.setWebResource(root.path(PATH).path(checkoutOrderId));
+    }
+
     @Override
     public CheckoutOrderData fetch() {
         return this.get()

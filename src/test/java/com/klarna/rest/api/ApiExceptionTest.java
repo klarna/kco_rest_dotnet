@@ -17,7 +17,6 @@
 package com.klarna.rest.api;
 
 import com.klarna.rest.api.model.ErrorMessage;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

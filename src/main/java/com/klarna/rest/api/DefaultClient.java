@@ -65,11 +65,8 @@ public final class DefaultClient implements Client {
     }
 
     @Override
-    public CheckoutOrder newCheckoutOrder(final URI url) {
-        CheckoutOrder order = this.newCheckoutOrder();
-        order.setLocation(url);
-
-        return order;
+    public CheckoutOrder newCheckoutOrder(final String checkoutOrderID) {
+        return new DefaultCheckoutOrder(root, checkoutOrderID);
     }
 
     @Override
