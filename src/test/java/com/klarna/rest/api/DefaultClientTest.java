@@ -70,21 +70,19 @@ public class DefaultClientTest extends TestCase {
 
     @Test
     public void testNewCheckoutOrderExisting() {
-        URI url = URI.create(baseUrl + "/checkoutUrl");
-
         when(resource.path(DefaultCheckoutOrder.PATH))
                 .thenReturn(resource);
 
-        when(resource.uri(url))
+        when(resource.path("12345"))
                 .thenReturn(resource);
 
-        CheckoutOrder order = client.newCheckoutOrder(url);
+        CheckoutOrder order = client.newCheckoutOrder("12345");
         assertNotNull(order);
 
         // Verify that the right URL was set
         InOrder ordered = inOrder(resource);
         ordered.verify(resource).path(DefaultCheckoutOrder.PATH);
-        ordered.verify(resource).uri(url);
+        ordered.verify(resource).path("12345");
     }
 
     @Test

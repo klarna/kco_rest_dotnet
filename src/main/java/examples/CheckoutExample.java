@@ -81,8 +81,8 @@ public class CheckoutExample {
             {
                 {
                     setTerms("http://www.merchant.com/toc");
-                    setCheckout("http://www.merchant.com/checkout?klarna_order_url={checkout.order.url}");
-                    setConfirmation("http://www.merchant.com/thank-you?klarna_order_url={checkout.order.url}");
+                    setCheckout("http://www.merchant.com/checkout?klarna_order_id={checkout.order.id}");
+                    setConfirmation("http://www.merchant.com/thank-you?klarna_order_id={checkout.order.id}");
                     setPush("http://www.merchant.com/create_order?klarna_order_id={checkout.order.id}");
                 }
             };
@@ -122,11 +122,11 @@ public class CheckoutExample {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
             URI baseUrl = Client.TEST_BASE_URL;
-            URI checkoutUrl = URI.create("https://playground.api.klarna.com/checkout/v3/orders/12345");
+            String checkoutOrderID = "12345";
 
             Client client = DefaultClient.newInstance(merchantId, sharedSecret, baseUrl);
 
-            CheckoutOrder checkout = client.newCheckoutOrder(checkoutUrl);
+            CheckoutOrder checkout = client.newCheckoutOrder(checkoutOrderID);
 
             CheckoutOrderData data = checkout.fetch();
         }
@@ -146,11 +146,11 @@ public class CheckoutExample {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
             URI baseUrl = Client.TEST_BASE_URL;
-            URI checkoutUrl = URI.create("https://playground.api.klarna.com/checkout/v3/orders/12345");
+            String checkoutOrderID = "12345";
 
             Client client = DefaultClient.newInstance(merchantId, sharedSecret, baseUrl);
 
-            CheckoutOrder checkout = client.newCheckoutOrder(checkoutUrl);
+            CheckoutOrder checkout = client.newCheckoutOrder(checkoutOrderID);
 
             final List<OrderLine> lines = new ArrayList<OrderLine>() {
                 {
