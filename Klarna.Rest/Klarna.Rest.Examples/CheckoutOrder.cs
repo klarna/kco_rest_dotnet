@@ -81,8 +81,8 @@ namespace Klarna.Rest.Examples
                 MerchantUrls merchantUrls = new MerchantUrls
                 {
                     Terms = new System.Uri("http://www.merchant.com/toc"),
-                    Checkout = new System.Uri("http://www.merchant.com/checkout?klarna_order_url={checkout.order.url}"),
-                    Confirmation = new System.Uri("http://www.merchant.com/thank-you?klarna_order_url={checkout.order.url}"),
+                    Checkout = new System.Uri("http://www.merchant.com/checkout?klarna_order_id={checkout.order.id}"),
+                    Confirmation = new System.Uri("http://www.merchant.com/thank-you?klarna_order_id={checkout.order.id}"),
                     Push = new System.Uri("http://www.merchant.com/create_order?klarna_order_id={checkout.order.id}")
                 };
 
@@ -98,8 +98,9 @@ namespace Klarna.Rest.Examples
                 };
 
                 checkout.Create(orderData);
+                orderData = checkout.Fetch();
 
-                Uri checkoutUrl = checkout.Location;
+                string orderID = orderData.OrderId;
             }
         }
 
@@ -119,14 +120,14 @@ namespace Klarna.Rest.Examples
             {
                 const string MerchantId = "0";
                 const string SharedSecret = "sharedSecret";
+                string orderID = "12345";
 
-                Uri orderUrl = new Uri("https://playground.api.klarna.com/checkout/v3/orders/12345");
                 IConnector connector = ConnectorFactory.Create(MerchantId, SharedSecret, Client.TestBaseUrl);
 
                 Client client = new Client(connector);
-                ICheckoutOrder checkoutOrder = client.NewCheckoutOrder(orderUrl);
+                ICheckoutOrder order = client.NewCheckoutOrder(orderID);
 
-                CheckoutOrderData checkoutOrderData = checkoutOrder.Fetch();
+                CheckoutOrderData orderData = order.Fetch();
             }
         }
 
@@ -146,12 +147,12 @@ namespace Klarna.Rest.Examples
             {
                 const string MerchantId = "0";
                 const string SharedSecret = "sharedSecret";
-                Uri orderUrl = new Uri("https://playground.api.klarna.com/checkout/v3/orders/12345");
+                string orderID = "12345";
 
                 IConnector connector = ConnectorFactory.Create(MerchantId, SharedSecret, Client.TestBaseUrl);
 
                 Client client = new Client(connector);
-                ICheckoutOrder checkout = client.NewCheckoutOrder(orderUrl);
+                ICheckoutOrder checkout = client.NewCheckoutOrder(orderID);
 
                 CheckoutOrderData orderData = new CheckoutOrderData();
                 orderData.OrderAmount = 11000;

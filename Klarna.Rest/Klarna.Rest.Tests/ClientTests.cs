@@ -137,12 +137,13 @@ namespace Klarna.Rest.Tests
         /// <summary>
         /// Test factory method for ICheckoutOrder with url.
         /// </summary>
+        [Test]
         public void Client_NewCheckoutOrder_Url()
         {
-            ICheckoutOrder checkout = this.client.NewCheckoutOrder(this.checkoutUrl);
+            ICheckoutOrder checkout = this.client.NewCheckoutOrder("0001");
 
-            Assert.That(checkout, Is.Not.Null);
-            Assert.That(checkout.Location, Is.EqualTo(this.checkoutUrl));
+            Assert.NotNull(checkout);
+            Assert.AreEqual("/checkout/v3/orders/0001", checkout.Location.ToString());
         }
 
         /// <summary>

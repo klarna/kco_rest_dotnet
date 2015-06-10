@@ -66,7 +66,7 @@ namespace Klarna.Rest.Tests.Checkout
         public void SetUp()
         {
             this.connectorMock = MockRepository.GenerateStub<IConnector>();
-            this.order = new Klarna.Rest.Checkout.CheckoutOrder(this.connectorMock, this.testUrl);
+            this.order = new Klarna.Rest.Checkout.CheckoutOrder(this.connectorMock, "0002");
         }
 
         #endregion
@@ -79,7 +79,7 @@ namespace Klarna.Rest.Tests.Checkout
         [Test]
         public void CheckoutOrder_Constructor_OrderUrl()
         {
-            Assert.AreEqual(this.order.Location, this.testUrl);
+            Assert.AreEqual("/checkout/v3/orders/0002", this.order.Location.ToString());
         }
 
         /// <summary>

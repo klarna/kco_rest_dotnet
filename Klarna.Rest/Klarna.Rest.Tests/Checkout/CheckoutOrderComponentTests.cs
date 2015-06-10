@@ -177,10 +177,10 @@ namespace Klarna.Rest.Tests.Checkout
         public void TestFetch()
         {
             // Arrange
-            string orderId = "0002";
-            Uri orderUrl = new Uri(this.baseUrl.ToString() + orderId);
+            string orderId = "0003";
+            string expectedUrl = "https://dummytesturi.test/checkout/v3/orders/0003";
             int orderAmount = 1234;
-            this.requestMock.Expect(x => x.CreateRequest(orderUrl.ToString())).Return(this.httpWebRequest);
+            this.requestMock.Expect(x => x.CreateRequest(expectedUrl)).Return(this.httpWebRequest);
 
             string json = "{\r\n  \"order_id\": \"" + orderId + "\",\r\n  \"order_amount\": " + orderAmount + ",\r\n }";
             WebHeaderCollection headers = new WebHeaderCollection();
@@ -190,7 +190,7 @@ namespace Klarna.Rest.Tests.Checkout
             this.requestMock.Expect(x => x.Send(this.httpWebRequest, string.Empty)).Return(response);
 
             // Act
-            this.checkoutOrder = new Klarna.Rest.Checkout.CheckoutOrder(this.connector, orderUrl);
+            this.checkoutOrder = new Klarna.Rest.Checkout.CheckoutOrder(this.connector, orderId);
             CheckoutOrderData checkoutOrderData = this.checkoutOrder.Fetch();
 
             // Assert

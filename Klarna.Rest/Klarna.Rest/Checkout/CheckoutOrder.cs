@@ -36,11 +36,18 @@ namespace Klarna.Rest.Checkout
         /// Initializes a new instance of the <see cref="CheckoutOrder" /> class.
         /// </summary>
         /// <param name="connector">the connector</param>
-        /// <param name="orderUrl">the order url</param>
-        internal CheckoutOrder(IConnector connector, Uri orderUrl)
+        /// <param name="orderID">the order id</param>
+        internal CheckoutOrder(IConnector connector, string orderID)
             : base(connector)
         {
-            this.Location = orderUrl;
+            this.Location = null;
+
+            if (!string.IsNullOrEmpty(orderID))
+            {
+                this.Location = new Uri(
+                    string.Concat(this.Path, "/", orderID),
+                    UriKind.RelativeOrAbsolute);
+            }
         }
 
         #endregion
