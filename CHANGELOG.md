@@ -5,4 +5,4 @@
 - **FIX MINT-2105** Add custom Javadoc template - *Andrew.M*
 
 ## v1.0.0 - 2015-01-16
-- **NEW MINT-1847** Support checkout v3 and ordermanagement v1 APIs - *Joakim.L*
+- **NEW MINT-1842** Support checkout v3 and ordermanagement v1 APIs - *Joakim.L*
