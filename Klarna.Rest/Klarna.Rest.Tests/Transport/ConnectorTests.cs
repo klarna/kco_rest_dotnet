@@ -103,7 +103,7 @@ namespace Klarna.Rest.Tests.Transport
 
             // Assert
             TestsHelper.AssertRequest(this.merchantId, this.secret, request, method);
-            Assert.That(request.ContentLength, Is.EqualTo(payload.Length));
+            Assert.AreEqual(payload.Length, request.ContentLength);
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Klarna.Rest.Tests.Transport
 
             // Assert
             TestsHelper.AssertRequest(this.merchantId, this.secret, request, method);
-            Assert.That(request.ContentLength, Is.EqualTo(payload.Length));
+            Assert.AreEqual(payload.Length, request.ContentLength);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Klarna.Rest.Tests.Transport
 
             // Assert
             TestsHelper.AssertRequest(this.merchantId, this.secret, request, method);
-            Assert.That(request.ContentLength, Is.EqualTo(payload.Length));
+            Assert.AreEqual(payload.Length, request.ContentLength);
         }
 
         /// <summary>
@@ -173,8 +173,8 @@ namespace Klarna.Rest.Tests.Transport
         [Test]
         public void Transport_Connector_Get_UserAgent()
         {
-            Assert.That(this.connector.UserAgent, Is.Not.Null);
-            Assert.That(this.userAgent, Is.SameAs(this.connector.UserAgent));
+            Assert.NotNull(this.connector.UserAgent);
+            Assert.AreSame(this.connector.UserAgent, this.userAgent);
         }
 
         #endregion

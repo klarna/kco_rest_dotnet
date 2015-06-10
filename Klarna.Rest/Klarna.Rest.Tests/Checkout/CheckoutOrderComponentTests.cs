@@ -126,8 +126,8 @@ namespace Klarna.Rest.Tests.Checkout
 
             // Assert
             this.requestMock.VerifyAllExpectations();
-            Assert.AreEqual(this.checkoutOrder.Location, this.location);
-            Assert.AreEqual(this.httpWebRequest.ContentLength, orderData.ConvertToJson().Length);
+            Assert.AreEqual(this.location, this.checkoutOrder.Location.OriginalString);
+            Assert.AreEqual(orderData.ConvertToJson().Length, this.httpWebRequest.ContentLength);
             TestsHelper.AssertRequest(this.merchantId, this.secret, this.httpWebRequest, HttpMethod.Post);
         }
 
@@ -163,10 +163,10 @@ namespace Klarna.Rest.Tests.Checkout
 
             // Assert
             this.requestMock.VerifyAllExpectations();
-            Assert.AreEqual(this.checkoutOrder.Location, this.location);
-            Assert.AreEqual(this.httpWebRequest.ContentLength, orderData2.ConvertToJson().Length);
-            Assert.AreEqual(updatedCheckoutOrderData.PurchaseCountry, orderData2.PurchaseCountry);
-            Assert.AreEqual(updatedCheckoutOrderData.PurchaseCurrency, orderData2.PurchaseCurrency);
+            Assert.AreEqual(this.location, this.checkoutOrder.Location.OriginalString);
+            Assert.AreEqual(orderData2.ConvertToJson().Length, this.httpWebRequest.ContentLength);
+            Assert.AreEqual(orderData2.PurchaseCountry, updatedCheckoutOrderData.PurchaseCountry);
+            Assert.AreEqual(orderData2.PurchaseCurrency, updatedCheckoutOrderData.PurchaseCurrency);
             TestsHelper.AssertRequest(this.merchantId, this.secret, this.httpWebRequest, HttpMethod.Post);
         }
 
@@ -195,9 +195,9 @@ namespace Klarna.Rest.Tests.Checkout
 
             // Assert
             this.requestMock.VerifyAllExpectations();
-            Assert.AreEqual(this.httpWebRequest.ContentLength, 0);
-            Assert.AreEqual(checkoutOrderData.OrderId, orderId);
-            Assert.AreEqual(checkoutOrderData.OrderAmount, orderAmount);
+            Assert.AreEqual(0, this.httpWebRequest.ContentLength);
+            Assert.AreEqual(orderId, checkoutOrderData.OrderId);
+            Assert.AreEqual(orderAmount, checkoutOrderData.OrderAmount);
             TestsHelper.AssertRequest(this.merchantId, this.secret, this.httpWebRequest, HttpMethod.Get);
         }
 

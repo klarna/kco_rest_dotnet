@@ -115,7 +115,7 @@ namespace Klarna.Rest.Tests.OrderManagement
             this.order = new Klarna.Rest.OrderManagement.Order(this.connectorMock, string.Empty);
 
             // Assert
-            Assert.AreEqual(this.order.Path, this.path);
+            Assert.AreEqual(this.path, this.order.Path);
         }
 
         /// <summary>
@@ -139,8 +139,8 @@ namespace Klarna.Rest.Tests.OrderManagement
             var returnedCheckoutOrder = this.order.Fetch();
 
             // Assert
-            Assert.AreEqual(returnedCheckoutOrder.PurchaseCountry, orderData.PurchaseCountry);
-            Assert.AreEqual(returnedCheckoutOrder.PurchaseCurrency, orderData.PurchaseCurrency);
+            Assert.AreEqual(orderData.PurchaseCountry, returnedCheckoutOrder.PurchaseCountry);
+            Assert.AreEqual(orderData.PurchaseCurrency, returnedCheckoutOrder.PurchaseCurrency);
         }
 
         /// <summary>

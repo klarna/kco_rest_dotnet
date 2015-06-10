@@ -87,7 +87,7 @@ namespace Klarna.Rest.Tests
         {
             Uri url = Client.TestBaseUrl;
 
-            Assert.That(url, Is.Not.Null);
+            Assert.NotNull(url);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Klarna.Rest.Tests
         {
             Uri url = Client.BaseUrl;
 
-            Assert.That(url, Is.Not.Null);
+            Assert.NotNull(url);
         }
 
         /// <summary>
@@ -109,8 +109,8 @@ namespace Klarna.Rest.Tests
         {
             Client client = new Client("0", "sharedSecret", new Uri("https://localhost/path"));
 
-            Assert.That(client.Connector, Is.Not.Null);
-            Assert.That(client.Connector.UserAgent, Is.Not.Null);
+            Assert.NotNull(client.Connector);
+            Assert.NotNull(client.Connector.UserAgent);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Klarna.Rest.Tests
         [Test]
         public void Client_Get_Connector()
         {
-            Assert.That(this.client.Connector, Is.SameAs(this.connector));
+            Assert.AreSame(this.connector, this.client.Connector);
         }
 
         /// <summary>
@@ -130,8 +130,8 @@ namespace Klarna.Rest.Tests
         {
             ICheckoutOrder checkout = this.client.NewCheckoutOrder();
 
-            Assert.That(checkout, Is.Not.Null);
-            Assert.That(checkout.Location, Is.Null);
+            Assert.NotNull(checkout);
+            Assert.IsNull(checkout.Location);
         }
 
         /// <summary>
@@ -140,10 +140,11 @@ namespace Klarna.Rest.Tests
         [Test]
         public void Client_NewCheckoutOrder_Url()
         {
-            ICheckoutOrder checkout = this.client.NewCheckoutOrder("0001");
+            ICheckoutOrder checkout = this.client.NewCheckoutOrder(this.orderId);
 
             Assert.NotNull(checkout);
-            Assert.AreEqual("/checkout/v3/orders/0001", checkout.Location.ToString());
+            Assert.NotNull(checkout.Location);
+            Assert.AreEqual(((CheckoutOrder)checkout).Path + "/" + this.orderId, checkout.Location.ToString());
         }
 
         /// <summary>
@@ -154,9 +155,9 @@ namespace Klarna.Rest.Tests
         {
             IOrder order = this.client.NewOrder(this.orderId);
 
-            Assert.That(order, Is.Not.Null);
-            Assert.That(order.Location, Is.Not.Null);
-            Assert.That(order.Location.ToString(), Is.EqualTo(((Order)order).Path + "/" + this.orderId));
+            Assert.NotNull(order);
+            Assert.NotNull(order.Location);
+            Assert.AreEqual(((Order)order).Path + "/" + this.orderId, order.Location.ToString());
         }
 
         /// <summary>
@@ -167,8 +168,8 @@ namespace Klarna.Rest.Tests
         {
             ICapture capture = this.client.NewCapture(this.orderUrl);
 
-            Assert.That(capture, Is.Not.Null);
-            Assert.That(capture.Location.ToString(), Is.EqualTo(this.orderUrl + "/captures"));
+            Assert.NotNull(capture);
+            Assert.AreEqual(this.orderUrl + "/captures", capture.Location.ToString());
         }
 
         /// <summary>
@@ -179,8 +180,8 @@ namespace Klarna.Rest.Tests
         {
             ICapture capture = this.client.NewCapture(this.orderUrl, this.captureId);
 
-            Assert.That(capture, Is.Not.Null);
-            Assert.That(capture.Location.ToString(), Is.EqualTo(this.orderUrl + "/captures/" + this.captureId));
+            Assert.NotNull(capture);
+            Assert.AreEqual(this.orderUrl + "/captures/" + this.captureId, capture.Location.ToString());
         }
 
         #endregion

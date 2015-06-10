@@ -75,10 +75,10 @@ namespace Klarna.Rest.Tests.Transport
         public void UserAgent_Default()
         {
             var userAgentString = this.userAgent.ToString();
-            Assert.That(Regex.IsMatch(userAgentString, @"^.*Library\/[^\ ]+_[^\ ]+.*"), Is.True);
-            Assert.That(Regex.IsMatch(userAgentString, @"^.*OS\/[^\ ]+_[^\ ]+.*"), Is.True);
-            Assert.That(Regex.IsMatch(userAgentString, @"^.*Language\/[^\ ]+_[^\ ]+.*"), Is.True);
-            Assert.That(Regex.IsMatch(userAgentString, @"^.*Webserver\/[^\ ]+_[^\ ]+.*"), Is.True);
+            Assert.IsTrue(Regex.IsMatch(userAgentString, @"^.*Library\/[^\ ]+_[^\ ]+.*"));
+            Assert.IsTrue(Regex.IsMatch(userAgentString, @"^.*OS\/[^\ ]+_[^\ ]+.*"));
+            Assert.IsTrue(Regex.IsMatch(userAgentString, @"^.*Language\/[^\ ]+_[^\ ]+.*"));
+            Assert.IsTrue(Regex.IsMatch(userAgentString, @"^.*Webserver\/[^\ ]+_[^\ ]+.*"));
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Klarna.Rest.Tests.Transport
         {
             this.userAgent.AddField("JS Lib", "jQuery", "1.8.2");
             var userAgentString = this.userAgent.ToString();
-            Assert.That(Regex.IsMatch(userAgentString, @"^.*JS Lib\/jQuery_1.8.2.*"), Is.True);
+            Assert.IsTrue(Regex.IsMatch(userAgentString, @"^.*JS Lib\/jQuery_1.8.2.*"));
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Klarna.Rest.Tests.Transport
 
             this.userAgent.AddField("Module", "Magento", "5.0", options);
             var userAgentString = this.userAgent.ToString();
-            Assert.That(Regex.IsMatch(userAgentString, @"^.*Module\/Magento_5.0 \(LanguagePack\/7 ; JsLib\/2.0\).*"), Is.True);
+            Assert.IsTrue(Regex.IsMatch(userAgentString, @"^.*Module\/Magento_5.0 \(LanguagePack\/7 ; JsLib\/2.0\).*"));
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Klarna.Rest.Tests.Transport
 
             this.userAgent.AddField("Module", "Magento", "5.0", options);
             var userAgentString = this.userAgent.ToString();
-            Assert.That(Regex.IsMatch(userAgentString, @"^.*Module\/Magento_5.0.*"), Is.True);
+            Assert.IsTrue(Regex.IsMatch(userAgentString, @"^.*Module\/Magento_5.0.*"));
         }
 
         /// <summary>

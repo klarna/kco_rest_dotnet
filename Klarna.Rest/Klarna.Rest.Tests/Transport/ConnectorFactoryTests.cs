@@ -40,7 +40,7 @@ namespace Klarna.Rest.Tests.Transport
         {
             IConnector connector = ConnectorFactory.Create("id", "secret", Client.TestBaseUrl);
 
-            Assert.That(connector, Is.Not.Null);
+            Assert.NotNull(connector);
         }
 
         /// <summary>
@@ -52,8 +52,8 @@ namespace Klarna.Rest.Tests.Transport
             RequestFactory requests = new RequestFactory();
             IConnector connector = ConnectorFactory.Create(requests, "id", "secret", UserAgent.WithDefaultFields(), Client.TestBaseUrl);
 
-            Assert.That(connector, Is.Not.Null);
-            Assert.That(UserAgent.WithDefaultFields().ToString(), Is.EqualTo(connector.UserAgent.ToString()));
+            Assert.NotNull(connector);
+            Assert.AreEqual(connector.UserAgent.ToString(), UserAgent.WithDefaultFields().ToString());
         }
 
         #endregion
