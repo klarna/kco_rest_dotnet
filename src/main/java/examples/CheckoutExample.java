@@ -102,9 +102,10 @@ public class CheckoutExample {
 
 
             checkout.create(data);
+            data = checkout.fetch();
 
-            // Store checkout order url
-            URI checkoutUrl = checkout.getLocation();
+            // Store checkout order id
+            String orderID = data.getOrderId();
         }
     }
 
