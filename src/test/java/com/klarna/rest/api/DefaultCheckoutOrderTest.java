@@ -43,7 +43,7 @@ public class DefaultCheckoutOrderTest extends ResourceTestCase {
     public void testCreate() {
         CheckoutOrderData data = new CheckoutOrderData();
 
-        URI location = Client.TEST_BASE_URL.resolve("/checkout/v3/orders/12345");
+        URI location = Client.EU_TEST_BASE_URL.resolve("/checkout/v3/orders/12345");
 
         // Constructor
         when(root.path(DefaultCheckoutOrder.PATH))
@@ -90,7 +90,7 @@ public class DefaultCheckoutOrderTest extends ResourceTestCase {
 
     @Test
     public void testFetch() {
-        URI location = Client.TEST_BASE_URL.resolve("/checkout/v3/orders/12345");
+        URI location = Client.EU_TEST_BASE_URL.resolve("/checkout/v3/orders/12345");
 
         // Constructor
         when(root.path(DefaultCheckoutOrder.PATH))
@@ -130,7 +130,7 @@ public class DefaultCheckoutOrderTest extends ResourceTestCase {
 
     @Test
     public void testUpdate() {
-        URI location = Client.TEST_BASE_URL.resolve("/checkout/v3/orders/12345");
+        URI location = Client.EU_TEST_BASE_URL.resolve("/checkout/v3/orders/12345");
 
         // Constructor
         when(root.path(DefaultCheckoutOrder.PATH))
