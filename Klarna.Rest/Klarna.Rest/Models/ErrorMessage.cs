@@ -1,6 +1,6 @@
 ﻿#region Copyright Header
 //-----------------------------------------------------------------------
-// <copyright file="ICheckoutOrder.cs" company="Klarna AB">
+// <copyright file="ErrorMessage.cs" company="Klarna AB">
 //     Copyright 2014 Klarna AB
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,32 +18,32 @@
 // </copyright>
 //-----------------------------------------------------------------------
 #endregion
-namespace Klarna.Rest.Checkout
+namespace Klarna.Rest.Models
 {
-    using Klarna.Rest.Models;
+    using Newtonsoft.Json;
 
     /// <summary>
-    /// Checkout order resource interface.
+    /// Error message model.
     /// </summary>
-    public interface ICheckoutOrder : IResource
+    public class ErrorMessage : Model
     {
         /// <summary>
-        /// Creates the resource.
+        /// Gets or sets the error code.
         /// </summary>
-        /// <param name="checkoutOrderData">the order data</param>
-        void Create(CheckoutOrderData checkoutOrderData);
+        [JsonProperty("error_code")]
+        public string ErrorCode { get; set; }
 
         /// <summary>
-        /// Updates the resource.
+        /// Gets or sets error messages.
         /// </summary>
-        /// <param name="checkoutOrderData">the order data</param>
-        /// <returns>the updated checkout order data</returns>
-        CheckoutOrderData Update(CheckoutOrderData checkoutOrderData);
+        [JsonProperty("error_messages")]
+        public string[] ErrorMessages { get; set; }
 
         /// <summary>
-        /// Fetches the resource.
+        /// Gets or sets correlation id.
+        /// <para>The correlation id may be requested by merchant support to facilitate support inquiries.</para>
         /// </summary>
-        /// <returns>the checkout order data</returns>
-        CheckoutOrderData Fetch();
+        [JsonProperty("correlation_id")]
+        public string CorrelationId { get; set; }
     }
 }

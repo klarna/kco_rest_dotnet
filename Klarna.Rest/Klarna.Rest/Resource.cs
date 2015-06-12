@@ -21,7 +21,6 @@
 namespace Klarna.Rest
 {
     using System;
-    using System.Net;
     using Klarna.Rest.Models;
     using Klarna.Rest.Transport;
 

@@ -22,6 +22,7 @@ namespace Klarna.Rest.Examples
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using Klarna.Rest.Checkout;
     using Klarna.Rest.Models;
     using Klarna.Rest.Transport;
@@ -80,10 +81,10 @@ namespace Klarna.Rest.Examples
 
                 MerchantUrls merchantUrls = new MerchantUrls
                 {
-                    Terms = new System.Uri("http://www.merchant.com/toc"),
-                    Checkout = new System.Uri("http://www.merchant.com/checkout?klarna_order_id={checkout.order.id}"),
-                    Confirmation = new System.Uri("http://www.merchant.com/thank-you?klarna_order_id={checkout.order.id}"),
-                    Push = new System.Uri("http://www.merchant.com/create_order?klarna_order_id={checkout.order.id}")
+                    Terms = new Uri("http://www.merchant.com/toc"),
+                    Checkout = new Uri("http://www.merchant.com/checkout?klarna_order_id={checkout.order.id}"),
+                    Confirmation = new Uri("http://www.merchant.com/thank-you?klarna_order_id={checkout.order.id}"),
+                    Push = new Uri("http://www.merchant.com/create_order?klarna_order_id={checkout.order.id}")
                 };
 
                 CheckoutOrderData orderData = new CheckoutOrderData()
@@ -97,10 +98,23 @@ namespace Klarna.Rest.Examples
                     MerchantUrls = merchantUrls
                 };
 
-                checkout.Create(orderData);
-                orderData = checkout.Fetch();
+                try
+                {
+                    checkout.Create(orderData);
+                    orderData = checkout.Fetch();
 
-                string orderID = orderData.OrderId;
+                    string orderID = orderData.OrderId;
+                }
+                catch (ApiException ex)
+                {
+                    Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                    Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                    Console.WriteLine(ex.ErrorMessage.CorrelationId);
+                }
+                catch (WebException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 
@@ -127,7 +141,20 @@ namespace Klarna.Rest.Examples
                 Client client = new Client(connector);
                 ICheckoutOrder order = client.NewCheckoutOrder(orderID);
 
-                CheckoutOrderData orderData = order.Fetch();
+                try
+                {
+                    CheckoutOrderData orderData = order.Fetch();
+                }
+                catch (ApiException ex)
+                {
+                    Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                    Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                    Console.WriteLine(ex.ErrorMessage.CorrelationId);
+                }
+                catch (WebException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 
@@ -200,7 +227,20 @@ namespace Klarna.Rest.Examples
 
                 orderData.OrderLines = lines;
 
-                orderData = checkout.Update(orderData);
+                try
+                {
+                    orderData = checkout.Update(orderData);
+                }
+                catch (ApiException ex)
+                {
+                    Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                    Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                    Console.WriteLine(ex.ErrorMessage.CorrelationId);
+                }
+                catch (WebException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 

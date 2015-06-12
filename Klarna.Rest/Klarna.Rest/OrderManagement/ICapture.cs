@@ -20,10 +20,6 @@
 #endregion
 namespace Klarna.Rest.OrderManagement
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
     using Klarna.Rest.Models;
     using Klarna.Rest.Models.Requests;
 

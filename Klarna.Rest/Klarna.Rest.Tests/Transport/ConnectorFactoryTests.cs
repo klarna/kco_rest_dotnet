@@ -20,7 +20,6 @@
 #endregion
 namespace Klarna.Rest.Tests.Transport
 {
-    using System;
     using Klarna.Rest.Transport;
     using NUnit.Framework;
 

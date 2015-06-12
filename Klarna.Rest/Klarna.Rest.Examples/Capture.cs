@@ -22,6 +22,7 @@ namespace Klarna.Rest.Examples
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using Klarna.Rest.Models;
     using Klarna.Rest.Models.Requests;
     using Klarna.Rest.OrderManagement;
@@ -88,7 +89,20 @@ namespace Klarna.Rest.Examples
                     ShippingInfo = new List<ShippingInfo>() { shippingInfo }
                 };
 
-                capture.Create(captureData);
+                try
+                {
+                    capture.Create(captureData);
+                }
+                catch (ApiException ex)
+                {
+                    Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                    Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                    Console.WriteLine(ex.ErrorMessage.CorrelationId);
+                }
+                catch (WebException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 
@@ -117,7 +131,20 @@ namespace Klarna.Rest.Examples
                 IOrder order = client.NewOrder(orderId);
                 ICapture capture = client.NewCapture(order.Location, captureId);
 
-                CaptureData captureData = capture.Fetch();
+                try
+                {
+                    CaptureData captureData = capture.Fetch();
+                }
+                catch (ApiException ex)
+                {
+                    Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                    Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                    Console.WriteLine(ex.ErrorMessage.CorrelationId);
+                }
+                catch (WebException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 
@@ -160,7 +187,20 @@ namespace Klarna.Rest.Examples
                 AddShippingInfo addShippingInfo = new AddShippingInfo();
                 addShippingInfo.ShippingInfo = new List<ShippingInfo>() { shippingInfo };
 
-                capture.AddShippingInfo(addShippingInfo);
+                try
+                {
+                    capture.AddShippingInfo(addShippingInfo);
+                }
+                catch (ApiException ex)
+                {
+                    Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                    Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                    Console.WriteLine(ex.ErrorMessage.CorrelationId);
+                }
+                catch (WebException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 
@@ -189,7 +229,20 @@ namespace Klarna.Rest.Examples
                 IOrder order = client.NewOrder(orderId);
                 ICapture capture = client.NewCapture(order.Location, captureId);
 
-                capture.TriggerSendOut();
+                try
+                {
+                    capture.TriggerSendOut();
+                }
+                catch (ApiException ex)
+                {
+                    Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                    Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                    Console.WriteLine(ex.ErrorMessage.CorrelationId);
+                }
+                catch (WebException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 
@@ -227,7 +280,20 @@ namespace Klarna.Rest.Examples
                     }
                 };
 
-                capture.UpdateCustomerDetails(updateCustomerDetails);
+                try
+                {
+                    capture.UpdateCustomerDetails(updateCustomerDetails);
+                }
+                catch (ApiException ex)
+                {
+                    Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                    Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                    Console.WriteLine(ex.ErrorMessage.CorrelationId);
+                }
+                catch (WebException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 

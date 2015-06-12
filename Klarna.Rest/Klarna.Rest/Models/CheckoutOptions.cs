@@ -25,7 +25,7 @@ namespace Klarna.Rest.Models
     /// <summary>
     /// Checkout options data model.
     /// </summary>
-    public class CheckoutOptions
+    public class CheckoutOptions : Model
     {
         /// <summary>
         /// Gets or sets a value indicating whether the customer's date of birth is mandatory or not.
