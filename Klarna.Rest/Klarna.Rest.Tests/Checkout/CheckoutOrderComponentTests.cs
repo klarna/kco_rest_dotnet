@@ -126,8 +126,8 @@ namespace Klarna.Rest.Tests.Checkout
 
             // Assert
             this.requestMock.VerifyAllExpectations();
-            Assert.AreEqual(this.checkoutOrder.Location, this.location);
-            Assert.AreEqual(this.httpWebRequest.ContentLength, orderData.ConvertToJson().Length);
+            Assert.AreEqual(this.location, this.checkoutOrder.Location.OriginalString);
+            Assert.AreEqual(orderData.ConvertToJson().Length, this.httpWebRequest.ContentLength);
             TestsHelper.AssertRequest(this.merchantId, this.secret, this.httpWebRequest, HttpMethod.Post);
         }
 
@@ -163,10 +163,10 @@ namespace Klarna.Rest.Tests.Checkout
 
             // Assert
             this.requestMock.VerifyAllExpectations();
-            Assert.AreEqual(this.checkoutOrder.Location, this.location);
-            Assert.AreEqual(this.httpWebRequest.ContentLength, orderData2.ConvertToJson().Length);
-            Assert.AreEqual(updatedCheckoutOrderData.PurchaseCountry, orderData2.PurchaseCountry);
-            Assert.AreEqual(updatedCheckoutOrderData.PurchaseCurrency, orderData2.PurchaseCurrency);
+            Assert.AreEqual(this.location, this.checkoutOrder.Location.OriginalString);
+            Assert.AreEqual(orderData2.ConvertToJson().Length, this.httpWebRequest.ContentLength);
+            Assert.AreEqual(orderData2.PurchaseCountry, updatedCheckoutOrderData.PurchaseCountry);
+            Assert.AreEqual(orderData2.PurchaseCurrency, updatedCheckoutOrderData.PurchaseCurrency);
             TestsHelper.AssertRequest(this.merchantId, this.secret, this.httpWebRequest, HttpMethod.Post);
         }
 
@@ -177,10 +177,10 @@ namespace Klarna.Rest.Tests.Checkout
         public void TestFetch()
         {
             // Arrange
-            string orderId = "0002";
-            Uri orderUrl = new Uri(this.baseUrl.ToString() + orderId);
+            string orderId = "0003";
+            string expectedUrl = "https://dummytesturi.test/checkout/v3/orders/0003";
             int orderAmount = 1234;
-            this.requestMock.Expect(x => x.CreateRequest(orderUrl.ToString())).Return(this.httpWebRequest);
+            this.requestMock.Expect(x => x.CreateRequest(expectedUrl)).Return(this.httpWebRequest);
 
             string json = "{\r\n  \"order_id\": \"" + orderId + "\",\r\n  \"order_amount\": " + orderAmount + ",\r\n }";
             WebHeaderCollection headers = new WebHeaderCollection();
@@ -190,14 +190,14 @@ namespace Klarna.Rest.Tests.Checkout
             this.requestMock.Expect(x => x.Send(this.httpWebRequest, string.Empty)).Return(response);
 
             // Act
-            this.checkoutOrder = new Klarna.Rest.Checkout.CheckoutOrder(this.connector, orderUrl);
+            this.checkoutOrder = new Klarna.Rest.Checkout.CheckoutOrder(this.connector, orderId);
             CheckoutOrderData checkoutOrderData = this.checkoutOrder.Fetch();
 
             // Assert
             this.requestMock.VerifyAllExpectations();
-            Assert.AreEqual(this.httpWebRequest.ContentLength, 0);
-            Assert.AreEqual(checkoutOrderData.OrderId, orderId);
-            Assert.AreEqual(checkoutOrderData.OrderAmount, orderAmount);
+            Assert.AreEqual(0, this.httpWebRequest.ContentLength);
+            Assert.AreEqual(orderId, checkoutOrderData.OrderId);
+            Assert.AreEqual(orderAmount, checkoutOrderData.OrderAmount);
             TestsHelper.AssertRequest(this.merchantId, this.secret, this.httpWebRequest, HttpMethod.Get);
         }
 

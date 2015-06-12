@@ -87,7 +87,7 @@ namespace Klarna.Rest.Tests.OrderManagement
             this.capture = new Klarna.Rest.OrderManagement.Capture(this.connectorMock, this.orderUrl, captureId);
 
             // Assert
-            Assert.AreEqual(this.capture.Location.ToString(), this.orderUrl + this.path + "/" + captureId);
+            Assert.AreEqual(this.orderUrl + this.path + "/" + captureId, this.capture.Location.ToString());
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Klarna.Rest.Tests.OrderManagement
             this.capture = new Klarna.Rest.OrderManagement.Capture(this.connectorMock, this.orderUrl, string.Empty);
 
             // Assert
-            Assert.AreEqual(this.capture.Location, this.orderUrl + this.path);
+            Assert.AreEqual(this.orderUrl + this.path, this.capture.Location.OriginalString);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Klarna.Rest.Tests.OrderManagement
             this.capture = new Klarna.Rest.OrderManagement.Capture(this.connectorMock, newTestLocation, string.Empty);
 
             // Assert
-            Assert.AreEqual(this.capture.Path, this.path);
+            Assert.AreEqual(this.path, this.capture.Path);
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Klarna.Rest.Tests.OrderManagement
             this.capture.Create(captureData);
 
             // Assert
-            Assert.AreEqual(this.capture.Location, newTestLocation);
+            Assert.AreEqual(newTestLocation, this.capture.Location);
         }
 
         /// <summary>
@@ -165,9 +165,9 @@ namespace Klarna.Rest.Tests.OrderManagement
             var returnedCheckoutOrder = this.capture.Fetch();
 
             // Assert
-            Assert.AreEqual(returnedCheckoutOrder.CapturedAmount, captureData.CapturedAmount);
-            Assert.AreEqual(returnedCheckoutOrder.ShippingInfo.Count, captureData.ShippingInfo.Count);
-            Assert.AreEqual(returnedCheckoutOrder.ShippingInfo[0].ShippingCompany, captureData.ShippingInfo[0].ShippingCompany);
+            Assert.AreEqual(captureData.CapturedAmount, returnedCheckoutOrder.CapturedAmount);
+            Assert.AreEqual(captureData.ShippingInfo.Count, returnedCheckoutOrder.ShippingInfo.Count);
+            Assert.AreEqual(captureData.ShippingInfo[0].ShippingCompany, returnedCheckoutOrder.ShippingInfo[0].ShippingCompany);
         }
 
         /// <summary>

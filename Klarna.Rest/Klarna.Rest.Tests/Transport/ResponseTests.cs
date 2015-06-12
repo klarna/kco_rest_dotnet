@@ -87,7 +87,7 @@ namespace Klarna.Rest.Tests.Transport
             Response response = new Response(status, headers, string.Empty);
 
             // Assert
-            Assert.That(response.Headers["Location"], Is.Null);
+            Assert.IsNull(response.Headers["Location"]);
         }
 
         /// <summary>
@@ -104,8 +104,8 @@ namespace Klarna.Rest.Tests.Transport
 
             // Assert
             var data = response.Data<Models.CheckoutOrderData>();
-            Assert.AreEqual(data.PurchaseCountry, checkoutOrderData.PurchaseCountry);
-            Assert.AreEqual(data.PurchaseCurrency, checkoutOrderData.PurchaseCurrency);
+            Assert.AreEqual(checkoutOrderData.PurchaseCountry, data.PurchaseCountry);
+            Assert.AreEqual(checkoutOrderData.PurchaseCurrency, data.PurchaseCurrency);
         }
 
         #endregion

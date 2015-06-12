@@ -66,7 +66,7 @@ namespace Klarna.Rest.Tests.Checkout
         public void SetUp()
         {
             this.connectorMock = MockRepository.GenerateStub<IConnector>();
-            this.order = new Klarna.Rest.Checkout.CheckoutOrder(this.connectorMock, this.testUrl);
+            this.order = new Klarna.Rest.Checkout.CheckoutOrder(this.connectorMock, "0002");
         }
 
         #endregion
@@ -79,7 +79,7 @@ namespace Klarna.Rest.Tests.Checkout
         [Test]
         public void CheckoutOrder_Constructor_OrderUrl()
         {
-            Assert.AreEqual(this.order.Location, this.testUrl);
+            Assert.AreEqual("/checkout/v3/orders/0002", this.order.Location.OriginalString);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Klarna.Rest.Tests.Checkout
         {
             this.order = new Klarna.Rest.Checkout.CheckoutOrder(this.connectorMock, null);
 
-            Assert.That(this.order.Location, Is.Null);
+            Assert.IsNull(this.order.Location);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Klarna.Rest.Tests.Checkout
         {
             this.order = new Klarna.Rest.Checkout.CheckoutOrder(this.connectorMock, null);
 
-            Assert.AreEqual(this.order.Path, this.path);
+            Assert.AreEqual(this.path, this.order.Path);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace Klarna.Rest.Tests.Checkout
             this.order.Create(checkoutOrderData);
 
             // Assert
-            Assert.AreEqual(this.order.Location, newTestLocation);
+            Assert.AreEqual(newTestLocation, this.order.Location);
         }
 
         /// <summary>
@@ -152,8 +152,8 @@ namespace Klarna.Rest.Tests.Checkout
             var returnedCheckoutOrderData = this.order.Update(checkoutOrderData1);
 
             // Assert
-            Assert.AreEqual(returnedCheckoutOrderData.PurchaseCountry, checkoutOrderData2.PurchaseCountry);
-            Assert.AreEqual(returnedCheckoutOrderData.PurchaseCurrency, checkoutOrderData2.PurchaseCurrency);
+            Assert.AreEqual(checkoutOrderData2.PurchaseCountry, returnedCheckoutOrderData.PurchaseCountry);
+            Assert.AreEqual(checkoutOrderData2.PurchaseCurrency, returnedCheckoutOrderData.PurchaseCurrency);
         }
 
         /// <summary>
@@ -177,8 +177,8 @@ namespace Klarna.Rest.Tests.Checkout
             var returnedCheckoutOrderData = this.order.Fetch();
 
             // Assert
-            Assert.AreEqual(returnedCheckoutOrderData.PurchaseCountry, checkoutOrderData.PurchaseCountry);
-            Assert.AreEqual(returnedCheckoutOrderData.PurchaseCurrency, checkoutOrderData.PurchaseCurrency);
+            Assert.AreEqual(checkoutOrderData.PurchaseCountry, returnedCheckoutOrderData.PurchaseCountry);
+            Assert.AreEqual(checkoutOrderData.PurchaseCurrency, returnedCheckoutOrderData.PurchaseCurrency);
         }
 
         #endregion

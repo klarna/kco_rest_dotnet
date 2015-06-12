@@ -134,11 +134,11 @@ namespace Klarna.Rest
         /// <summary>
         /// Creates a new instance of the <see cref="ICheckoutOrder"/> interface.
         /// </summary>
-        /// <param name="orderUrl">location of the checkout order</param>
+        /// <param name="orderID">id of the checkout order</param>
         /// <returns>the checkout order</returns>
-        public ICheckoutOrder NewCheckoutOrder(Uri orderUrl)
+        public ICheckoutOrder NewCheckoutOrder(string orderID)
         {
-            CheckoutOrder order = new CheckoutOrder(this.Connector, orderUrl);
+            CheckoutOrder order = new CheckoutOrder(this.Connector, orderID);
 
             return order;
         }

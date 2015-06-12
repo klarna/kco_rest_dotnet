@@ -71,11 +71,11 @@ namespace Klarna.Rest.Tests
             string base64 = Convert.ToBase64String(bytes);
             string authorization = string.Concat("basic ", base64);
 
-            Assert.That(httpWebRequest.Method, Is.EqualTo(method.ToString().ToUpper()));
-            Assert.That(httpWebRequest.UserAgent, Is.EqualTo(UserAgent.WithDefaultFields().ToString()));
+            Assert.AreEqual(method.ToString().ToUpper(), httpWebRequest.Method);
+            Assert.AreEqual(UserAgent.WithDefaultFields().ToString(), httpWebRequest.UserAgent);
 
-            Assert.That(((NetworkCredential)httpWebRequest.Credentials).Password, Is.EqualTo(secret));
-            Assert.That(((NetworkCredential)httpWebRequest.Credentials).UserName, Is.EqualTo(merchantId));
+            Assert.AreEqual(secret, ((NetworkCredential)httpWebRequest.Credentials).Password);
+            Assert.AreEqual(merchantId, ((NetworkCredential)httpWebRequest.Credentials).UserName);
             Assert.IsFalse(httpWebRequest.AllowAutoRedirect);
         }
 

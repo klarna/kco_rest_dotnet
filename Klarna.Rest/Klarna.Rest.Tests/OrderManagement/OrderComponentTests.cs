@@ -143,12 +143,12 @@ namespace Klarna.Rest.Tests.OrderManagement
 
             // Assert
             this.requestMock.VerifyAllExpectations();
-            Assert.AreEqual(orderData.OrderId, this.orderId);
-            Assert.AreEqual(orderData.OrderAmount, orderAmount);
-            Assert.AreEqual(orderData.Captures.Count, 1);
-            Assert.AreEqual(orderData.Captures[0].CaptureId, this.captureId);
-            Assert.AreEqual(orderData.Captures[0].Description, description);
-            Assert.AreEqual(this.httpWebRequest.ContentLength, 0);
+            Assert.AreEqual(this.orderId, orderData.OrderId);
+            Assert.AreEqual(orderAmount, orderData.OrderAmount);
+            Assert.AreEqual(1, orderData.Captures.Count);
+            Assert.AreEqual(this.captureId, orderData.Captures[0].CaptureId);
+            Assert.AreEqual(description, orderData.Captures[0].Description);
+            Assert.AreEqual(0, this.httpWebRequest.ContentLength);
             TestsHelper.AssertRequest(this.merchantId, this.secret, this.httpWebRequest, HttpMethod.Get);
         }
 
@@ -171,7 +171,7 @@ namespace Klarna.Rest.Tests.OrderManagement
 
             // Assert
             this.requestMock.VerifyAllExpectations();
-            Assert.AreEqual(this.httpWebRequest.ContentLength, 0);
+            Assert.AreEqual(0, this.httpWebRequest.ContentLength);
             TestsHelper.AssertRequest(this.merchantId, this.secret, this.httpWebRequest, HttpMethod.Post);
         }
 
@@ -194,7 +194,7 @@ namespace Klarna.Rest.Tests.OrderManagement
 
             // Assert
             this.requestMock.VerifyAllExpectations();
-            Assert.AreEqual(this.httpWebRequest.ContentLength, 0);
+            Assert.AreEqual(0, this.httpWebRequest.ContentLength);
             TestsHelper.AssertRequest(this.merchantId, this.secret, this.httpWebRequest, HttpMethod.Post);
         }
 
@@ -217,7 +217,7 @@ namespace Klarna.Rest.Tests.OrderManagement
 
             // Assert
             this.requestMock.VerifyAllExpectations();
-            Assert.AreEqual(this.httpWebRequest.ContentLength, 0);
+            Assert.AreEqual(0, this.httpWebRequest.ContentLength);
             TestsHelper.AssertRequest(this.merchantId, this.secret, this.httpWebRequest, HttpMethod.Post);
         }
 
@@ -241,7 +241,7 @@ namespace Klarna.Rest.Tests.OrderManagement
 
             // Assert
             this.requestMock.VerifyAllExpectations();
-            Assert.AreEqual(this.httpWebRequest.ContentLength, 0);
+            Assert.AreEqual(0, this.httpWebRequest.ContentLength);
             TestsHelper.AssertRequest(this.merchantId, this.secret, this.httpWebRequest, HttpMethod.Post);
         }
 

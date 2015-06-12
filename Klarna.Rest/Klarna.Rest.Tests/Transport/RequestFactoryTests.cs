@@ -65,7 +65,7 @@ namespace Klarna.Rest.Tests.Transport
             const string Url = "https://localhost/path";
             HttpWebRequest request = this.factory.CreateRequest(Url);
 
-            Assert.That(Url, Is.EqualTo(request.RequestUri));
+            Assert.AreEqual(request.RequestUri, Url);
         }
 
         #endregion

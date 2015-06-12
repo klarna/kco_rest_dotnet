@@ -86,7 +86,7 @@ namespace Klarna.Rest.Tests.Transport
         [Test]
         public void ResponseValidator_Status_Basic()
         {
-            Assert.AreEqual(this.responseValidator.Status(this.statusCode), this.responseValidator);
+            Assert.AreEqual(this.responseValidator, this.responseValidator.Status(this.statusCode));
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Klarna.Rest.Tests.Transport
             catch (Exception ex)
             {
                 string expectedMessage = string.Format("Response has wrong StatusCode. Should be {0} but is {1}", (int)HttpStatusCode.NotModified, (int)this.statusCode);
-                Assert.AreEqual(ex.Message, expectedMessage);
+                Assert.AreEqual(expectedMessage, ex.Message);
             }
         }
 
@@ -113,7 +113,7 @@ namespace Klarna.Rest.Tests.Transport
         [Test]
         public void ResponseValidator_ContentType_Basic()
         {
-            Assert.AreEqual(this.responseValidator.ContentType(this.contentType), this.responseValidator);
+            Assert.AreEqual(this.responseValidator, this.responseValidator.ContentType(this.contentType));
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Klarna.Rest.Tests.Transport
             catch (Exception ex)
             {
                 string expectedMessage = string.Format("Response has wrong Content-Type. Should be {0} but is {1}", "different/contentType", this.headers[HttpResponseHeader.ContentType]);
-                Assert.AreEqual(ex.Message, expectedMessage);
+                Assert.AreEqual(expectedMessage, ex.Message);
             }
         }
 

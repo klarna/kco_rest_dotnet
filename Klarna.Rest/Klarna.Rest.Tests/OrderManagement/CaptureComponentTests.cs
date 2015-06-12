@@ -141,9 +141,9 @@ namespace Klarna.Rest.Tests.OrderManagement
 
             // Assert
             this.requestMock.VerifyAllExpectations();
-            Assert.AreEqual(captureData.CaptureId, this.captureId);
-            Assert.AreEqual(captureData.Description, description);
-            Assert.AreEqual(this.httpWebRequest.ContentLength, 0);
+            Assert.AreEqual(this.captureId, captureData.CaptureId);
+            Assert.AreEqual(description, captureData.Description);
+            Assert.AreEqual(0, this.httpWebRequest.ContentLength);
             TestsHelper.AssertRequest(this.merchantId, this.secret, this.httpWebRequest, HttpMethod.Get);
         }
 
@@ -173,8 +173,8 @@ namespace Klarna.Rest.Tests.OrderManagement
 
             // Assert
             this.requestMock.VerifyAllExpectations();
-            Assert.AreEqual(this.capture.Location, this.location);
-            Assert.AreEqual(this.httpWebRequest.ContentLength, captureData.ConvertToJson().Length);
+            Assert.AreEqual(this.location, this.capture.Location.OriginalString);
+            Assert.AreEqual(captureData.ConvertToJson().Length, this.httpWebRequest.ContentLength);
             TestsHelper.AssertRequest(this.merchantId, this.secret, this.httpWebRequest, HttpMethod.Post);
         }
 
