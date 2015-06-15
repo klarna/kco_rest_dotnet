@@ -149,5 +149,11 @@ namespace Klarna.Rest.Models
         /// </summary>
         [JsonProperty("options")]
         public CheckoutOptions Options { get; set; }
+
+        /// <summary>
+        /// Gets or sets the GUI options.
+        /// </summary>
+        [JsonProperty("gui")]
+        public Gui Gui { get; set; }
     }
 }
