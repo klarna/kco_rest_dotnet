@@ -129,6 +129,11 @@ public class CheckoutOrderData extends Model {
     private CheckoutOptions options;
 
     /**
+     * GUI options.
+     */
+    private Gui gui;
+
+    /**
      * Gets the order id.
      *
      * @return Order id
@@ -489,6 +494,27 @@ public class CheckoutOrderData extends Model {
      */
     public CheckoutOrderData setOptions(final CheckoutOptions options) {
         this.options = options;
+
+        return this;
+    }
+
+    /**
+     * Gets the GUI options.
+     *
+     * @return GUI options
+     */
+    public Gui getGui() {
+        return this.gui;
+    }
+
+    /**
+     * Sets the GUI options.
+     *
+     * @param gui GUI options
+     * @return Same instance
+     */
+    public CheckoutOrderData setGui(final Gui gui) {
+        this.gui = gui;
 
         return this;
     }
