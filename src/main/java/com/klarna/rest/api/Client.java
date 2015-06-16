@@ -29,14 +29,24 @@ public interface Client {
     String VERSION = "2.0.0";
 
     /**
-     * API base URL.
+     * API base URL for Europe.
      */
-    URI BASE_URL = URI.create("https://api.klarna.com");
+    URI EU_BASE_URL = URI.create("https://api.klarna.com");
 
     /**
-     * Testing API base URL.
+     * Testing API base URL for Europe.
      */
-    URI TEST_BASE_URL = URI.create("https://api.playground.klarna.com");
+    URI EU_TEST_BASE_URL = URI.create("https://api.playground.klarna.com");
+
+    /**
+     * API base URL for North America.
+     */
+    URI NA_BASE_URL = URI.create("https://api-na.klarna.com");
+
+    /**
+     * Testing API base URL for North America.
+     */
+    URI NA_TEST_BASE_URL = URI.create("https://api-na.playground.klarna.com");
 
     /**
      * Constructs a new checkout order resource.

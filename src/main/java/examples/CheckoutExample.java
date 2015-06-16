@@ -45,7 +45,7 @@ public class CheckoutExample {
         public static void main(final String[] args) {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
-            URI baseUrl = Client.TEST_BASE_URL;
+            URI baseUrl = Client.EU_TEST_BASE_URL;
 
             Client client = DefaultClient.newInstance(merchantId, sharedSecret, baseUrl);
 
@@ -122,7 +122,7 @@ public class CheckoutExample {
         public static void main(final String[] args) {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
-            URI baseUrl = Client.TEST_BASE_URL;
+            URI baseUrl = Client.EU_TEST_BASE_URL;
             String checkoutOrderID = "12345";
 
             Client client = DefaultClient.newInstance(merchantId, sharedSecret, baseUrl);
@@ -146,7 +146,7 @@ public class CheckoutExample {
         public static void main(final String[] args) {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
-            URI baseUrl = Client.TEST_BASE_URL;
+            URI baseUrl = Client.EU_TEST_BASE_URL;
             String checkoutOrderID = "12345";
 
             Client client = DefaultClient.newInstance(merchantId, sharedSecret, baseUrl);

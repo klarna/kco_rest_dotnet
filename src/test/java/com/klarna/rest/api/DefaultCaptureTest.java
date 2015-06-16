@@ -45,7 +45,7 @@ public class DefaultCaptureTest extends ResourceTestCase {
 
     @Test
     public void testCreate() {
-        URI orderUrl = Client.TEST_BASE_URL.resolve(DefaultOrder.PATH + "/12345");
+        URI orderUrl = Client.EU_TEST_BASE_URL.resolve(DefaultOrder.PATH + "/12345");
         URI location = orderUrl.resolve(DefaultCapture.PATH + "/" + CAPTURE_ID);
 
         // Constructor
