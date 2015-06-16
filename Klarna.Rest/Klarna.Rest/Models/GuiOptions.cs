@@ -1,7 +1,7 @@
 ﻿#region Copyright Header
 //-----------------------------------------------------------------------
-// <copyright file="ICheckoutOrder.cs" company="Klarna AB">
-//     Copyright 2014 Klarna AB
+// <copyright file="GuiOptions.cs" company="Klarna AB">
+//     Copyright 2015 Klarna AB
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,32 +18,18 @@
 // </copyright>
 //-----------------------------------------------------------------------
 #endregion
-namespace Klarna.Rest.Checkout
+namespace Klarna.Rest.Models
 {
-    using Klarna.Rest.Models;
+    using System.Collections.Generic;
 
     /// <summary>
-    /// Checkout order resource interface.
+    /// Graphical user interface options.
     /// </summary>
-    public interface ICheckoutOrder : IResource
+    public class GuiOptions : List<string>
     {
         /// <summary>
-        /// Creates the resource.
+        /// Disable the auto focus on the checkout.
         /// </summary>
-        /// <param name="checkoutOrderData">the order data</param>
-        void Create(CheckoutOrderData checkoutOrderData);
-
-        /// <summary>
-        /// Updates the resource.
-        /// </summary>
-        /// <param name="checkoutOrderData">the order data</param>
-        /// <returns>the updated checkout order data</returns>
-        CheckoutOrderData Update(CheckoutOrderData checkoutOrderData);
-
-        /// <summary>
-        /// Fetches the resource.
-        /// </summary>
-        /// <returns>the checkout order data</returns>
-        CheckoutOrderData Fetch();
+        public const string DisableAutofocus = "disable_autofocus";
     }
 }

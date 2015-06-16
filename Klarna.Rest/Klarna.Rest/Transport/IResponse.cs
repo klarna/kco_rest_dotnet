@@ -20,7 +20,6 @@
 #endregion
 namespace Klarna.Rest.Transport
 {
-    using System;
     using System.Net;
 
     /// <summary>

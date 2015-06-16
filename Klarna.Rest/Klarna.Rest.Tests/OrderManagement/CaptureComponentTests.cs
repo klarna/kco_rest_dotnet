@@ -25,7 +25,6 @@ namespace Klarna.Rest.Tests.OrderManagement
     using Klarna.Rest.Models;
     using Klarna.Rest.Models.Requests;
     using Klarna.Rest.Transport;
-    using Newtonsoft.Json;
     using NUnit.Framework;
     using Rhino.Mocks;
 

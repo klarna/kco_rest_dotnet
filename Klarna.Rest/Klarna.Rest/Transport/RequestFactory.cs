@@ -23,6 +23,8 @@ namespace Klarna.Rest.Transport
     using System.IO;
     using System.Net;
     using System.Text;
+    using Klarna.Rest.Models;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The HTTP request factory interface.
@@ -34,7 +36,7 @@ namespace Klarna.Rest.Transport
         /// </summary>
         /// <param name="url">request url</param>
         /// <returns>a HTTP request object</returns>
-        public System.Net.HttpWebRequest CreateRequest(string url)
+        public HttpWebRequest CreateRequest(string url)
         {
             // Create the request with correct method to use
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -48,7 +50,7 @@ namespace Klarna.Rest.Transport
         /// <param name="request">the HTTP request to send</param>
         /// <param name="payload">the payload to send if this is a POST or a PATCH</param>
         /// <returns>the response</returns>
-        public IResponse Send(System.Net.HttpWebRequest request, string payload)
+        public IResponse Send(HttpWebRequest request, string payload)
         {
             if (!string.IsNullOrEmpty(payload))
             {
@@ -61,9 +63,43 @@ namespace Klarna.Rest.Transport
                 }
             }
 
-            using (var response = (HttpWebResponse)request.GetResponse())
+            HttpWebResponse webResponse = null;
+
+            try
             {
-                return new Response(response.StatusCode, response.Headers, this.Json(response));
+                webResponse = (HttpWebResponse)request.GetResponse();
+
+                return new Response(webResponse.StatusCode, webResponse.Headers, this.Json(webResponse));
+            }
+            catch (WebException ex)
+            {
+                webResponse = (HttpWebResponse)ex.Response;
+
+                if (webResponse == null || webResponse.ContentLength == 0 || !webResponse.ContentType.Contains("json"))
+                {
+                    throw;
+                }
+
+                ErrorMessage errorMessage = null;
+                Response response = new Response(webResponse.StatusCode, webResponse.Headers, this.Json(webResponse));
+
+                try
+                {
+                    errorMessage = response.Data<ErrorMessage>();
+                }
+                catch (JsonException)
+                {
+                    throw ex;
+                }
+
+                throw new ApiException(ex.Message, webResponse.StatusCode, errorMessage, ex);
+            }
+            finally
+            {
+                if (webResponse != null)
+                {
+                    webResponse.Close();
+                }
             }
         }
 

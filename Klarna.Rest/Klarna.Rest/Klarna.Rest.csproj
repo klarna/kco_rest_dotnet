@@ -56,6 +56,9 @@
     <Compile Include="Client.cs" />
     <Compile Include="IResource.cs" />
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\ErrorMessage.cs" />
+    <Compile Include="Models\Gui.cs" />
+    <Compile Include="Models\GuiOptions.cs" />
     <Compile Include="Models\Requests\AddShippingInfo.cs" />
     <Compile Include="Models\CaptureData.cs" />
     <Compile Include="Models\CheckoutOptions.cs" />
@@ -74,6 +77,7 @@
     <Compile Include="OrderManagement\ICapture.cs" />
     <Compile Include="OrderManagement\IOrder.cs" />
     <Compile Include="OrderManagement\Order.cs" />
+    <Compile Include="Transport\ApiException.cs" />
     <Compile Include="Transport\ConnectorFactory.cs" />
     <Compile Include="Resource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

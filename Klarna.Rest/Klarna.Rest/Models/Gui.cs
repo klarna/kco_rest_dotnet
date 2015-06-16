@@ -1,7 +1,7 @@
 ﻿#region Copyright Header
 //-----------------------------------------------------------------------
-// <copyright file="ICheckoutOrder.cs" company="Klarna AB">
-//     Copyright 2014 Klarna AB
+// <copyright file="Gui.cs" company="Klarna AB">
+//     Copyright 2015 Klarna AB
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,32 +18,20 @@
 // </copyright>
 //-----------------------------------------------------------------------
 #endregion
-namespace Klarna.Rest.Checkout
+namespace Klarna.Rest.Models
 {
-    using Klarna.Rest.Models;
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
 
     /// <summary>
-    /// Checkout order resource interface.
+    /// Graphical user interface information.
     /// </summary>
-    public interface ICheckoutOrder : IResource
+    public class Gui : Model
     {
         /// <summary>
-        /// Creates the resource.
+        /// Gets or sets the options.
         /// </summary>
-        /// <param name="checkoutOrderData">the order data</param>
-        void Create(CheckoutOrderData checkoutOrderData);
-
-        /// <summary>
-        /// Updates the resource.
-        /// </summary>
-        /// <param name="checkoutOrderData">the order data</param>
-        /// <returns>the updated checkout order data</returns>
-        CheckoutOrderData Update(CheckoutOrderData checkoutOrderData);
-
-        /// <summary>
-        /// Fetches the resource.
-        /// </summary>
-        /// <returns>the checkout order data</returns>
-        CheckoutOrderData Fetch();
+        [JsonProperty("options")]
+        public GuiOptions Options { get; set; }
     }
 }

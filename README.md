@@ -1,4 +1,6 @@
 # Klarna Checkout REST .NET SDK
+[![NuGet Version][nuget-shield]](https://www.nuget.org/packages/Klarna.Rest/)
+
 Klarna Checkout is a revolutionary payment solution that is changing the way
 people shop online. First, consumers verify their purchase with the minimum
 amount of information through intelligent identification, securing your order
@@ -49,3 +51,5 @@ To contribute, the following criteria needs to be fulfilled:
 ## License
 Klarna Checkout REST .NET SDK is licensed under
 [Apache License, Version 2.0](http://www.apache.org/LICENSE-2.0)
+
+[nuget-shield]: https://img.shields.io/nuget/v/Klarna.Rest.svg?style=flat

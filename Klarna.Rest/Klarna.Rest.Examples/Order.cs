@@ -20,7 +20,9 @@
 #endregion
 namespace Klarna.Rest.Examples
 {
+    using System;
     using System.Collections.Generic;
+    using System.Net;
     using Klarna.Rest.Models;
     using Klarna.Rest.Models.Requests;
     using Klarna.Rest.OrderManagement;
@@ -52,7 +54,20 @@ namespace Klarna.Rest.Examples
                 Client client = new Client(connector);
                 IOrder order = client.NewOrder(orderId);
 
-                OrderData orderData = order.Fetch();
+                try
+                {
+                    OrderData orderData = order.Fetch();
+                }
+                catch (ApiException ex)
+                {
+                    Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                    Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                    Console.WriteLine(ex.ErrorMessage.CorrelationId);
+                }
+                catch (WebException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 
@@ -80,7 +95,20 @@ namespace Klarna.Rest.Examples
                 Client client = new Client(connector);
                 IOrder order = client.NewOrder(orderId);
 
-                order.Acknowledge();
+                try
+                {
+                    order.Acknowledge();
+                }
+                catch (ApiException ex)
+                {
+                    Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                    Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                    Console.WriteLine(ex.ErrorMessage.CorrelationId);
+                }
+                catch (WebException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 
@@ -108,7 +136,20 @@ namespace Klarna.Rest.Examples
                 Client client = new Client(connector);
                 IOrder order = client.NewOrder(orderId);
 
-                order.Cancel();
+                try
+                {
+                    order.Cancel();
+                }
+                catch (ApiException ex)
+                {
+                    Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                    Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                    Console.WriteLine(ex.ErrorMessage.CorrelationId);
+                }
+                catch (WebException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 
@@ -135,7 +176,20 @@ namespace Klarna.Rest.Examples
                 Client client = new Client(connector);
                 IOrder order = client.NewOrder(orderId);
 
-                order.ExtendAuthorizationTime();
+                try
+                {
+                    order.ExtendAuthorizationTime();
+                }
+                catch (ApiException ex)
+                {
+                    Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                    Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                    Console.WriteLine(ex.ErrorMessage.CorrelationId);
+                }
+                catch (WebException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 
@@ -185,7 +239,20 @@ namespace Klarna.Rest.Examples
                     OrderLines = lines
                 };
 
-                order.Refund(refund);
+                try
+                {
+                    order.Refund(refund);
+                }
+                catch (ApiException ex)
+                {
+                    Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                    Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                    Console.WriteLine(ex.ErrorMessage.CorrelationId);
+                }
+                catch (WebException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 
@@ -213,7 +280,20 @@ namespace Klarna.Rest.Examples
                 Client client = new Client(connector);
                 IOrder order = client.NewOrder(orderId);
 
-                order.ReleaseRemainingAuthorization();
+                try
+                {
+                    order.ReleaseRemainingAuthorization();
+                }
+                catch (ApiException ex)
+                {
+                    Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                    Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                    Console.WriteLine(ex.ErrorMessage.CorrelationId);
+                }
+                catch (WebException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 
@@ -256,7 +336,20 @@ namespace Klarna.Rest.Examples
                     }
                 };
 
-                order.UpdateCustomerDetails(updateCustomerDetails);
+                try
+                {
+                    order.UpdateCustomerDetails(updateCustomerDetails);
+                }
+                catch (ApiException ex)
+                {
+                    Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                    Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                    Console.WriteLine(ex.ErrorMessage.CorrelationId);
+                }
+                catch (WebException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 
@@ -290,7 +383,20 @@ namespace Klarna.Rest.Examples
                     MerchantReference2 = "special order"
                 };
 
-                order.UpdateMerchantReferences(updateMerchantReferences);
+                try
+                {
+                    order.UpdateMerchantReferences(updateMerchantReferences);
+                }
+                catch (ApiException ex)
+                {
+                    Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                    Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                    Console.WriteLine(ex.ErrorMessage.CorrelationId);
+                }
+                catch (WebException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 
@@ -340,7 +446,20 @@ namespace Klarna.Rest.Examples
                     OrderLines = lines
                 };
 
-                order.UpdateAuthorization(updateAuthorization);
+                try
+                {
+                    order.UpdateAuthorization(updateAuthorization);
+                }
+                catch (ApiException ex)
+                {
+                    Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                    Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                    Console.WriteLine(ex.ErrorMessage.CorrelationId);
+                }
+                catch (WebException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
 
