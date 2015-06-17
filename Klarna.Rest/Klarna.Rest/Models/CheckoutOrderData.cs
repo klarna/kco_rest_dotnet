@@ -155,5 +155,11 @@ namespace Klarna.Rest.Models
         /// </summary>
         [JsonProperty("gui")]
         public Gui Gui { get; set; }
+
+        /// <summary>
+        /// Gets or sets the attachment.
+        /// </summary>
+        [JsonProperty("attachment")]
+        public Attachment Attachment { get; set; }
     }
 }

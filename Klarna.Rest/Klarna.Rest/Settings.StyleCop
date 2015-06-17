@@ -3,6 +3,9 @@
     <CollectionProperty Name="RecognizedWords">
       <Value>Klarna</Value>
       <Value>iframe</Value>
+      <Value>mr</Value>
+      <Value>mrs</Value>
+      <Value>ms</Value>
     </CollectionProperty>
   </GlobalSettings>
 </StyleCopSettings>

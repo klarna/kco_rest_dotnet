@@ -95,16 +95,11 @@ namespace Klarna.Rest.Tests.Transport
         [Test]
         public void ResponseValidator_StatusCode_Exception()
         {
-            try
-            {
-                this.responseValidator.Status(HttpStatusCode.NotModified);
-                Assert.Fail("No exception was thrown");
-            }
-            catch (Exception ex)
-            {
-                string expectedMessage = string.Format("Response has wrong StatusCode. Should be {0} but is {1}", (int)HttpStatusCode.NotModified, (int)this.statusCode);
-                Assert.AreEqual(expectedMessage, ex.Message);
-            }
+            Exception ex = Assert.Throws<Exception>(
+                delegate { this.responseValidator.Status(HttpStatusCode.NotModified); });
+
+            string expectedMessage = string.Format("Response has wrong StatusCode. Should be {0} but is {1}", (int)HttpStatusCode.NotModified, (int)this.statusCode);
+            Assert.AreEqual(expectedMessage, ex.Message);
         }
 
         /// <summary>
@@ -122,15 +117,11 @@ namespace Klarna.Rest.Tests.Transport
         [Test]
         public void ResponseValidator_ContentType_Exception()
         {
-            try
-            {
-                this.responseValidator.ContentType("different/contentType");
-            }
-            catch (Exception ex)
-            {
-                string expectedMessage = string.Format("Response has wrong Content-Type. Should be {0} but is {1}", "different/contentType", this.headers[HttpResponseHeader.ContentType]);
-                Assert.AreEqual(expectedMessage, ex.Message);
-            }
+            Exception ex = Assert.Throws<Exception>(
+                delegate { this.responseValidator.ContentType("different/contentType"); });
+
+            string expectedMessage = string.Format("Response has wrong Content-Type. Should be {0} but is {1}", "different/contentType", this.headers[HttpResponseHeader.ContentType]);
+            Assert.AreEqual(expectedMessage, ex.Message);
         }
 
         /// <summary>

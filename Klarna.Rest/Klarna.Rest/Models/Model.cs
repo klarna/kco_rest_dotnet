@@ -35,9 +35,6 @@ namespace Klarna.Rest.Models
         /// <returns>the serialized JSON string</returns>
         public virtual string ConvertToJson()
         {
-            IsoDateTimeConverter converter = new IsoDateTimeConverter();
-            converter.DateTimeFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.fff'Z'";
-
             return JsonConvert.SerializeObject(
                 this,
                 Formatting.Indented,
@@ -45,7 +42,13 @@ namespace Klarna.Rest.Models
                 {
                     NullValueHandling = NullValueHandling.Ignore,
                     DefaultValueHandling = DefaultValueHandling.Ignore,
-                    Converters = new List<JsonConverter>() { converter }
+                    Converters = new List<JsonConverter>()
+                    {
+                        new IsoDateTimeConverter
+                        {
+                            DateTimeFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss.fff'Z'"
+                        }
+                    }
                 });
         }
     }
