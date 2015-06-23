@@ -34,9 +34,9 @@
 
     <properties>
         <compile.version>1.7</compile.version>
-        <jersey.version>1.18.1</jersey.version>
-        <jackson.version>2.4.2</jackson.version>
-        <commons-lang.version>3.1</commons-lang.version>
+        <jersey.version>1.19</jersey.version>
+        <jackson.version>2.5.4</jackson.version>
+        <commons-lang.version>3.4</commons-lang.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
         <javadoc.plugin.version>2.10.3</javadoc.plugin.version>
@@ -45,7 +45,7 @@
     <dependencies>
         <dependency>
             <groupId>com.sun.jersey.contribs</groupId>
-            <artifactId>jersey-apache-client</artifactId>
+            <artifactId>jersey-apache-client4</artifactId>
             <version>${jersey.version}</version>
         </dependency>
         <dependency>
