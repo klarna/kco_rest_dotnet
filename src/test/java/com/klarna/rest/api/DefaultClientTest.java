@@ -18,6 +18,15 @@ package com.klarna.rest.api;
 
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.client.apache4.ApacheHttpClient4;
+import com.sun.jersey.client.apache4.ApacheHttpClient4Handler;
+import org.apache.http.HttpHost;
+import org.apache.http.client.CookieStore;
+import org.apache.http.client.CredentialsProvider;
+import org.apache.http.client.HttpClient;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.conn.params.ConnRoutePNames;
+import org.apache.http.params.HttpParams;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,7 +35,15 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 
+import static com.sun.jersey.client.apache4.config.ApacheHttpClient4Config.PROPERTY_PROXY_PASSWORD;
+import static com.sun.jersey.client.apache4.config.ApacheHttpClient4Config.PROPERTY_PROXY_URI;
+import static com.sun.jersey.client.apache4.config.ApacheHttpClient4Config.PROPERTY_PROXY_USERNAME;
+import static com.sun.jersey.client.apache4.config.ApacheHttpClient4Config
+        .PROPERTY_CREDENTIALS_PROVIDER;
+import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -41,11 +58,29 @@ public class DefaultClientTest extends TestCase {
 
     private static String sharedSecret = "secret";
 
+    private static String username = "myuser";
+
+    private static String password = "mypass";
+
     @Mock private ApacheHttpClient4 http;
+
+    @Mock private HttpClient httpClient;
 
     @Mock private WebResource resource;
 
+    @Mock private HttpParams params;
+
+    @Mock private CookieStore cookies;
+
+    @Mock private CredentialsProvider credentials;
+
+    private ApacheHttpClient4Handler handler;
+
+    private Map<String, Object> properties;
+
     private URI baseUrl = URI.create("http://localhost");
+
+    private HttpHost proxy = new HttpHost("example", 8888, "http");
 
     private Client client;
 
@@ -53,6 +88,11 @@ public class DefaultClientTest extends TestCase {
     public void setUp() {
         when(http.resource(baseUrl))
                 .thenReturn(resource);
+
+        properties = new HashMap<String, Object>();
+        properties.put(PROPERTY_CREDENTIALS_PROVIDER, credentials);
+
+        handler = new ApacheHttpClient4Handler(httpClient, cookies, false);
 
         client = new DefaultClient(http, baseUrl);
     }
@@ -165,6 +205,49 @@ public class DefaultClientTest extends TestCase {
         client.setReadTimeout(timeout);
 
         verify(http).setReadTimeout(timeout);
+    }
+
+    @Test
+    public void testSetProxy() {
+        when(http.getProperties())
+                .thenReturn(properties);
+
+        when(http.getClientHandler())
+                .thenReturn(handler);
+
+        when(httpClient.getParams())
+                .thenReturn(params);
+
+        client.setProxy(proxy.getSchemeName(), proxy.getHostName(), proxy.getPort());
+
+        assertEquals(proxy.toString(), properties.get(PROPERTY_PROXY_URI));
+
+        verify(params).setParameter(eq(ConnRoutePNames.DEFAULT_PROXY),
+                                    eq(proxy));
+    }
+
+    @Test
+    public void testSetProxyWithAuth() {
+        when(http.getProperties())
+                .thenReturn(properties);
+
+        when(http.getClientHandler())
+                .thenReturn(handler);
+
+        when(httpClient.getParams())
+                .thenReturn(params);
+
+        client.setProxy(proxy.getSchemeName(), proxy.getHostName(), proxy.getPort(), username, password);
+
+        assertEquals(proxy.toString(), properties.get(PROPERTY_PROXY_URI));
+        assertEquals(password, properties.get(PROPERTY_PROXY_PASSWORD));
+        assertEquals(username, properties.get(PROPERTY_PROXY_USERNAME));
+
+        verify(params).setParameter(eq(ConnRoutePNames.DEFAULT_PROXY),
+                                    eq(proxy));
+
+        verify(credentials).setCredentials(eq(new AuthScope(proxy.getHostName(), proxy.getPort())),
+                                           eq(new UsernamePasswordCredentials(username, password)));
     }
 
     @Test

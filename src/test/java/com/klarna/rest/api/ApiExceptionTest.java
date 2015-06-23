@@ -65,6 +65,20 @@ public class ApiExceptionTest extends TestCase {
     }
 
     @Test
+    public void testGetMessageReason() {
+        exception = new ApiException(500, null);
+
+        assertEquals("Internal Server Error", exception.getMessage());
+    }
+
+    @Test
+    public void testGetMessageUnknown() {
+        exception = new ApiException(599, null);
+
+        assertEquals("HTTP status code: 599", exception.getMessage());
+    }
+
+    @Test
     public void testGetErrorMessage() {
         assertSame(message, exception.getErrorMessage());
     }
