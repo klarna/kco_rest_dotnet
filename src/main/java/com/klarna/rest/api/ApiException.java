@@ -86,7 +86,8 @@ public class ApiException extends RuntimeException {
     ) {
         ReasonPhraseCatalog catalog = EnglishReasonPhraseCatalog.INSTANCE;
 
-        if (errorMessage == null && catalog.getReason(httpStatus, null) == null) {
+        if (errorMessage == null
+                && catalog.getReason(httpStatus, null) == null) {
             return String.format("HTTP status code: %s", httpStatus);
         } else if (errorMessage == null) {
             return catalog.getReason(httpStatus, null);

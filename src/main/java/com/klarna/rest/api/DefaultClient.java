@@ -142,10 +142,10 @@ public final class DefaultClient implements Client {
         client.getProperties()
                 .put(PROPERTY_PROXY_USERNAME, username);
 
-        CredentialsProvider credentialsProvider = (CredentialsProvider) client.getProperties()
-                .get(PROPERTY_CREDENTIALS_PROVIDER);
+        CredentialsProvider provider = (CredentialsProvider)
+                client.getProperties().get(PROPERTY_CREDENTIALS_PROVIDER);
 
-        credentialsProvider.setCredentials(
+        provider.setCredentials(
                 new AuthScope(host, port),
                 new UsernamePasswordCredentials(username, password));
     }
@@ -173,13 +173,13 @@ public final class DefaultClient implements Client {
         clientConfig.getClasses()
                 .add(ObjectMapperProvider.class);
 
-        CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-        credentialsProvider.setCredentials(
+        CredentialsProvider provider = new BasicCredentialsProvider();
+        provider.setCredentials(
                 new AuthScope(baseUrl.getHost(), baseUrl.getPort()),
                 new UsernamePasswordCredentials(merchantId, sharedSecret));
 
         clientConfig.getProperties()
-                .put(PROPERTY_CREDENTIALS_PROVIDER, credentialsProvider);
+                .put(PROPERTY_CREDENTIALS_PROVIDER, provider);
         clientConfig.getProperties()
                 .put(PROPERTY_PREEMPTIVE_BASIC_AUTHENTICATION, Boolean.TRUE);
 
