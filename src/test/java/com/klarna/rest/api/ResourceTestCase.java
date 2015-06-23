@@ -18,7 +18,7 @@ package com.klarna.rest.api;
 
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.client.apache.ApacheHttpClient;
+import com.sun.jersey.client.apache4.ApacheHttpClient4;
 import org.mockito.Mock;
 
 import javax.ws.rs.core.MultivaluedMap;
@@ -36,5 +36,5 @@ public abstract class ResourceTestCase extends TestCase {
 
     @Mock protected MultivaluedMap<String, String> headers;
 
-    @Mock protected ApacheHttpClient client;
+    @Mock protected ApacheHttpClient4 client;
 }

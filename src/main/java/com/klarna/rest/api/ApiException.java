@@ -17,8 +17,9 @@
 package com.klarna.rest.api;
 
 import com.klarna.rest.api.model.ErrorMessage;
-import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.ReasonPhraseCatalog;
+import org.apache.http.impl.EnglishReasonPhraseCatalog;
 
 /**
  * Generic API exception with the underlying HTTP status and messages.
@@ -83,8 +84,12 @@ public class ApiException extends RuntimeException {
     private static String formatError(final ErrorMessage errorMessage,
                                       final int httpStatus
     ) {
-        if (errorMessage == null) {
-            return HttpStatus.getStatusText(httpStatus);
+        ReasonPhraseCatalog catalog = EnglishReasonPhraseCatalog.INSTANCE;
+
+        if (errorMessage == null && catalog.getReason(httpStatus, null) == null) {
+            return String.format("HTTP status code: %s", httpStatus);
+        } else if (errorMessage == null) {
+            return catalog.getReason(httpStatus, null);
         }
 
         return String.format(

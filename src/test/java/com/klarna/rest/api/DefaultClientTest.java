@@ -17,7 +17,7 @@
 package com.klarna.rest.api;
 
 import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.client.apache.ApacheHttpClient;
+import com.sun.jersey.client.apache4.ApacheHttpClient4;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,7 +41,7 @@ public class DefaultClientTest extends TestCase {
 
     private static String sharedSecret = "secret";
 
-    @Mock private ApacheHttpClient http;
+    @Mock private ApacheHttpClient4 http;
 
     @Mock private WebResource resource;
 
