@@ -159,20 +159,15 @@ namespace Klarna.Rest.Tests.Transport
 
             this.request.Stub(x => x.GetResponse()).Throw(exception);
 
-            try
-            {
-                this.factory.Send(this.request, null);
-                Assert.Fail("No exception was thrown");
-            }
-            catch (ApiException ex)
-            {
-                Assert.AreEqual("The remote server returned an error: (400) Bad Request.", ex.Message);
-                Assert.AreEqual(HttpStatusCode.BadRequest, ex.StatusCode);
+            ApiException ex = Assert.Throws<ApiException>(
+                delegate { this.factory.Send(this.request, null); });
 
-                Assert.AreEqual("111", ex.ErrorMessage.ErrorCode);
-                Assert.AreEqual("222", ex.ErrorMessage.CorrelationId);
-                Assert.AreEqual(new string[] { "one", "two" }, ex.ErrorMessage.ErrorMessages);
-            }
+            Assert.AreEqual("The remote server returned an error: (400) Bad Request.", ex.Message);
+            Assert.AreEqual(HttpStatusCode.BadRequest, ex.StatusCode);
+
+            Assert.AreEqual("111", ex.ErrorMessage.ErrorCode);
+            Assert.AreEqual("222", ex.ErrorMessage.CorrelationId);
+            Assert.AreEqual(new string[] { "one", "two" }, ex.ErrorMessage.ErrorMessages);
         }
 
         /// <summary>
@@ -198,15 +193,10 @@ namespace Klarna.Rest.Tests.Transport
 
             this.request.Stub(x => x.GetResponse()).Throw(exception);
 
-            try
-            {
-                this.factory.Send(this.request, null);
-                Assert.Fail("No exception was thrown");
-            }
-            catch (WebException ex)
-            {
-                Assert.AreSame(exception, ex);
-            }
+            WebException ex = Assert.Throws<WebException>(
+                delegate { this.factory.Send(this.request, null); });
+
+            Assert.AreSame(exception, ex);
         }
 
         /// <summary>
@@ -232,15 +222,10 @@ namespace Klarna.Rest.Tests.Transport
 
             this.request.Stub(x => x.GetResponse()).Throw(exception);
 
-            try
-            {
-                this.factory.Send(this.request, null);
-                Assert.Fail("No exception was thrown");
-            }
-            catch (WebException ex)
-            {
-                Assert.AreSame(exception, ex);
-            }
+            WebException ex = Assert.Throws<WebException>(
+                delegate { this.factory.Send(this.request, null); });
+
+            Assert.AreSame(exception, ex);
         }
 
         /// <summary>
@@ -253,15 +238,10 @@ namespace Klarna.Rest.Tests.Transport
 
             this.request.Stub(x => x.GetResponse()).Throw(exception);
 
-            try
-            {
-                this.factory.Send(this.request, null);
-                Assert.Fail("No exception was thrown");
-            }
-            catch (WebException ex)
-            {
-                Assert.AreSame(exception, ex);
-            }
+            WebException ex = Assert.Throws<WebException>(
+                delegate { this.factory.Send(this.request, null); });
+
+            Assert.AreSame(exception, ex);
         }
 
         /// <summary>
@@ -284,17 +264,12 @@ namespace Klarna.Rest.Tests.Transport
 
             this.request.Stub(x => x.GetResponse()).Throw(exception);
 
-            try
-            {
-                this.factory.Send(this.request, null);
-                Assert.Fail("No exception was thrown");
-            }
-            catch (ApiException ex)
-            {
-                Assert.IsNull(ex.ErrorMessage.ErrorCode);
-                Assert.IsNull(ex.ErrorMessage.CorrelationId);
-                Assert.IsNull(ex.ErrorMessage.ErrorMessages);
-            }
+            ApiException ex = Assert.Throws<ApiException>(
+                delegate { this.factory.Send(this.request, null); });
+
+            Assert.IsNull(ex.ErrorMessage.ErrorCode);
+            Assert.IsNull(ex.ErrorMessage.CorrelationId);
+            Assert.IsNull(ex.ErrorMessage.ErrorMessages);
         }
 
         #endregion

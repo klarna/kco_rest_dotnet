@@ -56,6 +56,32 @@
     <Compile Include="Client.cs" />
     <Compile Include="IResource.cs" />
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\Attachment.cs" />
+    <Compile Include="Models\EMD\AirReservationDetails.cs" />
+    <Compile Include="Models\EMD\ExtraMerchantDataBody.cs" />
+    <Compile Include="Models\EMD\ExtraMerchantData.cs" />
+    <Compile Include="Models\EMD\BusReservationDetails.cs" />
+    <Compile Include="Models\EMD\CarRentalItinerary.cs" />
+    <Compile Include="Models\EMD\CarRentalReservationDetails.cs" />
+    <Compile Include="Models\EMD\CustomerAccountInformation.cs" />
+    <Compile Include="Models\EMD\Event.cs" />
+    <Compile Include="Models\EMD\FerryReservationDetails.cs" />
+    <Compile Include="Models\EMD\HotelItinerary.cs" />
+    <Compile Include="Models\EMD\HotelReservationDetails.cs" />
+    <Compile Include="Models\EMD\Insurance.cs" />
+    <Compile Include="Models\EMD\Itinerary.cs" />
+    <Compile Include="Models\EMD\LastModifed.cs" />
+    <Compile Include="Models\EMD\Location.cs" />
+    <Compile Include="Models\EMD\MarketplaceSellerInformation.cs" />
+    <Compile Include="Models\EMD\MarketplaceWinnerInformation.cs" />
+    <Compile Include="Models\EMD\OtherDeliveryAddress.cs" />
+    <Compile Include="Models\EMD\Person.cs" />
+    <Compile Include="Models\EMD\PurchaseHistoryFull.cs" />
+    <Compile Include="Models\EMD\PurchaseHistorySimple.cs" />
+    <Compile Include="Models\EMD\Subscription.cs" />
+    <Compile Include="Models\EMD\TrainReservationDetails.cs" />
+    <Compile Include="Models\EMD\UniqueAccountIdentifier.cs" />
+    <Compile Include="Models\EMD\Voucher.cs" />
     <Compile Include="Models\ErrorMessage.cs" />
     <Compile Include="Models\Gui.cs" />
     <Compile Include="Models\GuiOptions.cs" />
@@ -94,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Settings.StyleCop" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" />

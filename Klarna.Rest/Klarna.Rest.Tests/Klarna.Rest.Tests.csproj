@@ -60,6 +60,7 @@
     <Compile Include="Checkout\CheckoutOrderComponentTests.cs" />
     <Compile Include="Checkout\CheckoutOrderTests.cs" />
     <Compile Include="ClientTests.cs" />
+    <Compile Include="Model\ExtraMerchantDataTest.cs" />
     <Compile Include="OrderManagement\CaptureComponentTests.cs" />
     <Compile Include="OrderManagement\CaptureTests.cs" />
     <Compile Include="OrderManagement\OrderComponentTests.cs" />
@@ -85,6 +86,7 @@
       <Name>Klarna.Rest</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <NUnitExePath Condition=" '$(NUnitExePath)' == '' ">$(SolutionDir)packages\NUnit.Runners.2.6.3\tools\nunit-console.exe</NUnitExePath>
     <TestAssembly Condition=" '$(TestAssembly)' == '' ">$(OutputPath)$(AssemblyName).dll</TestAssembly>

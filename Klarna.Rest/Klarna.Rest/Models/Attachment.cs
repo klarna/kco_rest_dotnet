@@ -1,6 +1,6 @@
 ﻿#region Copyright Header
 //-----------------------------------------------------------------------
-// <copyright file="Gui.cs" company="Klarna AB">
+// <copyright file="Attachment.cs" company="Klarna AB">
 //     Copyright 2015 Klarna AB
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,14 +23,20 @@ namespace Klarna.Rest.Models
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Graphical user interface information.
+    /// Attachment to a checkout order.
     /// </summary>
-    public class Gui : Model
+    public class Attachment : Model
     {
         /// <summary>
-        /// Gets or sets the options.
+        /// Gets or sets the content type.
         /// </summary>
-        [JsonProperty("options")]
-        public GuiOptions Options { get; set; }
+        [JsonProperty("content_type")]
+        public string ContentType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the body string.
+        /// </summary>
+        [JsonProperty("body")]
+        public string Body { get; set; }
     }
 }

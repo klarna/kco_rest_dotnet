@@ -1,6 +1,6 @@
 ﻿#region Copyright Header
 //-----------------------------------------------------------------------
-// <copyright file="Gui.cs" company="Klarna AB">
+// <copyright file="Insurance.cs" company="Klarna AB">
 //     Copyright 2015 Klarna AB
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,19 +18,32 @@
 // </copyright>
 //-----------------------------------------------------------------------
 #endregion
-namespace Klarna.Rest.Models
+namespace Klarna.Rest.Models.EMD
 {
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Graphical user interface information.
+    /// The model for insurances.
     /// </summary>
-    public class Gui : Model
+    public class Insurance : Model
     {
         /// <summary>
-        /// Gets or sets the options.
+        /// Gets or sets the insurance company name.
         /// </summary>
-        [JsonProperty("options")]
-        public GuiOptions Options { get; set; }
+        [JsonProperty("insurance_company")]
+        public string InsuranceCompany { get; set; }
+
+        /// <summary>
+        /// Gets or sets the insurance type.
+        /// <para>Allowed values are "cancellation", "travel", "cancellation_travel" or "bankruptcy".</para>
+        /// </summary>
+        [JsonProperty("insurance_type")]
+        public string InsuranceType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the insurance price.
+        /// </summary>
+        [JsonProperty("insurance_price")]
+        public long? InsurancePrice { get; set; }
     }
 }

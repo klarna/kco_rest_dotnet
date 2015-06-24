@@ -1,6 +1,7 @@
-## v2.0.0 - 2015-06-16
+## v2.0.0 - 2015-06-24
 - **NEW MINT-2201** Use order id instead of URL for checkout orders - *Christer.G*
 - **NEW MINT-2086** Updating API error handling - *Christer.G*
+- **NEW MINT-2232** Add support for checkout attachment Extra Merchant Data - *Christer.G*
 
 ## v1.1.0 - 2015-06-16
 - **NEW MINT-2061** Add support for US - *Majid.G*

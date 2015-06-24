@@ -1,6 +1,6 @@
 ﻿#region Copyright Header
 //-----------------------------------------------------------------------
-// <copyright file="Gui.cs" company="Klarna AB">
+// <copyright file="Location.cs" company="Klarna AB">
 //     Copyright 2015 Klarna AB
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,19 +18,37 @@
 // </copyright>
 //-----------------------------------------------------------------------
 #endregion
-namespace Klarna.Rest.Models
+namespace Klarna.Rest.Models.EMD
 {
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Graphical user interface information.
+    /// The model for locations.
     /// </summary>
-    public class Gui : Model
+    public class Location : Model
     {
         /// <summary>
-        /// Gets or sets the options.
+        /// Gets or sets the street address.
         /// </summary>
-        [JsonProperty("options")]
-        public GuiOptions Options { get; set; }
+        [JsonProperty("street_address")]
+        public string StreetAddress { get; set; }
+
+        /// <summary>
+        /// Gets or sets the postal code.
+        /// </summary>
+        [JsonProperty("postal_code")]
+        public string PostalCode { get; set; }
+
+        /// <summary>
+        /// Gets or sets the city name.
+        /// </summary>
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        /// <summary>
+        /// Gets or sets the country name.
+        /// </summary>
+        [JsonProperty("country")]
+        public string Country { get; set; }
     }
 }

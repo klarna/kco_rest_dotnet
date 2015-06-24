@@ -1,6 +1,6 @@
 ﻿#region Copyright Header
 //-----------------------------------------------------------------------
-// <copyright file="Gui.cs" company="Klarna AB">
+// <copyright file="UniqueAccountIdentifier.cs" company="Klarna AB">
 //     Copyright 2015 Klarna AB
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,19 +18,31 @@
 // </copyright>
 //-----------------------------------------------------------------------
 #endregion
-namespace Klarna.Rest.Models
+namespace Klarna.Rest.Models.EMD
 {
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Graphical user interface information.
+    /// Model for unique account identifiers.
     /// </summary>
-    public class Gui : Model
+    public class UniqueAccountIdentifier : Model
     {
         /// <summary>
-        /// Gets or sets the options.
+        /// Gets or sets the email address.
         /// </summary>
-        [JsonProperty("options")]
-        public GuiOptions Options { get; set; }
+        [JsonProperty("email", Required = Required.Always)]
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Gets or sets the PNO.
+        /// </summary>
+        [JsonProperty("pno", Required = Required.Always)]
+        public string PNO { get; set; }
+
+        /// <summary>
+        /// Gets or sets other information.
+        /// </summary>
+        [JsonProperty("other")]
+        public string Other { get; set; }
     }
 }

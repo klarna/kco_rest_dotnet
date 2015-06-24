@@ -1,6 +1,6 @@
 ﻿#region Copyright Header
 //-----------------------------------------------------------------------
-// <copyright file="Gui.cs" company="Klarna AB">
+// <copyright file="PurchaseHistorySimple.cs" company="Klarna AB">
 //     Copyright 2015 Klarna AB
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,19 +18,25 @@
 // </copyright>
 //-----------------------------------------------------------------------
 #endregion
-namespace Klarna.Rest.Models
+namespace Klarna.Rest.Models.EMD
 {
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Graphical user interface information.
+    /// The model for simple purchase history.
     /// </summary>
-    public class Gui : Model
+    public class PurchaseHistorySimple : Model
     {
         /// <summary>
-        /// Gets or sets the options.
+        /// Gets or sets the unique account identifier.
         /// </summary>
-        [JsonProperty("options")]
-        public GuiOptions Options { get; set; }
+        [JsonProperty("unique_account_identifier")]
+        public string UniqueAccountIdentifier { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the purchase has been paid before.
+        /// </summary>
+        [JsonProperty("paid_before")]
+        public bool PaidBefore { get; set; }
     }
 }

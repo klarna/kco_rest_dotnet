@@ -1,6 +1,6 @@
 ﻿#region Copyright Header
 //-----------------------------------------------------------------------
-// <copyright file="Gui.cs" company="Klarna AB">
+// <copyright file="Person.cs" company="Klarna AB">
 //     Copyright 2015 Klarna AB
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,19 +18,38 @@
 // </copyright>
 //-----------------------------------------------------------------------
 #endregion
-namespace Klarna.Rest.Models
+namespace Klarna.Rest.Models.EMD
 {
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Graphical user interface information.
+    /// The model of persons.
     /// </summary>
-    public class Gui : Model
+    public class Person : Model
     {
         /// <summary>
-        /// Gets or sets the options.
+        /// Gets or sets the person ID.
         /// </summary>
-        [JsonProperty("options")]
-        public GuiOptions Options { get; set; }
+        [JsonProperty("id")]
+        public int ID { get; set; }
+
+        /// <summary>
+        /// Gets or sets the title.
+        /// <para>Allowed values are "mr", "mrs", "ms" or blank if under 12 years.</para>
+        /// </summary>
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        /// <summary>
+        /// Gets or sets the first name.
+        /// </summary>
+        [JsonProperty("first_name")]
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the last name.
+        /// </summary>
+        [JsonProperty("last_name")]
+        public string LastName { get; set; }
     }
 }
