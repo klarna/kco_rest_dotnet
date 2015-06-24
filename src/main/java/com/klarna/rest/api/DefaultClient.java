@@ -17,19 +17,30 @@
 package com.klarna.rest.api;
 
 import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.client.apache.ApacheHttpClient;
-import com.sun.jersey.client.apache.config.ApacheHttpClientConfig;
-import com.sun.jersey.client.apache.config.DefaultApacheHttpClientConfig;
-import org.apache.commons.httpclient.HttpState;
-import org.apache.commons.httpclient.UsernamePasswordCredentials;
-import org.apache.commons.httpclient.auth.AuthScope;
+import com.sun.jersey.client.apache4.ApacheHttpClient4;
+import com.sun.jersey.client.apache4.config.ApacheHttpClient4Config;
+import com.sun.jersey.client.apache4.config.DefaultApacheHttpClient4Config;
+import org.apache.http.HttpHost;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.CredentialsProvider;
+import org.apache.http.conn.params.ConnRoutePNames;
+import org.apache.http.impl.client.BasicCredentialsProvider;
 
 import java.net.URI;
 
 import static com.sun.jersey.api.json.JSONConfiguration.FEATURE_POJO_MAPPING;
-import static com.sun.jersey.client.apache.config.ApacheHttpClientConfig
-        .PROPERTY_PREEMPTIVE_AUTHENTICATION;
-import static org.apache.commons.httpclient.params.HttpClientParams.USER_AGENT;
+import static com.sun.jersey.client.apache4.config.ApacheHttpClient4Config
+        .PROPERTY_PROXY_URI;
+import static com.sun.jersey.client.apache4.config.ApacheHttpClient4Config
+        .PROPERTY_PROXY_USERNAME;
+import static com.sun.jersey.client.apache4.config.ApacheHttpClient4Config
+        .PROPERTY_PROXY_PASSWORD;
+import static com.sun.jersey.client.apache4.config.ApacheHttpClient4Config
+    .PROPERTY_CREDENTIALS_PROVIDER;
+import static com.sun.jersey.client.apache4.config.ApacheHttpClient4Config
+    .PROPERTY_PREEMPTIVE_BASIC_AUTHENTICATION;
+import static org.apache.http.params.CoreProtocolPNames.USER_AGENT;
 
 /**
  * Client facade.
@@ -44,7 +55,7 @@ public final class DefaultClient implements Client {
     /**
      * HTTP client instance.
      */
-    private final ApacheHttpClient client;
+    private final ApacheHttpClient4 client;
 
     /**
      * Constructs a client instance.
@@ -52,7 +63,7 @@ public final class DefaultClient implements Client {
      * @param client HTTP transport client
      * @param baseUrl Base URL of the API
      */
-    /* package */ DefaultClient(final ApacheHttpClient client,
+    /* package */ DefaultClient(final ApacheHttpClient4 client,
                                 final URI baseUrl
     ) {
         this.client = client;
@@ -109,7 +120,12 @@ public final class DefaultClient implements Client {
         String uri = scheme + "://" + host + ":" + port;
 
         client.getProperties()
-                .put(ApacheHttpClientConfig.PROPERTY_PROXY_URI, uri);
+                .put(PROPERTY_PROXY_URI, uri);
+
+        HttpHost proxy = new HttpHost(host, port, scheme);
+        client.getClientHandler().getHttpClient()
+                .getParams()
+                .setParameter(ConnRoutePNames.DEFAULT_PROXY, proxy);
     }
 
     @Override
@@ -121,10 +137,17 @@ public final class DefaultClient implements Client {
     ) {
         this.setProxy(scheme, host, port);
 
-        client.getClientHandler().getHttpClient().getState()
-                .setProxyCredentials(
-                        new AuthScope(host, port),
-                        new UsernamePasswordCredentials(username, password));
+        client.getProperties()
+                .put(PROPERTY_PROXY_PASSWORD, password);
+        client.getProperties()
+                .put(PROPERTY_PROXY_USERNAME, username);
+
+        CredentialsProvider provider = (CredentialsProvider)
+                client.getProperties().get(PROPERTY_CREDENTIALS_PROVIDER);
+
+        provider.setCredentials(
+                new AuthScope(host, port),
+                new UsernamePasswordCredentials(username, password));
     }
 
     /**
@@ -141,8 +164,8 @@ public final class DefaultClient implements Client {
                                      final URI baseUrl,
                                      final UserAgent agent
     ) {
-        ApacheHttpClientConfig clientConfig =
-                new DefaultApacheHttpClientConfig();
+        ApacheHttpClient4Config clientConfig =
+                new DefaultApacheHttpClient4Config();
 
         clientConfig.getFeatures()
                 .put(FEATURE_POJO_MAPPING, Boolean.TRUE);
@@ -150,16 +173,17 @@ public final class DefaultClient implements Client {
         clientConfig.getClasses()
                 .add(ObjectMapperProvider.class);
 
-        HttpState state = clientConfig.getState().getHttpState();
-        state.setCredentials(
+        CredentialsProvider provider = new BasicCredentialsProvider();
+        provider.setCredentials(
                 new AuthScope(baseUrl.getHost(), baseUrl.getPort()),
-                new UsernamePasswordCredentials(merchantId, sharedSecret)
-        );
+                new UsernamePasswordCredentials(merchantId, sharedSecret));
 
         clientConfig.getProperties()
-                .put(PROPERTY_PREEMPTIVE_AUTHENTICATION, Boolean.TRUE);
+                .put(PROPERTY_CREDENTIALS_PROVIDER, provider);
+        clientConfig.getProperties()
+                .put(PROPERTY_PREEMPTIVE_BASIC_AUTHENTICATION, Boolean.TRUE);
 
-        ApacheHttpClient client = ApacheHttpClient.create(clientConfig);
+        ApacheHttpClient4 client = ApacheHttpClient4.create(clientConfig);
 
         client.getClientHandler()
                 .getHttpClient()

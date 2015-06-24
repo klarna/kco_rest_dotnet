@@ -176,6 +176,16 @@ public class CheckoutOrderDataTest extends TestCase {
     }
 
     @Test
+    public void testGetGui() {
+        assertNull(data.getGui());
+
+        Gui gui = new Gui();
+
+        data.setGui(gui);
+        assertSame(gui, data.getGui());
+    }
+
+    @Test
     public void testGetReadonly() {
         assertNull(data.getStatus());
         assertNull(data.getCompletedAt());

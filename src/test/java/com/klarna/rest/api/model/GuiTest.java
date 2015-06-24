@@ -16,15 +16,32 @@
 
 package com.klarna.rest.api.model;
 
-import java.util.ArrayList;
+import com.klarna.rest.api.TestCase;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.runners.MockitoJUnitRunner;
 
 /**
- * Graphical user interface options.
+ * Test cases for the Gui class.
  */
-public class GuiOptions extends ArrayList<String> {
+@RunWith(MockitoJUnitRunner.class)
+public class GuiTest extends TestCase {
 
-    /**
-     * Disable the auto focus on the checkout.
-     */
-    public static final String DISABLE_AUTOFOCUS = "disable_autofocus";
+    private Gui gui;
+
+    @Before
+    public void setUp() {
+        gui = new Gui();
+    }
+
+    @Test
+    public void testGetOptions() {
+        assertNull(gui.getOptions());
+
+        GuiOptions options = new GuiOptions();
+
+        gui.setOptions(options);
+        assertSame(options, gui.getOptions());
+    }
 }

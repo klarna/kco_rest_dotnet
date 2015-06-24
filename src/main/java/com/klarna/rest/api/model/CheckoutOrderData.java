@@ -178,7 +178,8 @@ public class CheckoutOrderData extends Model {
      * @param countries Shipping countries;
      * @return Same instance
      */
-    public CheckoutOrderData setShippingCountries(final List<String> countries) {
+    public CheckoutOrderData setShippingCountries(
+            final List<String> countries) {
         this.shippingCountries = countries;
 
         return this;

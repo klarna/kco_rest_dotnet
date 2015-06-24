@@ -2,6 +2,7 @@
 - **NEW MINT-2202** Use order id instead of URL for checkout orders - *Christer.G*
 - **NEW MINT-2216** Add base URLs for North America - *Joakim.L*
 - **NEW MINT-2231** Add support for gui options - *Joakim.L*
+- **NEW MINT-2244** Update Apache HttpClient - *Joakim.L*
 
 ## v1.0.1 - 2015-03-30
 - **FIX MINT-2105** Add custom Javadoc template - *Andrew.M*
