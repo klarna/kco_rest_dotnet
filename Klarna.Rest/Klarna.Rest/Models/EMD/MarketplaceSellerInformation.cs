@@ -62,7 +62,7 @@ namespace Klarna.Rest.Models.EMD
         /// Gets or sets the account last modified date.
         /// </summary>
         [JsonProperty("account_last_modified")]
-        public LastModifed AccountLastModified { get; set; }
+        public LastModified AccountLastModified { get; set; }
 
         /// <summary>
         /// Gets or sets the seller rating.

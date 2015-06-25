@@ -1,6 +1,6 @@
 ﻿#region Copyright Header
 //-----------------------------------------------------------------------
-// <copyright file="MarketplaceWinnerInformation.cs" company="Klarna AB">
+// <copyright file="LastModified.cs" company="Klarna AB">
 //     Copyright 2015 Klarna AB
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,38 +24,38 @@ namespace Klarna.Rest.Models.EMD
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The model for marketplace winner information.
+    /// Model for last modified dates.
     /// </summary>
-    public class MarketplaceWinnerInformation : Model
+    public class LastModified : Model
     {
         /// <summary>
-        /// Gets or sets the unique account identifier.
+        /// Gets or sets password last modified date.
         /// </summary>
-        [JsonProperty("unique_account_identifier_winner")]
-        public UniqueAccountIdentifier UniqueAccountIdentifier { get; set; }
+        [JsonProperty("password")]
+        public DateTime Password { get; set; }
 
         /// <summary>
-        /// Gets or sets the account registration date.
+        /// Gets or sets email last modified date.
         /// </summary>
-        [JsonProperty("account_registration_date")]
-        public DateTime AccountRegistrationDate { get; set; }
+        [JsonProperty("email")]
+        public DateTime Email { get; set; }
 
         /// <summary>
-        /// Gets or sets the account last modified date.
+        /// Gets or sets listing last modified date.
         /// </summary>
-        [JsonProperty("account_last_modified")]
-        public LastModified AccountLastModified { get; set; }
+        [JsonProperty("listing")]
+        public DateTime Listing { get; set; }
 
         /// <summary>
-        /// Gets or sets the number of trades.
+        /// Gets or sets login last modified date.
         /// </summary>
-        [JsonProperty("number_of_trades")]
-        public int NumberOfTrades { get; set; }
+        [JsonProperty("login")]
+        public DateTime Login { get; set; }
 
         /// <summary>
-        /// Gets or sets the volume of trades.
+        /// Gets or sets address last modified date.
         /// </summary>
-        [JsonProperty("volume_of_trades")]
-        public int VolumeOfTrades { get; set; }
+        [JsonProperty("address")]
+        public DateTime Address { get; set; }
     }
 }

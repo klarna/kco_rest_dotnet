@@ -497,7 +497,7 @@ namespace Klarna.Rest.Examples
                     ProductCategory = "clothing",
                     ProductName = "Klarna T-shirt",
                     AccountRegistrationDate = DateTime.Now.AddYears(-2),
-                    AccountLastModified = new LastModifed
+                    AccountLastModified = new LastModified
                     {
                         Address = DateTime.Now,
                         Email = DateTime.Now,
@@ -519,7 +519,7 @@ namespace Klarna.Rest.Examples
                         Other = "Some other information."
                     },
                     AccountRegistrationDate = DateTime.Now.AddYears(-2),
-                    AccountLastModified = new LastModifed
+                    AccountLastModified = new LastModified
                     {
                         Address = DateTime.Now,
                         Email = DateTime.Now,

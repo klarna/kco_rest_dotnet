@@ -1,7 +1,7 @@
 ﻿#region Copyright Header
 //-----------------------------------------------------------------------
-// <copyright file="LastModifed.cs" company="Klarna AB">
-//     Copyright 2015 Klarna AB
+// <copyright file="ExternalCheckout.cs" company="Klarna AB">
+//     Copyright 2014 Klarna AB
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,44 +18,39 @@
 // </copyright>
 //-----------------------------------------------------------------------
 #endregion
-namespace Klarna.Rest.Models.EMD
+namespace Klarna.Rest.Models
 {
     using System;
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Model for last modified dates.
+    /// The model for an external checkout.
     /// </summary>
-    public class LastModifed : Model
+    public class ExternalCheckout : Model
     {
         /// <summary>
-        /// Gets or sets password last modified date.
+        /// Gets or sets the external checkout name.
         /// </summary>
-        [JsonProperty("password")]
-        public DateTime Password { get; set; }
+        [JsonProperty("name", Required = Required.Always)]
+        public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets email last modified date.
+        /// Gets or sets the redirect URI.
         /// </summary>
-        [JsonProperty("email")]
-        public DateTime Email { get; set; }
+        [JsonProperty("redirect_url", Required = Required.Always)]
+        public Uri RedirectUri { get; set; }
 
         /// <summary>
-        /// Gets or sets listing last modified date.
+        /// Gets or sets the image URI.
+        /// <para>Must be using the HTTPS protocol.</para>
         /// </summary>
-        [JsonProperty("listing")]
-        public DateTime Listing { get; set; }
+        [JsonProperty("image_url")]
+        public Uri ImageUri { get; set; }
 
         /// <summary>
-        /// Gets or sets login last modified date.
+        /// Gets or sets the external checkout fee in cents, including tax.
         /// </summary>
-        [JsonProperty("login")]
-        public DateTime Login { get; set; }
-
-        /// <summary>
-        /// Gets or sets address last modified date.
-        /// </summary>
-        [JsonProperty("address")]
-        public DateTime Address { get; set; }
+        [JsonProperty("fee")]
+        public long? Fee { get; set; }
     }
 }
