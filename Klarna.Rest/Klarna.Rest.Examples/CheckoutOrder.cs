@@ -48,7 +48,7 @@ namespace Klarna.Rest.Examples
                 const string MerchantId = "0";
                 const string SharedSecret = "sharedSecret";
 
-                IConnector connector = ConnectorFactory.Create(MerchantId, SharedSecret, Client.TestBaseUrl);
+                IConnector connector = ConnectorFactory.Create(MerchantId, SharedSecret, Client.EuTestBaseUrl);
 
                 Client client = new Client(connector);
                 ICheckoutOrder checkout = client.NewCheckoutOrder();
@@ -136,7 +136,7 @@ namespace Klarna.Rest.Examples
                 const string MerchantId = "0";
                 const string SharedSecret = "sharedSecret";
 
-                IConnector connector = ConnectorFactory.Create(MerchantId, SharedSecret, Client.TestBaseUrl);
+                IConnector connector = ConnectorFactory.Create(MerchantId, SharedSecret, Client.EuTestBaseUrl);
 
                 Client client = new Client(connector);
                 ICheckoutOrder checkout = client.NewCheckoutOrder();
@@ -677,7 +677,7 @@ namespace Klarna.Rest.Examples
                 const string SharedSecret = "sharedSecret";
                 string orderID = "12345";
 
-                IConnector connector = ConnectorFactory.Create(MerchantId, SharedSecret, Client.TestBaseUrl);
+                IConnector connector = ConnectorFactory.Create(MerchantId, SharedSecret, Client.EuTestBaseUrl);
 
                 Client client = new Client(connector);
                 ICheckoutOrder order = client.NewCheckoutOrder(orderID);
@@ -717,7 +717,7 @@ namespace Klarna.Rest.Examples
                 const string SharedSecret = "sharedSecret";
                 string orderID = "12345";
 
-                IConnector connector = ConnectorFactory.Create(MerchantId, SharedSecret, Client.TestBaseUrl);
+                IConnector connector = ConnectorFactory.Create(MerchantId, SharedSecret, Client.EuTestBaseUrl);
 
                 Client client = new Client(connector);
                 ICheckoutOrder checkout = client.NewCheckoutOrder(orderID);

@@ -50,7 +50,7 @@ namespace Klarna.Rest.Examples
                 const string SharedSecret = "sharedSecret";
                 string orderId = "12345";
 
-                IConnector connector = ConnectorFactory.Create(MerchantId, SharedSecret, Client.TestBaseUrl);
+                IConnector connector = ConnectorFactory.Create(MerchantId, SharedSecret, Client.EuTestBaseUrl);
 
                 Client client = new Client(connector);
                 IOrder order = client.NewOrder(orderId);
@@ -125,7 +125,7 @@ namespace Klarna.Rest.Examples
                 string orderId = "12345";
                 string captureId = "34567";
 
-                IConnector connector = ConnectorFactory.Create(MerchantId, SharedSecret, Client.TestBaseUrl);
+                IConnector connector = ConnectorFactory.Create(MerchantId, SharedSecret, Client.EuTestBaseUrl);
 
                 Client client = new Client(connector);
                 IOrder order = client.NewOrder(orderId);
@@ -167,7 +167,7 @@ namespace Klarna.Rest.Examples
                 string orderId = "12345";
                 string captureId = "34567";
 
-                IConnector connector = ConnectorFactory.Create(MerchantId, SharedSecret, Client.TestBaseUrl);
+                IConnector connector = ConnectorFactory.Create(MerchantId, SharedSecret, Client.EuTestBaseUrl);
 
                 Client client = new Client(connector);
                 IOrder order = client.NewOrder(orderId);
@@ -223,7 +223,7 @@ namespace Klarna.Rest.Examples
                 string orderId = "12345";
                 string captureId = "34567";
 
-                IConnector connector = ConnectorFactory.Create(MerchantId, SharedSecret, Client.TestBaseUrl);
+                IConnector connector = ConnectorFactory.Create(MerchantId, SharedSecret, Client.EuTestBaseUrl);
 
                 Client client = new Client(connector);
                 IOrder order = client.NewOrder(orderId);
@@ -265,7 +265,7 @@ namespace Klarna.Rest.Examples
                 string orderId = "12345";
                 string captureId = "34567";
 
-                IConnector connector = ConnectorFactory.Create(MerchantId, SharedSecret, Client.TestBaseUrl);
+                IConnector connector = ConnectorFactory.Create(MerchantId, SharedSecret, Client.EuTestBaseUrl);
 
                 Client client = new Client(connector);
                 IOrder order = client.NewOrder(orderId);

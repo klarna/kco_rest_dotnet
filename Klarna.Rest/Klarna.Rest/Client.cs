@@ -57,9 +57,9 @@ namespace Klarna.Rest
         #region Properties
 
         /// <summary>
-        /// Gets the base url.
+        /// Gets the base url for Europe.
         /// </summary>
-        public static Uri BaseUrl
+        public static Uri EuBaseUrl
         {
             get
             {
@@ -68,13 +68,35 @@ namespace Klarna.Rest
         }
 
         /// <summary>
-        /// Gets the test base url.
+        /// Gets the base url for North America.
         /// </summary>
-        public static Uri TestBaseUrl
+        public static Uri NaBaseUrl
+        {
+            get
+            {
+                return new Uri("https://api-na.klarna.com");
+            }
+        }
+
+        /// <summary>
+        /// Gets the test base url for Europe.
+        /// </summary>
+        public static Uri EuTestBaseUrl
         {
             get
             {
                 return new Uri("https://api.playground.klarna.com");
+            }
+        }
+
+        /// <summary>
+        /// Gets the test base url for North America.
+        /// </summary>
+        public static Uri NaTestBaseUrl
+        {
+            get
+            {
+                return new Uri("https://api-na.playground.klarna.com");
             }
         }
 

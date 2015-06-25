@@ -85,7 +85,7 @@ namespace Klarna.Rest.Tests
         [Test]
         public void Client_TestBaseUrl()
         {
-            Uri url = Client.TestBaseUrl;
+            Uri url = Client.EuTestBaseUrl;
 
             Assert.NotNull(url);
         }
@@ -96,7 +96,7 @@ namespace Klarna.Rest.Tests
         [Test]
         public void Client_BaseUrl()
         {
-            Uri url = Client.BaseUrl;
+            Uri url = Client.EuBaseUrl;
 
             Assert.NotNull(url);
         }
