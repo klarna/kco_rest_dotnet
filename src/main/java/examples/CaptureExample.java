@@ -17,8 +17,8 @@
 package examples;
 
 import com.klarna.rest.api.Capture;
-import com.klarna.rest.api.DefaultClient;
 import com.klarna.rest.api.Client;
+import com.klarna.rest.api.DefaultClient;
 import com.klarna.rest.api.model.Address;
 import com.klarna.rest.api.model.CaptureData;
 import com.klarna.rest.api.model.OrderLine;
@@ -55,8 +55,7 @@ public class CaptureExample {
 
             Capture capture = client.newCapture(orderId);
 
-            final List<OrderLine> lines = new ArrayList<OrderLine>()
-            {
+            final List<OrderLine> lines = new ArrayList<OrderLine>() {
                 {
                     add(new OrderLine()
                             .setType("physical")
@@ -71,8 +70,7 @@ public class CaptureExample {
                 }
             };
 
-            final List<ShippingInfo> info = new ArrayList<ShippingInfo>()
-            {
+            final List<ShippingInfo> info = new ArrayList<ShippingInfo>() {
                 {
                     add(new ShippingInfo()
                             .setShippingCompany("DHL")
@@ -85,8 +83,7 @@ public class CaptureExample {
                 }
             };
 
-            CaptureData data = new CaptureData()
-            {
+            CaptureData data = new CaptureData() {
                 {
                     setCapturedAmount(6000L);
                     setDescription("Shipped part of the order");
@@ -170,8 +167,7 @@ public class CaptureExample {
 
             Capture capture = client.newCapture(orderId, captureId);
 
-            UpdateCustomerDetails data = new UpdateCustomerDetails()
-            {
+            UpdateCustomerDetails data = new UpdateCustomerDetails() {
                 {
                     setBillingAddress(new Address()
                             .setEmail("user@example.com")
@@ -204,8 +200,7 @@ public class CaptureExample {
 
             Capture capture = client.newCapture(orderId, captureId);
 
-            final ShippingInfo shipping = new ShippingInfo()
-            {
+            final ShippingInfo shipping = new ShippingInfo() {
                 {
                     setShippingCompany("DHL");
                     setShippingMethod("Home");

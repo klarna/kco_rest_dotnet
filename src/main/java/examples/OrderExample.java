@@ -16,8 +16,8 @@
 
 package examples;
 
-import com.klarna.rest.api.DefaultClient;
 import com.klarna.rest.api.Client;
+import com.klarna.rest.api.DefaultClient;
 import com.klarna.rest.api.Order;
 import com.klarna.rest.api.model.Address;
 import com.klarna.rest.api.model.OrderData;
@@ -177,8 +177,7 @@ public class OrderExample {
 
             Order order = client.newOrder(orderId);
 
-            final List<OrderLine> lines = new ArrayList<OrderLine>()
-            {
+            final List<OrderLine> lines = new ArrayList<OrderLine>() {
                 {
                     add(new OrderLine()
                             .setType("physical")
@@ -193,8 +192,7 @@ public class OrderExample {
                 }
             };
 
-            Refund data = new Refund()
-            {
+            Refund data = new Refund() {
                 {
                     setRefundedAmount(3000L);
                     setDescription("Refunding half the tomatoes");
@@ -226,8 +224,7 @@ public class OrderExample {
 
             Order order = client.newOrder(orderId);
 
-            UpdateCustomerDetails data = new UpdateCustomerDetails()
-            {
+            UpdateCustomerDetails data = new UpdateCustomerDetails() {
                 {
                     setBillingAddress(new Address()
                             .setEmail("user@example.com")
@@ -263,8 +260,7 @@ public class OrderExample {
 
             Order order = client.newOrder(orderId);
 
-            UpdateMerchantReferences data = new UpdateMerchantReferences()
-            {
+            UpdateMerchantReferences data = new UpdateMerchantReferences() {
                 {
                     setMerchantReference1("15632423");
                     setMerchantReference2("special order");
@@ -296,8 +292,7 @@ public class OrderExample {
 
             Order order = client.newOrder(orderId);
 
-            final List<OrderLine> lines = new ArrayList<OrderLine>()
-            {
+            final List<OrderLine> lines = new ArrayList<OrderLine>() {
                 {
                     add(new OrderLine()
                             .setType("physical")
@@ -308,13 +303,11 @@ public class OrderExample {
                             .setUnitPrice(600L)
                             .setTaxRate(2500)
                             .setTotalAmount(6000L)
-                            .setTotalTaxAmount(1200L)
-                    );
+                            .setTotalTaxAmount(1200L));
                 }
             };
 
-            UpdateAuthorization data = new UpdateAuthorization()
-            {
+            UpdateAuthorization data = new UpdateAuthorization() {
                 {
                     setOrderAmount(6000L);
                     setDescription("Removed bad bananas");

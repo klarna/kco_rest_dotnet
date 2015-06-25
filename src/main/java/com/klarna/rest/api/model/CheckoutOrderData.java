@@ -134,6 +134,11 @@ public class CheckoutOrderData extends Model {
     private Gui gui;
 
     /**
+     * Checkout order attachment.
+     */
+    private Attachment attachment;
+
+    /**
      * Gets the order id.
      *
      * @return Order id
@@ -516,6 +521,27 @@ public class CheckoutOrderData extends Model {
      */
     public CheckoutOrderData setGui(final Gui gui) {
         this.gui = gui;
+
+        return this;
+    }
+
+    /**
+     * Get the attachment.
+     *
+     * @return Attachment.
+     */
+    public Attachment getAttachment() {
+        return this.attachment;
+    }
+
+    /**
+     * Set the attachment.
+     *
+     * @param attachment Attachment.
+     * @return Same instance.
+     */
+    public CheckoutOrderData setAttachment(final Attachment attachment) {
+        this.attachment = attachment;
 
         return this;
     }
