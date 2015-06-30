@@ -139,6 +139,16 @@ public class CheckoutOrderData extends Model {
     private Attachment attachment;
 
     /**
+     * List of external payment methods.
+     */
+    private List<ExternalPaymentMethod> externalPaymentMethods;
+
+    /**
+     * List of external checkouts.
+     */
+    private List<ExternalCheckout> externalCheckouts;
+
+    /**
      * Gets the order id.
      *
      * @return Order id
@@ -542,6 +552,50 @@ public class CheckoutOrderData extends Model {
      */
     public CheckoutOrderData setAttachment(final Attachment attachment) {
         this.attachment = attachment;
+
+        return this;
+    }
+
+    /**
+     * Get the list of external payment methods.
+     *
+     * @return List of external payment methods.
+     */
+    public List<ExternalPaymentMethod> getExternalPaymentMethods() {
+        return this.externalPaymentMethods;
+    }
+
+    /**
+     * Set the list of external payment methods.
+     *
+     * @param externalPaymentMethods List of external payment methods.
+     * @return Same instance.
+     */
+    public CheckoutOrderData setExternalPaymentMethods(
+            List<ExternalPaymentMethod> externalPaymentMethods) {
+        this.externalPaymentMethods = externalPaymentMethods;
+
+        return this;
+    }
+
+    /**
+     * Get the list of external checkouts.
+     *
+     * @return List of external checkouts.
+     */
+    public List<ExternalCheckout> getExternalCheckouts() {
+        return this.externalCheckouts;
+    }
+
+    /**
+     * Set the list of external checkouts.
+     *
+     * @param externalCheckouts List of external checkouts.
+     * @return Same instance.
+     */
+    public CheckoutOrderData setExternalCheckouts(
+            List<ExternalCheckout> externalCheckouts) {
+        this.externalCheckouts = externalCheckouts;
 
         return this;
     }
