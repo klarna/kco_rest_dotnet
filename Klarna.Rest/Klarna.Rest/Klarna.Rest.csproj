@@ -70,7 +70,7 @@
     <Compile Include="Models\EMD\HotelReservationDetails.cs" />
     <Compile Include="Models\EMD\Insurance.cs" />
     <Compile Include="Models\EMD\Itinerary.cs" />
-    <Compile Include="Models\EMD\LastModifed.cs" />
+    <Compile Include="Models\EMD\LastModified.cs" />
     <Compile Include="Models\EMD\Location.cs" />
     <Compile Include="Models\EMD\MarketplaceSellerInformation.cs" />
     <Compile Include="Models\EMD\MarketplaceWinnerInformation.cs" />
@@ -83,6 +83,8 @@
     <Compile Include="Models\EMD\UniqueAccountIdentifier.cs" />
     <Compile Include="Models\EMD\Voucher.cs" />
     <Compile Include="Models\ErrorMessage.cs" />
+    <Compile Include="Models\ExternalCheckout.cs" />
+    <Compile Include="Models\ExternalPaymentMethod.cs" />
     <Compile Include="Models\Gui.cs" />
     <Compile Include="Models\GuiOptions.cs" />
     <Compile Include="Models\Requests\AddShippingInfo.cs" />

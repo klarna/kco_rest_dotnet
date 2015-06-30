@@ -161,5 +161,17 @@ namespace Klarna.Rest.Models
         /// </summary>
         [JsonProperty("attachment")]
         public Attachment Attachment { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of external payment methods.
+        /// </summary>
+        [JsonProperty("external_payment_methods")]
+        public IList<ExternalPaymentMethod> ExternalPaymentMethods { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of external checkouts.
+        /// </summary>
+        [JsonProperty("external_checkouts")]
+        public IList<ExternalCheckout> ExternalCheckouts { get; set; }
     }
 }
