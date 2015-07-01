@@ -1,3 +1,6 @@
+## v2.0.1 - 2015-07-01
+- **FIX MINT-MINT-2252** Correct model names for extra merchant data. - *Christer.G*
+
 ## v2.0.0 - 2015-06-25
 - **NEW MINT-2201** Use order id instead of URL for checkout orders - *Christer.G*
 - **NEW MINT-2086** Updating API error handling - *Christer.G*

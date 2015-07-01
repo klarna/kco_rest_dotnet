@@ -176,11 +176,12 @@ namespace Klarna.Rest.Examples
                     Push = new Uri("http://www.merchant.com/create_order?klarna_order_id={checkout.order.id}")
                 };
 
-                List<PurchaseHistoryFull> purchaseHistoryFull = new List<PurchaseHistoryFull>
+                List<PaymentHistoryFull> purchaseHistoryFull = new List<PaymentHistoryFull>
                 {
-                    new PurchaseHistoryFull
+                    new PaymentHistoryFull
                     {
                         UniqueAccountIdentifier = "Test Testperson",
+                        PaymentOption = "card",
                         NumberPaidPurchases = 1,
                         TotalAmountPaidPurchases = 10000,
                         DateOfLastPaidPurchase = DateTime.Now,
@@ -192,7 +193,7 @@ namespace Klarna.Rest.Examples
                 {
                     Body = new ExtraMerchantDataBody
                     {
-                        PurchaseHistoryFull = purchaseHistoryFull
+                        PaymentHistoryFull = purchaseHistoryFull
                     }
                 };
 

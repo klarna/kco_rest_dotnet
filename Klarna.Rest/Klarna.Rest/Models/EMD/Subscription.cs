@@ -51,5 +51,11 @@ namespace Klarna.Rest.Models.EMD
         /// </summary>
         [JsonProperty("auto_renewal_of_subscription")]
         public bool? AutoRenewalOfSubscriptions { get; set; }
+
+        /// <summary>
+        /// Gets or sets the affiliate name.
+        /// </summary>
+        [JsonProperty("affiliate_name")]
+        public string AffiliateName { get; set; }
     }
 }

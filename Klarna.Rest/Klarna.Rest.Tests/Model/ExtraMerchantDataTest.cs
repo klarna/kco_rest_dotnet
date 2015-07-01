@@ -36,7 +36,7 @@ namespace Klarna.Rest.Tests.Model
         /// <summary>
         /// Expected JSON string.
         /// </summary>
-        private const string JSON = "{\"purchase_history_full\":[{\"date_of_first_paid_purchase\":\"2015-06-24T00:52:13Z\"}]}";
+        private const string JSON = "{\"payment_history_full\":[{\"date_of_first_paid_purchase\":\"2015-06-24T00:52:13Z\"}]}";
 
         /// <summary>
         /// Expected date time ticks.
@@ -53,9 +53,9 @@ namespace Klarna.Rest.Tests.Model
             {
                 Body = new ExtraMerchantDataBody
                 {
-                    PurchaseHistoryFull = new List<PurchaseHistoryFull>
+                    PaymentHistoryFull = new List<PaymentHistoryFull>
                     {
-                        new PurchaseHistoryFull
+                        new PaymentHistoryFull
                         {
                             DateOfFirstPaidPurchase = new DateTime(TICKS)
                         }
@@ -83,7 +83,7 @@ namespace Klarna.Rest.Tests.Model
 
             ExtraMerchantData emd = attachment;
 
-            Assert.AreEqual(TICKS, emd.Body.PurchaseHistoryFull[0].DateOfFirstPaidPurchase.Ticks);
+            Assert.AreEqual(TICKS, emd.Body.PaymentHistoryFull[0].DateOfFirstPaidPurchase.Ticks);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Klarna.Rest.Tests.Model
             Attachment attachment = new Attachment
             {
                 ContentType = "application/vnd.klarna.internal.emd-v2+json",
-                Body = "{\"purchase_history_full\":[{\"date_of_first_paid_purchase\":123}]}"
+                Body = "{\"payment_history_full\":[{\"date_of_first_paid_purchase\":123}]}"
             };
 
             Assert.Throws<JsonSerializationException>(
