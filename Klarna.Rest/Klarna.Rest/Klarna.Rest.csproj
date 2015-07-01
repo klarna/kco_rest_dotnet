@@ -76,8 +76,8 @@
     <Compile Include="Models\EMD\MarketplaceWinnerInformation.cs" />
     <Compile Include="Models\EMD\OtherDeliveryAddress.cs" />
     <Compile Include="Models\EMD\Person.cs" />
-    <Compile Include="Models\EMD\PurchaseHistoryFull.cs" />
-    <Compile Include="Models\EMD\PurchaseHistorySimple.cs" />
+    <Compile Include="Models\EMD\PaymentHistoryFull.cs" />
+    <Compile Include="Models\EMD\PaymentHistorySimple.cs" />
     <Compile Include="Models\EMD\Subscription.cs" />
     <Compile Include="Models\EMD\TrainReservationDetails.cs" />
     <Compile Include="Models\EMD\UniqueAccountIdentifier.cs" />

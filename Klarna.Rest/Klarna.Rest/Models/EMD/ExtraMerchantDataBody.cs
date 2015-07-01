@@ -101,16 +101,16 @@ namespace Klarna.Rest.Models.EMD
         public List<MarketplaceWinnerInformation> MarketplaceWinnerInformation { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of full purchase histories.
+        /// Gets or sets the list of full payment histories.
         /// </summary>
-        [JsonProperty("purchase_history_full")]
-        public List<PurchaseHistoryFull> PurchaseHistoryFull { get; set; }
+        [JsonProperty("payment_history_full")]
+        public List<PaymentHistoryFull> PaymentHistoryFull { get; set; }
 
         /// <summary>
-        /// Gets or sets the list of simple purchase histories.
+        /// Gets or sets the list of simple payment histories.
         /// </summary>
-        [JsonProperty("purchase_history_simple")]
-        public List<PurchaseHistorySimple> PurchaseHistorySimple { get; set; }
+        [JsonProperty("payment_history_simple")]
+        public List<PaymentHistorySimple> PaymentHistorySimple { get; set; }
 
         /// <summary>
         /// Gets or sets the list of other delivery addresses.

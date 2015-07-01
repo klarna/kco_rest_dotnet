@@ -1,6 +1,6 @@
 ﻿#region Copyright Header
 //-----------------------------------------------------------------------
-// <copyright file="PurchaseHistoryFull.cs" company="Klarna AB">
+// <copyright file="PaymentHistoryFull.cs" company="Klarna AB">
 //     Copyright 2015 Klarna AB
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,9 +24,9 @@ namespace Klarna.Rest.Models.EMD
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The model for full purchase history.
+    /// The model for a full payment history.
     /// </summary>
-    public class PurchaseHistoryFull : Model
+    public class PaymentHistoryFull : Model
     {
         /// <summary>
         /// Gets or sets the unique account identifier.
