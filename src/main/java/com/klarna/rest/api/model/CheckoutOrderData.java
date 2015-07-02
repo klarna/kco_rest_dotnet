@@ -572,7 +572,7 @@ public class CheckoutOrderData extends Model {
      * @return Same instance.
      */
     public CheckoutOrderData setExternalPaymentMethods(
-            List<ExternalPaymentMethod> externalPaymentMethods) {
+            final List<ExternalPaymentMethod> externalPaymentMethods) {
         this.externalPaymentMethods = externalPaymentMethods;
 
         return this;
@@ -594,7 +594,7 @@ public class CheckoutOrderData extends Model {
      * @return Same instance.
      */
     public CheckoutOrderData setExternalCheckouts(
-            List<ExternalCheckout> externalCheckouts) {
+            final List<ExternalCheckout> externalCheckouts) {
         this.externalCheckouts = externalCheckouts;
 
         return this;
