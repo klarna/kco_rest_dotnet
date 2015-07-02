@@ -16,7 +16,10 @@
 
 package com.klarna.rest.api;
 
+import com.klarna.rest.api.model.emd.ExtraMerchantData;
+import org.codehaus.jackson.Version;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.module.SimpleModule;
 
 import javax.ws.rs.ext.ContextResolver;
 import javax.ws.rs.ext.Provider;
@@ -34,19 +37,48 @@ import static org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion
  * Custom object serialization/deserialization provider.
  */
 @Provider
-public class ObjectMapperProvider
-        implements ContextResolver<ObjectMapper> {
+public class ObjectMapperProvider implements ContextResolver<ObjectMapper> {
 
     /**
-     * Object mapper instance.
+     * Default object mapper instance.
      */
-    private final ObjectMapper om;
+    private final ObjectMapper defaultObjectMapper;
+
+    /**
+     * Extra merchant data object mapper instance.
+     */
+    private final ObjectMapper emdObjectMapper;
 
     /**
      * Constructs a object mapper provider instance.
      */
     public ObjectMapperProvider() {
-        om = new ObjectMapper();
+        this.defaultObjectMapper = this.getDefaultMapper();
+        this.emdObjectMapper = this.getEMDMapper();
+    }
+
+    /**
+     * Gets the object mapper for the specified type.
+     *
+     * @param type Context type
+     * @return Object mapper
+     */
+    @Override
+    public ObjectMapper getContext(final Class<?> type) {
+        if (type.equals(ExtraMerchantData.class)) {
+            return this.emdObjectMapper;
+        }
+
+        return this.defaultObjectMapper;
+    }
+
+    /**
+     * Create a default object mapper.
+     *
+     * @return Object mapper.
+     */
+    private ObjectMapper getDefaultMapper() {
+        ObjectMapper om = new ObjectMapper();
 
         // Convert propertyName to property_name
         om.setPropertyNamingStrategy(CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES);
@@ -59,16 +91,25 @@ public class ObjectMapperProvider
 
         // Use strings for dates not timestamps
         om.configure(WRITE_DATES_AS_TIMESTAMPS, Boolean.FALSE);
+
+        return om;
     }
 
     /**
-     * Gets the object mapper for the specified type.
+     * Create a object mapper for extra merchant data.
      *
-     * @param type Context type
-     * @return Object mapper
+     * @return Object mapper.
      */
-    @Override
-    public ObjectMapper getContext(final Class<?> type) {
+    private ObjectMapper getEMDMapper() {
+        ObjectMapper om = this.getDefaultMapper();
+
+        SimpleModule module = new SimpleModule(
+                "ExtraMerchantDataModule", new Version(1, 0, 0, null));
+
+        module.addSerializer(new ExtraMerchantDataDateTimeSerializer());
+
+        om.registerModule(module);
+
         return om;
     }
 }

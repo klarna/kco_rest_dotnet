@@ -186,6 +186,16 @@ public class CheckoutOrderDataTest extends TestCase {
     }
 
     @Test
+    public void testGetAttachment() {
+        assertNull(data.getAttachment());
+
+        Attachment expected = new Attachment();
+        data.setAttachment(expected);
+
+        assertSame(expected, data.getAttachment());
+    }
+
+    @Test
     public void testGetReadonly() {
         assertNull(data.getStatus());
         assertNull(data.getCompletedAt());
