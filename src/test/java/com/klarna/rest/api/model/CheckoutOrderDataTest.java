@@ -196,6 +196,26 @@ public class CheckoutOrderDataTest extends TestCase {
     }
 
     @Test
+    public void testGetExternalPaymentMethods() {
+        assertNull(data.getExternalPaymentMethods());
+
+        List<ExternalPaymentMethod> expected = new ArrayList<>();
+        data.setExternalPaymentMethods(expected);
+
+        assertSame(expected, data.getExternalPaymentMethods());
+    }
+
+    @Test
+    public void testGetExternalCheckouts() {
+        assertNull(data.getExternalCheckouts());
+
+        List<ExternalCheckout> expected = new ArrayList<>();
+        data.setExternalCheckouts(expected);
+
+        assertSame(expected, data.getExternalCheckouts());
+    }
+
+    @Test
     public void testGetReadonly() {
         assertNull(data.getStatus());
         assertNull(data.getCompletedAt());
