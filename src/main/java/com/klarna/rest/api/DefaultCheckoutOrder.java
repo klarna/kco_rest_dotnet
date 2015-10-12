@@ -59,9 +59,11 @@ import static javax.ws.rs.core.HttpHeaders.LOCATION;
 
     @Override
     public void create(final CheckoutOrderData data) {
-        String url = this.post(data)
-                .andExpect(Status.CREATED)
+        ApiResponse response = this.post(data);
+        String url = response.andExpect(Status.CREATED)
                 .getHeaders().getFirst(LOCATION);
+
+        response.close();
 
         this.setWebResource(this.getWebResource().uri(URI.create(url)));
     }

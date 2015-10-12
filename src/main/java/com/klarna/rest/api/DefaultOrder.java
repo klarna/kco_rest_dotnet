@@ -49,48 +49,56 @@ import com.sun.jersey.api.client.WebResource;
     @Override
     public void acknowledge() {
         this.post("acknowledge", null)
-                .andExpect(Status.NO_CONTENT);
+                .andExpect(Status.NO_CONTENT)
+                .close();
     }
 
     @Override
     public void cancel() {
         this.post("cancel", null)
-                .andExpect(Status.NO_CONTENT);
+                .andExpect(Status.NO_CONTENT)
+                .close();
     }
 
     @Override
     public void extendAuthorizationTime() {
         this.post("extend-authorization-time", null)
-                .andExpect(Status.NO_CONTENT);
+                .andExpect(Status.NO_CONTENT)
+                .close();
     }
 
     @Override
     public void releaseRemainingAuthorization() {
         this.post("release-remaining-authorization", null)
-                .andExpect(Status.NO_CONTENT);
+                .andExpect(Status.NO_CONTENT)
+                .close();
     }
 
     @Override
     public void refund(final Refund data) {
         this.post("refunds", data)
-                .andExpect(Status.NO_CONTENT);
+                .andExpect(Status.NO_CONTENT)
+                .close();
     }
 
     @Override
     public void updateCustomerDetails(final UpdateCustomerDetails data) {
         this.patch("customer-details", data)
-                .andExpect(Status.NO_CONTENT);
+                .andExpect(Status.NO_CONTENT)
+                .close();
     }
 
     @Override
     public void updateMerchantReferences(final UpdateMerchantReferences data) {
         this.patch("merchant-references", data)
-                .andExpect(Status.NO_CONTENT);
+                .andExpect(Status.NO_CONTENT)
+                .close();
     }
 
     @Override
     public void updateAuthorization(final UpdateAuthorization data) {
         this.patch("authorization", data)
-                .andExpect(Status.NO_CONTENT);
+                .andExpect(Status.NO_CONTENT)
+                .close();
     }
 }
