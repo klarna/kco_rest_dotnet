@@ -42,9 +42,11 @@ import static javax.ws.rs.core.HttpHeaders.LOCATION;
 
     @Override
     public void create(final CaptureData data) {
-        String url = this.post(data)
-                .andExpect(Status.CREATED)
+        ApiResponse response = this.post(data);
+        String url = response.andExpect(Status.CREATED)
                 .getHeaders().getFirst(LOCATION);
+
+        response.close();
 
         this.setWebResource(this.getWebResource().uri(URI.create(url)));
     }
@@ -59,18 +61,21 @@ import static javax.ws.rs.core.HttpHeaders.LOCATION;
     @Override
     public void triggerSendout() {
         this.post("trigger-send-out", null)
-                .andExpect(Status.NO_CONTENT);
+                .andExpect(Status.NO_CONTENT)
+                .close();
     }
 
     @Override
     public void updateCustomerDetails(final UpdateCustomerDetails data) {
         this.patch("customer-details", data)
-                .andExpect(Status.NO_CONTENT);
+                .andExpect(Status.NO_CONTENT)
+                .close();
     }
 
     @Override
     public void addShippingInfo(final AddShippingInfo info) {
         this.post("shipping-info", info)
-                .andExpect(Status.NO_CONTENT);
+                .andExpect(Status.NO_CONTENT)
+                .close();
     }
 }

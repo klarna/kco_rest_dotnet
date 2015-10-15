@@ -1,3 +1,6 @@
+## v2.0.1 - 2015-10-15
+- **FIX MINT-2322** Fix issues with connection still allocated exceptions - *Joakim.L*
+
 ## v2.0.0 - 2015-06-30
 - **NEW MINT-2202** Use order id instead of URL for checkout orders - *Christer.G*
 - **NEW MINT-2216** Add base URLs for North America - *Joakim.L*

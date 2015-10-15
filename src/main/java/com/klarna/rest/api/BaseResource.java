@@ -198,8 +198,20 @@ import static javax.ws.rs.core.Response.Status.Family.SUCCESSFUL;
                 return this.response;
             }
 
+            this.close();
+
             throw ProtocolException.unexpectedStatus(
                     this.response.getStatus());
+        }
+
+        /**
+         * Closes the response.
+         *
+         * @throws ClientHandlerException If there is an error closing the
+         * response.
+         */
+        protected void close() throws ClientHandlerException {
+            this.response.close();
         }
     }
 }
