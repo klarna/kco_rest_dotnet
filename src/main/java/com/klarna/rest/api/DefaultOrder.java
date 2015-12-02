@@ -77,7 +77,7 @@ import com.sun.jersey.api.client.WebResource;
     @Override
     public void refund(final Refund data) {
         this.post("refunds", data)
-                .andExpect(Status.NO_CONTENT)
+                .andExpect(Status.CREATED, Status.NO_CONTENT)
                 .close();
     }
 
