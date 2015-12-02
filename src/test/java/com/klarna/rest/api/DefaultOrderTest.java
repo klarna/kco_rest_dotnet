@@ -270,6 +270,44 @@ public class DefaultOrderTest extends ResourceTestCase {
     }
 
     @Test
+    public void testRefund201() {
+        // Constructor
+        when(root.path(DefaultOrder.PATH))
+                .thenReturn(root);
+        when(root.path(ORDER_ID))
+                .thenReturn(root);
+
+        // BaseResource.post
+        Refund data = new Refund();
+        when(root.getRequestBuilder())
+                .thenReturn(builder);
+        when(builder.type(MediaType.APPLICATION_JSON_TYPE))
+                .thenReturn(builder);
+        when(builder.post(ClientResponse.class, data))
+                .thenReturn(response);
+        when(response.getStatusInfo())
+                .thenReturn(Status.CREATED);
+
+        // DefaultOrder.refund
+        when(root.path("refunds"))
+                .thenReturn(root);
+        when(response.getStatus())
+                .thenReturn(Status.CREATED.getStatusCode());
+
+        order = new DefaultOrder(root, ORDER_ID);
+        order.refund(data);
+
+        // Verify request method
+        verify(builder).post(ClientResponse.class, data);
+
+        // Verify that the right URL was used
+        InOrder ordered = inOrder(root);
+        ordered.verify(root).path(DefaultOrder.PATH);
+        ordered.verify(root).path(ORDER_ID);
+        ordered.verify(root).path("refunds");
+    }
+
+    @Test
     public void testUpdateCustomerDetails() {
         // Constructor
         when(root.path(DefaultOrder.PATH))
