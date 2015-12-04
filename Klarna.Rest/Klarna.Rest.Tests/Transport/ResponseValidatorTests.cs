@@ -90,6 +90,15 @@ namespace Klarna.Rest.Tests.Transport
         }
 
         /// <summary>
+        /// Basic test of Status.
+        /// </summary>
+        [Test]
+        public void ResponseValidator_Statuses_Basic()
+        {
+            Assert.AreEqual(this.responseValidator, this.responseValidator.Status(HttpStatusCode.Created, this.statusCode));
+        }
+
+        /// <summary>
         /// Exception test of StatusCode.
         /// </summary>
         [Test]
@@ -99,6 +108,19 @@ namespace Klarna.Rest.Tests.Transport
                 delegate { this.responseValidator.Status(HttpStatusCode.NotModified); });
 
             string expectedMessage = string.Format("Response has wrong StatusCode. Should be {0} but is {1}", (int)HttpStatusCode.NotModified, (int)this.statusCode);
+            Assert.AreEqual(expectedMessage, ex.Message);
+        }
+
+        /// <summary>
+        /// Exception test of StatusCode.
+        /// </summary>
+        [Test]
+        public void ResponseValidator_StatusCodes_Exception()
+        {
+            Exception ex = Assert.Throws<Exception>(
+                delegate { this.responseValidator.Status(HttpStatusCode.NotModified, HttpStatusCode.NoContent); });
+
+            string expectedMessage = string.Format("Response has wrong StatusCode {0}", (int)this.statusCode);
             Assert.AreEqual(expectedMessage, ex.Message);
         }
 

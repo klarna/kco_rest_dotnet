@@ -138,11 +138,11 @@ namespace Klarna.Rest.OrderManagement
         /// <summary>
         /// Refunds an amount of a captured order.
         /// </summary>
-        /// <param name="order">the order</param>
-        public void Refund(Refund order)
+        /// <param name="data">the refund data</param>
+        public void Refund(Refund data)
         {
-            this.Post(this.Location + "/refunds", order)
-                .Status(HttpStatusCode.NoContent);
+            this.Post(this.Location + "/refunds", data)
+                .Status(HttpStatusCode.Created, HttpStatusCode.NoContent);
         }
 
         /// <summary>

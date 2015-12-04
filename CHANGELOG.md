@@ -1,5 +1,8 @@
+## v2.1.0 - 2015-12-07
+- **NEW META-13** Support 201 for refunds. - *Joakim.L*
+
 ## v2.0.1 - 2015-07-01
-- **FIX MINT-MINT-2252** Correct model names for extra merchant data. - *Christer.G*
+- **FIX MINT-2252** Correct model names for extra merchant data. - *Christer.G*
 
 ## v2.0.0 - 2015-06-25
 - **NEW MINT-2201** Use order id instead of URL for checkout orders - *Christer.G*

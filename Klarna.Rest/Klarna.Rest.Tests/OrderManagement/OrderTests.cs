@@ -238,6 +238,20 @@ namespace Klarna.Rest.Tests.OrderManagement
         }
 
         /// <summary>
+        /// Basic test of Refund.
+        /// </summary>
+        [Test]
+        public void Order_Refund_Basic_Created()
+        {
+            // Arrange
+            Refund refund = TestsHelper.GetRefund();
+
+            TestsHelper.Mock(HttpMethod.Post, this.order.Location + "/refunds", refund.ConvertToJson(), HttpStatusCode.Created, this.connectorMock);
+
+            this.order.Refund(refund);
+        }
+
+        /// <summary>
         /// Basic test of ReleaseRemainingAuthorization.
         /// </summary>
         [Test]
