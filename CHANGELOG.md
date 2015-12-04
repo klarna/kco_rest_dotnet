@@ -1,3 +1,6 @@
+## v2.1.0 - 2015-12-07
+- **NEW META-13** Allow for 201 response on refund - *Joakim.L*
+
 ## v2.0.1 - 2015-10-15
 - **FIX MINT-2322** Fix issues with connection still allocated exceptions - *Joakim.L*
 

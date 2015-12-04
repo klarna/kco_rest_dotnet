@@ -29,6 +29,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import static com.sun.jersey.api.client.ClientResponse.Status.BAD_REQUEST;
 import static com.sun.jersey.api.client.ClientResponse.Status.CREATED;
 import static com.sun.jersey.api.client.ClientResponse.Status.NO_CONTENT;
+import static com.sun.jersey.api.client.ClientResponse.Status.OK;
 import static org.mockito.Mockito.when;
 
 /**
@@ -83,6 +84,23 @@ public class ApiResponseTest extends TestCase {
             helper.andExpect(CREATED);
         } catch (ProtocolException ex) {
             assertEquals("Unexpected response status code: 204",
+                    ex.getMessage());
+
+            throw ex; // rethrow to check thrown exception
+        }
+    }
+
+    @Test
+    public void testAndExpectStatuses() {
+        thrown.expect(ProtocolException.class);
+
+        when(response.getStatus())
+                .thenReturn(OK.getStatusCode());
+
+        try {
+            helper.andExpect(CREATED, NO_CONTENT);
+        } catch (ProtocolException ex) {
+            assertEquals("Unexpected response status code: 200",
                     ex.getMessage());
 
             throw ex; // rethrow to check thrown exception

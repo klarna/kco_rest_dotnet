@@ -25,6 +25,8 @@ import com.sun.jersey.api.client.WebResource;
 
 import javax.ws.rs.core.Response.Status.Family;
 import java.net.URI;
+import java.util.Arrays;
+import java.util.List;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON_TYPE;
 import static javax.ws.rs.core.Response.Status.Family.SUCCESSFUL;
@@ -195,6 +197,28 @@ import static javax.ws.rs.core.Response.Status.Family.SUCCESSFUL;
         protected ClientResponse andExpect(final Status status) throws
                 ProtocolException {
             if (status.getStatusCode() == this.response.getStatus()) {
+                return this.response;
+            }
+
+            this.close();
+
+            throw ProtocolException.unexpectedStatus(
+                    this.response.getStatus());
+        }
+
+        /**
+         * Asserts if the status code of the response is the expected.
+         *
+         * @param expected The expected HTTP status codes.
+         * @return Same instance.
+         * @throws ProtocolException If the response status code is not expected
+         */
+        protected ClientResponse andExpect(final Status... expected) throws
+                ProtocolException {
+            List<Status> statuses = Arrays.asList(expected);
+            Status status = Status.fromStatusCode(this.response.getStatus());
+
+            if (statuses.contains(status)) {
                 return this.response;
             }
 
