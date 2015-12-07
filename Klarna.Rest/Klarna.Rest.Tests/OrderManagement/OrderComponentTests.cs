@@ -364,6 +364,36 @@ namespace Klarna.Rest.Tests.OrderManagement
             TestsHelper.AssertRequest(this.merchantId, this.secret, this.httpWebRequest, HttpMethod.Post);
         }
 
+        /// <summary>
+        /// Make sure that the request sent is correct when performing a refund.
+        /// </summary>
+        [Test]
+        public void TestRefundCreated()
+        {
+            // Arrange
+            Refund refund = new Refund()
+            {
+                RefundedAmount = 12345,
+                Description = "Refund description"
+            };
+
+            this.requestMock.Expect(x => x.CreateRequest(this.baseUrl.ToString().TrimEnd('/') + this.path + '/' + this.orderId + "/refunds")).Return(this.httpWebRequest);
+
+            WebHeaderCollection headers = new WebHeaderCollection();
+            headers["Location"] = this.location;
+
+            IResponse response = new Response(HttpStatusCode.Created, headers, string.Empty);
+            this.requestMock.Expect(x => x.Send(this.httpWebRequest, refund.ConvertToJson())).Return(response);
+
+            // Act
+            this.order.Refund(refund);
+
+            // Assert
+            this.requestMock.VerifyAllExpectations();
+            Assert.AreEqual(this.httpWebRequest.ContentLength, refund.ConvertToJson().Length);
+            TestsHelper.AssertRequest(this.merchantId, this.secret, this.httpWebRequest, HttpMethod.Post);
+        }
+
         #endregion
     }
 }

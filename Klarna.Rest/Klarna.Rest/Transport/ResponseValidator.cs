@@ -21,6 +21,7 @@
 namespace Klarna.Rest.Transport
 {
     using System;
+    using System.Collections.Generic;
     using System.Net;
 
     /// <summary>
@@ -63,6 +64,23 @@ namespace Klarna.Rest.Transport
             if (!this.Response.Status.Equals(status))
             {
                 throw new Exception(string.Format("Response has wrong StatusCode. Should be {0} but is {1}", (int)status, (int)this.Response.Status));
+            }
+
+            return this;
+        }
+
+        /// <summary>
+        /// Asserts the HTTP response status codes.
+        /// </summary>
+        /// <param name="expected">the expected HTTP status codes</param>
+        /// <returns>this response validator</returns>
+        public ResponseValidator Status(params HttpStatusCode[] expected)
+        {
+            List<HttpStatusCode> statuses = new List<HttpStatusCode>(expected);
+
+            if (!statuses.Contains(this.Response.Status))
+            {
+                throw new Exception(string.Format("Response has wrong StatusCode {0}", (int)this.Response.Status));
             }
 
             return this;
