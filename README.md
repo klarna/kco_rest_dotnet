@@ -62,5 +62,5 @@ The Klarna Checkout REST Java SDK is released under
 [Apache License, Version 2.0](http://www.apache.org/LICENSE-2.0)
 
 [maven-image]: https://img.shields.io/maven-central/v/com.klarna/kco-rest.svg?style=flat
-[travis-image]: https://img.shields.io/travis/klarna/kco_rest_java/v2.0.svg?style=flat
-[coveralls-image]: https://img.shields.io/coveralls/klarna/kco_rest_java/v2.0.svg?style=flat
+[travis-image]: https://img.shields.io/travis/klarna/kco_rest_java/v2.1.svg?style=flat
+[coveralls-image]: https://img.shields.io/coveralls/klarna/kco_rest_java/v2.1.svg?style=flat
