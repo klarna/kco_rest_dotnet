@@ -11,7 +11,6 @@
     <iconUrl>http://cdn.klarna.com/public/images/global/icons/v1/basic/global_basic_icon_std_blue.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Releasing Klarna Checkout to NuGet</releaseNotes>
     <copyright>Copyright 2015</copyright>
     <tags>Klarna Checkout Payments SDK</tags>
   </metadata>

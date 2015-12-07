@@ -27,7 +27,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Klarna.Rest")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("SDK for Klarna Checkout v3 and Order Management v1 APIs")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Klarna AB")]
 [assembly: AssemblyProduct("Klarna.Rest")]
