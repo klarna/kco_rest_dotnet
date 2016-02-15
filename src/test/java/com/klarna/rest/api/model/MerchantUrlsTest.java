@@ -74,4 +74,28 @@ public class MerchantUrlsTest extends TestCase {
         urls.setValidation("url");
         assertEquals("url", urls.getValidation());
     }
+
+    @Test
+    public void testGetShippingOptionUpdate() {
+        assertNull(urls.getShippingOptionUpdate());
+
+        urls.setShippingOptionUpdate("url");
+        assertEquals("url", urls.getShippingOptionUpdate());
+    }
+
+    @Test
+    public void testGetAddressUpdate() {
+        assertNull(urls.getAddressUpdate());
+
+        urls.setAddressUpdate("url");
+        assertEquals("url", urls.getAddressUpdate());
+    }
+
+    @Test
+    public void testGetNotification() {
+        assertNull(urls.getNotification());
+
+        urls.setNotification("url");
+        assertEquals("url", urls.getNotification());
+    }
 }
