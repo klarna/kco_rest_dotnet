@@ -1,3 +1,6 @@
+## v2.2.0 - 2016-02-15
+- **NEW META-112** Updating MerchantUrls model for shipping_option_update, address_update & notification - *Christer.G*
+
 ## v2.1.0 - 2015-12-07
 - **NEW META-13** Support 201 for refunds. - *Joakim.L*
 
