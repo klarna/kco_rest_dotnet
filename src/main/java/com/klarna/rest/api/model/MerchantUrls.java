@@ -47,6 +47,21 @@ public class MerchantUrls extends Model {
     private String validation;
 
     /**
+     * URL for shipping option update.
+     */
+    private String shippingOptionUpdate;
+
+    /**
+     * URL for shipping and tax updates.
+     */
+    private String addressUpdate;
+
+    /**
+     * URL for notifications on pending orders.
+     */
+    private String notification;
+
+    /**
      * Gets the terms URL.
      *
      * @return Terms page
@@ -147,6 +162,69 @@ public class MerchantUrls extends Model {
      */
     public MerchantUrls setValidation(final String url) {
         this.validation = url;
+
+        return this;
+    }
+
+    /**
+     * Gets the shipping option update URL.
+     *
+     * @return Shipping option update.
+     */
+    public String getShippingOptionUpdate() {
+        return this.shippingOptionUpdate;
+    }
+
+    /**
+     * Sets the shipping option update URL.
+     *
+     * @param url Shipping option update.
+     * @return Same instance.
+     */
+    public MerchantUrls setShippingOptionUpdate(final String url) {
+        this.shippingOptionUpdate = url;
+
+        return this;
+    }
+
+    /**
+     * Gets the address update URL.
+     *
+     * @return Address update.
+     */
+    public String getAddressUpdate() {
+        return this.addressUpdate;
+    }
+
+    /**
+     * Sets the address update URL.
+     *
+     * @param url Address update.
+     * @return Same instance.
+     */
+    public MerchantUrls setAddressUpdate(final String url) {
+        this.addressUpdate = url;
+
+        return this;
+    }
+
+    /**
+     * Gets the notification URL.
+     *
+     * @return Notification.
+     */
+    public String getNotification() {
+        return this.notification;
+    }
+
+    /**
+     * Sets the notification URL.
+     *
+     * @param url Notification.
+     * @return Same instance.
+     */
+    public MerchantUrls setNotification(final String url) {
+        this.notification = url;
 
         return this;
     }
