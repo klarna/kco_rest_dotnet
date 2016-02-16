@@ -57,5 +57,23 @@ namespace Klarna.Rest.Models
         /// </summary>
         [JsonProperty("validation")]
         public Uri Validation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the shipping option update url.
+        /// </summary>
+        [JsonProperty("shipping_option_update")]
+        public Uri ShippingOptionUpdate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the address update url.
+        /// </summary>
+        [JsonProperty("address_update")]
+        public Uri AddressUpdate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the notification url.
+        /// </summary>
+        [JsonProperty("notification")]
+        public Uri Notification { get; set; }
     }
 }
