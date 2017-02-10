@@ -76,6 +76,30 @@ public class AddressTest extends TestCase {
     }
 
     @Test
+    public void testGetStreetName() {
+        assertNull(address.getStreetName());
+
+        address.setStreetName("streetName");
+        assertEquals("streetName", address.getStreetName());
+    }
+
+    @Test
+    public void testGetStreetNumber() {
+        assertNull(address.getStreetNumber());
+
+        address.setStreetNumber("streetNumber");
+        assertEquals("streetNumber", address.getStreetNumber());
+    }
+
+    @Test
+    public void testGetHouseExtension() {
+        assertNull(address.getHouseExtension());
+
+        address.setHouseExtension("houseExtension");
+        assertEquals("houseExtension", address.getHouseExtension());
+    }
+
+    @Test
     public void testGetPostalCode() {
         assertNull(address.getPostalCode());
 

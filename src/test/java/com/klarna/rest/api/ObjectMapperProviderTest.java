@@ -16,6 +16,7 @@
 
 package com.klarna.rest.api;
 
+import com.klarna.rest.api.model.Address;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
@@ -65,5 +66,11 @@ public class ObjectMapperProviderTest extends TestCase {
         assertFalse(om.isEnabled(FAIL_ON_UNKNOWN_PROPERTIES));
 
         assertFalse(om.isEnabled(WRITE_DATES_AS_TIMESTAMPS));
+    }
+
+    @Test
+    public void testOfAddressSerilisation(){
+        assertTrue(om.canSerialize(Address.class));
+        assertTrue(om.canDeserialize(Address.class));
     }
 }
