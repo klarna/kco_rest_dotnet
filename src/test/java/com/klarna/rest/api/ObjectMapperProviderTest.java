@@ -71,6 +71,5 @@ public class ObjectMapperProviderTest extends TestCase {
     @Test
     public void testOfAddressSerilisation(){
         assertTrue(om.canSerialize(Address.class));
-        assertTrue(om.canDeserialize(Address.class));
     }
 }
