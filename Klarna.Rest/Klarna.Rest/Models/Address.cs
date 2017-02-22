@@ -58,6 +58,24 @@ namespace Klarna.Rest.Models
         public string StreetAddress2 { get; set; }
 
         /// <summary>
+        /// Gets or sets the street name.
+        /// </summary>
+        [JsonProperty("street_name")]
+        public string StreetName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the street number.
+        /// </summary>
+        [JsonProperty("street_number")]
+        public string StreetNumber { get; set; }
+
+        /// <summary>
+        /// Gets or sets the house extension.
+        /// </summary>
+        [JsonProperty("house_extension")]
+        public string HouseExtension { get; set; }
+
+        /// <summary>
         /// Gets or sets the postal code.
         /// </summary>
         [JsonProperty("postal_code")]
