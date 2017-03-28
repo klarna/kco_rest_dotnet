@@ -337,7 +337,7 @@ public class Address extends Model {
      * @param streetName Street Name
      * @return Same instance
      */
-    public Address setStreetName(String streetName) {
+    public Address setStreetName(final String streetName) {
         this.streetName = streetName;
 
         return this;
@@ -358,7 +358,7 @@ public class Address extends Model {
      * @param streetNumber Street Number
      * @return Same instance
      */
-    public Address setStreetNumber(String streetNumber) {
+    public Address setStreetNumber(final String streetNumber) {
         this.streetNumber = streetNumber;
 
         return this;
@@ -379,7 +379,7 @@ public class Address extends Model {
      * @param houseExtension House Extension
      * @return Same instance
      */
-    public Address setHouseExtension(String houseExtension) {
+    public Address setHouseExtension(final String houseExtension) {
         this.houseExtension = houseExtension;
 
         return this;
