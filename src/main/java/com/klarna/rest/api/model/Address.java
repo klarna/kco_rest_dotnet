@@ -47,6 +47,21 @@ public class Address extends Model {
     private String streetAddress2;
 
     /**
+     * Street name
+     */
+    private String streetName;
+    
+    /**
+     * Street number
+     */
+    private String streetNumber;
+
+    /**
+     * House extension.
+     */
+    private String houseExtension;
+
+    /**
      * Postal code.
      */
     private String postalCode;
@@ -303,6 +318,69 @@ public class Address extends Model {
      */
     public Address setRegion(final String region) {
         this.region = region;
+
+        return this;
+    }
+
+    /**
+     * Gets the street name.
+     *
+     * @return Street Name
+     */
+    public String getStreetName() {
+        return streetName;
+    }
+
+    /**
+     * Sets the street name.
+     *
+     * @param streetName Street Name
+     * @return Same instance
+     */
+    public Address setStreetName(final String streetName) {
+        this.streetName = streetName;
+
+        return this;
+    }
+
+    /**
+     * Gets the street number.
+     *
+     * @return Street Number
+     */
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
+    /**
+     * Sets the street number.
+     *
+     * @param streetNumber Street Number
+     * @return Same instance
+     */
+    public Address setStreetNumber(final String streetNumber) {
+        this.streetNumber = streetNumber;
+
+        return this;
+    }
+
+    /**
+     * Gets the house extension.
+     *
+     * @return House Extension
+     */
+    public String getHouseExtension() {
+        return houseExtension;
+    }
+
+    /**
+     * Sets the house extension.
+     *
+     * @param houseExtension House Extension
+     * @return Same instance
+     */
+    public Address setHouseExtension(final String houseExtension) {
+        this.houseExtension = houseExtension;
 
         return this;
     }
