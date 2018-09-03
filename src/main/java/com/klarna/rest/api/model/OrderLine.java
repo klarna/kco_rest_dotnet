@@ -16,6 +16,8 @@
 
 package com.klarna.rest.api.model;
 
+import java.net.URI;
+
 /**
  * Order line data model.
  */
@@ -70,6 +72,27 @@ public class OrderLine extends Model {
      * Total tax amount in cents.
      */
     private Long totalTaxAmount;
+
+    /**
+     * Data about the order line. Set at creation or update and returned when fetching the order through the API.
+     */
+    private String merchantData;
+
+    /**
+     * Product URI.
+     */
+    private URI productUrl;
+
+    /**
+     * Image URI.
+     */
+    private URI imageUrl;
+
+    /**
+     * Identifiers to better describe the product for improved risk assessment, support,
+     * presentation to consumers and promotional functionality.
+     */
+    private ProductIdentifiers productIdentifiers;
 
     /**
      * Gets the item type.
@@ -277,6 +300,89 @@ public class OrderLine extends Model {
      */
     public OrderLine setTotalTaxAmount(final Long amount) {
         this.totalTaxAmount = amount;
+
+        return this;
+    }
+
+    /**
+     * Gets the merchant metadata.
+     *
+     * @return Merchant metadata
+     */
+    public String getMerchantData() {
+        return this.merchantData;
+    }
+
+    /**
+     * Sets the merchant metadata.
+     *
+     * @param merchantData Merchant metadata
+     * @return Same instance
+     */
+    public OrderLine setMerchantData(final String merchantData) {
+        this.merchantData = merchantData;
+
+        return this;
+    }
+
+    /**
+     * Get the product URI.
+     *
+     * @return Product URI.
+     */
+    public URI getProductUrl() {
+        return this.productUrl;
+    }
+
+    /**
+     * Set the product URI.
+     *
+     * @param productUrl Product URI.
+     * @return Same instance.
+     */
+    public OrderLine setProductUrl(final URI productUrl) {
+        this.productUrl = productUrl;
+
+        return this;
+    }
+
+    /**
+     * Get the image URI.
+     *
+     * @return Image URI.
+     */
+    public URI getImageUrl() {
+        return this.imageUrl;
+    }
+
+    /**
+     * Set the image URI.
+     *
+     * @param imageUrl Image URI.
+     * @return Same instance.
+     */
+    public OrderLine setImageUrl(final URI imageUrl) {
+        this.imageUrl = imageUrl;
+
+        return this;
+    }
+
+    /**
+     * Gets product indentifiers
+     *
+     * @return productIdentifiers
+     **/
+    public ProductIdentifiers getProductIdentifiers() {
+        return this.productIdentifiers;
+    }
+
+    /**
+     * Sets product indentifiers
+     *
+     * @return Same instance.
+     **/
+    public OrderLine setProductIdentifiers(ProductIdentifiers productIdentifiers) {
+        this.productIdentifiers = productIdentifiers;
 
         return this;
     }

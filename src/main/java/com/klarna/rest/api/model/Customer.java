@@ -37,6 +37,12 @@ public class Customer extends Model {
     private String organizationRegistrationId;
 
     /**
+     * The customer national identification number.
+     */
+    private String nationalIdentificationNumber;
+
+
+    /**
      * Gets the date of birth.
      *
      * @return Date of birth (ISO 8601 date), e.g. "1990-07-07"
@@ -99,5 +105,14 @@ public class Customer extends Model {
         this.organizationRegistrationId = organizationRegistrationId;
 
         return this;
+    }
+
+    /**
+     * Gets the National Identification Number (NIN).
+     *
+     * @return NIN
+     */
+    public String getNationalIdentificationNumber() {
+        return this.nationalIdentificationNumber;
     }
 }
