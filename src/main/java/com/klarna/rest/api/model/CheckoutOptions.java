@@ -16,10 +16,18 @@
 
 package com.klarna.rest.api.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Checkout options data model.
  */
 public class CheckoutOptions extends Model {
+
+    /**
+     * Acquiring channel for the order.
+     */
+    private String acquiringChannel;
 
     /**
      * If customers date of birth is mandatory.
@@ -60,6 +68,83 @@ public class CheckoutOptions extends Model {
      * Color of links, e.g. #FF9900.
      */
     private String colorLink;
+
+    /**
+     * A message that will be presented on the confirmation page under the headline.
+     */
+    private String shippingDetails;
+
+    /**
+     * If specified to false, title becomes optional. Only available for orders for country GB.
+     */
+    private Boolean titleMandatory;
+
+    /**
+     * Additional merchant defined checkbox. e.g. for Newsletter opt-in.
+     */
+    private CheckoutOptionsCheckbox additionalCheckbox;
+
+    /**
+     * Additional merchant defined field. e.g. for purchases that MUST have a national insurance number.
+     */
+    private Boolean nationalIdentificationNumberMandatory;
+
+    /**
+     * Additional merchant defined field. e.g. Extra terms and conditions to show.
+     */
+    private String additionalMerchantTerms = null;
+
+    /**
+     * Border radius
+     */
+    private String radiusBorder = null;
+
+    /**
+     * A list of allowed customer types. Supported types: person, organization.
+     */
+    private List<String> allowedCustomerTypes = null;
+
+    /**
+     * If true, the Order Detail subtotals view is expanded.
+     */
+    private Boolean showSubtotalDetail = false;
+
+    /**
+     * Additional merchant defined checkboxes. e.g. for Newsletter opt-in.
+     */
+    private List<CheckoutOptionsCheckbox> additionalCheckboxes = null;
+
+    /**
+     * If true, validate callback must get a positive response to not stop purchase.
+     */
+    private Boolean requireValidateCallbackSuccess = false;
+
+    /**
+     * If true, VAT is not included in total price
+     */
+    private Boolean vatExcluded = false;
+
+
+    /**
+     * Gets the acquiring channel for the order.
+     *
+     * @return Channel
+     */
+    public String getAcquiringChannel() {
+        return this.acquiringChannel;
+    }
+
+    /**
+     * Sets the acquiring channel for the order.
+     *
+     * @param channel Acquiring channel
+     * @return Same instance
+     */
+    public CheckoutOptions setAcquiringChannel(final String channel) {
+        this.acquiringChannel = channel;
+
+        return this;
+    }
 
     /**
      * Gets whether the customer date of birth is mandatory.
@@ -228,6 +313,250 @@ public class CheckoutOptions extends Model {
      */
     public CheckoutOptions setColorLink(final String color) {
         this.colorLink = color;
+
+        return this;
+    }
+
+    /**
+     * Gets the message that will be presented on the confirmation page.
+     *
+     * @return Message
+     */
+    public String getShippingDetails() {
+        return this.shippingDetails;
+    }
+
+    /**
+     * Sets the message that will be presented on the confirmation page.
+     *
+     * @param shippingDetails Message
+     * @return Same instance
+     */
+    public CheckoutOptions setShippingDetails(final String shippingDetails) {
+        this.shippingDetails = shippingDetails;
+
+        return this;
+    }
+
+    /**
+     * Gets whether the customer title is mandatory.
+     *
+     * @return If it is mandatory
+     */
+    public Boolean getTitleMandatory() {
+        return this.titleMandatory;
+    }
+
+    /**
+     * Sets whether the customer title is mandatory.
+     *
+     * @param mandatory If specified to false, title becomes optional
+     * @return Same instance
+     */
+    public CheckoutOptions setTitleMandatory(final Boolean mandatory) {
+        this.titleMandatory = mandatory;
+
+        return this;
+    }
+
+    /**
+     * Gets the additional checkbox option.
+     *
+     * @return Additional checkout checkbox
+     */
+    public CheckoutOptionsCheckbox getAdditionalCheckbox() {
+        return this.additionalCheckbox;
+    }
+
+    /**
+     * Sets the additional checkout checkbox.
+     *
+     * @param additionalCheckbox Additional checkbox
+     * @return Same instance
+     */
+    public CheckoutOptions setAdditionalCheckbox(final CheckoutOptionsCheckbox additionalCheckbox) {
+        this.additionalCheckbox = additionalCheckbox;
+
+        return this;
+    }
+
+    /**
+     * Gets whether the additional merchant defined field is mandatory.
+     *
+     * @return If it is mandatory
+     */
+    public Boolean getNationalIdentificationNumberMandatory() {
+        return this.nationalIdentificationNumberMandatory;
+    }
+
+    /**
+     * Sets the additional merchant defined mandatory.
+     *
+     * @param mandatory If the additional merchant defined field is mandatory
+     * @return Same instance
+     */
+    public CheckoutOptions setNationalIdentificationNumberMandatory(final Boolean mandatory) {
+        this.nationalIdentificationNumberMandatory = mandatory;
+
+        return this;
+    }
+
+    /**
+     * Gets Additional merchant defined field. e.g. Extra terms and conditions to show.
+     *
+     * @return additionalMerchantTerms
+     **/
+    public String getAdditionalMerchantTerms() {
+        return this.additionalMerchantTerms;
+    }
+
+    /**
+     * Sets Additional merchant defined field.
+     *
+     * @return Same instance
+     **/
+    public CheckoutOptions setAdditionalMerchantTerms(String additionalMerchantTerms) {
+        this.additionalMerchantTerms = additionalMerchantTerms;
+
+        return this;
+    }
+
+    /**
+     * Gets Border radius.
+     *
+     * @return radiusBorder
+     **/
+    public String getRadiusBorder() {
+        return this.radiusBorder;
+    }
+
+    /**
+     * Sets Border radius.
+     *
+     * @return Same instance
+     **/
+    public CheckoutOptions setRadiusBorder(String radiusBorder) {
+        this.radiusBorder = radiusBorder;
+
+        return this;
+    }
+
+    public CheckoutOptions addAllowedCustomerTypesItem(String allowedCustomerTypesItem) {
+        if (this.allowedCustomerTypes == null) {
+            this.allowedCustomerTypes = new ArrayList<String>();
+        }
+        this.allowedCustomerTypes.add(allowedCustomerTypesItem);
+        return this;
+    }
+
+    /**
+     * Gets a list of allowed customer types.
+     *
+     * @return allowedCustomerTypes
+     **/
+    public List<String> getAllowedCustomerTypes() {
+        return allowedCustomerTypes;
+    }
+
+    /**
+     * Sets a list of allowed customer types. Supported types: person, organization.
+     *
+     * @return Same instance
+     **/
+    public CheckoutOptions setAllowedCustomerTypes(List<String> allowedCustomerTypes) {
+        this.allowedCustomerTypes = allowedCustomerTypes;
+
+        return this;
+    }
+
+    /**
+     * Gets flag if the Order Detail subtotals view is expanded
+     *
+     * @return If it is mandatory
+     */
+    public Boolean getShowSubtotalDetail() {
+        return this.showSubtotalDetail;
+    }
+
+    /**
+     * Sets flag if the Order Detail subtotals view should be expanded.
+     *
+     * @param showSubtotalDetail If specified to false, title becomes optional
+     * @return Same instance
+     */
+    public CheckoutOptions setShowSubtotalDetail(final Boolean showSubtotalDetail) {
+        this.showSubtotalDetail = showSubtotalDetail;
+
+        return this;
+    }
+
+    public CheckoutOptions addAdditionalCheckboxesItem(CheckoutOptionsCheckbox additionalCheckboxesItem) {
+        if (this.additionalCheckboxes == null) {
+            this.additionalCheckboxes = new ArrayList<CheckoutOptionsCheckbox>();
+        }
+        this.additionalCheckboxes.add(additionalCheckboxesItem);
+        return this;
+    }
+
+    /**
+     * Gets additional merchant defined checkboxes. e.g. for Newsletter opt-in.
+     *
+     * @return Additional checkboxes
+     **/
+    public List<CheckoutOptionsCheckbox> getAdditionalCheckboxes() {
+        return this.additionalCheckboxes;
+    }
+
+    /**
+     * Sets a list of additional checkboxes.
+     *
+     * @param additionalCheckboxes
+     * @return Same instance
+     */
+    public CheckoutOptions setAdditionalCheckboxes(List<CheckoutOptionsCheckbox> additionalCheckboxes) {
+        this.additionalCheckboxes = additionalCheckboxes;
+
+        return this;
+    }
+
+    /**
+     * Gets callback validation flag.
+     *
+     * @return If it should be validated
+     */
+    public Boolean getRequireValidateCallbackSuccess() {
+        return this.requireValidateCallbackSuccess;
+    }
+
+    /**
+     * Sets callback validation flag.
+     *
+     * @param requireValidateCallbackSuccess validate callback must get a positive response to not stop purchase
+     * @return Same instance
+     */
+    public CheckoutOptions setRequireValidateCallbackSuccess(final Boolean requireValidateCallbackSuccess) {
+        this.requireValidateCallbackSuccess = requireValidateCallbackSuccess;
+
+        return this;
+    }
+
+    /**
+     * Gets the flag, that shows that VAT is not included in total price
+     *
+     * @return If VAT should be excluded from total price
+     */
+    public Boolean getVatExcluded() {
+        return this.vatExcluded;
+    }
+
+    /**
+     * Sets vat exlusion flag.
+     *
+     * @param vatExcluded ff VAT should be excluded from total price
+     * @return Same instance
+     */
+    public CheckoutOptions setVatExcluded(final Boolean vatExcluded) {
+        this.vatExcluded = vatExcluded;
 
         return this;
     }

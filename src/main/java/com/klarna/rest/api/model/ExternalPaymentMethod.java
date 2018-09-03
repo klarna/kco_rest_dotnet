@@ -17,6 +17,8 @@
 package com.klarna.rest.api.model;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The model for an external payment methods.
@@ -43,6 +45,16 @@ public class ExternalPaymentMethod extends Model {
     private Long fee;
 
     /**
+     * Description.
+     */
+    private String description = null;
+
+    /**
+     * If specified, limits the method to the listed countries (alpha 2 codes).
+     */
+    private List<String> countries = null;
+
+    /**
      * Get the payment method name.
      *
      * @return Payment method name.
@@ -54,7 +66,7 @@ public class ExternalPaymentMethod extends Model {
     /**
      * Set the payment method name.
      *
-     * @param name Payment method name,
+     * @param name Payment method name.
      * @return same instance.
      */
     public ExternalPaymentMethod setName(final String name) {
@@ -122,6 +134,55 @@ public class ExternalPaymentMethod extends Model {
      */
     public ExternalPaymentMethod setFee(final Long fee) {
         this.fee = fee;
+
+        return this;
+    }
+
+    /**
+     * Get the payment method description.
+     *
+     * @return Payment method name.
+     */
+    public String getDescription() {
+        return this.description;
+    }
+
+    /**
+     * Set the payment method description.
+     *
+     * @param description Payment method description.
+     * @return same instance.
+     */
+    public ExternalPaymentMethod setDescription(final String description) {
+        this.description = description;
+
+        return this;
+    }
+
+    public ExternalPaymentMethod addCountriesItem(String countriesItem) {
+        if (this.countries == null) {
+            this.countries = new ArrayList<String>();
+        }
+        this.countries.add(countriesItem);
+        return this;
+    }
+
+    /**
+     * Gets the listed countries (alpha 2 codes).
+     *
+     * @return Countries
+     **/
+    public List<String> getCountries() {
+        return countries;
+    }
+
+    /**
+     * Sets the listed countries (alpha 2 codes).
+     *
+     * @return Countries
+     **/
+    public ExternalPaymentMethod setCountries(List<String> countries) {
+        this.countries = countries;
 
         return this;
     }

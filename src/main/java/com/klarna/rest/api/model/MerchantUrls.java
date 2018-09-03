@@ -27,6 +27,11 @@ public class MerchantUrls extends Model {
     private String terms;
 
     /**
+     * URL of merchant cancellation terms.
+     */
+    private String cancellationTerms;
+
+    /**
      * URL to the checkout page.
      */
     private String checkout;
@@ -60,6 +65,32 @@ public class MerchantUrls extends Model {
      * URL for notifications on pending orders.
      */
     private String notification;
+
+    /**
+     * URL for shipping, tax and purchase currency updates. Will be called on purchase country changes.
+     */
+    private String countryChange;
+
+    /**
+     * Gets the URL of merchant cancellation terms.
+     *
+     * @return Terms page
+     */
+    public String getCancellationTerms() {
+        return this.cancellationTerms;
+    }
+
+    /**
+     * Sets the URL of merchant cancellation terms.
+     *
+     * @param cancellationTerms URL or Cancellation Terms
+     * @return Same instance
+     */
+    public MerchantUrls setCancellationTerms(final String cancellationTerms) {
+        this.cancellationTerms = cancellationTerms;
+
+        return this;
+    }
 
     /**
      * Gets the terms URL.
@@ -225,6 +256,27 @@ public class MerchantUrls extends Model {
      */
     public MerchantUrls setNotification(final String url) {
         this.notification = url;
+
+        return this;
+    }
+
+    /**
+     * Gets the URL for shipping, tax and purchase currency updates.
+     *
+     * @return Notification.
+     */
+    public String getCountryChange() {
+        return this.countryChange;
+    }
+
+    /**
+     * Sets the URL for shipping, tax and purchase currency updates.
+     *
+     * @param url URL for shipping, tax and purchase currency updates
+     * @return Same instance.
+     */
+    public MerchantUrls setCountryChange(final String url) {
+        this.countryChange = url;
 
         return this;
     }
