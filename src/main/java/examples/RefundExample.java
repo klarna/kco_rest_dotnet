@@ -67,7 +67,7 @@ public class RefundExample {
 
             Refund data = new Refund() {
                 {
-                    setRefundedAmount(3L);
+                    setRefundedAmount(3000L);
                     setDescription("Refunding half the tomatoes");
                     setOrderLines(lines);
                 }
