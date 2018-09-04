@@ -89,6 +89,23 @@ public interface Client {
     Capture newCapture(String orderId, String captureId);
 
     /**
+     * Constructs a new refund resource.
+     *
+     * @param orderId Order resource id
+     * @return A new refund resource
+     */
+    Refund newRefund(String orderId);
+
+    /**
+     * Constructs a new refund resource.
+     *
+     * @param orderId Order resource id
+     * @param refundId Refund resource id
+     * @return A new refund resource
+     */
+    Refund newRefund(String orderId, String refundId);
+
+    /**
      * Set the connect timeout interval, in milliseconds.
      *
      * @param timeout the connect timeout interval. If null or 0 then
