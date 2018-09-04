@@ -4,6 +4,7 @@
 - Order Mangement API: Add support of Refunds;
 - Put SDK References documentation to GH Pages:
     https://klarna.github.io/kco_rest_java/
+- Fix: [Shipping Delay missing from CaptureData #5](https://github.com/klarna/kco_rest_java/issues/5);
 - Release is fully backward-compatible;
 
 ## v2.2.0 - 2016-02-15
