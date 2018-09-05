@@ -53,13 +53,16 @@ public class CheckoutOrderDataTest extends TestCase {
         List<String> countries = new ArrayList<String>(Arrays.asList("DE"));
 
         assertNull(data.getShippingCountries());
-        data.addShippingCountriesItem("UK");
-
-        assertEquals(Arrays.asList("UK"), data.getShippingCountries());
 
         countries.add("UK");
+        data.addShippingCountriesItem("UK");
+
         data.setShippingCountries(countries);
-        assertEquals(countries, data.getShippingCountries());
+        assertSame(countries, data.getShippingCountries());
+
+
+
+
     }
 
     @Test
@@ -222,25 +225,15 @@ public class CheckoutOrderDataTest extends TestCase {
 
     @Test
     public void testGetShippingOptions() {
-        List<ShippingOption> options = new ArrayList<>(Arrays.asList(new ShippingOption()));
-
         assertNull(data.getShippingOptions());
 
+        List<ShippingOption> options = new ArrayList<>();
+        options.add(new ShippingOption().setId("shipping_id"));
+        data.addShippingOptionsItem(new ShippingOption().setId("shipping_id"));
+
+        options.add(new ShippingOption().setId("shipping_id2"));
         data.setShippingOptions(options);
-        assertSame(options, data.getShippingOptions());
-
-        options.add(new ShippingOption(){
-            {
-                setId("shipping_id");
-            }
-        });
-        data.addShippingOptionsItem(new ShippingOption(){
-            {
-                setId("shipping_id");
-            }
-        });
-
-        assertSame(options, data.getShippingOptions());
+        assertEquals(options, data.getShippingOptions());
     }
 
     @Test

@@ -164,6 +164,27 @@ public class DefaultClientTest extends TestCase {
     }
 
     @Test
+    public void testNewRefund() {
+        when(resource.path(DefaultOrder.PATH))
+                .thenReturn(resource);
+
+        when(resource.path("12345"))
+                .thenReturn(resource);
+
+        when(resource.path(DefaultRefund.PATH))
+                .thenReturn(resource);
+
+        Refund refund= client.newRefund("12345");
+        assertNotNull(refund);
+
+        // Verify that the right URL was set
+        InOrder ordered = inOrder(resource);
+        ordered.verify(resource).path(DefaultOrder.PATH);
+        ordered.verify(resource).path("12345");
+        ordered.verify(resource).path(DefaultRefund.PATH);
+    }
+
+    @Test
     public void testNewCaptureExisting() {
         when(resource.path(DefaultOrder.PATH))
                 .thenReturn(resource);
@@ -185,6 +206,31 @@ public class DefaultClientTest extends TestCase {
         ordered.verify(resource).path(DefaultOrder.PATH);
         ordered.verify(resource).path("12345");
         ordered.verify(resource).path(DefaultCapture.PATH);
+        ordered.verify(resource).path("23456");
+    }
+
+    @Test
+    public void testNewRefundExisting() {
+        when(resource.path(DefaultOrder.PATH))
+                .thenReturn(resource);
+
+        when(resource.path("12345"))
+                .thenReturn(resource);
+
+        when(resource.path(DefaultRefund.PATH))
+                .thenReturn(resource);
+
+        when(resource.path("23456"))
+                .thenReturn(resource);
+
+        Refund refund = client.newRefund("12345", "23456");
+        assertNotNull(refund);
+
+        // Verify that the right URL was set
+        InOrder ordered = inOrder(resource);
+        ordered.verify(resource).path(DefaultOrder.PATH);
+        ordered.verify(resource).path("12345");
+        ordered.verify(resource).path(DefaultRefund.PATH);
         ordered.verify(resource).path("23456");
     }
 
