@@ -98,4 +98,20 @@ public class MerchantUrlsTest extends TestCase {
         urls.setNotification("url");
         assertEquals("url", urls.getNotification());
     }
+
+    @Test
+    public void testGetCancellationTerms() {
+        assertNull(urls.getCancellationTerms());
+
+        urls.setCancellationTerms("terms and conditions");
+        assertEquals("terms and conditions", urls.getCancellationTerms());
+    }
+
+    @Test
+    public void testGetCountryChange() {
+        assertNull(urls.getCountryChange());
+
+        urls.setCountryChange("https://example.com");
+        assertEquals("https://example.com", urls.getCountryChange());
+    }
 }

@@ -115,4 +115,16 @@ public class Customer extends Model {
     public String getNationalIdentificationNumber() {
         return this.nationalIdentificationNumber;
     }
+
+    /**
+     * Sets the National Identification Number (NIN).
+     *
+     * @param nin National Identification Number (NIN)
+     * @return Same instance
+     */
+    public Customer setNationalIdentificationNumber(String nin) {
+        this.nationalIdentificationNumber = nin;
+
+        return this;
+    }
 }

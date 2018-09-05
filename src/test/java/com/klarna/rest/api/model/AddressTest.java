@@ -146,4 +146,36 @@ public class AddressTest extends TestCase {
         address.setRegion("Region");
         assertEquals("Region", address.getRegion());
     }
+
+    @Test
+    public void testGetOrganizationName() {
+        assertNull(address.getOrganizationName());
+
+        address.setOrganizationName("OrgName");
+        assertEquals("OrgName", address.getOrganizationName());
+    }
+
+    @Test
+    public void testGetReference() {
+        assertNull(address.getReference());
+
+        address.setReference("#ref");
+        assertEquals("#ref", address.getReference());
+    }
+
+    @Test
+    public void testGetAttention() {
+        assertNull(address.getAttention());
+
+        address.setAttention("watt");
+        assertEquals("watt", address.getAttention());
+    }
+
+    @Test
+    public void testGetCareOf() {
+        assertNull(address.getCareOf());
+
+        address.setCareOf("C/O Box 41");
+        assertEquals("C/O Box 41", address.getCareOf());
+    }
 }

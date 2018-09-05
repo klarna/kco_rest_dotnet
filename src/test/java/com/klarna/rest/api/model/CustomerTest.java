@@ -43,4 +43,31 @@ public class CustomerTest extends TestCase {
 
         assertSame("2007-07-07", customer.getDateOfBirth());
     }
+
+    @Test
+    public void testGetType() {
+        assertNull(customer.getType());
+
+        customer.setType("person");
+
+        assertSame("person", customer.getType());
+    }
+
+    @Test
+    public void testGetOrganizationRegistrationId() {
+        assertNull(customer.getOrganizationRegistrationId());
+
+        customer.setOrganizationRegistrationId("12345");
+
+        assertSame("12345", customer.getOrganizationRegistrationId());
+    }
+
+    @Test
+    public void testGetNationalIdentificationNumber() {
+        assertNull(customer.getNationalIdentificationNumber());
+
+        customer.setNationalIdentificationNumber("12345");
+
+        assertSame("12345", customer.getNationalIdentificationNumber());
+    }
 }

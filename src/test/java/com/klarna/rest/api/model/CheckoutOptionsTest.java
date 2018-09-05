@@ -22,6 +22,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Test cases for the CheckoutOptions class.
  */
@@ -97,5 +101,116 @@ public class CheckoutOptionsTest extends TestCase {
 
         options.setColorLink("color");
         assertEquals("color", options.getColorLink());
+    }
+
+    @Test
+    public void testGetAcquiringChannel() {
+        assertNull(options.getAcquiringChannel());
+
+        options.setAcquiringChannel("channel");
+        assertEquals("channel", options.getAcquiringChannel());
+    }
+
+    @Test
+    public void testGetShippingDetails() {
+        assertNull(options.getShippingDetails());
+
+        options.setShippingDetails("details");
+        assertEquals("details", options.getShippingDetails());
+    }
+
+    @Test
+    public void testGetTitleMandatory() {
+        assertNull(options.getTitleMandatory());
+
+        options.setTitleMandatory(true);
+        assertTrue(options.getTitleMandatory());
+    }
+
+    @Test
+    public void testGetAdditionalCheckbox() {
+        assertNull(options.getAdditionalCheckbox());
+
+        CheckoutOptionsCheckbox checkbox = new CheckoutOptionsCheckbox(){
+            {
+                setRequired(true);
+            }
+        };
+        options.setAdditionalCheckbox(checkbox);
+        assertEquals(checkbox, options.getAdditionalCheckbox());
+    }
+
+    @Test
+    public void testGetNationalIdentificationNumberMandatory() {
+        assertNull(options.getNationalIdentificationNumberMandatory());
+
+        options.setNationalIdentificationNumberMandatory(true);
+        assertTrue(options.getNationalIdentificationNumberMandatory());
+    }
+
+    @Test
+    public void testGetAdditionalMerchantTerms() {
+        assertNull(options.getAdditionalMerchantTerms());
+
+        options.setAdditionalMerchantTerms("terms");
+        assertEquals("terms", options.getAdditionalMerchantTerms());
+    }
+
+    @Test
+    public void testGetRadiusBorder() {
+        assertNull(options.getRadiusBorder());
+
+        options.setRadiusBorder("1px");
+        assertEquals("1px", options.getRadiusBorder());
+    }
+
+    @Test
+    public void testGetAllowedCustomerTypes() {
+        assertNull(options.getAllowedCustomerTypes());
+
+        List<String> types = new ArrayList<String>(Arrays.asList("person", "organization"));
+        options.setAllowedCustomerTypes(types);
+        assertEquals(types, options.getAllowedCustomerTypes());
+    }
+
+    @Test
+    public void testGetShowSubtotalDetail() {
+        assertNull(options.getShowSubtotalDetail());
+
+        options.setShowSubtotalDetail(true);
+        assertTrue(options.getShowSubtotalDetail());
+    }
+
+    @Test
+    public void testGetAdditionalCheckboxes() {
+        assertNull(options.getAdditionalCheckboxes());
+
+        CheckoutOptionsCheckbox checkbox = new CheckoutOptionsCheckbox(){
+            {
+                setRequired(true);
+            }
+        };
+        options.addAdditionalCheckboxesItem(checkbox);
+        assertEquals(Arrays.asList(checkbox), options.getAdditionalCheckboxes());
+
+        List<CheckoutOptionsCheckbox> checkboxes = new ArrayList<CheckoutOptionsCheckbox>(Arrays.asList(checkbox, checkbox));
+        options.setAdditionalCheckboxes(checkboxes);
+        assertEquals(Arrays.asList(checkbox, checkbox), options.getAdditionalCheckboxes());
+    }
+
+    @Test
+    public void testGetRequireValidateCallbackSuccess() {
+        assertNull(options.getRequireValidateCallbackSuccess());
+
+        options.setRequireValidateCallbackSuccess(true);
+        assertTrue(options.getRequireValidateCallbackSuccess());
+    }
+
+    @Test
+    public void testGetVatExcluded() {
+        assertNull(options.getVatExcluded());
+
+        options.setVatExcluded(true);
+        assertTrue(options.getVatExcluded());
     }
 }

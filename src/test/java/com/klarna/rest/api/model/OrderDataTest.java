@@ -58,5 +58,8 @@ public class OrderDataTest extends TestCase {
         assertNull(data.getLocale());
         assertNull(data.getOrderLines());
         assertNull(data.getRefunds());
+        assertNull(data.getFraudStatus());
+        assertNull(data.getMerchantData());
+        assertNull(data.getInitialPaymentMethod());
     }
 }

@@ -73,5 +73,8 @@ public class RefundTest extends TestCase {
     @Test
     public void testGetReadonly() {
         assertNull(refund.getRefundedAt());
+        assertNull(refund.getRefundId());
+        assertNull(refund.getProcessedOrderLines());
+        assertNull(refund.getMerchantReversal());
     }
 }

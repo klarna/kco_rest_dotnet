@@ -23,6 +23,8 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Test cases for the ExternalCheckout class.
@@ -30,50 +32,71 @@ import java.net.URI;
 @RunWith(MockitoJUnitRunner.class)
 public class ExternalCheckoutTest extends TestCase {
 
-    ExternalCheckout object;
+    ExternalCheckout checkout;
 
     @Before
     public void setUp() {
-        this.object = new ExternalCheckout();
+        checkout = new ExternalCheckout();
     }
 
     @Test
     public void testGetName() {
-        assertNull(this.object.getName());
+        assertNull(checkout.getName());
 
         String expected = "name";
-        this.object.setName(expected);
+        checkout.setName(expected);
 
-        assertSame(expected, this.object.getName());
+        assertSame(expected, checkout.getName());
     }
 
     @Test
     public void testGetRedirectUri() {
-        assertNull(this.object.getRedirectUrl());
+        assertNull(checkout.getRedirectUrl());
 
         URI expected = URI.create("http://localhost");
-        this.object.setRedirectUrl(expected);
+        checkout.setRedirectUrl(expected);
 
-        assertSame(expected, this.object.getRedirectUrl());
+        assertSame(expected, checkout.getRedirectUrl());
     }
 
     @Test
     public void testGetImageUri() {
-        assertNull(this.object.getImageUrl());
+        assertNull(checkout.getImageUrl());
 
         URI expected = URI.create("http://localhost");
-        this.object.setImageUrl(expected);
+        checkout.setImageUrl(expected);
 
-        assertSame(expected, this.object.getImageUrl());
+        assertSame(expected, checkout.getImageUrl());
     }
 
     @Test
     public void testGetFee() {
-        assertNull(this.object.getFee());
+        assertNull(checkout.getFee());
 
         Long expected = 1000L;
-        this.object.setFee(expected);
+        checkout.setFee(expected);
 
-        assertSame(expected, this.object.getFee());
+        assertSame(expected, checkout.getFee());
+    }
+
+    @Test
+    public void testGetDescription() {
+        assertNull(checkout.getDescription());
+
+        checkout.setDescription("Custom checkout");
+
+        assertSame("Custom checkout", checkout.getDescription());
+    }
+
+    @Test
+    public void testCountries() {
+        assertNull(checkout.getCountries());
+
+        checkout.addCountriesItem("SE");
+        assertTrue(checkout.getCountries().equals(new ArrayList<String>(Arrays.asList("SE"))));
+
+        ArrayList<String> expected = new ArrayList<>(Arrays.asList("GB", "DE"));
+        checkout.setCountries(expected);
+        assertTrue(expected.equals(checkout.getCountries()));
     }
 }

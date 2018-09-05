@@ -179,7 +179,7 @@ public class CheckoutOrderData extends Model {
      * Indicates whether this purchase will create a token that can be used by the merchant
      * to create recurring purchases. This must be enabled for the merchant to use.
      */
-    private Boolean recurring = false;
+    private Boolean recurring;
 
     /**
      * Token to be used when creating recurring orders.

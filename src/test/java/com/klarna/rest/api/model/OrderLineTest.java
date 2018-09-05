@@ -22,6 +22,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+
 /**
  * Test cases for the OrderLine class.
  */
@@ -138,5 +141,47 @@ public class OrderLineTest extends TestCase {
         long actual = item.getTotalTaxAmount();
 
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGetMerchantData() {
+        assertNull(item.getMerchantData());
+
+        item.setMerchantData("Some data");
+
+        assertEquals("Some data", item.getMerchantData());
+    }
+
+    @Test
+    public void testGetProductURL() throws URISyntaxException {
+        assertNull(item.getProductUrl());
+
+        item.setProductUrl(new URI("https://example.com"));
+
+        assertEquals(new URI("https://example.com"), item.getProductUrl());
+    }
+
+    @Test
+    public void testGetImageURL() throws URISyntaxException {
+        assertNull(item.getImageUrl());
+
+        item.setImageUrl(new URI("https://example.com"));
+
+        assertEquals(new URI("https://example.com"), item.getImageUrl());
+    }
+
+    @Test
+    public void testGetProductIdentifiers() {
+        assertNull(item.getProductIdentifiers());
+
+        ProductIdentifiers identifiers = new ProductIdentifiers(){
+            {
+                setBrand("Brand");
+                setName("Name");
+            }
+        };
+        item.setProductIdentifiers(identifiers);
+
+        assertEquals(identifiers, item.getProductIdentifiers());
     }
 }

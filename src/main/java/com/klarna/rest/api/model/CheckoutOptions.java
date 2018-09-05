@@ -107,7 +107,7 @@ public class CheckoutOptions extends Model {
     /**
      * If true, the Order Detail subtotals view is expanded.
      */
-    private Boolean showSubtotalDetail = false;
+    private Boolean showSubtotalDetail;
 
     /**
      * Additional merchant defined checkboxes. e.g. for Newsletter opt-in.
@@ -117,12 +117,12 @@ public class CheckoutOptions extends Model {
     /**
      * If true, validate callback must get a positive response to not stop purchase.
      */
-    private Boolean requireValidateCallbackSuccess = false;
+    private Boolean requireValidateCallbackSuccess;
 
     /**
      * If true, VAT is not included in total price
      */
-    private Boolean vatExcluded = false;
+    private Boolean vatExcluded;
 
 
     /**
