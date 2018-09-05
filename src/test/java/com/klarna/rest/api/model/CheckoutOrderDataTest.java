@@ -53,14 +53,13 @@ public class CheckoutOrderDataTest extends TestCase {
         List<String> countries = new ArrayList<String>(Arrays.asList("DE"));
 
         assertNull(data.getShippingCountries());
-
-        data.setShippingCountries(countries);
-        assertSame(countries, data.getShippingCountries());
-
-        countries.add("UK");
         data.addShippingCountriesItem("UK");
 
-        assertSame(countries, data.getShippingCountries());
+        assertEquals(Arrays.asList("UK"), data.getShippingCountries());
+
+        countries.add("UK");
+        data.setShippingCountries(countries);
+        assertEquals(countries, data.getShippingCountries());
     }
 
     @Test

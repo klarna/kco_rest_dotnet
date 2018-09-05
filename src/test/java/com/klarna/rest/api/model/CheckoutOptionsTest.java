@@ -168,7 +168,12 @@ public class CheckoutOptionsTest extends TestCase {
     public void testGetAllowedCustomerTypes() {
         assertNull(options.getAllowedCustomerTypes());
 
-        List<String> types = new ArrayList<String>(Arrays.asList("person", "organization"));
+        List<String> types = new ArrayList<String>(Arrays.asList("person"));
+        options.addAllowedCustomerTypesItem("person");
+
+        assertEquals(types, options.getAllowedCustomerTypes());
+
+        types.add("organization");
         options.setAllowedCustomerTypes(types);
         assertEquals(types, options.getAllowedCustomerTypes());
     }
