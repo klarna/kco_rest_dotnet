@@ -17,14 +17,9 @@
 package com.klarna.rest.api.model;
 
 public class MerchantRequestedCheckbox extends Model {
-    private String id = null;
+    private String id;
 
-    private Boolean checked = false;
-
-    public MerchantRequestedCheckbox id(String id) {
-        this.id = id;
-        return this;
-    }
+    private Boolean checked;
 
     /**
      * Get id
@@ -35,25 +30,23 @@ public class MerchantRequestedCheckbox extends Model {
         return id;
     }
 
-    public void setId(String id) {
+    public MerchantRequestedCheckbox setId(String id) {
         this.id = id;
-    }
 
-    public MerchantRequestedCheckbox checked(Boolean checked) {
-        this.checked = checked;
         return this;
     }
 
     /**
-     * Get checked
+     * Get checked status
      *
      * @return checked
      **/
-    public Boolean isChecked() {
+    public Boolean getChecked() {
         return checked;
     }
 
-    public void setChecked(Boolean checked) {
+    public MerchantRequestedCheckbox setChecked(Boolean checked) {
         this.checked = checked;
+        return this;
     }
 }

@@ -20,24 +20,24 @@ public class CheckoutOptionsCheckbox extends Model {
     /**
      * Identifier used when presenting data back to merchant.
      */
-    private String id = null;
+    private String id;
 
     /**
      * Text that will be displayed to the consumer aside the checkbox.
      * Links and formatting can be added using Markdown.
      */
-    private String text = null;
+    private String text;
 
     /**
      * Default state of the additional checkbox. It will use this value when loaded for the first time.
      */
-    private Boolean checked = false;
+    private Boolean checked;
 
     /**
      * Whether it is required for the consumer to check the additional checkbox box or not in order
      * to complete the purchase.
      */
-    private Boolean required = false;
+    private Boolean required;
 
 
     /**

@@ -23,69 +23,59 @@ public class ShippingOption extends Model {
     /**
      * Shipping ID.
      */
-    private String id = null;
+    private String id;
 
     /**
      * Shipping name.
      */
-    private String name = null;
+    private String name;
 
     /**
      * Shipping description.
      */
-    private String description = null;
+    private String description;
 
     /**
      * Promotion name. To be used if this shipping option is promotional.
      */
-    private String promo = null;
+    private String promo;
 
     /**
      * Price including tax.
      */
-    private Long price = null;
+    private Long price;
 
     /**
      * Tax amount.
      */
-    private Long taxAmount = null;
+    private Long taxAmount;
 
     /**
      * Non-negative. In percent, two implicit decimals. I.e 2500 = 25%.
      */
-    private Long taxRate = null;
+    private Long taxRate;
 
     /**
      *
      */
-    private Boolean preselected = false;
+    private Boolean preselected;
 
     /**
      * If true, this option will be preselected when checkout loads. Default: false
      */
-    private String shippingMethod = null;
+    private String shippingMethod;
 
-
-    public ShippingOption id(String id) {
-        this.id = id;
-        return this;
-    }
 
     /**
      * id
      * @return id
      **/
     public String getId() {
-        return id;
+        return this.id;
     }
 
     public ShippingOption setId(String id) {
         this.id = id;
-        return this;
-    }
-
-    public ShippingOption name(String name) {
-        this.name = name;
         return this;
     }
 
@@ -94,16 +84,11 @@ public class ShippingOption extends Model {
      * @return name
      **/
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public ShippingOption setName(String name) {
         this.name = name;
-        return this;
-    }
-
-    public ShippingOption description(String description) {
-        this.description = description;
         return this;
     }
 
@@ -112,16 +97,11 @@ public class ShippingOption extends Model {
      * @return description
      **/
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public ShippingOption setDescription(String description) {
         this.description = description;
-        return this;
-    }
-
-    public ShippingOption promo(String promo) {
-        this.promo = promo;
         return this;
     }
 
@@ -130,16 +110,11 @@ public class ShippingOption extends Model {
      * @return promo
      **/
     public String getPromo() {
-        return promo;
+        return this.promo;
     }
 
     public ShippingOption setPromo(String promo) {
         this.promo = promo;
-        return this;
-    }
-
-    public ShippingOption price(Long price) {
-        this.price = price;
         return this;
     }
 
@@ -148,16 +123,11 @@ public class ShippingOption extends Model {
      * @return price
      **/
     public Long getPrice() {
-        return price;
+        return this.price;
     }
 
     public ShippingOption setPrice(Long price) {
         this.price = price;
-        return this;
-    }
-
-    public ShippingOption taxAmount(Long taxAmount) {
-        this.taxAmount = taxAmount;
         return this;
     }
 
@@ -166,16 +136,11 @@ public class ShippingOption extends Model {
      * @return taxAmount
      **/
     public Long getTaxAmount() {
-        return taxAmount;
+        return this.taxAmount;
     }
 
     public ShippingOption setTaxAmount(Long taxAmount) {
         this.taxAmount = taxAmount;
-        return this;
-    }
-
-    public ShippingOption taxRate(Long taxRate) {
-        this.taxRate = taxRate;
         return this;
     }
 
@@ -184,16 +149,11 @@ public class ShippingOption extends Model {
      * @return taxRate
      **/
     public Long getTaxRate() {
-        return taxRate;
+        return this.taxRate;
     }
 
     public ShippingOption setTaxRate(Long taxRate) {
         this.taxRate = taxRate;
-        return this;
-    }
-
-    public ShippingOption preselected(Boolean preselected) {
-        this.preselected = preselected;
         return this;
     }
 
@@ -202,16 +162,11 @@ public class ShippingOption extends Model {
      * @return preselected
      **/
     public Boolean getPreselected() {
-        return preselected;
+        return this.preselected;
     }
 
     public ShippingOption setPreselected(Boolean preselected) {
         this.preselected = preselected;
-        return this;
-    }
-
-    public ShippingOption shippingMethod(String shippingMethod) {
-        this.shippingMethod = shippingMethod;
         return this;
     }
 
@@ -220,7 +175,7 @@ public class ShippingOption extends Model {
      * @return shippingMethod
      **/
     public String getShippingMethod() {
-        return shippingMethod;
+        return this.shippingMethod;
     }
 
     public ShippingOption setShippingMethod(String shippingMethod) {
