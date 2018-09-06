@@ -19,16 +19,16 @@ package com.klarna.rest.api.model;
 import java.util.List;
 
 public class MerchantRequested extends Model {
-    private Boolean additionalCheckbox = false;
+    private Boolean additionalCheckbox;
 
-    private List<MerchantRequestedCheckbox> additionalCheckboxes = null;
+    private List<MerchantRequestedCheckbox> additionalCheckboxes;
 
     /**
      * Informs whether the additional_checkbox is checked or not, when applicable.
      * @return additionalCheckbox
      **/
-    public Boolean isAdditionalCheckbox() {
-        return additionalCheckbox;
+    public Boolean getAdditionalCheckbox() {
+        return this.additionalCheckbox;
     }
 
     /**
@@ -36,6 +36,6 @@ public class MerchantRequested extends Model {
      * @return additionalCheckboxes
      **/
     public List<MerchantRequestedCheckbox> getAdditionalCheckboxes() {
-        return additionalCheckboxes;
+        return this.additionalCheckboxes;
     }
 }
