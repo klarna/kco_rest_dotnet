@@ -35,14 +35,23 @@
     <properties>
         <compile.version>1.7</compile.version>
         <jersey.version>1.19</jersey.version>
-        <jackson.version>2.5.4</jackson.version>
+        <jackson.version>2.6.4</jackson.version>
         <commons-lang.version>3.4</commons-lang.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
         <javadoc.plugin.version>2.10.3</javadoc.plugin.version>
+        <swagger-annotations.version>1.5.21</swagger-annotations.version>
     </properties>
 
     <dependencies>
+        <!-- Swagger generator -->
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>${swagger-annotations.version}</version>
+        </dependency>
+
+        <!-- HTTP client: jersey-client -->
         <dependency>
             <groupId>com.sun.jersey.contribs</groupId>
             <artifactId>jersey-apache-client4</artifactId>
@@ -53,6 +62,8 @@
             <artifactId>jersey-json</artifactId>
             <version>${jersey.version}</version>
         </dependency>
+
+        <!-- JSON processing: jackson -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -68,6 +79,12 @@
             <artifactId>jackson-datatype-joda</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.joschi.jackson</groupId>
+            <artifactId>jackson-datatype-threetenbp</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -241,7 +258,7 @@
                     <target>${compile.version}</target>
                     <encoding>UTF-8</encoding>
                     <excludes>
-                        <exclude>**/com/klarna/rest/api/examples/*.java</exclude>
+                        <exclude>**/com/klarna/rest/examples/*.java</exclude>
                     </excludes>
                 </configuration>
             </plugin>
