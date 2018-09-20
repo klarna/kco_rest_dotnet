@@ -66,6 +66,10 @@ public class ApiException extends RuntimeException {
     private static String formatError(final ErrorMessage errorMessage,
                                       final int httpStatus
     ) {
+        if (errorMessage == null) {
+            return String.format("Unexpected HTTP status code: %s", httpStatus);
+        }
+
         return String.format(
                 "%s: %s (#%s)",
                 errorMessage.getErrorCode(),

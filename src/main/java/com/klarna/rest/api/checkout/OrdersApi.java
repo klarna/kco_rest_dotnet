@@ -29,11 +29,20 @@ public class OrdersApi {
     public Order create(Order order) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final ApiResponse response = transport.post(PATH, order);
 
-        response
+        response.validator()
                 .expectStatusCode(Status.CREATED)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
         return objectMapper.readValue(response.getBody(), Order.class);
     }
 
+    public Order get(String orderId) throws ApiException, ProtocolException, ContentTypeException, IOException {
+        final ApiResponse response = transport.get(PATH + '/' + orderId);
+
+        response.validator()
+                .expectStatusCode(Status.OK)
+                .expectContentType(MediaType.APPLICATION_JSON);
+
+        return objectMapper.readValue(response.getBody(), Order.class);
+    }
 }

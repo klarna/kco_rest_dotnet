@@ -1,7 +1,10 @@
 package com.klarna.rest;
 
+import com.klarna.rest.api.ApiException;
 import com.klarna.rest.api.ApiResponse;
+import com.klarna.rest.api.ProtocolException;
 
+import java.io.IOException;
 import java.net.URI;
 
 
@@ -34,11 +37,11 @@ public interface Transport {
      */
     URI NA_TEST_BASE_URL = URI.create("https://api-na.playground.klarna.com");
 
-    ApiResponse get(final String path);
+    ApiResponse get(final String path) throws ApiException, ProtocolException, IOException;
 
-    <T> ApiResponse post(final String path, final T data);
+    <T> ApiResponse post(final String path, final T data) throws ApiException, ProtocolException, IOException;
 
-    <T> ApiResponse put(final String path, final T data);
+    <T> ApiResponse put(final String path, final T data) throws ApiException, ProtocolException, IOException;
 
-    <T> ApiResponse delete(final String path);
+    <T> ApiResponse delete(final String path) throws ApiException, ProtocolException, IOException;
 }

@@ -27,7 +27,7 @@ public class ContentTypeException extends RuntimeException {
      *
      * @param message Error message
      */
-    ContentTypeException(final String message) {
+    public ContentTypeException(final String message) {
         super(message);
     }
 
@@ -37,7 +37,7 @@ public class ContentTypeException extends RuntimeException {
      * @param type Unexpected Content Type
      * @return Exception instance
      */
-    /* package */ static ContentTypeException unexpectedType(final String type) {
+    static ContentTypeException unexpectedType(final String type) {
         return new ContentTypeException(
                 String.format("Unexpected response content type: %s", type));
     }

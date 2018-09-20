@@ -27,7 +27,7 @@ public class ProtocolException extends RuntimeException {
      *
      * @param message Error message
      */
-    /* package */ ProtocolException(final String message) {
+    public ProtocolException(final String message) {
         super(message);
     }
 
@@ -37,7 +37,7 @@ public class ProtocolException extends RuntimeException {
      * @param status Unexpected HTTP status code
      * @return Exception instance
      */
-    /* package */ static ProtocolException unexpectedStatus(final int status) {
+    static ProtocolException unexpectedStatus(final int status) {
         return new ProtocolException(
                 String.format("Unexpected response status code: %d", status));
     }

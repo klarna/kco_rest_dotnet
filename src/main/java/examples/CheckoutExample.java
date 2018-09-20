@@ -20,6 +20,7 @@ import com.klarna.rest.HttpUrlConnectionTransport;
 import com.klarna.rest.Transport;
 
 import com.klarna.rest.api.ApiException;
+import com.klarna.rest.api.ContentTypeException;
 import com.klarna.rest.api.ProtocolException;
 import com.klarna.rest.api.checkout.OrdersApi;
 
@@ -37,6 +38,35 @@ import java.util.List;
 public class CheckoutExample {
 
     /**
+     * Fetches a checkout order.
+     */
+    public static class FetchExample {
+
+        /**
+         * Runs the example code.
+         *
+         * @param args Command line arguments
+         */
+        public static void main(final String[] args) {
+            String merchantId = "0";
+            String sharedSecret = "sharedSecret";
+            String checkoutOrderID = "12345";
+
+            Transport transport = new HttpUrlConnectionTransport(Transport.EU_TEST_BASE_URL);
+            OrdersApi ordersApi = new OrdersApi(transport);
+
+            try {
+                Order order = ordersApi.get(checkoutOrderID);
+                System.out.println(order);
+            } catch (IOException | ProtocolException | ContentTypeException e) {
+                System.out.println("Connection problem: " + e.getMessage());
+            } catch (ApiException e) {
+                System.out.println("API issue: " + e.getMessage());
+            }
+        }
+    }
+
+    /**
      * Creates a checkout order.
      */
     public static class CreateExample {
@@ -50,7 +80,7 @@ public class CheckoutExample {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
 
-            Transport transport = new HttpUrlConnectionTransport();
+            Transport transport = new HttpUrlConnectionTransport(Transport.EU_TEST_BASE_URL);
             OrdersApi ordersApi = new OrdersApi(transport);
 
             final List<OrderLine> lines = new ArrayList<OrderLine>() {
@@ -112,7 +142,9 @@ public class CheckoutExample {
                 System.out.println("ID: " + order.getOrderId());
                 System.out.println("Status: " + order.getStatus());
                 System.out.println("HTML Snippet: " + order.getHtmlSnippet());
-            } catch (IOException | ProtocolException | ApiException e) {
+            } catch (IOException e) {
+                System.out.println("Connection problem: " + e.getMessage());
+            } catch (ApiException e) {
                 System.out.println(e.getMessage());
             }
         }

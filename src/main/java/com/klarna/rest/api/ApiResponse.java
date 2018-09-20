@@ -1,18 +1,22 @@
 package com.klarna.rest.api;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import com.klarna.rest.model.ErrorMessage;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.ws.rs.core.Response.Status;
+import javax.ws.rs.core.Response.Status.Family;
+
+import java.io.IOException;
+
+import java.util.*;
 
 import static javax.ws.rs.core.Response.Status.Family.SUCCESSFUL;
 
 public class ApiResponse {
     private int status;
 
-    private Map<String, String> headers;
+    private Map<String, List<String>> headers;
 
     private String body;
 
@@ -21,35 +25,39 @@ public class ApiResponse {
         this.headers = new HashMap<>();
     }
 
-    public void setStatus(int status) {
+    public ApiResponse setStatus(int status) {
         this.status = status;
+        return this;
     }
 
     public int getStatus() {
         return this.status;
     }
 
-    public void setBody(String body) {
+    public ApiResponse setBody(String body) {
         this.body = body;
+        return this;
     }
 
     public String getBody() {
         return this.body;
     }
 
-    public void setHeaders(Map headers) {
+    public ApiResponse setHeaders(Map headers) {
         this.headers = headers;
+        return this;
     }
 
-    public void setHeader(String name, String value) {
-        this.headers.put(name, value);
+    public ApiResponse setHeader(String name, List<String> values) {
+        this.headers.put(name, values);
+        return this;
     }
 
     public Map getHeaders() {
         return this.headers;
     }
 
-    public String getHeader(String name) {
+    public List<String> getHeader(String name) {
         return this.headers.get(name);
     }
 
@@ -89,11 +97,29 @@ public class ApiResponse {
     }
 
     public ApiResponse expectContentType(final String value) throws ContentTypeException {
-        String contentType = this.getHeader("Content-Type");
-        if (contentType != null && contentType.equals(value)) {
+        List<String> contentType = this.getHeader("Content-Type");
+        if (contentType != null && contentType.contains(value)) {
             return this;
         }
 
-        throw ContentTypeException.unexpectedType(contentType);
+        throw ContentTypeException.unexpectedType(contentType.toString());
+    }
+
+    public ApiResponse validator() throws ApiException {
+        Family family = Status.fromStatusCode(this.getStatus()).getFamily();
+
+        if (family.equals(SUCCESSFUL)) {
+            return this;
+        }
+
+        ErrorMessage message;
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            message = objectMapper.readValue(this.getBody(), ErrorMessage.class);
+
+        } catch (IOException e) {
+            message = null;
+        }
+        throw new ApiException(this.getStatus(), message);
     }
 }
