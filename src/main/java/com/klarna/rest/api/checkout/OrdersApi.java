@@ -15,13 +15,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 
 
-public class Orders {
+public class OrdersApi {
     String PATH = "/checkout/v3/orders";
 
     private Transport transport;
     private ObjectMapper objectMapper;
 
-    Orders(final Transport transport) {
+    public OrdersApi(final Transport transport) {
         this.transport = transport;
         this.objectMapper = new ObjectMapper();
     }

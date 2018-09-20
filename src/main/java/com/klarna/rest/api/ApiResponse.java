@@ -10,21 +10,22 @@ import javax.ws.rs.core.Response.Status;
 import static javax.ws.rs.core.Response.Status.Family.SUCCESSFUL;
 
 public class ApiResponse {
-    private Status status;
+    private int status;
 
     private Map<String, String> headers;
 
     private String body;
 
-    ApiResponse() {
+
+    public ApiResponse() {
         this.headers = new HashMap<>();
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 
-    public Status getStatus() {
+    public int getStatus() {
         return this.status;
     }
 
@@ -53,7 +54,7 @@ public class ApiResponse {
     }
 
     public Boolean isSuccessfull () {
-        if (this.getStatus().getFamily().equals(SUCCESSFUL)) {
+        if (Status.fromStatusCode(this.getStatus()).getFamily().equals(SUCCESSFUL)) {
             return true;
         }
         return false;
@@ -64,27 +65,27 @@ public class ApiResponse {
             return this;
         }
 
-        throw ProtocolException.unexpectedStatus(this.getStatus().getStatusCode());
+        throw ProtocolException.unexpectedStatus(this.getStatus());
     }
 
     public ApiResponse expectStatusCode(final Status status) throws ProtocolException {
-        if (status.getStatusCode() == this.getStatus().getStatusCode()) {
+        if (status.getStatusCode() == this.getStatus()) {
             return this;
         }
 
-        throw ProtocolException.unexpectedStatus(this.getStatus().getStatusCode());
+        throw ProtocolException.unexpectedStatus(this.getStatus());
     }
 
     public ApiResponse expectStatusCode(final Status... expected) throws ProtocolException {
         List<Status> statuses = Arrays.asList(expected);
-        Status status = this.getStatus();
+        Status status = Status.fromStatusCode(this.getStatus());
 
         if (statuses.contains(status)) {
             return this;
         }
 
         throw ProtocolException.unexpectedStatus(
-                this.getStatus().getStatusCode());
+                this.getStatus());
     }
 
     public ApiResponse expectContentType(final String value) throws ContentTypeException {
