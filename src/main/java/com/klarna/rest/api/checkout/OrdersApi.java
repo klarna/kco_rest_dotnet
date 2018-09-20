@@ -1,10 +1,10 @@
 package com.klarna.rest.api.checkout;
 
 import com.klarna.rest.Transport;
-import com.klarna.rest.api.ApiException;
-import com.klarna.rest.api.ApiResponse;
-import com.klarna.rest.api.ContentTypeException;
-import com.klarna.rest.api.ProtocolException;
+import com.klarna.rest.ApiException;
+import com.klarna.rest.ApiResponse;
+import com.klarna.rest.ContentTypeException;
+import com.klarna.rest.ProtocolException;
 import com.klarna.rest.model.checkout.Order;
 
 import javax.ws.rs.core.Response.Status;

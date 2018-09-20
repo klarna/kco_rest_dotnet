@@ -19,9 +19,9 @@ package examples;
 import com.klarna.rest.HttpUrlConnectionTransport;
 import com.klarna.rest.Transport;
 
-import com.klarna.rest.api.ApiException;
-import com.klarna.rest.api.ContentTypeException;
-import com.klarna.rest.api.ProtocolException;
+import com.klarna.rest.ApiException;
+import com.klarna.rest.ContentTypeException;
+import com.klarna.rest.ProtocolException;
 import com.klarna.rest.api.checkout.OrdersApi;
 
 import com.klarna.rest.model.checkout.MerchantUrls;

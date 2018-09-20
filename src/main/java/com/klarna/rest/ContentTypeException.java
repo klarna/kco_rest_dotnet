@@ -14,31 +14,31 @@
  * limitations under the License.
  */
 
-package com.klarna.rest.api;
+package com.klarna.rest;
 
 /**
  * API protocol exception to indicate when the response is not according
  * to specification.
  */
-public class ProtocolException extends RuntimeException {
+public class ContentTypeException extends RuntimeException {
 
     /**
-     * Constructs a ProtocolException instance.
+     * Constructs a ContentTypeException instance.
      *
      * @param message Error message
      */
-    public ProtocolException(final String message) {
+    public ContentTypeException(final String message) {
         super(message);
     }
 
     /**
      * Creates a protocol exception using the unexpected status message.
      *
-     * @param status Unexpected HTTP status code
+     * @param type Unexpected Content Type
      * @return Exception instance
      */
-    static ProtocolException unexpectedStatus(final int status) {
-        return new ProtocolException(
-                String.format("Unexpected response status code: %d", status));
+    static ContentTypeException unexpectedType(final String type) {
+        return new ContentTypeException(
+                String.format("Unexpected response content type: %s", type));
     }
 }

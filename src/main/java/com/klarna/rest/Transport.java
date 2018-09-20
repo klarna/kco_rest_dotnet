@@ -1,9 +1,5 @@
 package com.klarna.rest;
 
-import com.klarna.rest.api.ApiException;
-import com.klarna.rest.api.ApiResponse;
-import com.klarna.rest.api.ProtocolException;
-
 import java.io.IOException;
 import java.net.URI;
 

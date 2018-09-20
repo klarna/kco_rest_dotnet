@@ -1,4 +1,4 @@
-package com.klarna.rest.api;
+package com.klarna.rest;
 
 import com.klarna.rest.model.ErrorMessage;
 
