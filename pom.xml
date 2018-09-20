@@ -35,6 +35,7 @@
     <properties>
         <compile.version>1.7</compile.version>
         <jersey.version>1.19</jersey.version>
+        <javax.ws.rs-api.version>2.1</javax.ws.rs-api.version>
         <jackson.version>2.6.4</jackson.version>
         <commons-lang.version>3.4</commons-lang.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -51,17 +52,23 @@
             <version>${swagger-annotations.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>${javax.ws.rs-api.version}</version>
+        </dependency>
+
         <!-- HTTP client: jersey-client -->
-        <dependency>
-            <groupId>com.sun.jersey.contribs</groupId>
-            <artifactId>jersey-apache-client4</artifactId>
-            <version>${jersey.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-json</artifactId>
-            <version>${jersey.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.sun.jersey.contribs</groupId>-->
+            <!--<artifactId>jersey-apache-client4</artifactId>-->
+            <!--<version>${jersey.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.sun.jersey</groupId>-->
+            <!--<artifactId>jersey-json</artifactId>-->
+            <!--<version>${jersey.version}</version>-->
+        <!--</dependency>-->
 
         <!-- JSON processing: jackson -->
         <dependency>
