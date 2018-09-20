@@ -1,7 +1,9 @@
 package com.klarna.rest;
 
+import com.klarna.rest.api.ApiResponse;
+
 import java.net.URI;
-import javax.ws.rs.core.Response;
+
 
 /**
  * General interface for an HTTP transport.
@@ -32,11 +34,11 @@ public interface Transport {
      */
     URI NA_TEST_BASE_URL = URI.create("https://api-na.playground.klarna.com");
 
-    Response get(final String path);
+    ApiResponse get(final String path);
 
-    <T> Response post(final String path, final T data);
+    <T> ApiResponse post(final String path, final T data);
 
-    <T> Response put(final String path, final T data);
+    <T> ApiResponse put(final String path, final T data);
 
-    <T> Response delete(final String path);
+    <T> ApiResponse delete(final String path);
 }
