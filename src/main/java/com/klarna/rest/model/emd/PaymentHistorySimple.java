@@ -16,7 +16,6 @@
 
 package com.klarna.rest.model.emd;
 
-import com.klarna.rest.model.Model;
 
 /**
  * The model for simple purchase history.

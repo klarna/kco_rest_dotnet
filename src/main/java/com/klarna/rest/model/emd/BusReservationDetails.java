@@ -16,7 +16,7 @@
 
 package com.klarna.rest.model.emd;
 
-import com.klarna.rest.model.Model;
+import com.klarna.rest.model.emd.Model;
 
 import java.util.List;
 

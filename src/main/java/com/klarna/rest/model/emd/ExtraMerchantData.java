@@ -17,8 +17,7 @@
 package com.klarna.rest.model.emd;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.klarna.rest.model.Attachment;
-import com.klarna.rest.model.Model;
+import com.klarna.rest.model.checkout.Attachment;
 
 import java.io.IOException;
 
@@ -96,8 +95,10 @@ public class ExtraMerchantData extends Model {
     public Attachment toAttachment() throws IOException {
         ObjectMapper om = new ObjectMapper();
 
-        return new Attachment()
-                .setContentType(this.getContentType())
-                .setBody(om.writeValueAsString(this.getBody()));
+        Attachment attachment = new Attachment();
+        attachment.setContentType(this.getContentType());
+        attachment.setBody(om.writeValueAsString(this.getBody()));
+
+        return attachment;
     }
 }
