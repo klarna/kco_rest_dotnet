@@ -86,4 +86,13 @@ public class ApiResponse {
         throw ProtocolException.unexpectedStatus(
                 this.getStatus().getStatusCode());
     }
+
+    public ApiResponse expectContentType(final String value) throws ContentTypeException {
+        String contentType = this.getHeader("Content-Type");
+        if (contentType != null && contentType.equals(value)) {
+            return this;
+        }
+
+        throw ContentTypeException.unexpectedType(contentType);
+    }
 }
