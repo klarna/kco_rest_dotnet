@@ -1,9 +1,6 @@
 package com.klarna.rest;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -13,29 +10,61 @@ import javax.ws.rs.core.MediaType;
 
 public class HttpUrlConnectionTransport implements Transport {
 
-    protected URI baseUri;
+    public static int DEFAULT_TIMEOUT = 30000;
 
-    public HttpUrlConnectionTransport(URI baseUri) {
+    protected URI baseUri;
+    protected String merchantId;
+    protected String sharedSecret;
+
+    protected String userAgent;
+
+    public HttpUrlConnectionTransport(final String merchantId,
+                                      final String sharedSecret,
+                                      final URI baseUri) {
         this.baseUri = baseUri;
+        this.merchantId = merchantId;
+        this.sharedSecret = sharedSecret;
+
+        this.userAgent = Transport.USER_AGENT + "_" + Transport.VERSION;
     }
 
-    public ApiResponse get(final String path) throws IOException {
+    public ApiResponse get(final String path) throws
+            ApiException, ProtocolException, ContentTypeException, IOException {
         HttpURLConnection conn = this.buildConnection(path);
         conn.setRequestMethod("GET");
 
         return this.processConnection(conn);
     }
 
-    public <T> ApiResponse post(final String path, final T data) {
+    public ApiResponse post(final String path, final byte[] data) throws
+            ApiException, ProtocolException, ContentTypeException, IOException {
+        HttpURLConnection conn = this.buildConnection(path);
+        conn.setRequestMethod("POST");
+        conn.setDoOutput(true);
+
+        OutputStream os = conn.getOutputStream();
+        os.write(data);
+        os.close();
+
+        return this.processConnection(conn);
+    }
+
+    public ApiResponse put(final String path, final byte[] data) {
         return new ApiResponse();
     }
 
-    public <T> ApiResponse put(final String path, final T data) {
+    public ApiResponse delete(final String path) {
         return new ApiResponse();
     }
 
-    public <T> ApiResponse delete(final String path) {
-        return new ApiResponse();
+    public String getUserAgent() {
+        return this.userAgent;
+    }
+
+    public HttpUrlConnectionTransport setUserAgent(String userAgent) {
+        this.userAgent = userAgent;
+
+        return this;
     }
 
     protected URL buildPath(String path) throws MalformedURLException {
@@ -51,16 +80,26 @@ public class HttpUrlConnectionTransport implements Transport {
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
         conn.setRequestProperty("Content-Type", MediaType.APPLICATION_JSON);
-        conn.setConnectTimeout(5000);
-        conn.setReadTimeout(5000);
+        conn.setRequestProperty("User-Agent", this.userAgent);
+        conn.setConnectTimeout(DEFAULT_TIMEOUT);
+        conn.setReadTimeout(DEFAULT_TIMEOUT);
+
+        setBase64Auth(conn, this.merchantId, this.sharedSecret);
 
         return conn;
     }
 
+    protected void setBase64Auth(HttpURLConnection conn, String username, String password) throws IOException {
+        byte[] message = (username + ":" + password).getBytes("UTF-8");
+        String encoded = javax.xml.bind.DatatypeConverter.printBase64Binary(message);
+
+        conn.setRequestProperty("Authorization", "Basic " + encoded);
+    }
+
     protected ApiResponse processConnection(HttpURLConnection conn) throws IOException {
+
         ApiResponse response = new ApiResponse();
 
-        final int responseCode = conn.getResponseCode();
         response.setStatus(conn.getResponseCode());
         response.setHeaders(conn.getHeaderFields());
 
@@ -71,15 +110,18 @@ public class HttpUrlConnectionTransport implements Transport {
             is = conn.getErrorStream();
         }
 
-        BufferedReader in = new BufferedReader(new InputStreamReader(is));
-        String inputLine;
-        StringBuilder content = new StringBuilder();
-        while ((inputLine = in.readLine()) != null) {
-            content.append(inputLine);
-        }
-        in.close();
+        if (is != null) {
+            BufferedReader in = new BufferedReader(new InputStreamReader(is));
+            String inputLine;
+            StringBuilder content = new StringBuilder();
+            while ((inputLine = in.readLine()) != null) {
+                content.append(inputLine);
+            }
+            in.close();
 
-        response.setBody(content.toString());
+            response.setBody(content.toString());
+        }
+
         return response;
     }
 }

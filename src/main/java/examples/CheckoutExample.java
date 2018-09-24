@@ -52,7 +52,7 @@ public class CheckoutExample {
             String sharedSecret = "sharedSecret";
             String checkoutOrderID = "12345";
 
-            Transport transport = new HttpUrlConnectionTransport(Transport.EU_TEST_BASE_URL);
+            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
             OrdersApi ordersApi = new OrdersApi(transport);
 
             try {
@@ -80,7 +80,7 @@ public class CheckoutExample {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
 
-            Transport transport = new HttpUrlConnectionTransport(Transport.EU_TEST_BASE_URL);
+            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
             OrdersApi ordersApi = new OrdersApi(transport);
 
             final List<OrderLine> lines = new ArrayList<OrderLine>() {

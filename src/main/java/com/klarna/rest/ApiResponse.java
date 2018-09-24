@@ -18,7 +18,7 @@ public class ApiResponse {
 
     private Map<String, List<String>> headers;
 
-    private String body;
+    private String body = "";
 
 
     public ApiResponse() {

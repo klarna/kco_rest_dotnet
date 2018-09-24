@@ -14,6 +14,11 @@ public interface Transport {
     String VERSION = "3.0.0";
 
     /**
+     * API library default user agent.
+     */
+    String USER_AGENT = "Klarna.kco_rest_java";
+
+    /**
      * API base URL for Europe.
      */
     URI EU_BASE_URL = URI.create("https://api.klarna.com");
@@ -35,9 +40,9 @@ public interface Transport {
 
     ApiResponse get(final String path) throws ApiException, ProtocolException, IOException;
 
-    <T> ApiResponse post(final String path, final T data) throws ApiException, ProtocolException, IOException;
+    ApiResponse post(final String path, final byte[] data) throws ApiException, ProtocolException, IOException;
 
-    <T> ApiResponse put(final String path, final T data) throws ApiException, ProtocolException, IOException;
+    ApiResponse put(final String path, final byte[] data) throws ApiException, ProtocolException, IOException;
 
-    <T> ApiResponse delete(final String path) throws ApiException, ProtocolException, IOException;
+    ApiResponse delete(final String path) throws ApiException, ProtocolException, IOException;
 }

@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 
-
 public class OrdersApi {
     String PATH = "/checkout/v3/orders";
 
@@ -23,11 +22,12 @@ public class OrdersApi {
 
     public OrdersApi(final Transport transport) {
         this.transport = transport;
-        this.objectMapper = new ObjectMapper();
+        this.objectMapper = new ObjectMapper().findAndRegisterModules();
     }
 
     public Order create(Order order) throws ApiException, ProtocolException, ContentTypeException, IOException {
-        final ApiResponse response = transport.post(PATH, order);
+        final byte[] data = objectMapper.writeValueAsBytes(order);
+        final ApiResponse response = transport.post(PATH, data);
 
         response.validator()
                 .expectStatusCode(Status.CREATED)
