@@ -230,6 +230,10 @@ public class Order {
     return shippingAddress;
   }
 
+  public void setShippingAddress(Address shippingAddress) {
+    this.shippingAddress = shippingAddress;
+  }
+
   public Order orderAmount(Long orderAmount) {
     this.orderAmount = orderAmount;
     return this;

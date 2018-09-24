@@ -16,6 +16,8 @@
 
 package com.klarna.rest.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 /**
@@ -32,11 +34,13 @@ public class ErrorMessage {
     /**
      * The error code.
      */
+    @JsonProperty("error_code")
     private String errorCode;
 
     /**
      * List of error messages.
      */
+    @JsonProperty("error_messages")
     private List<String> errorMessages;
 
     /**
@@ -45,7 +49,17 @@ public class ErrorMessage {
      * The correlation id may be requested by merchant support
      * to facilitate support inquiries.
      */
+    @JsonProperty("correlation_id")
     private String correlationId;
+
+    /**
+     * Service version.
+     *
+     * The correlation id may be requested by merchant support
+     * to facilitate support inquiries.
+     */
+    @JsonProperty("service_version")
+    private String serviceVersion;
 
     /**
      * Gets the error code.
@@ -72,5 +86,14 @@ public class ErrorMessage {
      */
     public String getCorrelationId() {
         return this.correlationId;
+    }
+
+    /**
+     * Gets the service version.
+     *
+     * @return Service version
+     */
+    public String getServiceVersion() {
+        return this.serviceVersion;
     }
 }

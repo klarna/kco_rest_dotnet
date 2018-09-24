@@ -49,12 +49,25 @@ public class HttpUrlConnectionTransport implements Transport {
         return this.processConnection(conn);
     }
 
-    public ApiResponse put(final String path, final byte[] data) {
-        return new ApiResponse();
+    public ApiResponse put(final String path, final byte[] data) throws
+            ApiException, ProtocolException, ContentTypeException, IOException {
+        HttpURLConnection conn = this.buildConnection(path);
+        conn.setRequestMethod("PUT");
+        conn.setDoOutput(true);
+
+        OutputStream os = conn.getOutputStream();
+        os.write(data);
+        os.close();
+
+        return this.processConnection(conn);
     }
 
-    public ApiResponse delete(final String path) {
-        return new ApiResponse();
+    public ApiResponse delete(final String path) throws
+            ApiException, ProtocolException, ContentTypeException, IOException {
+        HttpURLConnection conn = this.buildConnection(path);
+        conn.setRequestMethod("DELETE");
+
+        return this.processConnection(conn);
     }
 
     public String getUserAgent() {
