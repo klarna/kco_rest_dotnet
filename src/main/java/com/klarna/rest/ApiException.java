@@ -70,10 +70,15 @@ public class ApiException extends RuntimeException {
             return String.format("Unexpected HTTP status code: %s", httpStatus);
         }
 
-        return String.format(
+        String message = String.format(
                 "%s: %s (#%s)",
                 errorMessage.getErrorCode(),
                 StringUtils.join(errorMessage.getErrorMessages(), ", "),
                 errorMessage.getCorrelationId());
+
+        if (errorMessage.getServiceVersion() != null) {
+            message += " ServiceVersion: " + errorMessage.getServiceVersion();
+        }
+        return message;
     }
 }
