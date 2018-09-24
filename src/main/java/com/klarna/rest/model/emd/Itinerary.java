@@ -17,7 +17,7 @@
 package com.klarna.rest.model.emd;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.joda.time.DateTime;
+import org.threeten.bp.OffsetDateTime;
 
 import java.util.List;
 
@@ -58,7 +58,7 @@ public class Itinerary extends Model {
     /**
      * Departure date.
      */
-    private DateTime departureDate;
+    private OffsetDateTime  departureDate;
 
     /**
      * Ticket delivery method.
@@ -211,7 +211,7 @@ public class Itinerary extends Model {
      *
      * @return Departure date.
      */
-    public DateTime getDepartureDate() {
+    public OffsetDateTime  getDepartureDate() {
         return this.departureDate;
     }
 
@@ -221,7 +221,7 @@ public class Itinerary extends Model {
      * @param departureDate Departure date.
      * @return Same instance.
      */
-    public Itinerary setDepartureDate(final DateTime departureDate) {
+    public Itinerary setDepartureDate(final OffsetDateTime  departureDate) {
         this.departureDate = departureDate;
 
         return this;

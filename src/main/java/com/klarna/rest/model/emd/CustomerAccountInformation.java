@@ -16,7 +16,7 @@
 
 package com.klarna.rest.model.emd;
 
-import org.joda.time.DateTime;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * The model for customer account information.
@@ -30,12 +30,12 @@ public class CustomerAccountInformation extends Model {
     /**
      * Account registration date.
      */
-    private DateTime accountRegistrationDate;
+    private OffsetDateTime accountRegistrationDate;
 
     /**
      * Account last modified date.
      */
-    private DateTime accountLastModified;
+    private OffsetDateTime accountLastModified;
 
     /**
      * Get the unique account identifier.
@@ -64,7 +64,7 @@ public class CustomerAccountInformation extends Model {
      *
      * @return Account registration date.
      */
-    public DateTime getAccountRegistrationDate() {
+    public OffsetDateTime getAccountRegistrationDate() {
         return this.accountRegistrationDate;
     }
 
@@ -75,7 +75,7 @@ public class CustomerAccountInformation extends Model {
      * @return Same instance.
      */
     public CustomerAccountInformation setAccountRegistrationDate(
-            final DateTime accountRegistrationDate) {
+            final OffsetDateTime accountRegistrationDate) {
         this.accountRegistrationDate = accountRegistrationDate;
 
         return this;
@@ -86,7 +86,7 @@ public class CustomerAccountInformation extends Model {
      *
      * @return Account last modified date.
      */
-    public DateTime getAccountLastModified() {
+    public OffsetDateTime getAccountLastModified() {
         return this.accountLastModified;
     }
 
@@ -97,7 +97,7 @@ public class CustomerAccountInformation extends Model {
      * @return Same account
      */
     public CustomerAccountInformation setAccountLastModified(
-            final DateTime accountLastModified) {
+            final OffsetDateTime accountLastModified) {
         this.accountLastModified = accountLastModified;
 
         return this;

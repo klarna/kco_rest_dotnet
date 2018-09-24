@@ -16,7 +16,7 @@
 
 package com.klarna.rest.model.emd;
 
-import org.joda.time.DateTime;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * Model for last modified dates.
@@ -25,34 +25,34 @@ public class LastModified extends Model {
     /**
      * Last modified date of password.
      */
-    private DateTime password;
+    private OffsetDateTime  password;
 
     /**
      * Last modified date of email.
      */
-    private DateTime email;
+    private OffsetDateTime  email;
 
     /**
      * Last modified date of listing.
      */
-    private DateTime listing;
+    private OffsetDateTime  listing;
 
     /**
      * Last modified date of login.
      */
-    private DateTime login;
+    private OffsetDateTime  login;
 
     /**
      * Last modified date of address.
      */
-    private DateTime address;
+    private OffsetDateTime  address;
 
     /**
      * Get the password last modified date.
      *
      * @return Password last modified date.
      */
-    public DateTime getPassword() {
+    public OffsetDateTime  getPassword() {
         return this.password;
     }
 
@@ -62,7 +62,7 @@ public class LastModified extends Model {
      * @param password Password last modified date.
      * @return Same instance.
      */
-    public LastModified setPassword(final DateTime password) {
+    public LastModified setPassword(final OffsetDateTime  password) {
         this.password = password;
 
         return this;
@@ -73,7 +73,7 @@ public class LastModified extends Model {
      *
      * @return Email last modified date.
      */
-    public DateTime getEmail() {
+    public OffsetDateTime  getEmail() {
         return this.email;
     }
 
@@ -83,7 +83,7 @@ public class LastModified extends Model {
      * @param email Email last modified date.
      * @return Same instance.
      */
-    public LastModified setEmail(final DateTime email) {
+    public LastModified setEmail(final OffsetDateTime  email) {
         this.email = email;
 
         return this;
@@ -94,7 +94,7 @@ public class LastModified extends Model {
      *
      * @return Listing last modified date.
      */
-    public DateTime getListing() {
+    public OffsetDateTime  getListing() {
         return this.listing;
     }
 
@@ -104,7 +104,7 @@ public class LastModified extends Model {
      * @param listing Listing last modified date.
      * @return Same instance.
      */
-    public LastModified setListing(final DateTime listing) {
+    public LastModified setListing(final OffsetDateTime  listing) {
         this.listing = listing;
 
         return this;
@@ -115,7 +115,7 @@ public class LastModified extends Model {
      *
      * @return Login last modified date.
      */
-    public DateTime getLogin() {
+    public OffsetDateTime  getLogin() {
         return this.login;
     }
 
@@ -125,7 +125,7 @@ public class LastModified extends Model {
      * @param login Login last modified date.
      * @return Same instance.
      */
-    public LastModified setLogin(final DateTime login) {
+    public LastModified setLogin(final OffsetDateTime  login) {
         this.login = login;
 
         return this;
@@ -136,7 +136,7 @@ public class LastModified extends Model {
      *
      * @return Address last modified date.
      */
-    public DateTime getAddress() {
+    public OffsetDateTime  getAddress() {
         return this.address;
     }
 
@@ -146,7 +146,7 @@ public class LastModified extends Model {
      * @param address Address last modified date.
      * @return Same instance.
      */
-    public LastModified setAddress(final DateTime address) {
+    public LastModified setAddress(final OffsetDateTime  address) {
         this.address = address;
 
         return this;

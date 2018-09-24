@@ -16,7 +16,7 @@
 
 package com.klarna.rest.model.emd;
 
-import org.joda.time.DateTime;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * The model for subscriptions.
@@ -30,12 +30,12 @@ public class Subscription extends Model {
     /**
      * Start time.
      */
-    private DateTime startTime;
+    private OffsetDateTime startTime;
 
     /**
      * End time.
      */
-    private DateTime endTime;
+    private OffsetDateTime endTime;
 
     /**
      * Is the subscription automatically renewed.
@@ -73,7 +73,7 @@ public class Subscription extends Model {
      *
      * @return Start time.
      */
-    public DateTime getStartTime() {
+    public OffsetDateTime getStartTime() {
         return this.startTime;
     }
 
@@ -83,7 +83,7 @@ public class Subscription extends Model {
      * @param startTime Start time.
      * @return Same instance.
      */
-    public Subscription setStartTime(final DateTime startTime) {
+    public Subscription setStartTime(final OffsetDateTime startTime) {
         this.startTime = startTime;
 
         return this;
@@ -94,7 +94,7 @@ public class Subscription extends Model {
      *
      * @return End time.
      */
-    public DateTime getEndTime() {
+    public OffsetDateTime getEndTime() {
         return this.endTime;
     }
 
@@ -104,7 +104,7 @@ public class Subscription extends Model {
      * @param endTime End time.
      * @return Same instance
      */
-    public Subscription setEndTime(final DateTime endTime) {
+    public Subscription setEndTime(final OffsetDateTime endTime) {
         this.endTime = endTime;
 
         return this;

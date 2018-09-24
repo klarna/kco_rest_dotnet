@@ -16,7 +16,7 @@
 
 package com.klarna.rest.model.emd;
 
-import org.joda.time.DateTime;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * The model for vouchers.
@@ -35,12 +35,12 @@ public class Voucher extends Model {
     /**
      * Start time.
      */
-    private DateTime startTime;
+    private OffsetDateTime startTime;
 
     /**
      * End time.
      */
-    private DateTime endTime;
+    private OffsetDateTime endTime;
 
     /**
      * Affiliate name.
@@ -94,7 +94,7 @@ public class Voucher extends Model {
      *
      * @return Start time.
      */
-    public DateTime getStartTime() {
+    public OffsetDateTime getStartTime() {
         return this.startTime;
     }
 
@@ -104,7 +104,7 @@ public class Voucher extends Model {
      * @param startTime Start time.
      * @return Same instance.
      */
-    public Voucher setStartTime(final DateTime startTime) {
+    public Voucher setStartTime(final OffsetDateTime startTime) {
         this.startTime = startTime;
 
         return this;
@@ -115,7 +115,7 @@ public class Voucher extends Model {
      *
      * @return End time.
      */
-    public DateTime getEndTime() {
+    public OffsetDateTime getEndTime() {
         return this.endTime;
     }
 
@@ -125,7 +125,7 @@ public class Voucher extends Model {
      * @param endTime End time.
      * @return Same instance.
      */
-    public Voucher setEndTime(final DateTime endTime) {
+    public Voucher setEndTime(final OffsetDateTime endTime) {
         this.endTime = endTime;
 
         return this;

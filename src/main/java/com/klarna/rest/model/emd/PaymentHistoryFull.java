@@ -16,7 +16,7 @@
 
 package com.klarna.rest.model.emd;
 
-import org.joda.time.DateTime;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * The model for full purchase history.
@@ -45,12 +45,12 @@ public class PaymentHistoryFull extends Model {
     /**
      * Date of the last paid purchase.
      */
-    private DateTime dateOfLastPaidPurchase;
+    private OffsetDateTime dateOfLastPaidPurchase;
 
     /**
      * Date of the first paid purchase.
      */
-    private DateTime dateOfFirstPaidPurchase;
+    private OffsetDateTime dateOfFirstPaidPurchase;
 
     /**
      * Get the unique account identifier.
@@ -149,7 +149,7 @@ public class PaymentHistoryFull extends Model {
      *
      * @return Date of the last paid purchase.
      */
-    public DateTime getDateOfLastPaidPurchase() {
+    public OffsetDateTime getDateOfLastPaidPurchase() {
         return this.dateOfLastPaidPurchase;
     }
 
@@ -160,7 +160,7 @@ public class PaymentHistoryFull extends Model {
      * @return Same instance.
      */
     public PaymentHistoryFull setDateOfLastPaidPurchase(
-            final DateTime dateOfLastPaidPurchase) {
+            final OffsetDateTime dateOfLastPaidPurchase) {
         this.dateOfLastPaidPurchase = dateOfLastPaidPurchase;
 
         return this;
@@ -171,7 +171,7 @@ public class PaymentHistoryFull extends Model {
      *
      * @return Date of the first paid purchase.
      */
-    public DateTime getDateOfFirstPaidPurchase() {
+    public OffsetDateTime getDateOfFirstPaidPurchase() {
         return this.dateOfFirstPaidPurchase;
     }
 
@@ -182,7 +182,7 @@ public class PaymentHistoryFull extends Model {
      * @return Same instance.
      */
     public PaymentHistoryFull setDateOfFirstPaidPurchase(
-            final DateTime dateOfFirstPaidPurchase) {
+            final OffsetDateTime dateOfFirstPaidPurchase) {
         this.dateOfFirstPaidPurchase = dateOfFirstPaidPurchase;
 
         return this;

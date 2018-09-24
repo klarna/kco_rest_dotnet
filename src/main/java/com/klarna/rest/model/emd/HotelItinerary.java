@@ -17,7 +17,7 @@
 package com.klarna.rest.model.emd;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.joda.time.DateTime;
+import org.threeten.bp.OffsetDateTime;
 
 import java.util.List;
 
@@ -38,12 +38,12 @@ public class HotelItinerary extends Model {
     /**
      * Start time.
      */
-    private DateTime startTime;
+    private OffsetDateTime  startTime;
 
     /**
      * End time.
      */
-    private DateTime endTime;
+    private OffsetDateTime  endTime;
 
     /**
      * Number of rooms.
@@ -122,7 +122,7 @@ public class HotelItinerary extends Model {
      *
      * @return Start time.
      */
-    public DateTime getStartTime() {
+    public OffsetDateTime  getStartTime() {
         return this.startTime;
     }
 
@@ -132,7 +132,7 @@ public class HotelItinerary extends Model {
      * @param startTime Start time.
      * @return Same instance.
      */
-    public HotelItinerary setStartTime(final DateTime startTime) {
+    public HotelItinerary setStartTime(final OffsetDateTime  startTime) {
         this.startTime = startTime;
 
         return this;
@@ -143,7 +143,7 @@ public class HotelItinerary extends Model {
      *
      * @return End time.
      */
-    public DateTime getEndTime() {
+    public OffsetDateTime  getEndTime() {
         return this.endTime;
     }
 
@@ -153,7 +153,7 @@ public class HotelItinerary extends Model {
      * @param endTime End time.
      * @return Same instance.
      */
-    public HotelItinerary setEndTime(final DateTime endTime) {
+    public HotelItinerary setEndTime(final OffsetDateTime  endTime) {
         this.endTime = endTime;
 
         return this;

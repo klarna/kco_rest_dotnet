@@ -16,7 +16,7 @@
 
 package com.klarna.rest.model.emd;
 
-import org.joda.time.DateTime;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * The model for marketplace winner information.
@@ -30,7 +30,7 @@ public class MarketplaceWinnerInformation extends Model {
     /**
      * The account registration date.
      */
-    private DateTime accountRegistrationDate;
+    private OffsetDateTime  accountRegistrationDate;
 
     /**
      * The account last modified model.
@@ -74,7 +74,7 @@ public class MarketplaceWinnerInformation extends Model {
      *
      * @return Account registration date.
      */
-    public DateTime getAccountRegistrationDate() {
+    public OffsetDateTime  getAccountRegistrationDate() {
         return this.accountRegistrationDate;
     }
 
@@ -85,7 +85,7 @@ public class MarketplaceWinnerInformation extends Model {
      * @return Same instance.
      */
     public MarketplaceWinnerInformation setAccountRegistrationDate(
-            final DateTime accountRegistrationDate) {
+            final OffsetDateTime  accountRegistrationDate) {
         this.accountRegistrationDate = accountRegistrationDate;
 
         return this;
