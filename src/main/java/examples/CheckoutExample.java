@@ -24,6 +24,7 @@ import com.klarna.rest.ContentTypeException;
 import com.klarna.rest.ProtocolException;
 import com.klarna.rest.api.checkout.OrdersApi;
 
+import com.klarna.rest.model.checkout.Address;
 import com.klarna.rest.model.checkout.MerchantUrls;
 import com.klarna.rest.model.checkout.Order;
 import com.klarna.rest.model.checkout.OrderLine;
@@ -58,6 +59,7 @@ public class CheckoutExample {
             try {
                 Order order = ordersApi.get(checkoutOrderID);
                 System.out.println(order);
+
             } catch (IOException | ProtocolException | ContentTypeException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
@@ -118,18 +120,18 @@ public class CheckoutExample {
 
             final MerchantUrls urls = new MerchantUrls() {
                 {
-                    setTerms("http://www.merchant.com/toc");
-                    setCheckout("http://www.merchant.com/checkout?klarna_order_id={checkout.order.id}");
-                    setConfirmation("http://www.merchant.com/thank-you?klarna_order_id={checkout.order.id}");
-                    setPush("http://www.merchant.com/create_order?klarna_order_id={checkout.order.id}");
+                    setTerms("http://www.example.com/toc");
+                    setCheckout("http://www.example.com/checkout?klarna_order_id={checkout.order.id}");
+                    setConfirmation("http://www.example.com/thank-you?klarna_order_id={checkout.order.id}");
+                    setPush("http://www.example.com/create_order?klarna_order_id={checkout.order.id}");
                 }
             };
 
             Order data = new Order() {
                 {
-                    setPurchaseCountry("gb");
-                    setPurchaseCurrency("gbp");
-                    setLocale("en-gb");
+                    setPurchaseCountry("GB");
+                    setPurchaseCurrency("GBP");
+                    setLocale("EN-GB");
                     setOrderAmount(10000L);
                     setOrderTaxAmount(2000L);
                     setOrderLines(lines);
@@ -139,13 +141,93 @@ public class CheckoutExample {
 
             try {
                 Order order = ordersApi.create(data);
-                System.out.println("ID: " + order.getOrderId());
-                System.out.println("Status: " + order.getStatus());
-                System.out.println("HTML Snippet: " + order.getHtmlSnippet());
+                System.out.println(order);
+
             } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * Update a checkout order.
+     */
+    public static class UpdateExample {
+
+        /**
+         * Runs the example code. Sets new address.
+         *
+         * @param args Command line arguments
+         */
+        public static void main(final String[] args) {
+            String merchantId = "0";
+            String sharedSecret = "sharedSecret";
+            String checkoutOrderID = "12345";
+
+            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            OrdersApi ordersApi = new OrdersApi(transport);
+
+            final Address address = new Address() {
+                {
+                    setTitle("Mr");
+                    setCountry("GB");
+                    setCity("London");
+                    setGivenName("John");
+                    setFamilyName("Smith");
+                    setStreetAddress("1st Avenue");
+                }
+            };
+            final List<OrderLine> lines = new ArrayList<OrderLine>() {
+                {
+                    add(new OrderLine() {
+                        {
+                            setType("physical");
+                            setReference("123050");
+                            setName("Tomatoes");
+                            setQuantity(10L);
+                            setQuantityUnit("kg");
+                            setUnitPrice(600L);
+                            setTaxRate(2500L);
+                            setTotalAmount(6000L);
+                            setTotalTaxAmount(1200L);
+                        }
+                    });
+                    add(new OrderLine() {
+                        {
+                            setType("physical");
+                            setReference("543670");
+                            setName("Bananas");
+                            setQuantity(1L);
+                            setQuantityUnit("bag");
+                            setUnitPrice(5000L);
+                            setTaxRate(2500L);
+                            setTotalAmount(4000L);
+                            setTotalDiscountAmount(1000L);
+                            setTotalTaxAmount(800L);
+                        }
+                    });
+
+                }
+            };
+            Order data = new Order() {
+                {
+                    setBillingAddress(address); // Sets new address
+                    setShippingAddress(address);
+                    setOrderAmount(10000L);
+                    setOrderTaxAmount(2000L);
+                    setOrderLines(lines);
+                }
+            };
+
+            try {
+                Order order = ordersApi.update(checkoutOrderID, data);
+                System.out.println(order);
+            } catch (IOException | ProtocolException | ContentTypeException e) {
+                System.out.println("Connection problem: " + e.getMessage());
+            } catch (ApiException e) {
+                System.out.println("API issue: " + e.getMessage());
             }
         }
     }
