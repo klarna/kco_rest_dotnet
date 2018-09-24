@@ -1,10 +1,15 @@
 package com.klarna.rest;
 
 import java.io.*;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import javax.ws.rs.core.MediaType;
 
@@ -26,6 +31,8 @@ public class HttpUrlConnectionTransport implements Transport {
         this.sharedSecret = sharedSecret;
 
         this.userAgent = Transport.USER_AGENT + "_" + Transport.VERSION;
+
+        this.allowMethods("PATCH"); // Workaround for PATCH method
     }
 
     public ApiResponse get(final String path) throws
@@ -40,11 +47,7 @@ public class HttpUrlConnectionTransport implements Transport {
             ApiException, ProtocolException, ContentTypeException, IOException {
         HttpURLConnection conn = this.buildConnection(path);
         conn.setRequestMethod("POST");
-        conn.setDoOutput(true);
-
-        OutputStream os = conn.getOutputStream();
-        os.write(data);
-        os.close();
+        setBodyPayout(conn, data);
 
         return this.processConnection(conn);
     }
@@ -53,11 +56,16 @@ public class HttpUrlConnectionTransport implements Transport {
             ApiException, ProtocolException, ContentTypeException, IOException {
         HttpURLConnection conn = this.buildConnection(path);
         conn.setRequestMethod("PUT");
-        conn.setDoOutput(true);
+        setBodyPayout(conn, data);
 
-        OutputStream os = conn.getOutputStream();
-        os.write(data);
-        os.close();
+        return this.processConnection(conn);
+    }
+
+    public ApiResponse patch(final String path, final byte[] data) throws
+            ApiException, ProtocolException, ContentTypeException, IOException {
+        HttpURLConnection conn = this.buildConnection(path);
+        conn.setRequestMethod("PATCH");
+        setBodyPayout(conn, data);
 
         return this.processConnection(conn);
     }
@@ -136,5 +144,36 @@ public class HttpUrlConnectionTransport implements Transport {
         }
 
         return response;
+    }
+
+    protected void setBodyPayout(HttpURLConnection conn, byte[] data) throws IOException {
+        if (data != null) {
+            conn.setDoOutput(true);
+
+            OutputStream os = conn.getOutputStream();
+            os.write(data);
+            os.close();
+        }
+    }
+
+    private static void allowMethods(String... methods) {
+        try {
+            Field methodsField = HttpURLConnection.class.getDeclaredField("methods");
+
+            Field modifiersField = Field.class.getDeclaredField("modifiers");
+            modifiersField.setAccessible(true);
+            modifiersField.setInt(methodsField, methodsField.getModifiers() & ~Modifier.FINAL);
+
+            methodsField.setAccessible(true);
+
+            String[] oldMethods = (String[]) methodsField.get(null);
+            Set<String> methodsSet = new LinkedHashSet<>(Arrays.asList(oldMethods));
+            methodsSet.addAll(Arrays.asList(methods));
+            String[] newMethods = methodsSet.toArray(new String[0]);
+
+            methodsField.set(null/*static field*/, newMethods);
+        } catch (NoSuchFieldException | IllegalAccessException e) {
+            System.out.println(e);
+        }
     }
 }

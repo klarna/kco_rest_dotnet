@@ -44,5 +44,7 @@ public interface Transport {
 
     ApiResponse put(final String path, final byte[] data) throws ApiException, ProtocolException, IOException;
 
+    ApiResponse patch(final String path, final byte[] data) throws ApiException, ProtocolException, IOException;
+
     ApiResponse delete(final String path) throws ApiException, ProtocolException, IOException;
 }
