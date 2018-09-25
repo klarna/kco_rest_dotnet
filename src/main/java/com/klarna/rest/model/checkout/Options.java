@@ -431,10 +431,10 @@ public class Options {
   }
 
    /**
-   * If true, validate callback must get a positive response to not stop purchase. Default: false.
+   * If true, validate callback must fetch a positive response to not stop purchase. Default: false.
    * @return requireValidateCallbackSuccess
   **/
-  @ApiModelProperty(value = "If true, validate callback must get a positive response to not stop purchase. Default: false.")
+  @ApiModelProperty(value = "If true, validate callback must fetch a positive response to not stop purchase. Default: false.")
   public Boolean isRequireValidateCallbackSuccess() {
     return requireValidateCallbackSuccess;
   }

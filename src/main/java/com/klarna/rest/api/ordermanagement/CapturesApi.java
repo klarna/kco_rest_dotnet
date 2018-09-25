@@ -23,9 +23,9 @@ public class CapturesApi extends BaseApi {
         this.PATH = String.format("/ordermanagement/v1/orders/%s/captures", orderId);
     }
 
-    public Capture get(String captureId) throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public Capture fetch(String captureId) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format(PATH + "/" + captureId);
-        final ApiResponse response = transport.get(path);
+        final ApiResponse response = this.get(path);
 
         response.validator()
                 .expectStatusCode(Status.OK)
@@ -34,9 +34,9 @@ public class CapturesApi extends BaseApi {
         return objectMapper.readValue(response.getBody(), Capture.class);
     }
 
-    public Capture[] get() throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public Capture[] fetch() throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format(PATH);
-        final ApiResponse response = transport.get(path);
+        final ApiResponse response = this.get(path);
 
         response.validator()
                 .expectStatusCode(Status.OK)
@@ -47,7 +47,7 @@ public class CapturesApi extends BaseApi {
 
     public void create(CaptureObject refund) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(refund);
-        final ApiResponse response = transport.post(PATH, data);
+        final ApiResponse response = this.post(PATH, data);
 
         response.validator()
                 .expectStatusCode(Status.CREATED);
@@ -55,7 +55,7 @@ public class CapturesApi extends BaseApi {
 
     public void triggerSendout(String captureId) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, captureId, "trigger-send-out");
-        final ApiResponse response = transport.post(path, null);
+        final ApiResponse response = this.post(path, null);
 
         response.validator()
                 .expectStatusCode(Status.NO_CONTENT);
@@ -64,7 +64,7 @@ public class CapturesApi extends BaseApi {
     public void addShippingInfo(String captureId, ShippingInfo shippingInfo) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, captureId, "shipping-info");
         final byte[] data = objectMapper.writeValueAsBytes(shippingInfo);
-        final ApiResponse response = transport.post(path, data);
+        final ApiResponse response = this.post(path, data);
 
         response.validator()
                 .expectStatusCode(Status.NO_CONTENT);

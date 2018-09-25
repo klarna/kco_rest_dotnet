@@ -57,7 +57,7 @@ public class CheckoutExample {
             OrdersApi ordersApi = new OrdersApi(transport);
 
             try {
-                Order order = ordersApi.get(checkoutOrderID);
+                Order order = ordersApi.fetch(checkoutOrderID);
                 System.out.println(order);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {

@@ -19,8 +19,8 @@ public class OrdersApi extends BaseApi {
         this.setObjectMapper(new JacksonMapper());
     }
 
-    public Order get(String orderId) throws ApiException, ProtocolException, ContentTypeException, IOException {
-        final ApiResponse response = transport.get(PATH + '/' + orderId);
+    public Order fetch(String orderId) throws ApiException, ProtocolException, ContentTypeException, IOException {
+        final ApiResponse response = this.get(PATH + '/' + orderId);
 
         response.validator()
                 .expectStatusCode(Status.OK)
@@ -32,7 +32,7 @@ public class OrdersApi extends BaseApi {
     public void releaseRemainingAuthorization(String orderId)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "release-remaining-authorization");
-        final ApiResponse response = transport.post(path, null);
+        final ApiResponse response = this.post(path, null);
 
         response.validator()
                 .expectStatusCode(Status.NO_CONTENT);
@@ -41,7 +41,7 @@ public class OrdersApi extends BaseApi {
     public void extendAuthorizationTime(String orderId)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "extend-authorization-time");
-        final ApiResponse response = transport.post(path, null);
+        final ApiResponse response = this.post(path, null);
 
         response.validator()
                 .expectStatusCode(Status.NO_CONTENT);
@@ -52,7 +52,7 @@ public class OrdersApi extends BaseApi {
         final String path = String.format("%s/%s/%s", PATH, orderId, "customer-details");
         final byte[] data = objectMapper.writeValueAsBytes(customerAddress);
 
-        final ApiResponse response = transport.patch(path, data);
+        final ApiResponse response = this.patch(path, data);
 
         response.validator()
                 .expectStatusCode(Status.NO_CONTENT);
@@ -62,7 +62,7 @@ public class OrdersApi extends BaseApi {
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "cancel");
 
-        final ApiResponse response = transport.post(path, null);
+        final ApiResponse response = this.post(path, null);
 
         response.validator()
                 .expectStatusCode(Status.NO_CONTENT);
@@ -72,7 +72,7 @@ public class OrdersApi extends BaseApi {
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "merchant-references");
         final byte[] data = objectMapper.writeValueAsBytes(references);
-        final ApiResponse response = transport.patch(path, data);
+        final ApiResponse response = this.patch(path, data);
 
         response.validator()
                 .expectStatusCode(Status.NO_CONTENT);
@@ -81,7 +81,7 @@ public class OrdersApi extends BaseApi {
     public void acknowledgeOrder(String orderId)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "acknowledge");
-        final ApiResponse response = transport.post(path, null);
+        final ApiResponse response = this.post(path, null);
 
         response.validator()
                 .expectStatusCode(Status.NO_CONTENT);
@@ -91,7 +91,7 @@ public class OrdersApi extends BaseApi {
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "authorization");
         final byte[] data = objectMapper.writeValueAsBytes(orderData);
-        final ApiResponse response = transport.patch(path, data);
+        final ApiResponse response = this.patch(path, data);
 
         response.validator()
                 .expectStatusCode(Status.NO_CONTENT);

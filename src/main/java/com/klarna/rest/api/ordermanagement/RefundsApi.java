@@ -21,15 +21,14 @@ public class RefundsApi extends BaseApi {
 
     public void create(RefundObject refund) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(refund);
-
-        final ApiResponse response = transport.post(PATH, data);
+        final ApiResponse response = this.post(PATH, data);
 
         response.validator()
                 .expectStatusCode(Status.CREATED);
     }
 
-    public Refund get(String refundId) throws ApiException, ProtocolException, ContentTypeException, IOException {
-        final ApiResponse response = transport.get(PATH + "/" + refundId);
+    public Refund fetch(String refundId) throws ApiException, ProtocolException, ContentTypeException, IOException {
+        ApiResponse response = this.get(PATH + "/" + refundId);
 
         response.validator()
                 .expectStatusCode(Status.OK)

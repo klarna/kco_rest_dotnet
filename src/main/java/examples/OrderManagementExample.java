@@ -23,6 +23,7 @@ import com.klarna.rest.ApiException;
 import com.klarna.rest.ContentTypeException;
 import com.klarna.rest.ProtocolException;
 import com.klarna.rest.api.ordermanagement.OrdersApi;
+import com.klarna.rest.api.ordermanagement.RefundsApi;
 import com.klarna.rest.model.order_management.*;
 
 import java.io.IOException;
@@ -37,7 +38,7 @@ public class OrderManagementExample {
     /**
      * Fetches a checkout order.
      */
-    public static class FetchExample {
+    public static class FetchOrderExample {
 
         /**
          * Runs the example code.
@@ -53,7 +54,7 @@ public class OrderManagementExample {
             OrdersApi ordersApi = new OrdersApi(transport);
 
             try {
-                Order order = ordersApi.get(orderId);
+                Order order = ordersApi.fetch(orderId);
                 System.out.println(order);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {
@@ -200,7 +201,7 @@ public class OrderManagementExample {
     /**
      * Update merchant references.
      */
-    public static class updateMerchantReferencesExample {
+    public static class UpdateMerchantReferencesExample {
 
         /**
          * Runs the example code.
@@ -235,7 +236,7 @@ public class OrderManagementExample {
     /**
      * Acknowledge order.
      */
-    public static class acknowledgeOrderExample {
+    public static class AcknowledgeOrderExample {
 
         /**
          * Runs the example code.
@@ -265,7 +266,7 @@ public class OrderManagementExample {
     /**
      * Set new order amount and order lines.
      */
-    public static class setOrderAmountAndOrderLines {
+    public static class SetOrderAmountAndOrderLines {
 
         /**
          * Runs the example code.
@@ -306,6 +307,94 @@ public class OrderManagementExample {
                 };
                 ordersApi.setOrderAmountAndOrderLines(orderId, orderData);
                 System.out.println("New order amount and order lines have been set");
+
+            } catch (IOException | ProtocolException | ContentTypeException e) {
+                System.out.println("Connection problem: " + e.getMessage());
+            } catch (ApiException e) {
+                System.out.println("API issue: " + e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * Create a new order refund.
+     */
+    public static class CreateRefundExample {
+
+        /**
+         * Runs the example code.
+         *
+         * @param args Command line arguments
+         */
+        public static void main(final String[] args) {
+            String merchantId = "0";
+            String sharedSecret = "sharedSecret";
+            String orderId = "12345";
+
+            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            RefundsApi refundsApi = new RefundsApi(transport, orderId);
+
+            try {
+                final List<OrderLine> lines = new ArrayList<OrderLine>() {
+                    {
+                        add(new OrderLine() {
+                            {
+                                setType("physical");
+                                setReference("123050");
+                                setName("Tomatoes");
+                                setQuantity(5L);
+                                setQuantityUnit("kg");
+                                setUnitPrice(600L);
+                                setTaxRate(2500);
+                                setTotalAmount(3000L);
+                                setTotalTaxAmount(600L);
+                            }
+                        });
+                    }};
+                final RefundObject refund = new RefundObject(){
+                    {
+                        setRefundedAmount(1L);
+                        setDescription("Refunding half the tomatoes");
+                        setOrderLines(lines);
+                    }
+                };
+                refundsApi.create(refund);
+                System.out.println("Refund has been created");
+
+                // The refund id will be sent back in the Header.
+                String refundId = refundsApi.getLastResponse().getHeader("Refund-Id").get(0);
+                System.out.println("Refund ID: " + refundId);
+
+                Refund createdRefund = refundsApi.fetch(refundId);
+                System.out.println(createdRefund);
+
+            } catch (IOException | ProtocolException | ContentTypeException e) {
+                System.out.println("Connection problem: " + e.getMessage());
+            } catch (ApiException e) {
+                System.out.println("API issue: " + e.getMessage());
+            }
+        }
+    }
+
+    public static class FetchRefundExample {
+
+        /**
+         * Runs the example code.
+         *
+         * @param args Command line arguments
+         */
+        public static void main(final String[] args) {
+            String merchantId = "0";
+            String sharedSecret = "sharedSecret";
+            String orderId = "12345";
+            String refundId = "34567";
+
+            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            RefundsApi refundsApi = new RefundsApi(transport, orderId);
+
+            try {
+                Refund refund = refundsApi.fetch(refundId);
+                System.out.println(refund);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {
                 System.out.println("Connection problem: " + e.getMessage());

@@ -25,7 +25,7 @@ public class OrdersApi extends BaseApi {
 
     public Order create(Order order) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(order);
-        final ApiResponse response = transport.post(PATH, data);
+        final ApiResponse response = this.post(PATH, data);
 
         response.validator()
                 .expectStatusCode(Status.CREATED)
@@ -34,8 +34,8 @@ public class OrdersApi extends BaseApi {
         return objectMapper.readValue(response.getBody(), Order.class);
     }
 
-    public Order get(String orderId) throws ApiException, ProtocolException, ContentTypeException, IOException {
-        final ApiResponse response = transport.get(PATH + '/' + orderId);
+    public Order fetch(String orderId) throws ApiException, ProtocolException, ContentTypeException, IOException {
+        final ApiResponse response = this.get(PATH + '/' + orderId);
 
         response.validator()
                 .expectStatusCode(Status.OK)
@@ -46,7 +46,7 @@ public class OrdersApi extends BaseApi {
 
     public Order update(String orderId, Order order) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(order);
-        final ApiResponse response = transport.post(PATH + '/' + orderId, data);
+        final ApiResponse response = this.post(PATH + '/' + orderId, data);
 
         response.validator()
                 .expectStatusCode(Status.OK)
