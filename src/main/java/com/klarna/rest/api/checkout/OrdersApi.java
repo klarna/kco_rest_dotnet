@@ -16,7 +16,7 @@ import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 
 public class OrdersApi extends BaseApi {
-    String PATH = "/checkout/v3/orders";
+    protected String PATH = "/checkout/v3/orders";
 
     public OrdersApi(final Transport transport) {
         super(transport);

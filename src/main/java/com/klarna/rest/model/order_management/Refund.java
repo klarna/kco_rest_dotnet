@@ -26,6 +26,9 @@ import org.threeten.bp.OffsetDateTime;
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-06T11:24:04.099Z")
 public class Refund {
+  @JsonProperty("refund_id")
+  private String refundId = null;
+
   @JsonProperty("refunded_amount")
   private Long refundedAmount = null;
 
@@ -38,9 +41,29 @@ public class Refund {
   @JsonProperty("order_lines")
   private List<OrderLine> orderLines = null;
 
+  @JsonProperty("processed_order_lines")
+  private List<OrderLine> processedOrderLines = null;
+
+  @JsonProperty("merchant_reversal")
+  private Boolean merchantReversal = null;
+
   public Refund refundedAmount(Long refundedAmount) {
     this.refundedAmount = refundedAmount;
     return this;
+  }
+
+  /**
+   * This API call is used to read information on a refund.
+
+   * @return refund id
+   **/
+  @ApiModelProperty(value = "Refund ID.")
+  public String getRefundId() {
+    return description;
+  }
+
+  public void setRefundId(String refundId) {
+    this.refundId = refundId;
   }
 
    /**
@@ -118,6 +141,40 @@ public class Refund {
     this.orderLines = orderLines;
   }
 
+
+  /**
+   * @return processedOrderLines
+   **/
+  @ApiModelProperty(value = "Order lines for the refund shown to the customer. Optional but increases the customer experience. Maximum 1000 order lines.")
+  public List<OrderLine> getProcessedOrderLines() {
+    return processedOrderLines;
+  }
+
+  public void setProcessedOrderLines(List<OrderLine> orderLines) {
+    this.processedOrderLines = processedOrderLines;
+  }
+
+  public Refund processedOrderLines(List<OrderLine> processedOrderLines) {
+    this.processedOrderLines = processedOrderLines;
+    return this;
+  }
+
+  public Refund addProcessedOrderLinesItem(OrderLine processedOrderLinesItem) {
+    if (this.processedOrderLines == null) {
+      this.processedOrderLines = new ArrayList<OrderLine>();
+    }
+    this.processedOrderLines.add(processedOrderLinesItem);
+    return this;
+  }
+
+  /**
+   * Gets the merchant reversal flag.
+   *
+   * @return Reversal flag
+   */
+  public Boolean getMerchantReversal() {
+    return this.merchantReversal;
+  }
 
   @Override
   public boolean equals(java.lang.Object o) {

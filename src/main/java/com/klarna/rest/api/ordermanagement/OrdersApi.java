@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response.Status;
 import java.io.IOException;
 
 public class OrdersApi extends BaseApi {
-    String PATH = "/ordermanagement/v1/orders";
+    protected String PATH = "/ordermanagement/v1/orders";
 
     public OrdersApi(final Transport transport) {
         super(transport);
