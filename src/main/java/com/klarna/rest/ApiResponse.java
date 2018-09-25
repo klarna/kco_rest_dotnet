@@ -113,7 +113,7 @@ public class ApiResponse {
         }
 
         ErrorMessage message;
-        ObjectMapper objectMapper = new JacksonMapper();
+        ObjectMapper objectMapper = new DefaultMapper();
         try {
             message = objectMapper.readValue(this.getBody(), ErrorMessage.class);
 

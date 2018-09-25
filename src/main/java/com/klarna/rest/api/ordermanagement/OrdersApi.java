@@ -16,7 +16,6 @@ public class OrdersApi extends BaseApi {
 
     public OrdersApi(final Transport transport) {
         super(transport);
-        this.setObjectMapper(new JacksonMapper());
     }
 
     public Order fetch(String orderId) throws ApiException, ProtocolException, ContentTypeException, IOException {

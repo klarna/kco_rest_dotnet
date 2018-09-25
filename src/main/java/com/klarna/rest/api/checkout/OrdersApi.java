@@ -5,7 +5,6 @@ import com.klarna.rest.ApiException;
 import com.klarna.rest.ApiResponse;
 import com.klarna.rest.ContentTypeException;
 import com.klarna.rest.ProtocolException;
-import com.klarna.rest.JacksonMapper;
 import com.klarna.rest.api.BaseApi;
 
 import com.klarna.rest.model.checkout.Order;
@@ -20,7 +19,6 @@ public class OrdersApi extends BaseApi {
 
     public OrdersApi(final Transport transport) {
         super(transport);
-        this.setObjectMapper(new JacksonMapper());
     }
 
     public Order create(Order order) throws ApiException, ProtocolException, ContentTypeException, IOException {

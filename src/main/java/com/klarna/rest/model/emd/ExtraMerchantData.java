@@ -17,7 +17,7 @@
 package com.klarna.rest.model.emd;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.klarna.rest.JacksonMapper;
+import com.klarna.rest.DefaultMapper;
 import com.klarna.rest.model.checkout.Attachment;
 
 import java.io.IOException;
@@ -51,7 +51,7 @@ public class ExtraMerchantData extends Model {
             throw new IOException("Incorrect content type");
         }
 
-        ObjectMapper om = new JacksonMapper();
+        ObjectMapper om = new DefaultMapper();
         ExtraMerchantDataBody body = om.readValue(attachment.getBody(), ExtraMerchantDataBody.class);
 
         return new ExtraMerchantData().setBody(body);
@@ -94,7 +94,7 @@ public class ExtraMerchantData extends Model {
      * @throws IOException If the body could not be serialized.
      */
     public Attachment toAttachment() throws IOException {
-        ObjectMapper om = new JacksonMapper();
+        ObjectMapper om = new DefaultMapper();
 
         Attachment attachment = new Attachment();
         attachment.setContentType(this.getContentType());

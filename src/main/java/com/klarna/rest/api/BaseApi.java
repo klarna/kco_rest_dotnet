@@ -1,10 +1,7 @@
 package com.klarna.rest.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.klarna.rest.ApiException;
-import com.klarna.rest.ApiResponse;
-import com.klarna.rest.ProtocolException;
-import com.klarna.rest.Transport;
+import com.klarna.rest.*;
 
 import java.io.IOException;
 
@@ -15,7 +12,7 @@ public abstract class BaseApi {
 
     public BaseApi(Transport transport) {
         this.transport = transport;
-        this.objectMapper = new ObjectMapper();
+        this.objectMapper = new DefaultMapper();
     }
 
     public void setObjectMapper(ObjectMapper objectMapper) {

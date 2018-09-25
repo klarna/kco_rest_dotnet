@@ -5,8 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.Serializable;
 
-public class JacksonMapper extends ObjectMapper {
-    public JacksonMapper () {
+public class DefaultMapper extends ObjectMapper {
+    public DefaultMapper() {
         this.findAndRegisterModules();
         this.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
