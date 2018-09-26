@@ -42,6 +42,19 @@ public class OrdersApi extends BaseApi {
         return objectMapper.readValue(response.getBody(), Order.class);
     }
 
+    public Order fetch() throws ApiException, ProtocolException, ContentTypeException, IOException {
+        if (this.location == null) {
+            throw new IOException("Unknown location");
+        }
+        final ApiResponse response = this.get(this.location);
+
+        response.validator()
+                .expectStatusCode(Status.OK)
+                .expectContentType(MediaType.APPLICATION_JSON);
+
+        return objectMapper.readValue(response.getBody(), Order.class);
+    }
+
     public Order update(String orderId, Order order) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(order);
         final ApiResponse response = this.post(PATH + '/' + orderId, data);

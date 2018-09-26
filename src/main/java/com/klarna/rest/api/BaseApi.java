@@ -4,11 +4,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.klarna.rest.*;
 
 import java.io.IOException;
+import java.util.List;
 
 public abstract class BaseApi {
     protected Transport transport;
     protected ObjectMapper objectMapper;
     protected ApiResponse lastResponse;
+    protected String location;
 
     public BaseApi(Transport transport) {
         this.transport = transport;
@@ -46,23 +48,35 @@ public abstract class BaseApi {
     protected ApiResponse makeRequest(String method, String path, byte[] data)
             throws ApiException, ProtocolException, IOException {
         // TODO: Place for debugger and logger
-        ApiResponse response = null;
+        final ApiResponse response;
         switch (method) {
             case "GET":
                 response = this.transport.get(path);
                 break;
+
             case "POST":
                 response = this.transport.post(path, data);
                 break;
+
             case "PUT":
                 response = this.transport.put(path, data);
                 break;
+
             case "PATCH":
                 response = this.transport.patch(path, data);
                 break;
+
             case "DELETE":
                 response = this.transport.delete(path);
                 break;
+
+            default: throw new IOException("Unknown request method " + method);
+        }
+
+        // Check if the response has a "Location" header
+        List<String> header = response.getHeader("Location");
+        if (header != null) {
+            this.location = header.get(0);
         }
 
         this.lastResponse = response;

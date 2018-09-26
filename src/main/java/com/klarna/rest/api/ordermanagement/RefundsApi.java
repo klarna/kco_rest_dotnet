@@ -35,4 +35,17 @@ public class RefundsApi extends BaseApi {
 
         return objectMapper.readValue(response.getBody(), Refund.class);
     }
+
+    public Refund fetch() throws ApiException, ProtocolException, ContentTypeException, IOException {
+        if (this.location == null) {
+            throw new IOException("Unknown location");
+        }
+        ApiResponse response = this.get(this.location);
+
+        response.validator()
+                .expectStatusCode(Status.OK)
+                .expectContentType(MediaType.APPLICATION_JSON);
+
+        return objectMapper.readValue(response.getBody(), Refund.class);
+    }
 }

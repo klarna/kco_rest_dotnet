@@ -347,13 +347,13 @@ public class OrderManagementExample {
                                 setUnitPrice(600L);
                                 setTaxRate(2500);
                                 setTotalAmount(3000L);
-                                setTotalTaxAmount(600L);
+                                setTotalTaxAmount(750L);
                             }
                         });
                     }};
                 final RefundObject refund = new RefundObject(){
                     {
-                        setRefundedAmount(1L);
+                        setRefundedAmount(3000L);
                         setDescription("Refunding half the tomatoes");
                         setOrderLines(lines);
                     }
@@ -361,11 +361,12 @@ public class OrderManagementExample {
                 refundsApi.create(refund);
                 System.out.println("Refund has been created");
 
-                // The refund id will be sent back in the Header.
+                // The refund ID will be sent back in the Header.
                 String refundId = refundsApi.getLastResponse().getHeader("Refund-Id").get(0);
                 System.out.println("Refund ID: " + refundId);
 
-                Refund createdRefund = refundsApi.fetch(refundId);
+                // Also we got back a new Location header, so we can just use it by calling fetch method
+                Refund createdRefund = refundsApi.fetch();
                 System.out.println(createdRefund);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {
