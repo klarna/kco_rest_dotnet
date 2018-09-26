@@ -3,10 +3,7 @@ package com.klarna.rest;
 import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
+import java.net.*;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -22,6 +19,10 @@ public class HttpUrlConnectionTransport implements Transport {
     protected String sharedSecret;
 
     protected String userAgent;
+
+    // Proxy settings
+    protected Proxy proxy;
+    protected Authenticator proxyAuth;
 
     public HttpUrlConnectionTransport(final String merchantId,
                                       final String sharedSecret,
@@ -88,6 +89,21 @@ public class HttpUrlConnectionTransport implements Transport {
         return this;
     }
 
+    public void setProxy(final Proxy.Type scheme, final String host, final int port) {
+        this.proxy = new Proxy(scheme, new InetSocketAddress(host, port));
+    }
+
+    public void setProxy(final Proxy.Type scheme, final String host, final int port, final String username, final String password) {
+        this.setProxy(scheme, host, port);
+        this.proxyAuth = new Authenticator() {
+            public PasswordAuthentication getPasswordAuthentication() {
+                return (new PasswordAuthentication(username,
+                        password.toCharArray()));
+            }
+        };
+        Authenticator.setDefault(this.proxyAuth);
+    }
+
     protected URL buildPath(String path) throws MalformedURLException {
         URI uri = this.baseUri;
         String newPath = uri.getPath() + path;
@@ -98,7 +114,12 @@ public class HttpUrlConnectionTransport implements Transport {
     protected HttpURLConnection buildConnection(String path) throws IOException {
         URL url = this.buildPath(path);
 
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        HttpURLConnection conn;
+        if (this.proxy != null) {
+            conn = (HttpURLConnection) url.openConnection(this.proxy);
+        } else {
+            conn = (HttpURLConnection) url.openConnection();
+        }
 
         conn.setRequestProperty("Content-Type", MediaType.APPLICATION_JSON);
         conn.setRequestProperty("User-Agent", this.userAgent);
