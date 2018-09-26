@@ -56,7 +56,8 @@ The basic workflow is the following:
 2) Use API you want to via created Transport.
 
 ```java
-HttpUrlConnectionTransport transport = new HttpUrlConnectionTransport("merchantId", "sharedSecret", Transport.EU_BASE_URL);
+HttpUrlConnectionTransport transport = new HttpUrlConnectionTransport(
+        "merchantId", "sharedSecret", Transport.EU_BASE_URL);
 OrdersApi ordersApi = new OrdersApi(transport);
 
 try {
@@ -91,7 +92,7 @@ To contribute, the following criteria needs to be fulfilled:
 
 ## Questions and feedback
 
-If you have any questions concerning this product or the implementation,
+If you have any questions concerning this product,
 please contact [developers@klarna.com](mailto:developers@klarna.com).
 
 
