@@ -32,7 +32,7 @@ public class HttpUrlConnectionTransport implements Transport {
 
         this.userAgent = Transport.USER_AGENT + "_" + Transport.VERSION;
 
-        this.allowMethods("PATCH"); // Workaround for PATCH method
+        HttpUrlConnectionTransport.allowMethods("PATCH"); // Workaround for PATCH method
     }
 
     public ApiResponse get(final String path) throws
