@@ -52,15 +52,15 @@ Example files can be found in the
 [examples](src/main/java/examples/) package.
 
 The basic workflow is the following:
-1) Create a transport (SDK has default one, but you can implement or you your own);
+1) Create a transport (SDK has a default one, but you can implement your own);
 2) Use API you want to via created Transport.
 
 ```java
-Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_BASE_URL);
+HttpUrlConnectionTransport transport = new HttpUrlConnectionTransport("merchantId", "sharedSecret", Transport.EU_BASE_URL);
 OrdersApi ordersApi = new OrdersApi(transport);
 
 try {
-    Order order = ordersApi.fetch(checkoutOrderID);
+    Order order = ordersApi.fetch("checkoutOrderID-123");
     System.out.println(order);
 
 } catch (IOException | ProtocolException | ContentTypeException e) {
