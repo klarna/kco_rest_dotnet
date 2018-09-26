@@ -1,40 +1,77 @@
-## Klarna Checkout REST Java SDK
-[![Maven Version][maven-image]](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22kco-rest%22)
+# Klarna REST Java SDK
+[![Maven Version][maven-image]](https://search.maven.org/search?q=a:kco-rest)
 [![Build Status][travis-image]](https://travis-ci.org/klarna/kco_rest_java)
 [![Coverage Status][coveralls-image]](https://coveralls.io/r/klarna/kco_rest_java)
 
-Klarna Checkout is a revolutionary new payment solution that is changing the way
-people shop online. First, consumers verify their purchase with a minimal
-amount of information through intelligent identification, securing your order
-immediately, and then complete their payment afterwards - separating buying
-from paying and dramatically increasing conversion. Klarna Checkout also allows
-merchants to offer all payment methods through one supplier, minimizing
-administration, costs and integration time.
+## Welcome to Klarna. Smoooth payments.
+
+### Klarna Checkout
+A full checkout experience embedded on your site. It lets your customers check out on your
+site with only their email and ZIP, and pay with the major payment methods including the specific
+Klarna payment methods. All available in one integration.
+
+### Klarna Payments
+Klarna offers three payment methods. Pay now, Pay later and Slice it. It offers your consumers
+to try before they buy, finance purchases on your store, or make use of other payment
+options made available by Klarna.
 
 
-## About Klarna
-Klarna was founded in Stockholm in 2005 with the idea of providing a
-zero-friction online payment solution that would allow consumers and merchants
-to interact with each other as safely and simply as possible. We do this by
-letting the consumer receive the goods first and pay afterwards, while we assume
-the credit and fraud risks for the merchants. Today, Klarna is one of Europe's
-fastest growing companies. In just 8 years, we've grown to 800 employees
-operating in 7 European countries with over 8 million consumers. But we are not
-satisfied with that. Our goal is to become market leaders within invoice-based
-payments worldwide and change the way the world shops online.
+## Installing the Java SDK
 
+### Maven
+To install the Java SDK from the Central Maven repository using Maven, add the following lines to `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>com.klarna</groupId>
+    <artifactId>kco-rest</artifactId>
+    <version>[3.0,)</version>
+</dependency>
+```
+
+### Gradle
+
+To install the Java SDK from the Central Maven repository using Gradle, add the following lines to `build.gradle`:
+
+```
+dependencies {
+    compile group: 'com.klarna', name: 'kco-rest', version:'3.0+'
+}
+```
+
+## Documentation
+The various documentation is available:
+
+* The [Developers Portal](https://developers.klarna.com);
+* The [Klarna API documentation](https://developers.klarna.com/api);
+* The [SDK references](https://klarna.github.io/kco_rest_java/);
 
 ## Usage
+
 Example files can be found in the
 [examples](src/main/java/examples/) package.
 
+The basic workflow is the following:
+1) Create a transport (SDK has default one, but you can implement or you your own);
+2) Use API you want to via created Transport.
 
-## Documentation
-Documentation and more examples can be found at
-[developers.klarna.com](https://developers.klarna.com).
+```java
+Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_BASE_URL);
+OrdersApi ordersApi = new OrdersApi(transport);
 
+try {
+    Order order = ordersApi.fetch(checkoutOrderID);
+    System.out.println(order);
+
+} catch (IOException | ProtocolException | ContentTypeException e) {
+    System.out.println("Connection problem: " + e.getMessage());
+} catch (ApiException e) {
+    System.out.println("API issue: " + e.getMessage());
+}
+```
 
 ## How to contribute
+
 At Klarna, we strive toward achieving the highest possible quality for our
 products. Therefore, we require you to follow these guidelines if you wish
 to contribute.
@@ -53,11 +90,13 @@ To contribute, the following criteria needs to be fulfilled:
 
 
 ## Questions and feedback
+
 If you have any questions concerning this product or the implementation,
-please contact [integration@klarna.com](mailto:integration@klarna.com).
+please contact [developers@klarna.com](mailto:developers@klarna.com).
 
 
 ## License
+
 The Klarna Checkout REST Java SDK is released under
 [Apache License, Version 2.0](http://www.apache.org/LICENSE-2.0)
 
