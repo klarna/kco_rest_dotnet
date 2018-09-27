@@ -6,22 +6,22 @@
 
     <groupId>com.klarna</groupId>
     <artifactId>kco-rest</artifactId>
-    <version>2.2.1</version>
+    <version>3.0.0</version>
     <packaging>jar</packaging>
 
     <name>kco-rest</name>
     <url>https://developers.klarna.com</url>
-    <description>Klarna Checkout and Order Management SDK</description>
+    <description>Klarna REST Java SDK</description>
     <organization>
       <name>Klarna AB</name>
-      <url>http://www.klarna.com</url>
+      <url>https://www.klarna.com</url>
     </organization>
     <developers>
         <developer>
             <name>Klarna AB</name>
-            <email>integration@klarna.com</email>
+            <email>developers@klarna.com</email>
             <organization>Klarna</organization>
-            <organizationUrl>http://klarna.com</organizationUrl>
+            <organizationUrl>https://klarna.com</organizationUrl>
         </developer>
     </developers>
 
