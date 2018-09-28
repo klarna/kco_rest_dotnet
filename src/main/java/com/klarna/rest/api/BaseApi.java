@@ -4,13 +4,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.klarna.rest.*;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.List;
+import java.util.Map;
 
 public abstract class BaseApi {
     protected Transport transport;
     protected ObjectMapper objectMapper;
     protected ApiResponse lastResponse;
     protected String location;
+
+    private static final String URL_ENCODING = "UTF-8";
 
     public BaseApi(Transport transport) {
         this.transport = transport;
@@ -23,6 +28,28 @@ public abstract class BaseApi {
 
     public ApiResponse getLastResponse() {
         return lastResponse;
+    }
+
+    public String buildQueryString(Map<String, String> params) throws RuntimeException {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (String key : params.keySet()) {
+            if (stringBuilder.length() > 0) {
+                stringBuilder.append("&");
+            }
+            String value = params.get(key);
+            try {
+                if (key != null) {
+                    stringBuilder.append(URLEncoder.encode(key, URL_ENCODING));
+                    stringBuilder.append("=");
+                    stringBuilder.append(value != null ? URLEncoder.encode(value, URL_ENCODING) : "");
+                }
+            } catch (UnsupportedEncodingException e) {
+                throw new RuntimeException("Unsupported encoding", e);
+            }
+        }
+
+        return stringBuilder.toString();
     }
 
     protected ApiResponse get(final String path) throws ApiException, ProtocolException, IOException {
