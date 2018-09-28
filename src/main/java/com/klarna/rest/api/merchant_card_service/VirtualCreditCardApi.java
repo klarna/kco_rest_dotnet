@@ -10,7 +10,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 
-public class VirtualCreditCardApi  extends BaseApi {
+public class VirtualCreditCardApi extends BaseApi {
     protected String PATH = "/merchantcard/v3/settlements";
 
     public VirtualCreditCardApi(final Transport transport) {
