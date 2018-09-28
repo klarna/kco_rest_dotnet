@@ -1,4 +1,4 @@
-package com.klarna.rest.api.ordermanagement;
+package com.klarna.rest.api.order_management;
 
 import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;
@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response.Status;
 import java.io.IOException;
 
 public class OrdersApi extends BaseApi {
-    protected String PATH = "/ordermanagement/v1/orders";
+    protected String PATH = "/order_management/v1/orders";
 
     public OrdersApi(final Transport transport) {
         super(transport);

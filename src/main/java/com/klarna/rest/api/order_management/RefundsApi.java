@@ -1,4 +1,4 @@
-package com.klarna.rest.api.ordermanagement;
+package com.klarna.rest.api.order_management;
 
 import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;

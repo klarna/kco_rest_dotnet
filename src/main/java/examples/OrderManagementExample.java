@@ -22,8 +22,8 @@ import com.klarna.rest.Transport;
 import com.klarna.rest.ApiException;
 import com.klarna.rest.ContentTypeException;
 import com.klarna.rest.ProtocolException;
-import com.klarna.rest.api.ordermanagement.OrdersApi;
-import com.klarna.rest.api.ordermanagement.RefundsApi;
+import com.klarna.rest.api.order_management.OrdersApi;
+import com.klarna.rest.api.order_management.RefundsApi;
 import com.klarna.rest.model.order_management.*;
 
 import java.io.IOException;

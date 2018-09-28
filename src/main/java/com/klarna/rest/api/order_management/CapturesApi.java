@@ -1,4 +1,4 @@
-package com.klarna.rest.api.ordermanagement;
+package com.klarna.rest.api.order_management;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.klarna.rest.*;
