@@ -11,10 +11,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 
-public class Sessions extends BaseApi {
+public class SessionsApi extends BaseApi {
     protected String PATH = "/hpp/v1/sessions";
 
-    public Sessions(final Transport transport) {
+    public SessionsApi(final Transport transport) {
         super(transport);
     }
 
