@@ -16,7 +16,7 @@ public class ReportsApi extends BaseApi {
         super(transport);
     }
 
-    public String getCSVPayoutReport(Map<String, String> urlParams)
+    public byte[] getCSVPayoutReport(Map<String, String> urlParams)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s?%s", PATH, "payout-with-transactions", this.buildQueryString(urlParams));
         final ApiResponse response = this.get(path);
@@ -27,7 +27,7 @@ public class ReportsApi extends BaseApi {
         return response.getBody();
     }
 
-    public String getCSVSummary(Map<String, String> urlParams)
+    public byte[] getCSVSummary(Map<String, String> urlParams)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s?%s", PATH, "payouts-summary-with-transactions", this.buildQueryString(urlParams));
         final ApiResponse response = this.get(path);
@@ -38,7 +38,7 @@ public class ReportsApi extends BaseApi {
         return response.getBody();
     }
 
-    public String getPDFPayoutsSummaryReport(Map<String, String> urlParams)
+    public byte[] getPDFPayoutsSummaryReport(Map<String, String> urlParams)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s?%s", PATH, "payout", this.buildQueryString(urlParams));
         final ApiResponse response = this.get(path);
@@ -49,7 +49,7 @@ public class ReportsApi extends BaseApi {
         return response.getBody();
     }
 
-    public String getPDFSummary(Map<String, String> urlParams)
+    public byte[] getPDFSummary(Map<String, String> urlParams)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s?%s", PATH, "payouts-summary", this.buildQueryString(urlParams));
         final ApiResponse response = this.get(path);

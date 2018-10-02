@@ -27,4 +27,9 @@ public class TransactionsApi extends BaseApi {
 
         return objectMapper.readValue(response.getBody(), TransactionCollection.class);
     }
+
+    public TransactionCollection getTransactions()
+            throws ApiException, ProtocolException, ContentTypeException, IOException {
+        return this.getTransactions(null);
+    }
 }

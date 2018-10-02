@@ -39,7 +39,12 @@ public class PayoutsApi extends BaseApi {
         return objectMapper.readValue(response.getBody(), PayoutCollection.class);
     }
 
-    public PayoutSummary getSummary(Map<String, String> urlParams)
+    public PayoutCollection getAllPayout()
+            throws ApiException, ProtocolException, ContentTypeException, IOException {
+        return this.getAllPayout(null);
+    }
+
+    public PayoutSummary[] getSummary(Map<String, String> urlParams)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s?%s", PATH, "summary", this.buildQueryString(urlParams));
         final ApiResponse response = this.get(path);
@@ -47,6 +52,6 @@ public class PayoutsApi extends BaseApi {
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return objectMapper.readValue(response.getBody(), PayoutSummary.class);
+        return objectMapper.readValue(response.getBody(), PayoutSummary[].class);
     }
 }
