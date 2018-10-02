@@ -153,15 +153,16 @@ public class HttpUrlConnectionTransport implements Transport {
         }
 
         if (is != null) {
-            BufferedReader in = new BufferedReader(new InputStreamReader(is));
-            String inputLine;
-            StringBuilder content = new StringBuilder();
-            while ((inputLine = in.readLine()) != null) {
-                content.append(inputLine);
+            InputStream in = new BufferedInputStream(is);
+            ByteArrayOutputStream os = new ByteArrayOutputStream();
+
+            int bytes;
+            while ((bytes = is.read()) != -1) {
+                os.write(bytes);
             }
             in.close();
 
-            response.setBody(content.toString());
+            response.setBody(os.toByteArray());
         }
 
         return response;

@@ -18,7 +18,7 @@ public class ApiResponse {
 
     private Map<String, List<String>> headers;
 
-    private String body = "";
+    private byte[] body = null;
 
 
     public ApiResponse() {
@@ -34,12 +34,12 @@ public class ApiResponse {
         return this.status;
     }
 
-    public ApiResponse setBody(String body) {
+    public ApiResponse setBody(byte[] body) {
         this.body = body;
         return this;
     }
 
-    public String getBody() {
+    public byte[] getBody() {
         return this.body;
     }
 

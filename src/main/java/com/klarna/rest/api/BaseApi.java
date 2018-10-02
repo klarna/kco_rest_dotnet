@@ -31,6 +31,10 @@ public abstract class BaseApi {
     }
 
     public String buildQueryString(Map<String, String> params) throws RuntimeException {
+        if (params == null) {
+            return "";
+        }
+
         StringBuilder stringBuilder = new StringBuilder();
 
         for (String key : params.keySet()) {
