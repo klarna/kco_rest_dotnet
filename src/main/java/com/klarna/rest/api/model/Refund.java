@@ -26,6 +26,11 @@ import java.util.List;
 public class Refund extends Model {
 
     /**
+     * Unique refund id.
+     */
+    private String refundId;
+
+    /**
      * Refund amount.
      */
     private Long refundedAmount;
@@ -46,12 +51,31 @@ public class Refund extends Model {
     private List<OrderLine> orderLines;
 
     /**
+     * Order lines.
+     */
+    private List<OrderLine> processedOrderLines;
+
+    /**
+     * Merchant reversal
+     */
+    private Boolean merchantReversal;
+
+    /**
      * Gets the refunded amount.
      *
      * @return Amount
      */
     public Long getRefundedAmount() {
         return this.refundedAmount;
+    }
+
+    /**
+     * Gets the refund ID.
+     *
+     * @return ID
+     */
+    public String getRefundId() {
+        return this.refundId;
     }
 
     /**
@@ -115,5 +139,23 @@ public class Refund extends Model {
      */
     public DateTime getRefundedAt() {
         return this.refundedAt;
+    }
+
+    /**
+     * Gets processed order lines.
+     *
+     * @return Order lines
+     */
+    public List<OrderLine> getProcessedOrderLines() {
+        return this.processedOrderLines;
+    }
+
+    /**
+     * Gets the merchant reversal flag.
+     *
+     * @return Reversal flag
+     */
+    public Boolean getMerchantReversal() {
+        return this.merchantReversal;
     }
 }

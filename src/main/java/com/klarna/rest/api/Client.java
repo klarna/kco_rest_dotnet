@@ -26,7 +26,7 @@ public interface Client {
     /**
      * API library client version.
      */
-    String VERSION = "2.2.0";
+    String VERSION = "2.2.2";
 
     /**
      * API base URL for Europe.
@@ -87,6 +87,23 @@ public interface Client {
      * @return A new capture resource
      */
     Capture newCapture(String orderId, String captureId);
+
+    /**
+     * Constructs a new refund resource.
+     *
+     * @param orderId Order resource id
+     * @return A new refund resource
+     */
+    Refund newRefund(String orderId);
+
+    /**
+     * Constructs a new refund resource.
+     *
+     * @param orderId Order resource id
+     * @param refundId Refund resource id
+     * @return A new refund resource
+     */
+    Refund newRefund(String orderId, String refundId);
 
     /**
      * Set the connect timeout interval, in milliseconds.

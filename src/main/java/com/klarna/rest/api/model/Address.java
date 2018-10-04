@@ -22,6 +22,21 @@ package com.klarna.rest.api.model;
 public class Address extends Model {
 
     /**
+     * Organization name.
+     */
+    private String organizationName;
+
+    /**
+     * Reference.
+     */
+    private String reference;
+
+    /**
+     * Attention.
+     */
+    private String attention;
+
+    /**
      * Customers title.
      */
     private String title;
@@ -90,6 +105,74 @@ public class Address extends Model {
      * Customers region.
      */
     private String region;
+
+    /**
+     * Customers region.
+     */
+    private String careOf;
+
+    /**
+     * Gets the organization name.
+     *
+     * @return Organization name
+     */
+    public String getOrganizationName() {
+        return this.organizationName;
+    }
+
+    /**
+     * Sets the organization name.
+     *
+     * @param organizationName Organization name
+     * @return Same instance
+     */
+    public Address setOrganizationName(final String organizationName) {
+        this.organizationName = organizationName;
+
+        return this;
+    }
+
+    /**
+     * Gets the reference.
+     *
+     * @return Reference
+     */
+    public String getReference() {
+        return this.reference;
+    }
+
+    /**
+     * Sets the reference.
+     *
+     * @param reference Reference
+     * @return Same instance
+     */
+    public Address setReference(final String reference) {
+        this.reference = reference;
+
+        return this;
+    }
+
+    /**
+     * Gets the attention.
+     *
+     * @return Attention
+     */
+    public String getAttention() {
+        return this.attention;
+    }
+
+    /**
+     * Sets the attention.
+     *
+     * @param attention Attention
+     * @return Same instance
+     */
+    public Address setAttention(final String attention) {
+        this.attention = attention;
+
+        return this;
+    }
 
     /**
      * Gets the customers title.
@@ -318,6 +401,27 @@ public class Address extends Model {
      */
     public Address setRegion(final String region) {
         this.region = region;
+
+        return this;
+    }
+
+    /**
+     * Gets the Care Of.
+     *
+     * @return Care of value
+     */
+    public String getCareOf() {
+        return this.careOf;
+    }
+
+    /**
+     * Sets the Care Of.
+     *
+     * @param careOf Care Of value
+     * @return Same instance
+     */
+    public Address setCareOf(final String careOf) {
+        this.careOf = careOf;
 
         return this;
     }

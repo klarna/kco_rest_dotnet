@@ -103,6 +103,23 @@ public final class DefaultClient implements Client {
     }
 
     @Override
+    public Refund newRefund(final String orderId) {
+        DefaultOrder order = (DefaultOrder) this.newOrder(orderId);
+
+        return new DefaultRefund(order.getWebResource());
+    }
+
+    @Override
+    public Refund newRefund(final String orderId,
+                              final String refundId
+    ) {
+        DefaultRefund refund = (DefaultRefund) this.newRefund(orderId);
+        refund.setWebResource(refund.getWebResource().path(refundId));
+
+        return refund;
+    }
+
+    @Override
     public void setConnectTimeout(final Integer timeout) {
         this.client.setConnectTimeout(timeout);
     }

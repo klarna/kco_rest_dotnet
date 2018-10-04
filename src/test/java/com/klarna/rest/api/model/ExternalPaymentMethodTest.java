@@ -23,6 +23,8 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Test cases for the ExternalPaymentMethod class.
@@ -30,50 +32,71 @@ import java.net.URI;
 @RunWith(MockitoJUnitRunner.class)
 public class ExternalPaymentMethodTest extends TestCase {
 
-    ExternalPaymentMethod object;
+    ExternalPaymentMethod paymentMethod;
 
     @Before
     public void setUp() {
-        this.object = new ExternalPaymentMethod();
+        paymentMethod = new ExternalPaymentMethod();
     }
 
     @Test
     public void testGetName() {
-        assertNull(this.object.getName());
+        assertNull(paymentMethod.getName());
 
         String expected = "name";
-        this.object.setName(expected);
+        paymentMethod.setName(expected);
 
-        assertSame(expected, this.object.getName());
+        assertSame(expected, paymentMethod.getName());
     }
 
     @Test
     public void testGetRedirectUri() {
-        assertNull(this.object.getRedirectUrl());
+        assertNull(paymentMethod.getRedirectUrl());
 
         URI expected = URI.create("http://localhost");
-        this.object.setRedirectUrl(expected);
+        paymentMethod.setRedirectUrl(expected);
 
-        assertSame(expected, this.object.getRedirectUrl());
+        assertSame(expected, paymentMethod.getRedirectUrl());
     }
 
     @Test
     public void testGetImageUri() {
-        assertNull(this.object.getImageUrl());
+        assertNull(paymentMethod.getImageUrl());
 
         URI expected = URI.create("http://localhost");
-        this.object.setImageUrl(expected);
+        paymentMethod.setImageUrl(expected);
 
-        assertSame(expected, this.object.getImageUrl());
+        assertSame(expected, paymentMethod.getImageUrl());
     }
 
     @Test
     public void testGetFee() {
-        assertNull(this.object.getFee());
+        assertNull(paymentMethod.getFee());
 
         Long expected = 1000L;
-        this.object.setFee(expected);
+        paymentMethod.setFee(expected);
 
-        assertSame(expected, this.object.getFee());
+        assertSame(expected, paymentMethod.getFee());
+    }
+
+    @Test
+    public void testGetDescription() {
+        assertNull(paymentMethod.getDescription());
+
+        paymentMethod.setDescription("Custom checkout");
+
+        assertSame("Custom checkout", paymentMethod.getDescription());
+    }
+
+    @Test
+    public void testCountries() {
+        assertNull(paymentMethod.getCountries());
+
+        paymentMethod.addCountriesItem("SE");
+        assertTrue(paymentMethod.getCountries().equals(new ArrayList<String>(Arrays.asList("SE"))));
+
+        ArrayList<String> expected = new ArrayList<>(Arrays.asList("GB", "DE"));
+        paymentMethod.setCountries(expected);
+        assertTrue(expected.equals(paymentMethod.getCountries()));
     }
 }

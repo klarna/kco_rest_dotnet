@@ -23,6 +23,7 @@ import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -49,12 +50,19 @@ public class CheckoutOrderDataTest extends TestCase {
 
     @Test
     public void testGetShippingCountries() {
-        List<String> countries = new ArrayList<String>();
+        List<String> countries = new ArrayList<String>(Arrays.asList("DE"));
 
         assertNull(data.getShippingCountries());
 
+        countries.add("UK");
+        data.addShippingCountriesItem("UK");
+
         data.setShippingCountries(countries);
         assertSame(countries, data.getShippingCountries());
+
+
+
+
     }
 
     @Test
@@ -216,6 +224,35 @@ public class CheckoutOrderDataTest extends TestCase {
     }
 
     @Test
+    public void testGetShippingOptions() {
+        assertNull(data.getShippingOptions());
+
+        List<ShippingOption> options = new ArrayList<>();
+        options.add(new ShippingOption().setId("shipping_id"));
+        data.addShippingOptionsItem(new ShippingOption().setId("shipping_id"));
+
+        options.add(new ShippingOption().setId("shipping_id2"));
+        data.setShippingOptions(options);
+        assertEquals(options, data.getShippingOptions());
+    }
+
+    @Test
+    public void testGetMerchantData() {
+        assertNull(data.getMerchantData());
+
+        data.setMerchantData("data");
+        assertEquals("data", data.getMerchantData());
+    }
+
+    @Test
+    public void testGetRecurring() {
+        assertNull(data.getRecurring());
+
+        data.setRecurring(true);
+        assertTrue(data.getRecurring());
+    }
+
+    @Test
     public void testGetReadonly() {
         assertNull(data.getStatus());
         assertNull(data.getCompletedAt());
@@ -223,5 +260,10 @@ public class CheckoutOrderDataTest extends TestCase {
         assertNull(data.getHtmlSnippet());
         assertNull(data.getStartedAt());
         assertNull(data.getOrderId());
+        assertNull(data.getName());
+        assertNull(data.getMerchantRequested());
+        assertNull(data.getSelectedShippingOption());
+        assertNull(data.getRecurringToken());
+        assertNull(data.getRecurringDescription());
     }
 }

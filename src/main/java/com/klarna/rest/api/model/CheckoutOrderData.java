@@ -16,10 +16,12 @@
 
 package com.klarna.rest.api.model;
 
+import com.klarna.rest.api.CheckoutOrder;
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.joda.time.DateTime;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -34,6 +36,11 @@ public class CheckoutOrderData extends Model {
     private String orderId;
 
     /**
+     * The merchant name.
+     */
+    private String name;
+
+    /**
      * Purchase country.
      */
     private String purchaseCountry;
@@ -42,11 +49,6 @@ public class CheckoutOrderData extends Model {
      * Purchase currency.
      */
     private String purchaseCurrency;
-
-    /**
-     * Shipping countries.
-     */
-    private List<String> shippingCountries;
 
     /**
      * Customer's locale.
@@ -149,12 +151,63 @@ public class CheckoutOrderData extends Model {
     private List<ExternalCheckout> externalCheckouts;
 
     /**
+     * A list of countries (ISO 3166 alpha-2). Default is purchase_country only.
+     */
+    private List<String> shippingCountries = null;
+
+    /**
+     * A list of shipping options available for this order.
+     */
+    private List<ShippingOption> shippingOptions = null;
+
+    /**
+     * Pass through field.
+     */
+    private String merchantData = null;
+
+    /**
+     * Stores merchant requested data.
+     */
+    private MerchantRequested merchantRequested = null;
+
+    /**
+     * Current shipping options selected by the customer.
+     */
+    private ShippingOption selectedShippingOption = null;
+
+    /**
+     * Indicates whether this purchase will create a token that can be used by the merchant
+     * to create recurring purchases. This must be enabled for the merchant to use.
+     */
+    private Boolean recurring;
+
+    /**
+     * Token to be used when creating recurring orders.
+     */
+    private String recurringToken = null;
+
+    /**
+     * Description recurring subscription.
+     */
+    private String recurringDescription = null;
+
+
+    /**
      * Gets the order id.
      *
      * @return Order id
      */
     public String getOrderId() {
         return this.orderId;
+    }
+
+    /**
+     * Gets the merchant name.
+     *
+     * @return Merchant name
+     */
+    public String getName() {
+        return this.name;
     }
 
     /**
@@ -174,28 +227,6 @@ public class CheckoutOrderData extends Model {
      */
     public CheckoutOrderData setPurchaseCountry(final String country) {
         this.purchaseCountry = country;
-
-        return this;
-    }
-
-    /**
-     * Gets the shipping countries.
-     *
-     * @return Shipping countries.
-     */
-    public List<String> getShippingCountries() {
-        return this.shippingCountries;
-    }
-
-    /**
-     * Sets the shipping countries.
-     *
-     * @param countries Shipping countries;
-     * @return Same instance
-     */
-    public CheckoutOrderData setShippingCountries(
-            final List<String> countries) {
-        this.shippingCountries = countries;
 
         return this;
     }
@@ -598,5 +629,133 @@ public class CheckoutOrderData extends Model {
         this.externalCheckouts = externalCheckouts;
 
         return this;
+    }
+
+    public CheckoutOrderData addShippingCountriesItem(String shippingCountriesItem) {
+        if (this.shippingCountries == null) {
+            this.shippingCountries = new ArrayList<String>();
+        }
+        this.shippingCountries.add(shippingCountriesItem);
+        return this;
+    }
+
+    /**
+     * Gets list of countries.
+     *
+     * @return shippingCountries
+     **/
+    public List<String> getShippingCountries() {
+        return this.shippingCountries;
+    }
+
+    /**
+     * Sets list of countries.
+     *
+     * @param shippingCountries
+     * @return Same instance.
+     */
+    public CheckoutOrderData setShippingCountries(List<String> shippingCountries) {
+        this.shippingCountries = shippingCountries;
+
+        return this;
+    }
+
+    public CheckoutOrderData addShippingOptionsItem(ShippingOption shippingOptionsItem) {
+        if (this.shippingOptions == null) {
+            this.shippingOptions = new ArrayList<ShippingOption>();
+        }
+        this.shippingOptions.add(shippingOptionsItem);
+        return this;
+    }
+
+    /**
+     * Gets a list of shipping options available for this order.
+     * @return shippingOptions
+     **/
+    public List<ShippingOption> getShippingOptions() {
+        return this.shippingOptions;
+    }
+
+    /**
+     * Sets a list of shipping options available for this order.
+     * @return Same instance.
+     **/
+    public CheckoutOrderData setShippingOptions(List<ShippingOption> shippingOptions) {
+        this.shippingOptions = shippingOptions;
+        return this;
+    }
+
+    /**
+     * Gets pass through field.
+     * @return merchantData
+     **/
+    public String getMerchantData() {
+        return this.merchantData;
+    }
+
+    /**
+     * Sets pass through field.
+     *
+     * @param merchantData
+     * @return Same instance.
+     */
+    public CheckoutOrderData setMerchantData(String merchantData) {
+        this.merchantData = merchantData;
+        return this;
+    }
+
+    /**
+     * Stores merchant requested data.
+     *
+     * @return merchantRequested
+     **/
+    public MerchantRequested getMerchantRequested() {
+        return this.merchantRequested;
+    }
+
+    /**
+     * Gets current shipping options selected by the customer.
+     *
+     * @return selectedShippingOption
+     **/
+    public ShippingOption getSelectedShippingOption() {
+        return this.selectedShippingOption;
+    }
+
+    /**
+     * Gets recurring flag.
+     * @return recurring
+     **/
+    public Boolean getRecurring() {
+        return this.recurring;
+    }
+
+    /**
+     * Sets recurring flag.
+     *
+     * @param recurring
+     * @return Same instance.
+     */
+    public CheckoutOrderData setRecurring(Boolean recurring) {
+        this.recurring = recurring;
+        return this;
+    }
+
+    /**
+     * Gets Token to be used when creating recurring orders.
+     *
+     * @return recurringToken
+     **/
+    public String getRecurringToken() {
+        return this.recurringToken;
+    }
+
+    /**
+     * Gets description recurring subscription.
+     *
+     * @return recurringDescription
+     **/
+    public String getRecurringDescription() {
+        return this.recurringDescription;
     }
 }

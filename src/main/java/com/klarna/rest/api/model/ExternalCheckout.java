@@ -17,13 +17,15 @@
 package com.klarna.rest.api.model;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The model for an external checkout.
  */
 public class ExternalCheckout extends Model {
     /**
-     * External checkout name.
+     * External checkout methods name.
      */
     private String name;
 
@@ -43,18 +45,28 @@ public class ExternalCheckout extends Model {
     private Long fee;
 
     /**
-     * Get the checkout name.
+     * Description.
+     */
+    private String description = null;
+
+    /**
+     * If specified, limits the method to the listed countries (alpha 2 codes).
+     */
+    private List<String> countries = null;
+
+    /**
+     * Get the Checkout method name.
      *
-     * @return Checkout name.
+     * @return Checkout method name.
      */
     public String getName() {
         return this.name;
     }
 
     /**
-     * Set the checkout name.
+     * Set the Checkout method name.
      *
-     * @param name Checkout name.
+     * @param name Checkout method name.
      * @return same instance.
      */
     public ExternalCheckout setName(final String name) {
@@ -106,22 +118,71 @@ public class ExternalCheckout extends Model {
     }
 
     /**
-     * Get the checkout fee.
+     * Get the Checkout method fee.
      *
-     * @return Checkout fee.
+     * @return Checkout method fee.
      */
     public Long getFee() {
         return this.fee;
     }
 
     /**
-     * Set the checkout fee.
+     * Set the Checkout method fee.
      *
-     * @param fee Checkout fee.
+     * @param fee Checkout method fee.
      * @return Same instance.
      */
     public ExternalCheckout setFee(final Long fee) {
         this.fee = fee;
+
+        return this;
+    }
+
+    /**
+     * Get the Checkout method description.
+     *
+     * @return Checkout method name.
+     */
+    public String getDescription() {
+        return this.description;
+    }
+
+    /**
+     * Set the Checkout method description.
+     *
+     * @param description Checkout method description.
+     * @return same instance.
+     */
+    public ExternalCheckout setDescription(final String description) {
+        this.description = description;
+
+        return this;
+    }
+
+    public ExternalCheckout addCountriesItem(String countriesItem) {
+        if (this.countries == null) {
+            this.countries = new ArrayList<String>();
+        }
+        this.countries.add(countriesItem);
+        return this;
+    }
+
+    /**
+     * Gets the listed countries (alpha 2 codes).
+     *
+     * @return Countries
+     **/
+    public List<String> getCountries() {
+        return countries;
+    }
+
+    /**
+     * Sets the listed countries (alpha 2 codes).
+     *
+     * @return Countries
+     **/
+    public ExternalCheckout setCountries(List<String> countries) {
+        this.countries = countries;
 
         return this;
     }

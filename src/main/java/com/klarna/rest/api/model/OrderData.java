@@ -37,6 +37,11 @@ public class OrderData extends Model {
     private String status;
 
     /**
+     * Fraud status.
+     */
+    private String fraudStatus;
+
+    /**
      * The total amount for this order.
      */
     private Long orderAmount;
@@ -132,6 +137,17 @@ public class OrderData extends Model {
     private List<Refund> refunds;
 
     /**
+     * Order metadata.
+     */
+    private String merchantData;
+
+    /**
+     * Initial payment method for this order.
+     */
+    private InitialPaymentMethodDto initialPaymentMethod;
+
+
+    /**
      * Gets the order id.
      *
      * @return Order id
@@ -157,6 +173,17 @@ public class OrderData extends Model {
      */
     public String getStatus() {
         return this.status;
+    }
+
+    /**
+     * Gets the order fraud status.
+     *
+     * Either ACCEPTED, PENDING or REJECTED.
+     *
+     * @return Fraud status
+     */
+    public String getFraudStatus() {
+        return this.fraudStatus;
     }
 
     /**
@@ -336,5 +363,23 @@ public class OrderData extends Model {
         }
 
         return Collections.unmodifiableList(this.refunds);
+    }
+
+    /**
+     * Gets order metadata.
+     *
+     * @return merchantData
+     **/
+    public String getMerchantData() {
+        return this.merchantData;
+    }
+
+    /**
+     * Gets initial payment method for the order.
+     *
+     * @return Initial payment method
+     */
+    public InitialPaymentMethodDto getInitialPaymentMethod() {
+        return this.initialPaymentMethod;
     }
 }

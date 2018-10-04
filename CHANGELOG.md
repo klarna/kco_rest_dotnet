@@ -1,3 +1,12 @@
+## v2.2.2 - 2018-09-06
+- Update Checkout API models according to the latest Klarna API changes;
+- Update Order Management API models according to the latest Klarna API changes;
+- Order Mangement API: Add support of Refunds;
+- Put SDK References documentation to GH Pages:
+    https://klarna.github.io/kco_rest_java/
+- Fix: [Shipping Delay missing from CaptureData #5](https://github.com/klarna/kco_rest_java/issues/5);
+- Release is fully backward-compatible;
+
 ## v2.2.0 - 2016-02-15
 - **NEW META-112** Updating MerchantUrls model for shipping_option_update, address_update & notification - *Christer.G*
 

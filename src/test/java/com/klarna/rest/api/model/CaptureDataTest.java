@@ -89,6 +89,14 @@ public class CaptureDataTest extends TestCase {
     }
 
     @Test
+    public void testGetShippingDelay() {
+        assertNull(data.getShippingDelay());
+        Long delay = 3L;
+        data.setShippingDelay(delay);
+        assertSame(delay, data.getShippingDelay());
+    }
+
+    @Test
     public void testGetReadonly() {
         assertNull(data.getCaptureId());
         assertNull(data.getCapturedAt());
