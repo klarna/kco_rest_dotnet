@@ -1,4 +1,4 @@
-## v2.2.2 - 2018-09-06
+## v2.2.2 - 2018-10-04
 - Update Checkout API models according to the latest Klarna API changes;
 - Update Order Management API models according to the latest Klarna API changes;
 - Order Mangement API: Add support of Refunds;
