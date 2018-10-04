@@ -19,6 +19,7 @@ public class HttpUrlConnectionTransport implements Transport {
     protected String sharedSecret;
 
     protected String userAgent;
+    protected int timeout = DEFAULT_TIMEOUT;
 
     // Proxy settings
     protected Proxy proxy;
@@ -89,6 +90,16 @@ public class HttpUrlConnectionTransport implements Transport {
         return this;
     }
 
+    public int getTimeout() {
+        return this.timeout;
+    }
+
+    public HttpUrlConnectionTransport setTimeout(int timeout) {
+        this.timeout = timeout;
+
+        return this;
+    }
+
     public void setProxy(final Proxy.Type scheme, final String host, final int port) {
         this.proxy = new Proxy(scheme, new InetSocketAddress(host, port));
     }
@@ -123,8 +134,8 @@ public class HttpUrlConnectionTransport implements Transport {
 
         conn.setRequestProperty("Content-Type", MediaType.APPLICATION_JSON);
         conn.setRequestProperty("User-Agent", this.userAgent);
-        conn.setConnectTimeout(DEFAULT_TIMEOUT);
-        conn.setReadTimeout(DEFAULT_TIMEOUT);
+        conn.setConnectTimeout(this.timeout);
+        conn.setReadTimeout(this.timeout);
 
         setBase64Auth(conn, this.merchantId, this.sharedSecret);
 
