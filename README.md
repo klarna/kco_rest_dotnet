@@ -29,6 +29,30 @@ Example files can be found in the
 [examples](src/main/java/examples/) package.
 
 
+### Installation with Maven
+
+```xml
+<dependency>
+    <groupId>com.klarna</groupId>
+    <artifactId>kco-rest</artifactId>
+    <version>2.2.0</version>
+</dependency>
+```
+
+### Installation with Ivy
+
+```xml
+<dependency org="com.klarna" name="kco-rest" revision="2.1.0"/>
+```
+
+### Installation with Gradle
+```json
+dependencies {
+    compile group: 'com.klarna', name: 'kco-rest', version: '2.1.0'
+}
+```
+
+
 ## Documentation
 Documentation and more examples can be found at
 [developers.klarna.com](https://developers.klarna.com).
