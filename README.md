@@ -35,21 +35,21 @@ Example files can be found in the
 <dependency>
     <groupId>com.klarna</groupId>
     <artifactId>kco-rest</artifactId>
-    <version>2.2.0</version>
+    <version>2.2.2</version>
 </dependency>
 ```
 
 ### Installation with Ivy
 
 ```xml
-<dependency org="com.klarna" name="kco-rest" revision="2.1.0"/>
+<dependency org="com.klarna" name="kco-rest" revision="2.2.2"/>
 ```
 
 ### Installation with Gradle
 
 ```gradle
 dependencies {
-    compile group: 'com.klarna', name: 'kco-rest', version: '2.1.0'
+    compile group: 'com.klarna', name: 'kco-rest', version: '2.2.2'
 }
 ```
 
@@ -79,7 +79,7 @@ To contribute, the following criteria needs to be fulfilled:
 
 ## Questions and feedback
 If you have any questions concerning this product or the implementation,
-please contact [integration@klarna.com](mailto:integration@klarna.com).
+please contact [integration@klarna.com](mailto:developers@klarna.com).
 
 
 ## License
