@@ -46,7 +46,8 @@ Example files can be found in the
 ```
 
 ### Installation with Gradle
-```json
+
+```gradle
 dependencies {
     compile group: 'com.klarna', name: 'kco-rest', version: '2.1.0'
 }
