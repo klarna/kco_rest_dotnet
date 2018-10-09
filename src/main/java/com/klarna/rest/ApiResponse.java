@@ -208,6 +208,12 @@ public class ApiResponse {
             return this;
         }
 
+        for (String type : contentType) {
+            if (type.startsWith(value)) {
+                return this;
+            }
+        }
+
         throw ContentTypeException.unexpectedType(contentType.toString());
     }
 
@@ -225,10 +231,13 @@ public class ApiResponse {
             return this;
         }
 
-        ErrorMessage message;
+        ErrorMessage message = null;
         ObjectMapper objectMapper = new DefaultMapper();
         try {
-            message = objectMapper.readValue(this.getBody(), ErrorMessage.class);
+            byte[] body = this.getBody();
+            if (body != null) {
+                message = objectMapper.readValue(this.getBody(), ErrorMessage.class);
+            }
 
         } catch (IOException e) {
             message = null;

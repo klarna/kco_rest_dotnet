@@ -191,6 +191,7 @@ public abstract class BaseApi {
             throws ApiException, ProtocolException, IOException {
         // TODO: Place for debugger and logger
         final ApiResponse response;
+
         switch (method) {
             case "GET":
                 response = this.transport.get(path);
