@@ -26,19 +26,51 @@ import java.util.Set;
 
 import javax.ws.rs.core.MediaType;
 
+/**
+ * HttpURLConnection implementation of Transpoert interface.
+ * Used to send HTTP requests to API server.
+ */
 public class HttpUrlConnectionTransport implements Transport {
-
+    /**
+     * Default HTTP request timeout.
+     */
     public static int DEFAULT_TIMEOUT = 30000;
 
+    /**
+     * Base API server URL.
+     */
     protected URI baseUri;
+
+    /**
+     * Merchant ID.
+     */
     protected String merchantId;
+
+    /**
+     * Merchant shared secret key.
+     */
     protected String sharedSecret;
 
+    /**
+     * HTTP UserAgent.
+     */
     protected String userAgent;
+
+    /**
+     * HTTP request timeout.
+     */
     protected int timeout = DEFAULT_TIMEOUT;
 
-    // Proxy settings
+    /**
+     * HttpUrlConnection Proxy settings.
+     * @see Proxy
+     */
     protected Proxy proxy;
+
+    /**
+     * Proxy authenticator.
+     * @see Authenticator
+     */
     protected Authenticator proxyAuth;
 
     public HttpUrlConnectionTransport(final String merchantId,
@@ -53,73 +85,172 @@ public class HttpUrlConnectionTransport implements Transport {
         HttpUrlConnectionTransport.allowMethods("PATCH"); // Workaround for PATCH method
     }
 
+    /**
+     * Sends HTTP GET request to specified path.
+     *
+     * @param path URL path.
+     * @return Processed response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws IOException if an error occurred connecting to the server.
+     */
     public ApiResponse get(final String path) throws
             ApiException, ProtocolException, ContentTypeException, IOException {
         HttpURLConnection conn = this.buildConnection(path);
         conn.setRequestMethod("GET");
 
-        return this.processConnection(conn);
+        return this.makeRequest(conn);
     }
 
+    /**
+     * Sends HTTP POST request to specified path.
+     *
+     * @param path URL path.
+     * @param data Data to be sent to API server in a payload.
+     * @return Processed response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws IOException if an error occurred connecting to the server.
+     */
     public ApiResponse post(final String path, final byte[] data) throws
             ApiException, ProtocolException, ContentTypeException, IOException {
         HttpURLConnection conn = this.buildConnection(path);
         conn.setRequestMethod("POST");
         setBodyPayout(conn, data);
 
-        return this.processConnection(conn);
+        return this.makeRequest(conn);
     }
 
+    /**
+     * Sends HTTP PUT request to specified path.
+     *
+     * @param path URL path.
+     * @param data Data to be sent to API server in a payload.
+     * @return Processed response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws IOException if an error occurred connecting to the server.
+     */
     public ApiResponse put(final String path, final byte[] data) throws
             ApiException, ProtocolException, ContentTypeException, IOException {
         HttpURLConnection conn = this.buildConnection(path);
         conn.setRequestMethod("PUT");
         setBodyPayout(conn, data);
 
-        return this.processConnection(conn);
+        return this.makeRequest(conn);
     }
 
+    /**
+     * Sends HTTP PATCH request to specified path.
+     *
+     * @param path URL path.
+     * @param data Data to be sent to API server in a payload.
+     * @return Processed response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws IOException if an error occurred connecting to the server.
+     */
     public ApiResponse patch(final String path, final byte[] data) throws
             ApiException, ProtocolException, ContentTypeException, IOException {
         HttpURLConnection conn = this.buildConnection(path);
         conn.setRequestMethod("PATCH");
         setBodyPayout(conn, data);
 
-        return this.processConnection(conn);
+        return this.makeRequest(conn);
     }
 
+    /**
+     * Sends HTTP DELETE request to specified path.
+     *
+     * @param path URL path.
+     * @return Processed response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws IOException if an error occurred connecting to the server.
+     */
     public ApiResponse delete(final String path) throws
             ApiException, ProtocolException, ContentTypeException, IOException {
         HttpURLConnection conn = this.buildConnection(path);
         conn.setRequestMethod("DELETE");
 
-        return this.processConnection(conn);
+        return this.makeRequest(conn);
     }
 
+    /**
+     * Gets current UserAgent.
+     *
+     * @return UserAgent
+     */
     public String getUserAgent() {
         return this.userAgent;
     }
 
+    /**
+     * Sets new UserAgent. The UserAgent will be added as 'User-Agent' header to the HTTP request.
+     *
+     * @param userAgent new UserAgent
+     * @return self
+     */
     public HttpUrlConnectionTransport setUserAgent(String userAgent) {
         this.userAgent = userAgent;
 
         return this;
     }
 
+    /**
+     * Gets current Timeout limit (in seconds) for an HTTP request.
+     *
+     * @return Timeout
+     */
     public int getTimeout() {
         return this.timeout;
     }
 
+    /**
+     * Sets current Timeout limit (in seconds) for an HTTP request.
+     *
+     * @return self
+     */
     public HttpUrlConnectionTransport setTimeout(int timeout) {
         this.timeout = timeout;
 
         return this;
     }
 
+    /**
+     * Sets new Proxy settings
+     *
+     * @param proxy Proxy
+     */
+    public void setProxy(Proxy proxy) {
+        this.proxy = proxy;
+    }
+
+    /**
+     * Sets new Proxy settings
+     *
+     * @param scheme Proxy scheme (http, https)
+     * @param host Proxy host
+     * @param port Proxy port
+     */
     public void setProxy(final Proxy.Type scheme, final String host, final int port) {
         this.proxy = new Proxy(scheme, new InetSocketAddress(host, port));
     }
 
+    /**
+     * Sets new Proxy settings
+     *
+     * @param scheme Proxy scheme (http, https)
+     * @param host Proxy host
+     * @param port Proxy port
+     * @param username Auth: Proxy user name
+     * @param password Auth: Proxy password
+     */
     public void setProxy(final Proxy.Type scheme, final String host, final int port, final String username, final String password) {
         this.setProxy(scheme, host, port);
         this.proxyAuth = new Authenticator() {
@@ -165,7 +296,14 @@ public class HttpUrlConnectionTransport implements Transport {
         conn.setRequestProperty("Authorization", "Basic " + encoded);
     }
 
-    protected ApiResponse processConnection(HttpURLConnection conn) throws IOException {
+    /**
+     * Adds required properties for connection, performs request and processes response.
+     *
+     * @param conn HttpURLConnection instance
+     * @return processed response
+     * @throws IOException if an error occurred connecting to the server.
+     */
+    protected ApiResponse makeRequest(HttpURLConnection conn) throws IOException {
 
         ApiResponse response = new ApiResponse();
 
@@ -195,6 +333,14 @@ public class HttpUrlConnectionTransport implements Transport {
         return response;
     }
 
+    /**
+     * Writes binary data to HttpURLConnection payout.
+     *
+     * @param conn HttpURLConnection instance
+     * @param data binary data
+     *
+     * @throws IOException if an error occurred connecting to the server.
+     */
     protected void setBodyPayout(HttpURLConnection conn, byte[] data) throws IOException {
         if (data != null) {
             conn.setDoOutput(true);
@@ -205,6 +351,12 @@ public class HttpUrlConnectionTransport implements Transport {
         }
     }
 
+    /**
+     * Workaround: Extends HttpURLConnection with PATCH method. This method does not exist in the "Allowed HTTP methods"
+     * but still can be sent.
+     *
+     * @param methods HTTP methods to be allowed by HttpURLConnection
+     */
     private static void allowMethods(String... methods) {
         try {
             Field methodsField = HttpURLConnection.class.getDeclaredField("methods");
