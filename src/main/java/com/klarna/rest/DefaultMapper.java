@@ -21,6 +21,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.Serializable;
 
+/**
+ * FasterXML jackson ObjectMapper with predefined settings.
+ */
 public class DefaultMapper extends ObjectMapper {
     public DefaultMapper() {
         this.findAndRegisterModules();
