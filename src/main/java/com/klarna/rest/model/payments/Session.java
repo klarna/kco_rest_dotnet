@@ -18,6 +18,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModelProperty;
+import org.threeten.bp.OffsetDateTime;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -119,7 +121,7 @@ public class Session {
   private String clientToken = null;
 
   @JsonProperty("expires_at")
-  private Instant expiresAt = null;
+  private OffsetDateTime expiresAt = null;
 
   @JsonProperty("acquiring_channel")
   private String acquiringChannel = null;
@@ -462,7 +464,7 @@ public class Session {
    * @return expiresAt
   **/
   @ApiModelProperty(value = "Session expiration date")
-  public Instant getExpiresAt() {
+  public OffsetDateTime getExpiresAt() {
     return expiresAt;
   }
 

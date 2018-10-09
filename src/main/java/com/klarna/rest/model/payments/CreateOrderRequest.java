@@ -229,6 +229,10 @@ public class CreateOrderRequest {
     return shippingAddress;
   }
 
+  public void setShippingAddress(Address shippingAddress) {
+    this.shippingAddress = shippingAddress;
+  }
+
   public CreateOrderRequest orderAmount(Long orderAmount) {
     this.orderAmount = orderAmount;
     return this;
