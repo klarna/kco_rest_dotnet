@@ -27,6 +27,9 @@ import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * Settlements API: Transactions resource.
+ */
 public class TransactionsApi extends BaseApi {
     protected String PATH = "/settlements/v1/transactions";
 

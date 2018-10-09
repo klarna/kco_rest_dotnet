@@ -26,6 +26,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 
+/**
+ * Customer Token API: Tokens resource.
+ */
 public class TokensApi extends BaseApi {
     protected String PATH;
 

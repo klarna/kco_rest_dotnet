@@ -26,6 +26,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 
+/**
+ * Payments API: Sessions resource.
+ */
 public class SessionsApi extends BaseApi {
     protected String PATH = "/payments/v1/sessions";
 

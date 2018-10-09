@@ -25,6 +25,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response.Status;
 import java.io.IOException;
 
+/**
+ * Order Management API: Refunds resource.
+ */
 public class RefundsApi extends BaseApi {
     protected String PATH;
 

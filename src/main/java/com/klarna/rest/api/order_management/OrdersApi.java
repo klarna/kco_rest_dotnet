@@ -27,6 +27,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response.Status;
 import java.io.IOException;
 
+/**
+ * Order Management API: Orders resource.
+ */
 public class OrdersApi extends BaseApi {
     protected String PATH = "/order_management/v1/orders";
 

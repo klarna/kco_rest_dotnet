@@ -24,6 +24,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 
+/**
+ * Payments API: Orders resource.
+ */
 public class OrdersApi extends BaseApi {
     protected String PATH = "/payments/v1/authorizations";
 

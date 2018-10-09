@@ -27,6 +27,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 
+/**
+ * Hosted Payment Page API: Sessions resource.
+ */
 public class SessionsApi extends BaseApi {
     protected String PATH = "/hpp/v1/sessions";
 

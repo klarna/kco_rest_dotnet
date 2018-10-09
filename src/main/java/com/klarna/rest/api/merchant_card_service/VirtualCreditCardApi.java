@@ -26,6 +26,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 
+/**
+ * Merchant Card Service API: Virtual credit card resource.
+ */
 public class VirtualCreditCardApi extends BaseApi {
     protected String PATH = "/merchantcard/v3/settlements";
 

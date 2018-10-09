@@ -30,6 +30,9 @@ import javax.ws.rs.core.MediaType;
 
 import java.io.IOException;
 
+/**
+ * Checkout API: Orders resource.
+ */
 public class OrdersApi extends BaseApi {
     protected String PATH = "/checkout/v3/orders";
 

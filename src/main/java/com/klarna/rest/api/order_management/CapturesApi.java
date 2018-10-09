@@ -29,6 +29,9 @@ import javax.ws.rs.core.Response.Status;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Order Management API: Captures resource.
+ */
 public class CapturesApi extends BaseApi {
     protected String PATH;
 
