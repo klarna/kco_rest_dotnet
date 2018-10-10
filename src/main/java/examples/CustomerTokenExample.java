@@ -100,7 +100,6 @@ public class CustomerTokenExample {
 
                 CustomerTokenOrder request = new CustomerTokenOrder(){
                     {
-                        setBillingAddress(address);
                         setShippingAddress(address);
                         setPurchaseCurrency("gbp");
                         setOrderAmount(10000L);

@@ -57,9 +57,6 @@ public class CustomerTokenOrder {
   @JsonProperty("shipping_address")
   private Address shippingAddress = null;
 
-  @JsonProperty("billing_address")
-  private Address billingAddress = null;
-
   public CustomerTokenOrder attachment(Attachment attachment) {
     this.attachment = attachment;
     return this;
@@ -245,19 +242,6 @@ public class CustomerTokenOrder {
 
   public void setPurchaseCurrency(String purchaseCurrency) {
     this.purchaseCurrency = purchaseCurrency;
-  }
-
-  /**
-   * Billing address
-   * @return billingAddress
-   **/
-  @ApiModelProperty(value = "Billing address")
-  public Address getBillingAddress() {
-    return billingAddress;
-  }
-
-  public void setBillingAddress(Address billingAddress) {
-    this.billingAddress = billingAddress;
   }
 
    /**
