@@ -25,6 +25,8 @@ import com.klarna.rest.model.merchant_card_service.SettlementResponse;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Merchant Card Service API: Virtual credit card resource.
@@ -48,9 +50,11 @@ public class VirtualCreditCardApi extends BaseApi {
         return objectMapper.readValue(response.getBody(), SettlementResponse.class);
     }
 
-    public SettlementResponse retrieveExistingSettlement(String settlementId)
+    public SettlementResponse retrieveExistingSettlement(String settlementId, String keyId)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
-        final ApiResponse response = this.get(PATH + "/" + settlementId);
+        Map<String, String> headers = new HashMap<>();
+        headers.put("KeyId", keyId);
+        final ApiResponse response = this.get(PATH + "/" + settlementId, headers);
 
         response.validator()
                 .expectStatusCode(Response.Status.OK)
@@ -59,9 +63,11 @@ public class VirtualCreditCardApi extends BaseApi {
         return objectMapper.readValue(response.getBody(), SettlementResponse.class);
     }
 
-    public SettlementResponse retrieveSetteledOrderSettlement(String orderId)
+    public SettlementResponse retrieveSetteledOrderSettlement(String orderId, String keyId)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
-        final ApiResponse response = this.get(PATH + "/order/" + orderId);
+        Map<String, String> headers = new HashMap<>();
+        headers.put("KeyId", keyId);
+        final ApiResponse response = this.get(PATH + "/order/" + orderId, headers);
 
         response.validator()
                 .expectStatusCode(Response.Status.OK)

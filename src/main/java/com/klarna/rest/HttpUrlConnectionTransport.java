@@ -22,6 +22,7 @@ import java.lang.reflect.Modifier;
 import java.net.*;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
 
 import javax.ws.rs.core.MediaType;
@@ -88,16 +89,17 @@ public class HttpUrlConnectionTransport implements Transport {
     /**
      * Sends HTTP GET request to specified path.
      *
-     * @param path URL path.
+     * @param path URL path
+     * @param headers HTTP request headers
      * @return Processed response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws IOException if an error occurred connecting to the server.
      */
-    public ApiResponse get(final String path) throws
+    public ApiResponse get(final String path, Map<String, String> headers) throws
             ApiException, ProtocolException, ContentTypeException, IOException {
-        HttpURLConnection conn = this.buildConnection(path);
+        HttpURLConnection conn = this.buildConnection(path, headers);
         conn.setRequestMethod("GET");
 
         return this.makeRequest(conn);
@@ -106,17 +108,18 @@ public class HttpUrlConnectionTransport implements Transport {
     /**
      * Sends HTTP POST request to specified path.
      *
-     * @param path URL path.
-     * @param data Data to be sent to API server in a payload.
+     * @param path URL path
+     * @param data Data to be sent to API server in a payload
+     * @param headers HTTP request headers
      * @return Processed response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws IOException if an error occurred connecting to the server.
      */
-    public ApiResponse post(final String path, final byte[] data) throws
+    public ApiResponse post(final String path, final byte[] data, Map<String, String> headers) throws
             ApiException, ProtocolException, ContentTypeException, IOException {
-        HttpURLConnection conn = this.buildConnection(path);
+        HttpURLConnection conn = this.buildConnection(path, headers);
         conn.setRequestMethod("POST");
         setBodyPayout(conn, data);
 
@@ -126,17 +129,18 @@ public class HttpUrlConnectionTransport implements Transport {
     /**
      * Sends HTTP PUT request to specified path.
      *
-     * @param path URL path.
-     * @param data Data to be sent to API server in a payload.
+     * @param path URL path
+     * @param data Data to be sent to API server in a payload
+     * @param headers HTTP request headers
      * @return Processed response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws IOException if an error occurred connecting to the server.
      */
-    public ApiResponse put(final String path, final byte[] data) throws
+    public ApiResponse put(final String path, final byte[] data, Map<String, String> headers) throws
             ApiException, ProtocolException, ContentTypeException, IOException {
-        HttpURLConnection conn = this.buildConnection(path);
+        HttpURLConnection conn = this.buildConnection(path, headers);
         conn.setRequestMethod("PUT");
         setBodyPayout(conn, data);
 
@@ -146,17 +150,18 @@ public class HttpUrlConnectionTransport implements Transport {
     /**
      * Sends HTTP PATCH request to specified path.
      *
-     * @param path URL path.
-     * @param data Data to be sent to API server in a payload.
+     * @param path URL path
+     * @param data Data to be sent to API server in a payload
+     * @param headers HTTP request headers
      * @return Processed response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws IOException if an error occurred connecting to the server.
      */
-    public ApiResponse patch(final String path, final byte[] data) throws
+    public ApiResponse patch(final String path, final byte[] data, Map<String, String> headers) throws
             ApiException, ProtocolException, ContentTypeException, IOException {
-        HttpURLConnection conn = this.buildConnection(path);
+        HttpURLConnection conn = this.buildConnection(path, headers);
         conn.setRequestMethod("PATCH");
         setBodyPayout(conn, data);
 
@@ -166,16 +171,17 @@ public class HttpUrlConnectionTransport implements Transport {
     /**
      * Sends HTTP DELETE request to specified path.
      *
-     * @param path URL path.
+     * @param path URL path
+     * @param headers HTTP request headers
      * @return Processed response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws IOException if an error occurred connecting to the server.
      */
-    public ApiResponse delete(final String path) throws
+    public ApiResponse delete(final String path, Map<String, String> headers) throws
             ApiException, ProtocolException, ContentTypeException, IOException {
-        HttpURLConnection conn = this.buildConnection(path);
+        HttpURLConnection conn = this.buildConnection(path, headers);
         conn.setRequestMethod("DELETE");
 
         return this.makeRequest(conn);
@@ -269,7 +275,7 @@ public class HttpUrlConnectionTransport implements Transport {
         return uri.toURL();
     }
 
-    protected HttpURLConnection buildConnection(String path) throws IOException {
+    protected HttpURLConnection buildConnection(String path, Map<String, String> headers) throws IOException {
         URL url = this.buildPath(path);
 
         HttpURLConnection conn;
@@ -286,6 +292,12 @@ public class HttpUrlConnectionTransport implements Transport {
 
         setBase64Auth(conn, this.merchantId, this.sharedSecret);
 
+        if (headers != null) {
+            for (String key : headers.keySet()) {
+                conn.setRequestProperty(key, headers.get(key));
+            }
+        }
+
         return conn;
     }
 
@@ -298,10 +310,9 @@ public class HttpUrlConnectionTransport implements Transport {
 
     /**
      * Adds required properties for connection, performs request and processes response.
-     *
      * @param conn HttpURLConnection instance
-     * @return processed response
-     * @throws IOException if an error occurred connecting to the server.
+     * @return P
+     * @throws IOException
      */
     protected ApiResponse makeRequest(HttpURLConnection conn) throws IOException {
 

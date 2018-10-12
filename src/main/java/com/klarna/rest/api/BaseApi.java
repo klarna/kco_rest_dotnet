@@ -70,13 +70,13 @@ public abstract class BaseApi {
     }
 
     /**
-     * Converts Map to URL Query string.
+     * Convers Map to URL Query string.
      *
      * @param params Params map
-     * @return HTTP Query string.
+     * @return HTTP Query string
      * @throws RuntimeException if Params map has Unsupported encoding
      */
-    public String buildQueryString(Map<String, String> params) throws RuntimeException {
+    public static String buildQueryString(Map<String, String> params) throws RuntimeException {
         if (params == null) {
             return "";
         }
@@ -105,112 +105,98 @@ public abstract class BaseApi {
     /**
      * Wraps HTTP GET request to be able to log the query and result.
      *
-     * @param path URL path.
+     * @param path URL path
      * @return Processed response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws IOException if an error occurred connecting to the server.
+     * @throws IOException if an error occurred connecting to the server
      */
     protected ApiResponse get(final String path) throws ApiException, ProtocolException, IOException {
-        return this.makeRequest("GET", path, null);
+        return this.get(path, null);
+    }
+
+    protected ApiResponse get(final String path, Map<String, String> headers) throws ApiException, ProtocolException, IOException {
+        return this.makeRequest("GET", path, null, headers);
     }
 
     /**
      * Wraps HTTP POST request to be able to log the query and result.
      *
-     * @param path URL path.
+     * @param path URL path
      * @param data Data to be sent to API server in a payload.
      * @return Processed response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws IOException if an error occurred connecting to the server.
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code
+     * @throws IOException if an error occurred connecting to the server
      */
     protected ApiResponse post(final String path, final byte[] data) throws ApiException, ProtocolException, IOException {
-        return this.makeRequest("POST", path, data);
+        return this.post(path, data, null);
+    }
+
+    protected ApiResponse post(final String path, final byte[] data, Map<String, String> headers) throws ApiException, ProtocolException, IOException {
+        return this.makeRequest("POST", path, data, headers);
     }
 
     /**
-     * Wraps HTTP PUT request to be able to log the query and result.
+     * Wraps HTTP POST request to be able to log the query and result.
      *
-     * @param path URL path.
-     * @param data Data to be sent to API server in a payload.
+     * @param path URL path
+     * @param data Data to be sent to API server in a payload
      * @return Processed response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws IOException if an error occurred connecting to the server.
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code
+     * @throws IOException if an error occurred connecting to the server
      */
     protected ApiResponse put(final String path, final byte[] data) throws ApiException, ProtocolException, IOException {
-        return this.makeRequest("PUT", path, data);
+        return this.put(path, data, null);
     }
 
-    /**
-     * Wraps HTTP PATCH request to be able to log the query and result.
-     *
-     * @param path URL path.
-     * @param data Data to be sent to API server in a payload.
-     * @return Processed response
-     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
-     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws IOException if an error occurred connecting to the server.
-     */
+    protected ApiResponse put(final String path, final byte[] data, Map<String, String> headers) throws ApiException, ProtocolException, IOException {
+        return this.makeRequest("PUT", path, data, headers);
+    }
+
     protected ApiResponse patch(final String path, final byte[] data) throws ApiException, ProtocolException, IOException {
-        return this.makeRequest("PATCH", path, data);
+        return this.patch(path, data, null);
     }
 
-    /**
-     * Wraps HTTP DELETE request to be able to log the query and result.
-     *
-     * @param path URL path.
-     * @return Processed response
-     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
-     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws IOException if an error occurred connecting to the server.
-     */
+    protected ApiResponse patch(final String path, final byte[] data, Map<String, String> headers) throws ApiException, ProtocolException, IOException {
+        return this.makeRequest("PATCH", path, data, headers);
+    }
+
     protected ApiResponse delete(final String path) throws ApiException, ProtocolException, IOException {
-        return this.makeRequest("DELETE", path, null);
+        return this.delete(path, null);
     }
 
-    /**
-     * Performs HTTP request using HTTP Transport
-     *
-     * @param method Request method
-     * @param path URL path
-     * @param data Request payout
-     * @return Processed response
-     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
-     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws IOException if an error occurred connecting to the server.
-     */
-    protected ApiResponse makeRequest(String method, String path, byte[] data)
+    protected ApiResponse delete(final String path, Map<String, String> headers) throws ApiException, ProtocolException, IOException {
+        return this.makeRequest("DELETE", path, null, headers);
+    }
+
+    protected ApiResponse makeRequest(String method, String path, byte[] data, Map<String, String> headers)
             throws ApiException, ProtocolException, IOException {
         // TODO: Place for debugger and logger
         final ApiResponse response;
-
         switch (method) {
             case "GET":
-                response = this.transport.get(path);
+                response = this.transport.get(path, headers);
                 break;
 
             case "POST":
-                response = this.transport.post(path, data);
+                response = this.transport.post(path, data, headers);
                 break;
 
             case "PUT":
-                response = this.transport.put(path, data);
+                response = this.transport.put(path, data, headers);
                 break;
 
             case "PATCH":
-                response = this.transport.patch(path, data);
+                response = this.transport.patch(path, data, headers);
                 break;
 
             case "DELETE":
-                response = this.transport.delete(path);
+                response = this.transport.delete(path, headers);
                 break;
 
             default: throw new IOException("Unknown request method " + method);

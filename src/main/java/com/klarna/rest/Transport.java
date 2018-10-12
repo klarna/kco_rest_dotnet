@@ -18,6 +18,7 @@ package com.klarna.rest;
 
 import java.io.IOException;
 import java.net.URI;
+import java.util.Map;
 
 
 /**
@@ -60,62 +61,67 @@ public interface Transport {
      * Sends HTTP GET request to specified path.
      *
      * @param path URL path.
+     * @param headers HTTP request headers
      * @return Processed response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws IOException if an error occurred connecting to the server.
      */
-    ApiResponse get(final String path) throws ApiException, ProtocolException, IOException;
+    ApiResponse get(final String path, Map<String, String> headers) throws ApiException, ProtocolException, IOException;
 
     /**
      * Sends HTTP POST request to specified path.
      *
      * @param path URL path.
      * @param data Data to be sent to API server in a payload.
+     * @param headers HTTP request headers
      * @return Processed response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws IOException if an error occurred connecting to the server.
      */
-    ApiResponse post(final String path, final byte[] data) throws ApiException, ProtocolException, IOException;
+    ApiResponse post(final String path, final byte[] data, Map<String, String> headers) throws ApiException, ProtocolException, IOException;
 
     /**
      * Sends HTTP PUT request to specified path.
      *
      * @param path URL path.
      * @param data Data to be sent to API server in a payload.
+     * @param headers HTTP request headers
      * @return Processed response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws IOException if an error occurred connecting to the server.
      */
-    ApiResponse put(final String path, final byte[] data) throws ApiException, ProtocolException, IOException;
+    ApiResponse put(final String path, final byte[] data, Map<String, String> headers) throws ApiException, ProtocolException, IOException;
 
     /**
      * Sends HTTP PATCH request to specified path.
      *
      * @param path URL path.
      * @param data Data to be sent to API server in a payload.
+     * @param headers HTTP request headers
      * @return Processed response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws IOException if an error occurred connecting to the server.
      */
-    ApiResponse patch(final String path, final byte[] data) throws ApiException, ProtocolException, IOException;
+    ApiResponse patch(final String path, final byte[] data, Map<String, String> headers) throws ApiException, ProtocolException, IOException;
 
     /**
      * Sends HTTP DELETE request to specified path.
      *
      * @param path URL path.
+     * @param headers HTTP request headers
      * @return Processed response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws IOException if an error occurred connecting to the server.
      */
-    ApiResponse delete(final String path) throws ApiException, ProtocolException, IOException;
+    ApiResponse delete(final String path, Map<String, String> headers) throws ApiException, ProtocolException, IOException;
 }
