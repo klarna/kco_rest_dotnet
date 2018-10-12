@@ -44,6 +44,8 @@ public class OrdersApi extends BaseApi {
     /**
      * Gets order information.
      *
+     * @see examples.OrderManagementExample.FetchOrderExample
+     *
      * @param orderId The unique order ID
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
@@ -65,6 +67,8 @@ public class OrdersApi extends BaseApi {
     /**
      * Releases remaining authorization.
      *
+     * @see examples.OrderManagementExample.ReleaseRemainingAuthorizationExample
+     *
      * @param orderId The unique order ID
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
@@ -84,6 +88,8 @@ public class OrdersApi extends BaseApi {
     /**
      * Extends authorization time.
      *
+     * @see examples.OrderManagementExample.ExtendAuthorizationTimeExample
+     *
      * @param orderId The unique order ID
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
@@ -102,6 +108,8 @@ public class OrdersApi extends BaseApi {
 
     /**
      * Updates customer addresses.
+     *
+     * @see examples.OrderManagementExample.UpdateCustomerAddressesExample
      *
      * @param orderId The unique order ID
      * @param customerAddress Customer Billing and Shipping addresses
@@ -125,6 +133,8 @@ public class OrdersApi extends BaseApi {
     /**
      * Cancels order.
      *
+     * @see examples.OrderManagementExample.CancelOrderExample
+     *
      * @param orderId The unique order ID
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
@@ -144,6 +154,8 @@ public class OrdersApi extends BaseApi {
 
     /**
      * Updates merchant references.
+     *
+     * @see examples.OrderManagementExample.UpdateMerchantReferencesExample
      *
      * @param orderId The unique order ID
      * @param references New merchant references
@@ -166,6 +178,8 @@ public class OrdersApi extends BaseApi {
     /**
      * Acknowledges order.
      *
+     * @see examples.OrderManagementExample.AcknowledgeOrderExample
+     *
      * @param orderId The unique order ID
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
@@ -184,6 +198,8 @@ public class OrdersApi extends BaseApi {
 
     /**
      * Sets new order amount and order lines.
+     *
+     * @see examples.OrderManagementExample.SetOrderAmountAndOrderLines
      *
      * @param orderId The unique order ID
      * @param orderData New order information

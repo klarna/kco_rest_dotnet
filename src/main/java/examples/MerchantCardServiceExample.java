@@ -51,7 +51,7 @@ public class MerchantCardServiceExample {
             VirtualCreditCardApi vccApi = new VirtualCreditCardApi(transport);
 
             try {
-                SettlementResponse settlement = vccApi.retrieveSetteledOrderSettlement(orderId, keyId);
+                SettlementResponse settlement = vccApi.retrieveSettledOrderSettlement(orderId, keyId);
                 System.out.println(settlement);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {

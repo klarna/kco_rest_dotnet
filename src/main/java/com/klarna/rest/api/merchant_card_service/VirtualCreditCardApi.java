@@ -44,6 +44,8 @@ public class VirtualCreditCardApi extends BaseApi {
      * Creates a new settlement.
      * To create a settlement resource provide a completed order identifier and (optionally) a promise identifier.
      *
+     * @see examples.MerchantCardServiceExample.CreateSettlementExample
+     *
      * @param settlement Settlement data
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
@@ -66,6 +68,8 @@ public class VirtualCreditCardApi extends BaseApi {
 
     /**
      * Retrieves an existing settlement.
+     *
+     * @see examples.MerchantCardServiceExample.RetrieveExistingSettlementExample
      *
      * @param settlementId Unique settlement identifier
      * @param keyId Unique identifier for the public key used for encryption of the card data
@@ -92,6 +96,8 @@ public class VirtualCreditCardApi extends BaseApi {
     /**
      * Retrieves a settled order's settlement.
      *
+     * @see examples.MerchantCardServiceExample.RetriveOrdersSettlementsExample
+     *
      * @param orderId Unique identifier for the order associated to the settlement
      * @param keyId Unique identifier for the public key used for encryption of the card data
      * @return server response
@@ -101,7 +107,7 @@ public class VirtualCreditCardApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred connecting to the server
      */
-    public SettlementResponse retrieveSetteledOrderSettlement(String orderId, String keyId)
+    public SettlementResponse retrieveSettledOrderSettlement(String orderId, String keyId)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         Map<String, String> headers = new HashMap<>();
         headers.put("KeyId", keyId);

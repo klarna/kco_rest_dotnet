@@ -49,6 +49,8 @@ public class RefundsApi extends BaseApi {
     /**
      * Creates a refund.
      *
+     * @see examples.OrderManagementExample.CreateRefundExample
+     *
      * @param refund Refund data
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
@@ -66,6 +68,8 @@ public class RefundsApi extends BaseApi {
 
     /**
      * Gets refund.
+     *
+     * @see examples.OrderManagementExample.FetchRefundExample
      *
      * @param refundId Refund ID
      * @return server response
@@ -87,6 +91,8 @@ public class RefundsApi extends BaseApi {
 
     /**
      * Gets refund using the Location header from the previous server response.
+     *
+     * @see examples.OrderManagementExample.FetchRefundExample
      *
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains

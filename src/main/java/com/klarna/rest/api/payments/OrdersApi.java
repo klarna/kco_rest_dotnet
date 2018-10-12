@@ -42,6 +42,8 @@ public class OrdersApi extends BaseApi {
     /**
      * Creates a new order.
      *
+     * @see examples.PaymentsExample.CreateOrderExample
+     *
      * @param authorizationToken Authorization token
      * @param order Order data
      * @return server response
@@ -67,6 +69,8 @@ public class OrdersApi extends BaseApi {
     /**
      * Generates a consumer token.
      *
+     * @see examples.PaymentsExample.GenerateCustomerTokenExample
+     *
      * @param authorizationToken Authorization token
      * @param request Customer Token details
      * @return server response
@@ -91,6 +95,8 @@ public class OrdersApi extends BaseApi {
 
     /**
      * Cancels an existing authorization.
+     *
+     * @see examples.PaymentsExample.CancelExistingAuthorizationExample
      *
      * @param authorizationToken Authorization token
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains

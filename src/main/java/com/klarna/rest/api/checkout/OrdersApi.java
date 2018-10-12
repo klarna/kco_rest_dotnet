@@ -49,6 +49,8 @@ public class OrdersApi extends BaseApi {
      * The response body will contain the full order object and the location header will contain the
      * URL at which the newly created order can be found.
      *
+     * @see examples.CheckoutExample.CreateExample
+     *
      * @param order Order data
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
@@ -76,6 +78,8 @@ public class OrdersApi extends BaseApi {
      *  Completed orders should be read using the order management API
      * </p>
      *
+     * @see examples.CheckoutExample.FetchExample
+     *
      * @param orderId Order ID
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
@@ -96,6 +100,8 @@ public class OrdersApi extends BaseApi {
 
     /**
      * Use this API call to read an order from Klarna using Location header got from the API server.
+     *
+     * @see examples.CheckoutExample.FetchExample
      *
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
@@ -124,6 +130,8 @@ public class OrdersApi extends BaseApi {
      * <p>
      *  Please note: an order can only be updated when the status is <b>checkout_incomplete</b>
      * </p>
+     *
+     * @see examples.CheckoutExample.UpdateExample
      *
      * @param orderId Order ID
      * @param order Order data

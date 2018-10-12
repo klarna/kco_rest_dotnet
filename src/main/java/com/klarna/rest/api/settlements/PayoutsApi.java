@@ -50,6 +50,8 @@ public class PayoutsApi extends BaseApi {
     /**
      * Returns a specific payout based on a given payment reference.
      *
+     * @see examples.SettlementsExample.PayoutFetchExample
+     *
      * @param paymentReference The reference id of the payout
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
@@ -72,6 +74,7 @@ public class PayoutsApi extends BaseApi {
     /**
      * Returns a collection of payouts.
      *
+     * @see examples.SettlementsExample.PayoutFetchAllExample
      * @see <a href="https://developers.klarna.com/api/#settlements-api-get-all-payouts">URL params</a>
      *
      * @param urlParams extra URL params
@@ -95,6 +98,8 @@ public class PayoutsApi extends BaseApi {
     /**
      * Returns a collection of payouts.
      *
+     * @see examples.SettlementsExample.PayoutFetchAllExample
+     *
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
@@ -110,6 +115,7 @@ public class PayoutsApi extends BaseApi {
     /**
      * Returns a summary of payouts for each currency code in a date range.
      *
+     * @see examples.SettlementsExample.PayoutGetSummaryExample
      * @see <a href="https://developers.klarna.com/api/#settlements-api-get-summary-of-payouts">URL params</a>
      *
      * @param urlParams extra URL params.

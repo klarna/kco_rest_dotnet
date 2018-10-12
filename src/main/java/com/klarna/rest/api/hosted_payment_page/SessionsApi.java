@@ -52,6 +52,8 @@ public class SessionsApi extends BaseApi {
     /**
      * Creates a new HPP session.
      *
+     * @see examples.HostedPaymentPageExample.CreateHPPSessionExample
+     *
      * @param session Session data
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
@@ -75,6 +77,8 @@ public class SessionsApi extends BaseApi {
     /**
      * Distributes a link to the HPP session.
      *
+     * @see examples.HostedPaymentPageExample.DistributeLinkToHPPSessionExample
+     *
      * @param sessionId HPP session id
      * @param request Session data
      * @return server response
@@ -96,6 +100,8 @@ public class SessionsApi extends BaseApi {
 
     /**
      * Gets HPP session status.
+     *
+     * @see examples.HostedPaymentPageExample.GetHPPSessionStatusExample
      *
      * @param sessionId HPP session id
      * @return server response

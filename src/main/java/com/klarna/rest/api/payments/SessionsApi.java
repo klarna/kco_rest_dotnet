@@ -44,6 +44,8 @@ public class SessionsApi extends BaseApi {
     /**
      * Creates a new credit session.
      *
+     * @see examples.PaymentsExample.CreateNewCreditSessionExample
+     *
      * @param session
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
@@ -67,6 +69,8 @@ public class SessionsApi extends BaseApi {
     /**
      * Reads an existing credit session.
      *
+     * @see examples.PaymentsExample.ReadCreditSessionExample
+     *
      * @param sessionId Session ID
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
@@ -87,6 +91,8 @@ public class SessionsApi extends BaseApi {
 
     /**
      * Updates an existing credit session.
+     *
+     * @see examples.PaymentsExample.UpdateExistingCreditSessionExample
      *
      * @param sessionId Session ID
      * @param session Session information

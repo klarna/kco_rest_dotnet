@@ -45,6 +45,8 @@ public class TokensApi extends BaseApi {
     /**
      * Reads customer tokens details.
      *
+     * @see examples.CustomerTokenExample.ReadTokenDetailsExample
+     *
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
@@ -65,6 +67,8 @@ public class TokensApi extends BaseApi {
 
     /**
      * Creates a new order using the customer token.
+     *
+     * @see examples.CustomerTokenExample.CreateOrderExample
      *
      * @param order Order details
      * @return server response
