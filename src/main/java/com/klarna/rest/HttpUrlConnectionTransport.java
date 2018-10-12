@@ -220,6 +220,7 @@ public class HttpUrlConnectionTransport implements Transport {
     /**
      * Sets current Timeout limit (in seconds) for an HTTP request.
      *
+     * @param timeout Timeout in milliseconds
      * @return self
      */
     public HttpUrlConnectionTransport setTimeout(int timeout) {
@@ -308,12 +309,6 @@ public class HttpUrlConnectionTransport implements Transport {
         conn.setRequestProperty("Authorization", "Basic " + encoded);
     }
 
-    /**
-     * Adds required properties for connection, performs request and processes response.
-     * @param conn HttpURLConnection instance
-     * @return P
-     * @throws IOException
-     */
     protected ApiResponse makeRequest(HttpURLConnection conn) throws IOException {
 
         ApiResponse response = new ApiResponse();

@@ -46,7 +46,7 @@ public class SessionsApi extends BaseApi {
      *
      * @see examples.PaymentsExample.CreateNewCreditSessionExample
      *
-     * @param session
+     * @param session Session information
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>

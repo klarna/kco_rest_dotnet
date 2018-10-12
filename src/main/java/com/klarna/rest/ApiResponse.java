@@ -136,7 +136,7 @@ public class ApiResponse {
     }
 
     /**
-     * Checks if current ApiResponse is successful (response code >=200 && <300)
+     * Checks if current ApiResponse is successful (response code &gt;=200 and &lt;300)
      *
      * @return true if successful
      */

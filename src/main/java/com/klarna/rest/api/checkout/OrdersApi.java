@@ -35,7 +35,7 @@ import java.io.IOException;
  * The checkout API is used to create a checkout with Klarna and update the checkout order during the purchase.
  *
  * As soon as the purchase is completed the order should be read and handled using the
- * {@link com.klarna.rest.api.order_management.OrdersApi() OrderManagement API}
+ * {@link com.klarna.rest.api.order_management.OrdersApi Order Management API}
  */
 public class OrdersApi extends BaseApi {
     protected String PATH = "/checkout/v3/orders";

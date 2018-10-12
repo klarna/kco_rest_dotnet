@@ -81,7 +81,6 @@ public class SessionsApi extends BaseApi {
      *
      * @param sessionId HPP session id
      * @param request Session data
-     * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
