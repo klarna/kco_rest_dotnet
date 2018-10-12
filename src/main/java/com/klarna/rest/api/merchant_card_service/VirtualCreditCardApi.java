@@ -30,6 +30,8 @@ import java.util.Map;
 
 /**
  * Merchant Card Service API: Virtual credit card resource.
+ *
+ * The Merchant Card Service (MCS) API is used to settle orders with virtual credit cards.
  */
 public class VirtualCreditCardApi extends BaseApi {
     protected String PATH = "/merchantcard/v3/settlements";
@@ -38,6 +40,18 @@ public class VirtualCreditCardApi extends BaseApi {
         super(transport);
     }
 
+    /**
+     * Creates a new settlement.
+     * To create a settlement resource provide a completed order identifier and (optionally) a promise identifier.
+     *
+     * @param settlement Settlement data
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public SettlementResponse createSettlement(SettlementRequest settlement)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(settlement);
@@ -50,6 +64,18 @@ public class VirtualCreditCardApi extends BaseApi {
         return objectMapper.readValue(response.getBody(), SettlementResponse.class);
     }
 
+    /**
+     * Retrieves an existing settlement.
+     *
+     * @param settlementId Unique settlement identifier
+     * @param keyId Unique identifier for the public key used for encryption of the card data
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public SettlementResponse retrieveExistingSettlement(String settlementId, String keyId)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         Map<String, String> headers = new HashMap<>();
@@ -63,6 +89,18 @@ public class VirtualCreditCardApi extends BaseApi {
         return objectMapper.readValue(response.getBody(), SettlementResponse.class);
     }
 
+    /**
+     * Retrieves a settled order's settlement.
+     *
+     * @param orderId Unique identifier for the order associated to the settlement
+     * @param keyId Unique identifier for the public key used for encryption of the card data
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public SettlementResponse retrieveSetteledOrderSettlement(String orderId, String keyId)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         Map<String, String> headers = new HashMap<>();

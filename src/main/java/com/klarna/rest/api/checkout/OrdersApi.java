@@ -32,6 +32,10 @@ import java.io.IOException;
 
 /**
  * Checkout API: Orders resource.
+ * The checkout API is used to create a checkout with Klarna and update the checkout order during the purchase.
+ *
+ * As soon as the purchase is completed the order should be read and handled using the
+ * {@link com.klarna.rest.api.order_management.OrdersApi() OrderManagement API}
  */
 public class OrdersApi extends BaseApi {
     protected String PATH = "/checkout/v3/orders";
@@ -40,6 +44,19 @@ public class OrdersApi extends BaseApi {
         super(transport);
     }
 
+    /**
+     * Use this API call to create a new order.
+     * The response body will contain the full order object and the location header will contain the
+     * URL at which the newly created order can be found.
+     *
+     * @param order Order data
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public Order create(Order order) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(order);
         final ApiResponse response = this.post(PATH, data);
@@ -51,6 +68,22 @@ public class OrdersApi extends BaseApi {
         return objectMapper.readValue(response.getBody(), Order.class);
     }
 
+    /**
+     * Use this API call to read an order from Klarna.
+     *
+     * <p>
+     *  Note that orders should only be read from the checkout API until the order is completed.
+     *  Completed orders should be read using the order management API
+     * </p>
+     *
+     * @param orderId Order ID
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public Order fetch(String orderId) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final ApiResponse response = this.get(PATH + '/' + orderId);
 
@@ -61,6 +94,16 @@ public class OrdersApi extends BaseApi {
         return objectMapper.readValue(response.getBody(), Order.class);
     }
 
+    /**
+     * Use this API call to read an order from Klarna using Location header got from the API server.
+     *
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public Order fetch() throws ApiException, ProtocolException, ContentTypeException, IOException {
         if (this.location == null) {
             throw new IOException("Unknown location");
@@ -74,6 +117,23 @@ public class OrdersApi extends BaseApi {
         return objectMapper.readValue(response.getBody(), Order.class);
     }
 
+    /**
+     * To update an order simply provide an object with the properties you want to update.
+     * Properties not provided in the request will stay the same.
+     *
+     * <p>
+     *  Please note: an order can only be updated when the status is <b>checkout_incomplete</b>
+     * </p>
+     *
+     * @param orderId Order ID
+     * @param order Order data
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public Order update(String orderId, Order order) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(order);
         final ApiResponse response = this.post(PATH + '/' + orderId, data);

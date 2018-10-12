@@ -28,6 +28,11 @@ import java.io.IOException;
 
 /**
  * Payments API: Sessions resource.
+ *
+ * The payments API is used to create a session to offer Klarna's payment methods as part of your checkout.
+ *
+ * As soon as the purchase is completed the order should be read and handled using the
+ * {@link com.klarna.rest.api.order_management.OrdersApi Order Management API}.
  */
 public class SessionsApi extends BaseApi {
     protected String PATH = "/payments/v1/sessions";
@@ -36,6 +41,17 @@ public class SessionsApi extends BaseApi {
         super(transport);
     }
 
+    /**
+     * Creates a new credit session.
+     *
+     * @param session
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public MerchantSession create(Session session)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(session);
@@ -48,6 +64,17 @@ public class SessionsApi extends BaseApi {
         return objectMapper.readValue(response.getBody(), MerchantSession.class);
     }
 
+    /**
+     * Reads an existing credit session.
+     *
+     * @param sessionId Session ID
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public Session fetch(String sessionId) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final ApiResponse response = this.get(PATH + '/' + sessionId);
 
@@ -58,6 +85,17 @@ public class SessionsApi extends BaseApi {
         return objectMapper.readValue(response.getBody(), Session.class);
     }
 
+    /**
+     * Updates an existing credit session.
+     *
+     * @param sessionId Session ID
+     * @param session Session information
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public void update(String sessionId, Session session)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(session);

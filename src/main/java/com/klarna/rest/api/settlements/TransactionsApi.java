@@ -29,6 +29,16 @@ import java.util.Map;
 
 /**
  * Settlements API: Transactions resource.
+ *
+ * This API gives you access to your payouts and transactions.
+ *
+ * Resources are split into two broad types:
+ *
+ * <ul>
+ *  <li>Collections, including pagination information: collections are queryable,
+ *      typically by the attributes of the sub-resource as well as pagination</li>
+ *  <li>Entity resources containing a single entity</li>
+ * </ul>
  */
 public class TransactionsApi extends BaseApi {
     protected String PATH = "/settlements/v1/transactions";
@@ -37,6 +47,19 @@ public class TransactionsApi extends BaseApi {
         super(transport);
     }
 
+    /**
+     * Returns a collection of transactions.
+     *
+     * @see <a href="https://developers.klarna.com/api/#settlements-api-get-transactions">URL params</a>
+     *
+     * @param urlParams extra URL params
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public TransactionCollection getTransactions(Map<String, String> urlParams)
         throws ApiException, ProtocolException, ContentTypeException, IOException {
         final ApiResponse response = this.get(PATH + "?" + this.buildQueryString(urlParams));
@@ -47,6 +70,16 @@ public class TransactionsApi extends BaseApi {
         return objectMapper.readValue(response.getBody(), TransactionCollection.class);
     }
 
+    /**
+     * Returns a collection of transactions.
+     *
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public TransactionCollection getTransactions()
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         return this.getTransactions(null);

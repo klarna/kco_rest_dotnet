@@ -29,6 +29,10 @@ import java.io.IOException;
 
 /**
  * Order Management API: Orders resource.
+ *
+ * The Order Management API is used for handling an order after the customer has completed the purchase.
+ * It is used for updating, capturing and refunding an order as well as to see the history of events that
+ * have affected this order.
  */
 public class OrdersApi extends BaseApi {
     protected String PATH = "/order_management/v1/orders";
@@ -37,6 +41,17 @@ public class OrdersApi extends BaseApi {
         super(transport);
     }
 
+    /**
+     * Gets order information.
+     *
+     * @param orderId The unique order ID
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public Order fetch(String orderId) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final ApiResponse response = this.get(PATH + '/' + orderId);
 
@@ -47,6 +62,16 @@ public class OrdersApi extends BaseApi {
         return objectMapper.readValue(response.getBody(), Order.class);
     }
 
+    /**
+     * Releases remaining authorization.
+     *
+     * @param orderId The unique order ID
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public void releaseRemainingAuthorization(String orderId)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "release-remaining-authorization");
@@ -56,6 +81,16 @@ public class OrdersApi extends BaseApi {
                 .expectStatusCode(Status.NO_CONTENT);
     }
 
+    /**
+     * Extends authorization time.
+     *
+     * @param orderId The unique order ID
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public void extendAuthorizationTime(String orderId)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "extend-authorization-time");
@@ -65,6 +100,17 @@ public class OrdersApi extends BaseApi {
                 .expectStatusCode(Status.NO_CONTENT);
     }
 
+    /**
+     * Updates customer addresses.
+     *
+     * @param orderId The unique order ID
+     * @param customerAddress Customer Billing and Shipping addresses
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public void updateCustomerAddresses(String orderId, UpdateConsumer customerAddress)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "customer-details");
@@ -76,6 +122,16 @@ public class OrdersApi extends BaseApi {
                 .expectStatusCode(Status.NO_CONTENT);
     }
 
+    /**
+     * Cancels order.
+     *
+     * @param orderId The unique order ID
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public void cancelOrder(String orderId)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "cancel");
@@ -86,6 +142,17 @@ public class OrdersApi extends BaseApi {
                 .expectStatusCode(Status.NO_CONTENT);
     }
 
+    /**
+     * Updates merchant references.
+     *
+     * @param orderId The unique order ID
+     * @param references New merchant references
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public void updateMerchantReferences(String orderId, UpdateMerchantReferences references)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "merchant-references");
@@ -96,6 +163,16 @@ public class OrdersApi extends BaseApi {
                 .expectStatusCode(Status.NO_CONTENT);
     }
 
+    /**
+     * Acknowledges order.
+     *
+     * @param orderId The unique order ID
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public void acknowledgeOrder(String orderId)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "acknowledge");
@@ -105,6 +182,17 @@ public class OrdersApi extends BaseApi {
                 .expectStatusCode(Status.NO_CONTENT);
     }
 
+    /**
+     * Sets new order amount and order lines.
+     *
+     * @param orderId The unique order ID
+     * @param orderData New order information
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public void setOrderAmountAndOrderLines(String orderId, UpdateAuthorization orderData)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "authorization");

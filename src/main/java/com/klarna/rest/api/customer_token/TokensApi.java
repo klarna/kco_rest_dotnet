@@ -28,6 +28,10 @@ import java.io.IOException;
 
 /**
  * Customer Token API: Tokens resource.
+ *
+ * The Customer Token API is used to charge customers with a tokenized Klarna payment method and can be used for
+ * recurring purchases, subscriptions and for storing a customer's payment method. Tokens are created using
+ * the generate a customer token call in the {@link com.klarna.rest.api.payments.OrdersApi PaymentAPI}.
  */
 public class TokensApi extends BaseApi {
     protected String PATH;
@@ -38,6 +42,16 @@ public class TokensApi extends BaseApi {
         this.PATH = String.format("/customer-token/v1/tokens/%s", customerToken);
     }
 
+    /**
+     * Reads customer tokens details.
+     *
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public CustomerTokenV1 fetchDetails()
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final ApiResponse response = this.get(PATH);
@@ -49,6 +63,17 @@ public class TokensApi extends BaseApi {
         return objectMapper.readValue(response.getBody(), CustomerTokenV1.class);
     }
 
+    /**
+     * Creates a new order using the customer token.
+     *
+     * @param order Order details
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public Order createOrder(CustomerTokenOrder order)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(order);

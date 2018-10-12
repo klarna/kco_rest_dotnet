@@ -31,16 +31,37 @@ import java.util.List;
 
 /**
  * Order Management API: Captures resource.
+ *
+ * The Order Management API is used for handling an order after the customer has completed the purchase.
+ * It is used for updating, capturing and refunding an order as well as to see the history of events that
+ * have affected this order.
  */
 public class CapturesApi extends BaseApi {
     protected String PATH;
 
+    /**
+     * Creates a Captures resource.
+     *
+     * @param transport HTTP Transport
+     * @param orderId Order id
+     */
     public CapturesApi(final Transport transport, String orderId) {
         super(transport);
 
         this.PATH = String.format("/ordermanagement/v1/orders/%s/captures", orderId);
     }
 
+    /**
+     * Gets one capture.
+     *
+     * @param captureId Capture id
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public Capture fetch(String captureId) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format(PATH + "/" + captureId);
         final ApiResponse response = this.get(path);
@@ -52,6 +73,16 @@ public class CapturesApi extends BaseApi {
         return objectMapper.readValue(response.getBody(), Capture.class);
     }
 
+    /**
+     * Gets all captures for one order.
+     *
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public Capture[] fetch() throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format(PATH);
         final ApiResponse response = this.get(path);
@@ -63,14 +94,34 @@ public class CapturesApi extends BaseApi {
         return objectMapper.readValue(response.getBody(), new TypeReference<List<Capture>>() {});
     }
 
-    public void create(CaptureObject refund) throws ApiException, ProtocolException, ContentTypeException, IOException {
-        final byte[] data = objectMapper.writeValueAsBytes(refund);
+    /**
+     * Creates capture.
+     *
+     * @param capture Capture data
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
+    public void create(CaptureObject capture) throws ApiException, ProtocolException, ContentTypeException, IOException {
+        final byte[] data = objectMapper.writeValueAsBytes(capture);
         final ApiResponse response = this.post(PATH, data);
 
         response.validator()
                 .expectStatusCode(Status.CREATED);
     }
 
+    /**
+     * Triggers resend of customer communication.
+     *
+     * @param captureId Capture ID
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public void triggerSendout(String captureId) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, captureId, "trigger-send-out");
         final ApiResponse response = this.post(path, null);
@@ -79,6 +130,17 @@ public class CapturesApi extends BaseApi {
                 .expectStatusCode(Status.NO_CONTENT);
     }
 
+    /**
+     * Adds shipping info to a capture.
+     *
+     * @param captureId Capture ID
+     * @param shippingInfo Shipping details
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public void addShippingInfo(String captureId, ShippingInfo shippingInfo) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, captureId, "shipping-info");
         final byte[] data = objectMapper.writeValueAsBytes(shippingInfo);

@@ -26,6 +26,11 @@ import java.io.IOException;
 
 /**
  * Payments API: Orders resource.
+ *
+ * The payments API is used to create a session to offer Klarna's payment methods as part of your checkout.
+ *
+ * As soon as the purchase is completed the order should be read and handled using the
+ * {@link com.klarna.rest.api.order_management.OrdersApi Order Management API}.
  */
 public class OrdersApi extends BaseApi {
     protected String PATH = "/payments/v1/authorizations";
@@ -34,6 +39,18 @@ public class OrdersApi extends BaseApi {
         super(transport);
     }
 
+    /**
+     * Creates a new order.
+     *
+     * @param authorizationToken Authorization token
+     * @param order Order data
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public Order create(String authorizationToken, CreateOrderRequest order)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, authorizationToken, "order");
@@ -47,6 +64,18 @@ public class OrdersApi extends BaseApi {
         return objectMapper.readValue(response.getBody(), Order.class);
     }
 
+    /**
+     * Generates a consumer token.
+     *
+     * @param authorizationToken Authorization token
+     * @param request Customer Token details
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public CustomerTokenCreationResponse generateToken(String authorizationToken, CustomerTokenCreationRequest request)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, authorizationToken, "customer-token");
@@ -60,6 +89,16 @@ public class OrdersApi extends BaseApi {
         return objectMapper.readValue(response.getBody(), CustomerTokenCreationResponse.class);
     }
 
+    /**
+     * Cancels an existing authorization.
+     *
+     * @param authorizationToken Authorization token
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public void cancelAuthorization(String authorizationToken)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final ApiResponse response = this.delete(PATH + "/" + authorizationToken);

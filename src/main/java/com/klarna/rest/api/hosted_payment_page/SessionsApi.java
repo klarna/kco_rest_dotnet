@@ -29,6 +29,18 @@ import java.io.IOException;
 
 /**
  * Hosted Payment Page API: Sessions resource.
+ *
+ * Hosted Payment Page (HPP) API is a service that lets you integrate Klarna Payments without the need of
+ * hosting the web page that manages the client side of Klarna Payments.
+ *
+ * A complete HPP payment session will involve three of Klarna services:
+ *
+ * <ul>
+ *  <li>{@link com.klarna.rest.api.payments.OrdersApi Klarna Payments API} to start a payment session.</li>
+ *  <li>{@link SessionsApi Hosted Payment Page API} to distribute a payment session.</li>
+ *  <li>{@link com.klarna.rest.api.order_management.OrdersApi Order Management API}
+ *      to capture payment or refund consumer.</li>
+ * </ul>
  */
 public class SessionsApi extends BaseApi {
     protected String PATH = "/hpp/v1/sessions";
@@ -37,6 +49,17 @@ public class SessionsApi extends BaseApi {
         super(transport);
     }
 
+    /**
+     * Creates a new HPP session.
+     *
+     * @param session Session data
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public SessionResponseV1 create(SessionRequestV1 session)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(session);
@@ -49,6 +72,18 @@ public class SessionsApi extends BaseApi {
         return objectMapper.readValue(response.getBody(), SessionResponseV1.class);
     }
 
+    /**
+     * Distributes a link to the HPP session.
+     *
+     * @param sessionId HPP session id
+     * @param request Session data
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public void distributeLink(String sessionId, DistributionRequestV1 request)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, sessionId, "distribution");
@@ -59,6 +94,17 @@ public class SessionsApi extends BaseApi {
                 .expectStatusCode(Response.Status.OK);
     }
 
+    /**
+     * Gets HPP session status.
+     *
+     * @param sessionId HPP session id
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred connecting to the server
+     */
     public SessionStatusResponseV1 getStatus(String sessionId)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, sessionId, "status");
