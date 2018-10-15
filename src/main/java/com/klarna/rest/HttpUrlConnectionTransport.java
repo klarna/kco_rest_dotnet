@@ -291,7 +291,7 @@ public class HttpUrlConnectionTransport implements Transport {
         conn.setConnectTimeout(this.timeout);
         conn.setReadTimeout(this.timeout);
 
-        setBase64Auth(conn, this.merchantId, this.sharedSecret);
+        this.authorize(conn);
 
         if (headers != null) {
             for (String key : headers.keySet()) {
@@ -300,6 +300,10 @@ public class HttpUrlConnectionTransport implements Transport {
         }
 
         return conn;
+    }
+
+    protected void authorize(HttpURLConnection conn) throws IOException {
+        this.setBase64Auth(conn, this.merchantId, this.sharedSecret);
     }
 
     protected void setBase64Auth(HttpURLConnection conn, String username, String password) throws IOException {
