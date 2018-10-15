@@ -15,6 +15,6 @@
  */
 
 /**
- * Klarna API Transport package.
+ * Customer Token API.
  */
-package com.klarna.rest;
+package com.klarna.rest.api.customer_token;

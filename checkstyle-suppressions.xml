@@ -9,4 +9,5 @@
               files=".*.java"/>
     <suppress checks="(MagicNumber|LineLength)Check"
               files=".*/examples/.*.java"/>
+    <suppress checks="." files="[\\/]model[\\/].*\.java$"/>
 </suppressions>

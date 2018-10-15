@@ -17,5 +17,4 @@
 /**
  * API package.
  */
-
 package com.klarna.rest.api;

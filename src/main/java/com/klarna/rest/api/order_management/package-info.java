@@ -15,6 +15,6 @@
  */
 
 /**
- * Klarna API Transport package.
+ * Order Management API.
  */
-package com.klarna.rest;
+package com.klarna.rest.api.order_management;

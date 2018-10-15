@@ -15,6 +15,6 @@
  */
 
 /**
- * Klarna API Transport package.
+ * Merchant Card Service API.
  */
-package com.klarna.rest;
+package com.klarna.rest.api.merchant_card_service;

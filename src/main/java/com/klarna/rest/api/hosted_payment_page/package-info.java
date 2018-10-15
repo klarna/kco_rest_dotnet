@@ -15,6 +15,6 @@
  */
 
 /**
- * Klarna API Transport package.
+ * Hosted Payment Page API.
  */
-package com.klarna.rest;
+package com.klarna.rest.api.hosted_payment_page;
