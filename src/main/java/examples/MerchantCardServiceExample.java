@@ -17,8 +17,8 @@ public class MerchantCardServiceExample {
         public static void main(final String[] args) {
             final String merchantId = "0";
             final String sharedSecret = "sharedSecret";
-            final String settlementId = "settlementId";
-            final String keyId = "keyId";
+            final String settlementId = "12345";
+            final String keyId = "abcde";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
             VirtualCreditCardApi vccApi = new VirtualCreditCardApi(transport);
@@ -44,8 +44,8 @@ public class MerchantCardServiceExample {
         public static void main(final String[] args) {
             final String merchantId = "0";
             final String sharedSecret = "sharedSecret";
-            final String orderId = "orderId";
-            final String keyId = "keyId";
+            final String orderId = "12345";
+            final String keyId = "abcde";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
             VirtualCreditCardApi vccApi = new VirtualCreditCardApi(transport);
@@ -71,9 +71,8 @@ public class MerchantCardServiceExample {
         public static void main(final String[] args) {
             final String merchantId = "0";
             final String sharedSecret = "sharedSecret";
-            final String orderId = "orderIdId";
-            final String keyId = "keyId";
-            final String promiseId = "promiseId";
+            final String orderId = "12345";
+            final String keyId = "abcde";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
             VirtualCreditCardApi vccApi = new VirtualCreditCardApi(transport);
@@ -83,7 +82,6 @@ public class MerchantCardServiceExample {
                     {
                         setKeyId(keyId);
                         setOrderId(orderId);
-                        setPromiseId(promiseId);
                     }
                 };
                 SettlementResponse settlement = vccApi.createSettlement(request);
