@@ -48,11 +48,6 @@ public class ApiResponse {
      */
     private byte[] body = null;
 
-
-    public ApiResponse() {
-        this.headers = new HashMap<>();
-    }
-
     /**
      * Sets HTTP Status code.
      *
@@ -99,7 +94,7 @@ public class ApiResponse {
      * @param headers Headers
      * @return self
      */
-    public ApiResponse setHeaders(Map headers) {
+    public ApiResponse setHeaders(Map<String, List<String>> headers) {
         this.headers = headers;
         return this;
     }
@@ -112,6 +107,9 @@ public class ApiResponse {
      * @return self
      */
     public ApiResponse setHeader(String name, List<String> values) {
+        if (this.headers == null) {
+            this.headers = new HashMap<>();
+        }
         this.headers.put(name, values);
         return this;
     }
@@ -132,6 +130,9 @@ public class ApiResponse {
      * @return Header values
      */
     public List<String> getHeader(String name) {
+        if (this.headers == null) {
+            return null;
+        }
         return this.headers.get(name);
     }
 
@@ -141,10 +142,7 @@ public class ApiResponse {
      * @return true if successful
      */
     public Boolean isSuccessfull () {
-        if (Status.fromStatusCode(this.getStatus()).getFamily().equals(SUCCESSFUL)) {
-            return true;
-        }
-        return false;
+        return Status.fromStatusCode(this.getStatus()).getFamily().equals(SUCCESSFUL);
     }
 
     /**
@@ -204,17 +202,21 @@ public class ApiResponse {
      */
     public ApiResponse expectContentType(final String value) throws ContentTypeException {
         List<String> contentType = this.getHeader("Content-Type");
-        if (contentType != null && contentType.contains(value)) {
-            return this;
-        }
-
-        for (String type : contentType) {
-            if (type.startsWith(value)) {
+        if (contentType != null) {
+            if (contentType.contains(value)) {
                 return this;
             }
+
+            for (String type : contentType) {
+                if (type.startsWith(value)) {
+                    return this;
+                }
+            }
+
+            throw ContentTypeException.unexpectedType(contentType.toString());
         }
 
-        throw ContentTypeException.unexpectedType(contentType.toString());
+        throw ContentTypeException.unexpectedType("Content-Type header is missing");
     }
 
     /**
