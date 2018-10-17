@@ -312,7 +312,7 @@ public class HttpUrlConnectionTransport implements Transport {
         response.setHeaders(conn.getHeaderFields());
 
         InputStream is;
-        if (response.isSuccessfull()) {
+        if (response.isSuccessful()) {
             is = conn.getInputStream();
         } else {
             is = conn.getErrorStream();

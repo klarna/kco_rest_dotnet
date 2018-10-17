@@ -141,8 +141,9 @@ public class ApiResponse {
      *
      * @return true if successful
      */
-    public Boolean isSuccessfull () {
-        return Status.fromStatusCode(this.getStatus()).getFamily().equals(SUCCESSFUL);
+    public Boolean isSuccessful() {
+        Status status = Status.fromStatusCode(this.getStatus());
+        return (status != null && status.getFamily().equals(SUCCESSFUL));
     }
 
     /**
@@ -151,8 +152,8 @@ public class ApiResponse {
      * @return self
      * @throws ProtocolException if response code is not successful
      */
-    public ApiResponse expectSuccessfull() throws ProtocolException {
-        if (this.isSuccessfull()) {
+    public ApiResponse expectSuccessful() throws ProtocolException {
+        if (this.isSuccessful()) {
             return this;
         }
 

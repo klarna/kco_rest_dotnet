@@ -68,21 +68,21 @@ public class ApiResponseTest extends TestCase {
 
     @Test
     public void testIsSuccessfull() {
-        assertTrue(response.isSuccessfull());
+        assertTrue(response.isSuccessful());
 
         response.setStatus(500);
-        assertFalse(response.isSuccessfull());
+        assertFalse(response.isSuccessful());
     }
 
     @Test(expected = ProtocolException.class)
     public void testExpectNotSuccessful() {
         response.setStatus(404);
-        response.expectSuccessfull();
+        response.expectSuccessful();
     }
 
     @Test
     public void testExpectSuccessful() {
-        assertSame(response, response.expectSuccessfull());
+        assertSame(response, response.expectSuccessful());
     }
 
     @Test
