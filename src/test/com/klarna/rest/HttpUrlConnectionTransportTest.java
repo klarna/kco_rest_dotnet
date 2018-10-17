@@ -35,9 +35,7 @@ import java.net.URL;
 import java.util.*;
 
 import static org.mockito.Matchers.isA;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class HttpUrlConnectionTransportTest extends TestCase {
@@ -80,7 +78,7 @@ public class HttpUrlConnectionTransportTest extends TestCase {
     }
 
     @Test(expected = ApiException.class)
-    public void testUnsuccessfullRequest() throws IOException {
+    public void testUnsuccessfulRequest() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(500);
 
         ApiResponse response = transport.get("/test-url", null);
@@ -202,6 +200,36 @@ public class HttpUrlConnectionTransportTest extends TestCase {
             return;
         }
         fail("Unable to parse error message");
+    }
+
+    @Test
+    public void testPostCalled() throws IOException {
+        transport.post("/some-path", null, null);
+        verify(transport.conn, times(1)).setRequestMethod("POST");
+    }
+
+    @Test
+    public void testGetCalled() throws IOException {
+        transport.get("/some-path", null);
+        verify(transport.conn, times(1)).setRequestMethod("GET");
+    }
+
+    @Test
+    public void testPutCalled() throws IOException {
+        transport.put("/some-path", null, null);
+        verify(transport.conn, times(1)).setRequestMethod("PUT");
+    }
+
+    @Test
+    public void testPatchCalled() throws IOException {
+        transport.patch("/some-path", null, null);
+        verify(transport.conn, times(1)).setRequestMethod("PATCH");
+    }
+
+    @Test
+    public void testDeleteCalled() throws IOException {
+        transport.delete("/some-path", null);
+        verify(transport.conn, times(1)).setRequestMethod("DELETE");
     }
 }
 
