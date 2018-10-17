@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.Map;
 
+import static java.lang.System.getProperty;
+
 
 /**
  * General interface for an HTTP transport.
@@ -35,7 +37,13 @@ public interface Transport {
     /**
      * API library default user agent.
      */
-    String USER_AGENT = "Klarna.kco_rest_java";
+    String USER_AGENT = String.format("Language/Java_%s (Vendor/%s; VM/%s) Library/%s OS/%s",
+            getProperty("java.version"),
+            getProperty("java.vendor"),
+            getProperty("java.vm.name"),
+            "Klarna.kco_rest_java_" + VERSION,
+            getProperty("os.name") + "_" + getProperty("os.version")
+    );
 
     /**
      * API base URL for Europe.

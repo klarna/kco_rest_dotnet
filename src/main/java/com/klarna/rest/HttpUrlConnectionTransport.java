@@ -35,7 +35,12 @@ public class HttpUrlConnectionTransport implements Transport {
     /**
      * Default HTTP request timeout.
      */
-    public static int DEFAULT_TIMEOUT = 30000;
+    private static int DEFAULT_TIMEOUT = 30000;
+
+    /**
+     * Default request Media-Type.
+     */
+    private static final String DEFAULT_MEDIA_TYPE = MediaType.APPLICATION_JSON;
 
     /**
      * Base API server URL.
@@ -81,7 +86,7 @@ public class HttpUrlConnectionTransport implements Transport {
         this.merchantId = merchantId;
         this.sharedSecret = sharedSecret;
 
-        this.userAgent = Transport.USER_AGENT + "_" + Transport.VERSION;
+        this.userAgent = Transport.USER_AGENT;
 
         HttpUrlConnectionTransport.allowMethods("PATCH"); // Workaround for PATCH method
     }
@@ -279,7 +284,7 @@ public class HttpUrlConnectionTransport implements Transport {
             conn = (HttpURLConnection) url.openConnection();
         }
 
-        conn.setRequestProperty("Content-Type", MediaType.APPLICATION_JSON);
+        conn.setRequestProperty("Content-Type", DEFAULT_MEDIA_TYPE);
         conn.setRequestProperty("User-Agent", this.userAgent);
         conn.setConnectTimeout(this.timeout);
         conn.setReadTimeout(this.timeout);
