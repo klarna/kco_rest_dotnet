@@ -269,13 +269,6 @@ public class HttpUrlConnectionTransport implements Transport {
         Authenticator.setDefault(this.proxyAuth);
     }
 
-    protected URL buildPath(String path) throws MalformedURLException {
-        URI uri = this.baseUri;
-        String newPath = uri.getPath() + path;
-        uri = uri.resolve(newPath);
-        return uri.toURL();
-    }
-
     protected HttpURLConnection buildConnection(String path, Map<String, String> headers) throws IOException {
         URL url = this.buildPath(path);
 
@@ -304,13 +297,6 @@ public class HttpUrlConnectionTransport implements Transport {
 
     protected void authorize(HttpURLConnection conn) throws IOException {
         this.setBase64Auth(conn, this.merchantId, this.sharedSecret);
-    }
-
-    protected void setBase64Auth(HttpURLConnection conn, String username, String password) throws IOException {
-        byte[] message = (username + ":" + password).getBytes("UTF-8");
-        String encoded = javax.xml.bind.DatatypeConverter.printBase64Binary(message);
-
-        conn.setRequestProperty("Authorization", "Basic " + encoded);
     }
 
     protected ApiResponse makeRequest(HttpURLConnection conn) throws IOException {
@@ -343,6 +329,20 @@ public class HttpUrlConnectionTransport implements Transport {
         return response;
     }
 
+    private URL buildPath(String path) throws MalformedURLException {
+        URI uri = this.baseUri;
+        String newPath = uri.getPath() + path;
+        uri = uri.resolve(newPath);
+        return uri.toURL();
+    }
+
+    private void setBase64Auth(HttpURLConnection conn, String username, String password) throws IOException {
+        byte[] message = (username + ":" + password).getBytes("UTF-8");
+        String encoded = javax.xml.bind.DatatypeConverter.printBase64Binary(message);
+
+        conn.setRequestProperty("Authorization", "Basic " + encoded);
+    }
+
     /**
      * Writes binary data to HttpURLConnection payout.
      *
@@ -351,7 +351,7 @@ public class HttpUrlConnectionTransport implements Transport {
      *
      * @throws IOException if an error occurred connecting to the server.
      */
-    protected void setBodyPayout(HttpURLConnection conn, byte[] data) throws IOException {
+    private void setBodyPayout(HttpURLConnection conn, byte[] data) throws IOException {
         if (data != null) {
             conn.setDoOutput(true);
 
