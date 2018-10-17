@@ -246,4 +246,20 @@ public class ApiResponse {
         }
         throw new ApiException(this.getStatus(), message);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("class ApiResponse {\n");
+
+        sb.append("     status: ").append(this.getStatus()).append("\n");
+        sb.append("    headers: ").append(this.getHeaders()).append("\n");
+        if (this.getBody() == null) {
+            sb.append("       body: ").append("null").append("\n");
+        } else {
+            sb.append("       body: ").append(new String(this.getBody())).append("\n");
+        }
+        sb.append("}");
+        return sb.toString();
+    }
 }
