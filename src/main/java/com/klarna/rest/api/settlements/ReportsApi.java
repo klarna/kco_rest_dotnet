@@ -18,9 +18,7 @@ package com.klarna.rest.api.settlements;
 
 import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;
-import com.klarna.rest.model.settlements.PayoutSummary;
 
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.util.Map;
@@ -60,13 +58,13 @@ public class ReportsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     public byte[] getCSVPayoutReport(Map<String, String> urlParams)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s?%s", PATH, "payout-with-transactions", this.buildQueryString(urlParams));
         final ApiResponse response = this.get(path);
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType("text/csv");
 
@@ -88,13 +86,13 @@ public class ReportsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     public byte[] getCSVSummary(Map<String, String> urlParams)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s?%s", PATH, "payouts-summary-with-transactions", this.buildQueryString(urlParams));
         final ApiResponse response = this.get(path);
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType("text/csv");
 
@@ -113,13 +111,13 @@ public class ReportsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     public byte[] getPDFPayoutsSummaryReport(Map<String, String> urlParams)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s?%s", PATH, "payout", this.buildQueryString(urlParams));
         final ApiResponse response = this.get(path);
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType("application/pdf");
 
@@ -138,13 +136,13 @@ public class ReportsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     public byte[] getPDFSummary(Map<String, String> urlParams)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s?%s", PATH, "payouts-summary", this.buildQueryString(urlParams));
         final ApiResponse response = this.get(path);
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType("application/pdf");
 

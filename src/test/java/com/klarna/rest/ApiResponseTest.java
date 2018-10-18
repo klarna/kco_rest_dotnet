@@ -74,17 +74,6 @@ public class ApiResponseTest extends TestCase {
         assertFalse(response.isSuccessful());
     }
 
-    @Test(expected = ProtocolException.class)
-    public void testExpectNotSuccessful() {
-        response.setStatus(404);
-        response.expectSuccessful();
-    }
-
-    @Test
-    public void testExpectSuccessful() {
-        assertSame(response, response.expectSuccessful());
-    }
-
     @Test
     public void testExpectedStatusCode() {
         assertSame(response, response.expectStatusCode(Response.Status.fromStatusCode(200)));
@@ -123,13 +112,13 @@ public class ApiResponseTest extends TestCase {
 
     @Test
     public void testValidator() {
-        assertSame(response, response.validator());
+        assertSame(response, response.expectSuccessful());
     }
 
     @Test(expected = ApiException.class)
     public void testValidatorBadResponse() {
         response.setStatus(404);
-        response.validator();
+        response.expectSuccessful();
     }
 
     @Test
@@ -137,7 +126,7 @@ public class ApiResponseTest extends TestCase {
         try {
             response.setStatus(401);
             response.setBody("{ \"error_code\" : \"111\", \"error_messages\" : [\"Wrong order_total\"], \"correlation_id\" : \"123-123-123\" }".getBytes());
-            response.validator();
+            response.expectSuccessful();
             fail();
         } catch (ApiException e) {
             assertEquals("111: Wrong order_total (#123-123-123)", e.getMessage());

@@ -18,7 +18,6 @@ package com.klarna.rest.api.payments;
 
 import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;
-import com.klarna.rest.model.checkout.Order;
 import com.klarna.rest.model.payments.MerchantSession;
 import com.klarna.rest.model.payments.Session;
 
@@ -52,14 +51,14 @@ public class SessionsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     public MerchantSession create(Session session)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(session);
         final ApiResponse response = this.post(PATH, data);
 
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
@@ -77,12 +76,12 @@ public class SessionsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     public Session fetch(String sessionId) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final ApiResponse response = this.get(PATH + '/' + sessionId);
 
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
@@ -100,14 +99,14 @@ public class SessionsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     public void update(String sessionId, Session session)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(session);
         final ApiResponse response = this.post(PATH + '/' + sessionId, data);
 
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Response.Status.NO_CONTENT);
     }
 }

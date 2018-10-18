@@ -100,7 +100,7 @@ public class HttpUrlConnectionTransport implements Transport {
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws IOException if an error occurred connecting to the server.
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
     public ApiResponse get(final String path, Map<String, String> headers) throws
             ApiException, ProtocolException, ContentTypeException, IOException {
@@ -120,7 +120,7 @@ public class HttpUrlConnectionTransport implements Transport {
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws IOException if an error occurred connecting to the server.
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
     public ApiResponse post(final String path, final byte[] data, Map<String, String> headers) throws
             ApiException, ProtocolException, ContentTypeException, IOException {
@@ -141,7 +141,7 @@ public class HttpUrlConnectionTransport implements Transport {
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws IOException if an error occurred connecting to the server.
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
     public ApiResponse put(final String path, final byte[] data, Map<String, String> headers) throws
             ApiException, ProtocolException, ContentTypeException, IOException {
@@ -162,7 +162,7 @@ public class HttpUrlConnectionTransport implements Transport {
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws IOException if an error occurred connecting to the server.
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
     public ApiResponse patch(final String path, final byte[] data, Map<String, String> headers) throws
             ApiException, ProtocolException, ContentTypeException, IOException {
@@ -182,7 +182,7 @@ public class HttpUrlConnectionTransport implements Transport {
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws IOException if an error occurred connecting to the server.
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
     public ApiResponse delete(final String path, Map<String, String> headers) throws
             ApiException, ProtocolException, ContentTypeException, IOException {
@@ -354,7 +354,7 @@ public class HttpUrlConnectionTransport implements Transport {
      * @param conn HttpURLConnection instance
      * @param data binary data
      *
-     * @throws IOException if an error occurred connecting to the server.
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
     private void setBodyPayout(HttpURLConnection conn, byte[] data) throws IOException {
         if (data != null) {

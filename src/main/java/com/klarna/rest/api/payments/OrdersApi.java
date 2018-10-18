@@ -51,7 +51,7 @@ public class OrdersApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     public Order create(String authorizationToken, CreateOrderRequest order)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
@@ -59,7 +59,7 @@ public class OrdersApi extends BaseApi {
         final byte[] data = objectMapper.writeValueAsBytes(order);
         final ApiResponse response = this.post(path, data);
 
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
@@ -78,7 +78,7 @@ public class OrdersApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     public CustomerTokenCreationResponse generateToken(String authorizationToken, CustomerTokenCreationRequest request)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
@@ -86,7 +86,7 @@ public class OrdersApi extends BaseApi {
         final byte[] data = objectMapper.writeValueAsBytes(request);
         final ApiResponse response = this.post(path, data);
 
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
@@ -103,13 +103,13 @@ public class OrdersApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     public void cancelAuthorization(String authorizationToken)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final ApiResponse response = this.delete(PATH + "/" + authorizationToken);
 
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Response.Status.NO_CONTENT);
     }
 }

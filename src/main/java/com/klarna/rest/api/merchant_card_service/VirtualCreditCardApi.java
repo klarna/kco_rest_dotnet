@@ -18,7 +18,6 @@ package com.klarna.rest.api.merchant_card_service;
 
 import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;
-import com.klarna.rest.model.checkout.Order;
 import com.klarna.rest.model.merchant_card_service.SettlementRequest;
 import com.klarna.rest.model.merchant_card_service.SettlementResponse;
 
@@ -52,14 +51,14 @@ public class VirtualCreditCardApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     public SettlementResponse createSettlement(SettlementRequest settlement)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(settlement);
         final ApiResponse response = this.post(PATH, data);
 
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Response.Status.CREATED)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
@@ -78,7 +77,7 @@ public class VirtualCreditCardApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     public SettlementResponse retrieveExistingSettlement(String settlementId, String keyId)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
@@ -86,7 +85,7 @@ public class VirtualCreditCardApi extends BaseApi {
         headers.put("KeyId", keyId);
         final ApiResponse response = this.get(PATH + "/" + settlementId, headers);
 
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
@@ -105,7 +104,7 @@ public class VirtualCreditCardApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     public SettlementResponse retrieveSettledOrderSettlement(String orderId, String keyId)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
@@ -113,7 +112,7 @@ public class VirtualCreditCardApi extends BaseApi {
         headers.put("KeyId", keyId);
         final ApiResponse response = this.get(PATH + "/order/" + orderId, headers);
 
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 

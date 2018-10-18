@@ -18,6 +18,13 @@ package com.klarna.rest;
 import org.junit.Before;
 import org.mockito.MockitoAnnotations;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import static org.mockito.Mockito.when;
+
 /**
  * Base test class.
  */
@@ -26,5 +33,11 @@ public abstract class TestCase extends junit.framework.TestCase {
     @Before
     public void initMocks() {
         MockitoAnnotations.initMocks(this.getClass());
+    }
+
+    public InputStream makeInputStream(String payload) throws IOException {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        out.write(payload.getBytes());
+        return new ByteArrayInputStream(out.toByteArray());
     }
 }

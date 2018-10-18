@@ -21,7 +21,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 
 @RunWith(MockitoJUnitRunner.class)

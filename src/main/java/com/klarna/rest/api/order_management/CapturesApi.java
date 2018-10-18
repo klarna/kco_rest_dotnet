@@ -60,13 +60,13 @@ public class CapturesApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     public Capture fetch(String captureId) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format(PATH + "/" + captureId);
         final ApiResponse response = this.get(path);
 
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
@@ -81,13 +81,13 @@ public class CapturesApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     public Capture[] fetch() throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format(PATH);
         final ApiResponse response = this.get(path);
 
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
@@ -102,13 +102,13 @@ public class CapturesApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     public void create(CaptureObject capture) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(capture);
         final ApiResponse response = this.post(PATH, data);
 
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Status.CREATED);
     }
 
@@ -120,13 +120,13 @@ public class CapturesApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     public void triggerSendout(String captureId) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, captureId, "trigger-send-out");
         final ApiResponse response = this.post(path, null);
 
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Status.NO_CONTENT);
     }
 
@@ -139,14 +139,14 @@ public class CapturesApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     public void addShippingInfo(String captureId, ShippingInfo shippingInfo) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, captureId, "shipping-info");
         final byte[] data = objectMapper.writeValueAsBytes(shippingInfo);
         final ApiResponse response = this.post(path, data);
 
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Status.NO_CONTENT);
     }
 }

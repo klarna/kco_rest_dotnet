@@ -19,7 +19,6 @@ package com.klarna.rest;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.core.MediaType;
@@ -29,11 +28,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.URI;
 import java.net.URL;
 import java.util.*;
 
-import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -71,7 +68,7 @@ public class HttpUrlConnectionTransportTest extends TestCase {
         }});
 
         ApiResponse response = transport.get("/test-url", null);
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
     }
@@ -81,7 +78,7 @@ public class HttpUrlConnectionTransportTest extends TestCase {
         when(transport.conn.getResponseCode()).thenReturn(500);
 
         ApiResponse response = transport.get("/test-url", null);
-        response.validator();
+        response.expectSuccessful();
     }
 
     @Test(expected = ProtocolException.class)
@@ -89,7 +86,7 @@ public class HttpUrlConnectionTransportTest extends TestCase {
         when(transport.conn.getResponseCode()).thenReturn(201);
 
         ApiResponse response = transport.get("/test-url", null);
-        response.validator().expectStatusCode(Response.Status.NO_CONTENT);
+        response.expectSuccessful().expectStatusCode(Response.Status.NO_CONTENT);
     }
 
     @Test(expected = ContentTypeException.class)
@@ -104,7 +101,7 @@ public class HttpUrlConnectionTransportTest extends TestCase {
         }});
 
         ApiResponse response = transport.get("/test-url", null);
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
     }
@@ -138,7 +135,7 @@ public class HttpUrlConnectionTransportTest extends TestCase {
         HttpUrlConnectionTransport t = new HttpUrlConnectionTransport("0","sharedSecret", Transport.EU_TEST_BASE_URL);
         ApiResponse response = t.get("/wrong-service-endpoint", null);
         try {
-            response.validator();
+            response.expectSuccessful();
         } catch (ApiException e) {
             assertEquals(404, e.getHttpStatus());
             return;
@@ -148,8 +145,6 @@ public class HttpUrlConnectionTransportTest extends TestCase {
 
     @Test
     public void testBodyResponse() throws IOException {
-        final String payload = "{\"hello\": 123}";
-
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
             put("Content-Type", new ArrayList<String>(){
@@ -158,6 +153,8 @@ public class HttpUrlConnectionTransportTest extends TestCase {
                 }
             });
         }});
+
+        final String payload = "{\"hello\": 123}";
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         out.write(payload.getBytes());
         InputStream is = new ByteArrayInputStream(out.toByteArray());
@@ -189,7 +186,7 @@ public class HttpUrlConnectionTransportTest extends TestCase {
 
         ApiResponse response = transport.get("/error-message", null);
         try {
-            response.validator();
+            response.expectSuccessful();
         } catch (ApiException e) {
             assertEquals(400, e.getHttpStatus());
             assertEquals("12345-asdf", e.getErrorMessage().getCorrelationId());

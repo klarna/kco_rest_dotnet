@@ -1,5 +1,6 @@
 package com.klarna.rest;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.mockito.Mock;
 
 import java.io.IOException;
@@ -30,6 +31,7 @@ public class FakeHttpUrlConnectionTransport extends HttpUrlConnectionTransport {
     @Override
     protected HttpURLConnection buildConnection(String path, Map<String, String> headers) throws IOException {
         doNothing().when(conn).setRequestMethod(isA(String.class));
+        doNothing().when(conn).setDoOutput(isA(Boolean.class));
         return conn;
     }
 }

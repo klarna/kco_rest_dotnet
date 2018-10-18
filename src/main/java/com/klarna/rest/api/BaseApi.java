@@ -16,12 +16,14 @@
 
 package com.klarna.rest.api;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.klarna.rest.*;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.rmi.server.ExportException;
 import java.util.List;
 import java.util.Map;
 
@@ -56,7 +58,7 @@ public abstract class BaseApi {
      */
     protected String location;
 
-    public enum Method {
+    protected enum Method {
         GET("GET"),
         POST("POST"),
         PUT("PUT"),
@@ -133,7 +135,7 @@ public abstract class BaseApi {
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     protected ApiResponse get(final String path) throws ApiException, ProtocolException, IOException {
         return this.get(path, null);
@@ -152,7 +154,7 @@ public abstract class BaseApi {
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     protected ApiResponse post(final String path, final byte[] data) throws ApiException, ProtocolException, IOException {
         return this.post(path, data, null);
@@ -171,7 +173,7 @@ public abstract class BaseApi {
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     protected ApiResponse put(final String path, final byte[] data) throws ApiException, ProtocolException, IOException {
         return this.put(path, data, null);
@@ -235,5 +237,13 @@ public abstract class BaseApi {
 
         // TODO: Place for debugger and logger
         return response;
+    }
+
+    protected <T> T fromJson(byte[] data, Class<T> type) throws IOException {
+        if (data == null || data.length == 0) {
+            return null;
+        }
+
+        return objectMapper.readValue(data, type);
     }
 }

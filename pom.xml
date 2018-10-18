@@ -173,7 +173,6 @@
                     <instrumentation>
                         <excludes>
                             <exclude>examples/**/*.class</exclude>
-                            <exclude>**/model/**/*.class</exclude>
                         </excludes>
                     </instrumentation>
                     <check/>
@@ -233,7 +232,7 @@
                 <configuration>
                     <excludes>
                         <exclude>**/examples/*</exclude>
-                        <exclude>**/model/**</exclude>
+                        <exclude>**/model/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
@@ -286,7 +285,6 @@
                     <instrumentation>
                         <excludes>
                             <exclude>examples/**/*.class</exclude>
-                            <exclude>**/model/**/*.class</exclude>
                         </excludes>
                     </instrumentation>
                     <check/>

@@ -74,7 +74,7 @@ public interface Transport {
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws IOException if an error occurred connecting to the server.
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
     ApiResponse get(final String path, Map<String, String> headers) throws ApiException, ProtocolException, IOException;
 
@@ -88,7 +88,7 @@ public interface Transport {
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws IOException if an error occurred connecting to the server.
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
     ApiResponse post(final String path, final byte[] data, Map<String, String> headers) throws ApiException, ProtocolException, IOException;
 
@@ -102,7 +102,7 @@ public interface Transport {
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws IOException if an error occurred connecting to the server.
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
     ApiResponse put(final String path, final byte[] data, Map<String, String> headers) throws ApiException, ProtocolException, IOException;
 
@@ -116,7 +116,7 @@ public interface Transport {
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws IOException if an error occurred connecting to the server.
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
     ApiResponse patch(final String path, final byte[] data, Map<String, String> headers) throws ApiException, ProtocolException, IOException;
 
@@ -129,7 +129,7 @@ public interface Transport {
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws IOException if an error occurred connecting to the server.
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
     ApiResponse delete(final String path, Map<String, String> headers) throws ApiException, ProtocolException, IOException;
 }

@@ -147,20 +147,6 @@ public class ApiResponse {
     }
 
     /**
-     * Sets successful expectation.
-     *
-     * @return self
-     * @throws ProtocolException if response code is not successful
-     */
-    public ApiResponse expectSuccessful() throws ProtocolException {
-        if (this.isSuccessful()) {
-            return this;
-        }
-
-        throw ProtocolException.unexpectedStatus(this.getStatus());
-    }
-
-    /**
      * Sets status code expectation.
      *
      * @param expected Expected HTTP status code.
@@ -227,7 +213,7 @@ public class ApiResponse {
      * @throws ApiException if response is not successful and payout contains ErrorMessage
      * @see ErrorMessage
      */
-    public ApiResponse validator() throws ApiException {
+    public ApiResponse expectSuccessful() throws ApiException {
         Family family = Status.fromStatusCode(this.getStatus()).getFamily();
 
         if (family.equals(SUCCESSFUL)) {

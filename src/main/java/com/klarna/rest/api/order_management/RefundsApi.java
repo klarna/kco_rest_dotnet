@@ -56,13 +56,13 @@ public class RefundsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     public void create(RefundObject refund) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(refund);
         final ApiResponse response = this.post(PATH, data);
 
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Status.CREATED);
     }
 
@@ -77,12 +77,12 @@ public class RefundsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     public Refund fetch(String refundId) throws ApiException, ProtocolException, ContentTypeException, IOException {
         ApiResponse response = this.get(PATH + "/" + refundId);
 
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
@@ -99,7 +99,7 @@ public class RefundsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred connecting to the server
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
     public Refund fetch() throws ApiException, ProtocolException, ContentTypeException, IOException {
         if (this.location == null) {
@@ -107,7 +107,7 @@ public class RefundsApi extends BaseApi {
         }
         ApiResponse response = this.get(this.location);
 
-        response.validator()
+        response.expectSuccessful()
                 .expectStatusCode(Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
