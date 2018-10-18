@@ -38,7 +38,29 @@ import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class HttpUrlConnectionTransportTest extends TestCase {
-    FakeHttpUrlConnectionTransport transport;
+    class FakeHttpUrlConnectionTransport extends HttpUrlConnectionTransport {
+        @Mock HttpURLConnection conn = mock(HttpURLConnection.class);
+
+        FakeHttpUrlConnectionTransport(String merchantId, String sharedSecret, URI uri) {
+            super(merchantId, sharedSecret, uri);
+        }
+
+        FakeHttpUrlConnectionTransport() {
+            super("merchantId", "sharedSecret", Transport.EU_TEST_BASE_URL);
+        }
+
+        HttpURLConnection testBuildConnection(String path, Map<String, String> headers) throws IOException {
+            return super.buildConnection(path, headers);
+        }
+
+        @Override
+        protected HttpURLConnection buildConnection(String path, Map<String, String> headers) throws IOException {
+            doNothing().when(conn).setRequestMethod(isA(String.class));
+            return conn;
+        }
+    }
+
+    private FakeHttpUrlConnectionTransport transport;
 
     @Before
     public void setUp() {
@@ -229,27 +251,5 @@ public class HttpUrlConnectionTransportTest extends TestCase {
     public void testDeleteCalled() throws IOException {
         transport.delete("/some-path", null);
         verify(transport.conn, times(1)).setRequestMethod("DELETE");
-    }
-}
-
-class FakeHttpUrlConnectionTransport extends HttpUrlConnectionTransport {
-    @Mock public HttpURLConnection conn = mock(HttpURLConnection.class);
-
-    FakeHttpUrlConnectionTransport(String merchantId, String sharedSecret, URI uri) {
-        super(merchantId, sharedSecret, uri);
-    }
-
-    FakeHttpUrlConnectionTransport() {
-        super("merchantId", "sharedSecret", Transport.EU_TEST_BASE_URL);
-    }
-
-    public HttpURLConnection testBuildConnection(String path, Map<String, String> headers) throws IOException {
-        return super.buildConnection(path, headers);
-    }
-
-    @Override
-    protected HttpURLConnection buildConnection(String path, Map<String, String> headers) throws IOException {
-        doNothing().when(conn).setRequestMethod(isA(String.class));
-        return conn;
     }
 }
