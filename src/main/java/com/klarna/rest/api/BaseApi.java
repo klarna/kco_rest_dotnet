@@ -56,6 +56,29 @@ public abstract class BaseApi {
      */
     protected String location;
 
+    public enum Method {
+        GET("GET"),
+        POST("POST"),
+        PUT("PUT"),
+        PATCH("PATCH"),
+        DELETE("DELETE");
+
+        private final String method;
+
+        Method(String method) {
+            this.method = method;
+        }
+
+        public String getMethod() {
+            return method;
+        }
+
+        @Override
+        public String toString() {
+            return super.toString();
+        }
+    }
+
     public BaseApi(Transport transport) {
         this.transport = transport;
         this.objectMapper = new DefaultMapper();
@@ -117,7 +140,7 @@ public abstract class BaseApi {
     }
 
     protected ApiResponse get(final String path, Map<String, String> headers) throws ApiException, ProtocolException, IOException {
-        return this.makeRequest("GET", path, null, headers);
+        return this.makeRequest(Method.GET, path, null, headers);
     }
 
     /**
@@ -136,7 +159,7 @@ public abstract class BaseApi {
     }
 
     protected ApiResponse post(final String path, final byte[] data, Map<String, String> headers) throws ApiException, ProtocolException, IOException {
-        return this.makeRequest("POST", path, data, headers);
+        return this.makeRequest(Method.POST, path, data, headers);
     }
 
     /**
@@ -155,7 +178,7 @@ public abstract class BaseApi {
     }
 
     protected ApiResponse put(final String path, final byte[] data, Map<String, String> headers) throws ApiException, ProtocolException, IOException {
-        return this.makeRequest("PUT", path, data, headers);
+        return this.makeRequest(Method.PUT, path, data, headers);
     }
 
     protected ApiResponse patch(final String path, final byte[] data) throws ApiException, ProtocolException, IOException {
@@ -163,7 +186,7 @@ public abstract class BaseApi {
     }
 
     protected ApiResponse patch(final String path, final byte[] data, Map<String, String> headers) throws ApiException, ProtocolException, IOException {
-        return this.makeRequest("PATCH", path, data, headers);
+        return this.makeRequest(Method.PATCH, path, data, headers);
     }
 
     protected ApiResponse delete(final String path) throws ApiException, ProtocolException, IOException {
@@ -171,31 +194,31 @@ public abstract class BaseApi {
     }
 
     protected ApiResponse delete(final String path, Map<String, String> headers) throws ApiException, ProtocolException, IOException {
-        return this.makeRequest("DELETE", path, null, headers);
+        return this.makeRequest(Method.DELETE, path, null, headers);
     }
 
-    protected ApiResponse makeRequest(String method, String path, byte[] data, Map<String, String> headers)
+    protected ApiResponse makeRequest(Method method, String path, byte[] data, Map<String, String> headers)
             throws ApiException, ProtocolException, IOException {
         // TODO: Place for debugger and logger
         final ApiResponse response;
         switch (method) {
-            case "GET":
+            case GET:
                 response = this.transport.get(path, headers);
                 break;
 
-            case "POST":
+            case POST:
                 response = this.transport.post(path, data, headers);
                 break;
 
-            case "PUT":
+            case PUT:
                 response = this.transport.put(path, data, headers);
                 break;
 
-            case "PATCH":
+            case PATCH:
                 response = this.transport.patch(path, data, headers);
                 break;
 
-            case "DELETE":
+            case DELETE:
                 response = this.transport.delete(path, headers);
                 break;
 
