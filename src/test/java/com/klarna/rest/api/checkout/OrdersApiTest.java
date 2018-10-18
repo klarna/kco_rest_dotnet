@@ -16,14 +16,11 @@
 
 package com.klarna.rest.api.checkout;
 
-import com.klarna.rest.ApiResponse;
-import com.klarna.rest.FakeHttpUrlConnectionTransport;
-import com.klarna.rest.TestCase;
+import com.klarna.rest.*;
 import com.klarna.rest.model.checkout.Order;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.core.MediaType;
@@ -32,7 +29,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static org.mockito.Matchers.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -72,5 +70,38 @@ public class OrdersApiTest extends TestCase {
         Order order = api.create(data);
 
         assertEquals(new Long(200), order.getOrderAmount());
+        verify(transport.conn, times(1)).setRequestMethod("POST");
+        assertEquals("/checkout/v3/orders", transport.requestPath);
+    }
+
+    @Test(expected = ApiException.class)
+    public void testCreateOrderWrongResponseCode() throws IOException {
+        when(transport.conn.getResponseCode()).thenReturn(403);
+
+        OrdersApi api = new OrdersApi(transport);
+        Order order = api.create(null);
+    }
+
+    @Test(expected = ProtocolException.class)
+    public void testCreateOrderWrongSuccessfulResponseCode() throws IOException {
+        when(transport.conn.getResponseCode()).thenReturn(204);
+
+        OrdersApi api = new OrdersApi(transport);
+        Order order = api.create(null);
+    }
+
+    @Test(expected = ContentTypeException.class)
+    public void testCreateOrderWrongContentType() throws IOException {
+        when(transport.conn.getResponseCode()).thenReturn(201);
+        when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
+            put("Content-Type", new ArrayList<String>(){
+                {
+                    add(MediaType.APPLICATION_OCTET_STREAM);
+                }
+            });
+        }});
+
+        OrdersApi api = new OrdersApi(transport);
+        Order order = api.create(null);
     }
 }

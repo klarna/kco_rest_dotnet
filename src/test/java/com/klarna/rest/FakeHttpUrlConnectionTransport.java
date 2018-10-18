@@ -1,6 +1,5 @@
 package com.klarna.rest;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.mockito.Mock;
 
 import java.io.IOException;
@@ -15,6 +14,8 @@ import static org.mockito.Mockito.mock;
 public class FakeHttpUrlConnectionTransport extends HttpUrlConnectionTransport {
     @Mock
     public HttpURLConnection conn = mock(HttpURLConnection.class);
+    public String requestPath;
+    public Map<String, String> requestHeaders;
 
     public FakeHttpUrlConnectionTransport(String merchantId, String sharedSecret, URI uri) {
         super(merchantId, sharedSecret, uri);
@@ -30,6 +31,9 @@ public class FakeHttpUrlConnectionTransport extends HttpUrlConnectionTransport {
 
     @Override
     protected HttpURLConnection buildConnection(String path, Map<String, String> headers) throws IOException {
+        this.requestHeaders = headers;
+        this.requestPath = path;
+
         doNothing().when(conn).setRequestMethod(isA(String.class));
         doNothing().when(conn).setDoOutput(isA(Boolean.class));
         return conn;
