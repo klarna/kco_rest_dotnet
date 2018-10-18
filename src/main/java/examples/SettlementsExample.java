@@ -17,11 +17,9 @@
 package examples;
 
 import com.klarna.rest.*;
-import com.klarna.rest.api.checkout.OrdersApi;
 import com.klarna.rest.api.settlements.PayoutsApi;
 import com.klarna.rest.api.settlements.ReportsApi;
 import com.klarna.rest.api.settlements.TransactionsApi;
-import com.klarna.rest.model.checkout.Order;
 import com.klarna.rest.model.settlements.Payout;
 import com.klarna.rest.model.settlements.PayoutCollection;
 import com.klarna.rest.model.settlements.PayoutSummary;
@@ -30,9 +28,6 @@ import com.klarna.rest.model.settlements.TransactionCollection;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;

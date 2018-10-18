@@ -16,7 +16,6 @@
 
 package com.klarna.rest;
 
-import edu.emory.mathcs.backport.java.util.LinkedList;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -127,7 +126,7 @@ public class HttpUrlConnectionTransportTest extends TestCase {
         HttpUrlConnectionTransport t = new HttpUrlConnectionTransport("0","sharedSecret", Transport.EU_TEST_BASE_URL);
         t.setTimeout(1);
         try {
-            ApiResponse response = t.get("/", null);
+            t.get("/", null);
         } catch (IOException e) {
             return;
         }
