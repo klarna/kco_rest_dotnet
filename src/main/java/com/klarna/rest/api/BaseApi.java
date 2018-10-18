@@ -93,7 +93,7 @@ public abstract class BaseApi {
     }
 
     /**
-     * Convers Map to URL Query string.
+     * Converts Map to URL Query string.
      *
      * @param params Params map
      * @return HTTP Query string

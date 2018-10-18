@@ -38,28 +38,6 @@ import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class HttpUrlConnectionTransportTest extends TestCase {
-    class FakeHttpUrlConnectionTransport extends HttpUrlConnectionTransport {
-        @Mock HttpURLConnection conn = mock(HttpURLConnection.class);
-
-        FakeHttpUrlConnectionTransport(String merchantId, String sharedSecret, URI uri) {
-            super(merchantId, sharedSecret, uri);
-        }
-
-        FakeHttpUrlConnectionTransport() {
-            super("merchantId", "sharedSecret", Transport.EU_TEST_BASE_URL);
-        }
-
-        HttpURLConnection testBuildConnection(String path, Map<String, String> headers) throws IOException {
-            return super.buildConnection(path, headers);
-        }
-
-        @Override
-        protected HttpURLConnection buildConnection(String path, Map<String, String> headers) throws IOException {
-            doNothing().when(conn).setRequestMethod(isA(String.class));
-            return conn;
-        }
-    }
-
     private FakeHttpUrlConnectionTransport transport;
 
     @Before
