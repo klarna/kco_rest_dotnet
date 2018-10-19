@@ -1,3 +1,7 @@
+## v2.2.3 - 2018-10-19
+- Security fix: Upgrade com.fasterxml.jackson.core:jackson-databind to version **2.8.11.1**  
+  FasterXML jackson-databind through 2.8.10 and 2.9.x through 2.9.3 allows unauthenticated remote code execution because of an incomplete fix for the CVE-2017-7525 deserialization flaw.
+
 ## v2.2.2 - 2018-10-04
 - Update Checkout API models according to the latest Klarna API changes;
 - Update Order Management API models according to the latest Klarna API changes;

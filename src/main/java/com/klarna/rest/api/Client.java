@@ -26,7 +26,7 @@ public interface Client {
     /**
      * API library client version.
      */
-    String VERSION = "2.2.2";
+    String VERSION = "2.2.3";
 
     /**
      * API base URL for Europe.
