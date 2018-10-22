@@ -71,6 +71,24 @@ try {
 }
 ```
 
+## Debug mode
+
+The SDK uses `slf4j` together with `log4j`. In order to enable the Debug mode you need to
+change the Logging Level to `debug`.
+
+You can use resource file or you can do it in a runtime. The runtime example:
+
+```java
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.core.config.Configurator;
+
+// Put the code to any place in your application before calling the API resource
+Configurator.setRootLevel(Level.DEBUG);
+
+// Or
+Configurator.setLevel("com.klarna.rest.HttpUrlConnectionTransport", Level.DEBUG);
+```
+
 ## How to contribute
 
 At Klarna, we strive toward achieving the highest possible quality for our
