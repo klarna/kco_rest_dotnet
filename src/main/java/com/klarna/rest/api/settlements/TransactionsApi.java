@@ -65,7 +65,7 @@ public class TransactionsApi extends BaseApi {
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return objectMapper.readValue(response.getBody(), TransactionCollection.class);
+        return fromJson(response.getBody(), TransactionCollection.class);
     }
 
     /**

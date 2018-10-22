@@ -70,7 +70,7 @@ public class CapturesApi extends BaseApi {
                 .expectStatusCode(Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return objectMapper.readValue(response.getBody(), Capture.class);
+        return fromJson(response.getBody(), Capture.class);
     }
 
     /**
@@ -91,7 +91,7 @@ public class CapturesApi extends BaseApi {
                 .expectStatusCode(Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return objectMapper.readValue(response.getBody(), new TypeReference<List<Capture>>() {});
+        return fromJson(response.getBody(), Capture[].class);
     }
 
     /**

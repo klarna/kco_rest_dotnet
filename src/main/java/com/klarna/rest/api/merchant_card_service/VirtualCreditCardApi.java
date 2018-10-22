@@ -62,7 +62,7 @@ public class VirtualCreditCardApi extends BaseApi {
                 .expectStatusCode(Response.Status.CREATED)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return objectMapper.readValue(response.getBody(), SettlementResponse.class);
+        return fromJson(response.getBody(), SettlementResponse.class);
     }
 
     /**
@@ -89,7 +89,7 @@ public class VirtualCreditCardApi extends BaseApi {
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return objectMapper.readValue(response.getBody(), SettlementResponse.class);
+        return fromJson(response.getBody(), SettlementResponse.class);
     }
 
     /**
@@ -116,6 +116,6 @@ public class VirtualCreditCardApi extends BaseApi {
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return objectMapper.readValue(response.getBody(), SettlementResponse.class);
+        return fromJson(response.getBody(), SettlementResponse.class);
     }
 }

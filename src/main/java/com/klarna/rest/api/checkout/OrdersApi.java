@@ -95,7 +95,7 @@ public class OrdersApi extends BaseApi {
                 .expectStatusCode(Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return objectMapper.readValue(response.getBody(), Order.class);
+        return fromJson(response.getBody(), Order.class);
     }
 
     /**
@@ -120,7 +120,7 @@ public class OrdersApi extends BaseApi {
                 .expectStatusCode(Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return objectMapper.readValue(response.getBody(), Order.class);
+        return fromJson(response.getBody(), Order.class);
     }
 
     /**
@@ -150,6 +150,6 @@ public class OrdersApi extends BaseApi {
                 .expectStatusCode(Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return objectMapper.readValue(response.getBody(), Order.class);
+        return fromJson(response.getBody(), Order.class);
     }
 }

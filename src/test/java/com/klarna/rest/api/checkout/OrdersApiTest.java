@@ -19,7 +19,9 @@ package com.klarna.rest.api.checkout;
 import com.klarna.rest.*;
 import com.klarna.rest.model.checkout.Order;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
@@ -35,13 +37,14 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class OrdersApiTest extends TestCase {
+    @Rule
+    public ExpectedException expectedEx = ExpectedException.none();
+
     private FakeHttpUrlConnectionTransport transport;
 
     @Before
     public void setUp() throws IOException {
         transport = new FakeHttpUrlConnectionTransport();
-        ByteArrayOutputStream os = new ByteArrayOutputStream();
-        when(transport.conn.getOutputStream()).thenReturn(os);
     }
 
     @Test
@@ -72,6 +75,9 @@ public class OrdersApiTest extends TestCase {
         assertEquals(new Long(200), order.getOrderAmount());
         verify(transport.conn, times(1)).setRequestMethod("POST");
         assertEquals("/checkout/v3/orders", transport.requestPath);
+        assertTrue(transport.requestPayout.toString().contains("\"order_amount\":100"));
+        assertTrue(transport.requestPayout.toString().contains("\"locale\":\"en-GB\""));
+        assertTrue(transport.requestPayout.toString().contains("\"recurring\":true"));
     }
 
     @Test(expected = ApiException.class)
@@ -103,5 +109,93 @@ public class OrdersApiTest extends TestCase {
 
         OrdersApi api = new OrdersApi(transport);
         Order order = api.create(null);
+    }
+
+    @Test
+    public void testFetchOrderByID() throws IOException {
+        when(transport.conn.getResponseCode()).thenReturn(200);
+        when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
+            put("Content-Type", new ArrayList<String>(){
+                {
+                    add(MediaType.APPLICATION_JSON);
+                }
+            });
+        }});
+
+        final String payload = "{\"order_amount\": 100}";
+        when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
+
+        OrdersApi api = new OrdersApi(transport);
+        Order order = api.fetch("order-id-123");
+
+        assertEquals(new Long(100), order.getOrderAmount());
+        verify(transport.conn, times(1)).setRequestMethod("GET");
+        assertEquals("/checkout/v3/orders/order-id-123", transport.requestPath);
+    }
+
+    @Test
+    public void testFetchOrderByLocation() throws IOException {
+        when(transport.conn.getResponseCode()).thenReturn(200);
+        when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
+            put("Content-Type", new ArrayList<String>(){
+                {
+                    add(MediaType.APPLICATION_JSON);
+                }
+            });
+            put("Location", new ArrayList<String>(){
+                {
+                    add("https://example.com/order-123");
+                }
+            });
+        }});
+
+        final String payload = "{\"order_amount\": 100}";
+        when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
+
+        OrdersApi api = new OrdersApi(transport);
+        api.fetch("order-id-123");
+
+        // Location header should be set up
+        api.fetch(); // Fetch by location header
+        assertEquals("https://example.com/order-123", transport.requestPath);
+    }
+
+    @Test
+    public void testFetchOrderByEmptyLocation() throws IOException {
+        expectedEx.expect(IOException.class);
+        expectedEx.expectMessage("Unknown location");
+
+        OrdersApi api = new OrdersApi(transport);
+        api.fetch();
+    }
+
+    //@Test
+    public void testUpdateOrder() throws IOException {
+        when(transport.conn.getResponseCode()).thenReturn(200);
+        when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
+            put("Content-Type", new ArrayList<String>(){
+                {
+                    add(MediaType.APPLICATION_JSON);
+                }
+            });
+        }});
+
+        final String payload = "{\"order_amount\": 200}";
+        when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
+
+        Order data = new Order(){
+            {
+                setOrderAmount(100L);
+                setLocale("en-GB");
+                setRecurring(true);
+            }
+        };
+
+        OrdersApi api = new OrdersApi(transport);
+        Order order = api.create(data);
+
+        assertEquals(new Long(200), order.getOrderAmount());
+        verify(transport.conn, times(1)).setRequestMethod("POST");
+        assertEquals("/checkout/v3/orders", transport.requestPath);
     }
 }

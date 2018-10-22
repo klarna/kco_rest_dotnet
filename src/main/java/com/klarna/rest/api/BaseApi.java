@@ -16,14 +16,14 @@
 
 package com.klarna.rest.api;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.klarna.rest.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.rmi.server.ExportException;
 import java.util.List;
 import java.util.Map;
 
@@ -52,6 +52,11 @@ public abstract class BaseApi {
      * Last response instance
      */
     protected ApiResponse lastResponse;
+
+    /**
+     * Logger instance.
+     */
+    protected Logger log = LoggerFactory.getLogger(BaseApi.class);
 
     /**
      * Fetched location from last response
@@ -201,7 +206,6 @@ public abstract class BaseApi {
 
     protected ApiResponse makeRequest(Method method, String path, byte[] data, Map<String, String> headers)
             throws ApiException, ProtocolException, IOException {
-        // TODO: Place for debugger and logger
         final ApiResponse response;
         switch (method) {
             case GET:
@@ -235,12 +239,12 @@ public abstract class BaseApi {
 
         this.lastResponse = response;
 
-        // TODO: Place for debugger and logger
         return response;
     }
 
     protected <T> T fromJson(byte[] data, Class<T> type) throws IOException {
         if (data == null || data.length == 0) {
+            log.warn("No JSON data to convert to " + type);
             return null;
         }
 

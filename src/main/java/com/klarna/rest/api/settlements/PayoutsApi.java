@@ -68,7 +68,7 @@ public class PayoutsApi extends BaseApi {
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return objectMapper.readValue(response.getBody(), Payout.class);
+        return fromJson(response.getBody(), Payout.class);
     }
 
     /**
@@ -92,7 +92,7 @@ public class PayoutsApi extends BaseApi {
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return objectMapper.readValue(response.getBody(), PayoutCollection.class);
+        return fromJson(response.getBody(), PayoutCollection.class);
     }
 
     /**
@@ -134,6 +134,6 @@ public class PayoutsApi extends BaseApi {
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return objectMapper.readValue(response.getBody(), PayoutSummary[].class);
+        return fromJson(response.getBody(), PayoutSummary[].class);
     }
 }

@@ -16,6 +16,9 @@
 
 package com.klarna.rest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -35,7 +38,7 @@ public class HttpUrlConnectionTransport implements Transport {
     /**
      * Default HTTP request timeout.
      */
-    private static int DEFAULT_TIMEOUT = 30000;
+    private static final int DEFAULT_TIMEOUT = 30000;
 
     /**
      * Default request Media-Type.
@@ -68,6 +71,11 @@ public class HttpUrlConnectionTransport implements Transport {
     protected int timeout = DEFAULT_TIMEOUT;
 
     /**
+     * Logger instance.
+     */
+    protected Logger log = LoggerFactory.getLogger(HttpUrlConnectionTransport.class);
+
+    /**
      * HttpUrlConnection Proxy settings.
      * @see Proxy
      */
@@ -85,7 +93,6 @@ public class HttpUrlConnectionTransport implements Transport {
         this.baseUri = baseUri;
         this.merchantId = merchantId;
         this.sharedSecret = sharedSecret;
-
         this.userAgent = Transport.USER_AGENT;
 
         HttpUrlConnectionTransport.allowMethods("PATCH"); // Workaround for PATCH method
@@ -107,7 +114,7 @@ public class HttpUrlConnectionTransport implements Transport {
         HttpURLConnection conn = this.buildConnection(path, headers);
         conn.setRequestMethod("GET");
 
-        return this.makeRequest(conn);
+        return this.makeRequest(conn, null);
     }
 
     /**
@@ -126,9 +133,8 @@ public class HttpUrlConnectionTransport implements Transport {
             ApiException, ProtocolException, ContentTypeException, IOException {
         HttpURLConnection conn = this.buildConnection(path, headers);
         conn.setRequestMethod("POST");
-        setBodyPayout(conn, data);
 
-        return this.makeRequest(conn);
+        return this.makeRequest(conn, data);
     }
 
     /**
@@ -147,9 +153,8 @@ public class HttpUrlConnectionTransport implements Transport {
             ApiException, ProtocolException, ContentTypeException, IOException {
         HttpURLConnection conn = this.buildConnection(path, headers);
         conn.setRequestMethod("PUT");
-        setBodyPayout(conn, data);
 
-        return this.makeRequest(conn);
+        return this.makeRequest(conn, data);
     }
 
     /**
@@ -168,9 +173,8 @@ public class HttpUrlConnectionTransport implements Transport {
             ApiException, ProtocolException, ContentTypeException, IOException {
         HttpURLConnection conn = this.buildConnection(path, headers);
         conn.setRequestMethod("PATCH");
-        setBodyPayout(conn, data);
 
-        return this.makeRequest(conn);
+        return this.makeRequest(conn, data);
     }
 
     /**
@@ -189,7 +193,7 @@ public class HttpUrlConnectionTransport implements Transport {
         HttpURLConnection conn = this.buildConnection(path, headers);
         conn.setRequestMethod("DELETE");
 
-        return this.makeRequest(conn);
+        return this.makeRequest(conn, null);
     }
 
     /**
@@ -304,7 +308,21 @@ public class HttpUrlConnectionTransport implements Transport {
         this.setBase64Auth(conn, this.merchantId, this.sharedSecret);
     }
 
-    protected ApiResponse makeRequest(HttpURLConnection conn) throws IOException {
+    protected ApiResponse makeRequest(HttpURLConnection conn, byte[] payout) throws IOException {
+        log.debug("DEBUG MODE: Request\n"
+                + ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
+                + "URL: " + conn.getURL() + "\n"
+                + "Headers: " + conn.getRequestProperties() + "\n"
+                + "Payout: " + (payout == null ? "null" : new String(payout)) + "\n");
+
+
+        if (payout != null) {
+            conn.setDoOutput(true);
+
+            OutputStream os = conn.getOutputStream();
+            os.write(payout);
+            os.close();
+        }
 
         ApiResponse response = new ApiResponse();
 
@@ -331,6 +349,11 @@ public class HttpUrlConnectionTransport implements Transport {
             response.setBody(os.toByteArray());
         }
 
+        log.debug("DEBUG MODE: Response\n"
+                + "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
+                + "Headers: " + conn.getHeaderFields() + "\n"
+                + "Body: " + (response.getBody() == null ? "null" : new String(response.getBody())) + "\n");
+
         return response;
     }
 
@@ -346,24 +369,6 @@ public class HttpUrlConnectionTransport implements Transport {
         String encoded = javax.xml.bind.DatatypeConverter.printBase64Binary(message);
 
         conn.setRequestProperty("Authorization", "Basic " + encoded);
-    }
-
-    /**
-     * Writes binary data to HttpURLConnection payout.
-     *
-     * @param conn HttpURLConnection instance
-     * @param data binary data
-     *
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
-     */
-    private void setBodyPayout(HttpURLConnection conn, byte[] data) throws IOException {
-        if (data != null) {
-            conn.setDoOutput(true);
-
-            OutputStream os = conn.getOutputStream();
-            os.write(data);
-            os.close();
-        }
     }
 
     /**

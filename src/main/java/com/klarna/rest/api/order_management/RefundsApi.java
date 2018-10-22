@@ -86,7 +86,7 @@ public class RefundsApi extends BaseApi {
                 .expectStatusCode(Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return objectMapper.readValue(response.getBody(), Refund.class);
+        return fromJson(response.getBody(), Refund.class);
     }
 
     /**
@@ -111,6 +111,6 @@ public class RefundsApi extends BaseApi {
                 .expectStatusCode(Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return objectMapper.readValue(response.getBody(), Refund.class);
+        return fromJson(response.getBody(), Refund.class);
     }
 }

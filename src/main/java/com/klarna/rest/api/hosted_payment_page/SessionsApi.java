@@ -71,7 +71,7 @@ public class SessionsApi extends BaseApi {
                 .expectStatusCode(Response.Status.CREATED)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return objectMapper.readValue(response.getBody(), SessionResponseV1.class);
+        return fromJson(response.getBody(), SessionResponseV1.class);
     }
 
     /**
@@ -119,6 +119,6 @@ public class SessionsApi extends BaseApi {
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return objectMapper.readValue(response.getBody(), SessionStatusResponseV1.class);
+        return fromJson(response.getBody(), SessionStatusResponseV1.class);
     }
 }

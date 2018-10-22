@@ -62,7 +62,7 @@ public class TokensApi extends BaseApi {
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return objectMapper.readValue(response.getBody(), CustomerTokenV1.class);
+        return fromJson(response.getBody(), CustomerTokenV1.class);
     }
 
     /**
@@ -87,6 +87,6 @@ public class TokensApi extends BaseApi {
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return objectMapper.readValue(response.getBody(), Order.class);
+        return fromJson(response.getBody(), Order.class);
     }
 }
