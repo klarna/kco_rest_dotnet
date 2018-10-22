@@ -46,6 +46,11 @@ public class HttpUrlConnectionTransport implements Transport {
     private static final String DEFAULT_MEDIA_TYPE = MediaType.APPLICATION_JSON;
 
     /**
+     * Logger instance.
+     */
+    private static final Logger log = LoggerFactory.getLogger(HttpUrlConnectionTransport.class);
+
+    /**
      * Base API server URL.
      */
     protected URI baseUri;
@@ -69,11 +74,6 @@ public class HttpUrlConnectionTransport implements Transport {
      * HTTP request timeout.
      */
     protected int timeout = DEFAULT_TIMEOUT;
-
-    /**
-     * Logger instance.
-     */
-    protected Logger log = LoggerFactory.getLogger(HttpUrlConnectionTransport.class);
 
     /**
      * HttpUrlConnection Proxy settings.

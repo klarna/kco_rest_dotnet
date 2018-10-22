@@ -34,32 +34,32 @@ import java.util.Map;
  */
 public abstract class BaseApi {
     /**
-     * Default URL Encoding
+     * Default URL Encoding.
      */
     private static final String URL_ENCODING = "UTF-8";
 
     /**
-     * HTTP Transport
+     * Logger instance.
+     */
+    private static final Logger log = LoggerFactory.getLogger(BaseApi.class);
+
+    /**
+     * HTTP Transport.
      */
     protected Transport transport;
 
     /**
-     * Preferred ObjectMapper
+     * Preferred ObjectMapper.
      */
     protected ObjectMapper objectMapper;
 
     /**
-     * Last response instance
+     * Last response instance.
      */
     protected ApiResponse lastResponse;
 
     /**
-     * Logger instance.
-     */
-    protected Logger log = LoggerFactory.getLogger(BaseApi.class);
-
-    /**
-     * Fetched location from last response
+     * Fetched location from last response.
      */
     protected String location;
 
