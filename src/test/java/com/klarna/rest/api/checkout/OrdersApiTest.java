@@ -43,7 +43,7 @@ public class OrdersApiTest extends TestCase {
     private FakeHttpUrlConnectionTransport transport;
 
     @Before
-    public void setUp() throws IOException {
+    public void setUp() {
         transport = new FakeHttpUrlConnectionTransport();
     }
 
@@ -169,7 +169,7 @@ public class OrdersApiTest extends TestCase {
         api.fetch();
     }
 
-    //@Test
+    @Test
     public void testUpdateOrder() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
@@ -180,22 +180,27 @@ public class OrdersApiTest extends TestCase {
             });
         }});
 
-        final String payload = "{\"order_amount\": 200}";
+        final String payload = "{\"order_amount\": 500, \"locale\": \"en-GB\", \"recurring\": false}";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
         Order data = new Order(){
             {
-                setOrderAmount(100L);
+                setOrderAmount(500L);
                 setLocale("en-GB");
-                setRecurring(true);
+                setRecurring(false);
             }
         };
 
         OrdersApi api = new OrdersApi(transport);
-        Order order = api.create(data);
+        Order order = api.update("my-order-id", data);
 
-        assertEquals(new Long(200), order.getOrderAmount());
+        assertEquals(new Long(500), order.getOrderAmount());
+        assertFalse(order.isRecurring());
+        assertEquals("en-GB", order.getLocale());
         verify(transport.conn, times(1)).setRequestMethod("POST");
-        assertEquals("/checkout/v3/orders", transport.requestPath);
+        assertEquals("/checkout/v3/orders/my-order-id", transport.requestPath);
+        assertTrue(transport.requestPayout.toString().contains("\"order_amount\":500"));
+        assertTrue(transport.requestPayout.toString().contains("\"locale\":\"en-GB\""));
+        assertTrue(transport.requestPayout.toString().contains("\"recurring\":false"));
     }
 }

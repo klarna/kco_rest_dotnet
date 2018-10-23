@@ -14,4 +14,4 @@
  * limitations under the License.
  */
 
-package com.klarna.rest.api;
+package com.klarna.rest.api.hosted_payment_page;

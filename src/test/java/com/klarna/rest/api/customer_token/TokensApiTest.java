@@ -46,7 +46,7 @@ public class TokensApiTest extends TestCase {
     private FakeHttpUrlConnectionTransport transport;
 
     @Before
-    public void setUp() throws IOException {
+    public void setUp() {
         transport = new FakeHttpUrlConnectionTransport();
     }
 
@@ -102,7 +102,8 @@ public class TokensApiTest extends TestCase {
         verify(transport.conn, times(1)).setRequestMethod("POST");
         assertEquals("/customer-token/v1/tokens/fake-token-id/order", transport.requestPath);
 
-        assertTrue(transport.requestPayout.toString().contains("\"order_amount\":100"));
-        assertTrue(transport.requestPayout.toString().contains("\"purchase_currency\":\"EUR\""));
+        final String requestPayout = transport.requestPayout.toString();
+        assertTrue(requestPayout.contains("\"order_amount\":100"));
+        assertTrue(requestPayout.contains("\"purchase_currency\":\"EUR\""));
     }
 }
