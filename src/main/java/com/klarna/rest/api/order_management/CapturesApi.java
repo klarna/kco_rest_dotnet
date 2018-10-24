@@ -22,6 +22,7 @@ import com.klarna.rest.api.BaseApi;
 import com.klarna.rest.model.order_management.Capture;
 import com.klarna.rest.model.order_management.CaptureObject;
 import com.klarna.rest.model.order_management.ShippingInfo;
+import com.klarna.rest.model.order_management.UpdateShippingInfo;
 
 
 import javax.ws.rs.core.MediaType;
@@ -74,6 +75,29 @@ public class CapturesApi extends BaseApi {
     }
 
     /**
+     * Gets one capture.
+     *
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
+     * @throws ContentTypeException if content type does not match the expectation
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     */
+    public Capture fetch() throws ApiException, ProtocolException, ContentTypeException, IOException {
+        if (this.location == null) {
+            throw new IOException("Unknown location");
+        }
+        final ApiResponse response = this.get(this.location);
+
+        response.expectSuccessful()
+                .expectStatusCode(Status.OK)
+                .expectContentType(MediaType.APPLICATION_JSON);
+
+        return fromJson(response.getBody(), Capture.class);
+    }
+
+    /**
      * Gets all captures for one order.
      *
      * @return server response
@@ -83,7 +107,7 @@ public class CapturesApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public Capture[] fetch() throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public Capture[] fetchAll() throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format(PATH);
         final ApiResponse response = this.get(path);
 
@@ -98,18 +122,23 @@ public class CapturesApi extends BaseApi {
      * Creates capture.
      *
      * @param capture Capture data
+     * @return Capture ID
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public void create(CaptureObject capture) throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public String create(CaptureObject capture) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(capture);
         final ApiResponse response = this.post(PATH, data);
 
         response.expectSuccessful()
                 .expectStatusCode(Status.CREATED);
+
+        List<String> captureId = response.getHeader("Capture-Id");
+
+        return captureId == null ? "" : captureId.get(0);
     }
 
     /**
@@ -141,7 +170,8 @@ public class CapturesApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public void addShippingInfo(String captureId, ShippingInfo shippingInfo) throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public void addShippingInfo(String captureId, UpdateShippingInfo shippingInfo)
+            throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, captureId, "shipping-info");
         final byte[] data = objectMapper.writeValueAsBytes(shippingInfo);
         final ApiResponse response = this.post(path, data);
