@@ -152,7 +152,7 @@ public class SessionsApiTest extends TestCase {
         assertEquals("https://buy.klarna.com/hpp/9cbc9884", response.getRedirectUrl());
 
         final String requestPayout = transport.requestPayout.toString();
-        System.out.println(requestPayout);
+
         assertTrue(requestPayout.contains("\"terms\":\"https://example.com/terms\""));
         assertTrue(requestPayout.contains("\"payment_method_category\":\"PAY_LATER\""));
         assertTrue(requestPayout.contains("\"purchase_type\":\"BUY\""));
