@@ -85,9 +85,9 @@ public class PayoutsApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public PayoutCollection getAllPayout(Map<String, String> urlParams)
+    public PayoutCollection getAllPayouts(Map<String, String> urlParams)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
-        final ApiResponse response = this.get(PATH + "?" + this.buildQueryString(urlParams));
+        final ApiResponse response = this.get(PATH + "?" + BaseApi.buildQueryString(urlParams));
         response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
@@ -107,9 +107,9 @@ public class PayoutsApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public PayoutCollection getAllPayout()
+    public PayoutCollection getAllPayouts()
             throws ApiException, ProtocolException, ContentTypeException, IOException {
-        return this.getAllPayout(null);
+        return this.getAllPayouts(null);
     }
 
     /**
@@ -128,7 +128,7 @@ public class PayoutsApi extends BaseApi {
      */
     public PayoutSummary[] getSummary(Map<String, String> urlParams)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
-        final String path = String.format("%s/%s?%s", PATH, "summary", this.buildQueryString(urlParams));
+        final String path = String.format("%s/%s?%s", PATH, "summary", BaseApi.buildQueryString(urlParams));
         final ApiResponse response = this.get(path);
         response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)

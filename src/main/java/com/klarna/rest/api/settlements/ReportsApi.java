@@ -62,7 +62,11 @@ public class ReportsApi extends BaseApi {
      */
     public byte[] getCSVPayoutReport(Map<String, String> urlParams)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
-        final String path = String.format("%s/%s?%s", PATH, "payout-with-transactions", this.buildQueryString(urlParams));
+        final String path = String.format("%s/%s?%s",
+                PATH,
+                "payout-with-transactions",
+                BaseApi.buildQueryString(urlParams)
+        );
         final ApiResponse response = this.get(path);
         response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
@@ -90,7 +94,11 @@ public class ReportsApi extends BaseApi {
      */
     public byte[] getCSVSummary(Map<String, String> urlParams)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
-        final String path = String.format("%s/%s?%s", PATH, "payouts-summary-with-transactions", this.buildQueryString(urlParams));
+        final String path = String.format("%s/%s?%s",
+                PATH,
+                "payouts-summary-with-transactions",
+                BaseApi.buildQueryString(urlParams)
+        );
         final ApiResponse response = this.get(path);
         response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
@@ -115,7 +123,7 @@ public class ReportsApi extends BaseApi {
      */
     public byte[] getPDFPayoutsSummaryReport(Map<String, String> urlParams)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
-        final String path = String.format("%s/%s?%s", PATH, "payout", this.buildQueryString(urlParams));
+        final String path = String.format("%s/%s?%s", PATH, "payout", BaseApi.buildQueryString(urlParams));
         final ApiResponse response = this.get(path);
         response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
@@ -140,7 +148,7 @@ public class ReportsApi extends BaseApi {
      */
     public byte[] getPDFSummary(Map<String, String> urlParams)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
-        final String path = String.format("%s/%s?%s", PATH, "payouts-summary", this.buildQueryString(urlParams));
+        final String path = String.format("%s/%s?%s", PATH, "payouts-summary", BaseApi.buildQueryString(urlParams));
         final ApiResponse response = this.get(path);
         response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)

@@ -82,7 +82,7 @@ public class SettlementsExample {
             PayoutsApi payoutsApi = new PayoutsApi(transport);
 
             try {
-                PayoutCollection payouts = payoutsApi.getAllPayout();
+                PayoutCollection payouts = payoutsApi.getAllPayouts();
                 System.out.println(payouts);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {

@@ -60,7 +60,7 @@ public class TransactionsApi extends BaseApi {
      */
     public TransactionCollection getTransactions(Map<String, String> urlParams)
         throws ApiException, ProtocolException, ContentTypeException, IOException {
-        final ApiResponse response = this.get(PATH + "?" + this.buildQueryString(urlParams));
+        final ApiResponse response = this.get(PATH + "?" + BaseApi.buildQueryString(urlParams));
         response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
