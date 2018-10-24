@@ -24,6 +24,7 @@ import com.klarna.rest.model.order_management.RefundObject;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response.Status;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Order Management API: Refunds resource.
@@ -52,18 +53,22 @@ public class RefundsApi extends BaseApi {
      * @see examples.OrderManagementExample.CreateRefundExample
      *
      * @param refund Refund data
+     * @return Refund ID
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public void create(RefundObject refund) throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public String create(RefundObject refund) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(refund);
         final ApiResponse response = this.post(PATH, data);
 
         response.expectSuccessful()
                 .expectStatusCode(Status.CREATED);
+
+        List<String> refundId = response.getHeader("Refund-Id");
+        return refundId == null ? "" : refundId.get(0);
     }
 
     /**

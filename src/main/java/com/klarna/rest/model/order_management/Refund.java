@@ -59,7 +59,7 @@ public class Refund {
    **/
   @ApiModelProperty(value = "Refund ID.")
   public String getRefundId() {
-    return description;
+    return refundId;
   }
 
   public void setRefundId(String refundId) {
@@ -201,7 +201,7 @@ public class Refund {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Refund {\n");
-    
+    sb.append("    refundId: ").append(toIndentedString(refundId)).append("\n");
     sb.append("    refundedAmount: ").append(toIndentedString(refundedAmount)).append("\n");
     sb.append("    refundedAt: ").append(toIndentedString(refundedAt)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
