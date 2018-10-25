@@ -121,7 +121,8 @@ public class PayoutsApiTest extends TestCase {
         api.getAllPayouts(params);
 
         verify(transport.conn, times(1)).setRequestMethod("GET");
-        assertEquals("/settlements/v1/payouts?size=10&start_date=2016-12-14T07%3A52%3A26Z", transport.requestPath);
+        assertTrue(transport.requestPath.contains("size=10"));
+        assertTrue(transport.requestPath.contains("start_date=2016-12-14T07%3A52%3A26Z"));
     }
 
     @Test
@@ -148,6 +149,7 @@ public class PayoutsApiTest extends TestCase {
         assertEquals("2016-12-14T07:52:26Z", summary[0].getSummaryPayoutDateStart().toString());
 
         verify(transport.conn, times(1)).setRequestMethod("GET");
-        assertEquals("/settlements/v1/payouts/summary?end_date=2018-12-14T07%3A52%3A26Z&start_date=2016-12-14T07%3A52%3A26Z", transport.requestPath);
+        assertTrue(transport.requestPath.contains("end_date=2018-12-14T07%3A52%3A26Z"));
+        assertTrue(transport.requestPath.contains("start_date=2016-12-14T07%3A52%3A26Z"));
     }
 }

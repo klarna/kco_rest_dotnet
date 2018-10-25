@@ -35,7 +35,9 @@ public class BaseApiTest extends TestCase {
         HashMap<String, String> params = new HashMap<>();
         params.put("hello", "world");
         params.put("page", "1");
-        assertEquals("hello=world&page=1", BaseApi.buildQueryString(params));
+        assertTrue(BaseApi.buildQueryString(params).contains("page=1"));
+        assertTrue(BaseApi.buildQueryString(params).contains("hello=world"));
+        assertTrue(BaseApi.buildQueryString(params).contains("&"));
     }
 
     @Test
@@ -44,6 +46,10 @@ public class BaseApiTest extends TestCase {
         params.put("hello", "a&b");
         params.put("page", "1 2");
         params.put("limit", "a=b");
-        assertEquals("limit=a%3Db&hello=a%26b&page=1+2", BaseApi.buildQueryString(params));
+
+        assertTrue(BaseApi.buildQueryString(params).contains("limit=a%3Db"));
+        assertTrue(BaseApi.buildQueryString(params).contains("hello=a%26b"));
+        assertTrue(BaseApi.buildQueryString(params).contains("page=1+2"));
+        assertTrue(BaseApi.buildQueryString(params).indexOf("&") != BaseApi.buildQueryString(params).lastIndexOf("&"));
     }
 }
