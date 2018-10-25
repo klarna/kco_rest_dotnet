@@ -20,7 +20,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * DistributionContactV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-28T10:02:28.819Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-25T10:11:58.940Z")
 public class DistributionContactV1 {
   @JsonProperty("email")
   private String email = null;

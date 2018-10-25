@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * OptionsV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-28T10:02:28.819Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-25T10:11:58.940Z")
 public class OptionsV1 {
   @JsonProperty("background_images")
   private List<BackgroundImageV1> backgroundImages = null;

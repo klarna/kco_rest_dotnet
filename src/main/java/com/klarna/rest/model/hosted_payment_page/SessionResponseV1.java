@@ -15,53 +15,118 @@ package com.klarna.rest.model.hosted_payment_page;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModelProperty;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * SessionResponseV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-28T10:02:28.819Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-25T10:11:58.940Z")
 public class SessionResponseV1 {
-  @JsonProperty("distribution_url")
-  private String distributionUrl = null;
+  @JsonProperty("authorization_token")
+  private String authorizationToken = null;
 
-  @JsonProperty("redirect_url")
-  private String redirectUrl = null;
+  /**
+   * Current session status
+   */
+  public enum StatusEnum {
+    WAITING("WAITING"),
+    
+    IN_PROGRESS("IN_PROGRESS"),
+    
+    COMPLETED("COMPLETED"),
+    
+    CANCELLED("CANCELLED"),
+    
+    FAILED("FAILED");
 
-  public SessionResponseV1 distributionUrl(String distributionUrl) {
-    this.distributionUrl = distributionUrl;
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static StatusEnum fromValue(String text) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("status")
+  private StatusEnum status = null;
+
+  @JsonProperty("updated_at")
+  private OffsetDateTime updatedAt = null;
+
+  public SessionResponseV1 authorizationToken(String authorizationToken) {
+    this.authorizationToken = authorizationToken;
     return this;
   }
 
    /**
-   * Endpoint for link distribution
-   * @return distributionUrl
+   * Authorization token (with KP API)
+   * @return authorizationToken
   **/
-  @ApiModelProperty(example = "https://api.klarna.com/hpp/v1/sessions/9cbc9884-1fdb-45a8-9694-9340340d0436/distribution", value = "Endpoint for link distribution")
-  public String getDistributionUrl() {
-    return distributionUrl;
+  @ApiModelProperty(example = "70850a20-a2a0-5c70-810c-096fa6f850bb", value = "Authorization token (with KP API)")
+  public String getAuthorizationToken() {
+    return authorizationToken;
   }
 
-  public void setDistributionUrl(String distributionUrl) {
-    this.distributionUrl = distributionUrl;
+  public void setAuthorizationToken(String authorizationToken) {
+    this.authorizationToken = authorizationToken;
   }
 
-  public SessionResponseV1 redirectUrl(String redirectUrl) {
-    this.redirectUrl = redirectUrl;
+  public SessionResponseV1 status(StatusEnum status) {
+    this.status = status;
     return this;
   }
 
    /**
-   * HPP url to redirect the consumer to
-   * @return redirectUrl
+   * Current session status
+   * @return status
   **/
-  @ApiModelProperty(example = "https://buy.klarna.com/hpp/9cbc9884-1fdb-45a8-9694-9340340d0436", value = "HPP url to redirect the consumer to")
-  public String getRedirectUrl() {
-    return redirectUrl;
+  @ApiModelProperty(example = "COMPLETED", value = "Current session status")
+  public StatusEnum getStatus() {
+    return status;
   }
 
-  public void setRedirectUrl(String redirectUrl) {
-    this.redirectUrl = redirectUrl;
+  public void setStatus(StatusEnum status) {
+    this.status = status;
+  }
+
+  public SessionResponseV1 updatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
+    return this;
+  }
+
+   /**
+   * Latest status update time
+   * @return updatedAt
+  **/
+  @ApiModelProperty(example = "2038-01-19T03:14:07.000Z", value = "Latest status update time")
+  public OffsetDateTime getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(OffsetDateTime updatedAt) {
+    this.updatedAt = updatedAt;
   }
 
 
@@ -74,13 +139,14 @@ public class SessionResponseV1 {
       return false;
     }
     SessionResponseV1 sessionResponseV1 = (SessionResponseV1) o;
-    return Objects.equals(this.distributionUrl, sessionResponseV1.distributionUrl) &&
-        Objects.equals(this.redirectUrl, sessionResponseV1.redirectUrl);
+    return Objects.equals(this.authorizationToken, sessionResponseV1.authorizationToken) &&
+        Objects.equals(this.status, sessionResponseV1.status) &&
+        Objects.equals(this.updatedAt, sessionResponseV1.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(distributionUrl, redirectUrl);
+    return Objects.hash(authorizationToken, status, updatedAt);
   }
 
 
@@ -89,8 +155,9 @@ public class SessionResponseV1 {
     StringBuilder sb = new StringBuilder();
     sb.append("class SessionResponseV1 {\n");
     
-    sb.append("    distributionUrl: ").append(toIndentedString(distributionUrl)).append("\n");
-    sb.append("    redirectUrl: ").append(toIndentedString(redirectUrl)).append("\n");
+    sb.append("    authorizationToken: ").append(toIndentedString(authorizationToken)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");
     return sb.toString();
   }

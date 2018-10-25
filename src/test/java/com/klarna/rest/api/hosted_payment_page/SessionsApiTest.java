@@ -49,7 +49,7 @@ public class SessionsApiTest extends TestCase {
     }
 
     @Test
-    public void testGetHPPSessionStatus() throws IOException {
+    public void testGetHPPSession() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
             put("Content-Type", new ArrayList<String>(){
@@ -59,18 +59,18 @@ public class SessionsApiTest extends TestCase {
             });
         }});
 
-        final String payload = "{ \"auth_token\": \"b4bd3423-24e3\", " +
+        final String payload = "{ \"authorization_token\": \"b4bd3423-24e3\", " +
                 "\"status\": \"COMPLETED\", " +
                 "\"updated_at\": \"2038-01-19T03:14:07.000Z\" }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
         SessionsApi api = new SessionsApi(transport);
-        SessionStatusResponseV1 status = api.getStatus("my-session-id");
+        SessionResponseV1 session = api.fetch("my-session-id");
 
-        assertEquals("b4bd3423-24e3", status.getAuthToken());
-        assertEquals(SessionStatusResponseV1.StatusEnum.COMPLETED, status.getStatus());
+        assertEquals("b4bd3423-24e3", session.getAuthorizationToken());
+        assertEquals(SessionResponseV1.StatusEnum.COMPLETED, session.getStatus());
         verify(transport.conn, times(1)).setRequestMethod("GET");
-        assertEquals("/hpp/v1/sessions/my-session-id/status", transport.requestPath);
+        assertEquals("/hpp/v1/sessions/my-session-id", transport.requestPath);
     }
 
     @Test
@@ -125,7 +125,7 @@ public class SessionsApiTest extends TestCase {
                 "}";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        SessionRequestV1 data = new SessionRequestV1(){
+        SessionCreationRequestV1 data = new SessionCreationRequestV1(){
             {
                 setPaymentSessionUrl("https://api.klarna.com/payments/v1/sessions/92d97f60");
                 setMerchantUrls(new MerchantUrlsV1(){
@@ -143,7 +143,7 @@ public class SessionsApiTest extends TestCase {
         };
 
         SessionsApi api = new SessionsApi(transport);
-        SessionResponseV1 response = api.create(data);
+        SessionCreationResponseV1 response = api.create(data);
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
         assertEquals("/hpp/v1/sessions", transport.requestPath);

@@ -18,10 +18,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * SessionRequestV1
+ * SessionCreationRequestV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-28T10:02:28.819Z")
-public class SessionRequestV1 {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-25T10:11:58.940Z")
+public class SessionCreationRequestV1 {
   @JsonProperty("merchant_urls")
   private MerchantUrlsV1 merchantUrls = null;
 
@@ -31,7 +31,7 @@ public class SessionRequestV1 {
   @JsonProperty("payment_session_url")
   private String paymentSessionUrl = null;
 
-  public SessionRequestV1 merchantUrls(MerchantUrlsV1 merchantUrls) {
+  public SessionCreationRequestV1 merchantUrls(MerchantUrlsV1 merchantUrls) {
     this.merchantUrls = merchantUrls;
     return this;
   }
@@ -49,7 +49,7 @@ public class SessionRequestV1 {
     this.merchantUrls = merchantUrls;
   }
 
-  public SessionRequestV1 options(OptionsV1 options) {
+  public SessionCreationRequestV1 options(OptionsV1 options) {
     this.options = options;
     return this;
   }
@@ -67,7 +67,7 @@ public class SessionRequestV1 {
     this.options = options;
   }
 
-  public SessionRequestV1 paymentSessionUrl(String paymentSessionUrl) {
+  public SessionCreationRequestV1 paymentSessionUrl(String paymentSessionUrl) {
     this.paymentSessionUrl = paymentSessionUrl;
     return this;
   }
@@ -94,10 +94,10 @@ public class SessionRequestV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SessionRequestV1 sessionRequestV1 = (SessionRequestV1) o;
-    return Objects.equals(this.merchantUrls, sessionRequestV1.merchantUrls) &&
-        Objects.equals(this.options, sessionRequestV1.options) &&
-        Objects.equals(this.paymentSessionUrl, sessionRequestV1.paymentSessionUrl);
+    SessionCreationRequestV1 sessionCreationRequestV1 = (SessionCreationRequestV1) o;
+    return Objects.equals(this.merchantUrls, sessionCreationRequestV1.merchantUrls) &&
+        Objects.equals(this.options, sessionCreationRequestV1.options) &&
+        Objects.equals(this.paymentSessionUrl, sessionCreationRequestV1.paymentSessionUrl);
   }
 
   @Override
@@ -109,7 +109,7 @@ public class SessionRequestV1 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SessionRequestV1 {\n");
+    sb.append("class SessionCreationRequestV1 {\n");
     
     sb.append("    merchantUrls: ").append(toIndentedString(merchantUrls)).append("\n");
     sb.append("    options: ").append(toIndentedString(options)).append("\n");

@@ -51,7 +51,7 @@ public class HostedPaymentPageExample {
             SessionsApi sessionsApi = new SessionsApi(transport);
 
             try {
-                SessionRequestV1 request = new SessionRequestV1();
+                SessionCreationRequestV1 request = new SessionCreationRequestV1();
                 request.setMerchantUrls(new MerchantUrlsV1() {
                     {
                         setCancel("https://example.com/cancel");
@@ -71,7 +71,7 @@ public class HostedPaymentPageExample {
                 });
                 request.setPaymentSessionUrl("https://api.klarna.com/payments/v1/sessions/" + sessionId);
 
-                SessionResponseV1 session = sessionsApi.create(request);
+                SessionCreationResponseV1 session = sessionsApi.create(request);
                 System.out.println(session);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {
@@ -122,7 +122,7 @@ public class HostedPaymentPageExample {
         }
     }
 
-    public static class GetHPPSessionStatusExample {
+    public static class GetHPPSessionExample {
 
         /**
          * Runs the example code.
@@ -138,8 +138,8 @@ public class HostedPaymentPageExample {
             SessionsApi sessionsApi = new SessionsApi(transport);
 
             try {
-                SessionStatusResponseV1 status = sessionsApi.getStatus(sessionId);
-                System.out.println(status);
+                SessionResponseV1 session = sessionsApi.fetch(sessionId);
+                System.out.println(session);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {
                 System.out.println("Connection problem: " + e.getMessage());
