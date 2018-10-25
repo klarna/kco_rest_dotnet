@@ -311,7 +311,7 @@ public class HttpUrlConnectionTransport implements Transport {
     protected ApiResponse makeRequest(HttpURLConnection conn, byte[] payout) throws IOException {
         log.debug("DEBUG MODE: Request\n"
                 + ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
-                + "URL: " + conn.getURL() + "\n"
+                + conn.getRequestMethod() + ": " + conn.getURL() + "\n"
                 + "Headers: " + conn.getRequestProperties() + "\n"
                 + "Payout: " + (payout == null ? "null" : new String(payout)) + "\n");
 

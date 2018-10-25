@@ -18,7 +18,11 @@ options made available by Klarna.
 
 ## Installing the Java SDK
 
+The Java SDK requires **Java 1.7** version or higher.
+
+
 ### Maven
+
 To install the Java SDK from the Central Maven repository using Maven, add the following lines to `pom.xml`:
 
 ```xml
@@ -71,14 +75,37 @@ try {
 }
 ```
 
-## Logging
+## Logging and Debugging
 
-The Java SDK uses slf4j library as an abstraction for various logging frameworks. We have not provided 
+The Java SDK uses *slf4j* library as an abstraction for various logging frameworks. We have not provided 
 any back-end implementation.
 Choose an implementation that applies to your project.
 
 For more information, see the [slf4j](https://www.slf4j.org/) documentation.
 
+You can debug and check all the requests and responses made via the SDK. In order to enable debug mode
+you need to change the logging level of your Logger to "debug".
+
+For example, if you use log4j2 logger, put this line to your log4j2.properties file:
+
+```ini
+rootLogger.level = debug
+```
+
+The output will look like:
+
+```
+[18-Oct-25 14:16:09:652] [DEBUG] [HttpUrlConnectionTransport:312] - DEBUG MODE: Request
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+GET: https://api.playground.klarna.com/customer-token/v1/tokens/TOKEN
+Headers: Headers: {User-Agent=[Language/Java_1.8.0_161 (Vendor/Oracle Corporation; VM/Java HotSpot(TM) 64-Bit Server VM) Library/Klarna.kco_rest_java_3.0.0 OS/Mac OS X_10.13.4], Content-Type=[application/json]}
+Payout:
+
+DEBUG MODE: Response
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Headers: {null=[HTTP/1.1 200 OK], Server=[openresty], Connection=[keep-alive], Vary=[Accept-Encoding], Content-Length=[166], Date=[Thu, 25 Oct 2018 12:16:09 GMT], Content-Type=[application\/json]}
+Payout: {"status" : "ACTIVE","payment_method_type" : "INVOICE"}
+```
 
 ## How to contribute
 
