@@ -100,7 +100,7 @@ public class SessionsApi extends BaseApi {
     /**
      * Gets HPP session status.
      *
-     * @see examples.HostedPaymentPageExample.GetHPPSessionStatusExample
+     * @see examples.HostedPaymentPageExample.GetHPPSessionExample
      *
      * @param sessionId HPP session id
      * @return server response
