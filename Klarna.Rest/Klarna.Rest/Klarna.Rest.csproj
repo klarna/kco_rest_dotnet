@@ -58,6 +58,7 @@
     <Compile Include="IResource.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Attachment.cs" />
+    <Compile Include="Models\Checkbox.cs" />
     <Compile Include="Models\EMD\AirReservationDetails.cs" />
     <Compile Include="Models\EMD\ExtraMerchantDataBody.cs" />
     <Compile Include="Models\EMD\ExtraMerchantData.cs" />

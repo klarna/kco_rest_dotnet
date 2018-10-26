@@ -20,6 +20,7 @@
 #endregion
 namespace Klarna.Rest.Models
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -74,5 +75,11 @@ namespace Klarna.Rest.Models
         /// </summary>
         [JsonProperty("color_link")]
         public string ColorLink { get; set; }
+
+        /// <summary>
+        /// Gets or sets a list of additional checkboxes
+        /// </summary>
+        [JsonProperty("additional_checkboxes")]
+        public IList<Checkbox> AdditionalCheckboxes { get; set; }
     }
 }
