@@ -16,6 +16,27 @@ to try before they buy, finance purchases on your store, or make use of other pa
 options made available by Klarna.
 
 
+## Getting started
+
+SDK covers all of Klarna API: https://developers.klarna.com/api/
+
+### Prerequisites
+* Java 1.7 version or higher
+* [API credentials](#api-credentials)
+
+
+### API Credentials
+
+Before getting a production account you can get a playground one.
+Register here to be able to test your SDK integration before go live:
+
+- https://playground.eu.portal.klarna.com/developer-sign-up - for EU countries
+- https://playground.us.portal.klarna.com/developer-sign-up - for the US
+
+Later you need to register as a Klarna merchant to get a production credentials
+
+- https://developers.klarna.com/en/gb/kco-v3
+
 ## Installing the Java SDK
 
 The Java SDK requires **Java 1.7** version or higher.
@@ -46,9 +67,9 @@ dependencies {
 ## Documentation
 The various documentation is available:
 
-* The [Developers Portal](https://developers.klarna.com);
-* The [Klarna API documentation](https://developers.klarna.com/api);
-* The [SDK references](https://klarna.github.io/kco_rest_java/);
+* [Developers Portal](https://developers.klarna.com);
+* [Klarna API documentation](https://developers.klarna.com/api);
+* [SDK references](https://klarna.github.io/kco_rest_java/);
 
 ## Usage
 
