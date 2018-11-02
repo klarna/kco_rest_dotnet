@@ -81,18 +81,42 @@ The basic workflow is the following:
 2) Use API you want to via created Transport.
 
 ```java
-HttpUrlConnectionTransport transport = new HttpUrlConnectionTransport(
-        "merchantId", "sharedSecret", Transport.EU_BASE_URL);
-OrdersApi ordersApi = new OrdersApi(transport);
+package com.mycompany.app;
 
-try {
-    Order order = ordersApi.fetch("checkoutOrderID-123");
-    System.out.println(order);
+import com.klarna.rest.HttpUrlConnectionTransport;
+import com.klarna.rest.Transport;
+import com.klarna.rest.api.checkout.OrdersApi;
+import com.klarna.rest.model.checkout.Order;
 
-} catch (IOException e) {
-    System.out.println("Connection problem: " + e.getMessage());
-} catch (ApiException e) {
-    System.out.println("API issue: " + e.getMessage());
+import java.io.IOException;
+import com.klarna.rest.ApiException;
+
+/**
+ * Klarna Checkout Example
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        HttpUrlConnectionTransport transport = new HttpUrlConnectionTransport(
+                "MyMerchantId", "MySharedSecret", Transport.EU_BASE_URL);
+        OrdersApi ordersApi = new OrdersApi(transport);
+
+        try {
+            Order order = ordersApi.fetch("checkoutOrderID-123");
+
+            // Order has been successfully fetched, we can get some info, e.g. HTML Snippet
+            System.out.println(order.getHtmlSnippet());
+
+            // Or print a whole order data
+            System.out.println(order);
+
+        } catch (IOException e) {
+            System.out.println("Connection problem: " + e.getMessage());
+        } catch (ApiException e) {
+            System.out.println("API issue: " + e.getMessage());
+        }
+    }
 }
 ```
 
