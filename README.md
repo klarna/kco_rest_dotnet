@@ -89,7 +89,7 @@ try {
     Order order = ordersApi.fetch("checkoutOrderID-123");
     System.out.println(order);
 
-} catch (IOException | ProtocolException | ContentTypeException e) {
+} catch (IOException e) {
     System.out.println("Connection problem: " + e.getMessage());
 } catch (ApiException e) {
     System.out.println("API issue: " + e.getMessage());
