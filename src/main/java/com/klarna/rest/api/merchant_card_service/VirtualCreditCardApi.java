@@ -18,8 +18,8 @@ package com.klarna.rest.api.merchant_card_service;
 
 import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;
-import com.klarna.rest.model.merchant_card_service.SettlementRequest;
-import com.klarna.rest.model.merchant_card_service.SettlementResponse;
+import com.klarna.rest.api.merchant_card_service.model.CardServiceSettlementRequest;
+import com.klarna.rest.api.merchant_card_service.model.CardServiceSettlementResponse;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -53,7 +53,7 @@ public class VirtualCreditCardApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public SettlementResponse createSettlement(SettlementRequest settlement)
+    public CardServiceSettlementResponse createSettlement(CardServiceSettlementRequest settlement)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(settlement);
         final ApiResponse response = this.post(PATH, data);
@@ -62,7 +62,7 @@ public class VirtualCreditCardApi extends BaseApi {
                 .expectStatusCode(Response.Status.CREATED)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), SettlementResponse.class);
+        return fromJson(response.getBody(), CardServiceSettlementResponse.class);
     }
 
     /**
@@ -79,7 +79,7 @@ public class VirtualCreditCardApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public SettlementResponse retrieveExistingSettlement(String settlementId, String keyId)
+    public CardServiceSettlementResponse retrieveExistingSettlement(String settlementId, String keyId)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         Map<String, String> headers = new HashMap<>();
         headers.put("KeyId", keyId);
@@ -89,7 +89,7 @@ public class VirtualCreditCardApi extends BaseApi {
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), SettlementResponse.class);
+        return fromJson(response.getBody(), CardServiceSettlementResponse.class);
     }
 
     /**
@@ -106,7 +106,7 @@ public class VirtualCreditCardApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public SettlementResponse retrieveSettledOrderSettlement(String orderId, String keyId)
+    public CardServiceSettlementResponse retrieveSettledOrderSettlement(String orderId, String keyId)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         Map<String, String> headers = new HashMap<>();
         headers.put("KeyId", keyId);
@@ -116,6 +116,6 @@ public class VirtualCreditCardApi extends BaseApi {
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), SettlementResponse.class);
+        return fromJson(response.getBody(), CardServiceSettlementResponse.class);
     }
 }

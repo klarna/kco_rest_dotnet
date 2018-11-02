@@ -11,17 +11,21 @@
  */
 
 
-package com.klarna.rest.model.merchant_card_service;
+package com.klarna.rest.api.merchant_card_service.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * SettlementRequest
+ * CardServiceSettlementRequest
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-28T09:37:02.201Z")
-public class SettlementRequest {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T13:37:30.776Z")
+public class CardServiceSettlementRequest {
   @JsonProperty("promise_id")
   private String promiseId = null;
 
@@ -31,7 +35,7 @@ public class SettlementRequest {
   @JsonProperty("key_id")
   private String keyId = null;
 
-  public SettlementRequest promiseId(String promiseId) {
+  public CardServiceSettlementRequest promiseId(String promiseId) {
     this.promiseId = promiseId;
     return this;
   }
@@ -49,7 +53,7 @@ public class SettlementRequest {
     this.promiseId = promiseId;
   }
 
-  public SettlementRequest orderId(String orderId) {
+  public CardServiceSettlementRequest orderId(String orderId) {
     this.orderId = orderId;
     return this;
   }
@@ -67,7 +71,7 @@ public class SettlementRequest {
     this.orderId = orderId;
   }
 
-  public SettlementRequest keyId(String keyId) {
+  public CardServiceSettlementRequest keyId(String keyId) {
     this.keyId = keyId;
     return this;
   }
@@ -94,7 +98,7 @@ public class SettlementRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SettlementRequest settlementRequest = (SettlementRequest) o;
+    CardServiceSettlementRequest settlementRequest = (CardServiceSettlementRequest) o;
     return Objects.equals(this.promiseId, settlementRequest.promiseId) &&
         Objects.equals(this.orderId, settlementRequest.orderId) &&
         Objects.equals(this.keyId, settlementRequest.keyId);
@@ -109,7 +113,7 @@ public class SettlementRequest {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SettlementRequest {\n");
+    sb.append("class CardServiceSettlementRequest {\n");
     
     sb.append("    promiseId: ").append(toIndentedString(promiseId)).append("\n");
     sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");

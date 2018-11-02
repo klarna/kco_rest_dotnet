@@ -11,20 +11,24 @@
  */
 
 
-package com.klarna.rest.model.merchant_card_service;
+package com.klarna.rest.api.merchant_card_service.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.klarna.rest.api.merchant_card_service.model.CardServiceCard;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * SettlementResponse
+ * CardServiceSettlementResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-28T09:37:02.201Z")
-public class SettlementResponse {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T13:37:30.776Z")
+public class CardServiceSettlementResponse {
   @JsonProperty("settlement_id")
   private String settlementId = null;
 
@@ -35,7 +39,7 @@ public class SettlementResponse {
   private String orderId = null;
 
   @JsonProperty("cards")
-  private List<Card> cards = null;
+  private List<CardServiceCard> cards = null;
 
   @JsonProperty("created_at")
   private String createdAt = null;
@@ -43,7 +47,7 @@ public class SettlementResponse {
   @JsonProperty("expires_at")
   private String expiresAt = null;
 
-  public SettlementResponse settlementId(String settlementId) {
+  public CardServiceSettlementResponse settlementId(String settlementId) {
     this.settlementId = settlementId;
     return this;
   }
@@ -61,7 +65,7 @@ public class SettlementResponse {
     this.settlementId = settlementId;
   }
 
-  public SettlementResponse promiseId(String promiseId) {
+  public CardServiceSettlementResponse promiseId(String promiseId) {
     this.promiseId = promiseId;
     return this;
   }
@@ -79,7 +83,7 @@ public class SettlementResponse {
     this.promiseId = promiseId;
   }
 
-  public SettlementResponse orderId(String orderId) {
+  public CardServiceSettlementResponse orderId(String orderId) {
     this.orderId = orderId;
     return this;
   }
@@ -97,14 +101,14 @@ public class SettlementResponse {
     this.orderId = orderId;
   }
 
-  public SettlementResponse cards(List<Card> cards) {
+  public CardServiceSettlementResponse cards(List<CardServiceCard> cards) {
     this.cards = cards;
     return this;
   }
 
-  public SettlementResponse addCardsItem(Card cardsItem) {
+  public CardServiceSettlementResponse addCardsItem(CardServiceCard cardsItem) {
     if (this.cards == null) {
-      this.cards = new ArrayList<Card>();
+      this.cards = new ArrayList<CardServiceCard>();
     }
     this.cards.add(cardsItem);
     return this;
@@ -115,15 +119,15 @@ public class SettlementResponse {
    * @return cards
   **/
   @ApiModelProperty(value = "An array of Card objects.")
-  public List<Card> getCards() {
+  public List<CardServiceCard> getCards() {
     return cards;
   }
 
-  public void setCards(List<Card> cards) {
+  public void setCards(List<CardServiceCard> cards) {
     this.cards = cards;
   }
 
-  public SettlementResponse createdAt(String createdAt) {
+  public CardServiceSettlementResponse createdAt(String createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -141,7 +145,7 @@ public class SettlementResponse {
     this.createdAt = createdAt;
   }
 
-  public SettlementResponse expiresAt(String expiresAt) {
+  public CardServiceSettlementResponse expiresAt(String expiresAt) {
     this.expiresAt = expiresAt;
     return this;
   }
@@ -168,7 +172,7 @@ public class SettlementResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SettlementResponse settlementResponse = (SettlementResponse) o;
+    CardServiceSettlementResponse settlementResponse = (CardServiceSettlementResponse) o;
     return Objects.equals(this.settlementId, settlementResponse.settlementId) &&
         Objects.equals(this.promiseId, settlementResponse.promiseId) &&
         Objects.equals(this.orderId, settlementResponse.orderId) &&
@@ -186,7 +190,7 @@ public class SettlementResponse {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SettlementResponse {\n");
+    sb.append("class CardServiceSettlementResponse {\n");
     
     sb.append("    settlementId: ").append(toIndentedString(settlementId)).append("\n");
     sb.append("    promiseId: ").append(toIndentedString(promiseId)).append("\n");

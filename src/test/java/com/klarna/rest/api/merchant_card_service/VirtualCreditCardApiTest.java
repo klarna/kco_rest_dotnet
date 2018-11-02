@@ -18,8 +18,8 @@ package com.klarna.rest.api.merchant_card_service;
 
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
-import com.klarna.rest.model.merchant_card_service.SettlementRequest;
-import com.klarna.rest.model.merchant_card_service.SettlementResponse;
+import com.klarna.rest.api.merchant_card_service.model.CardServiceSettlementRequest;
+import com.klarna.rest.api.merchant_card_service.model.CardServiceSettlementResponse;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -78,13 +78,13 @@ public class VirtualCreditCardApiTest extends TestCase {
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
         VirtualCreditCardApi api = new VirtualCreditCardApi(transport);
-        SettlementRequest data = new SettlementRequest() {
+        CardServiceSettlementRequest data = new CardServiceSettlementRequest() {
             {
                 setPromiseId("ee4a8e3a-9dfd-49e0-9ac8-ea2b6c76408c");
                 setKeyId("16e4b85e-899b-4427-a39f-07a496e9515b");
             }
         };
-        SettlementResponse settlement = api.createSettlement(data);
+        CardServiceSettlementResponse settlement = api.createSettlement(data);
 
         assertEquals("b0ec0bbd-534c-4b1c-b28a-628bf33c3324", settlement.getSettlementId());
         assertEquals("b846430c-3656-43a1-812e-2ccff4531b7d", settlement.getCards().get(0).getCardId());
@@ -114,7 +114,7 @@ public class VirtualCreditCardApiTest extends TestCase {
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
         VirtualCreditCardApi api = new VirtualCreditCardApi(transport);
-        SettlementResponse settlement = api.retrieveExistingSettlement("my-settlement-id", "secret-header-key");
+        CardServiceSettlementResponse settlement = api.retrieveExistingSettlement("my-settlement-id", "secret-header-key");
 
         assertEquals("b0ec0bbd-534c-4b1c-b28a-628bf33c3324", settlement.getSettlementId());
         verify(transport.conn, times(1)).setRequestMethod("GET");
@@ -140,7 +140,7 @@ public class VirtualCreditCardApiTest extends TestCase {
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
         VirtualCreditCardApi api = new VirtualCreditCardApi(transport);
-        SettlementResponse settlement = api.retrieveSettledOrderSettlement("my-order-id", "secret-header-key");
+        CardServiceSettlementResponse settlement = api.retrieveSettledOrderSettlement("my-order-id", "secret-header-key");
 
         assertEquals("b0ec0bbd-534c-4b1c-b28a-628bf33c3324", settlement.getSettlementId());
         verify(transport.conn, times(1)).setRequestMethod("GET");

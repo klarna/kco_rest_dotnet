@@ -2,8 +2,9 @@ package examples;
 
 import com.klarna.rest.*;
 import com.klarna.rest.api.merchant_card_service.VirtualCreditCardApi;
-import com.klarna.rest.model.merchant_card_service.SettlementRequest;
-import com.klarna.rest.model.merchant_card_service.SettlementResponse;
+import com.klarna.rest.api.merchant_card_service.model.CardServiceSettlementResponse;
+import com.klarna.rest.api.merchant_card_service.model.CardServiceSettlementRequest;
+import com.klarna.rest.api.merchant_card_service.model.CardServiceSettlementResponse;
 
 import java.io.IOException;
 
@@ -24,7 +25,7 @@ public class MerchantCardServiceExample {
             VirtualCreditCardApi vccApi = new VirtualCreditCardApi(transport);
 
             try {
-                SettlementResponse settlement = vccApi.retrieveExistingSettlement(settlementId, keyId);
+                CardServiceSettlementResponse settlement = vccApi.retrieveExistingSettlement(settlementId, keyId);
                 System.out.println(settlement);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {
@@ -51,7 +52,7 @@ public class MerchantCardServiceExample {
             VirtualCreditCardApi vccApi = new VirtualCreditCardApi(transport);
 
             try {
-                SettlementResponse settlement = vccApi.retrieveSettledOrderSettlement(orderId, keyId);
+                CardServiceSettlementResponse settlement = vccApi.retrieveSettledOrderSettlement(orderId, keyId);
                 System.out.println(settlement);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {
@@ -78,13 +79,13 @@ public class MerchantCardServiceExample {
             VirtualCreditCardApi vccApi = new VirtualCreditCardApi(transport);
 
             try {
-                SettlementRequest request = new SettlementRequest(){
+                CardServiceSettlementRequest request = new CardServiceSettlementRequest(){
                     {
                         setKeyId(keyId);
                         setOrderId(orderId);
                     }
                 };
-                SettlementResponse settlement = vccApi.createSettlement(request);
+                CardServiceSettlementResponse settlement = vccApi.createSettlement(request);
                 System.out.println(settlement);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {

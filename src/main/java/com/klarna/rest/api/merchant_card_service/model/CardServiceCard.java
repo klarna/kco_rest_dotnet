@@ -11,17 +11,21 @@
  */
 
 
-package com.klarna.rest.model.merchant_card_service;
+package com.klarna.rest.api.merchant_card_service.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Card
+ * CardServiceCard
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-28T09:37:02.201Z")
-public class Card {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T13:37:30.776Z")
+public class CardServiceCard {
   @JsonProperty("reference")
   private String reference = null;
 
@@ -49,7 +53,7 @@ public class Card {
   @JsonProperty("holder")
   private String holder = null;
 
-  public Card reference(String reference) {
+  public CardServiceCard reference(String reference) {
     this.reference = reference;
     return this;
   }
@@ -67,7 +71,7 @@ public class Card {
     this.reference = reference;
   }
 
-  public Card cardId(String cardId) {
+  public CardServiceCard cardId(String cardId) {
     this.cardId = cardId;
     return this;
   }
@@ -85,7 +89,7 @@ public class Card {
     this.cardId = cardId;
   }
 
-  public Card amount(Long amount) {
+  public CardServiceCard amount(Long amount) {
     this.amount = amount;
     return this;
   }
@@ -103,7 +107,7 @@ public class Card {
     this.amount = amount;
   }
 
-  public Card currency(String currency) {
+  public CardServiceCard currency(String currency) {
     this.currency = currency;
     return this;
   }
@@ -121,7 +125,7 @@ public class Card {
     this.currency = currency;
   }
 
-  public Card pciData(String pciData) {
+  public CardServiceCard pciData(String pciData) {
     this.pciData = pciData;
     return this;
   }
@@ -139,7 +143,7 @@ public class Card {
     this.pciData = pciData;
   }
 
-  public Card iv(String iv) {
+  public CardServiceCard iv(String iv) {
     this.iv = iv;
     return this;
   }
@@ -157,7 +161,7 @@ public class Card {
     this.iv = iv;
   }
 
-  public Card aesKey(String aesKey) {
+  public CardServiceCard aesKey(String aesKey) {
     this.aesKey = aesKey;
     return this;
   }
@@ -175,7 +179,7 @@ public class Card {
     this.aesKey = aesKey;
   }
 
-  public Card brand(String brand) {
+  public CardServiceCard brand(String brand) {
     this.brand = brand;
     return this;
   }
@@ -193,7 +197,7 @@ public class Card {
     this.brand = brand;
   }
 
-  public Card holder(String holder) {
+  public CardServiceCard holder(String holder) {
     this.holder = holder;
     return this;
   }
@@ -220,7 +224,7 @@ public class Card {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Card card = (Card) o;
+    CardServiceCard card = (CardServiceCard) o;
     return Objects.equals(this.reference, card.reference) &&
         Objects.equals(this.cardId, card.cardId) &&
         Objects.equals(this.amount, card.amount) &&
@@ -241,7 +245,7 @@ public class Card {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Card {\n");
+    sb.append("class CardServiceCard {\n");
     
     sb.append("    reference: ").append(toIndentedString(reference)).append("\n");
     sb.append("    cardId: ").append(toIndentedString(cardId)).append("\n");
