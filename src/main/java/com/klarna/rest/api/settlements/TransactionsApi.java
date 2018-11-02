@@ -18,7 +18,7 @@ package com.klarna.rest.api.settlements;
 
 import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;
-import com.klarna.rest.model.settlements.TransactionCollection;
+import com.klarna.rest.api.settlements.model.SettlementsTransactionCollection;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -58,14 +58,14 @@ public class TransactionsApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public TransactionCollection getTransactions(Map<String, String> urlParams)
+    public SettlementsTransactionCollection getTransactions(Map<String, String> urlParams)
         throws ApiException, ProtocolException, ContentTypeException, IOException {
         final ApiResponse response = this.get(PATH + "?" + BaseApi.buildQueryString(urlParams));
         response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), TransactionCollection.class);
+        return fromJson(response.getBody(), SettlementsTransactionCollection.class);
     }
 
     /**
@@ -78,7 +78,7 @@ public class TransactionsApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public TransactionCollection getTransactions()
+    public SettlementsTransactionCollection getTransactions()
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         return this.getTransactions(null);
     }

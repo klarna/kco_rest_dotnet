@@ -20,10 +20,10 @@ import com.klarna.rest.*;
 import com.klarna.rest.api.settlements.PayoutsApi;
 import com.klarna.rest.api.settlements.ReportsApi;
 import com.klarna.rest.api.settlements.TransactionsApi;
-import com.klarna.rest.model.settlements.Payout;
-import com.klarna.rest.model.settlements.PayoutCollection;
-import com.klarna.rest.model.settlements.PayoutSummary;
-import com.klarna.rest.model.settlements.TransactionCollection;
+import com.klarna.rest.api.settlements.model.SettlementsPayout;
+import com.klarna.rest.api.settlements.model.SettlementsPayoutCollection;
+import com.klarna.rest.api.settlements.model.SettlementsPayoutSummary;
+import com.klarna.rest.api.settlements.model.SettlementsTransactionCollection;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -57,7 +57,7 @@ public class SettlementsExample {
             PayoutsApi payoutsApi = new PayoutsApi(transport);
 
             try {
-                Payout payout = payoutsApi.getPayout(paymentReference);
+                SettlementsPayout payout = payoutsApi.getPayout(paymentReference);
                 System.out.println(payout);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {
@@ -82,7 +82,7 @@ public class SettlementsExample {
             PayoutsApi payoutsApi = new PayoutsApi(transport);
 
             try {
-                PayoutCollection payouts = payoutsApi.getAllPayouts();
+                SettlementsPayoutCollection payouts = payoutsApi.getAllPayouts();
                 System.out.println(payouts);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {
@@ -117,7 +117,7 @@ public class SettlementsExample {
                 params.put("start_date", startDate);
                 params.put("end_date", endDate);
 
-                PayoutSummary[] summary = payoutsApi.getSummary(params);
+                SettlementsPayoutSummary[] summary = payoutsApi.getSummary(params);
                 System.out.println(Arrays.toString(summary));
 
             } catch (IOException | ProtocolException | ContentTypeException e) {
@@ -142,7 +142,7 @@ public class SettlementsExample {
             TransactionsApi trasactionsApi = new TransactionsApi(transport);
 
             try {
-                TransactionCollection transactions = trasactionsApi.getTransactions();
+                SettlementsTransactionCollection transactions = trasactionsApi.getTransactions();
                 System.out.println(transactions);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {

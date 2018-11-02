@@ -18,9 +18,9 @@ package com.klarna.rest.api.settlements;
 
 import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;
-import com.klarna.rest.model.settlements.Payout;
-import com.klarna.rest.model.settlements.PayoutCollection;
-import com.klarna.rest.model.settlements.PayoutSummary;
+import com.klarna.rest.api.settlements.model.SettlementsPayout;
+import com.klarna.rest.api.settlements.model.SettlementsPayoutCollection;
+import com.klarna.rest.api.settlements.model.SettlementsPayoutSummary;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -60,7 +60,7 @@ public class PayoutsApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public Payout getPayout(String paymentReference)
+    public SettlementsPayout getPayout(String paymentReference)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final ApiResponse response = this.get(PATH + "/" + paymentReference);
 
@@ -68,7 +68,7 @@ public class PayoutsApi extends BaseApi {
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), Payout.class);
+        return fromJson(response.getBody(), SettlementsPayout.class);
     }
 
     /**
@@ -85,14 +85,14 @@ public class PayoutsApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public PayoutCollection getAllPayouts(Map<String, String> urlParams)
+    public SettlementsPayoutCollection getAllPayouts(Map<String, String> urlParams)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final ApiResponse response = this.get(PATH + "?" + BaseApi.buildQueryString(urlParams));
         response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), PayoutCollection.class);
+        return fromJson(response.getBody(), SettlementsPayoutCollection.class);
     }
 
     /**
@@ -107,7 +107,7 @@ public class PayoutsApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public PayoutCollection getAllPayouts()
+    public SettlementsPayoutCollection getAllPayouts()
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         return this.getAllPayouts(null);
     }
@@ -126,7 +126,7 @@ public class PayoutsApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public PayoutSummary[] getSummary(Map<String, String> urlParams)
+    public SettlementsPayoutSummary[] getSummary(Map<String, String> urlParams)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s?%s", PATH, "summary", BaseApi.buildQueryString(urlParams));
         final ApiResponse response = this.get(path);
@@ -134,6 +134,6 @@ public class PayoutsApi extends BaseApi {
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), PayoutSummary[].class);
+        return fromJson(response.getBody(), SettlementsPayoutSummary[].class);
     }
 }

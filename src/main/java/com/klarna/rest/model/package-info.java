@@ -15,6 +15,6 @@
  */
 
 /**
- * Models package.
+ * Common API models.
  */
 package com.klarna.rest.model;

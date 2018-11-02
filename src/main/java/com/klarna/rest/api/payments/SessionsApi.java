@@ -18,8 +18,8 @@ package com.klarna.rest.api.payments;
 
 import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;
-import com.klarna.rest.model.payments.MerchantSession;
-import com.klarna.rest.model.payments.Session;
+import com.klarna.rest.api.payments.model.PaymentsMerchantSession;
+import com.klarna.rest.api.payments.model.PaymentsSession;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -53,7 +53,7 @@ public class SessionsApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public MerchantSession create(Session session)
+    public PaymentsMerchantSession create(PaymentsSession session)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(session);
         final ApiResponse response = this.post(PATH, data);
@@ -62,7 +62,7 @@ public class SessionsApi extends BaseApi {
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), MerchantSession.class);
+        return fromJson(response.getBody(), PaymentsMerchantSession.class);
     }
 
     /**
@@ -78,14 +78,14 @@ public class SessionsApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public Session fetch(String sessionId) throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public PaymentsSession fetch(String sessionId) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final ApiResponse response = this.get(PATH + '/' + sessionId);
 
         response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), Session.class);
+        return fromJson(response.getBody(), PaymentsSession.class);
     }
 
     /**
@@ -101,7 +101,7 @@ public class SessionsApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public void update(String sessionId, Session session)
+    public void update(String sessionId, PaymentsSession session)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(session);
         final ApiResponse response = this.post(PATH + '/' + sessionId, data);

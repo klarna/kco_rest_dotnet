@@ -18,7 +18,10 @@ package com.klarna.rest.api.payments;
 
 import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;
-import com.klarna.rest.model.payments.*;
+import com.klarna.rest.api.payments.model.PaymentsCreateOrderRequest;
+import com.klarna.rest.api.payments.model.PaymentsCustomerTokenCreationRequest;
+import com.klarna.rest.api.payments.model.PaymentsCustomerTokenCreationResponse;
+import com.klarna.rest.api.payments.model.PaymentsOrder;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -53,7 +56,7 @@ public class OrdersApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public Order create(String authorizationToken, CreateOrderRequest order)
+    public PaymentsOrder create(String authorizationToken, PaymentsCreateOrderRequest order)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, authorizationToken, "order");
         final byte[] data = objectMapper.writeValueAsBytes(order);
@@ -63,7 +66,7 @@ public class OrdersApi extends BaseApi {
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), Order.class);
+        return fromJson(response.getBody(), PaymentsOrder.class);
     }
 
     /**
@@ -80,7 +83,8 @@ public class OrdersApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public CustomerTokenCreationResponse generateToken(String authorizationToken, CustomerTokenCreationRequest request)
+    public PaymentsCustomerTokenCreationResponse generateToken(
+            String authorizationToken, PaymentsCustomerTokenCreationRequest request)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, authorizationToken, "customer-token");
         final byte[] data = objectMapper.writeValueAsBytes(request);
@@ -90,7 +94,7 @@ public class OrdersApi extends BaseApi {
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), CustomerTokenCreationResponse.class);
+        return fromJson(response.getBody(), PaymentsCustomerTokenCreationResponse.class);
     }
 
     /**

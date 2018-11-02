@@ -18,7 +18,7 @@ package com.klarna.rest.api.payments;
 
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
-import com.klarna.rest.model.payments.*;
+import com.klarna.rest.api.payments.model.*;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -28,7 +28,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -52,29 +52,20 @@ public class OrdersApiTest extends TestCase {
     public void testCreate() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
         final String payload = "{ \"order_id\": \"0b1d9815\", \"redirect_url\": \"https://credit.klarna.com/v1/sessions/0b1d9815-165e-42e2-8867-35bc03789e00/redirect\", \"fraud_status\": \"ACCEPTED\" }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        CreateOrderRequest data = new CreateOrderRequest(){
-            {
-                setOrderAmount(100L);
-                setAutoCapture(false);
-                setMerchantUrls(new MerchantUrls(){
-                    {
-                        setConfirmation("https://example.com/confirm");
-                    }
-                });
-            }
-        };
+        PaymentsCreateOrderRequest data = new PaymentsCreateOrderRequest()
+            .orderAmount(100L)
+            .autoCapture(false)
+            .merchantUrls(new PaymentsMerchantUrls()
+                .confirmation("https://example.com/confirm")
+            );
 
         OrdersApi api = new OrdersApi(transport);
-        Order order = api.create("auth-token", data);
+        PaymentsOrder order = api.create("auth-token", data);
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
         assertEquals("/payments/v1/authorizations/auth-token/order", transport.requestPath);
@@ -90,24 +81,17 @@ public class OrdersApiTest extends TestCase {
     public void testGenerateToken() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
         final String payload = "{ \"token_id\": \"0b1d9815\", \"redirect_url\": \"https://credit.klarna.com/v1/sessions/0b1d9815-165e-42e2-8867-35bc03789e00/redirect\" }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        CustomerTokenCreationRequest data = new CustomerTokenCreationRequest(){
-            {
-                setIntendedUse(IntendedUseEnum.SUBSCRIPTION);
-                setPurchaseCountry("US");
-            }
-        };
+        PaymentsCustomerTokenCreationRequest data = new PaymentsCustomerTokenCreationRequest()
+            .intendedUse(PaymentsCustomerTokenCreationRequest.IntendedUseEnum.SUBSCRIPTION)
+            .purchaseCountry("US");
 
         OrdersApi api = new OrdersApi(transport);
-        CustomerTokenCreationResponse token = api.generateToken("auth-token", data);
+        PaymentsCustomerTokenCreationResponse token = api.generateToken("auth-token", data);
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
         assertEquals("/payments/v1/authorizations/auth-token/customer-token", transport.requestPath);

@@ -29,6 +29,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -52,11 +53,7 @@ public class SessionsApiTest extends TestCase {
     public void testGetHPPSession() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
 
         final String payload = "{ \"authorization_token\": \"b4bd3423-24e3\", " +
@@ -77,11 +74,7 @@ public class SessionsApiTest extends TestCase {
     public void testDistributeLink() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
 
         SessionsApi api = new SessionsApi(transport);
@@ -107,11 +100,7 @@ public class SessionsApiTest extends TestCase {
     public void testCreateHPPSession() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(201);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
 
         final String payload = "{" +

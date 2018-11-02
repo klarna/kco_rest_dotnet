@@ -18,10 +18,8 @@ package com.klarna.rest.api.order_management;
 
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
-import com.klarna.rest.model.order_management.Capture;
-import com.klarna.rest.model.order_management.CaptureObject;
-import com.klarna.rest.model.order_management.Refund;
-import com.klarna.rest.model.order_management.RefundObject;
+import com.klarna.rest.api.order_management.model.OrderManagementRefund;
+import com.klarna.rest.api.order_management.model.OrderManagementRefundObject;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -32,6 +30,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -55,29 +54,14 @@ public class RefundsApiTest extends TestCase {
     public void testCreate() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(201);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
-            put("Location", new ArrayList<String>(){
-                {
-                    add("https://example.com/new-location");
-                }
-            });
-            put("Refund-Id", new ArrayList<String>(){
-                {
-                    add("new-refund-id");
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
+            put("Location", Arrays.asList("https://example.com/new-location"));
+            put("Refund-Id", Arrays.asList("new-refund-id"));
         }});
 
-        RefundObject data = new RefundObject(){
-            {
-                setRefundedAmount(100L);
-                setDescription("test");
-            }
-        };
+        OrderManagementRefundObject data = new OrderManagementRefundObject()
+            .refundedAmount(100L)
+            .description("test");
 
         RefundsApi api = new RefundsApi(transport, "my-order-id");
         String refundId = api.create(data);
@@ -99,18 +83,14 @@ public class RefundsApiTest extends TestCase {
     public void testFetchById() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
 
         final String payload = "{ \"refund_id\": \"4ba29b50-be7b-44f5-a492-113e6a865e22\", \"refunded_amount\": 100 }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
         RefundsApi api = new RefundsApi(transport, "my-order-id");
-        Refund refund = api.fetch("my-refund-id");
+        OrderManagementRefund refund = api.fetch("my-refund-id");
 
         assertEquals("4ba29b50-be7b-44f5-a492-113e6a865e22", refund.getRefundId());
         Long amount = 100L;

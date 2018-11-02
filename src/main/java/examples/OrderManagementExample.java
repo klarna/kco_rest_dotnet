@@ -24,10 +24,11 @@ import com.klarna.rest.ContentTypeException;
 import com.klarna.rest.ProtocolException;
 import com.klarna.rest.api.order_management.OrdersApi;
 import com.klarna.rest.api.order_management.RefundsApi;
-import com.klarna.rest.model.order_management.*;
+import com.klarna.rest.api.order_management.model.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -54,7 +55,7 @@ public class OrderManagementExample {
             OrdersApi ordersApi = new OrdersApi(transport);
 
             try {
-                Order order = ordersApi.fetch(orderId);
+                OrderManagementOrder order = ordersApi.fetch(orderId);
                 System.out.println(order);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {
@@ -144,20 +145,17 @@ public class OrderManagementExample {
             OrdersApi ordersApi = new OrdersApi(transport);
 
             try {
-                final Address address = new Address(){
-                    {
-                        setEmail("user@example.com");
-                        setPhone("57-3895734");
-                        setGivenName("John");
-                        setFamilyName("Smith");
-                    }
-                };
-                ordersApi.updateCustomerAddresses(orderId, new UpdateConsumer(){
-                    {
-                        setBillingAddress(address);
-                        setShippingAddress(address);
-                    }
-                });
+                final OrderManagementAddress address = new OrderManagementAddress()
+                    .email("user@example.com")
+                    .phone("57-3895734")
+                    .givenName("John")
+                    .familyName("Smith");
+
+                ordersApi.updateCustomerAddresses(orderId, new OrderManagementUpdateConsumer()
+                    .billingAddress(address)
+                    .shippingAddress(address)
+                );
+
                 System.out.println("Customer details have been updated");
 
             } catch (IOException | ProtocolException | ContentTypeException e) {
@@ -217,12 +215,11 @@ public class OrderManagementExample {
             OrdersApi ordersApi = new OrdersApi(transport);
 
             try {
-                ordersApi.updateMerchantReferences(orderId, new UpdateMerchantReferences(){
-                    {
-                        setMerchantReference1("15632423");
-                        setMerchantReference2("special order");
-                    }
-                });
+                ordersApi.updateMerchantReferences(orderId, new OrderManagementUpdateMerchantReferences()
+                    .merchantReference1("15632423")
+                    .merchantReference2("special order")
+                );
+
                 System.out.println("Merchant references have been updated");
 
             } catch (IOException | ProtocolException | ContentTypeException e) {
@@ -266,7 +263,7 @@ public class OrderManagementExample {
     /**
      * Set new order amount and order lines.
      */
-    public static class SetOrderAmountAndOrderLines {
+    public static class setOrderAmountAndOrderLines {
 
         /**
          * Runs the example code.
@@ -282,29 +279,24 @@ public class OrderManagementExample {
             OrdersApi ordersApi = new OrdersApi(transport);
 
             try {
-                final List<OrderLine> lines = new ArrayList<OrderLine>() {
-                    {
-                        add(new OrderLine() {
-                            {
-                                setType("physical");
-                                setReference("123050");
-                                setName("Tomatoes");
-                                setQuantity(10L);
-                                setQuantityUnit("kg");
-                                setUnitPrice(600L);
-                                setTaxRate(2500);
-                                setTotalAmount(6000L);
-                                setTotalTaxAmount(1200L);
-                            }
-                        });
-                    }};
-                final UpdateAuthorization orderData = new UpdateAuthorization(){
-                    {
-                        setDescription("Removed bad bananas");
-                        setOrderAmount(6000L);
-                        setOrderLines(lines);
-                    }
-                };
+                final List<OrderManagementOrderLine> lines = Arrays.asList(
+                    new OrderManagementOrderLine()
+                        .type("physical")
+                        .reference("123050")
+                        .name("Tomatoes")
+                        .quantity(10L)
+                        .quantityUnit("kg")
+                        .unitPrice(600L)
+                        .taxRate(2500)
+                        .totalAmount(6000L)
+                        .totalTaxAmount(1200L)
+                );
+
+                final OrderManagementUpdateAuthorization orderData = new OrderManagementUpdateAuthorization()
+                    .description("Removed bad bananas")
+                    .orderAmount(6000L)
+                    .orderLines(lines);
+
                 ordersApi.setOrderAmountAndOrderLines(orderId, orderData);
                 System.out.println("New order amount and order lines have been set");
 
@@ -335,29 +327,24 @@ public class OrderManagementExample {
             RefundsApi refundsApi = new RefundsApi(transport, orderId);
 
             try {
-                final List<OrderLine> lines = new ArrayList<OrderLine>() {
-                    {
-                        add(new OrderLine() {
-                            {
-                                setType("physical");
-                                setReference("123050");
-                                setName("Tomatoes");
-                                setQuantity(5L);
-                                setQuantityUnit("kg");
-                                setUnitPrice(600L);
-                                setTaxRate(2500);
-                                setTotalAmount(3000L);
-                                setTotalTaxAmount(750L);
-                            }
-                        });
-                    }};
-                final RefundObject refund = new RefundObject(){
-                    {
-                        setRefundedAmount(3000L);
-                        setDescription("Refunding half the tomatoes");
-                        setOrderLines(lines);
-                    }
-                };
+                final List<OrderManagementOrderLine> lines = Arrays.asList(
+                    new OrderManagementOrderLine()
+                        .type("physical")
+                        .reference("123050")
+                        .name("Tomatoes")
+                        .quantity(5L)
+                        .quantityUnit("kg")
+                        .unitPrice(600L)
+                        .taxRate(2500)
+                        .totalAmount(3000L)
+                        .totalTaxAmount(750L)
+                );
+
+                final OrderManagementRefundObject refund = new OrderManagementRefundObject()
+                    .refundedAmount(3000L)
+                    .description("Refunding half the tomatoes")
+                    .orderLines(lines);
+
                 refundsApi.create(refund);
                 System.out.println("Refund has been created");
 
@@ -366,7 +353,7 @@ public class OrderManagementExample {
                 System.out.println("Refund ID: " + refundId);
 
                 // Also we got back a new Location header, so we can just use it by calling fetch method
-                Refund createdRefund = refundsApi.fetch();
+                OrderManagementRefund createdRefund = refundsApi.fetch();
                 System.out.println(createdRefund);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {
@@ -394,7 +381,7 @@ public class OrderManagementExample {
             RefundsApi refundsApi = new RefundsApi(transport, orderId);
 
             try {
-                Refund refund = refundsApi.fetch(refundId);
+                OrderManagementRefund refund = refundsApi.fetch(refundId);
                 System.out.println(refund);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {

@@ -19,10 +19,10 @@ package examples;
 import com.klarna.rest.*;
 import com.klarna.rest.api.payments.OrdersApi;
 import com.klarna.rest.api.payments.SessionsApi;
-import com.klarna.rest.model.payments.*;
+import com.klarna.rest.api.payments.model.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -47,50 +47,40 @@ public class PaymentsExample {
             SessionsApi sessionsApi = new SessionsApi(transport);
 
             try {
-                final List<OrderLine> lines = new ArrayList<OrderLine>() {
-                    {
-                        add(new OrderLine() {
-                            {
-                                setType("physical");
-                                setReference("123050");
-                                setName("Tomatoes");
-                                setQuantity(10L);
-                                setQuantityUnit("kg");
-                                setUnitPrice(600L);
-                                setTaxRate(2500L);
-                                setTotalAmount(6000L);
-                                setTotalTaxAmount(1200L);
-                            }
-                        });
-                        add(new OrderLine() {
-                            {
-                                setType("physical");
-                                setReference("543670");
-                                setName("Bananas");
-                                setQuantity(1L);
-                                setQuantityUnit("bag");
-                                setUnitPrice(5000L);
-                                setTaxRate(2500L);
-                                setTotalAmount(4000L);
-                                setTotalDiscountAmount(1000L);
-                                setTotalTaxAmount(800L);
-                            }
-                        });
+                final List<PaymentsOrderLine> lines = Arrays.asList(
+                    new PaymentsOrderLine()
+                        .type("physical")
+                        .reference("123050")
+                        .name("Tomatoes")
+                        .quantity(10L)
+                        .quantityUnit("kg")
+                        .unitPrice(600L)
+                        .taxRate(2500L)
+                        .totalAmount(6000L)
+                        .totalTaxAmount(1200L),
 
-                    }
-                };
+                    new PaymentsOrderLine()
+                        .type("physical")
+                        .reference("543670")
+                        .name("Bananas")
+                        .quantity(1L)
+                        .quantityUnit("bag")
+                        .unitPrice(5000L)
+                        .taxRate(2500L)
+                        .totalAmount(4000L)
+                        .totalDiscountAmount(1000L)
+                        .totalTaxAmount(800L)
+                );
 
-                Session sessionRequest = new Session(){
-                    {
-                        setPurchaseCountry("gb");
-                        setPurchaseCurrency("gbp");
-                        setLocale("en-gb");
-                        setOrderAmount(10000L);
-                        setOrderTaxAmount(2000L);
-                        setOrderLines(lines);
-                    }
-                };
-                MerchantSession session = sessionsApi.create(sessionRequest);
+                PaymentsSession sessionRequest = new PaymentsSession()
+                    .purchaseCountry("gb")
+                    .purchaseCurrency("gbp")
+                    .locale("en-gb")
+                    .orderAmount(10000L)
+                    .orderTaxAmount(2000L)
+                    .orderLines(lines);
+
+                PaymentsMerchantSession session = sessionsApi.create(sessionRequest);
                 System.out.println(session);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {
@@ -120,7 +110,7 @@ public class PaymentsExample {
             SessionsApi sessionsApi = new SessionsApi(transport);
 
             try {
-                Session session = sessionsApi.fetch(sessionId);
+                PaymentsSession session = sessionsApi.fetch(sessionId);
                 System.out.println(session);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {
@@ -150,36 +140,28 @@ public class PaymentsExample {
             SessionsApi sessionsApi = new SessionsApi(transport);
 
             try {
-                final List<OrderLine> lines = new ArrayList<OrderLine>() {
-                    {
-                        add(new OrderLine() {
-                            {
-                                setType("physical");
-                                setReference("543670");
-                                setName("New updated bananas");
-                                setQuantity(1L);
-                                setQuantityUnit("bag");
-                                setUnitPrice(5000L);
-                                setTaxRate(2500L);
-                                setTotalAmount(4000L);
-                                setTotalDiscountAmount(1000L);
-                                setTotalTaxAmount(800L);
-                            }
-                        });
+                final List<PaymentsOrderLine> lines = Arrays.asList(
+                    new PaymentsOrderLine()
+                        .type("physical")
+                        .reference("543670")
+                        .name("New updated bananas")
+                        .quantity(1L)
+                        .quantityUnit("bag")
+                        .unitPrice(5000L)
+                        .taxRate(2500L)
+                        .totalAmount(4000L)
+                        .totalDiscountAmount(1000L)
+                        .totalTaxAmount(800L)
+                );
 
-                    }
-                };
+                PaymentsSession sessionRequest = new PaymentsSession()
+                    .purchaseCountry("gb")
+                    .purchaseCurrency("gbp")
+                    .locale("en-gb")
+                    .orderAmount(4000L)
+                    .orderTaxAmount(800L)
+                    .orderLines(lines);
 
-                Session sessionRequest = new Session(){
-                    {
-                        setPurchaseCountry("gb");
-                        setPurchaseCurrency("gbp");
-                        setLocale("en-gb");
-                        setOrderAmount(4000L);
-                        setOrderTaxAmount(800L);
-                        setOrderLines(lines);
-                    }
-                };
                 sessionsApi.update(sessionId, sessionRequest);
                 System.out.println("Order has been updated");
 
@@ -210,68 +192,54 @@ public class PaymentsExample {
             OrdersApi ordersApi = new OrdersApi(transport);
 
             try {
-                final Address address = new Address(){
-                    {
-                        setGivenName("John");
-                        setFamilyName("Doe");
-                        setEmail("johndoe@example.com");
-                        setTitle("Mr");
-                        setStreetAddress("13 New Burlington St");
-                        setStreetAddress2("Apt 214");
-                        setPostalCode("W13 3BG");
-                        setCity("London");
-                        setPhone("01895808221");
-                        setCountry("GB");
-                    }
-                };
+                final PaymentsAddress address = new PaymentsAddress()
+                    .givenName("John")
+                    .familyName("Doe")
+                    .email("johndoe@example.com")
+                    .title("Mr")
+                    .streetAddress("13 New Burlington St")
+                    .streetAddress2("Apt 214")
+                    .postalCode("W13 3BG")
+                    .city("London")
+                    .phone("01895808221")
+                    .country("GB");
 
-                final List<OrderLine> lines = new ArrayList<OrderLine>() {
-                    {
-                        add(new OrderLine() {
-                            {
-                                setType("physical");
-                                setReference("123050");
-                                setName("Tomatoes");
-                                setQuantity(10L);
-                                setQuantityUnit("kg");
-                                setUnitPrice(600L);
-                                setTaxRate(2500L);
-                                setTotalAmount(6000L);
-                                setTotalTaxAmount(1200L);
-                            }
-                        });
-                        add(new OrderLine() {
-                            {
-                                setType("physical");
-                                setReference("543670");
-                                setName("Bananas");
-                                setQuantity(1L);
-                                setQuantityUnit("bag");
-                                setUnitPrice(5000L);
-                                setTaxRate(2500L);
-                                setTotalAmount(4000L);
-                                setTotalDiscountAmount(1000L);
-                                setTotalTaxAmount(800L);
-                            }
-                        });
+                final List<PaymentsOrderLine> lines = Arrays.asList(
+                    new PaymentsOrderLine()
+                        .type("physical")
+                        .reference("123050")
+                        .name("Tomatoes")
+                        .quantity(10L)
+                        .quantityUnit("kg")
+                        .unitPrice(600L)
+                        .taxRate(2500L)
+                        .totalAmount(6000L)
+                        .totalTaxAmount(1200L),
 
-                    }
-                };
+                    new PaymentsOrderLine()
+                        .type("physical")
+                        .reference("543670")
+                        .name("Bananas")
+                        .quantity(1L)
+                        .quantityUnit("bag")
+                        .unitPrice(5000L)
+                        .taxRate(2500L)
+                        .totalAmount(4000L)
+                        .totalDiscountAmount(1000L)
+                        .totalTaxAmount(800L)
+                );
 
-                CreateOrderRequest request = new CreateOrderRequest(){
-                    {
-                        setBillingAddress(address);
-                        setShippingAddress(address);
-                        setPurchaseCountry("GB");
-                        setPurchaseCurrency("GBP");
-                        setLocale("en-GB");
-                        setOrderAmount(10000L);
-                        setOrderTaxAmount(2000L);
-                        setOrderLines(lines);
-                    }
-                };
+                PaymentsCreateOrderRequest request = new PaymentsCreateOrderRequest()
+                    .billingAddress(address)
+                    .shippingAddress(address)
+                    .purchaseCountry("GB")
+                    .purchaseCurrency("GBP")
+                    .locale("en-GB")
+                    .orderAmount(10000L)
+                    .orderTaxAmount(2000L)
+                    .orderLines(lines);
 
-                Order order = ordersApi.create(authorizationToken, request);
+                PaymentsOrder order = ordersApi.create(authorizationToken, request);
                 System.out.println(order);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {
@@ -301,38 +269,31 @@ public class PaymentsExample {
             OrdersApi ordersApi = new OrdersApi(transport);
 
             try {
-                final Address address = new Address(){
-                    {
-                        setGivenName("John");
-                        setFamilyName("Doe");
-                        setEmail("johndoe@example.com");
-                        setTitle("Mr");
-                        setStreetAddress("13 New Burlington St");
-                        setStreetAddress2("Apt 214");
-                        setPostalCode("W13 3BG");
-                        setCity("London");
-                        setPhone("01895808221");
-                        setCountry("GB");
-                    }
-                };
-                CustomerTokenCreationRequest request = new CustomerTokenCreationRequest(){
-                    {
-                        setPurchaseCountry("GB");
-                        setPurchaseCurrency("GBP");
-                        setLocale("en-GB");
-                        setBillingAddress(address);
-                        setCustomer(new Customer(){
-                            {
-                                setDateOfBirth("1970-01-01");
-                                setGender("male");
-                            }
-                        });
-                        setDescription("For testing purposes");
-                        setIntendedUse(IntendedUseEnum.SUBSCRIPTION);
-                    }
-                };
+                final PaymentsAddress address = new PaymentsAddress()
+                    .givenName("John")
+                    .familyName("Doe")
+                    .email("johndoe@example.com")
+                    .title("Mr")
+                    .streetAddress("13 New Burlington St")
+                    .streetAddress2("Apt 214")
+                    .postalCode("W13 3BG")
+                    .city("London")
+                    .phone("01895808221")
+                    .country("GB");
 
-                CustomerTokenCreationResponse response = ordersApi.generateToken(authorizationToken, request);
+                PaymentsCustomerTokenCreationRequest request = new PaymentsCustomerTokenCreationRequest()
+                    .purchaseCountry("GB")
+                    .purchaseCurrency("GBP")
+                    .locale("en-GB")
+                    .billingAddress(address)
+                    .customer(new PaymentsCustomer()
+                        .dateOfBirth("1970-01-01")
+                        .gender("male")
+                    )
+                    .description("For testing purposes")
+                    .intendedUse(PaymentsCustomerTokenCreationRequest.IntendedUseEnum.SUBSCRIPTION);
+
+                PaymentsCustomerTokenCreationResponse response = ordersApi.generateToken(authorizationToken, request);
                 System.out.println(response);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {

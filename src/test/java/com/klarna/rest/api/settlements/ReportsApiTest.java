@@ -18,7 +18,6 @@ package com.klarna.rest.api.settlements;
 
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
-import com.klarna.rest.model.settlements.TransactionCollection;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -26,12 +25,8 @@ import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import javax.ws.rs.core.MediaType;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import static org.mockito.Mockito.*;
 
@@ -51,11 +46,7 @@ public class ReportsApiTest extends TestCase {
     public void testGetCSVPayoutReport() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add("text/csv");
-                }
-            });
+            put("Content-Type", Arrays.asList("text/csv"));
         }});
         final String payload = "a;b;c\n1;2;3";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
@@ -75,11 +66,7 @@ public class ReportsApiTest extends TestCase {
     public void testGetCSVSummary() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add("text/csv");
-                }
-            });
+            put("Content-Type", Arrays.asList("text/csv"));
         }});
         final String payload = "a;b;c\n1;2;3";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
@@ -99,11 +86,7 @@ public class ReportsApiTest extends TestCase {
     public void testGetPDFPayoutSummaryReport() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add("application/pdf");
-                }
-            });
+            put("Content-Type", Arrays.asList("application/pdf"));
         }});
         final String payload = "a;b;c\n1;2;3";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
@@ -123,11 +106,7 @@ public class ReportsApiTest extends TestCase {
     public void testGetPDFSummary() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add("application/pdf");
-                }
-            });
+            put("Content-Type", Arrays.asList("application/pdf"));
         }});
         final String payload = "a;b;c\n1;2;3";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));

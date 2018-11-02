@@ -18,7 +18,9 @@ package com.klarna.rest.api.payments;
 
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
-import com.klarna.rest.model.payments.*;
+import com.klarna.rest.api.payments.model.PaymentsMerchantSession;
+import com.klarna.rest.api.payments.model.PaymentsMerchantUrls;
+import com.klarna.rest.api.payments.model.PaymentsSession;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -28,7 +30,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -50,28 +52,19 @@ public class SessionsApiTest extends TestCase {
     public void testCreate() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
         final String payload = "{ \"session_id\": \"0b1d9815-165e-42e2\", \"client_token\": \"eyJhb.ewogI\", \"payment_method_categories\": [ { \"identifier\": \"pay_later\", \"name\": \"Pay Later\" } ] }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        Session data = new Session(){
-            {
-                setOrderAmount(100L);
-                setMerchantUrls(new MerchantUrls(){
-                    {
-                        setConfirmation("https://example.com/confirm");
-                    }
-                });
-            }
-        };
+        PaymentsSession data = new PaymentsSession()
+            .orderAmount(100L)
+            .merchantUrls(new PaymentsMerchantUrls()
+                .confirmation("https://example.com/confirm")
+            );
 
         SessionsApi api = new SessionsApi(transport);
-        MerchantSession session = api.create(data);
+        PaymentsMerchantSession session = api.create(data);
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
         assertEquals("/payments/v1/sessions", transport.requestPath);
@@ -88,40 +81,31 @@ public class SessionsApiTest extends TestCase {
     public void testFetch() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
         final String payload = "{ \"purchase_country\": \"US\", \"order_amount\": 100, \"status\": \"incomplete\", \"client_token\": \"eyJhbGciOi.ewogIC\" }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
         SessionsApi api = new SessionsApi(transport);
-        Session session = api.fetch("my-session-id");
+        PaymentsSession session = api.fetch("my-session-id");
 
         verify(transport.conn, times(1)).setRequestMethod("GET");
         assertEquals("/payments/v1/sessions/my-session-id", transport.requestPath);
         assertEquals("US", session.getPurchaseCountry());
         Long amount = 100L;
         assertEquals(amount, session.getOrderAmount());
-        assertEquals(Session.StatusEnum.INCOMPLETE, session.getStatus());
+        assertEquals(PaymentsSession.StatusEnum.INCOMPLETE, session.getStatus());
     }
 
     @Test
     public void testUpdate() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(204);
 
-        Session data = new Session(){
-            {
-                setOrderAmount(100L);
-                setMerchantUrls(new MerchantUrls(){
-                    {
-                        setConfirmation("https://example.com/confirm");
-                    }
-                });
-            }
-        };
+        PaymentsSession data = new PaymentsSession()
+            .orderAmount(100L)
+            .merchantUrls(new PaymentsMerchantUrls()
+                .confirmation("https://example.com/confirm")
+            );
 
         SessionsApi api = new SessionsApi(transport);
         api.update("my-session-id", data);

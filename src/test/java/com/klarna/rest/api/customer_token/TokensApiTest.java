@@ -31,6 +31,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -54,11 +55,7 @@ public class TokensApiTest extends TestCase {
     public void testFetchDetails() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
 
         final String payload = "{\"payment_method_type\": \"INVOICE\", \"status\": \"ACTIVE\"}";
@@ -77,11 +74,7 @@ public class TokensApiTest extends TestCase {
     public void testCreateOrder() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
 
         final String payload = "{\"fraud_status\": \"ACCEPTED\", \"order_id\": \"order-id-123\"}";
@@ -89,12 +82,10 @@ public class TokensApiTest extends TestCase {
 
         TokensApi api = new TokensApi(transport, "fake-token-id");
 
-        TokenCustomerTokenOrder data = new TokenCustomerTokenOrder(){
-            {
-                setOrderAmount(100L);
-                setPurchaseCurrency("EUR");
-            }
-        };
+        TokenCustomerTokenOrder data = new TokenCustomerTokenOrder()
+            .orderAmount(100L)
+            .purchaseCurrency("EUR");
+
         TokenOrder order = api.createOrder(data);
 
         assertEquals("ACCEPTED", order.getFraudStatus());

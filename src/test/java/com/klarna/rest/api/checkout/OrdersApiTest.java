@@ -28,6 +28,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import javax.ws.rs.core.MediaType;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -51,23 +52,17 @@ public class OrdersApiTest extends TestCase {
     public void testCreateOrder() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(201);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
 
         final String payload = "{\"order_amount\": 200}";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        CheckoutOrder data = new CheckoutOrder(){
-            {
-                setOrderAmount(100L);
-                setLocale("en-GB");
-                setRecurring(true);
-            }
-        };
+        CheckoutOrder data = new CheckoutOrder()
+            .orderAmount(100L)
+            .locale("en-GB")
+            .recurring(true);
+
 
         OrdersApi api = new OrdersApi(transport);
         CheckoutOrder order = api.create(data);
@@ -100,11 +95,7 @@ public class OrdersApiTest extends TestCase {
     public void testCreateOrderWrongContentType() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(201);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_OCTET_STREAM);
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_OCTET_STREAM));
         }});
 
         OrdersApi api = new OrdersApi(transport);
@@ -115,11 +106,7 @@ public class OrdersApiTest extends TestCase {
     public void testFetchOrderByID() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
 
         final String payload = "{\"order_amount\": 100}";
@@ -137,16 +124,8 @@ public class OrdersApiTest extends TestCase {
     public void testFetchOrderByLocation() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
-            put("Location", new ArrayList<String>(){
-                {
-                    add("https://example.com/order-123");
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
+            put("Location", Arrays.asList("https://example.com/order-123"));
         }});
 
         final String payload = "{\"order_amount\": 100}";
@@ -173,23 +152,16 @@ public class OrdersApiTest extends TestCase {
     public void testUpdateOrder() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
 
         final String payload = "{\"order_amount\": 500, \"locale\": \"en-GB\", \"recurring\": false}";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        CheckoutOrder data = new CheckoutOrder(){
-            {
-                setOrderAmount(500L);
-                setLocale("en-GB");
-                setRecurring(false);
-            }
-        };
+        CheckoutOrder data = new CheckoutOrder()
+            .orderAmount(500L)
+            .locale("en-GB")
+            .recurring(false);
 
         OrdersApi api = new OrdersApi(transport);
         CheckoutOrder order = api.update("my-order-id", data);

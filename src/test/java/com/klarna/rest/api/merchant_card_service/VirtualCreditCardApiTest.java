@@ -30,6 +30,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -53,11 +54,7 @@ public class VirtualCreditCardApiTest extends TestCase {
     public void testCreateSettlement() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(201);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
 
         final String payload = "{ " +
@@ -78,12 +75,10 @@ public class VirtualCreditCardApiTest extends TestCase {
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
         VirtualCreditCardApi api = new VirtualCreditCardApi(transport);
-        CardServiceSettlementRequest data = new CardServiceSettlementRequest() {
-            {
-                setPromiseId("ee4a8e3a-9dfd-49e0-9ac8-ea2b6c76408c");
-                setKeyId("16e4b85e-899b-4427-a39f-07a496e9515b");
-            }
-        };
+        CardServiceSettlementRequest data = new CardServiceSettlementRequest()
+            .promiseId("ee4a8e3a-9dfd-49e0-9ac8-ea2b6c76408c")
+            .keyId("16e4b85e-899b-4427-a39f-07a496e9515b");
+
         CardServiceSettlementResponse settlement = api.createSettlement(data);
 
         assertEquals("b0ec0bbd-534c-4b1c-b28a-628bf33c3324", settlement.getSettlementId());
@@ -100,11 +95,7 @@ public class VirtualCreditCardApiTest extends TestCase {
     public void testRetrieveExistingSettlement() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
 
         final String payload = "{ " +
@@ -126,11 +117,7 @@ public class VirtualCreditCardApiTest extends TestCase {
     public void testRetrieveSettledOrderSettlement() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
 
         final String payload = "{ " +

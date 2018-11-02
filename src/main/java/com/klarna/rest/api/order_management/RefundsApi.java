@@ -18,8 +18,8 @@ package com.klarna.rest.api.order_management;
 
 import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;
-import com.klarna.rest.model.order_management.Refund;
-import com.klarna.rest.model.order_management.RefundObject;
+import com.klarna.rest.api.order_management.model.OrderManagementRefund;
+import com.klarna.rest.api.order_management.model.OrderManagementRefundObject;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response.Status;
@@ -60,7 +60,7 @@ public class RefundsApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public String create(RefundObject refund) throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public String create(OrderManagementRefundObject refund) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(refund);
         final ApiResponse response = this.post(PATH, data);
 
@@ -84,14 +84,14 @@ public class RefundsApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public Refund fetch(String refundId) throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public OrderManagementRefund fetch(String refundId) throws ApiException, ProtocolException, ContentTypeException, IOException {
         ApiResponse response = this.get(PATH + "/" + refundId);
 
         response.expectSuccessful()
                 .expectStatusCode(Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), Refund.class);
+        return fromJson(response.getBody(), OrderManagementRefund.class);
     }
 
     /**
@@ -106,7 +106,7 @@ public class RefundsApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public Refund fetch() throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public OrderManagementRefund fetch() throws ApiException, ProtocolException, ContentTypeException, IOException {
         if (this.location == null) {
             throw new IOException("Unknown location");
         }
@@ -116,6 +116,6 @@ public class RefundsApi extends BaseApi {
                 .expectStatusCode(Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), Refund.class);
+        return fromJson(response.getBody(), OrderManagementRefund.class);
     }
 }

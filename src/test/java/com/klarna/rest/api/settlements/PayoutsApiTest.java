@@ -18,9 +18,9 @@ package com.klarna.rest.api.settlements;
 
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
-import com.klarna.rest.model.settlements.Payout;
-import com.klarna.rest.model.settlements.PayoutCollection;
-import com.klarna.rest.model.settlements.PayoutSummary;
+import com.klarna.rest.api.settlements.model.SettlementsPayout;
+import com.klarna.rest.api.settlements.model.SettlementsPayoutCollection;
+import com.klarna.rest.api.settlements.model.SettlementsPayoutSummary;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -30,7 +30,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -54,21 +54,17 @@ public class PayoutsApiTest extends TestCase {
     public void testGetPayout() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
 
         final String payload = "{ \"totals\": { \"commission_amount\": 550 }, \"payment_reference\": \"XISA93DJ\", \"payout_date\": \"2016-12-14T07:52:26Z\", \"merchant_settlement_type\": \"NET\" }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
         PayoutsApi api = new PayoutsApi(transport);
-        Payout payout = api.getPayout("payment-ref");
+        SettlementsPayout payout = api.getPayout("payment-ref");
 
         assertEquals("XISA93DJ", payout.getPaymentReference());
-        assertEquals(Payout.MerchantSettlementTypeEnum.NET, payout.getMerchantSettlementType());
+        assertEquals(SettlementsPayout.MerchantSettlementTypeEnum.NET, payout.getMerchantSettlementType());
         assertEquals("2016-12-14T07:52:26Z", payout.getPayoutDate().toString());
 
         verify(transport.conn, times(1)).setRequestMethod("GET");
@@ -79,18 +75,14 @@ public class PayoutsApiTest extends TestCase {
     public void testGetAllPayouts() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
 
         final String payload = "{ \"payouts\": [ { \"totals\": { \"commission_amount\": 550 }, \"payment_reference\": \"XISA93DJ\" } ], \"pagination\": { \"count\": 10 } }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
         PayoutsApi api = new PayoutsApi(transport);
-        PayoutCollection payouts = api.getAllPayouts();
+        SettlementsPayoutCollection payouts = api.getAllPayouts();
 
         Long count = 10L;
         assertEquals(count, payouts.getPagination().getCount());
@@ -106,11 +98,7 @@ public class PayoutsApiTest extends TestCase {
     public void testGetAllPayoutsWithParams() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
 
         HashMap<String, String> params = new HashMap<>();
@@ -129,11 +117,7 @@ public class PayoutsApiTest extends TestCase {
     public void testGetSumamry() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
-            put("Content-Type", new ArrayList<String>(){
-                {
-                    add(MediaType.APPLICATION_JSON);
-                }
-            });
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
         final String payload = "[ { \"summary_total_fee_correction_amount\": 550, \"summary_payout_date_start\": \"2016-12-14T07:52:26Z\" } ]";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
@@ -143,7 +127,7 @@ public class PayoutsApiTest extends TestCase {
         params.put("end_date", "2018-12-14T07:52:26Z");
 
         PayoutsApi api = new PayoutsApi(transport);
-        PayoutSummary[] summary = api.getSummary(params);
+        SettlementsPayoutSummary[] summary = api.getSummary(params);
         Long fee = 550L;
         assertEquals(fee, summary[0].getSummaryTotalFeeCorrectionAmount());
         assertEquals("2016-12-14T07:52:26Z", summary[0].getSummaryPayoutDateStart().toString());

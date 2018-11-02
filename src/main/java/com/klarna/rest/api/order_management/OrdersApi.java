@@ -18,10 +18,10 @@ package com.klarna.rest.api.order_management;
 
 import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;
-import com.klarna.rest.model.order_management.Order;
-import com.klarna.rest.model.order_management.UpdateAuthorization;
-import com.klarna.rest.model.order_management.UpdateConsumer;
-import com.klarna.rest.model.order_management.UpdateMerchantReferences;
+import com.klarna.rest.api.order_management.model.OrderManagementOrder;
+import com.klarna.rest.api.order_management.model.OrderManagementUpdateAuthorization;
+import com.klarna.rest.api.order_management.model.OrderManagementUpdateConsumer;
+import com.klarna.rest.api.order_management.model.OrderManagementUpdateMerchantReferences;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response.Status;
@@ -54,14 +54,14 @@ public class OrdersApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public Order fetch(String orderId) throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public OrderManagementOrder fetch(String orderId) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final ApiResponse response = this.get(PATH + '/' + orderId);
 
         response.expectSuccessful()
                 .expectStatusCode(Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), Order.class);
+        return fromJson(response.getBody(), OrderManagementOrder.class);
     }
 
     /**
@@ -119,7 +119,7 @@ public class OrdersApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public void updateCustomerAddresses(String orderId, UpdateConsumer customerAddress)
+    public void updateCustomerAddresses(String orderId, OrderManagementUpdateConsumer customerAddress)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "customer-details");
         final byte[] data = objectMapper.writeValueAsBytes(customerAddress);
@@ -165,7 +165,7 @@ public class OrdersApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public void updateMerchantReferences(String orderId, UpdateMerchantReferences references)
+    public void updateMerchantReferences(String orderId, OrderManagementUpdateMerchantReferences references)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "merchant-references");
         final byte[] data = objectMapper.writeValueAsBytes(references);
@@ -209,7 +209,7 @@ public class OrdersApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public void setOrderAmountAndOrderLines(String orderId, UpdateAuthorization orderData)
+    public void setOrderAmountAndOrderLines(String orderId, OrderManagementUpdateAuthorization orderData)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "authorization");
         final byte[] data = objectMapper.writeValueAsBytes(orderData);

@@ -16,13 +16,11 @@
 
 package com.klarna.rest.api.order_management;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;
-import com.klarna.rest.model.order_management.Capture;
-import com.klarna.rest.model.order_management.CaptureObject;
-import com.klarna.rest.model.order_management.ShippingInfo;
-import com.klarna.rest.model.order_management.UpdateShippingInfo;
+import com.klarna.rest.api.order_management.model.OrderManagementCapture;
+import com.klarna.rest.api.order_management.model.OrderManagementCaptureObject;
+import com.klarna.rest.api.order_management.model.OrderManagementUpdateShippingInfo;
 
 
 import javax.ws.rs.core.MediaType;
@@ -63,7 +61,7 @@ public class CapturesApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public Capture fetch(String captureId) throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public OrderManagementCapture fetch(String captureId) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format(PATH + "/" + captureId);
         final ApiResponse response = this.get(path);
 
@@ -71,7 +69,7 @@ public class CapturesApi extends BaseApi {
                 .expectStatusCode(Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), Capture.class);
+        return fromJson(response.getBody(), OrderManagementCapture.class);
     }
 
     /**
@@ -84,7 +82,7 @@ public class CapturesApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public Capture fetch() throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public OrderManagementCapture fetch() throws ApiException, ProtocolException, ContentTypeException, IOException {
         if (this.location == null) {
             throw new IOException("Unknown location");
         }
@@ -94,7 +92,7 @@ public class CapturesApi extends BaseApi {
                 .expectStatusCode(Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), Capture.class);
+        return fromJson(response.getBody(), OrderManagementCapture.class);
     }
 
     /**
@@ -107,7 +105,7 @@ public class CapturesApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public Capture[] fetchAll() throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public OrderManagementCapture[] fetchAll() throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format(PATH);
         final ApiResponse response = this.get(path);
 
@@ -115,7 +113,7 @@ public class CapturesApi extends BaseApi {
                 .expectStatusCode(Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), Capture[].class);
+        return fromJson(response.getBody(), OrderManagementCapture[].class);
     }
 
     /**
@@ -129,7 +127,7 @@ public class CapturesApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public String create(CaptureObject capture) throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public String create(OrderManagementCaptureObject capture) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(capture);
         final ApiResponse response = this.post(PATH, data);
 
@@ -170,7 +168,7 @@ public class CapturesApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public void addShippingInfo(String captureId, UpdateShippingInfo shippingInfo)
+    public void addShippingInfo(String captureId, OrderManagementUpdateShippingInfo shippingInfo)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, captureId, "shipping-info");
         final byte[] data = objectMapper.writeValueAsBytes(shippingInfo);
