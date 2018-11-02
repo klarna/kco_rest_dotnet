@@ -11,19 +11,21 @@
  */
 
 
-package com.klarna.rest.model.hosted_payment_page;
+package com.klarna.rest.api.hosted_payment_page.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * ResponseEntity
+ * HPPResponseEntity
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-25T10:11:58.940Z")
-public class ResponseEntity {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T12:00:32.809Z")
+public class HPPResponseEntity {
   @JsonProperty("body")
   private Object body = null;
 
@@ -192,7 +194,7 @@ public class ResponseEntity {
   @JsonProperty("status_code_value")
   private Integer statusCodeValue = null;
 
-  public ResponseEntity body(Object body) {
+  public HPPResponseEntity body(Object body) {
     this.body = body;
     return this;
   }
@@ -210,7 +212,7 @@ public class ResponseEntity {
     this.body = body;
   }
 
-  public ResponseEntity statusCode(StatusCodeEnum statusCode) {
+  public HPPResponseEntity statusCode(StatusCodeEnum statusCode) {
     this.statusCode = statusCode;
     return this;
   }
@@ -228,7 +230,7 @@ public class ResponseEntity {
     this.statusCode = statusCode;
   }
 
-  public ResponseEntity statusCodeValue(Integer statusCodeValue) {
+  public HPPResponseEntity statusCodeValue(Integer statusCodeValue) {
     this.statusCodeValue = statusCodeValue;
     return this;
   }
@@ -255,7 +257,7 @@ public class ResponseEntity {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ResponseEntity responseEntity = (ResponseEntity) o;
+    HPPResponseEntity responseEntity = (HPPResponseEntity) o;
     return Objects.equals(this.body, responseEntity.body) &&
         Objects.equals(this.statusCode, responseEntity.statusCode) &&
         Objects.equals(this.statusCodeValue, responseEntity.statusCodeValue);
@@ -270,7 +272,7 @@ public class ResponseEntity {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ResponseEntity {\n");
+    sb.append("class HPPResponseEntity {\n");
     
     sb.append("    body: ").append(toIndentedString(body)).append("\n");
     sb.append("    statusCode: ").append(toIndentedString(statusCode)).append("\n");

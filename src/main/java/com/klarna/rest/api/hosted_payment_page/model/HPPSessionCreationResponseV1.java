@@ -11,17 +11,21 @@
  */
 
 
-package com.klarna.rest.model.hosted_payment_page;
+package com.klarna.rest.api.hosted_payment_page.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * SessionCreationResponseV1
+ * HPPSessionCreationResponseV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-25T10:11:58.940Z")
-public class SessionCreationResponseV1 {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T12:00:32.809Z")
+public class HPPSessionCreationResponseV1 {
   @JsonProperty("distribution_url")
   private String distributionUrl = null;
 
@@ -37,7 +41,7 @@ public class SessionCreationResponseV1 {
   @JsonProperty("session_url")
   private String sessionUrl = null;
 
-  public SessionCreationResponseV1 distributionUrl(String distributionUrl) {
+  public HPPSessionCreationResponseV1 distributionUrl(String distributionUrl) {
     this.distributionUrl = distributionUrl;
     return this;
   }
@@ -55,7 +59,7 @@ public class SessionCreationResponseV1 {
     this.distributionUrl = distributionUrl;
   }
 
-  public SessionCreationResponseV1 qrCodeUrl(String qrCodeUrl) {
+  public HPPSessionCreationResponseV1 qrCodeUrl(String qrCodeUrl) {
     this.qrCodeUrl = qrCodeUrl;
     return this;
   }
@@ -73,7 +77,7 @@ public class SessionCreationResponseV1 {
     this.qrCodeUrl = qrCodeUrl;
   }
 
-  public SessionCreationResponseV1 redirectUrl(String redirectUrl) {
+  public HPPSessionCreationResponseV1 redirectUrl(String redirectUrl) {
     this.redirectUrl = redirectUrl;
     return this;
   }
@@ -91,7 +95,7 @@ public class SessionCreationResponseV1 {
     this.redirectUrl = redirectUrl;
   }
 
-  public SessionCreationResponseV1 sessionId(String sessionId) {
+  public HPPSessionCreationResponseV1 sessionId(String sessionId) {
     this.sessionId = sessionId;
     return this;
   }
@@ -109,7 +113,7 @@ public class SessionCreationResponseV1 {
     this.sessionId = sessionId;
   }
 
-  public SessionCreationResponseV1 sessionUrl(String sessionUrl) {
+  public HPPSessionCreationResponseV1 sessionUrl(String sessionUrl) {
     this.sessionUrl = sessionUrl;
     return this;
   }
@@ -136,7 +140,7 @@ public class SessionCreationResponseV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SessionCreationResponseV1 sessionCreationResponseV1 = (SessionCreationResponseV1) o;
+    HPPSessionCreationResponseV1 sessionCreationResponseV1 = (HPPSessionCreationResponseV1) o;
     return Objects.equals(this.distributionUrl, sessionCreationResponseV1.distributionUrl) &&
         Objects.equals(this.qrCodeUrl, sessionCreationResponseV1.qrCodeUrl) &&
         Objects.equals(this.redirectUrl, sessionCreationResponseV1.redirectUrl) &&
@@ -153,7 +157,7 @@ public class SessionCreationResponseV1 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SessionCreationResponseV1 {\n");
+    sb.append("class HPPSessionCreationResponseV1 {\n");
     
     sb.append("    distributionUrl: ").append(toIndentedString(distributionUrl)).append("\n");
     sb.append("    qrCodeUrl: ").append(toIndentedString(qrCodeUrl)).append("\n");

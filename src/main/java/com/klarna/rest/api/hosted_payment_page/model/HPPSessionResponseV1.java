@@ -11,20 +11,22 @@
  */
 
 
-package com.klarna.rest.model.hosted_payment_page;
+package com.klarna.rest.api.hosted_payment_page.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.threeten.bp.OffsetDateTime;
 
 /**
- * SessionResponseV1
+ * HPPSessionResponseV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-25T10:11:58.940Z")
-public class SessionResponseV1 {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T12:00:32.809Z")
+public class HPPSessionResponseV1 {
   @JsonProperty("authorization_token")
   private String authorizationToken = null;
 
@@ -75,7 +77,7 @@ public class SessionResponseV1 {
   @JsonProperty("updated_at")
   private OffsetDateTime updatedAt = null;
 
-  public SessionResponseV1 authorizationToken(String authorizationToken) {
+  public HPPSessionResponseV1 authorizationToken(String authorizationToken) {
     this.authorizationToken = authorizationToken;
     return this;
   }
@@ -93,7 +95,7 @@ public class SessionResponseV1 {
     this.authorizationToken = authorizationToken;
   }
 
-  public SessionResponseV1 status(StatusEnum status) {
+  public HPPSessionResponseV1 status(StatusEnum status) {
     this.status = status;
     return this;
   }
@@ -111,7 +113,7 @@ public class SessionResponseV1 {
     this.status = status;
   }
 
-  public SessionResponseV1 updatedAt(OffsetDateTime updatedAt) {
+  public HPPSessionResponseV1 updatedAt(OffsetDateTime updatedAt) {
     this.updatedAt = updatedAt;
     return this;
   }
@@ -138,7 +140,7 @@ public class SessionResponseV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SessionResponseV1 sessionResponseV1 = (SessionResponseV1) o;
+    HPPSessionResponseV1 sessionResponseV1 = (HPPSessionResponseV1) o;
     return Objects.equals(this.authorizationToken, sessionResponseV1.authorizationToken) &&
         Objects.equals(this.status, sessionResponseV1.status) &&
         Objects.equals(this.updatedAt, sessionResponseV1.updatedAt);
@@ -153,7 +155,7 @@ public class SessionResponseV1 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SessionResponseV1 {\n");
+    sb.append("class HPPSessionResponseV1 {\n");
     
     sb.append("    authorizationToken: ").append(toIndentedString(authorizationToken)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");

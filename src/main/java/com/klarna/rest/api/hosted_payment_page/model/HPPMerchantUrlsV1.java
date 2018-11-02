@@ -11,17 +11,21 @@
  */
 
 
-package com.klarna.rest.model.hosted_payment_page;
+package com.klarna.rest.api.hosted_payment_page.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * MerchantUrlsV1
+ * HPPMerchantUrlsV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-25T10:11:58.940Z")
-public class MerchantUrlsV1 {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T12:00:32.809Z")
+public class HPPMerchantUrlsV1 {
   @JsonProperty("cancel")
   private String cancel = null;
 
@@ -37,7 +41,7 @@ public class MerchantUrlsV1 {
   @JsonProperty("terms")
   private String terms = null;
 
-  public MerchantUrlsV1 cancel(String cancel) {
+  public HPPMerchantUrlsV1 cancel(String cancel) {
     this.cancel = cancel;
     return this;
   }
@@ -55,7 +59,7 @@ public class MerchantUrlsV1 {
     this.cancel = cancel;
   }
 
-  public MerchantUrlsV1 failure(String failure) {
+  public HPPMerchantUrlsV1 failure(String failure) {
     this.failure = failure;
     return this;
   }
@@ -73,7 +77,7 @@ public class MerchantUrlsV1 {
     this.failure = failure;
   }
 
-  public MerchantUrlsV1 privacyPolicy(String privacyPolicy) {
+  public HPPMerchantUrlsV1 privacyPolicy(String privacyPolicy) {
     this.privacyPolicy = privacyPolicy;
     return this;
   }
@@ -91,7 +95,7 @@ public class MerchantUrlsV1 {
     this.privacyPolicy = privacyPolicy;
   }
 
-  public MerchantUrlsV1 success(String success) {
+  public HPPMerchantUrlsV1 success(String success) {
     this.success = success;
     return this;
   }
@@ -109,7 +113,7 @@ public class MerchantUrlsV1 {
     this.success = success;
   }
 
-  public MerchantUrlsV1 terms(String terms) {
+  public HPPMerchantUrlsV1 terms(String terms) {
     this.terms = terms;
     return this;
   }
@@ -136,7 +140,7 @@ public class MerchantUrlsV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MerchantUrlsV1 merchantUrlsV1 = (MerchantUrlsV1) o;
+    HPPMerchantUrlsV1 merchantUrlsV1 = (HPPMerchantUrlsV1) o;
     return Objects.equals(this.cancel, merchantUrlsV1.cancel) &&
         Objects.equals(this.failure, merchantUrlsV1.failure) &&
         Objects.equals(this.privacyPolicy, merchantUrlsV1.privacyPolicy) &&
@@ -153,7 +157,7 @@ public class MerchantUrlsV1 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MerchantUrlsV1 {\n");
+    sb.append("class HPPMerchantUrlsV1 {\n");
     
     sb.append("    cancel: ").append(toIndentedString(cancel)).append("\n");
     sb.append("    failure: ").append(toIndentedString(failure)).append("\n");

@@ -11,17 +11,21 @@
  */
 
 
-package com.klarna.rest.model.hosted_payment_page;
+package com.klarna.rest.api.hosted_payment_page.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * DistributionContactV1
+ * HPPDistributionContactV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-25T10:11:58.940Z")
-public class DistributionContactV1 {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T12:00:32.809Z")
+public class HPPDistributionContactV1 {
   @JsonProperty("email")
   private String email = null;
 
@@ -31,7 +35,7 @@ public class DistributionContactV1 {
   @JsonProperty("phone_country")
   private String phoneCountry = null;
 
-  public DistributionContactV1 email(String email) {
+  public HPPDistributionContactV1 email(String email) {
     this.email = email;
     return this;
   }
@@ -49,7 +53,7 @@ public class DistributionContactV1 {
     this.email = email;
   }
 
-  public DistributionContactV1 phone(String phone) {
+  public HPPDistributionContactV1 phone(String phone) {
     this.phone = phone;
     return this;
   }
@@ -67,7 +71,7 @@ public class DistributionContactV1 {
     this.phone = phone;
   }
 
-  public DistributionContactV1 phoneCountry(String phoneCountry) {
+  public HPPDistributionContactV1 phoneCountry(String phoneCountry) {
     this.phoneCountry = phoneCountry;
     return this;
   }
@@ -94,7 +98,7 @@ public class DistributionContactV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DistributionContactV1 distributionContactV1 = (DistributionContactV1) o;
+    HPPDistributionContactV1 distributionContactV1 = (HPPDistributionContactV1) o;
     return Objects.equals(this.email, distributionContactV1.email) &&
         Objects.equals(this.phone, distributionContactV1.phone) &&
         Objects.equals(this.phoneCountry, distributionContactV1.phoneCountry);
@@ -109,7 +113,7 @@ public class DistributionContactV1 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DistributionContactV1 {\n");
+    sb.append("class HPPDistributionContactV1 {\n");
     
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");

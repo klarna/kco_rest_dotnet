@@ -11,27 +11,33 @@
  */
 
 
-package com.klarna.rest.model.hosted_payment_page;
+package com.klarna.rest.api.hosted_payment_page.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.klarna.rest.api.hosted_payment_page.model.HPPMerchantUrlsV1;
+import com.klarna.rest.api.hosted_payment_page.model.HPPOptionsV1;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * SessionCreationRequestV1
+ * HPPSessionCreationRequestV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-25T10:11:58.940Z")
-public class SessionCreationRequestV1 {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T12:00:32.809Z")
+public class HPPSessionCreationRequestV1 {
   @JsonProperty("merchant_urls")
-  private MerchantUrlsV1 merchantUrls = null;
+  private HPPMerchantUrlsV1 merchantUrls = null;
 
   @JsonProperty("options")
-  private OptionsV1 options = null;
+  private HPPOptionsV1 options = null;
 
   @JsonProperty("payment_session_url")
   private String paymentSessionUrl = null;
 
-  public SessionCreationRequestV1 merchantUrls(MerchantUrlsV1 merchantUrls) {
+  public HPPSessionCreationRequestV1 merchantUrls(HPPMerchantUrlsV1 merchantUrls) {
     this.merchantUrls = merchantUrls;
     return this;
   }
@@ -41,15 +47,15 @@ public class SessionCreationRequestV1 {
    * @return merchantUrls
   **/
   @ApiModelProperty(required = true, value = "Urls used to redirect the consumer")
-  public MerchantUrlsV1 getMerchantUrls() {
+  public HPPMerchantUrlsV1 getMerchantUrls() {
     return merchantUrls;
   }
 
-  public void setMerchantUrls(MerchantUrlsV1 merchantUrls) {
+  public void setMerchantUrls(HPPMerchantUrlsV1 merchantUrls) {
     this.merchantUrls = merchantUrls;
   }
 
-  public SessionCreationRequestV1 options(OptionsV1 options) {
+  public HPPSessionCreationRequestV1 options(HPPOptionsV1 options) {
     this.options = options;
     return this;
   }
@@ -59,15 +65,15 @@ public class SessionCreationRequestV1 {
    * @return options
   **/
   @ApiModelProperty(value = "Options")
-  public OptionsV1 getOptions() {
+  public HPPOptionsV1 getOptions() {
     return options;
   }
 
-  public void setOptions(OptionsV1 options) {
+  public void setOptions(HPPOptionsV1 options) {
     this.options = options;
   }
 
-  public SessionCreationRequestV1 paymentSessionUrl(String paymentSessionUrl) {
+  public HPPSessionCreationRequestV1 paymentSessionUrl(String paymentSessionUrl) {
     this.paymentSessionUrl = paymentSessionUrl;
     return this;
   }
@@ -94,7 +100,7 @@ public class SessionCreationRequestV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    SessionCreationRequestV1 sessionCreationRequestV1 = (SessionCreationRequestV1) o;
+    HPPSessionCreationRequestV1 sessionCreationRequestV1 = (HPPSessionCreationRequestV1) o;
     return Objects.equals(this.merchantUrls, sessionCreationRequestV1.merchantUrls) &&
         Objects.equals(this.options, sessionCreationRequestV1.options) &&
         Objects.equals(this.paymentSessionUrl, sessionCreationRequestV1.paymentSessionUrl);
@@ -109,7 +115,7 @@ public class SessionCreationRequestV1 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class SessionCreationRequestV1 {\n");
+    sb.append("class HPPSessionCreationRequestV1 {\n");
     
     sb.append("    merchantUrls: ").append(toIndentedString(merchantUrls)).append("\n");
     sb.append("    options: ").append(toIndentedString(options)).append("\n");

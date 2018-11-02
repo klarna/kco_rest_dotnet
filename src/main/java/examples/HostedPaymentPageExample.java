@@ -24,7 +24,7 @@ import com.klarna.rest.ContentTypeException;
 import com.klarna.rest.ProtocolException;
 
 import com.klarna.rest.api.hosted_payment_page.SessionsApi;
-import com.klarna.rest.model.hosted_payment_page.*;
+import com.klarna.rest.api.hosted_payment_page.model.*;
 
 import java.io.IOException;
 
@@ -51,27 +51,21 @@ public class HostedPaymentPageExample {
             SessionsApi sessionsApi = new SessionsApi(transport);
 
             try {
-                SessionCreationRequestV1 request = new SessionCreationRequestV1();
-                request.setMerchantUrls(new MerchantUrlsV1() {
-                    {
-                        setCancel("https://example.com/cancel");
-                        setFailure("https://example.com/fail");
-                        setPrivacyPolicy("https://example.com/privacy_policy");
-                        setSuccess("https://example.com/success?token={{authorization_token}}");
-                        setTerms("https://example.com/terms");
-                    }
-                });
-                request.setOptions(new OptionsV1() {
-                    {
-                        setLogoUrl("https://example.com/logo.jpg");
-                        setPageTitle("Complete your purchase");
-                        setPaymentMethodCategory(PaymentMethodCategoryEnum.PAY_LATER);
-                        setPurchaseType(PurchaseTypeEnum.BUY);
-                    }
-                });
-                request.setPaymentSessionUrl("https://api.klarna.com/payments/v1/sessions/" + sessionId);
+                HPPSessionCreationRequestV1 request = new HPPSessionCreationRequestV1()
+                    .merchantUrls(new HPPMerchantUrlsV1()
+                        .cancel("https://example.com/cancel")
+                        .failure("https://example.com/fail")
+                        .privacyPolicy("https://example.com/privacy_policy")
+                        .success("https://example.com/success?token={{authorization_token}}")
+                        .terms("https://example.com/terms"))
+                    .options(new HPPOptionsV1()
+                        .logoUrl("https://example.com/logo.jpg")
+                        .pageTitle("Complete your purchase")
+                        .paymentMethodCategory(HPPOptionsV1.PaymentMethodCategoryEnum.PAY_LATER)
+                        .purchaseType(HPPOptionsV1.PurchaseTypeEnum.BUY))
+                    .paymentSessionUrl("https://api.klarna.com/payments/v1/sessions/" + sessionId);
 
-                SessionCreationResponseV1 session = sessionsApi.create(request);
+                HPPSessionCreationResponseV1 session = sessionsApi.create(request);
                 System.out.println(session);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {
@@ -98,19 +92,14 @@ public class HostedPaymentPageExample {
             SessionsApi sessionsApi = new SessionsApi(transport);
 
             try {
-                DistributionRequestV1 request = new DistributionRequestV1(){
-                    {
-                        setContactInformation(new DistributionContactV1(){
-                            {
-                                setEmail("test@example.com");
-                                setPhone("07000212345");
-                                setPhoneCountry("SE");
-                            }
-                        });
-                        setMethod(MethodEnum.SMS);
-                        setTemplate(TemplateEnum.INSTORE_PURCHASE);
-                    }
-                };
+                HPPDistributionRequestV1 request = new HPPDistributionRequestV1()
+                    .contactInformation(new HPPDistributionContactV1()
+                        .email("test@example.com")
+                        .phone("07000212345")
+                        .phoneCountry("SE"))
+                    .method(HPPDistributionRequestV1.MethodEnum.SMS)
+                    .template(HPPDistributionRequestV1.TemplateEnum.INSTORE_PURCHASE);
+
                 sessionsApi.distributeLink(sessionId, request);
                 System.out.println("The session link has been distributed");
 
@@ -138,7 +127,7 @@ public class HostedPaymentPageExample {
             SessionsApi sessionsApi = new SessionsApi(transport);
 
             try {
-                SessionResponseV1 session = sessionsApi.fetch(sessionId);
+                HPPSessionResponseV1 session = sessionsApi.fetch(sessionId);
                 System.out.println(session);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {

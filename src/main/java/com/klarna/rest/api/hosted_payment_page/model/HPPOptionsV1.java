@@ -11,23 +11,26 @@
  */
 
 
-package com.klarna.rest.model.hosted_payment_page;
+package com.klarna.rest.api.hosted_payment_page.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.klarna.rest.api.hosted_payment_page.model.HPPBackgroundImageV1;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * OptionsV1
+ * HPPOptionsV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-25T10:11:58.940Z")
-public class OptionsV1 {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T12:00:32.809Z")
+public class HPPOptionsV1 {
   @JsonProperty("background_images")
-  private List<BackgroundImageV1> backgroundImages = null;
+  private List<HPPBackgroundImageV1> backgroundImages = null;
 
   @JsonProperty("logo_url")
   private String logoUrl = null;
@@ -127,14 +130,14 @@ public class OptionsV1 {
   @JsonProperty("purchase_type")
   private PurchaseTypeEnum purchaseType = null;
 
-  public OptionsV1 backgroundImages(List<BackgroundImageV1> backgroundImages) {
+  public HPPOptionsV1 backgroundImages(List<HPPBackgroundImageV1> backgroundImages) {
     this.backgroundImages = backgroundImages;
     return this;
   }
 
-  public OptionsV1 addBackgroundImagesItem(BackgroundImageV1 backgroundImagesItem) {
+  public HPPOptionsV1 addBackgroundImagesItem(HPPBackgroundImageV1 backgroundImagesItem) {
     if (this.backgroundImages == null) {
-      this.backgroundImages = new ArrayList<BackgroundImageV1>();
+      this.backgroundImages = new ArrayList<HPPBackgroundImageV1>();
     }
     this.backgroundImages.add(backgroundImagesItem);
     return this;
@@ -145,15 +148,15 @@ public class OptionsV1 {
    * @return backgroundImages
   **/
   @ApiModelProperty(value = "Images to use for the background")
-  public List<BackgroundImageV1> getBackgroundImages() {
+  public List<HPPBackgroundImageV1> getBackgroundImages() {
     return backgroundImages;
   }
 
-  public void setBackgroundImages(List<BackgroundImageV1> backgroundImages) {
+  public void setBackgroundImages(List<HPPBackgroundImageV1> backgroundImages) {
     this.backgroundImages = backgroundImages;
   }
 
-  public OptionsV1 logoUrl(String logoUrl) {
+  public HPPOptionsV1 logoUrl(String logoUrl) {
     this.logoUrl = logoUrl;
     return this;
   }
@@ -171,7 +174,7 @@ public class OptionsV1 {
     this.logoUrl = logoUrl;
   }
 
-  public OptionsV1 pageTitle(String pageTitle) {
+  public HPPOptionsV1 pageTitle(String pageTitle) {
     this.pageTitle = pageTitle;
     return this;
   }
@@ -189,7 +192,7 @@ public class OptionsV1 {
     this.pageTitle = pageTitle;
   }
 
-  public OptionsV1 paymentMethodCategory(PaymentMethodCategoryEnum paymentMethodCategory) {
+  public HPPOptionsV1 paymentMethodCategory(PaymentMethodCategoryEnum paymentMethodCategory) {
     this.paymentMethodCategory = paymentMethodCategory;
     return this;
   }
@@ -207,7 +210,7 @@ public class OptionsV1 {
     this.paymentMethodCategory = paymentMethodCategory;
   }
 
-  public OptionsV1 purchaseType(PurchaseTypeEnum purchaseType) {
+  public HPPOptionsV1 purchaseType(PurchaseTypeEnum purchaseType) {
     this.purchaseType = purchaseType;
     return this;
   }
@@ -234,7 +237,7 @@ public class OptionsV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    OptionsV1 optionsV1 = (OptionsV1) o;
+    HPPOptionsV1 optionsV1 = (HPPOptionsV1) o;
     return Objects.equals(this.backgroundImages, optionsV1.backgroundImages) &&
         Objects.equals(this.logoUrl, optionsV1.logoUrl) &&
         Objects.equals(this.pageTitle, optionsV1.pageTitle) &&
@@ -251,7 +254,7 @@ public class OptionsV1 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class OptionsV1 {\n");
+    sb.append("class HPPOptionsV1 {\n");
     
     sb.append("    backgroundImages: ").append(toIndentedString(backgroundImages)).append("\n");
     sb.append("    logoUrl: ").append(toIndentedString(logoUrl)).append("\n");

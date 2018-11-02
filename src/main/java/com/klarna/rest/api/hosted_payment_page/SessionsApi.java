@@ -18,10 +18,10 @@ package com.klarna.rest.api.hosted_payment_page;
 
 import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;
-import com.klarna.rest.model.hosted_payment_page.DistributionRequestV1;
-import com.klarna.rest.model.hosted_payment_page.SessionCreationRequestV1;
-import com.klarna.rest.model.hosted_payment_page.SessionCreationResponseV1;
-import com.klarna.rest.model.hosted_payment_page.SessionResponseV1;
+import com.klarna.rest.api.hosted_payment_page.model.HPPDistributionRequestV1;
+import com.klarna.rest.api.hosted_payment_page.model.HPPSessionCreationRequestV1;
+import com.klarna.rest.api.hosted_payment_page.model.HPPSessionCreationResponseV1;
+import com.klarna.rest.api.hosted_payment_page.model.HPPSessionResponseV1;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -62,7 +62,7 @@ public class SessionsApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public SessionCreationResponseV1 create(SessionCreationRequestV1 session)
+    public HPPSessionCreationResponseV1 create(HPPSessionCreationRequestV1 session)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(session);
         final ApiResponse response = this.post(PATH, data);
@@ -71,7 +71,7 @@ public class SessionsApi extends BaseApi {
                 .expectStatusCode(Response.Status.CREATED)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), SessionCreationResponseV1.class);
+        return fromJson(response.getBody(), HPPSessionCreationResponseV1.class);
     }
 
     /**
@@ -87,7 +87,7 @@ public class SessionsApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public void distributeLink(String sessionId, DistributionRequestV1 request)
+    public void distributeLink(String sessionId, HPPDistributionRequestV1 request)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s/%s", PATH, sessionId, "distribution");
         final byte[] data = objectMapper.writeValueAsBytes(request);
@@ -110,7 +110,7 @@ public class SessionsApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public SessionResponseV1 fetch(String sessionId)
+    public HPPSessionResponseV1 fetch(String sessionId)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final String path = String.format("%s/%s", PATH, sessionId);
         final ApiResponse response = this.get(path);
@@ -119,6 +119,6 @@ public class SessionsApi extends BaseApi {
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), SessionResponseV1.class);
+        return fromJson(response.getBody(), HPPSessionResponseV1.class);
     }
 }

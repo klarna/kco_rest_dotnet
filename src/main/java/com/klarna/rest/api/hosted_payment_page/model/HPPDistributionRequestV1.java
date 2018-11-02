@@ -11,21 +11,24 @@
  */
 
 
-package com.klarna.rest.model.hosted_payment_page;
+package com.klarna.rest.api.hosted_payment_page.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.klarna.rest.api.hosted_payment_page.model.HPPDistributionContactV1;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * DistributionRequestV1
+ * HPPDistributionRequestV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-25T10:11:58.940Z")
-public class DistributionRequestV1 {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T12:00:32.809Z")
+public class HPPDistributionRequestV1 {
   @JsonProperty("contact_information")
-  private DistributionContactV1 contactInformation = null;
+  private HPPDistributionContactV1 contactInformation = null;
 
   /**
    * Method used for distribution
@@ -101,7 +104,7 @@ public class DistributionRequestV1 {
   @JsonProperty("template")
   private TemplateEnum template = null;
 
-  public DistributionRequestV1 contactInformation(DistributionContactV1 contactInformation) {
+  public HPPDistributionRequestV1 contactInformation(HPPDistributionContactV1 contactInformation) {
     this.contactInformation = contactInformation;
     return this;
   }
@@ -111,15 +114,15 @@ public class DistributionRequestV1 {
    * @return contactInformation
   **/
   @ApiModelProperty(required = true, value = "Contact information for the link distribution")
-  public DistributionContactV1 getContactInformation() {
+  public HPPDistributionContactV1 getContactInformation() {
     return contactInformation;
   }
 
-  public void setContactInformation(DistributionContactV1 contactInformation) {
+  public void setContactInformation(HPPDistributionContactV1 contactInformation) {
     this.contactInformation = contactInformation;
   }
 
-  public DistributionRequestV1 method(MethodEnum method) {
+  public HPPDistributionRequestV1 method(MethodEnum method) {
     this.method = method;
     return this;
   }
@@ -137,7 +140,7 @@ public class DistributionRequestV1 {
     this.method = method;
   }
 
-  public DistributionRequestV1 template(TemplateEnum template) {
+  public HPPDistributionRequestV1 template(TemplateEnum template) {
     this.template = template;
     return this;
   }
@@ -164,7 +167,7 @@ public class DistributionRequestV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DistributionRequestV1 distributionRequestV1 = (DistributionRequestV1) o;
+    HPPDistributionRequestV1 distributionRequestV1 = (HPPDistributionRequestV1) o;
     return Objects.equals(this.contactInformation, distributionRequestV1.contactInformation) &&
         Objects.equals(this.method, distributionRequestV1.method) &&
         Objects.equals(this.template, distributionRequestV1.template);
@@ -179,7 +182,7 @@ public class DistributionRequestV1 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DistributionRequestV1 {\n");
+    sb.append("class HPPDistributionRequestV1 {\n");
     
     sb.append("    contactInformation: ").append(toIndentedString(contactInformation)).append("\n");
     sb.append("    method: ").append(toIndentedString(method)).append("\n");

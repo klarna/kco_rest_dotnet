@@ -11,24 +11,28 @@
  */
 
 
-package com.klarna.rest.model.hosted_payment_page;
+package com.klarna.rest.api.hosted_payment_page.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * BackgroundImageV1
+ * HPPBackgroundImageV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-10-25T10:11:58.940Z")
-public class BackgroundImageV1 {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T12:00:32.809Z")
+public class HPPBackgroundImageV1 {
   @JsonProperty("url")
   private String url = null;
 
   @JsonProperty("width")
   private Long width = null;
 
-  public BackgroundImageV1 url(String url) {
+  public HPPBackgroundImageV1 url(String url) {
     this.url = url;
     return this;
   }
@@ -46,7 +50,7 @@ public class BackgroundImageV1 {
     this.url = url;
   }
 
-  public BackgroundImageV1 width(Long width) {
+  public HPPBackgroundImageV1 width(Long width) {
     this.width = width;
     return this;
   }
@@ -73,7 +77,7 @@ public class BackgroundImageV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BackgroundImageV1 backgroundImageV1 = (BackgroundImageV1) o;
+    HPPBackgroundImageV1 backgroundImageV1 = (HPPBackgroundImageV1) o;
     return Objects.equals(this.url, backgroundImageV1.url) &&
         Objects.equals(this.width, backgroundImageV1.width);
   }
@@ -87,7 +91,7 @@ public class BackgroundImageV1 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class BackgroundImageV1 {\n");
+    sb.append("class HPPBackgroundImageV1 {\n");
     
     sb.append("    url: ").append(toIndentedString(url)).append("\n");
     sb.append("    width: ").append(toIndentedString(width)).append("\n");
