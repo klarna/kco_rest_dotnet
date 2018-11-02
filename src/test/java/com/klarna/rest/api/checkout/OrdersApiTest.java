@@ -17,7 +17,7 @@
 package com.klarna.rest.api.checkout;
 
 import com.klarna.rest.*;
-import com.klarna.rest.model.checkout.Order;
+import com.klarna.rest.api.checkout.model.CheckoutOrder;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -61,7 +61,7 @@ public class OrdersApiTest extends TestCase {
         final String payload = "{\"order_amount\": 200}";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        Order data = new Order(){
+        CheckoutOrder data = new CheckoutOrder(){
             {
                 setOrderAmount(100L);
                 setLocale("en-GB");
@@ -70,7 +70,7 @@ public class OrdersApiTest extends TestCase {
         };
 
         OrdersApi api = new OrdersApi(transport);
-        Order order = api.create(data);
+        CheckoutOrder order = api.create(data);
 
         assertEquals(new Long(200), order.getOrderAmount());
         verify(transport.conn, times(1)).setRequestMethod("POST");
@@ -85,7 +85,7 @@ public class OrdersApiTest extends TestCase {
         when(transport.conn.getResponseCode()).thenReturn(403);
 
         OrdersApi api = new OrdersApi(transport);
-        Order order = api.create(null);
+        CheckoutOrder order = api.create(null);
     }
 
     @Test(expected = ProtocolException.class)
@@ -93,7 +93,7 @@ public class OrdersApiTest extends TestCase {
         when(transport.conn.getResponseCode()).thenReturn(204);
 
         OrdersApi api = new OrdersApi(transport);
-        Order order = api.create(null);
+        CheckoutOrder order = api.create(null);
     }
 
     @Test(expected = ContentTypeException.class)
@@ -108,7 +108,7 @@ public class OrdersApiTest extends TestCase {
         }});
 
         OrdersApi api = new OrdersApi(transport);
-        Order order = api.create(null);
+        CheckoutOrder order = api.create(null);
     }
 
     @Test
@@ -126,7 +126,7 @@ public class OrdersApiTest extends TestCase {
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
         OrdersApi api = new OrdersApi(transport);
-        Order order = api.fetch("order-id-123");
+        CheckoutOrder order = api.fetch("order-id-123");
 
         assertEquals(new Long(100), order.getOrderAmount());
         verify(transport.conn, times(1)).setRequestMethod("GET");
@@ -183,7 +183,7 @@ public class OrdersApiTest extends TestCase {
         final String payload = "{\"order_amount\": 500, \"locale\": \"en-GB\", \"recurring\": false}";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        Order data = new Order(){
+        CheckoutOrder data = new CheckoutOrder(){
             {
                 setOrderAmount(500L);
                 setLocale("en-GB");
@@ -192,7 +192,7 @@ public class OrdersApiTest extends TestCase {
         };
 
         OrdersApi api = new OrdersApi(transport);
-        Order order = api.update("my-order-id", data);
+        CheckoutOrder order = api.update("my-order-id", data);
 
         assertEquals(new Long(500), order.getOrderAmount());
         assertFalse(order.isRecurring());

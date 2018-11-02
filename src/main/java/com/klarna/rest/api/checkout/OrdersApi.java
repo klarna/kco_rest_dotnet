@@ -23,7 +23,7 @@ import com.klarna.rest.ContentTypeException;
 import com.klarna.rest.ProtocolException;
 import com.klarna.rest.api.BaseApi;
 
-import com.klarna.rest.model.checkout.Order;
+import com.klarna.rest.api.checkout.model.*;
 
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.MediaType;
@@ -59,7 +59,7 @@ public class OrdersApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public Order create(Order order) throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public CheckoutOrder create(CheckoutOrder order) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(order);
         final ApiResponse response = this.post(PATH, data);
 
@@ -67,7 +67,7 @@ public class OrdersApi extends BaseApi {
                 .expectStatusCode(Status.CREATED)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), Order.class);
+        return fromJson(response.getBody(), CheckoutOrder.class);
     }
 
     /**
@@ -88,14 +88,14 @@ public class OrdersApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public Order fetch(String orderId) throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public CheckoutOrder fetch(String orderId) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final ApiResponse response = this.get(PATH + '/' + orderId);
 
         response.expectSuccessful()
                 .expectStatusCode(Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), Order.class);
+        return fromJson(response.getBody(), CheckoutOrder.class);
     }
 
     /**
@@ -110,7 +110,7 @@ public class OrdersApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public Order fetch() throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public CheckoutOrder fetch() throws ApiException, ProtocolException, ContentTypeException, IOException {
         if (this.location == null) {
             throw new IOException("Unknown location");
         }
@@ -120,7 +120,7 @@ public class OrdersApi extends BaseApi {
                 .expectStatusCode(Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), Order.class);
+        return fromJson(response.getBody(), CheckoutOrder.class);
     }
 
     /**
@@ -142,7 +142,7 @@ public class OrdersApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public Order update(String orderId, Order order) throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public CheckoutOrder update(String orderId, CheckoutOrder order) throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(order);
         final ApiResponse response = this.post(PATH + '/' + orderId, data);
 
@@ -150,6 +150,6 @@ public class OrdersApi extends BaseApi {
                 .expectStatusCode(Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), Order.class);
+        return fromJson(response.getBody(), CheckoutOrder.class);
     }
 }
