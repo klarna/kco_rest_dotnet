@@ -11,24 +11,28 @@
  */
 
 
-package com.klarna.rest.model.customer_token;
+package com.klarna.rest.api.customer_token.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * MerchantUrls
+ * TokenMerchantUrls
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-28T10:56:24.306Z")
-public class MerchantUrls {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T11:40:30.975Z")
+public class TokenMerchantUrls {
   @JsonProperty("confirmation")
   private String confirmation = null;
 
   @JsonProperty("push")
   private String push = null;
 
-  public MerchantUrls confirmation(String confirmation) {
+  public TokenMerchantUrls confirmation(String confirmation) {
     this.confirmation = confirmation;
     return this;
   }
@@ -46,7 +50,7 @@ public class MerchantUrls {
     this.confirmation = confirmation;
   }
 
-  public MerchantUrls push(String push) {
+  public TokenMerchantUrls push(String push) {
     this.push = push;
     return this;
   }
@@ -73,7 +77,7 @@ public class MerchantUrls {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MerchantUrls merchantUrls = (MerchantUrls) o;
+    TokenMerchantUrls merchantUrls = (TokenMerchantUrls) o;
     return Objects.equals(this.confirmation, merchantUrls.confirmation) &&
         Objects.equals(this.push, merchantUrls.push);
   }
@@ -87,7 +91,7 @@ public class MerchantUrls {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MerchantUrls {\n");
+    sb.append("class TokenMerchantUrls {\n");
     
     sb.append("    confirmation: ").append(toIndentedString(confirmation)).append("\n");
     sb.append("    push: ").append(toIndentedString(push)).append("\n");

@@ -11,17 +11,21 @@
  */
 
 
-package com.klarna.rest.model.customer_token;
+package com.klarna.rest.api.customer_token.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * ProductIdentifiers
+ * TokenProductIdentifiers
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-28T10:56:24.306Z")
-public class ProductIdentifiers {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T11:40:30.975Z")
+public class TokenProductIdentifiers {
   @JsonProperty("brand")
   private String brand = null;
 
@@ -34,7 +38,7 @@ public class ProductIdentifiers {
   @JsonProperty("manufacturer_part_number")
   private String manufacturerPartNumber = null;
 
-  public ProductIdentifiers brand(String brand) {
+  public TokenProductIdentifiers brand(String brand) {
     this.brand = brand;
     return this;
   }
@@ -52,7 +56,7 @@ public class ProductIdentifiers {
     this.brand = brand;
   }
 
-  public ProductIdentifiers categoryPath(String categoryPath) {
+  public TokenProductIdentifiers categoryPath(String categoryPath) {
     this.categoryPath = categoryPath;
     return this;
   }
@@ -70,7 +74,7 @@ public class ProductIdentifiers {
     this.categoryPath = categoryPath;
   }
 
-  public ProductIdentifiers globalTradeItemNumber(String globalTradeItemNumber) {
+  public TokenProductIdentifiers globalTradeItemNumber(String globalTradeItemNumber) {
     this.globalTradeItemNumber = globalTradeItemNumber;
     return this;
   }
@@ -88,7 +92,7 @@ public class ProductIdentifiers {
     this.globalTradeItemNumber = globalTradeItemNumber;
   }
 
-  public ProductIdentifiers manufacturerPartNumber(String manufacturerPartNumber) {
+  public TokenProductIdentifiers manufacturerPartNumber(String manufacturerPartNumber) {
     this.manufacturerPartNumber = manufacturerPartNumber;
     return this;
   }
@@ -115,7 +119,7 @@ public class ProductIdentifiers {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ProductIdentifiers productIdentifiers = (ProductIdentifiers) o;
+    TokenProductIdentifiers productIdentifiers = (TokenProductIdentifiers) o;
     return Objects.equals(this.brand, productIdentifiers.brand) &&
         Objects.equals(this.categoryPath, productIdentifiers.categoryPath) &&
         Objects.equals(this.globalTradeItemNumber, productIdentifiers.globalTradeItemNumber) &&
@@ -131,7 +135,7 @@ public class ProductIdentifiers {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ProductIdentifiers {\n");
+    sb.append("class TokenProductIdentifiers {\n");
     
     sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
     sb.append("    categoryPath: ").append(toIndentedString(categoryPath)).append("\n");

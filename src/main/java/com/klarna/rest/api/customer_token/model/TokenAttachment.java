@@ -11,24 +11,28 @@
  */
 
 
-package com.klarna.rest.model.customer_token;
+package com.klarna.rest.api.customer_token.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Attachment
+ * TokenAttachment
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-28T10:56:24.306Z")
-public class Attachment {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T11:40:30.975Z")
+public class TokenAttachment {
   @JsonProperty("body")
   private String body = null;
 
   @JsonProperty("content_type")
   private String contentType = null;
 
-  public Attachment body(String body) {
+  public TokenAttachment body(String body) {
     this.body = body;
     return this;
   }
@@ -46,7 +50,7 @@ public class Attachment {
     this.body = body;
   }
 
-  public Attachment contentType(String contentType) {
+  public TokenAttachment contentType(String contentType) {
     this.contentType = contentType;
     return this;
   }
@@ -73,7 +77,7 @@ public class Attachment {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Attachment attachment = (Attachment) o;
+    TokenAttachment attachment = (TokenAttachment) o;
     return Objects.equals(this.body, attachment.body) &&
         Objects.equals(this.contentType, attachment.contentType);
   }
@@ -87,7 +91,7 @@ public class Attachment {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Attachment {\n");
+    sb.append("class TokenAttachment {\n");
     
     sb.append("    body: ").append(toIndentedString(body)).append("\n");
     sb.append("    contentType: ").append(toIndentedString(contentType)).append("\n");

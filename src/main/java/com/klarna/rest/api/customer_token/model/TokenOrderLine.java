@@ -11,17 +11,22 @@
  */
 
 
-package com.klarna.rest.model.customer_token;
+package com.klarna.rest.api.customer_token.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.klarna.rest.api.customer_token.model.TokenProductIdentifiers;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * OrderLine
+ * TokenOrderLine
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-28T10:56:24.306Z")
-public class OrderLine {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T11:40:30.975Z")
+public class TokenOrderLine {
   @JsonProperty("image_url")
   private String imageUrl = null;
 
@@ -32,7 +37,7 @@ public class OrderLine {
   private String name = null;
 
   @JsonProperty("product_identifiers")
-  private ProductIdentifiers productIdentifiers = null;
+  private TokenProductIdentifiers productIdentifiers = null;
 
   @JsonProperty("product_url")
   private String productUrl = null;
@@ -64,7 +69,7 @@ public class OrderLine {
   @JsonProperty("unit_price")
   private Long unitPrice = null;
 
-  public OrderLine imageUrl(String imageUrl) {
+  public TokenOrderLine imageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
     return this;
   }
@@ -82,7 +87,7 @@ public class OrderLine {
     this.imageUrl = imageUrl;
   }
 
-  public OrderLine merchantData(String merchantData) {
+  public TokenOrderLine merchantData(String merchantData) {
     this.merchantData = merchantData;
     return this;
   }
@@ -100,7 +105,7 @@ public class OrderLine {
     this.merchantData = merchantData;
   }
 
-  public OrderLine name(String name) {
+  public TokenOrderLine name(String name) {
     this.name = name;
     return this;
   }
@@ -118,7 +123,7 @@ public class OrderLine {
     this.name = name;
   }
 
-  public OrderLine productIdentifiers(ProductIdentifiers productIdentifiers) {
+  public TokenOrderLine productIdentifiers(TokenProductIdentifiers productIdentifiers) {
     this.productIdentifiers = productIdentifiers;
     return this;
   }
@@ -128,15 +133,15 @@ public class OrderLine {
    * @return productIdentifiers
   **/
   @ApiModelProperty(value = "Additional information identifying an item")
-  public ProductIdentifiers getProductIdentifiers() {
+  public TokenProductIdentifiers getProductIdentifiers() {
     return productIdentifiers;
   }
 
-  public void setProductIdentifiers(ProductIdentifiers productIdentifiers) {
+  public void setProductIdentifiers(TokenProductIdentifiers productIdentifiers) {
     this.productIdentifiers = productIdentifiers;
   }
 
-  public OrderLine productUrl(String productUrl) {
+  public TokenOrderLine productUrl(String productUrl) {
     this.productUrl = productUrl;
     return this;
   }
@@ -154,7 +159,7 @@ public class OrderLine {
     this.productUrl = productUrl;
   }
 
-  public OrderLine quantity(Long quantity) {
+  public TokenOrderLine quantity(Long quantity) {
     this.quantity = quantity;
     return this;
   }
@@ -173,7 +178,7 @@ public class OrderLine {
     this.quantity = quantity;
   }
 
-  public OrderLine quantityUnit(String quantityUnit) {
+  public TokenOrderLine quantityUnit(String quantityUnit) {
     this.quantityUnit = quantityUnit;
     return this;
   }
@@ -191,7 +196,7 @@ public class OrderLine {
     this.quantityUnit = quantityUnit;
   }
 
-  public OrderLine reference(String reference) {
+  public TokenOrderLine reference(String reference) {
     this.reference = reference;
     return this;
   }
@@ -209,7 +214,7 @@ public class OrderLine {
     this.reference = reference;
   }
 
-  public OrderLine taxRate(Long taxRate) {
+  public TokenOrderLine taxRate(Long taxRate) {
     this.taxRate = taxRate;
     return this;
   }
@@ -227,7 +232,7 @@ public class OrderLine {
     this.taxRate = taxRate;
   }
 
-  public OrderLine totalAmount(Long totalAmount) {
+  public TokenOrderLine totalAmount(Long totalAmount) {
     this.totalAmount = totalAmount;
     return this;
   }
@@ -246,7 +251,7 @@ public class OrderLine {
     this.totalAmount = totalAmount;
   }
 
-  public OrderLine totalDiscountAmount(Long totalDiscountAmount) {
+  public TokenOrderLine totalDiscountAmount(Long totalDiscountAmount) {
     this.totalDiscountAmount = totalDiscountAmount;
     return this;
   }
@@ -265,7 +270,7 @@ public class OrderLine {
     this.totalDiscountAmount = totalDiscountAmount;
   }
 
-  public OrderLine totalTaxAmount(Long totalTaxAmount) {
+  public TokenOrderLine totalTaxAmount(Long totalTaxAmount) {
     this.totalTaxAmount = totalTaxAmount;
     return this;
   }
@@ -283,7 +288,7 @@ public class OrderLine {
     this.totalTaxAmount = totalTaxAmount;
   }
 
-  public OrderLine type(String type) {
+  public TokenOrderLine type(String type) {
     this.type = type;
     return this;
   }
@@ -301,7 +306,7 @@ public class OrderLine {
     this.type = type;
   }
 
-  public OrderLine unitPrice(Long unitPrice) {
+  public TokenOrderLine unitPrice(Long unitPrice) {
     this.unitPrice = unitPrice;
     return this;
   }
@@ -329,7 +334,7 @@ public class OrderLine {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    OrderLine orderLine = (OrderLine) o;
+    TokenOrderLine orderLine = (TokenOrderLine) o;
     return Objects.equals(this.imageUrl, orderLine.imageUrl) &&
         Objects.equals(this.merchantData, orderLine.merchantData) &&
         Objects.equals(this.name, orderLine.name) &&
@@ -355,7 +360,7 @@ public class OrderLine {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class OrderLine {\n");
+    sb.append("class TokenOrderLine {\n");
     
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
     sb.append("    merchantData: ").append(toIndentedString(merchantData)).append("\n");

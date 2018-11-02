@@ -11,17 +11,21 @@
  */
 
 
-package com.klarna.rest.model.customer_token;
+package com.klarna.rest.api.customer_token.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Address
+ * TokenAddress
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-28T10:56:24.306Z")
-public class Address {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T11:40:30.975Z")
+public class TokenAddress {
   @JsonProperty("attention")
   private String attention = null;
 
@@ -61,7 +65,7 @@ public class Address {
   @JsonProperty("title")
   private String title = null;
 
-  public Address attention(String attention) {
+  public TokenAddress attention(String attention) {
     this.attention = attention;
     return this;
   }
@@ -79,7 +83,7 @@ public class Address {
     this.attention = attention;
   }
 
-  public Address city(String city) {
+  public TokenAddress city(String city) {
     this.city = city;
     return this;
   }
@@ -97,7 +101,7 @@ public class Address {
     this.city = city;
   }
 
-  public Address country(String country) {
+  public TokenAddress country(String country) {
     this.country = country;
     return this;
   }
@@ -115,7 +119,7 @@ public class Address {
     this.country = country;
   }
 
-  public Address email(String email) {
+  public TokenAddress email(String email) {
     this.email = email;
     return this;
   }
@@ -133,7 +137,7 @@ public class Address {
     this.email = email;
   }
 
-  public Address familyName(String familyName) {
+  public TokenAddress familyName(String familyName) {
     this.familyName = familyName;
     return this;
   }
@@ -151,7 +155,7 @@ public class Address {
     this.familyName = familyName;
   }
 
-  public Address givenName(String givenName) {
+  public TokenAddress givenName(String givenName) {
     this.givenName = givenName;
     return this;
   }
@@ -169,7 +173,7 @@ public class Address {
     this.givenName = givenName;
   }
 
-  public Address organizationName(String organizationName) {
+  public TokenAddress organizationName(String organizationName) {
     this.organizationName = organizationName;
     return this;
   }
@@ -187,7 +191,7 @@ public class Address {
     this.organizationName = organizationName;
   }
 
-  public Address phone(String phone) {
+  public TokenAddress phone(String phone) {
     this.phone = phone;
     return this;
   }
@@ -205,7 +209,7 @@ public class Address {
     this.phone = phone;
   }
 
-  public Address postalCode(String postalCode) {
+  public TokenAddress postalCode(String postalCode) {
     this.postalCode = postalCode;
     return this;
   }
@@ -223,7 +227,7 @@ public class Address {
     this.postalCode = postalCode;
   }
 
-  public Address region(String region) {
+  public TokenAddress region(String region) {
     this.region = region;
     return this;
   }
@@ -241,7 +245,7 @@ public class Address {
     this.region = region;
   }
 
-  public Address streetAddress(String streetAddress) {
+  public TokenAddress streetAddress(String streetAddress) {
     this.streetAddress = streetAddress;
     return this;
   }
@@ -259,7 +263,7 @@ public class Address {
     this.streetAddress = streetAddress;
   }
 
-  public Address streetAddress2(String streetAddress2) {
+  public TokenAddress streetAddress2(String streetAddress2) {
     this.streetAddress2 = streetAddress2;
     return this;
   }
@@ -277,7 +281,7 @@ public class Address {
     this.streetAddress2 = streetAddress2;
   }
 
-  public Address title(String title) {
+  public TokenAddress title(String title) {
     this.title = title;
     return this;
   }
@@ -304,7 +308,7 @@ public class Address {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Address address = (Address) o;
+    TokenAddress address = (TokenAddress) o;
     return Objects.equals(this.attention, address.attention) &&
         Objects.equals(this.city, address.city) &&
         Objects.equals(this.country, address.country) &&
@@ -329,7 +333,7 @@ public class Address {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Address {\n");
+    sb.append("class TokenAddress {\n");
     
     sb.append("    attention: ").append(toIndentedString(attention)).append("\n");
     sb.append("    city: ").append(toIndentedString(city)).append("\n");

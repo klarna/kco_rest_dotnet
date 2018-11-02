@@ -11,19 +11,23 @@
  */
 
 
-package com.klarna.rest.model.customer_token;
+package com.klarna.rest.api.customer_token.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ErrorV2
+ * TokenErrorV2
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-28T10:56:24.306Z")
-public class ErrorV2 {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T11:40:30.975Z")
+public class TokenErrorV2 {
   @JsonProperty("correlation_id")
   private String correlationId = null;
 
@@ -33,7 +37,7 @@ public class ErrorV2 {
   @JsonProperty("error_messages")
   private List<String> errorMessages = null;
 
-  public ErrorV2 correlationId(String correlationId) {
+  public TokenErrorV2 correlationId(String correlationId) {
     this.correlationId = correlationId;
     return this;
   }
@@ -51,7 +55,7 @@ public class ErrorV2 {
     this.correlationId = correlationId;
   }
 
-  public ErrorV2 errorCode(String errorCode) {
+  public TokenErrorV2 errorCode(String errorCode) {
     this.errorCode = errorCode;
     return this;
   }
@@ -69,12 +73,12 @@ public class ErrorV2 {
     this.errorCode = errorCode;
   }
 
-  public ErrorV2 errorMessages(List<String> errorMessages) {
+  public TokenErrorV2 errorMessages(List<String> errorMessages) {
     this.errorMessages = errorMessages;
     return this;
   }
 
-  public ErrorV2 addErrorMessagesItem(String errorMessagesItem) {
+  public TokenErrorV2 addErrorMessagesItem(String errorMessagesItem) {
     if (this.errorMessages == null) {
       this.errorMessages = new ArrayList<String>();
     }
@@ -104,7 +108,7 @@ public class ErrorV2 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ErrorV2 errorV2 = (ErrorV2) o;
+    TokenErrorV2 errorV2 = (TokenErrorV2) o;
     return Objects.equals(this.correlationId, errorV2.correlationId) &&
         Objects.equals(this.errorCode, errorV2.errorCode) &&
         Objects.equals(this.errorMessages, errorV2.errorMessages);
@@ -119,7 +123,7 @@ public class ErrorV2 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ErrorV2 {\n");
+    sb.append("class TokenErrorV2 {\n");
     
     sb.append("    correlationId: ").append(toIndentedString(correlationId)).append("\n");
     sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");

@@ -2,10 +2,12 @@ package examples;
 
 import com.klarna.rest.*;
 import com.klarna.rest.api.customer_token.TokensApi;
-import com.klarna.rest.model.customer_token.*;
+import com.klarna.rest.api.customer_token.model.*;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CustomerTokenExample {
@@ -24,7 +26,7 @@ public class CustomerTokenExample {
             TokensApi tokensApi = new TokensApi(transport, customerToken);
 
             try {
-                CustomerTokenV1 token = tokensApi.fetchDetails();
+                TokenCustomerTokenV1 token = tokensApi.fetchDetails();
                 System.out.println(token);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {
@@ -50,64 +52,50 @@ public class CustomerTokenExample {
             TokensApi tokensApi = new TokensApi(transport, customerToken);
 
             try {
-                final Address address = new Address(){
-                    {
-                        setGivenName("John");
-                        setFamilyName("Doe");
-                        setEmail("johndoe@example.com");
-                        setTitle("Mr");
-                        setStreetAddress("13 New Burlington St");
-                        setStreetAddress2("Apt 214");
-                        setPostalCode("W13 3BG");
-                        setCity("London");
-                        setPhone("01895808221");
-                        setCountry("GB");
-                    }
-                };
+                final TokenAddress address = new TokenAddress()
+                    .givenName("John")
+                    .familyName("Doe")
+                    .email("johndoe@example.com")
+                    .title("Mr")
+                    .streetAddress("13 New Burlington St")
+                    .streetAddress2("Apt 214")
+                    .postalCode("W13 3BG")
+                    .city("London")
+                    .phone("01895808221")
+                    .country("GB");
 
-                final List<OrderLine> lines = new ArrayList<OrderLine>() {
-                    {
-                        add(new OrderLine() {
-                            {
-                                setType("physical");
-                                setReference("123050");
-                                setName("Tomatoes");
-                                setQuantity(10L);
-                                setQuantityUnit("kg");
-                                setUnitPrice(600L);
-                                setTaxRate(2500L);
-                                setTotalAmount(6000L);
-                                setTotalTaxAmount(1200L);
-                            }
-                        });
-                        add(new OrderLine() {
-                            {
-                                setType("physical");
-                                setReference("543670");
-                                setName("Bananas");
-                                setQuantity(1L);
-                                setQuantityUnit("bag");
-                                setUnitPrice(5000L);
-                                setTaxRate(2500L);
-                                setTotalAmount(4000L);
-                                setTotalDiscountAmount(1000L);
-                                setTotalTaxAmount(800L);
-                            }
-                        });
+                final List<TokenOrderLine> lines = Arrays.asList(
+                    new TokenOrderLine()
+                        .type("physical")
+                        .reference("123050")
+                        .name("Tomatoes")
+                        .quantity(10L)
+                        .quantityUnit("kg")
+                        .unitPrice(600L)
+                        .taxRate(2500L)
+                        .totalAmount(6000L)
+                        .totalTaxAmount(1200L),
+                    new TokenOrderLine()
+                        .type("physical")
+                        .reference("543670")
+                        .name("Bananas")
+                        .quantity(1L)
+                        .quantityUnit("bag")
+                        .unitPrice(5000L)
+                        .taxRate(2500L)
+                        .totalAmount(4000L)
+                        .totalDiscountAmount(1000L)
+                        .totalTaxAmount(800L)
+                );
 
-                    }
-                };
+                TokenCustomerTokenOrder request = new TokenCustomerTokenOrder()
+                    .shippingAddress(address)
+                    .purchaseCurrency("gbp")
+                    .orderAmount(10000L)
+                    .orderTaxAmount(2000L)
+                    .orderLines(lines);
 
-                CustomerTokenOrder request = new CustomerTokenOrder(){
-                    {
-                        setShippingAddress(address);
-                        setPurchaseCurrency("gbp");
-                        setOrderAmount(10000L);
-                        setOrderTaxAmount(2000L);
-                        setOrderLines(lines);
-                    }
-                };
-                Order order = tokensApi.createOrder(request);
+                TokenOrder order = tokensApi.createOrder(request);
                 System.out.println(order);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {

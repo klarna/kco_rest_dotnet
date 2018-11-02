@@ -11,17 +11,21 @@
  */
 
 
-package com.klarna.rest.model.customer_token;
+package com.klarna.rest.api.customer_token.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Order
+ * TokenOrder
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-28T10:56:24.306Z")
-public class Order {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T11:40:30.975Z")
+public class TokenOrder {
   @JsonProperty("fraud_status")
   private String fraudStatus = null;
 
@@ -31,7 +35,7 @@ public class Order {
   @JsonProperty("redirect_url")
   private String redirectUrl = null;
 
-  public Order fraudStatus(String fraudStatus) {
+  public TokenOrder fraudStatus(String fraudStatus) {
     this.fraudStatus = fraudStatus;
     return this;
   }
@@ -49,7 +53,7 @@ public class Order {
     this.fraudStatus = fraudStatus;
   }
 
-  public Order orderId(String orderId) {
+  public TokenOrder orderId(String orderId) {
     this.orderId = orderId;
     return this;
   }
@@ -67,7 +71,7 @@ public class Order {
     this.orderId = orderId;
   }
 
-  public Order redirectUrl(String redirectUrl) {
+  public TokenOrder redirectUrl(String redirectUrl) {
     this.redirectUrl = redirectUrl;
     return this;
   }
@@ -94,7 +98,7 @@ public class Order {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Order order = (Order) o;
+    TokenOrder order = (TokenOrder) o;
     return Objects.equals(this.fraudStatus, order.fraudStatus) &&
         Objects.equals(this.orderId, order.orderId) &&
         Objects.equals(this.redirectUrl, order.redirectUrl);
@@ -109,7 +113,7 @@ public class Order {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Order {\n");
+    sb.append("class TokenOrder {\n");
     
     sb.append("    fraudStatus: ").append(toIndentedString(fraudStatus)).append("\n");
     sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");

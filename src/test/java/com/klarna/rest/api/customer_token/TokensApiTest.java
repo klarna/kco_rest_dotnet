@@ -18,9 +18,9 @@ package com.klarna.rest.api.customer_token;
 
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
-import com.klarna.rest.model.customer_token.CustomerTokenOrder;
-import com.klarna.rest.model.customer_token.CustomerTokenV1;
-import com.klarna.rest.model.customer_token.Order;
+import com.klarna.rest.api.customer_token.model.TokenCustomerTokenOrder;
+import com.klarna.rest.api.customer_token.model.TokenCustomerTokenV1;
+import com.klarna.rest.api.customer_token.model.TokenOrder;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -65,7 +65,7 @@ public class TokensApiTest extends TestCase {
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
         TokensApi api = new TokensApi(transport, "fake-token-id");
-        CustomerTokenV1 token = api.fetchDetails();
+        TokenCustomerTokenV1 token = api.fetchDetails();
 
         assertEquals("INVOICE", token.getPaymentMethodType());
         assertEquals("ACTIVE", token.getStatus());
@@ -89,13 +89,13 @@ public class TokensApiTest extends TestCase {
 
         TokensApi api = new TokensApi(transport, "fake-token-id");
 
-        CustomerTokenOrder data = new CustomerTokenOrder(){
+        TokenCustomerTokenOrder data = new TokenCustomerTokenOrder(){
             {
                 setOrderAmount(100L);
                 setPurchaseCurrency("EUR");
             }
         };
-        Order order = api.createOrder(data);
+        TokenOrder order = api.createOrder(data);
 
         assertEquals("ACCEPTED", order.getFraudStatus());
         assertEquals("order-id-123", order.getOrderId());

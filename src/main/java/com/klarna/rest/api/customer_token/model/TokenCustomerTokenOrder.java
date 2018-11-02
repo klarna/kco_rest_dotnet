@@ -11,27 +11,35 @@
  */
 
 
-package com.klarna.rest.model.customer_token;
+package com.klarna.rest.api.customer_token.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.klarna.rest.api.customer_token.model.TokenAddress;
+import com.klarna.rest.api.customer_token.model.TokenAttachment;
+import com.klarna.rest.api.customer_token.model.TokenMerchantUrls;
+import com.klarna.rest.api.customer_token.model.TokenOrderLine;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * CustomerTokenOrder
+ * TokenCustomerTokenOrder
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-28T10:56:24.306Z")
-public class CustomerTokenOrder {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T11:40:30.975Z")
+public class TokenCustomerTokenOrder {
   @JsonProperty("attachment")
-  private Attachment attachment = null;
+  private TokenAttachment attachment = null;
 
   @JsonProperty("auto_capture")
   private Boolean autoCapture = false;
 
   @JsonProperty("customer_token_order_merchant_urls")
-  private MerchantUrls customerTokenOrderMerchantUrls = null;
+  private TokenMerchantUrls customerTokenOrderMerchantUrls = null;
 
   @JsonProperty("merchant_data")
   private String merchantData = null;
@@ -46,7 +54,7 @@ public class CustomerTokenOrder {
   private Long orderAmount = null;
 
   @JsonProperty("order_lines")
-  private List<OrderLine> orderLines = new ArrayList<OrderLine>();
+  private List<TokenOrderLine> orderLines = new ArrayList<TokenOrderLine>();
 
   @JsonProperty("order_tax_amount")
   private Long orderTaxAmount = null;
@@ -55,9 +63,9 @@ public class CustomerTokenOrder {
   private String purchaseCurrency = null;
 
   @JsonProperty("shipping_address")
-  private Address shippingAddress = null;
+  private TokenAddress shippingAddress = null;
 
-  public CustomerTokenOrder attachment(Attachment attachment) {
+  public TokenCustomerTokenOrder attachment(TokenAttachment attachment) {
     this.attachment = attachment;
     return this;
   }
@@ -67,15 +75,15 @@ public class CustomerTokenOrder {
    * @return attachment
   **/
   @ApiModelProperty(value = "Additional purchase information required for some industries.")
-  public Attachment getAttachment() {
+  public TokenAttachment getAttachment() {
     return attachment;
   }
 
-  public void setAttachment(Attachment attachment) {
+  public void setAttachment(TokenAttachment attachment) {
     this.attachment = attachment;
   }
 
-  public CustomerTokenOrder autoCapture(Boolean autoCapture) {
+  public TokenCustomerTokenOrder autoCapture(Boolean autoCapture) {
     this.autoCapture = autoCapture;
     return this;
   }
@@ -93,7 +101,7 @@ public class CustomerTokenOrder {
     this.autoCapture = autoCapture;
   }
 
-  public CustomerTokenOrder customerTokenOrderMerchantUrls(MerchantUrls customerTokenOrderMerchantUrls) {
+  public TokenCustomerTokenOrder customerTokenOrderMerchantUrls(TokenMerchantUrls customerTokenOrderMerchantUrls) {
     this.customerTokenOrderMerchantUrls = customerTokenOrderMerchantUrls;
     return this;
   }
@@ -103,15 +111,15 @@ public class CustomerTokenOrder {
    * @return customerTokenOrderMerchantUrls
   **/
   @ApiModelProperty(value = "The merchant_urls object.")
-  public MerchantUrls getCustomerTokenOrderMerchantUrls() {
+  public TokenMerchantUrls getCustomerTokenOrderMerchantUrls() {
     return customerTokenOrderMerchantUrls;
   }
 
-  public void setCustomerTokenOrderMerchantUrls(MerchantUrls customerTokenOrderMerchantUrls) {
+  public void setCustomerTokenOrderMerchantUrls(TokenMerchantUrls customerTokenOrderMerchantUrls) {
     this.customerTokenOrderMerchantUrls = customerTokenOrderMerchantUrls;
   }
 
-  public CustomerTokenOrder merchantData(String merchantData) {
+  public TokenCustomerTokenOrder merchantData(String merchantData) {
     this.merchantData = merchantData;
     return this;
   }
@@ -129,7 +137,7 @@ public class CustomerTokenOrder {
     this.merchantData = merchantData;
   }
 
-  public CustomerTokenOrder merchantReference1(String merchantReference1) {
+  public TokenCustomerTokenOrder merchantReference1(String merchantReference1) {
     this.merchantReference1 = merchantReference1;
     return this;
   }
@@ -147,7 +155,7 @@ public class CustomerTokenOrder {
     this.merchantReference1 = merchantReference1;
   }
 
-  public CustomerTokenOrder merchantReference2(String merchantReference2) {
+  public TokenCustomerTokenOrder merchantReference2(String merchantReference2) {
     this.merchantReference2 = merchantReference2;
     return this;
   }
@@ -165,7 +173,7 @@ public class CustomerTokenOrder {
     this.merchantReference2 = merchantReference2;
   }
 
-  public CustomerTokenOrder orderAmount(Long orderAmount) {
+  public TokenCustomerTokenOrder orderAmount(Long orderAmount) {
     this.orderAmount = orderAmount;
     return this;
   }
@@ -184,12 +192,12 @@ public class CustomerTokenOrder {
     this.orderAmount = orderAmount;
   }
 
-  public CustomerTokenOrder orderLines(List<OrderLine> orderLines) {
+  public TokenCustomerTokenOrder orderLines(List<TokenOrderLine> orderLines) {
     this.orderLines = orderLines;
     return this;
   }
 
-  public CustomerTokenOrder addOrderLinesItem(OrderLine orderLinesItem) {
+  public TokenCustomerTokenOrder addOrderLinesItem(TokenOrderLine orderLinesItem) {
     this.orderLines.add(orderLinesItem);
     return this;
   }
@@ -199,15 +207,15 @@ public class CustomerTokenOrder {
    * @return orderLines
   **/
   @ApiModelProperty(required = true, value = "The applicable order lines (max 1000)")
-  public List<OrderLine> getOrderLines() {
+  public List<TokenOrderLine> getOrderLines() {
     return orderLines;
   }
 
-  public void setOrderLines(List<OrderLine> orderLines) {
+  public void setOrderLines(List<TokenOrderLine> orderLines) {
     this.orderLines = orderLines;
   }
 
-  public CustomerTokenOrder orderTaxAmount(Long orderTaxAmount) {
+  public TokenCustomerTokenOrder orderTaxAmount(Long orderTaxAmount) {
     this.orderTaxAmount = orderTaxAmount;
     return this;
   }
@@ -226,7 +234,7 @@ public class CustomerTokenOrder {
     this.orderTaxAmount = orderTaxAmount;
   }
 
-  public CustomerTokenOrder purchaseCurrency(String purchaseCurrency) {
+  public TokenCustomerTokenOrder purchaseCurrency(String purchaseCurrency) {
     this.purchaseCurrency = purchaseCurrency;
     return this;
   }
@@ -244,19 +252,23 @@ public class CustomerTokenOrder {
     this.purchaseCurrency = purchaseCurrency;
   }
 
+  public TokenCustomerTokenOrder shippingAddress(TokenAddress shippingAddress) {
+    this.shippingAddress = shippingAddress;
+    return this;
+  }
+
    /**
    * Shipping address
    * @return shippingAddress
   **/
   @ApiModelProperty(value = "Shipping address")
-  public Address getShippingAddress() {
+  public TokenAddress getShippingAddress() {
     return shippingAddress;
   }
 
-  public void setShippingAddress(Address shippingAddress) {
+  public void setShippingAddress(TokenAddress shippingAddress) {
     this.shippingAddress = shippingAddress;
   }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -266,7 +278,7 @@ public class CustomerTokenOrder {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CustomerTokenOrder customerTokenOrder = (CustomerTokenOrder) o;
+    TokenCustomerTokenOrder customerTokenOrder = (TokenCustomerTokenOrder) o;
     return Objects.equals(this.attachment, customerTokenOrder.attachment) &&
         Objects.equals(this.autoCapture, customerTokenOrder.autoCapture) &&
         Objects.equals(this.customerTokenOrderMerchantUrls, customerTokenOrder.customerTokenOrderMerchantUrls) &&
@@ -289,7 +301,7 @@ public class CustomerTokenOrder {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CustomerTokenOrder {\n");
+    sb.append("class TokenCustomerTokenOrder {\n");
     
     sb.append("    attachment: ").append(toIndentedString(attachment)).append("\n");
     sb.append("    autoCapture: ").append(toIndentedString(autoCapture)).append("\n");

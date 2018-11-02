@@ -18,9 +18,9 @@ package com.klarna.rest.api.customer_token;
 
 import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;
-import com.klarna.rest.model.customer_token.CustomerTokenOrder;
-import com.klarna.rest.model.customer_token.CustomerTokenV1;
-import com.klarna.rest.model.customer_token.Order;
+import com.klarna.rest.api.customer_token.model.TokenCustomerTokenOrder;
+import com.klarna.rest.api.customer_token.model.TokenCustomerTokenV1;
+import com.klarna.rest.api.customer_token.model.TokenOrder;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -54,7 +54,7 @@ public class TokensApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public CustomerTokenV1 fetchDetails()
+    public TokenCustomerTokenV1 fetchDetails()
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final ApiResponse response = this.get(PATH);
 
@@ -62,7 +62,7 @@ public class TokensApi extends BaseApi {
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), CustomerTokenV1.class);
+        return fromJson(response.getBody(), TokenCustomerTokenV1.class);
     }
 
     /**
@@ -78,7 +78,7 @@ public class TokensApi extends BaseApi {
      * @throws ContentTypeException if content type does not match the expectation
      * @throws IOException if an error occurred when connecting to the server or when parsing a response
      */
-    public Order createOrder(CustomerTokenOrder order)
+    public TokenOrder createOrder(TokenCustomerTokenOrder order)
             throws ApiException, ProtocolException, ContentTypeException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(order);
         final ApiResponse response = this.post(PATH + "/order", data);
@@ -87,6 +87,6 @@ public class TokensApi extends BaseApi {
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
-        return fromJson(response.getBody(), Order.class);
+        return fromJson(response.getBody(), TokenOrder.class);
     }
 }

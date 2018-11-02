@@ -11,24 +11,28 @@
  */
 
 
-package com.klarna.rest.model.customer_token;
+package com.klarna.rest.api.customer_token.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * CustomerTokenV1
+ * TokenCustomerTokenV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-28T10:56:24.306Z")
-public class CustomerTokenV1 {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T11:40:30.975Z")
+public class TokenCustomerTokenV1 {
   @JsonProperty("payment_method_type")
   private String paymentMethodType = null;
 
   @JsonProperty("status")
   private String status = null;
 
-  public CustomerTokenV1 paymentMethodType(String paymentMethodType) {
+  public TokenCustomerTokenV1 paymentMethodType(String paymentMethodType) {
     this.paymentMethodType = paymentMethodType;
     return this;
   }
@@ -46,7 +50,7 @@ public class CustomerTokenV1 {
     this.paymentMethodType = paymentMethodType;
   }
 
-  public CustomerTokenV1 status(String status) {
+  public TokenCustomerTokenV1 status(String status) {
     this.status = status;
     return this;
   }
@@ -73,7 +77,7 @@ public class CustomerTokenV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CustomerTokenV1 customerTokenV1 = (CustomerTokenV1) o;
+    TokenCustomerTokenV1 customerTokenV1 = (TokenCustomerTokenV1) o;
     return Objects.equals(this.paymentMethodType, customerTokenV1.paymentMethodType) &&
         Objects.equals(this.status, customerTokenV1.status);
   }
@@ -87,7 +91,7 @@ public class CustomerTokenV1 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CustomerTokenV1 {\n");
+    sb.append("class TokenCustomerTokenV1 {\n");
     
     sb.append("    paymentMethodType: ").append(toIndentedString(paymentMethodType)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
