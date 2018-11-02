@@ -1,12 +1,15 @@
 package examples;
 
-import com.klarna.rest.*;
 import com.klarna.rest.api.customer_token.TokensApi;
 import com.klarna.rest.api.customer_token.model.*;
+import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
+import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.model.ApiException;
+import com.klarna.rest.model.ContentTypeException;
+import com.klarna.rest.model.ProtocolException;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,7 +32,7 @@ public class CustomerTokenExample {
                 TokenCustomerTokenV1 token = tokensApi.fetchDetails();
                 System.out.println(token);
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -98,7 +101,7 @@ public class CustomerTokenExample {
                 TokenOrder order = tokensApi.createOrder(request);
                 System.out.println(order);
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());

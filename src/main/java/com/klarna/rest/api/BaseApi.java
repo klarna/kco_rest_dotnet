@@ -17,7 +17,10 @@
 package com.klarna.rest.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.klarna.rest.*;
+import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.model.ApiException;
+import com.klarna.rest.model.ApiResponse;
+import com.klarna.rest.model.ProtocolException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -91,6 +94,11 @@ public abstract class BaseApi {
         this.objectMapper = new DefaultMapper();
     }
 
+    public BaseApi(Transport transport, ObjectMapper mapper) {
+        this.transport = transport;
+        this.objectMapper = mapper;
+    }
+
     public void setObjectMapper(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
     }
@@ -139,14 +147,14 @@ public abstract class BaseApi {
      * @return Processed response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    protected ApiResponse get(final String path) throws ApiException, ProtocolException, IOException {
+    protected ApiResponse get(final String path) throws ApiException, IOException {
         return this.get(path, null);
     }
 
-    protected ApiResponse get(final String path, Map<String, String> headers) throws ApiException, ProtocolException, IOException {
+    protected ApiResponse get(final String path, Map<String, String> headers)
+            throws ApiException, ProtocolException, IOException {
         return this.makeRequest(Method.GET, path, null, headers);
     }
 
@@ -158,14 +166,14 @@ public abstract class BaseApi {
      * @return Processed response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    protected ApiResponse post(final String path, final byte[] data) throws ApiException, ProtocolException, IOException {
+    protected ApiResponse post(final String path, final byte[] data) throws ApiException, IOException {
         return this.post(path, data, null);
     }
 
-    protected ApiResponse post(final String path, final byte[] data, Map<String, String> headers) throws ApiException, ProtocolException, IOException {
+    protected ApiResponse post(final String path, final byte[] data, Map<String, String> headers)
+            throws ApiException, IOException {
         return this.makeRequest(Method.POST, path, data, headers);
     }
 
@@ -177,35 +185,36 @@ public abstract class BaseApi {
      * @return Processed response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    protected ApiResponse put(final String path, final byte[] data) throws ApiException, ProtocolException, IOException {
+    protected ApiResponse put(final String path, final byte[] data) throws ApiException, IOException {
         return this.put(path, data, null);
     }
 
-    protected ApiResponse put(final String path, final byte[] data, Map<String, String> headers) throws ApiException, ProtocolException, IOException {
+    protected ApiResponse put(final String path, final byte[] data, Map<String, String> headers)
+            throws ApiException, IOException {
         return this.makeRequest(Method.PUT, path, data, headers);
     }
 
-    protected ApiResponse patch(final String path, final byte[] data) throws ApiException, ProtocolException, IOException {
+    protected ApiResponse patch(final String path, final byte[] data) throws ApiException, IOException {
         return this.patch(path, data, null);
     }
 
-    protected ApiResponse patch(final String path, final byte[] data, Map<String, String> headers) throws ApiException, ProtocolException, IOException {
+    protected ApiResponse patch(final String path, final byte[] data, Map<String, String> headers)
+            throws ApiException, IOException {
         return this.makeRequest(Method.PATCH, path, data, headers);
     }
 
-    protected ApiResponse delete(final String path) throws ApiException, ProtocolException, IOException {
+    protected ApiResponse delete(final String path) throws ApiException, IOException {
         return this.delete(path, null);
     }
 
-    protected ApiResponse delete(final String path, Map<String, String> headers) throws ApiException, ProtocolException, IOException {
+    protected ApiResponse delete(final String path, Map<String, String> headers) throws ApiException, IOException {
         return this.makeRequest(Method.DELETE, path, null, headers);
     }
 
     protected ApiResponse makeRequest(Method method, String path, byte[] data, Map<String, String> headers)
-            throws ApiException, ProtocolException, IOException {
+            throws ApiException, IOException {
         final ApiResponse response;
         switch (method) {
             case GET:

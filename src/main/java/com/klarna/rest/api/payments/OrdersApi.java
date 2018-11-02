@@ -16,12 +16,16 @@
 
 package com.klarna.rest.api.payments;
 
-import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;
 import com.klarna.rest.api.payments.model.PaymentsCreateOrderRequest;
 import com.klarna.rest.api.payments.model.PaymentsCustomerTokenCreationRequest;
 import com.klarna.rest.api.payments.model.PaymentsCustomerTokenCreationResponse;
 import com.klarna.rest.api.payments.model.PaymentsOrder;
+import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.model.ApiException;
+import com.klarna.rest.model.ApiResponse;
+import com.klarna.rest.model.ContentTypeException;
+import com.klarna.rest.model.ProtocolException;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -52,12 +56,10 @@ public class OrdersApi extends BaseApi {
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
     public PaymentsOrder create(String authorizationToken, PaymentsCreateOrderRequest order)
-            throws ApiException, ProtocolException, ContentTypeException, IOException {
+            throws ApiException, IOException {
         final String path = String.format("%s/%s/%s", PATH, authorizationToken, "order");
         final byte[] data = objectMapper.writeValueAsBytes(order);
         final ApiResponse response = this.post(path, data);
@@ -79,13 +81,10 @@ public class OrdersApi extends BaseApi {
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
     public PaymentsCustomerTokenCreationResponse generateToken(
-            String authorizationToken, PaymentsCustomerTokenCreationRequest request)
-            throws ApiException, ProtocolException, ContentTypeException, IOException {
+            String authorizationToken, PaymentsCustomerTokenCreationRequest request) throws ApiException, IOException {
         final String path = String.format("%s/%s/%s", PATH, authorizationToken, "customer-token");
         final byte[] data = objectMapper.writeValueAsBytes(request);
         final ApiResponse response = this.post(path, data);
@@ -105,12 +104,9 @@ public class OrdersApi extends BaseApi {
      * @param authorizationToken Authorization token
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public void cancelAuthorization(String authorizationToken)
-            throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public void cancelAuthorization(String authorizationToken) throws ApiException, IOException {
         final ApiResponse response = this.delete(PATH + "/" + authorizationToken);
 
         response.expectSuccessful()

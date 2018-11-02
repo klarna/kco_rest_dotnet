@@ -16,11 +16,11 @@
 
 package com.klarna.rest.api.checkout;
 
-import com.klarna.rest.Transport;
-import com.klarna.rest.ApiException;
-import com.klarna.rest.ApiResponse;
-import com.klarna.rest.ContentTypeException;
-import com.klarna.rest.ProtocolException;
+import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.model.ApiException;
+import com.klarna.rest.model.ApiResponse;
+import com.klarna.rest.model.ContentTypeException;
+import com.klarna.rest.model.ProtocolException;
 import com.klarna.rest.api.BaseApi;
 
 import com.klarna.rest.api.checkout.model.*;
@@ -55,11 +55,9 @@ public class OrdersApi extends BaseApi {
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public CheckoutOrder create(CheckoutOrder order) throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public CheckoutOrder create(CheckoutOrder order) throws ApiException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(order);
         final ApiResponse response = this.post(PATH, data);
 
@@ -84,11 +82,9 @@ public class OrdersApi extends BaseApi {
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public CheckoutOrder fetch(String orderId) throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public CheckoutOrder fetch(String orderId) throws ApiException, IOException {
         final ApiResponse response = this.get(PATH + '/' + orderId);
 
         response.expectSuccessful()
@@ -106,11 +102,9 @@ public class OrdersApi extends BaseApi {
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public CheckoutOrder fetch() throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public CheckoutOrder fetch() throws ApiException, IOException {
         if (this.location == null) {
             throw new IOException("Unknown location");
         }
@@ -138,11 +132,9 @@ public class OrdersApi extends BaseApi {
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public CheckoutOrder update(String orderId, CheckoutOrder order) throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public CheckoutOrder update(String orderId, CheckoutOrder order) throws ApiException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(order);
         final ApiResponse response = this.post(PATH + '/' + orderId, data);
 

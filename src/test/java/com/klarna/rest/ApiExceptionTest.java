@@ -15,6 +15,7 @@
  */
 package com.klarna.rest;
 
+import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ErrorMessage;
 import org.junit.Before;
 import org.junit.Test;
@@ -63,16 +64,19 @@ public class ApiExceptionTest extends TestCase {
 
     @Test
     public void testGetMessageReason() {
-        exception = new ApiException(500, null);
+        exception = new ApiException(500, "Hello");
 
-        assertEquals("Unexpected HTTP status code: 500", exception.getMessage());
+        assertEquals("Hello", exception.getMessage());
+        assertEquals(500, exception.getHttpStatus());
     }
 
     @Test
     public void testGetMessageUnknown() {
-        exception = new ApiException(599, null);
+        exception = new ApiException(599, "");
+        assertEquals(599, exception.getHttpStatus());
 
-        assertEquals("Unexpected HTTP status code: 599", exception.getMessage());
+
+        assertEquals("", exception.getMessage());
     }
 
     @Test

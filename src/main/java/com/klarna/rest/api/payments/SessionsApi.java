@@ -16,10 +16,14 @@
 
 package com.klarna.rest.api.payments;
 
-import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;
 import com.klarna.rest.api.payments.model.PaymentsMerchantSession;
 import com.klarna.rest.api.payments.model.PaymentsSession;
+import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.model.ApiException;
+import com.klarna.rest.model.ApiResponse;
+import com.klarna.rest.model.ContentTypeException;
+import com.klarna.rest.model.ProtocolException;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -49,12 +53,9 @@ public class SessionsApi extends BaseApi {
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public PaymentsMerchantSession create(PaymentsSession session)
-            throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public PaymentsMerchantSession create(PaymentsSession session) throws ApiException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(session);
         final ApiResponse response = this.post(PATH, data);
 
@@ -74,11 +75,9 @@ public class SessionsApi extends BaseApi {
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public PaymentsSession fetch(String sessionId) throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public PaymentsSession fetch(String sessionId) throws ApiException, IOException {
         final ApiResponse response = this.get(PATH + '/' + sessionId);
 
         response.expectSuccessful()
@@ -97,12 +96,9 @@ public class SessionsApi extends BaseApi {
      * @param session Session information
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public void update(String sessionId, PaymentsSession session)
-            throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public void update(String sessionId, PaymentsSession session) throws ApiException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(session);
         final ApiResponse response = this.post(PATH + '/' + sessionId, data);
 

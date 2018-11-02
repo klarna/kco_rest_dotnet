@@ -16,11 +16,15 @@
 
 package com.klarna.rest.api.customer_token;
 
-import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;
 import com.klarna.rest.api.customer_token.model.TokenCustomerTokenOrder;
 import com.klarna.rest.api.customer_token.model.TokenCustomerTokenV1;
 import com.klarna.rest.api.customer_token.model.TokenOrder;
+import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.model.ApiException;
+import com.klarna.rest.model.ApiResponse;
+import com.klarna.rest.model.ContentTypeException;
+import com.klarna.rest.model.ProtocolException;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -50,12 +54,9 @@ public class TokensApi extends BaseApi {
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public TokenCustomerTokenV1 fetchDetails()
-            throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public TokenCustomerTokenV1 fetchDetails() throws ApiException, IOException {
         final ApiResponse response = this.get(PATH);
 
         response.expectSuccessful()
@@ -74,12 +75,9 @@ public class TokensApi extends BaseApi {
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public TokenOrder createOrder(TokenCustomerTokenOrder order)
-            throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public TokenOrder createOrder(TokenCustomerTokenOrder order) throws ApiException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(order);
         final ApiResponse response = this.post(PATH + "/order", data);
 

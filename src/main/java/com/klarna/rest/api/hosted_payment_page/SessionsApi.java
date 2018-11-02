@@ -16,12 +16,16 @@
 
 package com.klarna.rest.api.hosted_payment_page;
 
-import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;
 import com.klarna.rest.api.hosted_payment_page.model.HPPDistributionRequestV1;
 import com.klarna.rest.api.hosted_payment_page.model.HPPSessionCreationRequestV1;
 import com.klarna.rest.api.hosted_payment_page.model.HPPSessionCreationResponseV1;
 import com.klarna.rest.api.hosted_payment_page.model.HPPSessionResponseV1;
+import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.model.ApiException;
+import com.klarna.rest.model.ApiResponse;
+import com.klarna.rest.model.ContentTypeException;
+import com.klarna.rest.model.ProtocolException;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -58,12 +62,9 @@ public class SessionsApi extends BaseApi {
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public HPPSessionCreationResponseV1 create(HPPSessionCreationRequestV1 session)
-            throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public HPPSessionCreationResponseV1 create(HPPSessionCreationRequestV1 session) throws ApiException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(session);
         final ApiResponse response = this.post(PATH, data);
 
@@ -83,12 +84,9 @@ public class SessionsApi extends BaseApi {
      * @param request Session data
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public void distributeLink(String sessionId, HPPDistributionRequestV1 request)
-            throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public void distributeLink(String sessionId, HPPDistributionRequestV1 request) throws ApiException, IOException {
         final String path = String.format("%s/%s/%s", PATH, sessionId, "distribution");
         final byte[] data = objectMapper.writeValueAsBytes(request);
         final ApiResponse response = this.post(path, data);
@@ -106,12 +104,9 @@ public class SessionsApi extends BaseApi {
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public HPPSessionResponseV1 fetch(String sessionId)
-            throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public HPPSessionResponseV1 fetch(String sessionId) throws ApiException, IOException {
         final String path = String.format("%s/%s", PATH, sessionId);
         final ApiResponse response = this.get(path);
 

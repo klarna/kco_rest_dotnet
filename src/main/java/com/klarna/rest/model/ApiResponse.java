@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.klarna.rest;
+package com.klarna.rest.model;
 
-import com.klarna.rest.model.ErrorMessage;
+import com.klarna.rest.api.DefaultMapper;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -220,18 +220,18 @@ public class ApiResponse {
             return this;
         }
 
-        ErrorMessage message = null;
+        ErrorMessage message = new ErrorMessage();
         ObjectMapper objectMapper = new DefaultMapper();
         try {
             byte[] body = this.getBody();
             if (body != null) {
                 message = objectMapper.readValue(this.getBody(), ErrorMessage.class);
             }
+            throw new ApiException(this.getStatus(), message);
 
         } catch (IOException e) {
-            message = null;
+            throw new ApiException(this.getStatus(), e.getMessage());
         }
-        throw new ApiException(this.getStatus(), message);
     }
 
     @Override

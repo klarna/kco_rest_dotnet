@@ -1,5 +1,7 @@
 package com.klarna.rest;
 
+import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
+import com.klarna.rest.http_transport.Transport;
 import org.mockito.Mock;
 
 import java.io.ByteArrayOutputStream;

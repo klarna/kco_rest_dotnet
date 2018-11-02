@@ -16,8 +16,12 @@
 
 package com.klarna.rest.api.settlements;
 
-import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;
+import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.model.ApiException;
+import com.klarna.rest.model.ApiResponse;
+import com.klarna.rest.model.ContentTypeException;
+import com.klarna.rest.model.ProtocolException;
 
 import javax.ws.rs.core.Response;
 import java.io.IOException;
@@ -56,12 +60,9 @@ public class ReportsApi extends BaseApi {
      * @return CSV binary content
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public byte[] getCSVPayoutReport(Map<String, String> urlParams)
-            throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public byte[] getCSVPayoutReport(Map<String, String> urlParams) throws ApiException, IOException {
         final String path = String.format("%s/%s?%s",
                 PATH,
                 "payout-with-transactions",
@@ -88,12 +89,9 @@ public class ReportsApi extends BaseApi {
      * @return CSV binary content
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public byte[] getCSVSummary(Map<String, String> urlParams)
-            throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public byte[] getCSVSummary(Map<String, String> urlParams) throws ApiException, IOException {
         final String path = String.format("%s/%s?%s",
                 PATH,
                 "payouts-summary-with-transactions",
@@ -117,12 +115,9 @@ public class ReportsApi extends BaseApi {
      * @return PDF binary content
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public byte[] getPDFPayoutsSummaryReport(Map<String, String> urlParams)
-            throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public byte[] getPDFPayoutsSummaryReport(Map<String, String> urlParams) throws ApiException, IOException {
         final String path = String.format("%s/%s?%s", PATH, "payout", BaseApi.buildQueryString(urlParams));
         final ApiResponse response = this.get(path);
         response.expectSuccessful()
@@ -142,12 +137,9 @@ public class ReportsApi extends BaseApi {
      * @return PDF binary content
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public byte[] getPDFSummary(Map<String, String> urlParams)
-            throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public byte[] getPDFSummary(Map<String, String> urlParams) throws ApiException, IOException {
         final String path = String.format("%s/%s?%s", PATH, "payouts-summary", BaseApi.buildQueryString(urlParams));
         final ApiResponse response = this.get(path);
         response.expectSuccessful()

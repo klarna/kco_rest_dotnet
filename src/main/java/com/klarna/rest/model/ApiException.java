@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.klarna.rest;
+package com.klarna.rest.model;
 
 import com.klarna.rest.model.ErrorMessage;
 import org.apache.commons.lang3.StringUtils;
@@ -42,16 +42,36 @@ public class ApiException extends RuntimeException {
     private final ErrorMessage errorMessage;
 
     /**
+     * A common error message
+     */
+    private final String commonError;
+
+    /**
      * Constructs a ApiException instance.
      *
      * @param status HTTP status code
      * @param errorMessage Error message
      */
     public ApiException(final int status, final ErrorMessage errorMessage) {
-        super(formatError(errorMessage, status));
+        super(formatError(errorMessage));
 
         this.httpStatus = status;
         this.errorMessage = errorMessage;
+        this.commonError = null;
+    }
+
+    /**
+     * Constructs a ApiException instance.
+     *
+     * @param status HTTP status code
+     * @param commonError Error message
+     */
+    public ApiException(final int status, final String commonError) {
+        super(formatError(commonError));
+
+        this.httpStatus = status;
+        this.errorMessage = null;
+        this.commonError = commonError;
     }
 
     /**
@@ -76,15 +96,9 @@ public class ApiException extends RuntimeException {
      * Formats the exception message.
      *
      * @param errorMessage Error data
-     * @param httpStatus HTTP status code
      * @return Exception message
      */
-    private static String formatError(final ErrorMessage errorMessage,
-                                      final int httpStatus
-    ) {
-        if (errorMessage == null) {
-            return String.format("Unexpected HTTP status code: %s", httpStatus);
-        }
+    private static String formatError(final ErrorMessage errorMessage) {
 
         String message = String.format(
                 "%s: %s (#%s)",
@@ -96,5 +110,17 @@ public class ApiException extends RuntimeException {
             message += " ServiceVersion: " + errorMessage.getServiceVersion();
         }
         return message;
+    }
+
+    /**
+     * Formats the exception message.
+     *
+     * @param commonError Error message
+     * @return Exception message
+     */
+    private static String formatError(final String commonError) {
+
+        // Nothing to do
+        return commonError;
     }
 }

@@ -16,10 +16,14 @@
 
 package examples;
 
-import com.klarna.rest.*;
 import com.klarna.rest.api.payments.OrdersApi;
 import com.klarna.rest.api.payments.SessionsApi;
 import com.klarna.rest.api.payments.model.*;
+import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
+import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.model.ApiException;
+import com.klarna.rest.model.ContentTypeException;
+import com.klarna.rest.model.ProtocolException;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -113,7 +117,7 @@ public class PaymentsExample {
                 PaymentsSession session = sessionsApi.fetch(sessionId);
                 System.out.println(session);
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -165,7 +169,7 @@ public class PaymentsExample {
                 sessionsApi.update(sessionId, sessionRequest);
                 System.out.println("Order has been updated");
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -242,7 +246,7 @@ public class PaymentsExample {
                 PaymentsOrder order = ordersApi.create(authorizationToken, request);
                 System.out.println(order);
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -296,7 +300,7 @@ public class PaymentsExample {
                 PaymentsCustomerTokenCreationResponse response = ordersApi.generateToken(authorizationToken, request);
                 System.out.println(response);
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -326,7 +330,7 @@ public class PaymentsExample {
                 ordersApi.cancelAuthorization(authorizationToken);
                 System.out.println("Authorization has been cancelled");
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());

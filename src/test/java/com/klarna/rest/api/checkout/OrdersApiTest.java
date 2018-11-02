@@ -18,6 +18,9 @@ package com.klarna.rest.api.checkout;
 
 import com.klarna.rest.*;
 import com.klarna.rest.api.checkout.model.CheckoutOrder;
+import com.klarna.rest.model.ApiException;
+import com.klarna.rest.model.ContentTypeException;
+import com.klarna.rest.model.ProtocolException;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -27,7 +30,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.core.MediaType;
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;

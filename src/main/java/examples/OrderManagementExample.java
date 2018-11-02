@@ -16,18 +16,17 @@
 
 package examples;
 
-import com.klarna.rest.HttpUrlConnectionTransport;
-import com.klarna.rest.Transport;
+import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
+import com.klarna.rest.http_transport.Transport;
 
-import com.klarna.rest.ApiException;
-import com.klarna.rest.ContentTypeException;
-import com.klarna.rest.ProtocolException;
+import com.klarna.rest.model.ApiException;
+import com.klarna.rest.model.ContentTypeException;
+import com.klarna.rest.model.ProtocolException;
 import com.klarna.rest.api.order_management.OrdersApi;
 import com.klarna.rest.api.order_management.RefundsApi;
 import com.klarna.rest.api.order_management.model.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -58,7 +57,7 @@ public class OrderManagementExample {
                 OrderManagementOrder order = ordersApi.fetch(orderId);
                 System.out.println(order);
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -88,7 +87,7 @@ public class OrderManagementExample {
                 ordersApi.releaseRemainingAuthorization(orderId);
                 System.out.println("Remaining authorised amount has been released");
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -118,7 +117,7 @@ public class OrderManagementExample {
                 ordersApi.extendAuthorizationTime(orderId);
                 System.out.println("The expiry time of an order has been extend");
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -158,7 +157,7 @@ public class OrderManagementExample {
 
                 System.out.println("Customer details have been updated");
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -188,7 +187,7 @@ public class OrderManagementExample {
                 ordersApi.cancelOrder(orderId);
                 System.out.println("Order has been cancelled");
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -222,7 +221,7 @@ public class OrderManagementExample {
 
                 System.out.println("Merchant references have been updated");
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -252,7 +251,7 @@ public class OrderManagementExample {
                 ordersApi.acknowledgeOrder(orderId);
                 System.out.println("Order has been acknowledged");
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -300,7 +299,7 @@ public class OrderManagementExample {
                 ordersApi.setOrderAmountAndOrderLines(orderId, orderData);
                 System.out.println("New order amount and order lines have been set");
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -356,7 +355,7 @@ public class OrderManagementExample {
                 OrderManagementRefund createdRefund = refundsApi.fetch();
                 System.out.println(createdRefund);
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -384,7 +383,7 @@ public class OrderManagementExample {
                 OrderManagementRefund refund = refundsApi.fetch(refundId);
                 System.out.println(refund);
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());

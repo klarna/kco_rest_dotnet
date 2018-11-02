@@ -1,10 +1,13 @@
 package examples;
 
-import com.klarna.rest.*;
 import com.klarna.rest.api.merchant_card_service.VirtualCreditCardApi;
 import com.klarna.rest.api.merchant_card_service.model.CardServiceSettlementResponse;
 import com.klarna.rest.api.merchant_card_service.model.CardServiceSettlementRequest;
-import com.klarna.rest.api.merchant_card_service.model.CardServiceSettlementResponse;
+import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
+import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.model.ApiException;
+import com.klarna.rest.model.ContentTypeException;
+import com.klarna.rest.model.ProtocolException;
 
 import java.io.IOException;
 
@@ -28,7 +31,7 @@ public class MerchantCardServiceExample {
                 CardServiceSettlementResponse settlement = vccApi.retrieveExistingSettlement(settlementId, keyId);
                 System.out.println(settlement);
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -55,7 +58,7 @@ public class MerchantCardServiceExample {
                 CardServiceSettlementResponse settlement = vccApi.retrieveSettledOrderSettlement(orderId, keyId);
                 System.out.println(settlement);
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -88,7 +91,7 @@ public class MerchantCardServiceExample {
                 CardServiceSettlementResponse settlement = vccApi.createSettlement(request);
                 System.out.println(settlement);
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());

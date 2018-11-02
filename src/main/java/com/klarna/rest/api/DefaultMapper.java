@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.klarna.rest;
+package com.klarna.rest.api;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;

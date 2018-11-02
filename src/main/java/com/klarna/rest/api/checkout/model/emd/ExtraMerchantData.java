@@ -17,7 +17,7 @@
 package com.klarna.rest.api.checkout.model.emd;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.klarna.rest.DefaultMapper;
+import com.klarna.rest.api.DefaultMapper;
 import com.klarna.rest.api.checkout.model.CheckoutAttachment;
 
 import java.io.IOException;

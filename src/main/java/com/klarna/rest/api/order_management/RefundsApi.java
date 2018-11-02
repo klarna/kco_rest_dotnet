@@ -16,10 +16,14 @@
 
 package com.klarna.rest.api.order_management;
 
-import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;
 import com.klarna.rest.api.order_management.model.OrderManagementRefund;
 import com.klarna.rest.api.order_management.model.OrderManagementRefundObject;
+import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.model.ApiException;
+import com.klarna.rest.model.ApiResponse;
+import com.klarna.rest.model.ContentTypeException;
+import com.klarna.rest.model.ProtocolException;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response.Status;
@@ -56,11 +60,9 @@ public class RefundsApi extends BaseApi {
      * @return Refund ID
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public String create(OrderManagementRefundObject refund) throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public String create(OrderManagementRefundObject refund) throws ApiException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(refund);
         final ApiResponse response = this.post(PATH, data);
 
@@ -80,11 +82,9 @@ public class RefundsApi extends BaseApi {
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public OrderManagementRefund fetch(String refundId) throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public OrderManagementRefund fetch(String refundId) throws ApiException, IOException {
         ApiResponse response = this.get(PATH + "/" + refundId);
 
         response.expectSuccessful()
@@ -102,11 +102,9 @@ public class RefundsApi extends BaseApi {
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public OrderManagementRefund fetch() throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public OrderManagementRefund fetch() throws ApiException, IOException {
         if (this.location == null) {
             throw new IOException("Unknown location");
         }

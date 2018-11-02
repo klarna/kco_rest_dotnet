@@ -16,12 +16,12 @@
 
 package examples;
 
-import com.klarna.rest.HttpUrlConnectionTransport;
-import com.klarna.rest.Transport;
+import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
+import com.klarna.rest.http_transport.Transport;
 
-import com.klarna.rest.ApiException;
-import com.klarna.rest.ContentTypeException;
-import com.klarna.rest.ProtocolException;
+import com.klarna.rest.model.ApiException;
+import com.klarna.rest.model.ContentTypeException;
+import com.klarna.rest.model.ProtocolException;
 
 import com.klarna.rest.api.hosted_payment_page.SessionsApi;
 import com.klarna.rest.api.hosted_payment_page.model.*;
@@ -68,7 +68,7 @@ public class HostedPaymentPageExample {
                 HPPSessionCreationResponseV1 session = sessionsApi.create(request);
                 System.out.println(session);
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -103,7 +103,7 @@ public class HostedPaymentPageExample {
                 sessionsApi.distributeLink(sessionId, request);
                 System.out.println("The session link has been distributed");
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -130,7 +130,7 @@ public class HostedPaymentPageExample {
                 HPPSessionResponseV1 session = sessionsApi.fetch(sessionId);
                 System.out.println(session);
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());

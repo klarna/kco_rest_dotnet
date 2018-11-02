@@ -16,7 +16,6 @@
 
 package examples;
 
-import com.klarna.rest.*;
 import com.klarna.rest.api.settlements.PayoutsApi;
 import com.klarna.rest.api.settlements.ReportsApi;
 import com.klarna.rest.api.settlements.TransactionsApi;
@@ -24,6 +23,11 @@ import com.klarna.rest.api.settlements.model.SettlementsPayout;
 import com.klarna.rest.api.settlements.model.SettlementsPayoutCollection;
 import com.klarna.rest.api.settlements.model.SettlementsPayoutSummary;
 import com.klarna.rest.api.settlements.model.SettlementsTransactionCollection;
+import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
+import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.model.ApiException;
+import com.klarna.rest.model.ContentTypeException;
+import com.klarna.rest.model.ProtocolException;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -60,7 +64,7 @@ public class SettlementsExample {
                 SettlementsPayout payout = payoutsApi.getPayout(paymentReference);
                 System.out.println(payout);
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -85,7 +89,7 @@ public class SettlementsExample {
                 SettlementsPayoutCollection payouts = payoutsApi.getAllPayouts();
                 System.out.println(payouts);
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -120,7 +124,7 @@ public class SettlementsExample {
                 SettlementsPayoutSummary[] summary = payoutsApi.getSummary(params);
                 System.out.println(Arrays.toString(summary));
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -145,7 +149,7 @@ public class SettlementsExample {
                 SettlementsTransactionCollection transactions = trasactionsApi.getTransactions();
                 System.out.println(transactions);
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -181,7 +185,7 @@ public class SettlementsExample {
                 SettlementsExample.writeToFile("summary_report.csv", csvReport);
                 System.out.println("Saved to summary_report.csv");
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -211,7 +215,7 @@ public class SettlementsExample {
                 SettlementsExample.writeToFile("payout_report.csv", csvReport);
                 System.out.println("Saved to payout_report.csv");
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -247,7 +251,7 @@ public class SettlementsExample {
                 SettlementsExample.writeToFile("summary_report.pdf", csvReport);
                 System.out.println("Saved to summary_report.pdf");
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());
@@ -277,7 +281,7 @@ public class SettlementsExample {
                 SettlementsExample.writeToFile("payout_summary_report.pdf", csvReport);
                 System.out.println("Saved to payout_summary_report.pdf");
 
-            } catch (IOException | ProtocolException | ContentTypeException e) {
+            } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
             } catch (ApiException e) {
                 System.out.println("API issue: " + e.getMessage());

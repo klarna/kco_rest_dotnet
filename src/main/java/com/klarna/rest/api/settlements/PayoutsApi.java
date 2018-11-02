@@ -16,11 +16,15 @@
 
 package com.klarna.rest.api.settlements;
 
-import com.klarna.rest.*;
 import com.klarna.rest.api.BaseApi;
 import com.klarna.rest.api.settlements.model.SettlementsPayout;
 import com.klarna.rest.api.settlements.model.SettlementsPayoutCollection;
 import com.klarna.rest.api.settlements.model.SettlementsPayoutSummary;
+import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.model.ApiException;
+import com.klarna.rest.model.ApiResponse;
+import com.klarna.rest.model.ContentTypeException;
+import com.klarna.rest.model.ProtocolException;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -56,12 +60,9 @@ public class PayoutsApi extends BaseApi {
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public SettlementsPayout getPayout(String paymentReference)
-            throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public SettlementsPayout getPayout(String paymentReference) throws ApiException, IOException {
         final ApiResponse response = this.get(PATH + "/" + paymentReference);
 
         response.expectSuccessful()
@@ -81,12 +82,9 @@ public class PayoutsApi extends BaseApi {
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public SettlementsPayoutCollection getAllPayouts(Map<String, String> urlParams)
-            throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public SettlementsPayoutCollection getAllPayouts(Map<String, String> urlParams) throws ApiException, IOException {
         final ApiResponse response = this.get(PATH + "?" + BaseApi.buildQueryString(urlParams));
         response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
@@ -103,12 +101,9 @@ public class PayoutsApi extends BaseApi {
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public SettlementsPayoutCollection getAllPayouts()
-            throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public SettlementsPayoutCollection getAllPayouts() throws ApiException, IOException {
         return this.getAllPayouts(null);
     }
 
@@ -122,12 +117,9 @@ public class PayoutsApi extends BaseApi {
      * @return server response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
-     * @throws ProtocolException if HTTP status code was non-20x or did not match expected code.
-     * @throws ContentTypeException if content type does not match the expectation
-     * @throws IOException if an error occurred when connecting to the server or when parsing a response
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public SettlementsPayoutSummary[] getSummary(Map<String, String> urlParams)
-            throws ApiException, ProtocolException, ContentTypeException, IOException {
+    public SettlementsPayoutSummary[] getSummary(Map<String, String> urlParams) throws ApiException, IOException {
         final String path = String.format("%s/%s?%s", PATH, "summary", BaseApi.buildQueryString(urlParams));
         final ApiResponse response = this.get(path);
         response.expectSuccessful()
