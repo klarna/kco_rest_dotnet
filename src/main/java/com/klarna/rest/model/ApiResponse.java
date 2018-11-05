@@ -230,7 +230,7 @@ public class ApiResponse {
             throw new ApiException(this.getStatus(), message);
 
         } catch (IOException e) {
-            throw new ApiException(this.getStatus(), e.getMessage());
+            throw new ApiException(this.getStatus(), new String(this.getBody()));
         }
     }
 
