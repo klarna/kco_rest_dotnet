@@ -83,30 +83,33 @@ The basic workflow is the following:
 ```java
 package com.mycompany.app;
 
-import com.klarna.rest.HttpUrlConnectionTransport;
-import com.klarna.rest.Transport;
 import com.klarna.rest.api.checkout.OrdersApi;
-import com.klarna.rest.model.checkout.Order;
+import com.klarna.rest.api.checkout.model.CheckoutOrder;
+import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
+import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.model.ApiException;
 
 import java.io.IOException;
-import com.klarna.rest.ApiException;
 
 /**
  * Klarna Checkout Example
+ *
  */
 public class App 
 {
     public static void main( String[] args )
     {
         HttpUrlConnectionTransport transport = new HttpUrlConnectionTransport(
-                "MyMerchantId", "MySharedSecret", Transport.EU_BASE_URL);
+                "merchantId", "sharedSecret", Transport.EU_BASE_URL);
         OrdersApi ordersApi = new OrdersApi(transport);
 
         try {
-            Order order = ordersApi.fetch("checkoutOrderID-123");
+            CheckoutOrder order = ordersApi.fetch("checkoutOrderID-123");
 
             // Order has been successfully fetched, we can get some info, e.g. HTML Snippet
-            System.out.println(order.getHtmlSnippet());
+            // This snippet can be embedded into your website/templates/etc
+            String htmlSnippet = order.getHtmlSnippet();
+            System.out.println(htmlSnippet);
 
             // Or print a whole order data
             System.out.println(order);
@@ -118,6 +121,7 @@ public class App
         }
     }
 }
+
 ```
 
 ## Logging and Debugging
