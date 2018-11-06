@@ -28,7 +28,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -39,7 +38,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class OrdersApiTest extends TestCase {
+public class CheckoutOrderManagementOrderManagementOrdersApiTest extends TestCase {
     @Rule
     public ExpectedException expectedEx = ExpectedException.none();
 
@@ -60,7 +59,7 @@ public class OrdersApiTest extends TestCase {
         final String payload = "{ \"order_id\": \"f3392f8b-6116-4073-ab96-e330819e2c07\", \"status\": \"AUTHORIZED\", \"order_amount\": 100, \"order_lines\": [ { \"reference\": \"75001\", \"type\": \"physical\" } ], \"customer\": { \"date_of_birth\": \"1981-09-06\" }, \"billing_address\": { \"given_name\": \"Klara\", \"family_name\": \"Joyce\" }, \"shipping_address\": { \"given_name\": \"Klara\", \"family_name\": \"Joyce\" }, \"created_at\": \"2015-11-29T10:25:40.000Z\", \"captures\": [ { \"capture_id\": \"4ba29b50-be7b-44f5-a492-113e6a865e22\", \"captured_amount\": 0 } ], \"refunds\": [ { \"refunded_amount\": 0, \"refunded_at\": \"2015-12-04T15:17:40.000Z\", \"order_lines\": [ { \"reference\": \"75001\", \"type\": \"physical\" } ] } ], \"initial_payment_method\": { \"type\": \"INVOICE\", \"description\": \"Pay later\" } }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        OrdersApi api = new OrdersApi(transport);
+        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
         OrderManagementOrder order = api.fetch("my-order-id");
 
         assertEquals("f3392f8b-6116-4073-ab96-e330819e2c07", order.getOrderId());
@@ -77,7 +76,7 @@ public class OrdersApiTest extends TestCase {
     public void testReleaseRemainingAuthorization() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(204);
 
-        OrdersApi api = new OrdersApi(transport);
+        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
         api.releaseRemainingAuthorization("my-order-id");
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
@@ -88,7 +87,7 @@ public class OrdersApiTest extends TestCase {
     public void testExtendAuthorizationTime() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(204);
 
-        OrdersApi api = new OrdersApi(transport);
+        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
         api.extendAuthorizationTime("my-order-id");
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
@@ -107,7 +106,7 @@ public class OrdersApiTest extends TestCase {
             .shippingAddress(address)
             .billingAddress(address);
 
-        OrdersApi api = new OrdersApi(transport);
+        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
         api.updateCustomerAddresses("my-order-id", data);
 
         verify(transport.conn, times(1)).setRequestMethod("PATCH");
@@ -123,7 +122,7 @@ public class OrdersApiTest extends TestCase {
     public void testCancelOrder() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(204);
 
-        OrdersApi api = new OrdersApi(transport);
+        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
         api.cancelOrder("my-order-id");
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
@@ -137,7 +136,7 @@ public class OrdersApiTest extends TestCase {
         OrderManagementUpdateMerchantReferences data = new OrderManagementUpdateMerchantReferences()
             .merchantReference1("ref-1");
 
-        OrdersApi api = new OrdersApi(transport);
+        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
         api.updateMerchantReferences("my-order-id", data);
 
         verify(transport.conn, times(1)).setRequestMethod("PATCH");
@@ -153,7 +152,7 @@ public class OrdersApiTest extends TestCase {
     public void testAcknowledgeOrder() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(204);
 
-        OrdersApi api = new OrdersApi(transport);
+        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
         api.acknowledgeOrder("my-order-id");
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
@@ -167,7 +166,7 @@ public class OrdersApiTest extends TestCase {
         OrderManagementUpdateAuthorization data = new OrderManagementUpdateAuthorization()
             .orderAmount(100L);
 
-        OrdersApi api = new OrdersApi(transport);
+        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
         api.setOrderAmountAndOrderLines("my-order-id", data);
 
         verify(transport.conn, times(1)).setRequestMethod("PATCH");

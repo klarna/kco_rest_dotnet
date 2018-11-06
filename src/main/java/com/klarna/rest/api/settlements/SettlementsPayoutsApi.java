@@ -44,10 +44,10 @@ import java.util.Map;
  *  <li>Entity resources containing a single entity</li>
  * </ul>
  */
-public class PayoutsApi extends BaseApi {
+public class SettlementsPayoutsApi extends BaseApi {
     protected String PATH = "/settlements/v1/payouts";
 
-    public PayoutsApi(final Transport transport) {
+    public SettlementsPayoutsApi(final Transport transport) {
         super(transport);
     }
 

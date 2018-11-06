@@ -30,7 +30,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -40,7 +39,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CapturesApiTest extends TestCase {
+public class OrderManagementCapturesApiTest extends TestCase {
     @Rule
     public ExpectedException expectedEx = ExpectedException.none();
 
@@ -61,7 +60,7 @@ public class CapturesApiTest extends TestCase {
         final String payload = "[ { \"capture_id\": \"4ba29b50-be7b-44f5-a492-113e6a865e22\", \"captured_amount\": 100, \"order_lines\": [ { \"reference\": \"75001\", \"type\": \"physical\" } ], \"refunded_amount\": 0, \"billing_address\": { \"given_name\": \"Klara\", \"family_name\": \"Joyce\" }, \"shipping_address\": { \"given_name\": \"Klara\", \"family_name\": \"Joyce\" }, \"shipping_info\": [ { \"shipping_method\": \"Home\", \"tracking_number\": \"63456415674545679874\" } ] } ]";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        CapturesApi api = new CapturesApi(transport, "my-order-id");
+        OrderManagementCapturesApi api = new OrderManagementCapturesApi(transport, "my-order-id");
         OrderManagementCapture[] captures = api.fetchAll();
 
         assertEquals("4ba29b50-be7b-44f5-a492-113e6a865e22", captures[0].getCaptureId());
@@ -82,7 +81,7 @@ public class CapturesApiTest extends TestCase {
         final String payload = "{ \"capture_id\": \"4ba29b50-be7b-44f5-a492-113e6a865e22\", \"captured_amount\": 100, \"order_lines\": [ { \"reference\": \"75001\", \"type\": \"physical\" } ], \"refunded_amount\": 0, \"billing_address\": { \"given_name\": \"Klara\", \"family_name\": \"Joyce\" }, \"shipping_address\": { \"given_name\": \"Klara\", \"family_name\": \"Joyce\" }, \"shipping_info\": [ { \"shipping_method\": \"Home\", \"tracking_number\": \"63456415674545679874\" } ] }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        CapturesApi api = new CapturesApi(transport, "my-order-id");
+        OrderManagementCapturesApi api = new OrderManagementCapturesApi(transport, "my-order-id");
         OrderManagementCapture capture = api.fetch("my-capture-id");
 
         assertEquals("4ba29b50-be7b-44f5-a492-113e6a865e22", capture.getCaptureId());
@@ -106,7 +105,7 @@ public class CapturesApiTest extends TestCase {
             .capturedAmount(100L)
             .description("test");
 
-        CapturesApi api = new CapturesApi(transport, "my-order-id");
+        OrderManagementCapturesApi api = new OrderManagementCapturesApi(transport, "my-order-id");
         String captureId = api.create(data);
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
@@ -126,7 +125,7 @@ public class CapturesApiTest extends TestCase {
     public void testTriggerSendout() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(204);
 
-        CapturesApi api = new CapturesApi(transport, "my-order-id");
+        OrderManagementCapturesApi api = new OrderManagementCapturesApi(transport, "my-order-id");
         api.triggerSendout("my-capture-id");
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
@@ -139,7 +138,7 @@ public class CapturesApiTest extends TestCase {
 
         OrderManagementUpdateShippingInfo data = new OrderManagementUpdateShippingInfo();
 
-        CapturesApi api = new CapturesApi(transport, "my-order-id");
+        OrderManagementCapturesApi api = new OrderManagementCapturesApi(transport, "my-order-id");
         api.addShippingInfo("my-capture-id", data);
 
         verify(transport.conn, times(1)).setRequestMethod("POST");

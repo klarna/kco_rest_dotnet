@@ -31,7 +31,7 @@ import java.util.*;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ReportsApiTest extends TestCase {
+public class SettlementsReportsApiTest extends TestCase {
     @Rule
     public ExpectedException expectedEx = ExpectedException.none();
 
@@ -54,7 +54,7 @@ public class ReportsApiTest extends TestCase {
         HashMap<String, String> params = new HashMap<>();
         params.put("payment_reference", "ref-id");
 
-        ReportsApi api = new ReportsApi(transport);
+        SettlementsReportsApi api = new SettlementsReportsApi(transport);
         byte[] csv = api.getCSVPayoutReport(params);
 
         verify(transport.conn, times(1)).setRequestMethod("GET");
@@ -74,7 +74,7 @@ public class ReportsApiTest extends TestCase {
         HashMap<String, String> params = new HashMap<>();
         params.put("start_date", "123456");
 
-        ReportsApi api = new ReportsApi(transport);
+        SettlementsReportsApi api = new SettlementsReportsApi(transport);
         byte[] csv = api.getCSVSummary(params);
 
         verify(transport.conn, times(1)).setRequestMethod("GET");
@@ -94,7 +94,7 @@ public class ReportsApiTest extends TestCase {
         HashMap<String, String> params = new HashMap<>();
         params.put("payment_reference", "ref-123");
 
-        ReportsApi api = new ReportsApi(transport);
+        SettlementsReportsApi api = new SettlementsReportsApi(transport);
         byte[] pdf = api.getPDFPayoutsSummaryReport(params);
 
         verify(transport.conn, times(1)).setRequestMethod("GET");
@@ -114,7 +114,7 @@ public class ReportsApiTest extends TestCase {
         HashMap<String, String> params = new HashMap<>();
         params.put("start_date", "123456");
 
-        ReportsApi api = new ReportsApi(transport);
+        SettlementsReportsApi api = new SettlementsReportsApi(transport);
         byte[] pdf = api.getPDFSummary(params);
 
         verify(transport.conn, times(1)).setRequestMethod("GET");

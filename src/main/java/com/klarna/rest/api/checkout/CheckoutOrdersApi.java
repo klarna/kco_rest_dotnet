@@ -16,11 +16,10 @@
 
 package com.klarna.rest.api.checkout;
 
+import com.klarna.rest.api.order_management.OrderManagementOrdersApi;
 import com.klarna.rest.http_transport.Transport;
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ApiResponse;
-import com.klarna.rest.model.ContentTypeException;
-import com.klarna.rest.model.ProtocolException;
 import com.klarna.rest.api.BaseApi;
 
 import com.klarna.rest.api.checkout.model.*;
@@ -35,12 +34,12 @@ import java.io.IOException;
  * The checkout API is used to create a checkout with Klarna and update the checkout order during the purchase.
  *
  * As soon as the purchase is completed the order should be read and handled using the
- * {@link com.klarna.rest.api.order_management.OrdersApi Order Management API}
+ * {@link OrderManagementOrdersApi Order Management API}
  */
-public class OrdersApi extends BaseApi {
+public class CheckoutOrdersApi extends BaseApi {
     protected String PATH = "/checkout/v3/orders";
 
-    public OrdersApi(final Transport transport) {
+    public CheckoutOrdersApi(final Transport transport) {
         super(transport);
     }
 

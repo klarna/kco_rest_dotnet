@@ -37,7 +37,7 @@ import java.util.List;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class SessionsApiTest extends TestCase {
+public class HPPOrderManagementSessionsApiTest extends TestCase {
     @Rule
     public ExpectedException expectedEx = ExpectedException.none();
 
@@ -63,7 +63,7 @@ public class SessionsApiTest extends TestCase {
                 .confirmation("https://example.com/confirm")
             );
 
-        SessionsApi api = new SessionsApi(transport);
+        OrderManagementSessionsApi api = new OrderManagementSessionsApi(transport);
         PaymentsMerchantSession session = api.create(data);
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
@@ -86,7 +86,7 @@ public class SessionsApiTest extends TestCase {
         final String payload = "{ \"purchase_country\": \"US\", \"order_amount\": 100, \"status\": \"incomplete\", \"client_token\": \"eyJhbGciOi.ewogIC\" }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        SessionsApi api = new SessionsApi(transport);
+        OrderManagementSessionsApi api = new OrderManagementSessionsApi(transport);
         PaymentsSession session = api.fetch("my-session-id");
 
         verify(transport.conn, times(1)).setRequestMethod("GET");
@@ -107,7 +107,7 @@ public class SessionsApiTest extends TestCase {
                 .confirmation("https://example.com/confirm")
             );
 
-        SessionsApi api = new SessionsApi(transport);
+        OrderManagementSessionsApi api = new OrderManagementSessionsApi(transport);
         api.update("my-session-id", data);
 
         verify(transport.conn, times(1)).setRequestMethod("POST");

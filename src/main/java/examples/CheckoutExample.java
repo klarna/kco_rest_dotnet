@@ -16,13 +16,11 @@
 
 package examples;
 
+import com.klarna.rest.api.checkout.CheckoutOrdersApi;
 import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
 import com.klarna.rest.http_transport.Transport;
 
 import com.klarna.rest.model.ApiException;
-import com.klarna.rest.model.ContentTypeException;
-import com.klarna.rest.model.ProtocolException;
-import com.klarna.rest.api.checkout.OrdersApi;
 
 import com.klarna.rest.api.checkout.model.CheckoutAddress;
 import com.klarna.rest.api.checkout.model.CheckoutMerchantUrls;
@@ -54,10 +52,10 @@ public class CheckoutExample {
             String checkoutOrderID = "12345";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            OrdersApi ordersApi = new OrdersApi(transport);
+            CheckoutOrdersApi checkoutOrdersApi = new CheckoutOrdersApi(transport);
 
             try {
-                CheckoutOrder order = ordersApi.fetch(checkoutOrderID);
+                CheckoutOrder order = checkoutOrdersApi.fetch(checkoutOrderID);
                 System.out.println(order);
 
             } catch (IOException e) {
@@ -83,7 +81,7 @@ public class CheckoutExample {
             String sharedSecret = "sharedSecret";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            OrdersApi ordersApi = new OrdersApi(transport);
+            CheckoutOrdersApi checkoutOrdersApi = new CheckoutOrdersApi(transport);
 
             final List<CheckoutOrderLine> lines = Arrays.asList(
                 new CheckoutOrderLine()
@@ -126,7 +124,7 @@ public class CheckoutExample {
                 .merchantUrls(urls);
 
             try {
-                CheckoutOrder order = ordersApi.create(data);
+                CheckoutOrder order = checkoutOrdersApi.create(data);
                 System.out.println(order);
 
             } catch (IOException e) {
@@ -153,7 +151,7 @@ public class CheckoutExample {
             String checkoutOrderID = "12345";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            OrdersApi ordersApi = new OrdersApi(transport);
+            CheckoutOrdersApi checkoutOrdersApi = new CheckoutOrdersApi(transport);
 
             final CheckoutAddress address = new CheckoutAddress()
                 .title("Mr")
@@ -195,7 +193,7 @@ public class CheckoutExample {
                 .orderLines(lines);
 
             try {
-                CheckoutOrder order = ordersApi.update(checkoutOrderID, data);
+                CheckoutOrder order = checkoutOrdersApi.update(checkoutOrderID, data);
                 System.out.println(order);
             } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());

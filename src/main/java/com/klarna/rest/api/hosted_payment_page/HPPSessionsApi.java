@@ -21,11 +21,10 @@ import com.klarna.rest.api.hosted_payment_page.model.HPPDistributionRequestV1;
 import com.klarna.rest.api.hosted_payment_page.model.HPPSessionCreationRequestV1;
 import com.klarna.rest.api.hosted_payment_page.model.HPPSessionCreationResponseV1;
 import com.klarna.rest.api.hosted_payment_page.model.HPPSessionResponseV1;
+import com.klarna.rest.api.order_management.OrderManagementOrdersApi;
 import com.klarna.rest.http_transport.Transport;
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ApiResponse;
-import com.klarna.rest.model.ContentTypeException;
-import com.klarna.rest.model.ProtocolException;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -40,16 +39,16 @@ import java.io.IOException;
  * A complete HPP payment session will involve three of Klarna services:
  *
  * <ul>
- *  <li>{@link com.klarna.rest.api.payments.OrdersApi Klarna Payments API} to start a payment session.</li>
- *  <li>{@link SessionsApi Hosted Payment Page API} to distribute a payment session.</li>
- *  <li>{@link com.klarna.rest.api.order_management.OrdersApi Order Management API}
+ *  <li>{@link com.klarna.rest.api.payments.OrderManagementOrdersApi Klarna Payments API} to start a payment session.</li>
+ *  <li>{@link HPPSessionsApi Hosted Payment Page API} to distribute a payment session.</li>
+ *  <li>{@link OrderManagementOrdersApi Order Management API}
  *      to capture payment or refund consumer.</li>
  * </ul>
  */
-public class SessionsApi extends BaseApi {
+public class HPPSessionsApi extends BaseApi {
     protected String PATH = "/hpp/v1/sessions";
 
-    public SessionsApi(final Transport transport) {
+    public HPPSessionsApi(final Transport transport) {
         super(transport);
     }
 

@@ -83,7 +83,7 @@ The basic workflow is the following:
 ```java
 package com.mycompany.app;
 
-import com.klarna.rest.api.checkout.OrdersApi;
+import com.klarna.rest.api.checkout.CheckoutOrdersApi;
 import com.klarna.rest.api.checkout.model.CheckoutOrder;
 import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
 import com.klarna.rest.http_transport.Transport;
@@ -101,10 +101,10 @@ public class App
     {
         HttpUrlConnectionTransport transport = new HttpUrlConnectionTransport(
                 "merchantId", "sharedSecret", Transport.EU_BASE_URL);
-        OrdersApi ordersApi = new OrdersApi(transport);
+        OrdersApi checkoutOrdersApi = new OrdersApi(transport);
 
         try {
-            CheckoutOrder order = ordersApi.fetch("checkoutOrderID-123");
+            CheckoutOrder order = checkoutOrdersApi.fetch("checkoutOrderID-123");
 
             // Order has been successfully fetched, we can get some info, e.g. HTML Snippet
             // This snippet can be embedded into your website/templates/etc

@@ -29,7 +29,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -39,7 +38,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class RefundsApiTest extends TestCase {
+public class OrderManagementRefundsApiTest extends TestCase {
     @Rule
     public ExpectedException expectedEx = ExpectedException.none();
 
@@ -63,7 +62,7 @@ public class RefundsApiTest extends TestCase {
             .refundedAmount(100L)
             .description("test");
 
-        RefundsApi api = new RefundsApi(transport, "my-order-id");
+        OrderManagementRefundsApi api = new OrderManagementRefundsApi(transport, "my-order-id");
         String refundId = api.create(data);
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
@@ -89,7 +88,7 @@ public class RefundsApiTest extends TestCase {
         final String payload = "{ \"refund_id\": \"4ba29b50-be7b-44f5-a492-113e6a865e22\", \"refunded_amount\": 100 }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        RefundsApi api = new RefundsApi(transport, "my-order-id");
+        OrderManagementRefundsApi api = new OrderManagementRefundsApi(transport, "my-order-id");
         OrderManagementRefund refund = api.fetch("my-refund-id");
 
         assertEquals("4ba29b50-be7b-44f5-a492-113e6a865e22", refund.getRefundId());

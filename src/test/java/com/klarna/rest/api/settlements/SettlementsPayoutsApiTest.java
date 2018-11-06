@@ -39,7 +39,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class PayoutsApiTest extends TestCase {
+public class SettlementsPayoutsApiTest extends TestCase {
     @Rule
     public ExpectedException expectedEx = ExpectedException.none();
 
@@ -60,7 +60,7 @@ public class PayoutsApiTest extends TestCase {
         final String payload = "{ \"totals\": { \"commission_amount\": 550 }, \"payment_reference\": \"XISA93DJ\", \"payout_date\": \"2016-12-14T07:52:26Z\", \"merchant_settlement_type\": \"NET\" }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        PayoutsApi api = new PayoutsApi(transport);
+        SettlementsPayoutsApi api = new SettlementsPayoutsApi(transport);
         SettlementsPayout payout = api.getPayout("payment-ref");
 
         assertEquals("XISA93DJ", payout.getPaymentReference());
@@ -81,7 +81,7 @@ public class PayoutsApiTest extends TestCase {
         final String payload = "{ \"payouts\": [ { \"totals\": { \"commission_amount\": 550 }, \"payment_reference\": \"XISA93DJ\" } ], \"pagination\": { \"count\": 10 } }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        PayoutsApi api = new PayoutsApi(transport);
+        SettlementsPayoutsApi api = new SettlementsPayoutsApi(transport);
         SettlementsPayoutCollection payouts = api.getAllPayouts();
 
         Long count = 10L;
@@ -105,7 +105,7 @@ public class PayoutsApiTest extends TestCase {
         params.put("size", "10");
         params.put("start_date", "2016-12-14T07:52:26Z");
 
-        PayoutsApi api = new PayoutsApi(transport);
+        SettlementsPayoutsApi api = new SettlementsPayoutsApi(transport);
         api.getAllPayouts(params);
 
         verify(transport.conn, times(1)).setRequestMethod("GET");
@@ -126,7 +126,7 @@ public class PayoutsApiTest extends TestCase {
         params.put("start_date", "2016-12-14T07:52:26Z");
         params.put("end_date", "2018-12-14T07:52:26Z");
 
-        PayoutsApi api = new PayoutsApi(transport);
+        SettlementsPayoutsApi api = new SettlementsPayoutsApi(transport);
         SettlementsPayoutSummary[] summary = api.getSummary(params);
         Long fee = 550L;
         assertEquals(fee, summary[0].getSummaryTotalFeeCorrectionAmount());

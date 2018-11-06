@@ -16,9 +16,9 @@
 
 package examples;
 
-import com.klarna.rest.api.settlements.PayoutsApi;
-import com.klarna.rest.api.settlements.ReportsApi;
-import com.klarna.rest.api.settlements.TransactionsApi;
+import com.klarna.rest.api.settlements.SettlementsPayoutsApi;
+import com.klarna.rest.api.settlements.SettlementsReportsApi;
+import com.klarna.rest.api.settlements.SettlementsTransactionsApi;
 import com.klarna.rest.api.settlements.model.SettlementsPayout;
 import com.klarna.rest.api.settlements.model.SettlementsPayoutCollection;
 import com.klarna.rest.api.settlements.model.SettlementsPayoutSummary;
@@ -26,8 +26,6 @@ import com.klarna.rest.api.settlements.model.SettlementsTransactionCollection;
 import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
 import com.klarna.rest.http_transport.Transport;
 import com.klarna.rest.model.ApiException;
-import com.klarna.rest.model.ContentTypeException;
-import com.klarna.rest.model.ProtocolException;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -58,10 +56,10 @@ public class SettlementsExample {
             String paymentReference = "12345";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            PayoutsApi payoutsApi = new PayoutsApi(transport);
+            SettlementsPayoutsApi settlementsPayoutsApi = new SettlementsPayoutsApi(transport);
 
             try {
-                SettlementsPayout payout = payoutsApi.getPayout(paymentReference);
+                SettlementsPayout payout = settlementsPayoutsApi.getPayout(paymentReference);
                 System.out.println(payout);
 
             } catch (IOException e) {
@@ -83,10 +81,10 @@ public class SettlementsExample {
             String sharedSecret = "sharedSecret";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            PayoutsApi payoutsApi = new PayoutsApi(transport);
+            SettlementsPayoutsApi settlementsPayoutsApi = new SettlementsPayoutsApi(transport);
 
             try {
-                SettlementsPayoutCollection payouts = payoutsApi.getAllPayouts();
+                SettlementsPayoutCollection payouts = settlementsPayoutsApi.getAllPayouts();
                 System.out.println(payouts);
 
             } catch (IOException e) {
@@ -108,7 +106,7 @@ public class SettlementsExample {
             String sharedSecret = "sharedSecret";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            PayoutsApi payoutsApi = new PayoutsApi(transport);
+            SettlementsPayoutsApi settlementsPayoutsApi = new SettlementsPayoutsApi(transport);
 
             try {
                 TimeZone tz = TimeZone.getTimeZone("UTC");
@@ -121,7 +119,7 @@ public class SettlementsExample {
                 params.put("start_date", startDate);
                 params.put("end_date", endDate);
 
-                SettlementsPayoutSummary[] summary = payoutsApi.getSummary(params);
+                SettlementsPayoutSummary[] summary = settlementsPayoutsApi.getSummary(params);
                 System.out.println(Arrays.toString(summary));
 
             } catch (IOException e) {
@@ -143,7 +141,7 @@ public class SettlementsExample {
             String sharedSecret = "sharedSecret";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            TransactionsApi trasactionsApi = new TransactionsApi(transport);
+            SettlementsTransactionsApi trasactionsApi = new SettlementsTransactionsApi(transport);
 
             try {
                 SettlementsTransactionCollection transactions = trasactionsApi.getTransactions();
@@ -168,7 +166,7 @@ public class SettlementsExample {
             String sharedSecret = "sharedSecret";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            ReportsApi reportsApi = new ReportsApi(transport);
+            SettlementsReportsApi settlementsReportsApi = new SettlementsReportsApi(transport);
 
             try {
                 TimeZone tz = TimeZone.getTimeZone("UTC");
@@ -181,7 +179,7 @@ public class SettlementsExample {
                 params.put("start_date", startDate);
                 params.put("end_date", endDate);
 
-                byte[] csvReport = reportsApi.getCSVSummary(params);
+                byte[] csvReport = settlementsReportsApi.getCSVSummary(params);
                 SettlementsExample.writeToFile("summary_report.csv", csvReport);
                 System.out.println("Saved to summary_report.csv");
 
@@ -205,13 +203,13 @@ public class SettlementsExample {
             String paymentReference = "12345";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            ReportsApi reportsApi = new ReportsApi(transport);
+            SettlementsReportsApi settlementsReportsApi = new SettlementsReportsApi(transport);
 
             try {
                 HashMap<String, String> params = new HashMap<>();
                 params.put("payment_reference", paymentReference);
 
-                byte[] csvReport = reportsApi.getCSVPayoutReport(params);
+                byte[] csvReport = settlementsReportsApi.getCSVPayoutReport(params);
                 SettlementsExample.writeToFile("payout_report.csv", csvReport);
                 System.out.println("Saved to payout_report.csv");
 
@@ -234,7 +232,7 @@ public class SettlementsExample {
             String sharedSecret = "sharedSecret";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            ReportsApi reportsApi = new ReportsApi(transport);
+            SettlementsReportsApi settlementsReportsApi = new SettlementsReportsApi(transport);
 
             try {
                 TimeZone tz = TimeZone.getTimeZone("UTC");
@@ -247,7 +245,7 @@ public class SettlementsExample {
                 params.put("start_date", startDate);
                 params.put("end_date", endDate);
 
-                byte[] csvReport = reportsApi.getPDFSummary(params);
+                byte[] csvReport = settlementsReportsApi.getPDFSummary(params);
                 SettlementsExample.writeToFile("summary_report.pdf", csvReport);
                 System.out.println("Saved to summary_report.pdf");
 
@@ -271,13 +269,13 @@ public class SettlementsExample {
             String paymentReference = "12345";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            ReportsApi reportsApi = new ReportsApi(transport);
+            SettlementsReportsApi settlementsReportsApi = new SettlementsReportsApi(transport);
 
             try {
                 HashMap<String, String> params = new HashMap<>();
                 params.put("payment_reference", paymentReference);
 
-                byte[] csvReport = reportsApi.getPDFPayoutsSummaryReport(params);
+                byte[] csvReport = settlementsReportsApi.getPDFPayoutsSummaryReport(params);
                 SettlementsExample.writeToFile("payout_summary_report.pdf", csvReport);
                 System.out.println("Saved to payout_summary_report.pdf");
 

@@ -20,10 +20,8 @@ import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
 import com.klarna.rest.http_transport.Transport;
 
 import com.klarna.rest.model.ApiException;
-import com.klarna.rest.model.ContentTypeException;
-import com.klarna.rest.model.ProtocolException;
 
-import com.klarna.rest.api.hosted_payment_page.SessionsApi;
+import com.klarna.rest.api.hosted_payment_page.HPPSessionsApi;
 import com.klarna.rest.api.hosted_payment_page.model.*;
 
 import java.io.IOException;
@@ -48,7 +46,7 @@ public class HostedPaymentPageExample {
             String sessionId = "sessionId";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            SessionsApi sessionsApi = new SessionsApi(transport);
+            HPPSessionsApi HPPSessionsApi = new HPPSessionsApi(transport);
 
             try {
                 HPPSessionCreationRequestV1 request = new HPPSessionCreationRequestV1()
@@ -65,7 +63,7 @@ public class HostedPaymentPageExample {
                         .purchaseType(HPPOptionsV1.PurchaseTypeEnum.BUY))
                     .paymentSessionUrl("https://api.klarna.com/payments/v1/sessions/" + sessionId);
 
-                HPPSessionCreationResponseV1 session = sessionsApi.create(request);
+                HPPSessionCreationResponseV1 session = HPPSessionsApi.create(request);
                 System.out.println(session);
 
             } catch (IOException e) {
@@ -89,7 +87,7 @@ public class HostedPaymentPageExample {
             String sessionId = "sessionId";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            SessionsApi sessionsApi = new SessionsApi(transport);
+            HPPSessionsApi HPPSessionsApi = new HPPSessionsApi(transport);
 
             try {
                 HPPDistributionRequestV1 request = new HPPDistributionRequestV1()
@@ -100,7 +98,7 @@ public class HostedPaymentPageExample {
                     .method(HPPDistributionRequestV1.MethodEnum.SMS)
                     .template(HPPDistributionRequestV1.TemplateEnum.INSTORE_PURCHASE);
 
-                sessionsApi.distributeLink(sessionId, request);
+                HPPSessionsApi.distributeLink(sessionId, request);
                 System.out.println("The session link has been distributed");
 
             } catch (IOException e) {
@@ -124,10 +122,10 @@ public class HostedPaymentPageExample {
             String sessionId = "sessionId";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            SessionsApi sessionsApi = new SessionsApi(transport);
+            HPPSessionsApi HPPSessionsApi = new HPPSessionsApi(transport);
 
             try {
-                HPPSessionResponseV1 session = sessionsApi.fetch(sessionId);
+                HPPSessionResponseV1 session = HPPSessionsApi.fetch(sessionId);
                 System.out.println(session);
 
             } catch (IOException e) {

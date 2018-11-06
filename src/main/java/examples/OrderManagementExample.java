@@ -20,10 +20,8 @@ import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
 import com.klarna.rest.http_transport.Transport;
 
 import com.klarna.rest.model.ApiException;
-import com.klarna.rest.model.ContentTypeException;
-import com.klarna.rest.model.ProtocolException;
-import com.klarna.rest.api.order_management.OrdersApi;
-import com.klarna.rest.api.order_management.RefundsApi;
+import com.klarna.rest.api.order_management.OrderManagementOrdersApi;
+import com.klarna.rest.api.order_management.OrderManagementRefundsApi;
 import com.klarna.rest.api.order_management.model.*;
 
 import java.io.IOException;
@@ -51,10 +49,10 @@ public class OrderManagementExample {
             String orderId = "12345";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            OrdersApi ordersApi = new OrdersApi(transport);
+            OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
 
             try {
-                OrderManagementOrder order = ordersApi.fetch(orderId);
+                OrderManagementOrder order = orderManagementOrdersApi.fetch(orderId);
                 System.out.println(order);
 
             } catch (IOException e) {
@@ -81,10 +79,10 @@ public class OrderManagementExample {
             String orderId = "12345";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            OrdersApi ordersApi = new OrdersApi(transport);
+            OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
 
             try {
-                ordersApi.releaseRemainingAuthorization(orderId);
+                orderManagementOrdersApi.releaseRemainingAuthorization(orderId);
                 System.out.println("Remaining authorised amount has been released");
 
             } catch (IOException e) {
@@ -111,10 +109,10 @@ public class OrderManagementExample {
             String orderId = "12345";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            OrdersApi ordersApi = new OrdersApi(transport);
+            OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
 
             try {
-                ordersApi.extendAuthorizationTime(orderId);
+                orderManagementOrdersApi.extendAuthorizationTime(orderId);
                 System.out.println("The expiry time of an order has been extend");
 
             } catch (IOException e) {
@@ -141,7 +139,7 @@ public class OrderManagementExample {
             String orderId = "12345";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            OrdersApi ordersApi = new OrdersApi(transport);
+            OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
 
             try {
                 final OrderManagementAddress address = new OrderManagementAddress()
@@ -150,7 +148,7 @@ public class OrderManagementExample {
                     .givenName("John")
                     .familyName("Smith");
 
-                ordersApi.updateCustomerAddresses(orderId, new OrderManagementUpdateConsumer()
+                orderManagementOrdersApi.updateCustomerAddresses(orderId, new OrderManagementUpdateConsumer()
                     .billingAddress(address)
                     .shippingAddress(address)
                 );
@@ -181,10 +179,10 @@ public class OrderManagementExample {
             String orderId = "12345";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            OrdersApi ordersApi = new OrdersApi(transport);
+            OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
 
             try {
-                ordersApi.cancelOrder(orderId);
+                orderManagementOrdersApi.cancelOrder(orderId);
                 System.out.println("Order has been cancelled");
 
             } catch (IOException e) {
@@ -211,10 +209,10 @@ public class OrderManagementExample {
             String orderId = "12345";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            OrdersApi ordersApi = new OrdersApi(transport);
+            OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
 
             try {
-                ordersApi.updateMerchantReferences(orderId, new OrderManagementUpdateMerchantReferences()
+                orderManagementOrdersApi.updateMerchantReferences(orderId, new OrderManagementUpdateMerchantReferences()
                     .merchantReference1("15632423")
                     .merchantReference2("special order")
                 );
@@ -245,10 +243,10 @@ public class OrderManagementExample {
             String orderId = "12345";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            OrdersApi ordersApi = new OrdersApi(transport);
+            OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
 
             try {
-                ordersApi.acknowledgeOrder(orderId);
+                orderManagementOrdersApi.acknowledgeOrder(orderId);
                 System.out.println("Order has been acknowledged");
 
             } catch (IOException e) {
@@ -275,7 +273,7 @@ public class OrderManagementExample {
             String orderId = "12345";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            OrdersApi ordersApi = new OrdersApi(transport);
+            OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
 
             try {
                 final List<OrderManagementOrderLine> lines = Arrays.asList(
@@ -296,7 +294,7 @@ public class OrderManagementExample {
                     .orderAmount(6000L)
                     .orderLines(lines);
 
-                ordersApi.setOrderAmountAndOrderLines(orderId, orderData);
+                orderManagementOrdersApi.setOrderAmountAndOrderLines(orderId, orderData);
                 System.out.println("New order amount and order lines have been set");
 
             } catch (IOException e) {
@@ -323,7 +321,7 @@ public class OrderManagementExample {
             String orderId = "12345";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            RefundsApi refundsApi = new RefundsApi(transport, orderId);
+            OrderManagementRefundsApi orderManagementRefundsApi = new OrderManagementRefundsApi(transport, orderId);
 
             try {
                 final List<OrderManagementOrderLine> lines = Arrays.asList(
@@ -344,15 +342,15 @@ public class OrderManagementExample {
                     .description("Refunding half the tomatoes")
                     .orderLines(lines);
 
-                refundsApi.create(refund);
+                orderManagementRefundsApi.create(refund);
                 System.out.println("Refund has been created");
 
                 // The refund ID will be sent back in the Header.
-                String refundId = refundsApi.getLastResponse().getHeader("Refund-Id").get(0);
+                String refundId = orderManagementRefundsApi.getLastResponse().getHeader("Refund-Id").get(0);
                 System.out.println("Refund ID: " + refundId);
 
                 // Also we got back a new Location header, so we can just use it by calling fetch method
-                OrderManagementRefund createdRefund = refundsApi.fetch();
+                OrderManagementRefund createdRefund = orderManagementRefundsApi.fetch();
                 System.out.println(createdRefund);
 
             } catch (IOException e) {
@@ -377,10 +375,10 @@ public class OrderManagementExample {
             String refundId = "34567";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            RefundsApi refundsApi = new RefundsApi(transport, orderId);
+            OrderManagementRefundsApi orderManagementRefundsApi = new OrderManagementRefundsApi(transport, orderId);
 
             try {
-                OrderManagementRefund refund = refundsApi.fetch(refundId);
+                OrderManagementRefund refund = orderManagementRefundsApi.fetch(refundId);
                 System.out.println(refund);
 
             } catch (IOException e) {

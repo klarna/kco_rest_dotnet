@@ -39,7 +39,7 @@ import java.util.List;
  * It is used for updating, capturing and refunding an order as well as to see the history of events that
  * have affected this order.
  */
-public class CapturesApi extends BaseApi {
+public class OrderManagementCapturesApi extends BaseApi {
     protected String PATH;
 
     /**
@@ -48,7 +48,7 @@ public class CapturesApi extends BaseApi {
      * @param transport HTTP Transport
      * @param orderId Order id
      */
-    public CapturesApi(final Transport transport, String orderId) {
+    public OrderManagementCapturesApi(final Transport transport, String orderId) {
         super(transport);
 
         this.PATH = String.format("/ordermanagement/v1/orders/%s/captures", orderId);

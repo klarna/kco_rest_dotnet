@@ -42,10 +42,10 @@ import java.util.Map;
  *  <li>Entity resources containing a single entity</li>
  * </ul>
  */
-public class TransactionsApi extends BaseApi {
+public class SettlementsTransactionsApi extends BaseApi {
     protected String PATH = "/settlements/v1/transactions";
 
-    public TransactionsApi(final Transport transport) {
+    public SettlementsTransactionsApi(final Transport transport) {
         super(transport);
     }
 

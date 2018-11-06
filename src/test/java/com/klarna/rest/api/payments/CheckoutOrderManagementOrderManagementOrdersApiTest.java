@@ -37,7 +37,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class OrdersApiTest extends TestCase {
+public class CheckoutOrderManagementOrderManagementOrdersApiTest extends TestCase {
     @Rule
     public ExpectedException expectedEx = ExpectedException.none();
 
@@ -64,7 +64,7 @@ public class OrdersApiTest extends TestCase {
                 .confirmation("https://example.com/confirm")
             );
 
-        OrdersApi api = new OrdersApi(transport);
+        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
         PaymentsOrder order = api.create("auth-token", data);
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
@@ -90,7 +90,7 @@ public class OrdersApiTest extends TestCase {
             .intendedUse(PaymentsCustomerTokenCreationRequest.IntendedUseEnum.SUBSCRIPTION)
             .purchaseCountry("US");
 
-        OrdersApi api = new OrdersApi(transport);
+        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
         PaymentsCustomerTokenCreationResponse token = api.generateToken("auth-token", data);
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
@@ -108,7 +108,7 @@ public class OrdersApiTest extends TestCase {
     public void testAcknowledgeOrder() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(204);
 
-        OrdersApi api = new OrdersApi(transport);
+        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
         api.cancelAuthorization("auth-token");
 
         verify(transport.conn, times(1)).setRequestMethod("DELETE");

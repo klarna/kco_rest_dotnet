@@ -24,8 +24,6 @@ import com.klarna.rest.api.payments.model.PaymentsOrder;
 import com.klarna.rest.http_transport.Transport;
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ApiResponse;
-import com.klarna.rest.model.ContentTypeException;
-import com.klarna.rest.model.ProtocolException;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -37,12 +35,12 @@ import java.io.IOException;
  * The payments API is used to create a session to offer Klarna's payment methods as part of your checkout.
  *
  * As soon as the purchase is completed the order should be read and handled using the
- * {@link com.klarna.rest.api.order_management.OrdersApi Order Management API}.
+ * {@link com.klarna.rest.api.order_management.OrderManagementOrdersApi Order Management API}.
  */
-public class OrdersApi extends BaseApi {
+public class OrderManagementOrdersApi extends BaseApi {
     protected String PATH = "/payments/v1/authorizations";
 
-    public OrdersApi(final Transport transport) {
+    public OrderManagementOrdersApi(final Transport transport) {
         super(transport);
     }
 

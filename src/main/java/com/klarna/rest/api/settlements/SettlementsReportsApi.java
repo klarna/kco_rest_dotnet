@@ -40,10 +40,10 @@ import java.util.Map;
  *  <li>Entity resources containing a single entity</li>
  * </ul>
  */
-public class ReportsApi extends BaseApi {
+public class SettlementsReportsApi extends BaseApi {
     protected String PATH = "/settlements/v1/reports";
 
-    public ReportsApi(final Transport transport) {
+    public SettlementsReportsApi(final Transport transport) {
         super(transport);
     }
 

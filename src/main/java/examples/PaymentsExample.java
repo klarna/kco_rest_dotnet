@@ -16,8 +16,8 @@
 
 package examples;
 
-import com.klarna.rest.api.payments.OrdersApi;
-import com.klarna.rest.api.payments.SessionsApi;
+import com.klarna.rest.api.payments.OrderManagementOrdersApi;
+import com.klarna.rest.api.payments.OrderManagementSessionsApi;
 import com.klarna.rest.api.payments.model.*;
 import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
 import com.klarna.rest.http_transport.Transport;
@@ -48,7 +48,7 @@ public class PaymentsExample {
             String sharedSecret = "sharedSecret";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            SessionsApi sessionsApi = new SessionsApi(transport);
+            OrderManagementSessionsApi orderManagementSessionsApi = new OrderManagementSessionsApi(transport);
 
             try {
                 final List<PaymentsOrderLine> lines = Arrays.asList(
@@ -84,7 +84,7 @@ public class PaymentsExample {
                     .orderTaxAmount(2000L)
                     .orderLines(lines);
 
-                PaymentsMerchantSession session = sessionsApi.create(sessionRequest);
+                PaymentsMerchantSession session = orderManagementSessionsApi.create(sessionRequest);
                 System.out.println(session);
 
             } catch (IOException | ProtocolException | ContentTypeException e) {
@@ -111,10 +111,10 @@ public class PaymentsExample {
             String sessionId = "sessionId";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            SessionsApi sessionsApi = new SessionsApi(transport);
+            OrderManagementSessionsApi orderManagementSessionsApi = new OrderManagementSessionsApi(transport);
 
             try {
-                PaymentsSession session = sessionsApi.fetch(sessionId);
+                PaymentsSession session = orderManagementSessionsApi.fetch(sessionId);
                 System.out.println(session);
 
             } catch (IOException e) {
@@ -141,7 +141,7 @@ public class PaymentsExample {
             String sessionId = "sessionId";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            SessionsApi sessionsApi = new SessionsApi(transport);
+            OrderManagementSessionsApi orderManagementSessionsApi = new OrderManagementSessionsApi(transport);
 
             try {
                 final List<PaymentsOrderLine> lines = Arrays.asList(
@@ -166,7 +166,7 @@ public class PaymentsExample {
                     .orderTaxAmount(800L)
                     .orderLines(lines);
 
-                sessionsApi.update(sessionId, sessionRequest);
+                orderManagementSessionsApi.update(sessionId, sessionRequest);
                 System.out.println("Order has been updated");
 
             } catch (IOException e) {
@@ -193,7 +193,7 @@ public class PaymentsExample {
             String authorizationToken = "authToken";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            OrdersApi ordersApi = new OrdersApi(transport);
+            OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
 
             try {
                 final PaymentsAddress address = new PaymentsAddress()
@@ -243,7 +243,7 @@ public class PaymentsExample {
                     .orderTaxAmount(2000L)
                     .orderLines(lines);
 
-                PaymentsOrder order = ordersApi.create(authorizationToken, request);
+                PaymentsOrder order = orderManagementOrdersApi.create(authorizationToken, request);
                 System.out.println(order);
 
             } catch (IOException e) {
@@ -270,7 +270,7 @@ public class PaymentsExample {
             String authorizationToken = "authToken";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            OrdersApi ordersApi = new OrdersApi(transport);
+            OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
 
             try {
                 final PaymentsAddress address = new PaymentsAddress()
@@ -297,7 +297,7 @@ public class PaymentsExample {
                     .description("For testing purposes")
                     .intendedUse(PaymentsCustomerTokenCreationRequest.IntendedUseEnum.SUBSCRIPTION);
 
-                PaymentsCustomerTokenCreationResponse response = ordersApi.generateToken(authorizationToken, request);
+                PaymentsCustomerTokenCreationResponse response = orderManagementOrdersApi.generateToken(authorizationToken, request);
                 System.out.println(response);
 
             } catch (IOException e) {
@@ -324,10 +324,10 @@ public class PaymentsExample {
             String authorizationToken = "authToken";
 
             Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
-            OrdersApi ordersApi = new OrdersApi(transport);
+            OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
 
             try {
-                ordersApi.cancelAuthorization(authorizationToken);
+                orderManagementOrdersApi.cancelAuthorization(authorizationToken);
                 System.out.println("Authorization has been cancelled");
 
             } catch (IOException e) {

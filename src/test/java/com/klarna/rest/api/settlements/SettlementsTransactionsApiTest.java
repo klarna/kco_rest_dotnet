@@ -33,7 +33,7 @@ import java.util.*;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class TransactionsApiTest extends TestCase {
+public class SettlementsTransactionsApiTest extends TestCase {
     @Rule
     public ExpectedException expectedEx = ExpectedException.none();
 
@@ -54,7 +54,7 @@ public class TransactionsApiTest extends TestCase {
         final String payload = "{ \"transactions\": [ { \"amount\": 2000, \"capture_id\": \"33db6f16-9f43-43fa-a587-cc51411c98e4\" } ], \"pagination\": { \"total\": 42 } }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        TransactionsApi api = new TransactionsApi(transport);
+        SettlementsTransactionsApi api = new SettlementsTransactionsApi(transport);
         SettlementsTransactionCollection transactions = api.getTransactions();
 
         assertEquals(UUID.fromString("33db6f16-9f43-43fa-a587-cc51411c98e4"), transactions.getTransactions().get(0).getCaptureId());
@@ -77,7 +77,7 @@ public class TransactionsApiTest extends TestCase {
         HashMap<String, String> params = new HashMap<>();
         params.put("order_id", "my-order-id");
 
-        TransactionsApi api = new TransactionsApi(transport);
+        SettlementsTransactionsApi api = new SettlementsTransactionsApi(transport);
         SettlementsTransactionCollection transactions = api.getTransactions(params);
 
         verify(transport.conn, times(1)).setRequestMethod("GET");

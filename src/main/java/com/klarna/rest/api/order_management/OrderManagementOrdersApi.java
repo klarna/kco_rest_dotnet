@@ -38,10 +38,10 @@ import java.io.IOException;
  * It is used for updating, capturing and refunding an order as well as to see the history of events that
  * have affected this order.
  */
-public class OrdersApi extends BaseApi {
+public class OrderManagementOrdersApi extends BaseApi {
     protected String PATH = "/order_management/v1/orders";
 
-    public OrdersApi(final Transport transport) {
+    public OrderManagementOrdersApi(final Transport transport) {
         super(transport);
     }
 

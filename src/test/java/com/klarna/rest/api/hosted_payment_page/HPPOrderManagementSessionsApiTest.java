@@ -28,7 +28,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -38,7 +37,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class SessionsApiTest extends TestCase {
+public class HPPOrderManagementSessionsApiTest extends TestCase {
     @Rule
     public ExpectedException expectedEx = ExpectedException.none();
 
@@ -61,7 +60,7 @@ public class SessionsApiTest extends TestCase {
                 "\"updated_at\": \"2038-01-19T03:14:07.000Z\" }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        SessionsApi api = new SessionsApi(transport);
+        HPPSessionsApi api = new HPPSessionsApi(transport);
         HPPSessionResponseV1 session = api.fetch("my-session-id");
 
         assertEquals("b4bd3423-24e3", session.getAuthorizationToken());
@@ -77,7 +76,7 @@ public class SessionsApiTest extends TestCase {
             put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
 
-        SessionsApi api = new SessionsApi(transport);
+        HPPSessionsApi api = new HPPSessionsApi(transport);
         HPPDistributionRequestV1 data = new HPPDistributionRequestV1()
             .contactInformation(new HPPDistributionContactV1()
                 .email("test@example.com")
@@ -119,7 +118,7 @@ public class SessionsApiTest extends TestCase {
                 .paymentMethodCategory(HPPOptionsV1.PaymentMethodCategoryEnum.PAY_LATER)
             );
 
-        SessionsApi api = new SessionsApi(transport);
+        HPPSessionsApi api = new HPPSessionsApi(transport);
         HPPSessionCreationResponseV1 response = api.create(data);
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
