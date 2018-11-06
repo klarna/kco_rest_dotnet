@@ -308,12 +308,13 @@ public class HttpUrlConnectionTransport implements Transport {
     }
 
     protected ApiResponse makeRequest(HttpURLConnection conn, byte[] payout) throws IOException {
-        log.debug("DEBUG MODE: Request\n"
-                + ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
-                + conn.getRequestMethod() + ": " + conn.getURL() + "\n"
-                + "Headers: " + conn.getRequestProperties() + "\n"
-                + "Payout: " + (payout == null ? "null" : new String(payout)) + "\n");
-
+        if (log.isDebugEnabled()) {
+            log.debug("DEBUG MODE: Request\n"
+                    + ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
+                    + conn.getRequestMethod() + ": " + conn.getURL() + "\n"
+                    + "Headers: " + conn.getRequestProperties() + "\n"
+                    + "Payout: " + (payout == null ? "null" : new String(payout)) + "\n");
+        }
 
         if (payout != null) {
             conn.setDoOutput(true);
@@ -348,10 +349,12 @@ public class HttpUrlConnectionTransport implements Transport {
             response.setBody(os.toByteArray());
         }
 
-        log.debug("DEBUG MODE: Response\n"
-                + "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
-                + "Headers: " + conn.getHeaderFields() + "\n"
-                + "Body: " + (response.getBody() == null ? "null" : new String(response.getBody())) + "\n");
+        if (log.isDebugEnabled()) {
+            log.debug("DEBUG MODE: Response\n"
+                    + "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
+                    + "Headers: " + conn.getHeaderFields() + "\n"
+                    + "Body: " + (response.getBody() == null ? "null" : new String(response.getBody())) + "\n");
+        }
 
         return response;
     }
