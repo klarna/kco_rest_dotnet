@@ -18,8 +18,7 @@ package com.klarna.rest.http_transport;
 
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ApiResponse;
-import com.klarna.rest.model.ContentTypeException;
-import com.klarna.rest.model.ProtocolException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -113,7 +112,7 @@ public class HttpUrlConnectionTransport implements Transport {
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
     public ApiResponse get(final String path, Map<String, String> headers) throws
-            ApiException, com.klarna.rest.model.ProtocolException, ContentTypeException, IOException {
+            ApiException, IOException {
         HttpURLConnection conn = this.buildConnection(path, headers);
         conn.setRequestMethod("GET");
 
@@ -132,7 +131,7 @@ public class HttpUrlConnectionTransport implements Transport {
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
     public ApiResponse post(final String path, final byte[] data, Map<String, String> headers) throws
-            ApiException, com.klarna.rest.model.ProtocolException, ContentTypeException, IOException {
+            ApiException, IOException {
         HttpURLConnection conn = this.buildConnection(path, headers);
         conn.setRequestMethod("POST");
 
@@ -151,7 +150,7 @@ public class HttpUrlConnectionTransport implements Transport {
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
     public ApiResponse put(final String path, final byte[] data, Map<String, String> headers) throws
-            ApiException, com.klarna.rest.model.ProtocolException, ContentTypeException, IOException {
+            ApiException, IOException {
         HttpURLConnection conn = this.buildConnection(path, headers);
         conn.setRequestMethod("PUT");
 
@@ -170,7 +169,7 @@ public class HttpUrlConnectionTransport implements Transport {
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
     public ApiResponse patch(final String path, final byte[] data, Map<String, String> headers) throws
-            ApiException, com.klarna.rest.model.ProtocolException, ContentTypeException, IOException {
+            ApiException, IOException {
         HttpURLConnection conn = this.buildConnection(path, headers);
         conn.setRequestMethod("PATCH");
 
@@ -188,7 +187,7 @@ public class HttpUrlConnectionTransport implements Transport {
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
     public ApiResponse delete(final String path, Map<String, String> headers) throws
-            ApiException, ProtocolException, ContentTypeException, IOException {
+            ApiException, IOException {
         HttpURLConnection conn = this.buildConnection(path, headers);
         conn.setRequestMethod("DELETE");
 
