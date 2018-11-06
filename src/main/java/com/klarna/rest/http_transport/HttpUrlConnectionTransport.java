@@ -319,9 +319,9 @@ public class HttpUrlConnectionTransport implements Transport {
         if (payout != null) {
             conn.setDoOutput(true);
 
-            OutputStream os = conn.getOutputStream();
-            os.write(payout);
-            os.close();
+            try (OutputStream os = conn.getOutputStream()) {
+                os.write(payout);
+            }
         }
 
         ApiResponse response = new ApiResponse();
@@ -329,24 +329,17 @@ public class HttpUrlConnectionTransport implements Transport {
         response.setStatus(conn.getResponseCode());
         response.setHeaders(conn.getHeaderFields());
 
-        InputStream is;
-        if (response.isSuccessful()) {
-            is = conn.getInputStream();
-        } else {
-            is = conn.getErrorStream();
-        }
+        try (InputStream is = response.isSuccessful() ? conn.getInputStream() : conn.getErrorStream()) {
+            if (is != null) {
+                try (ByteArrayOutputStream os = new ByteArrayOutputStream()) {
+                    int bytes;
+                    while ((bytes = is.read()) != -1) {
+                        os.write(bytes);
+                    }
 
-        if (is != null) {
-            InputStream in = new BufferedInputStream(is);
-            ByteArrayOutputStream os = new ByteArrayOutputStream();
-
-            int bytes;
-            while ((bytes = is.read()) != -1) {
-                os.write(bytes);
+                    response.setBody(os.toByteArray());
+                }
             }
-            in.close();
-
-            response.setBody(os.toByteArray());
         }
 
         if (log.isDebugEnabled()) {
