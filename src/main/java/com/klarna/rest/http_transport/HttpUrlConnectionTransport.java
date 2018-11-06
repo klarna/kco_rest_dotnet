@@ -396,7 +396,7 @@ public class HttpUrlConnectionTransport implements Transport {
 
             methodsField.set(null/*static field*/, newMethods);
         } catch (NoSuchFieldException | IllegalAccessException e) {
-            System.out.println(e);
+            log.error(e.getMessage(), e);
         }
     }
 }
