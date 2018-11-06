@@ -154,7 +154,7 @@ public abstract class BaseApi {
     }
 
     protected ApiResponse get(final String path, Map<String, String> headers)
-            throws ApiException, ProtocolException, IOException {
+            throws ApiException, IOException {
         return this.makeRequest(Method.GET, path, null, headers);
     }
 
