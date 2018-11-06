@@ -79,7 +79,7 @@ public interface Transport {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    ApiResponse get(final String path, Map<String, String> headers) throws ApiException, ProtocolException, IOException;
+    ApiResponse get(final String path, Map<String, String> headers) throws ApiException, IOException;
 
     /**
      * Sends HTTP POST request to specified path.
@@ -92,7 +92,7 @@ public interface Transport {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    ApiResponse post(final String path, final byte[] data, Map<String, String> headers) throws ApiException, ProtocolException, IOException;
+    ApiResponse post(final String path, final byte[] data, Map<String, String> headers) throws ApiException, IOException;
 
     /**
      * Sends HTTP PUT request to specified path.
@@ -105,7 +105,7 @@ public interface Transport {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    ApiResponse put(final String path, final byte[] data, Map<String, String> headers) throws ApiException, ProtocolException, IOException;
+    ApiResponse put(final String path, final byte[] data, Map<String, String> headers) throws ApiException, IOException;
 
     /**
      * Sends HTTP PATCH request to specified path.
@@ -118,7 +118,7 @@ public interface Transport {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    ApiResponse patch(final String path, final byte[] data, Map<String, String> headers) throws ApiException, ProtocolException, IOException;
+    ApiResponse patch(final String path, final byte[] data, Map<String, String> headers) throws ApiException, IOException;
 
     /**
      * Sends HTTP DELETE request to specified path.
@@ -130,5 +130,5 @@ public interface Transport {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    ApiResponse delete(final String path, Map<String, String> headers) throws ApiException, ProtocolException, IOException;
+    ApiResponse delete(final String path, Map<String, String> headers) throws ApiException, IOException;
 }
