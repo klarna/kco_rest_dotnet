@@ -26,6 +26,7 @@ import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.net.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -366,7 +367,7 @@ public class HttpUrlConnectionTransport implements Transport {
     }
 
     private void setBase64Auth(HttpURLConnection conn, String username, String password) throws IOException {
-        byte[] message = (username + ":" + password).getBytes("UTF-8");
+        byte[] message = (username + ":" + password).getBytes(StandardCharsets.UTF_8);
         String encoded = javax.xml.bind.DatatypeConverter.printBase64Binary(message);
 
         conn.setRequestProperty("Authorization", "Basic " + encoded);
