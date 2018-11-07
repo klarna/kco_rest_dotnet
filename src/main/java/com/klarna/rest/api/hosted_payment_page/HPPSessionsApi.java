@@ -22,6 +22,7 @@ import com.klarna.rest.api.hosted_payment_page.model.HPPSessionCreationRequestV1
 import com.klarna.rest.api.hosted_payment_page.model.HPPSessionCreationResponseV1;
 import com.klarna.rest.api.hosted_payment_page.model.HPPSessionResponseV1;
 import com.klarna.rest.api.order_management.OrderManagementOrdersApi;
+import com.klarna.rest.api.payments.PaymentsOrdersApi;
 import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ApiResponse;
@@ -39,7 +40,7 @@ import java.io.IOException;
  * A complete HPP payment session will involve three of Klarna services:
  *
  * <ul>
- *  <li>{@link com.klarna.rest.api.payments.OrderManagementOrdersApi Klarna Payments API} to start a payment session.</li>
+ *  <li>{@link PaymentsOrdersApi Klarna Payments API} to start a payment session.</li>
  *  <li>{@link HPPSessionsApi Hosted Payment Page API} to distribute a payment session.</li>
  *  <li>{@link OrderManagementOrdersApi Order Management API}
  *      to capture payment or refund consumer.</li>

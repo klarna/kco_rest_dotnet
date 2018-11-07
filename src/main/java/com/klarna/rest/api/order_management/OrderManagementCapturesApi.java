@@ -46,7 +46,7 @@ public class OrderManagementCapturesApi extends BaseApi {
      * @param transport HTTP Transport
      * @param orderId Order id
      */
-    public OrderManagementCapturesApi(final HttpTransport transport, String orderId) {
+    public OrderManagementCapturesApi(final HttpTransport transport, final String orderId) {
         super(transport);
 
         this.PATH = String.format("/ordermanagement/v1/orders/%s/captures", orderId);
@@ -61,7 +61,7 @@ public class OrderManagementCapturesApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public OrderManagementCapture fetch(String captureId) throws ApiException, IOException {
+    public OrderManagementCapture fetch(final String captureId) throws ApiException, IOException {
         final String path = String.format(PATH + "/" + captureId);
         final ApiResponse response = this.get(path);
 

@@ -20,7 +20,7 @@ import com.klarna.rest.api.BaseApi;
 import com.klarna.rest.api.customer_token.model.TokenCustomerTokenOrder;
 import com.klarna.rest.api.customer_token.model.TokenCustomerTokenV1;
 import com.klarna.rest.api.customer_token.model.TokenOrder;
-import com.klarna.rest.api.payments.OrderManagementOrdersApi;
+import com.klarna.rest.api.payments.PaymentsOrdersApi;
 import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ApiResponse;
@@ -34,7 +34,7 @@ import java.io.IOException;
  *
  * The Customer Token API is used to charge customers with a tokenized Klarna payment method and can be used for
  * recurring purchases, subscriptions and for storing a customer's payment method. Tokens are created using
- * the generate a customer token call in the {@link OrderManagementOrdersApi PaymentAPI}.
+ * the generate a customer token call in the {@link PaymentsOrdersApi PaymentAPI}.
  */
 public class TokensApi extends BaseApi {
     protected String PATH;

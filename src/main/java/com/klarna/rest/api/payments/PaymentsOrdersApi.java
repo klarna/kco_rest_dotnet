@@ -37,10 +37,10 @@ import java.io.IOException;
  * As soon as the purchase is completed the order should be read and handled using the
  * {@link com.klarna.rest.api.order_management.OrderManagementOrdersApi Order Management API}.
  */
-public class OrderManagementOrdersApi extends BaseApi {
+public class PaymentsOrdersApi extends BaseApi {
     protected String PATH = "/payments/v1/authorizations";
 
-    public OrderManagementOrdersApi(final HttpTransport transport) {
+    public PaymentsOrdersApi(final HttpTransport transport) {
         super(transport);
     }
 

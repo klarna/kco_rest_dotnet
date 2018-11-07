@@ -18,7 +18,9 @@ package com.klarna.rest.api.payments;
 
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
-import com.klarna.rest.api.payments.model.*;
+import com.klarna.rest.api.payments.model.PaymentsMerchantSession;
+import com.klarna.rest.api.payments.model.PaymentsMerchantUrls;
+import com.klarna.rest.api.payments.model.PaymentsSession;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -32,12 +34,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CheckoutOrderManagementOrderManagementOrdersApiTest extends TestCase {
+public class SessionsApiTest extends TestCase {
     @Rule
     public ExpectedException expectedEx = ExpectedException.none();
 
@@ -54,23 +54,23 @@ public class CheckoutOrderManagementOrderManagementOrdersApiTest extends TestCas
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
             put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
-        final String payload = "{ \"order_id\": \"0b1d9815\", \"redirect_url\": \"https://credit.klarna.com/v1/sessions/0b1d9815-165e-42e2-8867-35bc03789e00/redirect\", \"fraud_status\": \"ACCEPTED\" }";
+        final String payload = "{ \"session_id\": \"0b1d9815-165e-42e2\", \"client_token\": \"eyJhb.ewogI\", \"payment_method_categories\": [ { \"identifier\": \"pay_later\", \"name\": \"Pay Later\" } ] }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        PaymentsCreateOrderRequest data = new PaymentsCreateOrderRequest()
+        PaymentsSession data = new PaymentsSession()
             .orderAmount(100L)
-            .autoCapture(false)
             .merchantUrls(new PaymentsMerchantUrls()
                 .confirmation("https://example.com/confirm")
             );
 
-        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
-        PaymentsOrder order = api.create("auth-token", data);
+        PaymentsSessionsApi api = new PaymentsSessionsApi(transport);
+        PaymentsMerchantSession session = api.create(data);
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
-        assertEquals("/payments/v1/authorizations/auth-token/order", transport.requestPath);
-        assertEquals("0b1d9815", order.getOrderId());
-        assertEquals("ACCEPTED", order.getFraudStatus());
+        assertEquals("/payments/v1/sessions", transport.requestPath);
+        assertEquals("0b1d9815-165e-42e2", session.getSessionId());
+        assertEquals("eyJhb.ewogI", session.getClientToken());
+        assertEquals("pay_later", session.getPaymentMethodCategories().get(0).getIdentifier());
 
         final String requestPayout = transport.requestPayout.toString();
         assertTrue(requestPayout.contains("\"order_amount\":100"));
@@ -78,40 +78,43 @@ public class CheckoutOrderManagementOrderManagementOrdersApiTest extends TestCas
     }
 
     @Test
-    public void testGenerateToken() throws IOException {
+    public void testFetch() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(200);
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
             put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
-        final String payload = "{ \"token_id\": \"0b1d9815\", \"redirect_url\": \"https://credit.klarna.com/v1/sessions/0b1d9815-165e-42e2-8867-35bc03789e00/redirect\" }";
+        final String payload = "{ \"purchase_country\": \"US\", \"order_amount\": 100, \"status\": \"incomplete\", \"client_token\": \"eyJhbGciOi.ewogIC\" }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        PaymentsCustomerTokenCreationRequest data = new PaymentsCustomerTokenCreationRequest()
-            .intendedUse(PaymentsCustomerTokenCreationRequest.IntendedUseEnum.SUBSCRIPTION)
-            .purchaseCountry("US");
+        PaymentsSessionsApi api = new PaymentsSessionsApi(transport);
+        PaymentsSession session = api.fetch("my-session-id");
 
-        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
-        PaymentsCustomerTokenCreationResponse token = api.generateToken("auth-token", data);
-
-        verify(transport.conn, times(1)).setRequestMethod("POST");
-        assertEquals("/payments/v1/authorizations/auth-token/customer-token", transport.requestPath);
-        assertEquals("0b1d9815", token.getTokenId());
-        assertEquals("https://credit.klarna.com/v1/sessions/0b1d9815-165e-42e2-8867-35bc03789e00/redirect", token.getRedirectUrl());
-
-        final String requestPayout = transport.requestPayout.toString();
-        assertTrue(requestPayout.contains("\"intended_use\":\"SUBSCRIPTION\""));
-        assertTrue(requestPayout.contains("\"purchase_country\":\"US\""));
-        assertFalse(requestPayout.contains("billing_address"));
+        verify(transport.conn, times(1)).setRequestMethod("GET");
+        assertEquals("/payments/v1/sessions/my-session-id", transport.requestPath);
+        assertEquals("US", session.getPurchaseCountry());
+        Long amount = 100L;
+        assertEquals(amount, session.getOrderAmount());
+        assertEquals(PaymentsSession.StatusEnum.INCOMPLETE, session.getStatus());
     }
 
     @Test
-    public void testAcknowledgeOrder() throws IOException {
+    public void testUpdate() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(204);
 
-        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
-        api.cancelAuthorization("auth-token");
+        PaymentsSession data = new PaymentsSession()
+            .orderAmount(100L)
+            .merchantUrls(new PaymentsMerchantUrls()
+                .confirmation("https://example.com/confirm")
+            );
 
-        verify(transport.conn, times(1)).setRequestMethod("DELETE");
-        assertEquals("/payments/v1/authorizations/auth-token", transport.requestPath);
+        PaymentsSessionsApi api = new PaymentsSessionsApi(transport);
+        api.update("my-session-id", data);
+
+        verify(transport.conn, times(1)).setRequestMethod("POST");
+        assertEquals("/payments/v1/sessions/my-session-id", transport.requestPath);
+
+        final String requestPayout = transport.requestPayout.toString();
+        assertTrue(requestPayout.contains("\"order_amount\":100"));
+        assertTrue(requestPayout.contains("\"confirmation\":\"https://example.com/confirm\""));
     }
 }

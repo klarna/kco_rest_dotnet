@@ -38,7 +38,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CheckoutOrderManagementOrderManagementOrdersApiTest extends TestCase {
+public class OrdersApiTest extends TestCase {
     @Rule
     public ExpectedException expectedEx = ExpectedException.none();
 

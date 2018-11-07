@@ -36,10 +36,10 @@ import java.io.IOException;
  * As soon as the purchase is completed the order should be read and handled using the
  * {@link OrderManagementOrdersApi Order Management API}.
  */
-public class OrderManagementSessionsApi extends BaseApi {
+public class PaymentsSessionsApi extends BaseApi {
     protected String PATH = "/payments/v1/sessions";
 
-    public OrderManagementSessionsApi(final HttpTransport transport) {
+    public PaymentsSessionsApi(final HttpTransport transport) {
         super(transport);
     }
 

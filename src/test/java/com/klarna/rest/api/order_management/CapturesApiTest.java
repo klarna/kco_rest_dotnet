@@ -39,7 +39,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class OrderManagementCapturesApiTest extends TestCase {
+public class CapturesApiTest extends TestCase {
     @Rule
     public ExpectedException expectedEx = ExpectedException.none();
 
