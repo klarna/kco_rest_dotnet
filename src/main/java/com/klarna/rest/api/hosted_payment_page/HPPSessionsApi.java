@@ -64,7 +64,8 @@ public class HPPSessionsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public HPPSessionCreationResponseV1 create(HPPSessionCreationRequestV1 session) throws ApiException, IOException {
+    public HPPSessionCreationResponseV1 create(final HPPSessionCreationRequestV1 session)
+            throws ApiException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(session);
         final ApiResponse response = this.post(PATH, data);
 
@@ -86,7 +87,8 @@ public class HPPSessionsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public void distributeLink(String sessionId, HPPDistributionRequestV1 request) throws ApiException, IOException {
+    public void distributeLink(final String sessionId, final HPPDistributionRequestV1 request)
+            throws ApiException, IOException {
         final String path = String.format("%s/%s/%s", PATH, sessionId, "distribution");
         final byte[] data = objectMapper.writeValueAsBytes(request);
         final ApiResponse response = this.post(path, data);
@@ -106,7 +108,7 @@ public class HPPSessionsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public HPPSessionResponseV1 fetch(String sessionId) throws ApiException, IOException {
+    public HPPSessionResponseV1 fetch(final String sessionId) throws ApiException, IOException {
         final String path = String.format("%s/%s", PATH, sessionId);
         final ApiResponse response = this.get(path);
 

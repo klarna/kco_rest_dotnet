@@ -56,7 +56,7 @@ public class PaymentsOrdersApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public PaymentsOrder create(String authorizationToken, PaymentsCreateOrderRequest order)
+    public PaymentsOrder create(final String authorizationToken, final PaymentsCreateOrderRequest order)
             throws ApiException, IOException {
         final String path = String.format("%s/%s/%s", PATH, authorizationToken, "order");
         final byte[] data = objectMapper.writeValueAsBytes(order);
@@ -82,7 +82,8 @@ public class PaymentsOrdersApi extends BaseApi {
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
     public PaymentsCustomerTokenCreationResponse generateToken(
-            String authorizationToken, PaymentsCustomerTokenCreationRequest request) throws ApiException, IOException {
+            final String authorizationToken, final PaymentsCustomerTokenCreationRequest request)
+            throws ApiException, IOException {
         final String path = String.format("%s/%s/%s", PATH, authorizationToken, "customer-token");
         final byte[] data = objectMapper.writeValueAsBytes(request);
         final ApiResponse response = this.post(path, data);
@@ -104,7 +105,7 @@ public class PaymentsOrdersApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public void cancelAuthorization(String authorizationToken) throws ApiException, IOException {
+    public void cancelAuthorization(final String authorizationToken) throws ApiException, IOException {
         final ApiResponse response = this.delete(PATH + "/" + authorizationToken);
 
         response.expectSuccessful()

@@ -56,7 +56,7 @@ public class CheckoutOrdersApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public CheckoutOrder create(CheckoutOrder order) throws ApiException, IOException {
+    public CheckoutOrder create(final CheckoutOrder order) throws ApiException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(order);
         final ApiResponse response = this.post(PATH, data);
 
@@ -83,7 +83,7 @@ public class CheckoutOrdersApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public CheckoutOrder fetch(String orderId) throws ApiException, IOException {
+    public CheckoutOrder fetch(final String orderId) throws ApiException, IOException {
         final ApiResponse response = this.get(PATH + '/' + orderId);
 
         response.expectSuccessful()
@@ -133,7 +133,7 @@ public class CheckoutOrdersApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public CheckoutOrder update(String orderId, CheckoutOrder order) throws ApiException, IOException {
+    public CheckoutOrder update(final String orderId, final CheckoutOrder order) throws ApiException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(order);
         final ApiResponse response = this.post(PATH + '/' + orderId, data);
 

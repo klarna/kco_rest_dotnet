@@ -54,7 +54,7 @@ public class OrderManagementOrdersApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public OrderManagementOrder fetch(String orderId) throws ApiException, IOException {
+    public OrderManagementOrder fetch(final String orderId) throws ApiException, IOException {
         final ApiResponse response = this.get(PATH + '/' + orderId);
 
         response.expectSuccessful()
@@ -74,7 +74,7 @@ public class OrderManagementOrdersApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public void releaseRemainingAuthorization(String orderId) throws ApiException, IOException {
+    public void releaseRemainingAuthorization(final String orderId) throws ApiException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "release-remaining-authorization");
         final ApiResponse response = this.post(path, null);
 
@@ -92,7 +92,7 @@ public class OrderManagementOrdersApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public void extendAuthorizationTime(String orderId) throws ApiException, IOException {
+    public void extendAuthorizationTime(final String orderId) throws ApiException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "extend-authorization-time");
         final ApiResponse response = this.post(path, null);
 
@@ -111,7 +111,7 @@ public class OrderManagementOrdersApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public void updateCustomerAddresses(String orderId, OrderManagementUpdateConsumer customerAddress)
+    public void updateCustomerAddresses(final String orderId, final OrderManagementUpdateConsumer customerAddress)
             throws ApiException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "customer-details");
         final byte[] data = objectMapper.writeValueAsBytes(customerAddress);
@@ -132,7 +132,7 @@ public class OrderManagementOrdersApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public void cancelOrder(String orderId) throws ApiException, IOException {
+    public void cancelOrder(final String orderId) throws ApiException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "cancel");
 
         final ApiResponse response = this.post(path, null);
@@ -152,7 +152,7 @@ public class OrderManagementOrdersApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public void updateMerchantReferences(String orderId, OrderManagementUpdateMerchantReferences references)
+    public void updateMerchantReferences(final String orderId, final OrderManagementUpdateMerchantReferences references)
             throws ApiException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "merchant-references");
         final byte[] data = objectMapper.writeValueAsBytes(references);
@@ -172,7 +172,7 @@ public class OrderManagementOrdersApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public void acknowledgeOrder(String orderId) throws ApiException, IOException {
+    public void acknowledgeOrder(final String orderId) throws ApiException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "acknowledge");
         final ApiResponse response = this.post(path, null);
 
@@ -191,7 +191,7 @@ public class OrderManagementOrdersApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public void setOrderAmountAndOrderLines(String orderId, OrderManagementUpdateAuthorization orderData)
+    public void setOrderAmountAndOrderLines(final String orderId, final OrderManagementUpdateAuthorization orderData)
             throws ApiException, IOException {
         final String path = String.format("%s/%s/%s", PATH, orderId, "authorization");
         final byte[] data = objectMapper.writeValueAsBytes(orderData);

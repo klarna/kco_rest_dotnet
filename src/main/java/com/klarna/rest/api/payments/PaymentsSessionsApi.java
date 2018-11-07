@@ -54,7 +54,7 @@ public class PaymentsSessionsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public PaymentsMerchantSession create(PaymentsSession session) throws ApiException, IOException {
+    public PaymentsMerchantSession create(final PaymentsSession session) throws ApiException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(session);
         final ApiResponse response = this.post(PATH, data);
 
@@ -76,7 +76,7 @@ public class PaymentsSessionsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public PaymentsSession fetch(String sessionId) throws ApiException, IOException {
+    public PaymentsSession fetch(final String sessionId) throws ApiException, IOException {
         final ApiResponse response = this.get(PATH + '/' + sessionId);
 
         response.expectSuccessful()
@@ -97,7 +97,7 @@ public class PaymentsSessionsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public void update(String sessionId, PaymentsSession session) throws ApiException, IOException {
+    public void update(final String sessionId, final PaymentsSession session) throws ApiException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(session);
         final ApiResponse response = this.post(PATH + '/' + sessionId, data);
 

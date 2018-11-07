@@ -39,7 +39,7 @@ import java.io.IOException;
 public class TokensApi extends BaseApi {
     protected String PATH;
 
-    public TokensApi(final HttpTransport transport, String customerToken) {
+    public TokensApi(final HttpTransport transport, final String customerToken) {
         super(transport);
 
         this.PATH = String.format("/customer-token/v1/tokens/%s", customerToken);
@@ -76,7 +76,7 @@ public class TokensApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public TokenOrder createOrder(TokenCustomerTokenOrder order) throws ApiException, IOException {
+    public TokenOrder createOrder(final TokenCustomerTokenOrder order) throws ApiException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(order);
         final ApiResponse response = this.post(PATH + "/order", data);
 

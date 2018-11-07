@@ -58,7 +58,7 @@ public class SettlementsTransactionsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public SettlementsTransactionCollection getTransactions(Map<String, String> urlParams)
+    public SettlementsTransactionCollection getTransactions(final Map<String, String> urlParams)
         throws ApiException, IOException {
         final ApiResponse response = this.get(PATH + "?" + BaseApi.buildQueryString(urlParams));
         response.expectSuccessful()

@@ -121,7 +121,7 @@ public class OrderManagementCapturesApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public String create(OrderManagementCaptureObject capture) throws ApiException, IOException {
+    public String create(final OrderManagementCaptureObject capture) throws ApiException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(capture);
         final ApiResponse response = this.post(PATH, data);
 
@@ -141,7 +141,7 @@ public class OrderManagementCapturesApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public void triggerSendout(String captureId) throws ApiException, IOException {
+    public void triggerSendout(final String captureId) throws ApiException, IOException {
         final String path = String.format("%s/%s/%s", PATH, captureId, "trigger-send-out");
         final ApiResponse response = this.post(path, null);
 
@@ -158,7 +158,7 @@ public class OrderManagementCapturesApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public void addShippingInfo(String captureId, OrderManagementUpdateShippingInfo shippingInfo)
+    public void addShippingInfo(final String captureId, final OrderManagementUpdateShippingInfo shippingInfo)
             throws ApiException, IOException {
         final String path = String.format("%s/%s/%s", PATH, captureId, "shipping-info");
         final byte[] data = objectMapper.writeValueAsBytes(shippingInfo);

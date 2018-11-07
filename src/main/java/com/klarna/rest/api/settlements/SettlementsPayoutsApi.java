@@ -60,7 +60,7 @@ public class SettlementsPayoutsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public SettlementsPayout getPayout(String paymentReference) throws ApiException, IOException {
+    public SettlementsPayout getPayout(final String paymentReference) throws ApiException, IOException {
         final ApiResponse response = this.get(PATH + "/" + paymentReference);
 
         response.expectSuccessful()
@@ -82,7 +82,7 @@ public class SettlementsPayoutsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public SettlementsPayoutCollection getAllPayouts(Map<String, String> urlParams) throws ApiException, IOException {
+    public SettlementsPayoutCollection getAllPayouts(final Map<String, String> urlParams) throws ApiException, IOException {
         final ApiResponse response = this.get(PATH + "?" + BaseApi.buildQueryString(urlParams));
         response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
@@ -117,7 +117,7 @@ public class SettlementsPayoutsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public SettlementsPayoutSummary[] getSummary(Map<String, String> urlParams) throws ApiException, IOException {
+    public SettlementsPayoutSummary[] getSummary(final Map<String, String> urlParams) throws ApiException, IOException {
         final String path = String.format("%s/%s?%s", PATH, "summary", BaseApi.buildQueryString(urlParams));
         final ApiResponse response = this.get(path);
         response.expectSuccessful()

@@ -60,7 +60,7 @@ public class SettlementsReportsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public byte[] getCSVPayoutReport(Map<String, String> urlParams) throws ApiException, IOException {
+    public byte[] getCSVPayoutReport(final Map<String, String> urlParams) throws ApiException, IOException {
         final String path = String.format("%s/%s?%s",
                 PATH,
                 "payout-with-transactions",
@@ -89,7 +89,7 @@ public class SettlementsReportsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public byte[] getCSVSummary(Map<String, String> urlParams) throws ApiException, IOException {
+    public byte[] getCSVSummary(final Map<String, String> urlParams) throws ApiException, IOException {
         final String path = String.format("%s/%s?%s",
                 PATH,
                 "payouts-summary-with-transactions",
@@ -115,7 +115,7 @@ public class SettlementsReportsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public byte[] getPDFPayoutsSummaryReport(Map<String, String> urlParams) throws ApiException, IOException {
+    public byte[] getPDFPayoutsSummaryReport(final Map<String, String> urlParams) throws ApiException, IOException {
         final String path = String.format("%s/%s?%s", PATH, "payout", BaseApi.buildQueryString(urlParams));
         final ApiResponse response = this.get(path);
         response.expectSuccessful()
@@ -137,7 +137,7 @@ public class SettlementsReportsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public byte[] getPDFSummary(Map<String, String> urlParams) throws ApiException, IOException {
+    public byte[] getPDFSummary(final Map<String, String> urlParams) throws ApiException, IOException {
         final String path = String.format("%s/%s?%s", PATH, "payouts-summary", BaseApi.buildQueryString(urlParams));
         final ApiResponse response = this.get(path);
         response.expectSuccessful()

@@ -113,7 +113,7 @@ public abstract class BaseApi {
      * @return HTTP Query string
      * @throws RuntimeException if Params map has Unsupported encoding
      */
-    public static String buildQueryString(Map<String, String> params) throws RuntimeException {
+    public static String buildQueryString(final Map<String, String> params) throws RuntimeException {
         if (params == null) {
             return "";
         }
@@ -152,7 +152,7 @@ public abstract class BaseApi {
         return this.get(path, null);
     }
 
-    protected ApiResponse get(final String path, Map<String, String> headers)
+    protected ApiResponse get(final String path, final Map<String, String> headers)
             throws ApiException, IOException {
         return this.makeRequest(Method.GET, path, null, headers);
     }
@@ -212,7 +212,11 @@ public abstract class BaseApi {
         return this.makeRequest(Method.DELETE, path, null, headers);
     }
 
-    protected ApiResponse makeRequest(Method method, String path, byte[] data, Map<String, String> headers)
+    protected ApiResponse makeRequest(
+            final Method method,
+            final String path,
+            final byte[] data,
+            final Map<String, String> headers)
             throws ApiException, IOException {
         final ApiResponse response;
         switch (method) {
@@ -250,7 +254,7 @@ public abstract class BaseApi {
         return response;
     }
 
-    protected <T> T fromJson(byte[] data, Class<T> type) throws IOException {
+    protected <T> T fromJson(final byte[] data, Class<T> type) throws IOException {
         if (data == null || data.length == 0) {
             log.warn("No JSON data to convert to " + type);
             return null;

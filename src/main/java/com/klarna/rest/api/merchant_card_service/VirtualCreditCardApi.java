@@ -53,7 +53,7 @@ public class VirtualCreditCardApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public CardServiceSettlementResponse createSettlement(CardServiceSettlementRequest settlement)
+    public CardServiceSettlementResponse createSettlement(final CardServiceSettlementRequest settlement)
             throws ApiException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(settlement);
         final ApiResponse response = this.post(PATH, data);
@@ -77,7 +77,7 @@ public class VirtualCreditCardApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public CardServiceSettlementResponse retrieveExistingSettlement(String settlementId, String keyId)
+    public CardServiceSettlementResponse retrieveExistingSettlement(final String settlementId, final String keyId)
             throws ApiException, IOException {
         Map<String, String> headers = new HashMap<>();
         headers.put("KeyId", keyId);
@@ -102,7 +102,7 @@ public class VirtualCreditCardApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public CardServiceSettlementResponse retrieveSettledOrderSettlement(String orderId, String keyId)
+    public CardServiceSettlementResponse retrieveSettledOrderSettlement(final String orderId, final String keyId)
             throws ApiException, IOException {
         Map<String, String> headers = new HashMap<>();
         headers.put("KeyId", keyId);

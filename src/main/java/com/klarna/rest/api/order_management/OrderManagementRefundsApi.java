@@ -43,7 +43,7 @@ public class OrderManagementRefundsApi extends BaseApi {
      * @param transport HTTP Transport
      * @param orderId The unique order ID
      */
-    public OrderManagementRefundsApi(final HttpTransport transport, String orderId) {
+    public OrderManagementRefundsApi(final HttpTransport transport, final String orderId) {
         super(transport);
 
         this.PATH = String.format("/ordermanagement/v1/orders/%s/refunds", orderId);
@@ -60,7 +60,7 @@ public class OrderManagementRefundsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public String create(OrderManagementRefundObject refund) throws ApiException, IOException {
+    public String create(final OrderManagementRefundObject refund) throws ApiException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(refund);
         final ApiResponse response = this.post(PATH, data);
 
@@ -82,7 +82,7 @@ public class OrderManagementRefundsApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public OrderManagementRefund fetch(String refundId) throws ApiException, IOException {
+    public OrderManagementRefund fetch(final String refundId) throws ApiException, IOException {
         ApiResponse response = this.get(PATH + "/" + refundId);
 
         response.expectSuccessful()
