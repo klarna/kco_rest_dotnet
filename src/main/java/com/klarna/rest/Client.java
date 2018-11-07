@@ -72,6 +72,8 @@ public class Client {
     /**
      * Creates a new CheckoutOrdersApi resource instance.
      *
+     * @see examples.CheckoutExample
+     *
      * @return new instance
      */
     public CheckoutOrdersApi newCheckoutOrdersApi() {
@@ -80,6 +82,8 @@ public class Client {
 
     /**
      * Creates a new TokensApi resource instance.
+     *
+     * @see examples.CustomerTokenExample
      *
      * @return new instance
      */
@@ -90,6 +94,8 @@ public class Client {
     /**
      * Creates a new HPPSessionsApi resource instance.
      *
+     * @see examples.HostedPaymentPageExample
+     *
      * @return new instance
      */
     public HPPSessionsApi newHPPSessionsApi() {
@@ -98,6 +104,8 @@ public class Client {
 
     /**
      * Creates a new VirtualCreditCardApi resource instance.
+     *
+     * @see examples.MerchantCardServiceExample
      *
      * @return new instance
      */
@@ -108,6 +116,8 @@ public class Client {
     /**
      * Creates a new OrderManagementCapturesApi resource instance.
      *
+     * @see examples.OrderManagementExample
+     *
      * @return new instance
      */
     public OrderManagementCapturesApi newOrderManagementCapturesApi(final String orderId) {
@@ -116,6 +126,8 @@ public class Client {
 
     /**
      * Creates a new OrderManagementOrdersApi resource instance.
+     *
+     * @see examples.OrderManagementExample
      *
      * @return new instance
      */
@@ -126,6 +138,8 @@ public class Client {
     /**
      * Creates a new OrderManagementRefundsApi resource instance.
      *
+     * @see examples.OrderManagementExample
+     *
      * @return new instance
      */
     public OrderManagementRefundsApi newOrderManagementRefundsApi(final String orderId) {
@@ -134,6 +148,8 @@ public class Client {
 
     /**
      * Creates a new PaymentsOrdersApi resource instance.
+     *
+     * @see examples.PaymentsExample
      *
      * @return new instance
      */
@@ -144,6 +160,8 @@ public class Client {
     /**
      * Creates a new PaymentsSessionsApi resource instance.
      *
+     * @see examples.PaymentsExample
+     *
      * @return new instance
      */
     public PaymentsSessionsApi newPaymentsSessionsApi() {
@@ -152,6 +170,8 @@ public class Client {
 
     /**
      * Creates a new SettlementsPayoutsApi resource instance.
+     *
+     * @see examples.SettlementsExample
      *
      * @return new instance
      */
@@ -162,6 +182,8 @@ public class Client {
     /**
      * Creates a new SettlementsTransactionsApi resource instance.
      *
+     * @see examples.SettlementsExample
+     *
      * @return new instance
      */
     public SettlementsTransactionsApi newSettlementsTransactionsApi() {
@@ -170,6 +192,8 @@ public class Client {
 
     /**
      * Creates a new SettlementsReportsApi resource instance.
+     *
+     * @see examples.SettlementsExample
      *
      * @return new instance
      */
