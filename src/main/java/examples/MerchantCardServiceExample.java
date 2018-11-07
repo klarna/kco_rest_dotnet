@@ -3,11 +3,9 @@ package examples;
 import com.klarna.rest.api.merchant_card_service.VirtualCreditCardApi;
 import com.klarna.rest.api.merchant_card_service.model.CardServiceSettlementResponse;
 import com.klarna.rest.api.merchant_card_service.model.CardServiceSettlementRequest;
+import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
-import com.klarna.rest.http_transport.Transport;
 import com.klarna.rest.model.ApiException;
-import com.klarna.rest.model.ContentTypeException;
-import com.klarna.rest.model.ProtocolException;
 
 import java.io.IOException;
 
@@ -24,7 +22,7 @@ public class MerchantCardServiceExample {
             final String settlementId = "12345";
             final String keyId = "abcde";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             VirtualCreditCardApi vccApi = new VirtualCreditCardApi(transport);
 
             try {
@@ -51,7 +49,7 @@ public class MerchantCardServiceExample {
             final String orderId = "12345";
             final String keyId = "abcde";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             VirtualCreditCardApi vccApi = new VirtualCreditCardApi(transport);
 
             try {
@@ -78,7 +76,7 @@ public class MerchantCardServiceExample {
             final String orderId = "12345";
             final String keyId = "abcde";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             VirtualCreditCardApi vccApi = new VirtualCreditCardApi(transport);
 
             try {

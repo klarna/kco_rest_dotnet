@@ -17,10 +17,9 @@
 package com.klarna.rest.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ApiResponse;
-import com.klarna.rest.model.ProtocolException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -32,8 +31,8 @@ import java.util.Map;
 
 /**
  * API Resource helper.
- * Simplifies work with HTTP Transport and Logging.
- * @see Transport
+ * Simplifies work with HTTP HttpTransport and Logging.
+ * @see HttpTransport
  */
 public abstract class BaseApi {
     /**
@@ -49,7 +48,7 @@ public abstract class BaseApi {
     /**
      * HTTP Transport.
      */
-    protected Transport transport;
+    protected HttpTransport transport;
 
     /**
      * Preferred ObjectMapper.
@@ -89,12 +88,12 @@ public abstract class BaseApi {
         }
     }
 
-    public BaseApi(Transport transport) {
+    public BaseApi(HttpTransport transport) {
         this.transport = transport;
         this.objectMapper = new DefaultMapper();
     }
 
-    public BaseApi(Transport transport, ObjectMapper mapper) {
+    public BaseApi(HttpTransport transport, ObjectMapper mapper) {
         this.transport = transport;
         this.objectMapper = mapper;
     }

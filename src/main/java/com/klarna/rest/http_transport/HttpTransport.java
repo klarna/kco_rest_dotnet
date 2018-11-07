@@ -32,7 +32,7 @@ import static java.lang.System.getProperty;
  *
  * @see HttpUrlConnectionTransport Default HTTP transport based on HttpURLConnection.
  */
-public interface Transport {
+public interface HttpTransport {
     /**
      * API library client version.
      */

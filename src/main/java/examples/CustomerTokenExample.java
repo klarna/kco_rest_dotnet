@@ -2,11 +2,9 @@ package examples;
 
 import com.klarna.rest.api.customer_token.TokensApi;
 import com.klarna.rest.api.customer_token.model.*;
+import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
-import com.klarna.rest.http_transport.Transport;
 import com.klarna.rest.model.ApiException;
-import com.klarna.rest.model.ContentTypeException;
-import com.klarna.rest.model.ProtocolException;
 
 
 import java.io.IOException;
@@ -25,7 +23,7 @@ public class CustomerTokenExample {
             String sharedSecret = "sharedSecret";
             String customerToken = "customerToken";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             TokensApi tokensApi = new TokensApi(transport, customerToken);
 
             try {
@@ -51,7 +49,7 @@ public class CustomerTokenExample {
             String sharedSecret = "sharedSecret";
             String customerToken = "customerToken";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             TokensApi tokensApi = new TokensApi(transport, customerToken);
 
             try {

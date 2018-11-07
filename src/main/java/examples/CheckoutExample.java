@@ -18,7 +18,7 @@ package examples;
 
 import com.klarna.rest.api.checkout.CheckoutOrdersApi;
 import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
-import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.http_transport.HttpTransport;
 
 import com.klarna.rest.model.ApiException;
 
@@ -51,7 +51,7 @@ public class CheckoutExample {
             String sharedSecret = "sharedSecret";
             String checkoutOrderID = "12345";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             CheckoutOrdersApi checkoutOrdersApi = new CheckoutOrdersApi(transport);
 
             try {
@@ -80,7 +80,7 @@ public class CheckoutExample {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             CheckoutOrdersApi checkoutOrdersApi = new CheckoutOrdersApi(transport);
 
             final List<CheckoutOrderLine> lines = Arrays.asList(
@@ -150,7 +150,7 @@ public class CheckoutExample {
             String sharedSecret = "sharedSecret";
             String checkoutOrderID = "12345";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             CheckoutOrdersApi checkoutOrdersApi = new CheckoutOrdersApi(transport);
 
             final CheckoutAddress address = new CheckoutAddress()

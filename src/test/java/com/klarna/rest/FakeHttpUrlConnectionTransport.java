@@ -1,7 +1,7 @@
 package com.klarna.rest;
 
 import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
-import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.http_transport.HttpTransport;
 import org.mockito.Mock;
 
 import java.io.ByteArrayOutputStream;
@@ -29,7 +29,7 @@ public class FakeHttpUrlConnectionTransport extends HttpUrlConnectionTransport {
     }
 
     public FakeHttpUrlConnectionTransport() {
-        this("merchantId", "sharedSecret", Transport.EU_TEST_BASE_URL);
+        this("merchantId", "sharedSecret", HttpTransport.EU_TEST_BASE_URL);
     }
 
     public HttpURLConnection testBuildConnection(String path, Map<String, String> headers) throws IOException {

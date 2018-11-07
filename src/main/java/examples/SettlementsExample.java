@@ -23,8 +23,8 @@ import com.klarna.rest.api.settlements.model.SettlementsPayout;
 import com.klarna.rest.api.settlements.model.SettlementsPayoutCollection;
 import com.klarna.rest.api.settlements.model.SettlementsPayoutSummary;
 import com.klarna.rest.api.settlements.model.SettlementsTransactionCollection;
+import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
-import com.klarna.rest.http_transport.Transport;
 import com.klarna.rest.model.ApiException;
 
 import java.io.FileNotFoundException;
@@ -55,7 +55,7 @@ public class SettlementsExample {
             String sharedSecret = "sharedSecret";
             String paymentReference = "12345";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             SettlementsPayoutsApi settlementsPayoutsApi = new SettlementsPayoutsApi(transport);
 
             try {
@@ -80,7 +80,7 @@ public class SettlementsExample {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             SettlementsPayoutsApi settlementsPayoutsApi = new SettlementsPayoutsApi(transport);
 
             try {
@@ -105,7 +105,7 @@ public class SettlementsExample {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             SettlementsPayoutsApi settlementsPayoutsApi = new SettlementsPayoutsApi(transport);
 
             try {
@@ -140,7 +140,7 @@ public class SettlementsExample {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             SettlementsTransactionsApi trasactionsApi = new SettlementsTransactionsApi(transport);
 
             try {
@@ -165,7 +165,7 @@ public class SettlementsExample {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             SettlementsReportsApi settlementsReportsApi = new SettlementsReportsApi(transport);
 
             try {
@@ -202,7 +202,7 @@ public class SettlementsExample {
             String sharedSecret = "sharedSecret";
             String paymentReference = "12345";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             SettlementsReportsApi settlementsReportsApi = new SettlementsReportsApi(transport);
 
             try {
@@ -231,7 +231,7 @@ public class SettlementsExample {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             SettlementsReportsApi settlementsReportsApi = new SettlementsReportsApi(transport);
 
             try {
@@ -268,7 +268,7 @@ public class SettlementsExample {
             String sharedSecret = "sharedSecret";
             String paymentReference = "12345";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             SettlementsReportsApi settlementsReportsApi = new SettlementsReportsApi(transport);
 
             try {

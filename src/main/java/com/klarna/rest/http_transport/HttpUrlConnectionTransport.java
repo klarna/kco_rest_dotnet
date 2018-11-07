@@ -38,7 +38,7 @@ import javax.ws.rs.core.MediaType;
  * HttpURLConnection implementation of Transpoert interface.
  * Used to send HTTP requests to API server.
  */
-public class HttpUrlConnectionTransport implements Transport {
+public class HttpUrlConnectionTransport implements HttpTransport {
     /**
      * Default HTTP request timeout.
      */
@@ -97,7 +97,7 @@ public class HttpUrlConnectionTransport implements Transport {
         this.baseUri = baseUri;
         this.merchantId = merchantId;
         this.sharedSecret = sharedSecret;
-        this.userAgent = Transport.USER_AGENT;
+        this.userAgent = HttpTransport.USER_AGENT;
 
         HttpUrlConnectionTransport.allowMethods("PATCH"); // Workaround for PATCH method
     }

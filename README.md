@@ -86,7 +86,7 @@ package com.mycompany.app;
 import com.klarna.rest.api.checkout.CheckoutOrdersApi;
 import com.klarna.rest.api.checkout.model.CheckoutOrder;
 import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
-import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.model.ApiException;
 
 import java.io.IOException;

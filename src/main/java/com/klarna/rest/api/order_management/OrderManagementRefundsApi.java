@@ -19,11 +19,9 @@ package com.klarna.rest.api.order_management;
 import com.klarna.rest.api.BaseApi;
 import com.klarna.rest.api.order_management.model.OrderManagementRefund;
 import com.klarna.rest.api.order_management.model.OrderManagementRefundObject;
-import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ApiResponse;
-import com.klarna.rest.model.ContentTypeException;
-import com.klarna.rest.model.ProtocolException;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response.Status;
@@ -45,7 +43,7 @@ public class OrderManagementRefundsApi extends BaseApi {
      * @param transport HTTP Transport
      * @param orderId The unique order ID
      */
-    public OrderManagementRefundsApi(final Transport transport, String orderId) {
+    public OrderManagementRefundsApi(final HttpTransport transport, String orderId) {
         super(transport);
 
         this.PATH = String.format("/ordermanagement/v1/orders/%s/refunds", orderId);

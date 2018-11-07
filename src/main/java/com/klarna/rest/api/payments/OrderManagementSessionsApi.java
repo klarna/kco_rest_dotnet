@@ -20,7 +20,7 @@ import com.klarna.rest.api.BaseApi;
 import com.klarna.rest.api.order_management.OrderManagementOrdersApi;
 import com.klarna.rest.api.payments.model.PaymentsMerchantSession;
 import com.klarna.rest.api.payments.model.PaymentsSession;
-import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ApiResponse;
 
@@ -39,7 +39,7 @@ import java.io.IOException;
 public class OrderManagementSessionsApi extends BaseApi {
     protected String PATH = "/payments/v1/sessions";
 
-    public OrderManagementSessionsApi(final Transport transport) {
+    public OrderManagementSessionsApi(final HttpTransport transport) {
         super(transport);
     }
 

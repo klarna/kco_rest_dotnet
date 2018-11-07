@@ -18,11 +18,9 @@ package com.klarna.rest.api.settlements;
 
 import com.klarna.rest.api.BaseApi;
 import com.klarna.rest.api.settlements.model.SettlementsTransactionCollection;
-import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ApiResponse;
-import com.klarna.rest.model.ContentTypeException;
-import com.klarna.rest.model.ProtocolException;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -45,7 +43,7 @@ import java.util.Map;
 public class SettlementsTransactionsApi extends BaseApi {
     protected String PATH = "/settlements/v1/transactions";
 
-    public SettlementsTransactionsApi(final Transport transport) {
+    public SettlementsTransactionsApi(final HttpTransport transport) {
         super(transport);
     }
 

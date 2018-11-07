@@ -22,7 +22,7 @@ import com.klarna.rest.api.hosted_payment_page.model.HPPSessionCreationRequestV1
 import com.klarna.rest.api.hosted_payment_page.model.HPPSessionCreationResponseV1;
 import com.klarna.rest.api.hosted_payment_page.model.HPPSessionResponseV1;
 import com.klarna.rest.api.order_management.OrderManagementOrdersApi;
-import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ApiResponse;
 
@@ -48,7 +48,7 @@ import java.io.IOException;
 public class HPPSessionsApi extends BaseApi {
     protected String PATH = "/hpp/v1/sessions";
 
-    public HPPSessionsApi(final Transport transport) {
+    public HPPSessionsApi(final HttpTransport transport) {
         super(transport);
     }
 

@@ -20,11 +20,9 @@ import com.klarna.rest.api.BaseApi;
 import com.klarna.rest.api.settlements.model.SettlementsPayout;
 import com.klarna.rest.api.settlements.model.SettlementsPayoutCollection;
 import com.klarna.rest.api.settlements.model.SettlementsPayoutSummary;
-import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ApiResponse;
-import com.klarna.rest.model.ContentTypeException;
-import com.klarna.rest.model.ProtocolException;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -47,7 +45,7 @@ import java.util.Map;
 public class SettlementsPayoutsApi extends BaseApi {
     protected String PATH = "/settlements/v1/payouts";
 
-    public SettlementsPayoutsApi(final Transport transport) {
+    public SettlementsPayoutsApi(final HttpTransport transport) {
         super(transport);
     }
 

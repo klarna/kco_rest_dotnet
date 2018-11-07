@@ -17,7 +17,7 @@
 package com.klarna.rest.api.checkout;
 
 import com.klarna.rest.api.order_management.OrderManagementOrdersApi;
-import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ApiResponse;
 import com.klarna.rest.api.BaseApi;
@@ -39,7 +39,7 @@ import java.io.IOException;
 public class CheckoutOrdersApi extends BaseApi {
     protected String PATH = "/checkout/v3/orders";
 
-    public CheckoutOrdersApi(final Transport transport) {
+    public CheckoutOrdersApi(final HttpTransport transport) {
         super(transport);
     }
 

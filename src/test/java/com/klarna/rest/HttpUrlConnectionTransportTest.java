@@ -17,7 +17,7 @@
 package com.klarna.rest;
 
 import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
-import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ApiResponse;
 import com.klarna.rest.model.ContentTypeException;
@@ -54,7 +54,7 @@ public class HttpUrlConnectionTransportTest extends TestCase {
         testHeaders.put("Test", "123");
         HttpURLConnection conn = transport.testBuildConnection("/orders", testHeaders);
 
-        assertEquals(new URL(Transport.EU_TEST_BASE_URL + "/orders"), conn.getURL());
+        assertEquals(new URL(HttpTransport.EU_TEST_BASE_URL + "/orders"), conn.getURL());
         assertEquals(transport.getUserAgent(), conn.getRequestProperty("User-Agent"));
         assertEquals(MediaType.APPLICATION_JSON, conn.getRequestProperty("Content-Type"));
         assertEquals("123", conn.getRequestProperty("Test"));
@@ -126,7 +126,7 @@ public class HttpUrlConnectionTransportTest extends TestCase {
 
     @Test
     public void testTransportTimeout() {
-        HttpUrlConnectionTransport t = new HttpUrlConnectionTransport("0","sharedSecret", Transport.EU_TEST_BASE_URL);
+        HttpUrlConnectionTransport t = new HttpUrlConnectionTransport("0","sharedSecret", HttpTransport.EU_TEST_BASE_URL);
         t.setTimeout(1);
         try {
             t.get("/", null);
@@ -138,7 +138,7 @@ public class HttpUrlConnectionTransportTest extends TestCase {
 
     @Test
     public void testWrongEndpoint() throws IOException {
-        HttpUrlConnectionTransport t = new HttpUrlConnectionTransport("0","sharedSecret", Transport.EU_TEST_BASE_URL);
+        HttpUrlConnectionTransport t = new HttpUrlConnectionTransport("0","sharedSecret", HttpTransport.EU_TEST_BASE_URL);
         ApiResponse response = t.get("/wrong-service-endpoint", null);
         try {
             response.expectSuccessful();

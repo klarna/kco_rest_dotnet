@@ -16,8 +16,8 @@
 
 package examples;
 
+import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
-import com.klarna.rest.http_transport.Transport;
 
 import com.klarna.rest.model.ApiException;
 
@@ -45,7 +45,7 @@ public class HostedPaymentPageExample {
             String sharedSecret = "sharedSecret";
             String sessionId = "sessionId";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             HPPSessionsApi HPPSessionsApi = new HPPSessionsApi(transport);
 
             try {
@@ -86,7 +86,7 @@ public class HostedPaymentPageExample {
             String sharedSecret = "sharedSecret";
             String sessionId = "sessionId";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             HPPSessionsApi HPPSessionsApi = new HPPSessionsApi(transport);
 
             try {
@@ -121,7 +121,7 @@ public class HostedPaymentPageExample {
             String sharedSecret = "sharedSecret";
             String sessionId = "sessionId";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             HPPSessionsApi HPPSessionsApi = new HPPSessionsApi(transport);
 
             try {

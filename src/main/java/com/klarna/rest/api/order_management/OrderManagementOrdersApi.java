@@ -21,11 +21,9 @@ import com.klarna.rest.api.order_management.model.OrderManagementOrder;
 import com.klarna.rest.api.order_management.model.OrderManagementUpdateAuthorization;
 import com.klarna.rest.api.order_management.model.OrderManagementUpdateConsumer;
 import com.klarna.rest.api.order_management.model.OrderManagementUpdateMerchantReferences;
-import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ApiResponse;
-import com.klarna.rest.model.ContentTypeException;
-import com.klarna.rest.model.ProtocolException;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response.Status;
@@ -41,7 +39,7 @@ import java.io.IOException;
 public class OrderManagementOrdersApi extends BaseApi {
     protected String PATH = "/order_management/v1/orders";
 
-    public OrderManagementOrdersApi(final Transport transport) {
+    public OrderManagementOrdersApi(final HttpTransport transport) {
         super(transport);
     }
 

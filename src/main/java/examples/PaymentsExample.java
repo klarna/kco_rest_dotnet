@@ -19,8 +19,8 @@ package examples;
 import com.klarna.rest.api.payments.OrderManagementOrdersApi;
 import com.klarna.rest.api.payments.OrderManagementSessionsApi;
 import com.klarna.rest.api.payments.model.*;
+import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
-import com.klarna.rest.http_transport.Transport;
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ContentTypeException;
 import com.klarna.rest.model.ProtocolException;
@@ -47,7 +47,7 @@ public class PaymentsExample {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             OrderManagementSessionsApi orderManagementSessionsApi = new OrderManagementSessionsApi(transport);
 
             try {
@@ -110,7 +110,7 @@ public class PaymentsExample {
             String sharedSecret = "sharedSecret";
             String sessionId = "sessionId";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             OrderManagementSessionsApi orderManagementSessionsApi = new OrderManagementSessionsApi(transport);
 
             try {
@@ -140,7 +140,7 @@ public class PaymentsExample {
             String sharedSecret = "sharedSecret";
             String sessionId = "sessionId";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             OrderManagementSessionsApi orderManagementSessionsApi = new OrderManagementSessionsApi(transport);
 
             try {
@@ -192,7 +192,7 @@ public class PaymentsExample {
             String sharedSecret = "sharedSecret";
             String authorizationToken = "authToken";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
 
             try {
@@ -269,7 +269,7 @@ public class PaymentsExample {
             String sharedSecret = "sharedSecret";
             String authorizationToken = "authToken";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
 
             try {
@@ -323,7 +323,7 @@ public class PaymentsExample {
             String sharedSecret = "sharedSecret";
             String authorizationToken = "authToken";
 
-            Transport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, Transport.EU_TEST_BASE_URL);
+            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
             OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
 
             try {

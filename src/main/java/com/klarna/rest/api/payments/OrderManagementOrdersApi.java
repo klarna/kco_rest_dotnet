@@ -21,7 +21,7 @@ import com.klarna.rest.api.payments.model.PaymentsCreateOrderRequest;
 import com.klarna.rest.api.payments.model.PaymentsCustomerTokenCreationRequest;
 import com.klarna.rest.api.payments.model.PaymentsCustomerTokenCreationResponse;
 import com.klarna.rest.api.payments.model.PaymentsOrder;
-import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ApiResponse;
 
@@ -40,7 +40,7 @@ import java.io.IOException;
 public class OrderManagementOrdersApi extends BaseApi {
     protected String PATH = "/payments/v1/authorizations";
 
-    public OrderManagementOrdersApi(final Transport transport) {
+    public OrderManagementOrdersApi(final HttpTransport transport) {
         super(transport);
     }
 

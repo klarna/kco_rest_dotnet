@@ -20,11 +20,9 @@ import com.klarna.rest.api.BaseApi;
 import com.klarna.rest.api.order_management.model.OrderManagementCapture;
 import com.klarna.rest.api.order_management.model.OrderManagementCaptureObject;
 import com.klarna.rest.api.order_management.model.OrderManagementUpdateShippingInfo;
-import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ApiResponse;
-import com.klarna.rest.model.ContentTypeException;
-import com.klarna.rest.model.ProtocolException;
 
 
 import javax.ws.rs.core.MediaType;
@@ -48,7 +46,7 @@ public class OrderManagementCapturesApi extends BaseApi {
      * @param transport HTTP Transport
      * @param orderId Order id
      */
-    public OrderManagementCapturesApi(final Transport transport, String orderId) {
+    public OrderManagementCapturesApi(final HttpTransport transport, String orderId) {
         super(transport);
 
         this.PATH = String.format("/ordermanagement/v1/orders/%s/captures", orderId);

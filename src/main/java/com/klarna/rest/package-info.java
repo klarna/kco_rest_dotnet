@@ -15,6 +15,6 @@
  */
 
 /**
- * Klarna API Transport package.
+ * Klarna API HttpTransport package.
  */
 package com.klarna.rest;

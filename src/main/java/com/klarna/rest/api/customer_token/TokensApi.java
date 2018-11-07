@@ -21,7 +21,7 @@ import com.klarna.rest.api.customer_token.model.TokenCustomerTokenOrder;
 import com.klarna.rest.api.customer_token.model.TokenCustomerTokenV1;
 import com.klarna.rest.api.customer_token.model.TokenOrder;
 import com.klarna.rest.api.payments.OrderManagementOrdersApi;
-import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ApiResponse;
 
@@ -39,7 +39,7 @@ import java.io.IOException;
 public class TokensApi extends BaseApi {
     protected String PATH;
 
-    public TokensApi(final Transport transport, String customerToken) {
+    public TokensApi(final HttpTransport transport, String customerToken) {
         super(transport);
 
         this.PATH = String.format("/customer-token/v1/tokens/%s", customerToken);

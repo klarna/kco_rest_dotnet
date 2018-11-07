@@ -19,11 +19,9 @@ package com.klarna.rest.api.merchant_card_service;
 import com.klarna.rest.api.BaseApi;
 import com.klarna.rest.api.merchant_card_service.model.CardServiceSettlementRequest;
 import com.klarna.rest.api.merchant_card_service.model.CardServiceSettlementResponse;
-import com.klarna.rest.http_transport.Transport;
+import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ApiResponse;
-import com.klarna.rest.model.ContentTypeException;
-import com.klarna.rest.model.ProtocolException;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -39,7 +37,7 @@ import java.util.Map;
 public class VirtualCreditCardApi extends BaseApi {
     protected String PATH = "/merchantcard/v3/settlements";
 
-    public VirtualCreditCardApi(final Transport transport) {
+    public VirtualCreditCardApi(final HttpTransport transport) {
         super(transport);
     }
 
