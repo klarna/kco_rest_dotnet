@@ -83,9 +83,9 @@ The basic workflow is the following:
 ```java
 package com.mycompany.app;
 
+import com.klarna.rest.Client;
 import com.klarna.rest.api.checkout.CheckoutOrdersApi;
 import com.klarna.rest.api.checkout.model.CheckoutOrder;
-import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
 import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.model.ApiException;
 
@@ -93,15 +93,13 @@ import java.io.IOException;
 
 /**
  * Klarna Checkout Example
- *
  */
-public class App 
+public class App
 {
     public static void main( String[] args )
     {
-        HttpUrlConnectionTransport transport = new HttpUrlConnectionTransport(
-                "merchantId", "sharedSecret", Transport.EU_BASE_URL);
-        OrdersApi checkoutOrdersApi = new OrdersApi(transport);
+        Client client = new Client("merchantId", "sharedSecret", HttpTransport.EU_BASE_URL);
+        CheckoutOrdersApi checkoutOrdersApi = client.newCheckoutOrdersApi();
 
         try {
             CheckoutOrder order = checkoutOrdersApi.fetch("checkoutOrderID-123");
@@ -121,7 +119,6 @@ public class App
         }
     }
 }
-
 ```
 
 ## Logging and Debugging

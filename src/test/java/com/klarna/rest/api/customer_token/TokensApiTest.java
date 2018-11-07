@@ -16,6 +16,7 @@
 
 package com.klarna.rest.api.customer_token;
 
+import com.klarna.rest.Client;
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
 import com.klarna.rest.api.customer_token.model.TokenCustomerTokenOrder;
@@ -61,7 +62,8 @@ public class TokensApiTest extends TestCase {
         final String payload = "{\"payment_method_type\": \"INVOICE\", \"status\": \"ACTIVE\"}";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        TokensApi api = new TokensApi(transport, "fake-token-id");
+        Client client = new Client(transport);
+        TokensApi api = client.newTokensApi("fake-token-id");
         TokenCustomerTokenV1 token = api.fetchDetails();
 
         assertEquals("INVOICE", token.getPaymentMethodType());
@@ -80,7 +82,8 @@ public class TokensApiTest extends TestCase {
         final String payload = "{\"fraud_status\": \"ACCEPTED\", \"order_id\": \"order-id-123\"}";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        TokensApi api = new TokensApi(transport, "fake-token-id");
+        Client client = new Client(transport);
+        TokensApi api = client.newTokensApi("fake-token-id");
 
         TokenCustomerTokenOrder data = new TokenCustomerTokenOrder()
             .orderAmount(100L)

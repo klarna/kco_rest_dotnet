@@ -16,6 +16,7 @@
 
 package com.klarna.rest.api.order_management;
 
+import com.klarna.rest.Client;
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
 import com.klarna.rest.api.order_management.model.OrderManagementRefund;
@@ -62,7 +63,8 @@ public class RefundsApiTest extends TestCase {
             .refundedAmount(100L)
             .description("test");
 
-        OrderManagementRefundsApi api = new OrderManagementRefundsApi(transport, "my-order-id");
+        Client client = new Client(transport);
+        OrderManagementRefundsApi api =  client.newOrderManagementRefundsApi("my-order-id");
         String refundId = api.create(data);
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
@@ -88,7 +90,8 @@ public class RefundsApiTest extends TestCase {
         final String payload = "{ \"refund_id\": \"4ba29b50-be7b-44f5-a492-113e6a865e22\", \"refunded_amount\": 100 }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        OrderManagementRefundsApi api = new OrderManagementRefundsApi(transport, "my-order-id");
+        Client client = new Client(transport);
+        OrderManagementRefundsApi api =  client.newOrderManagementRefundsApi("my-order-id");
         OrderManagementRefund refund = api.fetch("my-refund-id");
 
         assertEquals("4ba29b50-be7b-44f5-a492-113e6a865e22", refund.getRefundId());

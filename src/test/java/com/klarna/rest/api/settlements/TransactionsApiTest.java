@@ -16,6 +16,7 @@
 
 package com.klarna.rest.api.settlements;
 
+import com.klarna.rest.Client;
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
 import com.klarna.rest.api.settlements.model.SettlementsTransactionCollection;
@@ -54,7 +55,8 @@ public class TransactionsApiTest extends TestCase {
         final String payload = "{ \"transactions\": [ { \"amount\": 2000, \"capture_id\": \"33db6f16-9f43-43fa-a587-cc51411c98e4\" } ], \"pagination\": { \"total\": 42 } }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        SettlementsTransactionsApi api = new SettlementsTransactionsApi(transport);
+        Client client = new Client(transport);
+        SettlementsTransactionsApi api = client.newSettlementsTransactionsApi();
         SettlementsTransactionCollection transactions = api.getTransactions();
 
         assertEquals(UUID.fromString("33db6f16-9f43-43fa-a587-cc51411c98e4"), transactions.getTransactions().get(0).getCaptureId());
@@ -77,7 +79,8 @@ public class TransactionsApiTest extends TestCase {
         HashMap<String, String> params = new HashMap<>();
         params.put("order_id", "my-order-id");
 
-        SettlementsTransactionsApi api = new SettlementsTransactionsApi(transport);
+        Client client = new Client(transport);
+        SettlementsTransactionsApi api = client.newSettlementsTransactionsApi();
         SettlementsTransactionCollection transactions = api.getTransactions(params);
 
         verify(transport.conn, times(1)).setRequestMethod("GET");

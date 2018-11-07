@@ -16,8 +16,8 @@
 
 package examples;
 
+import com.klarna.rest.Client;
 import com.klarna.rest.http_transport.HttpTransport;
-import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
 
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.api.order_management.OrderManagementOrdersApi;
@@ -48,8 +48,8 @@ public class OrderManagementExample {
             String sharedSecret = "sharedSecret";
             String orderId = "12345";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            OrderManagementOrdersApi orderManagementOrdersApi = client.newOrderManagementOrdersApi();
 
             try {
                 OrderManagementOrder order = orderManagementOrdersApi.fetch(orderId);
@@ -78,8 +78,8 @@ public class OrderManagementExample {
             String sharedSecret = "sharedSecret";
             String orderId = "12345";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            OrderManagementOrdersApi orderManagementOrdersApi = client.newOrderManagementOrdersApi();
 
             try {
                 orderManagementOrdersApi.releaseRemainingAuthorization(orderId);
@@ -108,8 +108,8 @@ public class OrderManagementExample {
             String sharedSecret = "sharedSecret";
             String orderId = "12345";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            OrderManagementOrdersApi orderManagementOrdersApi = client.newOrderManagementOrdersApi();
 
             try {
                 orderManagementOrdersApi.extendAuthorizationTime(orderId);
@@ -138,8 +138,8 @@ public class OrderManagementExample {
             String sharedSecret = "sharedSecret";
             String orderId = "12345";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            OrderManagementOrdersApi orderManagementOrdersApi = client.newOrderManagementOrdersApi();
 
             try {
                 final OrderManagementAddress address = new OrderManagementAddress()
@@ -178,8 +178,8 @@ public class OrderManagementExample {
             String sharedSecret = "sharedSecret";
             String orderId = "12345";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            OrderManagementOrdersApi orderManagementOrdersApi = client.newOrderManagementOrdersApi();
 
             try {
                 orderManagementOrdersApi.cancelOrder(orderId);
@@ -208,8 +208,8 @@ public class OrderManagementExample {
             String sharedSecret = "sharedSecret";
             String orderId = "12345";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            OrderManagementOrdersApi orderManagementOrdersApi = client.newOrderManagementOrdersApi();
 
             try {
                 orderManagementOrdersApi.updateMerchantReferences(orderId, new OrderManagementUpdateMerchantReferences()
@@ -242,8 +242,8 @@ public class OrderManagementExample {
             String sharedSecret = "sharedSecret";
             String orderId = "12345";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            OrderManagementOrdersApi orderManagementOrdersApi = client.newOrderManagementOrdersApi();
 
             try {
                 orderManagementOrdersApi.acknowledgeOrder(orderId);
@@ -272,8 +272,8 @@ public class OrderManagementExample {
             String sharedSecret = "sharedSecret";
             String orderId = "12345";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            OrderManagementOrdersApi orderManagementOrdersApi = new OrderManagementOrdersApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            OrderManagementOrdersApi orderManagementOrdersApi = client.newOrderManagementOrdersApi();
 
             try {
                 final List<OrderManagementOrderLine> lines = Arrays.asList(
@@ -320,8 +320,8 @@ public class OrderManagementExample {
             String sharedSecret = "sharedSecret";
             String orderId = "12345";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            OrderManagementRefundsApi orderManagementRefundsApi = new OrderManagementRefundsApi(transport, orderId);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            OrderManagementRefundsApi orderManagementRefundsApi = client.newOrderManagementRefundsApi(orderId);
 
             try {
                 final List<OrderManagementOrderLine> lines = Arrays.asList(
@@ -374,8 +374,8 @@ public class OrderManagementExample {
             String orderId = "12345";
             String refundId = "34567";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            OrderManagementRefundsApi orderManagementRefundsApi = new OrderManagementRefundsApi(transport, orderId);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            OrderManagementRefundsApi orderManagementRefundsApi = client.newOrderManagementRefundsApi(orderId);
 
             try {
                 OrderManagementRefund refund = orderManagementRefundsApi.fetch(refundId);

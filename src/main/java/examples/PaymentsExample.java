@@ -16,11 +16,11 @@
 
 package examples;
 
+import com.klarna.rest.Client;
 import com.klarna.rest.api.payments.PaymentsOrdersApi;
 import com.klarna.rest.api.payments.PaymentsSessionsApi;
 import com.klarna.rest.api.payments.model.*;
 import com.klarna.rest.http_transport.HttpTransport;
-import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ContentTypeException;
 import com.klarna.rest.model.ProtocolException;
@@ -47,8 +47,8 @@ public class PaymentsExample {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            PaymentsSessionsApi paymentsSessionsApi = new PaymentsSessionsApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            PaymentsSessionsApi paymentsSessionsApi = client.newPaymentsSessionsApi();
 
             try {
                 final List<PaymentsOrderLine> lines = Arrays.asList(
@@ -110,8 +110,8 @@ public class PaymentsExample {
             String sharedSecret = "sharedSecret";
             String sessionId = "sessionId";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            PaymentsSessionsApi paymentsSessionsApi = new PaymentsSessionsApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            PaymentsSessionsApi paymentsSessionsApi = client.newPaymentsSessionsApi();
 
             try {
                 PaymentsSession session = paymentsSessionsApi.fetch(sessionId);
@@ -140,8 +140,8 @@ public class PaymentsExample {
             String sharedSecret = "sharedSecret";
             String sessionId = "sessionId";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            PaymentsSessionsApi paymentsSessionsApi = new PaymentsSessionsApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            PaymentsSessionsApi paymentsSessionsApi = client.newPaymentsSessionsApi();
 
             try {
                 final List<PaymentsOrderLine> lines = Arrays.asList(
@@ -192,8 +192,8 @@ public class PaymentsExample {
             String sharedSecret = "sharedSecret";
             String authorizationToken = "authToken";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            PaymentsOrdersApi paymentsOrdersApi = new PaymentsOrdersApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            PaymentsOrdersApi paymentsOrdersApi = client.newPaymentsOrdersApi();
 
             try {
                 final PaymentsAddress address = new PaymentsAddress()
@@ -269,8 +269,8 @@ public class PaymentsExample {
             String sharedSecret = "sharedSecret";
             String authorizationToken = "authToken";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            PaymentsOrdersApi paymentsOrdersApi = new PaymentsOrdersApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            PaymentsOrdersApi paymentsOrdersApi = client.newPaymentsOrdersApi();
 
             try {
                 final PaymentsAddress address = new PaymentsAddress()
@@ -323,8 +323,8 @@ public class PaymentsExample {
             String sharedSecret = "sharedSecret";
             String authorizationToken = "authToken";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            PaymentsOrdersApi paymentsOrdersApi = new PaymentsOrdersApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            PaymentsOrdersApi paymentsOrdersApi = client.newPaymentsOrdersApi();
 
             try {
                 paymentsOrdersApi.cancelAuthorization(authorizationToken);

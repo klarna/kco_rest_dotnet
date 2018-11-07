@@ -66,7 +66,8 @@ public class OrdersApiTest extends TestCase {
             .recurring(true);
 
 
-        CheckoutOrdersApi api = new CheckoutOrdersApi(transport);
+        Client client = new Client(transport);
+        CheckoutOrdersApi api = client.newCheckoutOrdersApi();
         CheckoutOrder order = api.create(data);
 
         assertEquals(new Long(200), order.getOrderAmount());
@@ -81,7 +82,8 @@ public class OrdersApiTest extends TestCase {
     public void testCreateOrderWrongResponseCode() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(403);
 
-        CheckoutOrdersApi api = new CheckoutOrdersApi(transport);
+        Client client = new Client(transport);
+        CheckoutOrdersApi api = client.newCheckoutOrdersApi();
         CheckoutOrder order = api.create(null);
     }
 
@@ -89,8 +91,9 @@ public class OrdersApiTest extends TestCase {
     public void testCreateOrderWrongSuccessfulResponseCode() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(204);
 
-        CheckoutOrdersApi api = new CheckoutOrdersApi(transport);
-        CheckoutOrder order = api.create(null);
+        Client client = new Client(transport);
+        CheckoutOrdersApi api = client.newCheckoutOrdersApi();
+        api.create(null);
     }
 
     @Test(expected = ContentTypeException.class)
@@ -100,8 +103,9 @@ public class OrdersApiTest extends TestCase {
             put("Content-Type", Arrays.asList(MediaType.APPLICATION_OCTET_STREAM));
         }});
 
-        CheckoutOrdersApi api = new CheckoutOrdersApi(transport);
-        CheckoutOrder order = api.create(null);
+        Client client = new Client(transport);
+        CheckoutOrdersApi api = client.newCheckoutOrdersApi();
+        api.create(null);
     }
 
     @Test
@@ -114,7 +118,8 @@ public class OrdersApiTest extends TestCase {
         final String payload = "{\"order_amount\": 100}";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        CheckoutOrdersApi api = new CheckoutOrdersApi(transport);
+        Client client = new Client(transport);
+        CheckoutOrdersApi api = client.newCheckoutOrdersApi();
         CheckoutOrder order = api.fetch("order-id-123");
 
         assertEquals(new Long(100), order.getOrderAmount());
@@ -133,7 +138,8 @@ public class OrdersApiTest extends TestCase {
         final String payload = "{\"order_amount\": 100}";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        CheckoutOrdersApi api = new CheckoutOrdersApi(transport);
+        Client client = new Client(transport);
+        CheckoutOrdersApi api = client.newCheckoutOrdersApi();
         api.fetch("order-id-123");
 
         // Location header should be set up
@@ -146,7 +152,8 @@ public class OrdersApiTest extends TestCase {
         expectedEx.expect(IOException.class);
         expectedEx.expectMessage("Unknown location");
 
-        CheckoutOrdersApi api = new CheckoutOrdersApi(transport);
+        Client client = new Client(transport);
+        CheckoutOrdersApi api = client.newCheckoutOrdersApi();
         api.fetch();
     }
 
@@ -165,7 +172,8 @@ public class OrdersApiTest extends TestCase {
             .locale("en-GB")
             .recurring(false);
 
-        CheckoutOrdersApi api = new CheckoutOrdersApi(transport);
+        Client client = new Client(transport);
+        CheckoutOrdersApi api = client.newCheckoutOrdersApi();
         CheckoutOrder order = api.update("my-order-id", data);
 
         assertEquals(new Long(500), order.getOrderAmount());

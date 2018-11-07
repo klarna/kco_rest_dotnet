@@ -16,6 +16,7 @@
 
 package com.klarna.rest.api.payments;
 
+import com.klarna.rest.Client;
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
 import com.klarna.rest.api.payments.model.*;
@@ -64,7 +65,8 @@ public class OrdersApiTest extends TestCase {
                 .confirmation("https://example.com/confirm")
             );
 
-        PaymentsOrdersApi api = new PaymentsOrdersApi(transport);
+        Client client = new Client(transport);
+        PaymentsOrdersApi api = client.newPaymentsOrdersApi();
         PaymentsOrder order = api.create("auth-token", data);
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
@@ -90,7 +92,8 @@ public class OrdersApiTest extends TestCase {
             .intendedUse(PaymentsCustomerTokenCreationRequest.IntendedUseEnum.SUBSCRIPTION)
             .purchaseCountry("US");
 
-        PaymentsOrdersApi api = new PaymentsOrdersApi(transport);
+        Client client = new Client(transport);
+        PaymentsOrdersApi api = client.newPaymentsOrdersApi();
         PaymentsCustomerTokenCreationResponse token = api.generateToken("auth-token", data);
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
@@ -108,7 +111,8 @@ public class OrdersApiTest extends TestCase {
     public void testAcknowledgeOrder() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(204);
 
-        PaymentsOrdersApi api = new PaymentsOrdersApi(transport);
+        Client client = new Client(transport);
+        PaymentsOrdersApi api = client.newPaymentsOrdersApi();
         api.cancelAuthorization("auth-token");
 
         verify(transport.conn, times(1)).setRequestMethod("DELETE");

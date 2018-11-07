@@ -16,6 +16,7 @@
 
 package com.klarna.rest.api.merchant_card_service;
 
+import com.klarna.rest.Client;
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
 import com.klarna.rest.api.merchant_card_service.model.CardServiceSettlementRequest;
@@ -74,7 +75,8 @@ public class VirtualCreditCardApiTest extends TestCase {
                 "\"expires_at\": \"2018-12-04T10:26:06.000Z\" }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        VirtualCreditCardApi api = new VirtualCreditCardApi(transport);
+        Client client = new Client(transport);
+        VirtualCreditCardApi api = client.newVirtualCreditCardApi();
         CardServiceSettlementRequest data = new CardServiceSettlementRequest()
             .promiseId("ee4a8e3a-9dfd-49e0-9ac8-ea2b6c76408c")
             .keyId("16e4b85e-899b-4427-a39f-07a496e9515b");
@@ -104,7 +106,8 @@ public class VirtualCreditCardApiTest extends TestCase {
                 "\"order_id\": \"f3392f8b-6116-4073-ab96-e330819e2c07\"}";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        VirtualCreditCardApi api = new VirtualCreditCardApi(transport);
+        Client client = new Client(transport);
+        VirtualCreditCardApi api = client.newVirtualCreditCardApi();
         CardServiceSettlementResponse settlement = api.retrieveExistingSettlement("my-settlement-id", "secret-header-key");
 
         assertEquals("b0ec0bbd-534c-4b1c-b28a-628bf33c3324", settlement.getSettlementId());
@@ -126,7 +129,8 @@ public class VirtualCreditCardApiTest extends TestCase {
                 "\"order_id\": \"f3392f8b-6116-4073-ab96-e330819e2c07\"}";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        VirtualCreditCardApi api = new VirtualCreditCardApi(transport);
+        Client client = new Client(transport);
+        VirtualCreditCardApi api = client.newVirtualCreditCardApi();
         CardServiceSettlementResponse settlement = api.retrieveSettledOrderSettlement("my-order-id", "secret-header-key");
 
         assertEquals("b0ec0bbd-534c-4b1c-b28a-628bf33c3324", settlement.getSettlementId());

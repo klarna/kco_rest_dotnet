@@ -16,6 +16,7 @@
 
 package com.klarna.rest.api.payments;
 
+import com.klarna.rest.Client;
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
 import com.klarna.rest.api.payments.model.PaymentsMerchantSession;
@@ -63,7 +64,8 @@ public class SessionsApiTest extends TestCase {
                 .confirmation("https://example.com/confirm")
             );
 
-        PaymentsSessionsApi api = new PaymentsSessionsApi(transport);
+        Client client = new Client(transport);
+        PaymentsSessionsApi api = client.newPaymentsSessionsApi();
         PaymentsMerchantSession session = api.create(data);
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
@@ -86,7 +88,8 @@ public class SessionsApiTest extends TestCase {
         final String payload = "{ \"purchase_country\": \"US\", \"order_amount\": 100, \"status\": \"incomplete\", \"client_token\": \"eyJhbGciOi.ewogIC\" }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        PaymentsSessionsApi api = new PaymentsSessionsApi(transport);
+        Client client = new Client(transport);
+        PaymentsSessionsApi api = client.newPaymentsSessionsApi();
         PaymentsSession session = api.fetch("my-session-id");
 
         verify(transport.conn, times(1)).setRequestMethod("GET");
@@ -107,7 +110,8 @@ public class SessionsApiTest extends TestCase {
                 .confirmation("https://example.com/confirm")
             );
 
-        PaymentsSessionsApi api = new PaymentsSessionsApi(transport);
+        Client client = new Client(transport);
+        PaymentsSessionsApi api = client.newPaymentsSessionsApi();
         api.update("my-session-id", data);
 
         verify(transport.conn, times(1)).setRequestMethod("POST");

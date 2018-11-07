@@ -91,6 +91,15 @@ public class HttpUrlConnectionTransport implements HttpTransport {
      */
     protected Authenticator proxyAuth;
 
+    /**
+     * Sets up required params for Klarna API.
+     *
+     * @param merchantId Merchant ID/Username (UID)
+     * @param sharedSecret Merchant shared secret/password
+     * @param baseUri Klarna API URLs.
+     *
+     * @see HttpTransport Base URLs
+     */
     public HttpUrlConnectionTransport(final String merchantId,
                                       final String sharedSecret,
                                       final URI baseUri) {

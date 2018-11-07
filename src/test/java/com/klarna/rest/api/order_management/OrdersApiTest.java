@@ -16,6 +16,7 @@
 
 package com.klarna.rest.api.order_management;
 
+import com.klarna.rest.Client;
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
 import com.klarna.rest.api.order_management.model.*;
@@ -56,10 +57,21 @@ public class OrdersApiTest extends TestCase {
             put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
 
-        final String payload = "{ \"order_id\": \"f3392f8b-6116-4073-ab96-e330819e2c07\", \"status\": \"AUTHORIZED\", \"order_amount\": 100, \"order_lines\": [ { \"reference\": \"75001\", \"type\": \"physical\" } ], \"customer\": { \"date_of_birth\": \"1981-09-06\" }, \"billing_address\": { \"given_name\": \"Klara\", \"family_name\": \"Joyce\" }, \"shipping_address\": { \"given_name\": \"Klara\", \"family_name\": \"Joyce\" }, \"created_at\": \"2015-11-29T10:25:40.000Z\", \"captures\": [ { \"capture_id\": \"4ba29b50-be7b-44f5-a492-113e6a865e22\", \"captured_amount\": 0 } ], \"refunds\": [ { \"refunded_amount\": 0, \"refunded_at\": \"2015-12-04T15:17:40.000Z\", \"order_lines\": [ { \"reference\": \"75001\", \"type\": \"physical\" } ] } ], \"initial_payment_method\": { \"type\": \"INVOICE\", \"description\": \"Pay later\" } }";
+        final String payload = "{ \"order_id\": \"f3392f8b-6116-4073-ab96-e330819e2c07\", " +
+                "\"status\": \"AUTHORIZED\", \"order_amount\": 100, \"order_lines\": " +
+                "[ { \"reference\": \"75001\", \"type\": \"physical\" } ], \"customer\": " +
+                "{ \"date_of_birth\": \"1981-09-06\" }, \"billing_address\":" +
+                " { \"given_name\": \"Klara\", \"family_name\": \"Joyce\" }, \"shipping_address\":" +
+                " { \"given_name\": \"Klara\", \"family_name\": \"Joyce\" }, \"created_at\":" +
+                " \"2015-11-29T10:25:40.000Z\", \"captures\": [ { \"capture_id\":" +
+                " \"4ba29b50-be7b-44f5-a492-113e6a865e22\", \"captured_amount\": 0 } ]," +
+                " \"refunds\": [ { \"refunded_amount\": 0, \"refunded_at\": \"2015-12-04T15:17:40.000Z\"," +
+                " \"order_lines\": [ { \"reference\": \"75001\", \"type\": \"physical\" } ] } ], " +
+                "\"initial_payment_method\": { \"type\": \"INVOICE\", \"description\": \"Pay later\" } }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
+        Client client = new Client(transport);
+        OrderManagementOrdersApi api = client.newOrderManagementOrdersApi();
         OrderManagementOrder order = api.fetch("my-order-id");
 
         assertEquals("f3392f8b-6116-4073-ab96-e330819e2c07", order.getOrderId());
@@ -76,7 +88,8 @@ public class OrdersApiTest extends TestCase {
     public void testReleaseRemainingAuthorization() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(204);
 
-        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
+        Client client = new Client(transport);
+        OrderManagementOrdersApi api = client.newOrderManagementOrdersApi();
         api.releaseRemainingAuthorization("my-order-id");
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
@@ -87,7 +100,8 @@ public class OrdersApiTest extends TestCase {
     public void testExtendAuthorizationTime() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(204);
 
-        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
+        Client client = new Client(transport);
+        OrderManagementOrdersApi api = client.newOrderManagementOrdersApi();
         api.extendAuthorizationTime("my-order-id");
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
@@ -106,7 +120,8 @@ public class OrdersApiTest extends TestCase {
             .shippingAddress(address)
             .billingAddress(address);
 
-        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
+        Client client = new Client(transport);
+        OrderManagementOrdersApi api = client.newOrderManagementOrdersApi();
         api.updateCustomerAddresses("my-order-id", data);
 
         verify(transport.conn, times(1)).setRequestMethod("PATCH");
@@ -122,7 +137,8 @@ public class OrdersApiTest extends TestCase {
     public void testCancelOrder() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(204);
 
-        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
+        Client client = new Client(transport);
+        OrderManagementOrdersApi api = client.newOrderManagementOrdersApi();
         api.cancelOrder("my-order-id");
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
@@ -136,7 +152,8 @@ public class OrdersApiTest extends TestCase {
         OrderManagementUpdateMerchantReferences data = new OrderManagementUpdateMerchantReferences()
             .merchantReference1("ref-1");
 
-        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
+        Client client = new Client(transport);
+        OrderManagementOrdersApi api = client.newOrderManagementOrdersApi();
         api.updateMerchantReferences("my-order-id", data);
 
         verify(transport.conn, times(1)).setRequestMethod("PATCH");
@@ -152,7 +169,8 @@ public class OrdersApiTest extends TestCase {
     public void testAcknowledgeOrder() throws IOException {
         when(transport.conn.getResponseCode()).thenReturn(204);
 
-        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
+        Client client = new Client(transport);
+        OrderManagementOrdersApi api = client.newOrderManagementOrdersApi();
         api.acknowledgeOrder("my-order-id");
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
@@ -166,7 +184,8 @@ public class OrdersApiTest extends TestCase {
         OrderManagementUpdateAuthorization data = new OrderManagementUpdateAuthorization()
             .orderAmount(100L);
 
-        OrderManagementOrdersApi api = new OrderManagementOrdersApi(transport);
+        Client client = new Client(transport);
+        OrderManagementOrdersApi api = client.newOrderManagementOrdersApi();
         api.setOrderAmountAndOrderLines("my-order-id", data);
 
         verify(transport.conn, times(1)).setRequestMethod("PATCH");

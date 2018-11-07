@@ -16,6 +16,7 @@
 
 package com.klarna.rest.api.settlements;
 
+import com.klarna.rest.Client;
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
 import org.junit.Before;
@@ -54,7 +55,8 @@ public class ReportsApiTest extends TestCase {
         HashMap<String, String> params = new HashMap<>();
         params.put("payment_reference", "ref-id");
 
-        SettlementsReportsApi api = new SettlementsReportsApi(transport);
+        Client client = new Client(transport);
+        SettlementsReportsApi api = client.newSettlementsReportsApi();
         byte[] csv = api.getCSVPayoutReport(params);
 
         verify(transport.conn, times(1)).setRequestMethod("GET");
@@ -74,7 +76,8 @@ public class ReportsApiTest extends TestCase {
         HashMap<String, String> params = new HashMap<>();
         params.put("start_date", "123456");
 
-        SettlementsReportsApi api = new SettlementsReportsApi(transport);
+        Client client = new Client(transport);
+        SettlementsReportsApi api = client.newSettlementsReportsApi();
         byte[] csv = api.getCSVSummary(params);
 
         verify(transport.conn, times(1)).setRequestMethod("GET");
@@ -94,7 +97,8 @@ public class ReportsApiTest extends TestCase {
         HashMap<String, String> params = new HashMap<>();
         params.put("payment_reference", "ref-123");
 
-        SettlementsReportsApi api = new SettlementsReportsApi(transport);
+        Client client = new Client(transport);
+        SettlementsReportsApi api = client.newSettlementsReportsApi();
         byte[] pdf = api.getPDFPayoutsSummaryReport(params);
 
         verify(transport.conn, times(1)).setRequestMethod("GET");
@@ -114,7 +118,8 @@ public class ReportsApiTest extends TestCase {
         HashMap<String, String> params = new HashMap<>();
         params.put("start_date", "123456");
 
-        SettlementsReportsApi api = new SettlementsReportsApi(transport);
+        Client client = new Client(transport);
+        SettlementsReportsApi api = client.newSettlementsReportsApi();
         byte[] pdf = api.getPDFSummary(params);
 
         verify(transport.conn, times(1)).setRequestMethod("GET");

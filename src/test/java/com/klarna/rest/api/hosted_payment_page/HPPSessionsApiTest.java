@@ -16,6 +16,7 @@
 
 package com.klarna.rest.api.hosted_payment_page;
 
+import com.klarna.rest.Client;
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
 import com.klarna.rest.api.hosted_payment_page.model.*;
@@ -60,7 +61,8 @@ public class HPPSessionsApiTest extends TestCase {
                 "\"updated_at\": \"2038-01-19T03:14:07.000Z\" }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        HPPSessionsApi api = new HPPSessionsApi(transport);
+        Client client = new Client(transport);
+        HPPSessionsApi api = client.newHPPSessionsApi();
         HPPSessionResponseV1 session = api.fetch("my-session-id");
 
         assertEquals("b4bd3423-24e3", session.getAuthorizationToken());
@@ -76,7 +78,8 @@ public class HPPSessionsApiTest extends TestCase {
             put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
 
-        HPPSessionsApi api = new HPPSessionsApi(transport);
+        Client client = new Client(transport);
+        HPPSessionsApi api = client.newHPPSessionsApi();
         HPPDistributionRequestV1 data = new HPPDistributionRequestV1()
             .contactInformation(new HPPDistributionContactV1()
                 .email("test@example.com")
@@ -118,7 +121,8 @@ public class HPPSessionsApiTest extends TestCase {
                 .paymentMethodCategory(HPPOptionsV1.PaymentMethodCategoryEnum.PAY_LATER)
             );
 
-        HPPSessionsApi api = new HPPSessionsApi(transport);
+        Client client = new Client(transport);
+        HPPSessionsApi api = client.newHPPSessionsApi();
         HPPSessionCreationResponseV1 response = api.create(data);
 
         verify(transport.conn, times(1)).setRequestMethod("POST");

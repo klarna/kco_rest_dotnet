@@ -16,6 +16,7 @@
 
 package examples;
 
+import com.klarna.rest.Client;
 import com.klarna.rest.api.settlements.SettlementsPayoutsApi;
 import com.klarna.rest.api.settlements.SettlementsReportsApi;
 import com.klarna.rest.api.settlements.SettlementsTransactionsApi;
@@ -55,8 +56,8 @@ public class SettlementsExample {
             String sharedSecret = "sharedSecret";
             String paymentReference = "12345";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            SettlementsPayoutsApi settlementsPayoutsApi = new SettlementsPayoutsApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            SettlementsPayoutsApi settlementsPayoutsApi = client.newSettlementsPayoutsApi();
 
             try {
                 SettlementsPayout payout = settlementsPayoutsApi.getPayout(paymentReference);
@@ -80,8 +81,8 @@ public class SettlementsExample {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            SettlementsPayoutsApi settlementsPayoutsApi = new SettlementsPayoutsApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            SettlementsPayoutsApi settlementsPayoutsApi = client.newSettlementsPayoutsApi();
 
             try {
                 SettlementsPayoutCollection payouts = settlementsPayoutsApi.getAllPayouts();
@@ -105,8 +106,8 @@ public class SettlementsExample {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            SettlementsPayoutsApi settlementsPayoutsApi = new SettlementsPayoutsApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            SettlementsPayoutsApi settlementsPayoutsApi = client.newSettlementsPayoutsApi();
 
             try {
                 TimeZone tz = TimeZone.getTimeZone("UTC");
@@ -140,11 +141,11 @@ public class SettlementsExample {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            SettlementsTransactionsApi trasactionsApi = new SettlementsTransactionsApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            SettlementsTransactionsApi transactionsApi = client.newSettlementsTransactionsApi();
 
             try {
-                SettlementsTransactionCollection transactions = trasactionsApi.getTransactions();
+                SettlementsTransactionCollection transactions = transactionsApi.getTransactions();
                 System.out.println(transactions);
 
             } catch (IOException e) {
@@ -165,8 +166,8 @@ public class SettlementsExample {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            SettlementsReportsApi settlementsReportsApi = new SettlementsReportsApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            SettlementsReportsApi settlementsReportsApi = client.newSettlementsReportsApi();
 
             try {
                 TimeZone tz = TimeZone.getTimeZone("UTC");
@@ -202,8 +203,8 @@ public class SettlementsExample {
             String sharedSecret = "sharedSecret";
             String paymentReference = "12345";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            SettlementsReportsApi settlementsReportsApi = new SettlementsReportsApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            SettlementsReportsApi settlementsReportsApi = client.newSettlementsReportsApi();
 
             try {
                 HashMap<String, String> params = new HashMap<>();
@@ -231,8 +232,8 @@ public class SettlementsExample {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            SettlementsReportsApi settlementsReportsApi = new SettlementsReportsApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            SettlementsReportsApi settlementsReportsApi = client.newSettlementsReportsApi();
 
             try {
                 TimeZone tz = TimeZone.getTimeZone("UTC");
@@ -268,8 +269,8 @@ public class SettlementsExample {
             String sharedSecret = "sharedSecret";
             String paymentReference = "12345";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            SettlementsReportsApi settlementsReportsApi = new SettlementsReportsApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            SettlementsReportsApi settlementsReportsApi = client.newSettlementsReportsApi();
 
             try {
                 HashMap<String, String> params = new HashMap<>();

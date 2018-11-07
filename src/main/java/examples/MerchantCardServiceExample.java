@@ -1,10 +1,10 @@
 package examples;
 
+import com.klarna.rest.Client;
 import com.klarna.rest.api.merchant_card_service.VirtualCreditCardApi;
 import com.klarna.rest.api.merchant_card_service.model.CardServiceSettlementResponse;
 import com.klarna.rest.api.merchant_card_service.model.CardServiceSettlementRequest;
 import com.klarna.rest.http_transport.HttpTransport;
-import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
 import com.klarna.rest.model.ApiException;
 
 import java.io.IOException;
@@ -22,8 +22,8 @@ public class MerchantCardServiceExample {
             final String settlementId = "12345";
             final String keyId = "abcde";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            VirtualCreditCardApi vccApi = new VirtualCreditCardApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            VirtualCreditCardApi vccApi = client.newVirtualCreditCardApi();
 
             try {
                 CardServiceSettlementResponse settlement = vccApi.retrieveExistingSettlement(settlementId, keyId);
@@ -49,8 +49,8 @@ public class MerchantCardServiceExample {
             final String orderId = "12345";
             final String keyId = "abcde";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            VirtualCreditCardApi vccApi = new VirtualCreditCardApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            VirtualCreditCardApi vccApi = client.newVirtualCreditCardApi();
 
             try {
                 CardServiceSettlementResponse settlement = vccApi.retrieveSettledOrderSettlement(orderId, keyId);
@@ -76,8 +76,8 @@ public class MerchantCardServiceExample {
             final String orderId = "12345";
             final String keyId = "abcde";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            VirtualCreditCardApi vccApi = new VirtualCreditCardApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            VirtualCreditCardApi vccApi = client.newVirtualCreditCardApi();
 
             try {
                 CardServiceSettlementRequest request = new CardServiceSettlementRequest(){

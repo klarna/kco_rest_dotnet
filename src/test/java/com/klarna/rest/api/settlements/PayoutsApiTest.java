@@ -16,6 +16,7 @@
 
 package com.klarna.rest.api.settlements;
 
+import com.klarna.rest.Client;
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
 import com.klarna.rest.api.settlements.model.SettlementsPayout;
@@ -60,7 +61,8 @@ public class PayoutsApiTest extends TestCase {
         final String payload = "{ \"totals\": { \"commission_amount\": 550 }, \"payment_reference\": \"XISA93DJ\", \"payout_date\": \"2016-12-14T07:52:26Z\", \"merchant_settlement_type\": \"NET\" }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        SettlementsPayoutsApi api = new SettlementsPayoutsApi(transport);
+        Client client = new Client(transport);
+        SettlementsPayoutsApi api = client.newSettlementsPayoutsApi();
         SettlementsPayout payout = api.getPayout("payment-ref");
 
         assertEquals("XISA93DJ", payout.getPaymentReference());
@@ -81,7 +83,8 @@ public class PayoutsApiTest extends TestCase {
         final String payload = "{ \"payouts\": [ { \"totals\": { \"commission_amount\": 550 }, \"payment_reference\": \"XISA93DJ\" } ], \"pagination\": { \"count\": 10 } }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
-        SettlementsPayoutsApi api = new SettlementsPayoutsApi(transport);
+        Client client = new Client(transport);
+        SettlementsPayoutsApi api = client.newSettlementsPayoutsApi();
         SettlementsPayoutCollection payouts = api.getAllPayouts();
 
         Long count = 10L;
@@ -105,7 +108,8 @@ public class PayoutsApiTest extends TestCase {
         params.put("size", "10");
         params.put("start_date", "2016-12-14T07:52:26Z");
 
-        SettlementsPayoutsApi api = new SettlementsPayoutsApi(transport);
+        Client client = new Client(transport);
+        SettlementsPayoutsApi api = client.newSettlementsPayoutsApi();
         api.getAllPayouts(params);
 
         verify(transport.conn, times(1)).setRequestMethod("GET");
@@ -126,7 +130,8 @@ public class PayoutsApiTest extends TestCase {
         params.put("start_date", "2016-12-14T07:52:26Z");
         params.put("end_date", "2018-12-14T07:52:26Z");
 
-        SettlementsPayoutsApi api = new SettlementsPayoutsApi(transport);
+        Client client = new Client(transport);
+        SettlementsPayoutsApi api = client.newSettlementsPayoutsApi();
         SettlementsPayoutSummary[] summary = api.getSummary(params);
         Long fee = 550L;
         assertEquals(fee, summary[0].getSummaryTotalFeeCorrectionAmount());

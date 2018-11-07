@@ -16,8 +16,8 @@
 
 package examples;
 
+import com.klarna.rest.Client;
 import com.klarna.rest.api.checkout.CheckoutOrdersApi;
-import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
 import com.klarna.rest.http_transport.HttpTransport;
 
 import com.klarna.rest.model.ApiException;
@@ -51,8 +51,8 @@ public class CheckoutExample {
             String sharedSecret = "sharedSecret";
             String checkoutOrderID = "12345";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            CheckoutOrdersApi checkoutOrdersApi = new CheckoutOrdersApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            CheckoutOrdersApi checkoutOrdersApi = client.newCheckoutOrdersApi();
 
             try {
                 CheckoutOrder order = checkoutOrdersApi.fetch(checkoutOrderID);
@@ -80,8 +80,8 @@ public class CheckoutExample {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            CheckoutOrdersApi checkoutOrdersApi = new CheckoutOrdersApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            CheckoutOrdersApi checkoutOrdersApi = client.newCheckoutOrdersApi();
 
             final List<CheckoutOrderLine> lines = Arrays.asList(
                 new CheckoutOrderLine()
@@ -150,8 +150,8 @@ public class CheckoutExample {
             String sharedSecret = "sharedSecret";
             String checkoutOrderID = "12345";
 
-            HttpTransport transport = new HttpUrlConnectionTransport(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
-            CheckoutOrdersApi checkoutOrdersApi = new CheckoutOrdersApi(transport);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            CheckoutOrdersApi checkoutOrdersApi = client.newCheckoutOrdersApi();
 
             final CheckoutAddress address = new CheckoutAddress()
                 .title("Mr")
