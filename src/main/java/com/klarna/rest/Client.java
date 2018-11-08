@@ -34,7 +34,7 @@ import com.klarna.rest.http_transport.HttpUrlConnectionTransport;
 import java.net.URI;
 
 /**
- * SDK client facade.
+ * SDK client builder.
  *
  * This client simplifies a way of how to create a new API Resource.
  * Also this client contains all known Klarna API resources.
