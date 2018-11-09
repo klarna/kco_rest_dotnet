@@ -220,18 +220,20 @@ public class ApiResponse {
             return this;
         }
 
-        ErrorMessage message = new ErrorMessage();
         ObjectMapper objectMapper = new DefaultMapper();
-        try {
-            byte[] body = this.getBody();
-            if (body != null) {
-                message = objectMapper.readValue(this.getBody(), ErrorMessage.class);
-            }
-            throw new ApiException(this.getStatus(), message);
+        byte[] body = this.getBody();
 
-        } catch (IOException e) {
-            throw new ApiException(this.getStatus(), new String(this.getBody()));
+        if (body != null) {
+            try {
+                ErrorMessage message = objectMapper.readValue(body, ErrorMessage.class);
+                throw new ApiException(this.getStatus(), message);
+
+            } catch (IOException e) {
+                throw new ApiException(this.getStatus(), new String(body));
+            }
         }
+
+        throw new ApiException(this.getStatus(), "HTTP " + this.getStatus());
     }
 
     @Override
