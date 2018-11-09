@@ -55,7 +55,7 @@ public class SessionsApiTest extends TestCase {
         when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
             put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
         }});
-        final String payload = "{ \"session_id\": \"0b1d9815-165e-42e2\", \"client_token\": \"eyJhb.ewogI\", \"payment_method_categories\": [ { \"identifier\": \"pay_later\", \"name\": \"Pay Later\" } ] }";
+        final String payload = "{ \"expired_at\": \"2011-08-12T20:17:46.384Z\", \"session_id\": \"0b1d9815-165e-42e2\", \"client_token\": \"eyJhb.ewogI\", \"payment_method_categories\": [ { \"identifier\": \"pay_later\", \"name\": \"Pay Later\" } ] }";
         when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
 
         PaymentsSession data = new PaymentsSession()

@@ -81,7 +81,7 @@ public class OrdersApiTest extends TestCase {
         assertEquals(amount, order.getOrderAmount());
         assertEquals("75001", order.getOrderLines().get(0).getReference());
         verify(transport.conn, times(1)).setRequestMethod("GET");
-        assertEquals("/order_management/v1/orders/my-order-id", transport.requestPath);
+        assertEquals("/ordermanagement/v1/orders/my-order-id", transport.requestPath);
     }
 
     @Test
@@ -93,7 +93,7 @@ public class OrdersApiTest extends TestCase {
         api.releaseRemainingAuthorization("my-order-id");
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
-        assertEquals("/order_management/v1/orders/my-order-id/release-remaining-authorization", transport.requestPath);
+        assertEquals("/ordermanagement/v1/orders/my-order-id/release-remaining-authorization", transport.requestPath);
     }
 
     @Test
@@ -105,7 +105,7 @@ public class OrdersApiTest extends TestCase {
         api.extendAuthorizationTime("my-order-id");
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
-        assertEquals("/order_management/v1/orders/my-order-id/extend-authorization-time", transport.requestPath);
+        assertEquals("/ordermanagement/v1/orders/my-order-id/extend-authorization-time", transport.requestPath);
     }
 
     @Test
@@ -125,7 +125,7 @@ public class OrdersApiTest extends TestCase {
         api.updateCustomerAddresses("my-order-id", data);
 
         verify(transport.conn, times(1)).setRequestMethod("PATCH");
-        assertEquals("/order_management/v1/orders/my-order-id/customer-details", transport.requestPath);
+        assertEquals("/ordermanagement/v1/orders/my-order-id/customer-details", transport.requestPath);
 
         final String requestPayout = transport.requestPayout.toString();
 
@@ -142,7 +142,7 @@ public class OrdersApiTest extends TestCase {
         api.cancelOrder("my-order-id");
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
-        assertEquals("/order_management/v1/orders/my-order-id/cancel", transport.requestPath);
+        assertEquals("/ordermanagement/v1/orders/my-order-id/cancel", transport.requestPath);
     }
 
     @Test
@@ -157,7 +157,7 @@ public class OrdersApiTest extends TestCase {
         api.updateMerchantReferences("my-order-id", data);
 
         verify(transport.conn, times(1)).setRequestMethod("PATCH");
-        assertEquals("/order_management/v1/orders/my-order-id/merchant-references", transport.requestPath);
+        assertEquals("/ordermanagement/v1/orders/my-order-id/merchant-references", transport.requestPath);
 
         final String requestPayout = transport.requestPayout.toString();
 
@@ -174,7 +174,7 @@ public class OrdersApiTest extends TestCase {
         api.acknowledgeOrder("my-order-id");
 
         verify(transport.conn, times(1)).setRequestMethod("POST");
-        assertEquals("/order_management/v1/orders/my-order-id/acknowledge", transport.requestPath);
+        assertEquals("/ordermanagement/v1/orders/my-order-id/acknowledge", transport.requestPath);
     }
 
     @Test
@@ -189,7 +189,7 @@ public class OrdersApiTest extends TestCase {
         api.setOrderAmountAndOrderLines("my-order-id", data);
 
         verify(transport.conn, times(1)).setRequestMethod("PATCH");
-        assertEquals("/order_management/v1/orders/my-order-id/authorization", transport.requestPath);
+        assertEquals("/ordermanagement/v1/orders/my-order-id/authorization", transport.requestPath);
 
         final String requestPayout = transport.requestPayout.toString();
 

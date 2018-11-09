@@ -37,7 +37,7 @@ import java.io.IOException;
  * have affected this order.
  */
 public class OrderManagementOrdersApi extends BaseApi {
-    protected String PATH = "/order_management/v1/orders";
+    protected String PATH = "/ordermanagement/v1/orders";
 
     public OrderManagementOrdersApi(final HttpTransport transport) {
         super(transport);
