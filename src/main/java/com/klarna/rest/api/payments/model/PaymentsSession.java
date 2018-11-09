@@ -28,6 +28,8 @@ import com.klarna.rest.api.payments.model.PaymentsOrderLine;
 import com.klarna.rest.api.payments.model.PaymentsPaymentMethodCategory;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.threeten.bp.OffsetDateTime;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -129,7 +131,7 @@ public class PaymentsSession {
   private String clientToken = null;
 
   @JsonProperty("expires_at")
-  private PaymentsInstant expiresAt = null;
+  private OffsetDateTime expiresAt = null;
 
   @JsonProperty("acquiring_channel")
   private String acquiringChannel = null;
@@ -472,7 +474,7 @@ public class PaymentsSession {
    * @return expiresAt
   **/
   @ApiModelProperty(value = "Session expiration date")
-  public PaymentsInstant getExpiresAt() {
+  public OffsetDateTime getExpiresAt() {
     return expiresAt;
   }
 
