@@ -64,6 +64,8 @@ public class Client {
 
     /**
      * Uses custom transport to send HTTP requests.
+     *
+     * @param transport HTTP transport instance
      */
     public Client(final HttpTransport transport) {
         this.transport = transport;
@@ -85,6 +87,7 @@ public class Client {
      *
      * @see examples.CustomerTokenExample
      *
+     * @param customerToken Customer token
      * @return new instance
      */
     public TokensApi newTokensApi(final String customerToken) {
@@ -118,6 +121,7 @@ public class Client {
      *
      * @see examples.OrderManagementExample
      *
+     * @param orderId Order ID
      * @return new instance
      */
     public OrderManagementCapturesApi newOrderManagementCapturesApi(final String orderId) {
@@ -140,6 +144,7 @@ public class Client {
      *
      * @see examples.OrderManagementExample
      *
+     * @param orderId Order ID
      * @return new instance
      */
     public OrderManagementRefundsApi newOrderManagementRefundsApi(final String orderId) {

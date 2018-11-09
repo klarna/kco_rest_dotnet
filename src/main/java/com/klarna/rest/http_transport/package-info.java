@@ -15,6 +15,6 @@
  */
 
 /**
- * Klarna API Client.
+ * Klarna Http Transport package.
  */
-package com.klarna.rest;
+package com.klarna.rest.http_transport;

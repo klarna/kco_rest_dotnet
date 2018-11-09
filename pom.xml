@@ -203,7 +203,7 @@
                     <instrumentation>
                         <excludes>
                             <exclude>examples/**/*.class</exclude>
-                            <exclude>com/klarna/rest/model/**/*.class</exclude>
+                            <exclude>com/klarna/rest/api/**/model/*.class</exclude>
                         </excludes>
                     </instrumentation>
                     <check/>
@@ -263,7 +263,8 @@
                 <configuration>
                     <excludes>
                         <exclude>**/examples/*</exclude>
-                        <exclude>**/model/**/*</exclude>
+                        <exclude>com/klarna/rest/api/**/model/*</exclude>
+                        <exclude>com/klarna/rest/api/checkout/model/emd/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
@@ -316,7 +317,8 @@
                     <instrumentation>
                         <excludes>
                             <exclude>examples/**/*.class</exclude>
-                            <exclude>com/klarna/rest/model/**/*.class</exclude>
+                            <exclude>com/klarna/rest/api/**/model/*.class</exclude>
+                            <exclude>com/klarna/rest/api/checkout/model/emd/*.class</exclude>
                         </excludes>
                     </instrumentation>
                     <check/>
