@@ -6,22 +6,22 @@
 
     <groupId>com.klarna</groupId>
     <artifactId>kco-rest</artifactId>
-    <version>2.2.1</version>
+    <version>3.0.0</version>
     <packaging>jar</packaging>
 
     <name>kco-rest</name>
     <url>https://developers.klarna.com</url>
-    <description>Klarna Checkout and Order Management SDK</description>
+    <description>Klarna REST Java SDK</description>
     <organization>
       <name>Klarna AB</name>
-      <url>http://www.klarna.com</url>
+      <url>https://www.klarna.com</url>
     </organization>
     <developers>
         <developer>
             <name>Klarna AB</name>
-            <email>integration@klarna.com</email>
+            <email>developers@klarna.com</email>
             <organization>Klarna</organization>
-            <organizationUrl>http://klarna.com</organizationUrl>
+            <organizationUrl>https://klarna.com</organizationUrl>
         </developer>
     </developers>
 
@@ -35,27 +35,45 @@
     <properties>
         <compile.version>1.7</compile.version>
         <jersey.version>1.19</jersey.version>
-        <jackson.version>2.5.4</jackson.version>
+        <javax.ws.rs-api.version>2.0</javax.ws.rs-api.version>
+        <jackson.version>2.6.4</jackson.version>
         <commons-lang.version>3.4</commons-lang.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
         <javadoc.plugin.version>2.10.3</javadoc.plugin.version>
+        <swagger-annotations.version>1.5.21</swagger-annotations.version>
     </properties>
 
     <dependencies>
+        <!-- Swagger generator -->
         <dependency>
-            <groupId>com.sun.jersey.contribs</groupId>
-            <artifactId>jersey-apache-client4</artifactId>
-            <version>${jersey.version}</version>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>${swagger-annotations.version}</version>
         </dependency>
+
         <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-json</artifactId>
-            <version>${jersey.version}</version>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>javax.ws.rs-api</artifactId>
+            <version>${javax.ws.rs-api.version}</version>
         </dependency>
+
+        <!-- Logger -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+
+        <!-- JSON processing: jackson -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
             <version>${jackson.version}</version>
         </dependency>
         <dependency>
@@ -64,16 +82,23 @@
             <version>${jackson.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-joda</artifactId>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.joschi.jackson</groupId>
+            <artifactId>jackson-datatype-threetenbp</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang.version}</version>
         </dependency>
 
+        <!-- Testing dependencies -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -94,6 +119,28 @@
             <version>0.7.4.201502262128</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- Logger for testing -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.7</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.7</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>2.7</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- /Logger for testing -->
+
     </dependencies>
 
     <reporting>
@@ -142,7 +189,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>2.8</version>
+                <version>2.9</version>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -156,6 +203,7 @@
                     <instrumentation>
                         <excludes>
                             <exclude>examples/**/*.class</exclude>
+                            <exclude>com/klarna/rest/api/**/model/*.class</exclude>
                         </excludes>
                     </instrumentation>
                     <check/>
@@ -215,6 +263,8 @@
                 <configuration>
                     <excludes>
                         <exclude>**/examples/*</exclude>
+                        <exclude>com/klarna/rest/api/**/model/*</exclude>
+                        <exclude>com/klarna/rest/api/checkout/model/emd/*</exclude>
                     </excludes>
                 </configuration>
                 <executions>
@@ -241,7 +291,7 @@
                     <target>${compile.version}</target>
                     <encoding>UTF-8</encoding>
                     <excludes>
-                        <exclude>**/com/klarna/rest/api/examples/*.java</exclude>
+                        <exclude>**/com/klarna/rest/examples/*.java</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -267,6 +317,8 @@
                     <instrumentation>
                         <excludes>
                             <exclude>examples/**/*.class</exclude>
+                            <exclude>com/klarna/rest/api/**/model/*.class</exclude>
+                            <exclude>com/klarna/rest/api/checkout/model/emd/*.class</exclude>
                         </excludes>
                     </instrumentation>
                     <check/>

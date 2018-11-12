@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 Klarna AB
+ * Copyright 2018 Klarna AB
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,196 +16,25 @@
 
 package examples;
 
-import com.klarna.rest.api.CheckoutOrder;
-import com.klarna.rest.api.Client;
-import com.klarna.rest.api.DefaultClient;
-import com.klarna.rest.api.model.CheckoutOrderData;
-import com.klarna.rest.api.model.MerchantUrls;
-import com.klarna.rest.api.model.OrderLine;
-import com.klarna.rest.api.model.emd.ExtraMerchantData;
-import com.klarna.rest.api.model.emd.ExtraMerchantDataBody;
-import com.klarna.rest.api.model.emd.PaymentHistoryFull;
-import org.joda.time.DateTime;
+import com.klarna.rest.Client;
+import com.klarna.rest.api.checkout.CheckoutOrdersApi;
+import com.klarna.rest.http_transport.HttpTransport;
+
+import com.klarna.rest.model.ApiException;
+
+import com.klarna.rest.api.checkout.model.CheckoutAddress;
+import com.klarna.rest.api.checkout.model.CheckoutMerchantUrls;
+import com.klarna.rest.api.checkout.model.CheckoutOrder;
+import com.klarna.rest.api.checkout.model.CheckoutOrderLine;
 
 import java.io.IOException;
-import java.net.URI;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * Checkout resource examples.
  */
 public class CheckoutExample {
-
-    /**
-     * Creates a checkout order.
-     */
-    public static class CreateExample {
-
-        /**
-         * Runs the example code.
-         *
-         * @param args Command line arguments
-         */
-        public static void main(final String[] args) {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
-            URI baseUrl = Client.EU_TEST_BASE_URL;
-
-            Client client = DefaultClient.newInstance(merchantId, sharedSecret, baseUrl);
-
-            CheckoutOrder checkout = client.newCheckoutOrder();
-
-            final List<OrderLine> lines = new ArrayList<OrderLine>() {
-                {
-                    add(new OrderLine()
-                            .setType("physical")
-                            .setReference("123050")
-                            .setName("Tomatoes")
-                            .setQuantity(10L)
-                            .setQuantityUnit("kg")
-                            .setUnitPrice(600L)
-                            .setTaxRate(2500)
-                            .setTotalAmount(6000L)
-                            .setTotalTaxAmount(1200L));
-                    add(new OrderLine()
-                            .setType("physical")
-                            .setReference("543670")
-                            .setName("Bananas")
-                            .setQuantity(1L)
-                            .setQuantityUnit("bag")
-                            .setUnitPrice(5000L)
-                            .setTaxRate(2500)
-                            .setTotalAmount(4000L)
-                            .setTotalDiscountAmount(1000L)
-                            .setTotalTaxAmount(800L));
-                }
-            };
-
-            final MerchantUrls urls = new MerchantUrls() {
-                {
-                    setTerms("http://www.merchant.com/toc");
-                    setCheckout("http://www.merchant.com/checkout?klarna_order_id={checkout.order.id}");
-                    setConfirmation("http://www.merchant.com/thank-you?klarna_order_id={checkout.order.id}");
-                    setPush("http://www.merchant.com/create_order?klarna_order_id={checkout.order.id}");
-                }
-            };
-
-            CheckoutOrderData data = new CheckoutOrderData() {
-                {
-                    setPurchaseCountry("gb");
-                    setPurchaseCurrency("gbp");
-                    setLocale("en-gb");
-                    setOrderAmount(10000L);
-                    setOrderTaxAmount(2000L);
-                    setOrderLines(lines);
-                    setMerchantUrls(urls);
-                }
-            };
-
-            checkout.create(data);
-            data = checkout.fetch();
-
-            // Store checkout order id
-            String orderID = data.getOrderId();
-        }
-    }
-
-    /**
-     * An example with an optional extra merchant data attachment.
-     */
-    public static class AttachmentExample {
-
-        /**
-         * Runs the example code.
-         *
-         * @param args Command line arguments
-         * @throws IOException If ExtraMerchantData could not be converted to
-         *                     or created from an Attachment.
-         */
-        public static void main(final String[] args) throws IOException {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
-            URI baseUrl = Client.EU_TEST_BASE_URL;
-
-            Client client = DefaultClient.newInstance(merchantId, sharedSecret, baseUrl);
-
-            CheckoutOrder checkout = client.newCheckoutOrder();
-
-            final List<OrderLine> lines = new ArrayList<OrderLine>() {
-                {
-                    add(new OrderLine()
-                            .setType("physical")
-                            .setReference("123050")
-                            .setName("Tomatoes")
-                            .setQuantity(10L)
-                            .setQuantityUnit("kg")
-                            .setUnitPrice(600L)
-                            .setTaxRate(2500)
-                            .setTotalAmount(6000L)
-                            .setTotalTaxAmount(1200L));
-                    add(new OrderLine()
-                            .setType("physical")
-                            .setReference("543670")
-                            .setName("Bananas")
-                            .setQuantity(1L)
-                            .setQuantityUnit("bag")
-                            .setUnitPrice(5000L)
-                            .setTaxRate(2500)
-                            .setTotalAmount(4000L)
-                            .setTotalDiscountAmount(1000L)
-                            .setTotalTaxAmount(800L));
-                }
-            };
-
-            final MerchantUrls urls = new MerchantUrls() {
-                {
-                    setTerms("http://www.merchant.com/toc");
-                    setCheckout("http://www.merchant.com/checkout?klarna_order_id={checkout.order.id}");
-                    setConfirmation("http://www.merchant.com/thank-you?klarna_order_id={checkout.order.id}");
-                    setPush("http://www.merchant.com/create_order?klarna_order_id={checkout.order.id}");
-                }
-            };
-
-            final List<PaymentHistoryFull> paymentHistoryFulls = new ArrayList<PaymentHistoryFull>() {
-                {
-                    add(new PaymentHistoryFull()
-                            .setUniqueAccountIdentifier("Test Testperson")
-                            .setPaymentOption("card")
-                            .setNumberPaidPurchases(1)
-                            .setTotalAmountPaidPurchases(10000L)
-                            .setDateOfLastPaidPurchase(new DateTime())
-                            .setDateOfFirstPaidPurchase(new DateTime()));
-                }
-            };
-
-            final ExtraMerchantDataBody extraMerchantDataBody = new ExtraMerchantDataBody()
-                    .setPaymentHistoryFull(paymentHistoryFulls);
-
-            final ExtraMerchantData extraMerchantData = new ExtraMerchantData()
-                    .setBody(extraMerchantDataBody);
-
-            CheckoutOrderData data = new CheckoutOrderData() {
-                {
-                    setPurchaseCountry("gb");
-                    setPurchaseCurrency("gbp");
-                    setLocale("en-gb");
-                    setOrderAmount(10000L);
-                    setOrderTaxAmount(2000L);
-                    setOrderLines(lines);
-                    setMerchantUrls(urls);
-                    setAttachment(extraMerchantData.toAttachment());
-                }
-            };
-
-            checkout.create(data);
-            data = checkout.fetch();
-
-            // Store checkout order id
-            String orderID = data.getOrderId();
-            ExtraMerchantData emd = ExtraMerchantData.fromAttachment(data.getAttachment());
-        }
-    }
 
     /**
      * Fetches a checkout order.
@@ -220,21 +49,27 @@ public class CheckoutExample {
         public static void main(final String[] args) {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
-            URI baseUrl = Client.EU_TEST_BASE_URL;
             String checkoutOrderID = "12345";
 
-            Client client = DefaultClient.newInstance(merchantId, sharedSecret, baseUrl);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            CheckoutOrdersApi checkoutOrdersApi = client.newCheckoutOrdersApi();
 
-            CheckoutOrder checkout = client.newCheckoutOrder(checkoutOrderID);
+            try {
+                CheckoutOrder order = checkoutOrdersApi.fetch(checkoutOrderID);
+                System.out.println(order);
 
-            CheckoutOrderData data = checkout.fetch();
+            } catch (IOException e) {
+                System.out.println("Connection problem: " + e.getMessage());
+            } catch (ApiException e) {
+                System.out.println("API issue: " + e.getMessage());
+            }
         }
     }
 
     /**
-     * Updates a checkout order.
+     * Creates a checkout order.
      */
-    public static class UpdateExample {
+    public static class CreateExample {
 
         /**
          * Runs the example code.
@@ -244,57 +79,127 @@ public class CheckoutExample {
         public static void main(final String[] args) {
             String merchantId = "0";
             String sharedSecret = "sharedSecret";
-            URI baseUrl = Client.EU_TEST_BASE_URL;
+
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            CheckoutOrdersApi checkoutOrdersApi = client.newCheckoutOrdersApi();
+
+            final List<CheckoutOrderLine> lines = Arrays.asList(
+                new CheckoutOrderLine()
+                    .type("physical")
+                    .reference("123050")
+                    .name("Tomatoes")
+                    .quantity(10L)
+                    .quantityUnit("kg")
+                    .unitPrice(600L)
+                    .taxRate(2500L)
+                    .totalAmount(6000L)
+                    .totalTaxAmount(1200L),
+
+                new CheckoutOrderLine()
+                    .type("physical")
+                    .reference("543670")
+                    .name("Bananas")
+                    .quantity(1L)
+                    .quantityUnit("bag")
+                    .unitPrice(5000L)
+                    .taxRate(2500L)
+                    .totalAmount(4000L)
+                    .totalDiscountAmount(1000L)
+                    .totalTaxAmount(800L)
+            );
+
+            final CheckoutMerchantUrls urls = new CheckoutMerchantUrls()
+                .terms("http://www.example.com/toc")
+                .checkout("http://www.example.com/checkout?klarna_order_id={checkout.order.id}")
+                .confirmation("http://www.example.com/thank-you?klarna_order_id={checkout.order.id}")
+                .push("http://www.example.com/create_order?klarna_order_id={checkout.order.id}");
+
+            CheckoutOrder data = new CheckoutOrder()
+                .purchaseCountry("GB")
+                .purchaseCurrency("GBP")
+                .locale("EN-GB")
+                .orderAmount(10000L)
+                .orderTaxAmount(2000L)
+                .orderLines(lines)
+                .merchantUrls(urls);
+
+            try {
+                CheckoutOrder order = checkoutOrdersApi.create(data);
+                System.out.println(order);
+
+            } catch (IOException e) {
+                System.out.println("Connection problem: " + e.getMessage());
+            } catch (ApiException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * Update a checkout order.
+     */
+    public static class UpdateExample {
+
+        /**
+         * Runs the example code. .s new address.
+         *
+         * @param args Command line arguments
+         */
+        public static void main(final String[] args) {
+            String merchantId = "0";
+            String sharedSecret = "sharedSecret";
             String checkoutOrderID = "12345";
 
-            Client client = DefaultClient.newInstance(merchantId, sharedSecret, baseUrl);
+            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            CheckoutOrdersApi checkoutOrdersApi = client.newCheckoutOrdersApi();
 
-            CheckoutOrder checkout = client.newCheckoutOrder(checkoutOrderID);
+            final CheckoutAddress address = new CheckoutAddress()
+                .title("Mr")
+                .country("GB")
+                .city("London")
+                .givenName("John")
+                .familyName("Smith")
+                .streetAddress("1st Avenue");
 
-            final List<OrderLine> lines = new ArrayList<OrderLine>() {
-                {
-                    add(new OrderLine()
-                            .setType("physical")
-                            .setReference("123050")
-                            .setName("Tomatoes")
-                            .setQuantity(10L)
-                            .setQuantityUnit("kg")
-                            .setUnitPrice(600L)
-                            .setTaxRate(2500)
-                            .setTotalAmount(6000L)
-                            .setTotalTaxAmount(1200L));
-                    add(new OrderLine()
-                            .setType("physical")
-                            .setReference("543670")
-                            .setName("Bananas")
-                            .setQuantity(1L)
-                            .setQuantityUnit("bag")
-                            .setUnitPrice(5000L)
-                            .setTaxRate(2500)
-                            .setTotalAmount(4000L)
-                            .setTotalDiscountAmount(1000L)
-                            .setTotalTaxAmount(800L));
-                    add(new OrderLine()
-                            .setType("shipping_fee")
-                            .setName("Express delivery")
-                            .setQuantity(1L)
-                            .setUnitPrice(1000L)
-                            .setTaxRate(2500)
-                            .setTotalAmount(1000L)
-                            .setTotalTaxAmount(200L));
-                }
-            };
+            final List<CheckoutOrderLine> lines = Arrays.asList(
+                new CheckoutOrderLine()
+                    .type("physical")
+                    .reference("123050")
+                    .name("Tomatoes")
+                    .quantity(10L)
+                    .quantityUnit("kg")
+                    .unitPrice(600L)
+                    .taxRate(2500L)
+                    .totalAmount(6000L)
+                    .totalTaxAmount(1200L),
 
-            CheckoutOrderData data = new CheckoutOrderData() {
-                {
-                    setOrderLines(lines);
-                    setOrderAmount(11000L);
-                    setOrderTaxAmount(2200L);
-                }
-            };
+                new CheckoutOrderLine()
+                    .type("physical")
+                    .reference("543670")
+                    .name("Bananas")
+                    .quantity(1L)
+                    .quantityUnit("bag")
+                    .unitPrice(5000L)
+                    .taxRate(2500L)
+                    .totalAmount(4000L)
+                    .totalDiscountAmount(1000L)
+                    .totalTaxAmount(800L)
+            );
+            CheckoutOrder data = new CheckoutOrder()
+                .billingAddress(address)
+                .shippingAddress(address)
+                .orderAmount(10000L)
+                .orderTaxAmount(2000L)
+                .orderLines(lines);
 
-
-            data = checkout.update(data);
+            try {
+                CheckoutOrder order = checkoutOrdersApi.update(checkoutOrderID, data);
+                System.out.println(order);
+            } catch (IOException e) {
+                System.out.println("Connection problem: " + e.getMessage());
+            } catch (ApiException e) {
+                System.out.println("API issue: " + e.getMessage());
+            }
         }
     }
 }
