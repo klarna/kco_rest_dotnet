@@ -1,3 +1,8 @@
+## v3.0.1 - 2018-11-12
+- Security fix: Upgrade com.fasterxml.jackson.core:jackson-databind to version **2.8.11.1**  
+  FasterXML jackson-databind through 2.8.10 and 2.9.x through 2.9.3 allows 
+  unauthenticated remote code execution because of an incomplete fix for the CVE-2017-7525 deserialization flaw.
+
 ## v3.0.0 - 2018-11-12 (Major release)
 **No backward compatibility**
 
