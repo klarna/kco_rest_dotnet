@@ -1,3 +1,6 @@
+## v3.0.2 - 2018-11-12
+- Update com.fasterxml.jackson.* to 2.9.7 version.
+
 ## v3.0.1 - 2018-11-12
 - Security fix: Upgrade com.fasterxml.jackson.core:jackson-databind to version **2.8.11.1**  
   FasterXML jackson-databind through 2.8.10 and 2.9.x through 2.9.3 allows 

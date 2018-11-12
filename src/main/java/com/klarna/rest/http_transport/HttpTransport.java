@@ -36,7 +36,7 @@ public interface HttpTransport {
     /**
      * API library client version.
      */
-    String VERSION = "3.0.1";
+    String VERSION = "3.0.2";
 
     /**
      * API library default user agent.
