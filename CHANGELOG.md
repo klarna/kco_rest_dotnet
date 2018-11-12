@@ -1,3 +1,18 @@
+## v3.0.0 - 2018-11-12 (Major release)
+**No backward compatibility**
+
+- Actualize all the API models;
+- Add support of 
+    * Merchant Card Service API
+    * Customer Token API;
+    * Settlements API;
+    * Payments API;
+    * Hosted Payment Page API;
+- Add 'Debug Mode' to be able to debug requests and responses;
+- Put SDK References documentation into a GH Pages:
+    https://klarna.github.io/kco_rest_java/
+- More Tests and Examples for all Klarna Services. 
+
 ## v2.2.2 - 2018-09-06
 - Update Checkout API models according to the latest Klarna API changes;
 - Update Order Management API models according to the latest Klarna API changes;
