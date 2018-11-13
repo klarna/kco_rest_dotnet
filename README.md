@@ -77,8 +77,8 @@ Example files can be found in the
 [examples](src/main/java/examples/) package.
 
 The basic workflow is the following:
-1) Create a transport (SDK has a default one, but you can implement your own);
-2) Use API you want to via created Transport.
+1) Create an SDK Client
+2) Build the new API instance via created Client
 
 ```java
 package com.mycompany.app;
