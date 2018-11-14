@@ -20,12 +20,14 @@ import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.client.apache4.ApacheHttpClient4;
 import com.sun.jersey.client.apache4.config.ApacheHttpClient4Config;
 import com.sun.jersey.client.apache4.config.DefaultApacheHttpClient4Config;
+
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
 import org.apache.http.client.CredentialsProvider;
 import org.apache.http.conn.params.ConnRoutePNames;
 import org.apache.http.impl.client.BasicCredentialsProvider;
+import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
 
 import java.net.URI;
 
@@ -199,6 +201,10 @@ public final class DefaultClient implements Client {
                 .put(PROPERTY_CREDENTIALS_PROVIDER, provider);
         clientConfig.getProperties()
                 .put(PROPERTY_PREEMPTIVE_BASIC_AUTHENTICATION, Boolean.TRUE);
+       
+        ThreadSafeClientConnManager connectionManager = new ThreadSafeClientConnManager();
+        connectionManager.setDefaultMaxPerRoute(20);
+        clientConfig.getProperties().put(ApacheHttpClient4Config.PROPERTY_CONNECTION_MANAGER, connectionManager);
 
         ApacheHttpClient4 client = ApacheHttpClient4.create(clientConfig);
 
