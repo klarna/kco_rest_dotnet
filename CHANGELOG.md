@@ -1,5 +1,5 @@
 ## v3.0.0 - 2018-11-27
-- Rewritten from scratch as a .Net Standard 2.0 class library using latest available documentation
+- Rewritten from scratch as a .Net Standard 2.0 class library using latest available documentation - *Benny.O*
 - Supports Checkout v3, Payment v1, Order Management v1, Settlements v1, Customer Token v1, Hosted Payment Page v1, Merchant Card Service v3 - *Benny.O*
 
 ## v2.2.0 - 2016-02-15
