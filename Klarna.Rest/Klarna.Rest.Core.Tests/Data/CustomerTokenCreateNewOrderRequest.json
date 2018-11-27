@@ -1,0 +1,55 @@
+﻿{
+  "attachment": {
+    "body": "{\"marketplace_seller_info\":[{\"product_category\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}",
+    "content_type": "schemas/application/vnd.klarna.internal.emd-v2+json"
+  },
+  "auto_capture": false,
+  "customer_token_order_merchant_urls": {
+    "confirmation": "string",
+    "push": "string"
+  },
+  "merchant_data": "{\"order_speicif\":[{\"substore\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}",
+  "merchant_reference1": "45aa52f387871e3a210645d4",
+  "merchant_reference2": "45aa52f387871e3a210645d4",
+  "order_amount": 0,
+  "order_lines": [
+    {
+      "image_url": "https://www.exampleobjects.com/logo.png",
+      "merchant_data": "{\"marketplace_seller_info\":[{\"product_category\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}",
+      "name": "Battery Power Pack",
+      "product_identifiers": {
+        "brand": "Intel",
+        "category_path": "Electronics Store > Computers & Tablets > Desktops",
+        "global_trade_item_number": "735858293167",
+        "manufacturer_part_number": "BOXNUC5CPYH"
+      },
+      "product_url": "https://www.estore.com/products/f2a8d7e34",
+      "quantity": 0,
+      "quantity_unit": "kg",
+      "reference": "19-402-USA",
+      "tax_rate": 0,
+      "total_amount": 0,
+      "total_discount_amount": 0,
+      "total_tax_amount": 0,
+      "type": "physical",
+      "unit_price": 0
+    }
+  ],
+  "order_tax_amount": 0,
+  "purchase_currency": "USD",
+  "shipping_address": {
+    "attention": "string",
+    "city": "Beverly Hills",
+    "country": "US",
+    "email": "john@doe.com",
+    "family_name": "Doe",
+    "given_name": "John",
+    "organization_name": "string",
+    "phone": "333444555",
+    "postal_code": "90210",
+    "region": "CA",
+    "street_address": "Lombard St 10",
+    "street_address2": "Apt 214",
+    "title": "Mr"
+  }
+}

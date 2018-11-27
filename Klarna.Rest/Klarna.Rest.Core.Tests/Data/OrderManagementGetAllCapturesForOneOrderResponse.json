@@ -1,0 +1,70 @@
+﻿[
+  {
+    "capture_id": "4ba29b50-be7b-44f5-a492-113e6a865e22",
+    "klarna_reference": "K4MADNY-1",
+    "captured_amount": 0,
+    "captured_at": "2015-11-19T01:51:17+00:00",
+    "description": "Order has been shipped",
+    "order_lines": [
+      {
+        "reference": "75001",
+        "type": "physical",
+        "quantity": 1,
+        "quantity_unit": "pcs.",
+        "name": "string",
+        "total_amount": 0,
+        "unit_price": 0,
+        "total_discount_amount": 0,
+        "tax_rate": 0,
+        "total_tax_amount": 0,
+        "merchant_data": "Some metadata",
+        "product_url": "https://yourstore.example/product/headphones",
+        "image_url": "https://yourstore.example/product/headphones.png",
+        "product_identifiers": {
+          "category_path": "Electronics Store > Computers & Tablets > Desktops",
+          "global_trade_item_number": "735858293167",
+          "manufacturer_part_number": "BOXNUC5CPYH",
+          "brand": "Intel"
+        }
+      }
+    ],
+    "refunded_amount": 0,
+    "billing_address": {
+      "given_name": "Klara",
+      "family_name": "Joyce",
+      "title": "Mrs",
+      "street_address": "Apartment 10",
+      "street_address2": "1 Safeway",
+      "postal_code": "12345",
+      "city": "Knoxville",
+      "region": "TN",
+      "country": "us",
+      "email": "klara.joyce@klarna.com",
+      "phone": "1-555-555-5555"
+    },
+    "shipping_address": {
+      "given_name": "Klara",
+      "family_name": "Joyce",
+      "title": "Mrs",
+      "street_address": "Apartment 10",
+      "street_address2": "1 Safeway",
+      "postal_code": "12345",
+      "city": "Knoxville",
+      "region": "TN",
+      "country": "us",
+      "email": "klara.joyce@klarna.com",
+      "phone": "1-555-555-5555"
+    },
+    "shipping_info": [
+      {
+        "shipping_company": "DHL US",
+        "shipping_method": "Home",
+        "tracking_number": "63456415674545679874",
+        "tracking_uri": "http://shipping.example/findmypackage?63456415674545679874",
+        "return_shipping_company": "DHL US",
+        "return_tracking_number": "93456415674545679888",
+        "return_tracking_uri": "http://shipping.example/findmypackage?93456415674545679888"
+      }
+    ]
+  }
+]

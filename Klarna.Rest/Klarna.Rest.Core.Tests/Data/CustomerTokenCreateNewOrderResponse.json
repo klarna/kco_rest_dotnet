@@ -1,0 +1,5 @@
+﻿{
+  "fraud_status": "string",
+  "order_id": "string",
+  "redirect_url": "string"
+}

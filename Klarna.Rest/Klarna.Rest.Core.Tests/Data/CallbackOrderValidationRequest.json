@@ -1,0 +1,205 @@
+﻿{
+  "order_id": "f3392f8b-6116-4073-ab96-e330819e2c07",
+  "name": "Women's Fashion",
+  "purchase_country": "US",
+  "purchase_currency": "USD",
+  "locale": "en-US",
+  "status": "CHECKOUT_INCOMPLETE",
+  "billing_address": {
+    "organization_name": "string",
+    "reference": "string",
+    "attention": "string",
+    "given_name": "John",
+    "family_name": "Doe",
+    "email": "john@doe.com",
+    "title": "Mr",
+    "street_address": "Lombard St 10",
+    "street_address2": "Apt 214",
+    "street_name": "Lombard St",
+    "street_number": "10",
+    "house_extension": "B",
+    "postal_code": "90210",
+    "city": "Beverly Hills",
+    "region": "CA",
+    "phone": "333444555",
+    "country": "US",
+    "care_of": "C/O"
+  },
+  "shipping_address": {
+    "organization_name": "string",
+    "reference": "string",
+    "attention": "string",
+    "given_name": "John",
+    "family_name": "Doe",
+    "email": "john@doe.com",
+    "title": "Mr",
+    "street_address": "Lombard St 10",
+    "street_address2": "Apt 214",
+    "street_name": "Lombard St",
+    "street_number": "10",
+    "house_extension": "B",
+    "postal_code": "90210",
+    "city": "Beverly Hills",
+    "region": "CA",
+    "phone": "333444555",
+    "country": "US",
+    "care_of": "C/O"
+  },
+  "order_amount": 50000,
+  "order_tax_amount": 5000,
+  "order_lines": [
+    {
+      "type": "physical",
+      "reference": "19-402-USA",
+      "name": "Red T-Shirt",
+      "quantity": 5,
+      "quantity_unit": "pcs",
+      "unit_price": 10000,
+      "tax_rate": 1000,
+      "total_amount": 50000,
+      "total_discount_amount": 0,
+      "total_tax_amount": 5000,
+      "merchant_data": "{\"marketplace_seller_info\":[{\"product_category\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}",
+      "product_url": "https://www.estore.com/products/f2a8d7e34",
+      "image_url": "https://www.exampleobjects.com/logo.png",
+      "product_identifiers": {
+        "category_path": "Electronics Store > Computers & Tablets > Desktops",
+        "global_trade_item_number": "735858293167",
+        "manufacturer_part_number": "BOXNUC5CPYH",
+        "brand": "Intel"
+      }
+    }
+  ],
+  "customer": {
+    "date_of_birth": "1995-10-20",
+    "type": "person",
+    "organization_registration_id": "556737-0431"
+  },
+  "merchant_urls": {
+    "terms": "https://www.estore.com/terms.html",
+    "cancellation_terms": "https://www.estore.com/terms/cancellation.html",
+    "checkout": "https://www.estore.com/checkout.html",
+    "confirmation": "https://www.estore.com/confirmation.html",
+    "push": "https://www.estore.com/api/push",
+    "validation": "https://www.estore.com/api/validation",
+    "shipping_option_update": "https://www.estore.com/api/shipment",
+    "address_update": "https://www.estore.com/api/address",
+    "notification": "https://www.estore.com/api/pending",
+    "country_change": "https://www.estore.com/api/country"
+  },
+  "html_snippet": "<div id='klarna-checkout-container'><script>alert('Initializing Klarna Checkout');</script></div>",
+  "merchant_reference1": "45aa52f387871e3a210645d4",
+  "merchant_reference2": "45aa52f387871e3a210645d4",
+  "started_at": "2018-10-05T12:27:01.910Z",
+  "completed_at": "2018-10-05T12:27:01.910Z",
+  "last_modified_at": "2018-10-05T12:27:01.910Z",
+  "options": {
+    "acquiring_channel": "eCommerce",
+    "allow_separate_shipping_address": false,
+    "color_button": "#FF9900",
+    "color_button_text": "#FF9900",
+    "color_checkbox": "#FF9900",
+    "color_checkbox_checkmark": "#FF9900",
+    "color_header": "#FF9900",
+    "color_link": "#FF9900",
+    "date_of_birth_mandatory": false,
+    "shipping_details": "Delivered within 1-3 working days",
+    "title_mandatory": false,
+    "additional_checkbox": {
+      "text": "Please add me to the newsletter list, read more here link",
+      "checked": false,
+      "required": false
+    },
+    "national_identification_number_mandatory": false,
+    "additional_merchant_terms": "string",
+    "radius_border": "5px",
+    "allowed_customer_types": "[\"person\", \"organization\"]",
+    "show_subtotal_detail": false,
+    "additional_checkboxes": [
+      {
+        "id": "newsletter_opt_in",
+        "text": "Please add me to the newsletter list, read more here link",
+        "checked": false,
+        "required": false
+      }
+    ],
+    "require_validate_callback_success": false,
+    "vat_excluded": false
+  },
+  "attachment": {
+    "content_type": "application/vnd.klarna.internal.emd-v2+json",
+    "body": "{\"marketplace_seller_info\":[{\"product_category\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}"
+  },
+  "external_payment_methods": [
+    {
+      "name": "PayhereUs",
+      "redirect_url": "https://www.example.com/us/start",
+      "image_url": "https://www.exampleobjects.com/logo.png",
+      "fee": 0,
+      "description": "an American company operating a worldwide online payments system",
+      "countries": [
+        "us",
+        "gb"
+      ]
+    }
+  ],
+  "external_checkouts": [
+    {
+      "name": "PayhereUs",
+      "redirect_url": "https://www.example.com/us/start",
+      "image_url": "https://www.exampleobjects.com/logo.png",
+      "fee": 0,
+      "description": "an American company operating a worldwide online payments system",
+      "countries": [
+        "us",
+        "gb"
+      ]
+    }
+  ],
+  "shipping_countries": [
+    "us",
+    "gb"
+  ],
+  "shipping_options": [
+    {
+      "id": "express_priority",
+      "name": "EXPRESS 1-2 Days",
+      "description": "Delivery by 4:30 pm",
+      "promo": "Christmas Promotion",
+      "price": 0,
+      "tax_amount": 0,
+      "tax_rate": 0,
+      "preselected": false,
+      "shipping_method": "PickUpStore"
+    }
+  ],
+  "merchant_data": "{\"marketplace_seller_info\":[{\"product_category\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}",
+  "gui": {
+    "options": [
+      "disable_autofocus"
+    ]
+  },
+  "merchant_requested": {
+    "additional_checkbox": false,
+    "additional_checkboxes": [
+      {
+        "id": "string",
+        "checked": false
+      }
+    ]
+  },
+  "selected_shipping_option": {
+    "id": "express_priority",
+    "name": "EXPRESS 1-2 Days",
+    "description": "Delivery by 4:30 pm",
+    "promo": "Christmas Promotion",
+    "price": 0,
+    "tax_amount": 0,
+    "tax_rate": 0,
+    "preselected": false,
+    "shipping_method": "PickUpStore"
+  },
+  "recurring": false,
+  "recurring_token": "string",
+  "recurring_description": "string"
+}

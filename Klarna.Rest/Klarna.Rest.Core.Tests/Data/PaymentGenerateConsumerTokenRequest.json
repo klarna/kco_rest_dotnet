@@ -1,0 +1,33 @@
+﻿{
+  "purchase_country": "US",
+  "purchase_currency": "USD",
+  "locale": "en-US",
+  "billing_address": {
+    "given_name": "John",
+    "family_name": "Doe",
+    "email": "john@doe.com",
+    "title": "Mr",
+    "street_address": "Lombard St 10",
+    "street_address2": "Apt 214",
+    "postal_code": "90210",
+    "city": "Beverly Hills",
+    "region": "CA",
+    "phone": "333444555",
+    "country": "US",
+    "organization_name": "string",
+    "attention": "string"
+  },
+  "customer": {
+    "date_of_birth": "string",
+    "title": "string",
+    "gender": "string",
+    "last_four_ssn": "string",
+    "national_identification_number": "string",
+    "type": "string",
+    "vat_id": "string",
+    "organization_registration_id": "string",
+    "organization_entity_type": "LIMITED_COMPANY"
+  },
+  "description": "string",
+  "intended_use": "SUBSCRIPTION"
+}

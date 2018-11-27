@@ -1,0 +1,27 @@
+﻿{
+  "transactions": [
+    {
+      "amount": 2000,
+      "capture_id": "33db6f16-9f43-43fa-a587-cc51411c98e4",
+      "merchant_reference1": "string",
+      "sale_date": "2016-12-14T07:52:26Z",
+      "type": "SALE",
+      "capture_date": "2016-12-14T07:52:26Z",
+      "payment_reference": "XISA93DJ",
+      "order_id": "ce17b4cb-147f-48b7-b8e6-dde2fa397f04",
+      "payout": "https://{settlements_api}/payouts/XISA93DJ",
+      "refund_id": "ef1baa1f-b42e-44be-b9e4-4b94510b53e5",
+      "short_order_id": "shortrid",
+      "merchant_reference2": "string",
+      "currency_code": "USD",
+      "purchase_country": "PL"
+    }
+  ],
+  "pagination": {
+    "count": 10,
+    "total": 42,
+    "next": "http://example.com/collection?offset=21&size=10",
+    "prev": "http://example.com/collection?offset=0&size=10",
+    "offset": 10
+  }
+}

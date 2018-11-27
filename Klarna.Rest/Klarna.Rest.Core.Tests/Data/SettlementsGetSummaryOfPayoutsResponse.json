@@ -1,0 +1,18 @@
+﻿[
+  {
+    "summary_total_fee_correction_amount": 550,
+    "summary_payout_date_start": "2016-12-14T07:52:26Z",
+    "summary_total_release_amount": 550,
+    "summary_settlement_currency": "USD",
+    "summary_payout_date_end": "2016-12-14T07:52:26Z",
+    "summary_total_tax_amount": 550,
+    "summary_total_settlement_amount": 550,
+    "summary_total_holdback_amount": 550,
+    "summary_total_reversal_amount": 550,
+    "summary_total_return_amount": 550,
+    "summary_total_fee_amount": 500,
+    "summary_total_commission_amount": 550,
+    "summary_total_sale_amount": 500,
+    "summary_total_repay_amount": 550
+  }
+]
