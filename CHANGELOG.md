@@ -1,3 +1,6 @@
+## v3.0.3 - 2018-12-06
+- Checkout API: Add support of phone_mandatory field for Checkout options.
+
 ## v3.0.2 - 2018-11-12
 - Update com.fasterxml.jackson.* to 2.9.7 version.
 
