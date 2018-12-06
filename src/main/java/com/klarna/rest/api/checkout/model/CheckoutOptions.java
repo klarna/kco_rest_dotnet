@@ -60,6 +60,9 @@ public class CheckoutOptions {
   @JsonProperty("shipping_details")
   private String shippingDetails = null;
 
+  @JsonProperty("phone_mandatory")
+  private Boolean phoneMandatory = false;
+
   @JsonProperty("title_mandatory")
   private Boolean titleMandatory = false;
 
@@ -268,6 +271,24 @@ public class CheckoutOptions {
 
   public void setShippingDetails(String shippingDetails) {
     this.shippingDetails = shippingDetails;
+  }
+
+  public CheckoutOptions phoneMandatory(Boolean phoneMandatory) {
+    this.phoneMandatory = phoneMandatory;
+    return this;
+  }
+
+  /**
+   * Checks phone is mandatory
+   * @return phoneMandatory
+   **/
+  @ApiModelProperty(value = "Checks phone is mandatory")
+  public Boolean isPhoneMandatory() {
+    return phoneMandatory;
+  }
+
+  public void setPhoneMandatory(Boolean phoneMandatory) {
+    this.phoneMandatory = phoneMandatory;
   }
 
   public CheckoutOptions titleMandatory(Boolean titleMandatory) {
@@ -486,6 +507,7 @@ public class CheckoutOptions {
         Objects.equals(this.colorLink, options.colorLink) &&
         Objects.equals(this.dateOfBirthMandatory, options.dateOfBirthMandatory) &&
         Objects.equals(this.shippingDetails, options.shippingDetails) &&
+        Objects.equals(this.phoneMandatory, options.phoneMandatory) &&
         Objects.equals(this.titleMandatory, options.titleMandatory) &&
         Objects.equals(this.additionalCheckbox, options.additionalCheckbox) &&
         Objects.equals(this.nationalIdentificationNumberMandatory, options.nationalIdentificationNumberMandatory) &&
@@ -519,6 +541,7 @@ public class CheckoutOptions {
     sb.append("    colorLink: ").append(toIndentedString(colorLink)).append("\n");
     sb.append("    dateOfBirthMandatory: ").append(toIndentedString(dateOfBirthMandatory)).append("\n");
     sb.append("    shippingDetails: ").append(toIndentedString(shippingDetails)).append("\n");
+    sb.append("    phoneMandatory: ").append(toIndentedString(phoneMandatory)).append("\n");
     sb.append("    titleMandatory: ").append(toIndentedString(titleMandatory)).append("\n");
     sb.append("    additionalCheckbox: ").append(toIndentedString(additionalCheckbox)).append("\n");
     sb.append("    nationalIdentificationNumberMandatory: ").append(toIndentedString(nationalIdentificationNumberMandatory)).append("\n");
