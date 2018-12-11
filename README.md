@@ -98,7 +98,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        Client client = new Client("merchantId", "sharedSecret", HttpTransport.EU_BASE_URL);
+        Client client = new Client("username", "password", HttpTransport.EU_BASE_URL);
         CheckoutOrdersApi checkoutOrdersApi = client.newCheckoutOrdersApi();
 
         try {
