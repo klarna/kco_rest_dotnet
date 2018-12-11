@@ -19,6 +19,7 @@ package com.klarna.rest.api.payments;
 import com.klarna.rest.Client;
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
+import com.klarna.rest.api.payments.model.PaymentsAddress;
 import com.klarna.rest.api.payments.model.PaymentsMerchantSession;
 import com.klarna.rest.api.payments.model.PaymentsMerchantUrls;
 import com.klarna.rest.api.payments.model.PaymentsSession;
@@ -120,5 +121,37 @@ public class SessionsApiTest extends TestCase {
         final String requestPayout = transport.requestPayout.toString();
         assertTrue(requestPayout.contains("\"order_amount\":100"));
         assertTrue(requestPayout.contains("\"confirmation\":\"https://example.com/confirm\""));
+    }
+
+    @Test
+    public void testShippingBillingAddressses() throws IOException {
+        PaymentsSession data = new PaymentsSession()
+            .shippingAddress(new PaymentsAddress()
+                .country("DE")
+                .city("Berlin")
+                .familyName("Test")
+                .givenName("Name")
+            )
+            .billingAddress(new PaymentsAddress()
+                .country("SE")
+                .city("Stockholm")
+                .familyName("John")
+                .givenName("Doe")
+            );
+
+        assertEquals("DE", data.getShippingAddress().getCountry());
+        assertEquals("Test", data.getShippingAddress().getFamilyName());
+        assertEquals("SE", data.getBillingAddress().getCountry());
+        assertEquals("Stockholm", data.getBillingAddress().getCity());
+
+        data = new PaymentsSession();
+        data.setShippingAddress(new PaymentsAddress()
+            .country("AA")
+            .city("BB")
+            .familyName("CC")
+            .givenName("DD")
+        );
+        assertEquals("AA", data.getShippingAddress().getCountry());
+        assertEquals("BB", data.getShippingAddress().getCity());
     }
 }

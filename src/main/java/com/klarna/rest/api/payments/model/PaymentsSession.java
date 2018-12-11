@@ -229,6 +229,11 @@ public class PaymentsSession {
     this.billingAddress = billingAddress;
   }
 
+  public PaymentsSession shippingAddress(PaymentsAddress shippingAddress) {
+    this.shippingAddress = shippingAddress;
+    return this;
+  }
+
    /**
    * Unless the customer has explicitly chosen to enter a separate shipping address, this is a clone of billing_address.
    * @return shippingAddress
@@ -236,6 +241,10 @@ public class PaymentsSession {
   @ApiModelProperty(value = "Unless the customer has explicitly chosen to enter a separate shipping address, this is a clone of billing_address.")
   public PaymentsAddress getShippingAddress() {
     return shippingAddress;
+  }
+
+  public void setShippingAddress(PaymentsAddress shippingAddress) {
+    this.shippingAddress = shippingAddress;
   }
 
   public PaymentsSession orderAmount(Long orderAmount) {
