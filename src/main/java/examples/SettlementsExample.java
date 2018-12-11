@@ -52,11 +52,11 @@ public class SettlementsExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
             String paymentReference = "12345";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             SettlementsPayoutsApi settlementsPayoutsApi = client.newSettlementsPayoutsApi();
 
             try {
@@ -78,10 +78,10 @@ public class SettlementsExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             SettlementsPayoutsApi settlementsPayoutsApi = client.newSettlementsPayoutsApi();
 
             try {
@@ -103,10 +103,10 @@ public class SettlementsExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             SettlementsPayoutsApi settlementsPayoutsApi = client.newSettlementsPayoutsApi();
 
             try {
@@ -138,10 +138,10 @@ public class SettlementsExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             SettlementsTransactionsApi transactionsApi = client.newSettlementsTransactionsApi();
 
             try {
@@ -163,10 +163,10 @@ public class SettlementsExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             SettlementsReportsApi settlementsReportsApi = client.newSettlementsReportsApi();
 
             try {
@@ -199,11 +199,11 @@ public class SettlementsExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
             String paymentReference = "12345";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             SettlementsReportsApi settlementsReportsApi = client.newSettlementsReportsApi();
 
             try {
@@ -229,10 +229,10 @@ public class SettlementsExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             SettlementsReportsApi settlementsReportsApi = client.newSettlementsReportsApi();
 
             try {
@@ -265,11 +265,11 @@ public class SettlementsExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
             String paymentReference = "12345";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             SettlementsReportsApi settlementsReportsApi = client.newSettlementsReportsApi();
 
             try {

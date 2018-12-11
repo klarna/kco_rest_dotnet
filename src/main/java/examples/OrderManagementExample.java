@@ -44,11 +44,11 @@ public class OrderManagementExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
             String orderId = "12345";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             OrderManagementOrdersApi orderManagementOrdersApi = client.newOrderManagementOrdersApi();
 
             try {
@@ -74,11 +74,11 @@ public class OrderManagementExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
             String orderId = "12345";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             OrderManagementOrdersApi orderManagementOrdersApi = client.newOrderManagementOrdersApi();
 
             try {
@@ -104,11 +104,11 @@ public class OrderManagementExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
             String orderId = "12345";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             OrderManagementOrdersApi orderManagementOrdersApi = client.newOrderManagementOrdersApi();
 
             try {
@@ -134,11 +134,11 @@ public class OrderManagementExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
             String orderId = "12345";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             OrderManagementOrdersApi orderManagementOrdersApi = client.newOrderManagementOrdersApi();
 
             try {
@@ -174,11 +174,11 @@ public class OrderManagementExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
             String orderId = "12345";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             OrderManagementOrdersApi orderManagementOrdersApi = client.newOrderManagementOrdersApi();
 
             try {
@@ -204,11 +204,11 @@ public class OrderManagementExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
             String orderId = "12345";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             OrderManagementOrdersApi orderManagementOrdersApi = client.newOrderManagementOrdersApi();
 
             try {
@@ -238,11 +238,11 @@ public class OrderManagementExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
             String orderId = "12345";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             OrderManagementOrdersApi orderManagementOrdersApi = client.newOrderManagementOrdersApi();
 
             try {
@@ -268,11 +268,11 @@ public class OrderManagementExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
             String orderId = "12345";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             OrderManagementOrdersApi orderManagementOrdersApi = client.newOrderManagementOrdersApi();
 
             try {
@@ -316,11 +316,11 @@ public class OrderManagementExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
             String orderId = "12345";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             OrderManagementRefundsApi orderManagementRefundsApi = client.newOrderManagementRefundsApi(orderId);
 
             try {
@@ -369,12 +369,12 @@ public class OrderManagementExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
             String orderId = "12345";
             String refundId = "34567";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             OrderManagementRefundsApi orderManagementRefundsApi = client.newOrderManagementRefundsApi(orderId);
 
             try {

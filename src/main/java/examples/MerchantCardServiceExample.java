@@ -17,12 +17,12 @@ public class MerchantCardServiceExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            final String merchantId = "0";
-            final String sharedSecret = "sharedSecret";
+            final String username = "K123456_abcd12345";
+            final String password = "sharedSecret";
             final String settlementId = "12345";
             final String keyId = "abcde";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             VirtualCreditCardApi vccApi = client.newVirtualCreditCardApi();
 
             try {
@@ -44,12 +44,12 @@ public class MerchantCardServiceExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            final String merchantId = "0";
-            final String sharedSecret = "sharedSecret";
+            final String username = "K123456_abcd12345";
+            final String password = "sharedSecret";
             final String orderId = "12345";
             final String keyId = "abcde";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             VirtualCreditCardApi vccApi = client.newVirtualCreditCardApi();
 
             try {
@@ -71,12 +71,12 @@ public class MerchantCardServiceExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            final String merchantId = "0";
-            final String sharedSecret = "sharedSecret";
+            final String username = "K123456_abcd12345";
+            final String password = "sharedSecret";
             final String orderId = "12345";
             final String keyId = "abcde";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             VirtualCreditCardApi vccApi = client.newVirtualCreditCardApi();
 
             try {

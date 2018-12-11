@@ -19,11 +19,11 @@ public class CustomerTokenExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
             String customerToken = "customerToken";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             TokensApi tokensApi = client.newTokensApi(customerToken);
 
             try {
@@ -45,11 +45,11 @@ public class CustomerTokenExample {
          * @param args Command line arguments
          */
         public static void main(final String[] args) {
-            String merchantId = "0";
-            String sharedSecret = "sharedSecret";
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
             String customerToken = "customerToken";
 
-            Client client = new Client(merchantId, sharedSecret, HttpTransport.EU_TEST_BASE_URL);
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
             TokensApi tokensApi = client.newTokensApi(customerToken);
 
             try {
