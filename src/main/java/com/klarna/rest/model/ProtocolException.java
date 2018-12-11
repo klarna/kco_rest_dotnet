@@ -26,6 +26,7 @@ public class ProtocolException extends ApiException {
      * Constructs a ProtocolException instance.
      *
      * @param message Error message
+     * @param httpStatusCode Unexpected HTTP status code
      */
     public ProtocolException(final String message, int httpStatusCode) {
         super(httpStatusCode, message);
