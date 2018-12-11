@@ -1,3 +1,6 @@
+## v3.0.4 - 2018-12-11
+- Payments API: Add ability to set Shipping Address for Sessions.
+
 ## v3.0.3 - 2018-12-06
 - Checkout API: Add support of phone_mandatory field for Checkout options.
 
