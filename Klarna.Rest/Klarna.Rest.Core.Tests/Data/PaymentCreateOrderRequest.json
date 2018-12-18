@@ -1,0 +1,116 @@
+﻿{
+  "design": "string",
+  "purchase_country": "US",
+  "purchase_currency": "USD",
+  "locale": "en-US",
+  "billing_address": {
+    "given_name": "John",
+    "family_name": "Doe",
+    "email": "john@doe.com",
+    "title": "Mr",
+    "street_address": "Lombard St 10",
+    "street_address2": "Apt 214",
+    "postal_code": "90210",
+    "city": "Beverly Hills",
+    "region": "CA",
+    "phone": "333444555",
+    "country": "US",
+    "organization_name": "string",
+    "attention": "string"
+  },
+  "shipping_address": {
+    "given_name": "John",
+    "family_name": "Doe",
+    "email": "john@doe.com",
+    "title": "Mr",
+    "street_address": "Lombard St 10",
+    "street_address2": "Apt 214",
+    "postal_code": "90210",
+    "city": "Beverly Hills",
+    "region": "CA",
+    "phone": "333444555",
+    "country": "US",
+    "organization_name": "string",
+    "attention": "string"
+  },
+  "order_amount": 0,
+  "order_tax_amount": 0,
+  "order_lines": [
+    {
+      "type": "physical",
+      "reference": "19-402-USA",
+      "name": "Battery Power Pack",
+      "quantity": 0,
+      "quantity_unit": "kg",
+      "unit_price": 0,
+      "tax_rate": 0,
+      "total_amount": 0,
+      "total_discount_amount": 0,
+      "total_tax_amount": 0,
+      "merchant_data": "{\"marketplace_seller_info\":[{\"product_category\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}",
+      "product_url": "https://www.estore.com/products/f2a8d7e34",
+      "image_url": "https://www.exampleobjects.com/logo.png",
+      "product_identifiers": {
+        "category_path": "Electronics Store > Computers & Tablets > Desktops",
+        "global_trade_item_number": "735858293167",
+        "manufacturer_part_number": "BOXNUC5CPYH",
+        "brand": "Intel"
+      }
+    }
+  ],
+  "customer": {
+    "date_of_birth": "string",
+    "title": "string",
+    "gender": "string",
+    "last_four_ssn": "string",
+    "national_identification_number": "string",
+    "type": "string",
+    "vat_id": "string",
+    "organization_registration_id": "string",
+    "organization_entity_type": "LIMITED_COMPANY"
+  },
+  "merchant_urls": {
+    "confirmation": "string",
+    "notification": "string",
+    "push": "string"
+  },
+  "merchant_reference1": "45aa52f387871e3a210645d4",
+  "merchant_reference2": "45aa52f387871e3a210645d4",
+  "merchant_data": "{\"order_speicif\":[{\"substore\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}",
+  "options": {
+    "color_button": "#FF9900",
+    "color_button_text": "#FF9900",
+    "color_checkbox": "#FF9900",
+    "color_checkbox_checkmark": "#FF9900",
+    "color_header": "#FF9900",
+    "color_link": "#FF9900",
+    "color_border": "#FF9900",
+    "color_border_selected": "#FF9900",
+    "color_text": "#FF9900",
+    "color_details": "#FF9900",
+    "color_text_secondary": "#FF9900",
+    "radius_border": "5px"
+  },
+  "attachment": {
+    "content_type": "application/vnd.klarna.internal.emd-v2+json",
+    "body": "{\"marketplace_seller_info\":[{\"product_category\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}"
+  },
+  "custom_payment_method_ids": [
+    "string"
+  ],
+  "status": "complete",
+  "client_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJzZXNzaW9uX2lkIiA6ICIw",
+  "expires_at": "2038-01-19T03:14:07.000Z",
+  "acquiring_channel": "in_store",
+  "payment_method_categories": [
+    {
+      "identifier": "pay_later",
+      "name": "Pay Later",
+      "asset_urls": {
+        "descriptive": "https://cdn.klarna.com/1.0/shared/image/generic/badge/en_us/pay_later/descriptive/pink.svg",
+        "standard": "https://cdn.klarna.com/1.0/shared/image/generic/badge/en_us/pay_later/standard/pink.svg"
+      }
+    }
+  ],
+  "auto_capture": false
+}

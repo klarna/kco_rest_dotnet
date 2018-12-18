@@ -1,0 +1,28 @@
+﻿{
+  "shipping_address": {
+    "given_name": "Klara",
+    "family_name": "Joyce",
+    "title": "Mrs",
+    "street_address": "Apartment 10",
+    "street_address2": "1 Safeway",
+    "postal_code": "12345",
+    "city": "Knoxville",
+    "region": "TN",
+    "country": "us",
+    "email": "klara.joyce@klarna.com",
+    "phone": "1-555-555-5555"
+  },
+  "billing_address": {
+    "given_name": "Klara",
+    "family_name": "Joyce",
+    "title": "Mrs",
+    "street_address": "Apartment 10",
+    "street_address2": "1 Safeway",
+    "postal_code": "12345",
+    "city": "Knoxville",
+    "region": "TN",
+    "country": "us",
+    "email": "klara.joyce@klarna.com",
+    "phone": "1-555-555-5555"
+  }
+}

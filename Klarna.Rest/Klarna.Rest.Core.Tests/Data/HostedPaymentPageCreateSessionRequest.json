@@ -1,0 +1,22 @@
+﻿{
+  "merchant_urls": {
+    "cancel": "https://example.com/cancel",
+    "failure": "https://example.com/fail",
+    "privacy_policy": "https://example.com/privacy_policy",
+    "success": "https://example.com/success?token={{authorization_token}}",
+    "terms": "https://example.com/terms"
+  },
+  "options": {
+    "background_images": [
+      {
+        "url": "string",
+        "width": 0
+      }
+    ],
+    "logo_url": "https://example.com/logo.jpg",
+    "page_title": "Complete your purchase",
+    "payment_method_category": "pay_later",
+    "purchase_type": "buy"
+  },
+  "payment_session_url": "https://api.klarna.com/payments/v1/sessions/92d97f60-7a78-46a5-8f68-c56fe52dc4af"
+}

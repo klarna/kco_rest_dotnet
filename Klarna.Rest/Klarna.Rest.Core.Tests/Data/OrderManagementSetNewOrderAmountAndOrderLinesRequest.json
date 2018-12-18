@@ -1,0 +1,27 @@
+﻿{
+  "order_amount": 0,
+  "description": "Added charger",
+  "order_lines": [
+    {
+      "reference": "75001",
+      "type": "physical",
+      "quantity": 1,
+      "quantity_unit": "pcs.",
+      "name": "string",
+      "total_amount": 0,
+      "unit_price": 0,
+      "total_discount_amount": 0,
+      "tax_rate": 0,
+      "total_tax_amount": 0,
+      "merchant_data": "Some metadata",
+      "product_url": "https://yourstore.example/product/headphones",
+      "image_url": "https://yourstore.example/product/headphones.png",
+      "product_identifiers": {
+        "category_path": "Electronics Store > Computers & Tablets > Desktops",
+        "global_trade_item_number": "735858293167",
+        "manufacturer_part_number": "BOXNUC5CPYH",
+        "brand": "Intel"
+      }
+    }
+  ]
+}

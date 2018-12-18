@@ -1,0 +1,32 @@
+﻿{
+  "payouts": [
+    {
+      "totals": {
+        "commission_amount": 550,
+        "repay_amount": 550,
+        "sale_amount": 500,
+        "holdback_amount": 550,
+        "tax_amount": 550,
+        "settlement_amount": 550,
+        "fee_correction_amount": 550,
+        "reversal_amount": 550,
+        "release_amount": 550,
+        "return_amount": 550,
+        "fee_amount": 500
+      },
+      "payment_reference": "XISA93DJ",
+      "payout_date": "2016-12-14T07:52:26Z",
+      "currency_code": "USD",
+      "merchant_settlement_type": "NET",
+      "merchant_id": "string",
+      "transactions": "https://{settlements_api}/transactions?payment_reference=XISA93DJ"
+    }
+  ],
+  "pagination": {
+    "count": 10,
+    "total": 42,
+    "next": "http://example.com/collection?offset=21&size=10",
+    "prev": "http://example.com/collection?offset=0&size=10",
+    "offset": 10
+  }
+}

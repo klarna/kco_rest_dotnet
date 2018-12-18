@@ -1,0 +1,5 @@
+﻿{
+  "order_id": "string",
+  "redirect_url": "https://credit.klarna.com/v1/sessions/0b1d9815-165e-42e2-8867-35bc03789e00/redirect",
+  "fraud_status": "string"
+}

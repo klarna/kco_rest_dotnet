@@ -1,0 +1,9 @@
+﻿{
+  "contact_information": {
+    "email": "test@example.com",
+    "phone": "07000212345",
+    "phone_country": "SE"
+  },
+  "method": "sms",
+  "template": "INSTORE_PURCHASE"
+}

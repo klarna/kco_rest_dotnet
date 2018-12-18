@@ -1,0 +1,13 @@
+﻿{
+  "shipping_info": [
+    {
+      "shipping_company": "DHL US",
+      "shipping_method": "Home",
+      "tracking_number": "63456415674545679874",
+      "tracking_uri": "http://shipping.example/findmypackage?63456415674545679874",
+      "return_shipping_company": "DHL US",
+      "return_tracking_number": "93456415674545679888",
+      "return_tracking_uri": "http://shipping.example/findmypackage?93456415674545679888"
+    }
+  ]
+}
