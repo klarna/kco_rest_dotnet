@@ -1,33 +1,67 @@
 # Klarna Checkout REST .NET SDK
 [![NuGet Version][nuget-shield]](https://www.nuget.org/packages/Klarna.Rest/)
 
-Klarna Checkout is a revolutionary payment solution that is changing the way
-people shop online. First, consumers verify their purchase with the minimum
-amount of information through intelligent identification, securing your order
-immediately, and then complete their payment afterwards – separating buying
-from paying and dramatically increasing conversion. Klarna Checkout also allows
-merchants to offer all payment methods through one supplier, minimizing
-administration, costs and integration time.
+## Welcome to Klarna. Smoooth payments.
+
+### Klarna Checkout
+A full checkout experience embedded on your site. It lets your customers check out on your
+site with only their email and ZIP, and pay with the major payment methods including the specific
+Klarna payment methods. All available in one integration.
+
+### Klarna Payments
+Klarna offers three payment methods. Pay now, Pay later and Slice it. It offers your consumers
+to try before they buy, finance purchases on your store, or make use of other payment
+options made available by Klarna.
 
 
 ## Get started
 
 ### Prerequisites
 * Microsoft .NET Framework 4 or above
-* API credentials
+* [API credentials](#api-credentials)
 
 
-### Usage
+### API Credentials
+
+Before getting a production account you can get a playground one.
+Register here to be able to test your SDK integration before go live:
+
+- https://playground.eu.portal.klarna.com/developer-sign-up - for EU countries
+- https://playground.us.portal.klarna.com/developer-sign-up - for the US
+
+Later you need to register as a Klarna merchant to get a production credentials
+
+- https://developers.klarna.com/en/gb/kco-v3
+
+
+## Installation and Usage
+
 Example files can be found in the [Klarna.Rest/Klarna.Rest.Examples/](examples) project.
+
+### NuGet
+
+To install .NET SDK for Klarna, run the following command in the Package Manager Console:
+
+```
+PM> Install-Package Klarna.Rest -Version x.y.z
+```
+
+Check the https://www.nuget.org/packages/Klarna.Rest/ to get information about the latest version.
+
 
 
 ## Documentation
+Klarna API documentation: https://developers.klarna.com/api/  
+SDK References: https://klarna.github.io/kco_rest_dotnet/
+
+
+Example files can be found in the [Klarna.Rest/Klarna.Rest.Examples/](examples) project.
 Additional documentation can be found at https://developers.klarna.com.
 
 
 ## Questions and feedback
 If you have any questions concerning this product or the implementation,
-please contact [integration@klarna.com](mailto:integration@klarna.com).
+please contact [developers@klarna.com](mailto:developers@klarna.com).
 
 
 ## How to contribute
