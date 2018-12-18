@@ -38,13 +38,27 @@ Later you need to register as a Klarna merchant to get a production credentials
 
 Example files can be found in the [Klarna.Rest/Klarna.Rest.Examples/](examples) project.
 
-### NuGet
+### Package Manager
 
 To install .NET SDK for Klarna, run the following command in the Package Manager Console:
 
 ```
 PM> Install-Package Klarna.Rest -Version x.y.z
 ```
+
+### .NET CLI
+
+```
+> dotnet add package Klarna.Rest --version x.y.z
+```
+
+### Paket CLI
+
+```
+paket add Klarna.Rest --version x.y.z
+
+```
+### Usage
 
 Check the https://www.nuget.org/packages/Klarna.Rest/ to get information about the latest version.
 
