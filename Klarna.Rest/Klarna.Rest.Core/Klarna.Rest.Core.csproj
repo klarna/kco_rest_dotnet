@@ -3,14 +3,50 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Version>3.0.0</Version>
+    <AssemblyName>Klarna.Rest.Core</AssemblyName>
+    <AssemblyTitle>Klarna Checkout REST .NET SDK</AssemblyTitle>
+    <OutputType>Library</OutputType>
+    <AssemblyCompany>Klarna</AssemblyCompany>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\'))</SolutionDir>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>true</DelaySign>
+    <AssemblyOriginatorKeyFile>..\private.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>bin\Debug\netstandard2.0\Klarna.Rest.Core.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin/Release/</OutputPath>
+  </PropertyGroup>
+
+
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <SignKey>$(AssemblyOriginatorKeyFile)</SignKey>
+    <Assembly>$(SolutionDir)Klarna.Rest.Core/$(OutputPath)/$(TargetFramework)/$(AssemblyName).dll</Assembly>
+  </PropertyGroup>
+  <Choose>
+    <When Condition=" '$(Configuration)'=='Debug' And !Exists('$(SignKey)') ">
+      <PropertyGroup>
+        <SignCommand>sn -Vr $(Assembly)</SignCommand>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <SignCommand>sn -R $(Assembly) $(SignKey)</SignCommand>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+  <Target Name="Sign">
+    <Error Condition=" !Exists('$(SignKey)') And '$(Configuration)'=='Release' " Text="Sign key missing" />
+    <Exec Command="$(SignCommand)" />
+  </Target>
 </Project>

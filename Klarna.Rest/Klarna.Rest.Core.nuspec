@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>klarna</authors>
+    <owners>klarna</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>
+    <projectUrl>https://github.com/klarna/kco_rest_dotnet.git</projectUrl>
+    <iconUrl>https://cdn.klarna.com/1.0/shared/image/generic/logo/en_gb/basic/logo_black.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Copyright 2018</copyright>
+    <tags>Klarna Checkout Payments SDK</tags>
+  </metadata>
+</package>
