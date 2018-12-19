@@ -1,5 +1,5 @@
-# Klarna Checkout REST .NET SDK
-[![NuGet Version][nuget-shield]](https://www.nuget.org/packages/Klarna.Rest/)
+# Klarna Checkout REST.Core .NET SDK
+[![NuGet Version][nuget-shield]](https://www.nuget.org/packages/Klarna.Rest.Core/)
 
 ## Welcome to Klarna. Smoooth payments.
 
@@ -36,31 +36,31 @@ Later you need to register as a Klarna merchant to get a production credentials
 
 ## Installation and Usage
 
-Example files can be found in the [Klarna.Rest/Klarna.Rest.Examples/](examples) project.
+Example files can be found in the [Klarna.Rest/Klarna.Rest.Core.Examples/](examples) project.
 
 ### Package Manager
 
 To install .NET SDK for Klarna, run the following command in the Package Manager Console:
 
 ```
-PM> Install-Package Klarna.Rest -Version x.y.z
+PM> Install-Package Klarna.Rest.Core -Version x.y.z
 ```
 
 ### .NET CLI
 
 ```
-> dotnet add package Klarna.Rest --version x.y.z
+> dotnet add package Klarna.Rest.Core --version x.y.z
 ```
 
 ### Paket CLI
 
 ```
-paket add Klarna.Rest --version x.y.z
+paket add Klarna.Rest.Core --version x.y.z
 
 ```
 ### Usage
 
-Check the https://www.nuget.org/packages/Klarna.Rest/ to get information about the latest version.
+Check the https://www.nuget.org/packages/Klarna.Rest.Core/ to get information about the latest version.
 
 
 
@@ -69,7 +69,7 @@ Klarna API documentation: https://developers.klarna.com/api/
 SDK References: https://klarna.github.io/kco_rest_dotnet/
 
 
-Example files can be found in the [Klarna.Rest/Klarna.Rest.Examples/](examples) project.
+Example files can be found in the [Klarna.Rest/Klarna.Rest.Core.Examples/](examples) project.
 Additional documentation can be found at https://developers.klarna.com.
 
 
@@ -100,4 +100,4 @@ To contribute, the following criteria needs to be fulfilled:
 Klarna Checkout REST .NET SDK is licensed under
 [Apache License, Version 2.0](http://www.apache.org/LICENSE-2.0)
 
-[nuget-shield]: https://img.shields.io/nuget/v/Klarna.Rest.svg?style=flat
+[nuget-shield]: https://img.shields.io/nuget/v/Klarna.Rest.Core.svg?style=flat

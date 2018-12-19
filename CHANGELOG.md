@@ -1,6 +1,8 @@
-## v3.0.0 - 2018-11-27
+## v3.0.0 - 2018-12-19
 - Rewritten from scratch as a .Net Standard 2.0 class library using latest available documentation - *Benny.O*
 - Supports Checkout v3, Payment v1, Order Management v1, Settlements v1, Customer Token v1, Hosted Payment Page v1, Merchant Card Service v3 - *Benny.O*
+- Put SDK References documentation to a GH Pages:
+    https://klarna.github.io/kco_rest_dotnet/
 
 ## v2.2.0 - 2016-02-15
 - **NEW META-112** Updating MerchantUrls model for shipping_option_update, address_update & notification - *Christer.G*
