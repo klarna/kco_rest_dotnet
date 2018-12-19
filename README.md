@@ -36,7 +36,7 @@ Later you need to register as a Klarna merchant to get a production credentials
 
 ## Installation and Usage
 
-Example files can be found in the [Klarna.Rest/Klarna.Rest.Core.Examples/](examples) project.
+Example files can be found in the [examples](Klarna.Rest/Klarna.Rest.Core.Examples) project.
 
 ### Package Manager
 
