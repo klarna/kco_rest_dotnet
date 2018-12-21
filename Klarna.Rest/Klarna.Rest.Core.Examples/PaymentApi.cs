@@ -1,10 +1,138 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using Klarna.Rest.Core.Common;
+using Klarna.Rest.Core.Commuication;
+using Klarna.Rest.Core.Model.Enum;
+using Klarna.Rest.Core.Model;
 
 namespace Klarna.Rest.Core.Examples
 {
     class PaymentApi
     {
+        public void CreateSession()
+        {
+            var username = "0_abc";
+            var password = "sharedsecret";
+
+            var klarna = new Klarna(username, password, KlarnaEnvironment.TestingEurope);
+            try
+            {
+                var paymentSession = new PaymentCreditSession
+                {
+                    PurchaseCountry = "SE",
+                    PurchaseCurrency = "SEK",
+                    Locale = "sv-se",
+                    OrderAmount = 1000,
+                    OrderTaxAmount = 2000,
+                    OrderLines = new List<OrderLine>()
+                    {
+                            new OrderLine
+                            {
+                                Type = OrderLineType.physical,
+                                Name = "Foo",
+                                Quantity = 1,
+                                UnitPrice = 10000,
+                                TaxRate = 2500,
+                                TotalAmount = 10000,
+                                TotalTaxAmount = 2000,
+                                TotalDiscountAmount = 0,
+                            }
+                    },
+                    MerchantReference1 ="StoreOrderId",
+                    Options = new PaymentOptions{
+                        ColorButton ="000000"
+                    },
+                    BillingAddress = new PaymentAddressInfo
+                    {
+                        GivenName ="John",
+                        FamilyName ="Doe",
+                        StreetAddress ="Sveavägen 46",
+                        PostalCode = "103 69",
+                        Country ="SE",
+                         Email ="Youremail@test.com",
+                         City="Stockholm",
+                         Phone ="+46752242244"
+                    }
+                };
+                var creditSession = klarna.Payment.CreateCreditSession(paymentSession).Result;
+                Console.WriteLine("Client Token: "+creditSession.ClientToken);
+                Console.WriteLine("Session ID: "+creditSession.SessionId);
+                Console.WriteLine("The following categories are avaliable");
+                foreach(PaymentMethodCategory category in creditSession.PaymentMethodCategories)
+                {
+                    Console.WriteLine("Name: "+category.Name);
+                    Console.WriteLine("Assets Url: "+category.AssetUrls);
+                    Console.WriteLine("Unique Identifier: "+category.Identifier);
+                }
+
+            }
+            catch (ApiException ex)
+            {
+                Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                Console.WriteLine(ex.ErrorMessage.CorrelationId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        /// <summary>
+        /// Reads the session.
+        /// </summary>
+        public void ReadSession()
+        {
+            var username = "0_abc";
+            var password = "sharedsecret";
+
+            var klarna = new Klarna(username, password, KlarnaEnvironment.TestingEurope);
+            var sessionId = "234534...345345....345";
+            try
+            {
+                var session = klarna.Payment.GetCreditSession(sessionId).Result;
+                Console.WriteLine("Client Token: " + session.ClientToken);
+                var billingInfo = session.BillingAddress;
+                var orderslines = session.OrderLines;
+
+            }
+            catch (ApiException ex)
+            {
+                Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                Console.WriteLine(ex.ErrorMessage.CorrelationId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        /// <summary>
+        /// Deletes the authorization.
+        /// </summary>
+        public void DeleteAuthorization()
+        {
+            var username = "0_abc";
+            var password = "sharedsecret";
+
+            var klarna = new Klarna(username, password, KlarnaEnvironment.TestingEurope);
+            var authorizationToken = "234534...345345....345";
+            try
+            {
+                klarna.Payment.CancelAuthorization(authorizationToken).RunSynchronously();
+
+
+            }
+            catch (ApiException ex)
+            {
+                Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                Console.WriteLine(ex.ErrorMessage.CorrelationId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
     }
 }
