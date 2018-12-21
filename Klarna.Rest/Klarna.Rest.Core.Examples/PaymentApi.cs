@@ -133,6 +133,43 @@ namespace Klarna.Rest.Core.Examples
                 Console.WriteLine(ex.Message);
             }
         }
+        public void CreateConsumerToken()
+        {
+            var username = "0_abc";
+            var password = "sharedsecret";
+
+            var klarna = new Klarna(username, password, KlarnaEnvironment.TestingEurope);
+            var authorization_token = "234534...345345....345";
+            var consumertokenreqest = new PaymentGenerateConsumerTokenRequest {
+                BillingAddress = new PaymentAddressInfo {
+                    GivenName = "John",
+                    FamilyName = "Doe",
+                    StreetAddress = "Sveavägen 46",
+                    PostalCode = "103 69",
+                    Country = "SE",
+                    Email = "Youremail@test.com",
+                    City = "Stockholm",
+                    Phone = "+46752242244"
+                }
+            };
+
+            try
+            {
+                var consumertoken = klarna.Payment.GenerateConsumerToken(authorization_token, consumertokenreqest).Result;
+                Console.WriteLine("Consumer Token ID: " + consumertoken.TokenId);
+
+            }
+            catch (ApiException ex)
+            {
+                Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                Console.WriteLine(ex.ErrorMessage.CorrelationId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
 
     }
 }
