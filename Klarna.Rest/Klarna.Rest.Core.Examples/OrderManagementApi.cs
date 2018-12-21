@@ -49,7 +49,7 @@ namespace Klarna.Rest.Core.Examples
             try
             {
 
-                var result = klarna.OrderManagement.AcknowledgeOrder(orderId);
+               klarna.OrderManagement.AcknowledgeOrder(orderId).RunSynchronously();
             }
             catch (ApiException ex)
             {
@@ -107,7 +107,7 @@ namespace Klarna.Rest.Core.Examples
                         }
                     }
                 };
-                var CaptureId = klarna.OrderManagement.CreateCapture(orderId, captureData);
+                klarna.OrderManagement.CreateCapture(orderId, captureData).RunSynchronously();
 
             }
             catch (ApiException ex)
@@ -121,6 +121,9 @@ namespace Klarna.Rest.Core.Examples
                 Console.WriteLine(ex.Message);
             }
         }
+        /// <summary>
+        /// Cancels the order.
+        /// </summary>
         public void CancelOrder()
         {
             var username = "0_abc";
@@ -130,7 +133,51 @@ namespace Klarna.Rest.Core.Examples
             var orderId = "abc-abcdefg-abc";
             try
             {
-                var result = klarna.OrderManagement.CancelOrder(orderId);
+                klarna.OrderManagement.CancelOrder(orderId).RunSynchronously();
+            }
+            catch (ApiException ex)
+            {
+                Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                Console.WriteLine(ex.ErrorMessage.CorrelationId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        /// <summary>
+        /// Refunds the order.
+        /// </summary>
+        public void RefundOrder()
+        {
+            var username = "0_abc";
+            var password = "sharedsecret";
+
+            var klarna = new Klarna(username, password, KlarnaEnvironment.TestingEurope);
+            var orderId = "abc-abcdefg-abc";
+            try
+            {
+                var refundData = new OrderManagementRefund
+                {
+                    RefundedAmount = 10000,
+                    Description = "Full refund for order",
+                    OrderLines = new List<OrderLine>()
+                    {
+                        new OrderLine
+                            {
+                                Type = OrderLineType.physical,
+                                Name = "Foo",
+                                Quantity = 1,
+                                UnitPrice = 10000,
+                                TaxRate = 2500,
+                                TotalAmount = 10000,
+                                TotalTaxAmount = 2000,
+                                TotalDiscountAmount = 0,
+                            }
+                    }
+                };
+               klarna.OrderManagement.CreateRefund(orderId,refundData).RunSynchronously();
             }
             catch (ApiException ex)
             {
