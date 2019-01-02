@@ -175,12 +175,13 @@ namespace Klarna.Rest.Core.Store
         /// </summary>
         /// <param name="orderId">Id of order to create capture</param>
         /// <param name="capture">The <see cref="OrderManagementCapture"/> object</param>
-        /// <returns></returns>
-        public async Task CreateCapture(string orderId, OrderManagementCreateCapture capture)
+        /// <returns>Object of <see cref="OrderManagementCapture"/> </returns>
+        public async Task<OrderManagementCapture> CreateCapture(string orderId, OrderManagementCreateCapture capture)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/captures");
 
-            await Post(url, capture);
+            OrderManagementCapture response = await Post<OrderManagementCapture>(url, capture);
+            return response;
         }
 
         /// <summary>
