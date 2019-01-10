@@ -1,3 +1,9 @@
+## v3.0.5 - 2018-01-10
+- Security fix: Upgrade com.fasterxml.jackson.core:jackson-databind to version **2.9.8**  
+  FasterXML jackson-databind 2.x before 2.9.8 might allow attackers to have unspecified
+   impact by leveraging failure to block the jboss-common-core class from polymorphic 
+   deserialization: CVE-2018-19360, CVE-2018-19361, CVE-2018-19362
+
 ## v3.0.4 - 2018-12-11
 - Payments API: Add ability to set Shipping Address for Sessions.
 
