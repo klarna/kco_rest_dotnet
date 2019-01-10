@@ -6,41 +6,41 @@
 ## Welcome to Klarna. Smoooth payments.
 
 ### Klarna Checkout
+
 A full checkout experience embedded on your site. It lets your customers check out on your
 site with only their email and ZIP, and pay with the major payment methods including the specific
 Klarna payment methods. All available in one integration.
 
 ### Klarna Payments
+
 Klarna offers three payment methods. Pay now, Pay later and Slice it. It offers your consumers
 to try before they buy, finance purchases on your store, or make use of other payment
 options made available by Klarna.
-
 
 ## Getting started
 
 SDK covers all of Klarna API: https://developers.klarna.com/api/
 
 ### Prerequisites
+
 * Java 1.7 version or higher
 * [API credentials](#api-credentials)
-
 
 ### API Credentials
 
 Before getting a production account you can get a playground one.
 Register here to be able to test your SDK integration before go live:
 
-- https://playground.eu.portal.klarna.com/developer-sign-up - for EU countries
-- https://playground.us.portal.klarna.com/developer-sign-up - for the US
+* [https://playground.eu.portal.klarna.com/developer-sign-up](https://playground.eu.portal.klarna.com/developer-sign-up) - for EU countries
+* [https://playground.us.portal.klarna.com/developer-sign-up](https://playground.us.portal.klarna.com/developer-sign-up) - for the US
 
 Later you need to register as a Klarna merchant to get a production credentials
 
-- https://developers.klarna.com/en/gb/kco-v3
+* [https://developers.klarna.com/en/gb/kco-v3](https://developers.klarna.com/en/gb/kco-v3)
 
 ## Installing the Java SDK
 
 The Java SDK requires **Java 1.7** version or higher.
-
 
 ### Maven
 
@@ -58,13 +58,14 @@ To install the Java SDK from the Central Maven repository using Maven, add the f
 
 To install the Java SDK from the Central Maven repository using Gradle, add the following lines to `build.gradle`:
 
-```
+```groovy
 dependencies {
     compile group: 'com.klarna', name: 'kco-rest', version:'3.0+'
 }
 ```
 
 ## Documentation
+
 The various documentation is available:
 
 * [Developers Portal](https://developers.klarna.com);
@@ -80,50 +81,50 @@ The basic workflow is the following:
 1) Create an SDK Client
 2) Build the new API instance via created Client
 
-```java
-package com.mycompany.app;
+    ```java
+    package com.mycompany.app;
 
-import com.klarna.rest.Client;
-import com.klarna.rest.api.checkout.CheckoutOrdersApi;
-import com.klarna.rest.api.checkout.model.CheckoutOrder;
-import com.klarna.rest.http_transport.HttpTransport;
-import com.klarna.rest.model.ApiException;
+    import com.klarna.rest.Client;
+    import com.klarna.rest.api.checkout.CheckoutOrdersApi;
+    import com.klarna.rest.api.checkout.model.CheckoutOrder;
+    import com.klarna.rest.http_transport.HttpTransport;
+    import com.klarna.rest.model.ApiException;
 
-import java.io.IOException;
+    import java.io.IOException;
 
-/**
- * Klarna Checkout Example
- */
-public class App
-{
-    public static void main( String[] args )
+    /**
+     * Klarna Checkout Example
+     */
+    public class App
     {
-        Client client = new Client("username", "password", HttpTransport.EU_BASE_URL);
-        CheckoutOrdersApi checkoutOrdersApi = client.newCheckoutOrdersApi();
+        public static void main( String[] args )
+        {
+            Client client = new Client("username", "password", HttpTransport.EU_BASE_URL);
+            CheckoutOrdersApi checkoutOrdersApi = client.newCheckoutOrdersApi();
 
-        try {
-            CheckoutOrder order = checkoutOrdersApi.fetch("checkoutOrderID-123");
+            try {
+                CheckoutOrder order = checkoutOrdersApi.fetch("checkoutOrderID-123");
 
-            // Order has been successfully fetched, we can get some info, e.g. HTML Snippet
-            // This snippet can be embedded into your website/templates/etc
-            String htmlSnippet = order.getHtmlSnippet();
-            System.out.println(htmlSnippet);
+                // Order has been successfully fetched, we can get some info, e.g. HTML Snippet
+                // This snippet can be embedded into your website/templates/etc
+                String htmlSnippet = order.getHtmlSnippet();
+                System.out.println(htmlSnippet);
 
-            // Or print a whole order data
-            System.out.println(order);
+                // Or print a whole order data
+                System.out.println(order);
 
-        } catch (IOException e) {
-            System.out.println("Connection problem: " + e.getMessage());
-        } catch (ApiException e) {
-            System.out.println("API issue: " + e.getMessage());
+            } catch (IOException e) {
+                System.out.println("Connection problem: " + e.getMessage());
+            } catch (ApiException e) {
+                System.out.println("API issue: " + e.getMessage());
+            }
         }
     }
-}
-```
+    ```
 
 ## Logging and Debugging
 
-The Java SDK uses *slf4j* library as an abstraction for various logging frameworks. We have not provided 
+The Java SDK uses the *slf4j* library as an abstraction for various logging frameworks. We have not provided
 any back-end implementation.
 Choose an implementation that applies to your project.
 
@@ -132,15 +133,15 @@ For more information, see the [slf4j](https://www.slf4j.org/) documentation.
 You can debug and check all the requests and responses made via the SDK. In order to enable debug mode
 you need to change the logging level of your Logger to "debug".
 
-For example, if you use log4j2 logger, put this line to your log4j2.properties file:
+For example, if you use `log4j2` logger, put this line to your `log4j2.properties` file:
 
-```ini
+```properties
 rootLogger.level = debug
 ```
 
 The output will look like:
 
-```
+```shell
 [18-Oct-25 14:16:09:652] [DEBUG] [HttpUrlConnectionTransport:312] - DEBUG MODE: Request
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 GET: https://api.playground.klarna.com/customer-token/v1/tokens/TOKEN
@@ -160,23 +161,22 @@ products. Therefore, we require you to follow these guidelines if you wish
 to contribute.
 
 To contribute, the following criteria needs to be fulfilled:
+
 * Description regarding what has been changed and why
 * Pull requests should implement a boxed change
 * All code and documentation must follow the style specified by
   the included configuration (src/checkstyle.xml)
 * New features and bug fixes must have accompanying unit tests:
-    * Positive tests
-    * Negative tests
-    * Boundary tests (if possible)
-    * No less than 90% decision coverage
+  * Positive tests
+  * Negative tests
+  * Boundary tests (if possible)
+  * No less than 90% decision coverage
 * All unit tests should pass
-
 
 ## Questions and feedback
 
 If you have any questions concerning this product,
 please contact [developers@klarna.com](mailto:developers@klarna.com).
-
 
 ## License
 
