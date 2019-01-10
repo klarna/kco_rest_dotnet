@@ -190,5 +190,31 @@ namespace Klarna.Rest.Core.Examples
                 Console.WriteLine(ex.Message);
             }
         }
+        /// <summary>
+        /// Resends the consumer sendouts.
+        /// </summary>
+        public void ResendConsumerSendouts()
+        {
+            var username = "0_abc";
+            var password = "sharedsecret";
+
+            var klarna = new Klarna(username, password, KlarnaEnvironment.TestingEurope);
+            var orderId = "abc-abcdefg-abc";
+            var captureId = "23424....234234234.....234234";
+            try
+            {
+                klarna.OrderManagement.TriggerResendOfCustomerCommunication(orderId, captureId).RunSynchronously();
+            }
+            catch (ApiException ex)
+            {
+                Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                Console.WriteLine(ex.ErrorMessage.CorrelationId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }
