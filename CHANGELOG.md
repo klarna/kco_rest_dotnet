@@ -1,3 +1,11 @@
+## v3.1.0 - 2019-xx-xx (**Partially backward compatibility**)
+- Change `CreateCapture` method signature. The method returns Capture data now when creating a new capture:
+    ```csharp
+    - public async Task CreateCapture(string orderId, OrderManagementCreateCapture capture)
+    + public async Task<OrderManagementCapture> CreateCapture(string orderId, OrderManagementCreateCapture capture)
+    ```
+- Add more examples
+
 ## v3.0.0 - 2018-12-19
 - Rewritten from scratch as a .Net Standard 2.0 class library using latest available documentation - *Benny.O*
 - Supports Checkout v3, Payment v1, Order Management v1, Settlements v1, Customer Token v1, Hosted Payment Page v1, Merchant Card Service v3 - *Benny.O*
