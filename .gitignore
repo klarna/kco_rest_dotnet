@@ -161,3 +161,7 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+
+# DocFX artifacts
+docfx_project/_site
+docfx_project/obj
