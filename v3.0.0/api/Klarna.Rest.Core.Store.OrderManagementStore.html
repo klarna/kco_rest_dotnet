@@ -1,0 +1,981 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class OrderManagementStore
+   | Klarna Checkout REST.Core .NET SDK </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class OrderManagementStore
+   | Klarna Checkout REST.Core .NET SDK ">
+    <meta name="generator" content="docfx 2.40.5.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <div class="subnav navbar navbar-default" style="display: table; width:100%;">
+          <a href="index.html" style="display: table-cell; vertical-align: middle;">
+            <img id="logo" class="svg" src="../api/logo.png" alt="" style="height: 40px; margin: 10px 15px 10px 10px">
+          </a>
+          <div class="container hide-when-search" id="breadcrumb" style="display: table-cell; vertical-align: middle; padding: 4px 0 0 0;">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Klarna.Rest.Core.Store.OrderManagementStore">
+  
+  
+  <h1 id="Klarna_Rest_Core_Store_OrderManagementStore" data-uid="Klarna.Rest.Core.Store.OrderManagementStore" class="text-break">Class OrderManagementStore
+  </h1>
+  <div class="markdown level0 summary"><p>The Order Management API is used for handling an order after the customer has completed the purchase. It is used for updating, capturing and refunding an order as well as to see the history of events that have affected this order.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Klarna.Rest.Core.Commuication.BaseRestClient.html">BaseRestClient</a></div>
+    <div class="level2"><a class="xref" href="Klarna.Rest.Core.Commuication.BaseStore.html">BaseStore</a></div>
+    <div class="level3"><span class="xref">OrderManagementStore</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Commuication.BaseStore.html#Klarna_Rest_Core_Commuication_BaseStore_ApiControllerUri">BaseStore.ApiControllerUri</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Commuication.BaseRestClient.html#Klarna_Rest_Core_Commuication_BaseRestClient_ApiSession">BaseRestClient.ApiSession</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Commuication.BaseRestClient.html#Klarna_Rest_Core_Commuication_BaseRestClient_Post__1_System_String_System_Object_">BaseRestClient.Post&lt;T&gt;(String, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Commuication.BaseRestClient.html#Klarna_Rest_Core_Commuication_BaseRestClient_Post_System_String_System_Object_">BaseRestClient.Post(String, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Commuication.BaseRestClient.html#Klarna_Rest_Core_Commuication_BaseRestClient_Patch_System_String_System_Object_">BaseRestClient.Patch(String, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Commuication.BaseRestClient.html#Klarna_Rest_Core_Commuication_BaseRestClient_Delete_System_String_">BaseRestClient.Delete(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Commuication.BaseRestClient.html#Klarna_Rest_Core_Commuication_BaseRestClient_Put__1_System_String_System_Object_">BaseRestClient.Put&lt;T&gt;(String, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Commuication.BaseRestClient.html#Klarna_Rest_Core_Commuication_BaseRestClient_Get__1_System_String_System_Collections_Generic_IDictionary_System_String_System_String__">BaseRestClient.Get&lt;T&gt;(String, IDictionary&lt;String, String&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Commuication.BaseRestClient.html#Klarna_Rest_Core_Commuication_BaseRestClient_Get_System_String_">BaseRestClient.Get(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Commuication.BaseRestClient.html#Klarna_Rest_Core_Commuication_BaseRestClient_GetStream_System_String_">BaseRestClient.GetStream(String)</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Klarna.Rest.Core.Store.html">Klarna.Rest.Core.Store</a></h6>
+  <h6><strong>Assembly</strong>: Klarna.Rest.Core.dll</h6>
+  <h5 id="Klarna_Rest_Core_Store_OrderManagementStore_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class OrderManagementStore : BaseStore</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.0/apiSpec/new?filename=Klarna_Rest_Core_Store_OrderManagementStore_AcknowledgeOrder_System_String_.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Store.OrderManagementStore.AcknowledgeOrder(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.0/Klarna.Rest/Klarna.Rest.Core/Store/OrderManagementStore.cs/#L91">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Store_OrderManagementStore_AcknowledgeOrder_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.AcknowledgeOrder*"></a>
+  <h4 id="Klarna_Rest_Core_Store_OrderManagementStore_AcknowledgeOrder_System_String_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.AcknowledgeOrder(System.String)">AcknowledgeOrder(String)</h4>
+  <div class="markdown level1 summary"><p>Acknowledge order
+<a href="https://developers.klarna.com/api/#order-management-api-acknowledge-order">https://developers.klarna.com/api/#order-management-api-acknowledge-order</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task AcknowledgeOrder(string orderId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">orderId</span></td>
+        <td><p>Id of order to acknowledge</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.0/apiSpec/new?filename=Klarna_Rest_Core_Store_OrderManagementStore_AddShippingInfoToCapture_System_String_System_String_Klarna_Rest_Core_Model_OrderManagementAddShippingInfo_.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Store.OrderManagementStore.AddShippingInfoToCapture(System.String%2CSystem.String%2CKlarna.Rest.Core.Model.OrderManagementAddShippingInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.0/Klarna.Rest/Klarna.Rest.Core/Store/OrderManagementStore.cs/#L195">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Store_OrderManagementStore_AddShippingInfoToCapture_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.AddShippingInfoToCapture*"></a>
+  <h4 id="Klarna_Rest_Core_Store_OrderManagementStore_AddShippingInfoToCapture_System_String_System_String_Klarna_Rest_Core_Model_OrderManagementAddShippingInfo_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.AddShippingInfoToCapture(System.String,System.String,Klarna.Rest.Core.Model.OrderManagementAddShippingInfo)">AddShippingInfoToCapture(String, String, OrderManagementAddShippingInfo)</h4>
+  <div class="markdown level1 summary"><p>Add shipping info to a capture
+<a href="https://developers.klarna.com/api/#order-management-api-add-shipping-info-to-a-capture">https://developers.klarna.com/api/#order-management-api-add-shipping-info-to-a-capture</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task AddShippingInfoToCapture(string orderId, string captureId, OrderManagementAddShippingInfo shippingInfo)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">orderId</span></td>
+        <td><p>Id of order to add shipping info</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">captureId</span></td>
+        <td><p>Id of capture to add shipping info</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Klarna.Rest.Core.Model.OrderManagementAddShippingInfo.html">OrderManagementAddShippingInfo</a></td>
+        <td><span class="parametername">shippingInfo</span></td>
+        <td><p>The <a class="xref" href="Klarna.Rest.Core.Model.OrderManagementAddShippingInfo.html">OrderManagementAddShippingInfo</a> object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.0/apiSpec/new?filename=Klarna_Rest_Core_Store_OrderManagementStore_CancelOrder_System_String_.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Store.OrderManagementStore.CancelOrder(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.0/Klarna.Rest/Klarna.Rest.Core/Store/OrderManagementStore.cs/#L64">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Store_OrderManagementStore_CancelOrder_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.CancelOrder*"></a>
+  <h4 id="Klarna_Rest_Core_Store_OrderManagementStore_CancelOrder_System_String_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.CancelOrder(System.String)">CancelOrder(String)</h4>
+  <div class="markdown level1 summary"><p>Cancel order
+<a href="https://developers.klarna.com/api/#order-management-api-cancel-order">https://developers.klarna.com/api/#order-management-api-cancel-order</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task CancelOrder(string orderId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">orderId</span></td>
+        <td><p>Id of order to cancel</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.0/apiSpec/new?filename=Klarna_Rest_Core_Store_OrderManagementStore_CreateCapture_System_String_Klarna_Rest_Core_Model_OrderManagementCreateCapture_.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Store.OrderManagementStore.CreateCapture(System.String%2CKlarna.Rest.Core.Model.OrderManagementCreateCapture)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.0/Klarna.Rest/Klarna.Rest.Core/Store/OrderManagementStore.cs/#L179">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Store_OrderManagementStore_CreateCapture_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.CreateCapture*"></a>
+  <h4 id="Klarna_Rest_Core_Store_OrderManagementStore_CreateCapture_System_String_Klarna_Rest_Core_Model_OrderManagementCreateCapture_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.CreateCapture(System.String,Klarna.Rest.Core.Model.OrderManagementCreateCapture)">CreateCapture(String, OrderManagementCreateCapture)</h4>
+  <div class="markdown level1 summary"><p>Create capture
+<a href="https://developers.klarna.com/api/#order-management-api-create-capture">https://developers.klarna.com/api/#order-management-api-create-capture</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;OrderManagementCapture&gt; CreateCapture(string orderId, OrderManagementCreateCapture capture)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">orderId</span></td>
+        <td><p>Id of order to create capture</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Klarna.Rest.Core.Model.OrderManagementCreateCapture.html">OrderManagementCreateCapture</a></td>
+        <td><span class="parametername">capture</span></td>
+        <td><p>The <a class="xref" href="Klarna.Rest.Core.Model.OrderManagementCapture.html">OrderManagementCapture</a> object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Klarna.Rest.Core.Model.OrderManagementCapture.html">OrderManagementCapture</a>&gt;</td>
+        <td><p>Object of <a class="xref" href="Klarna.Rest.Core.Model.OrderManagementCapture.html">OrderManagementCapture</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.0/apiSpec/new?filename=Klarna_Rest_Core_Store_OrderManagementStore_CreateRefund_System_String_Klarna_Rest_Core_Model_OrderManagementRefund_.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Store.OrderManagementStore.CreateRefund(System.String%2CKlarna.Rest.Core.Model.OrderManagementRefund)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.0/Klarna.Rest/Klarna.Rest.Core/Store/OrderManagementStore.cs/#L209">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Store_OrderManagementStore_CreateRefund_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.CreateRefund*"></a>
+  <h4 id="Klarna_Rest_Core_Store_OrderManagementStore_CreateRefund_System_String_Klarna_Rest_Core_Model_OrderManagementRefund_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.CreateRefund(System.String,Klarna.Rest.Core.Model.OrderManagementRefund)">CreateRefund(String, OrderManagementRefund)</h4>
+  <div class="markdown level1 summary"><p>Create a refund
+<a href="https://developers.klarna.com/api/#order-management-api-create-a-refund">https://developers.klarna.com/api/#order-management-api-create-a-refund</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task CreateRefund(string orderId, OrderManagementRefund refund)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">orderId</span></td>
+        <td><p>Id of order to create a refund</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Klarna.Rest.Core.Model.OrderManagementRefund.html">OrderManagementRefund</a></td>
+        <td><span class="parametername">refund</span></td>
+        <td><p>The <a class="xref" href="Klarna.Rest.Core.Model.OrderManagementRefund.html">OrderManagementRefund</a> object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.0/apiSpec/new?filename=Klarna_Rest_Core_Store_OrderManagementStore_ExtendAuthorizationTime_System_String_.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Store.OrderManagementStore.ExtendAuthorizationTime(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.0/Klarna.Rest/Klarna.Rest.Core/Store/OrderManagementStore.cs/#L37">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Store_OrderManagementStore_ExtendAuthorizationTime_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.ExtendAuthorizationTime*"></a>
+  <h4 id="Klarna_Rest_Core_Store_OrderManagementStore_ExtendAuthorizationTime_System_String_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.ExtendAuthorizationTime(System.String)">ExtendAuthorizationTime(String)</h4>
+  <div class="markdown level1 summary"><p>Extend authorization time
+<a href="https://developers.klarna.com/api/#order-management-api-extend-authorization-time">https://developers.klarna.com/api/#order-management-api-extend-authorization-time</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ExtendAuthorizationTime(string orderId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">orderId</span></td>
+        <td><p>Id of order to extend</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.0/apiSpec/new?filename=Klarna_Rest_Core_Store_OrderManagementStore_GetCapture_System_String_System_String_.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Store.OrderManagementStore.GetCapture(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.0/Klarna.Rest/Klarna.Rest.Core/Store/OrderManagementStore.cs/#L134">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Store_OrderManagementStore_GetCapture_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.GetCapture*"></a>
+  <h4 id="Klarna_Rest_Core_Store_OrderManagementStore_GetCapture_System_String_System_String_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.GetCapture(System.String,System.String)">GetCapture(String, String)</h4>
+  <div class="markdown level1 summary"><p>Get one capture
+<a href="https://developers.klarna.com/api/#order-management-api-get-one-capture">https://developers.klarna.com/api/#order-management-api-get-one-capture</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;OrderManagementCapture&gt; GetCapture(string orderId, string captureId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">orderId</span></td>
+        <td><p>Id of order that contains the capture</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">captureId</span></td>
+        <td><p>Id of capture to retrieve</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Klarna.Rest.Core.Model.OrderManagementCapture.html">OrderManagementCapture</a>&gt;</td>
+        <td><p><a class="xref" href="Klarna.Rest.Core.Model.OrderManagementCapture.html">OrderManagementCapture</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.0/apiSpec/new?filename=Klarna_Rest_Core_Store_OrderManagementStore_GetCapturesForOrder_System_String_.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Store.OrderManagementStore.GetCapturesForOrder(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.0/Klarna.Rest/Klarna.Rest.Core/Store/OrderManagementStore.cs/#L163">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Store_OrderManagementStore_GetCapturesForOrder_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.GetCapturesForOrder*"></a>
+  <h4 id="Klarna_Rest_Core_Store_OrderManagementStore_GetCapturesForOrder_System_String_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.GetCapturesForOrder(System.String)">GetCapturesForOrder(String)</h4>
+  <div class="markdown level1 summary"><p>Get all captures for one order
+<a href="https://developers.klarna.com/api/#order-management-api-get-all-captures-for-one-order">https://developers.klarna.com/api/#order-management-api-get-all-captures-for-one-order</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ICollection&lt;OrderManagementCapture&gt;&gt; GetCapturesForOrder(string orderId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">orderId</span></td>
+        <td><p>Id of order to retrieve captures</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="Klarna.Rest.Core.Model.OrderManagementCapture.html">OrderManagementCapture</a>&gt;&gt;</td>
+        <td><p>Collection of <a class="xref" href="Klarna.Rest.Core.Model.OrderManagementCapture.html">OrderManagementCapture</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.0/apiSpec/new?filename=Klarna_Rest_Core_Store_OrderManagementStore_GetOrder_System_String_.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Store.OrderManagementStore.GetOrder(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.0/Klarna.Rest/Klarna.Rest.Core/Store/OrderManagementStore.cs/#L104">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Store_OrderManagementStore_GetOrder_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.GetOrder*"></a>
+  <h4 id="Klarna_Rest_Core_Store_OrderManagementStore_GetOrder_System_String_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.GetOrder(System.String)">GetOrder(String)</h4>
+  <div class="markdown level1 summary"><p>Get order
+<a href="https://developers.klarna.com/api/#order-management-api-get-order">https://developers.klarna.com/api/#order-management-api-get-order</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;OrderManagementOrder&gt; GetOrder(string orderId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">orderId</span></td>
+        <td><p>Id of order to retrieve</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Klarna.Rest.Core.Model.OrderManagementOrder.html">OrderManagementOrder</a>&gt;</td>
+        <td><p><a class="xref" href="Klarna.Rest.Core.Model.OrderManagementOrder.html">OrderManagementOrder</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.0/apiSpec/new?filename=Klarna_Rest_Core_Store_OrderManagementStore_GetRefundForOrder_System_String_System_String_.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Store.OrderManagementStore.GetRefundForOrder(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.0/Klarna.Rest/Klarna.Rest.Core/Store/OrderManagementStore.cs/#L223">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Store_OrderManagementStore_GetRefundForOrder_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.GetRefundForOrder*"></a>
+  <h4 id="Klarna_Rest_Core_Store_OrderManagementStore_GetRefundForOrder_System_String_System_String_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.GetRefundForOrder(System.String,System.String)">GetRefundForOrder(String, String)</h4>
+  <div class="markdown level1 summary"><p>Get refund
+<a href="https://developers.klarna.com/api/#order-management-api-get-refund">https://developers.klarna.com/api/#order-management-api-get-refund</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;OrderManagementGetRefundResponse&gt; GetRefundForOrder(string orderId, string refundId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">orderId</span></td>
+        <td><p>Id of order to get refund</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">refundId</span></td>
+        <td><p>Id of refund</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.html">OrderManagementGetRefundResponse</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.0/apiSpec/new?filename=Klarna_Rest_Core_Store_OrderManagementStore_ReleaseRemainingAuthorization_System_String_.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Store.OrderManagementStore.ReleaseRemainingAuthorization(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.0/Klarna.Rest/Klarna.Rest.Core/Store/OrderManagementStore.cs/#L24">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Store_OrderManagementStore_ReleaseRemainingAuthorization_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.ReleaseRemainingAuthorization*"></a>
+  <h4 id="Klarna_Rest_Core_Store_OrderManagementStore_ReleaseRemainingAuthorization_System_String_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.ReleaseRemainingAuthorization(System.String)">ReleaseRemainingAuthorization(String)</h4>
+  <div class="markdown level1 summary"><p>Release remaining authorization
+<a href="https://developers.klarna.com/api/#order-management-api-release-remaining-authorization">https://developers.klarna.com/api/#order-management-api-release-remaining-authorization</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ReleaseRemainingAuthorization(string orderId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">orderId</span></td>
+        <td><p>Id of order to release</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.0/apiSpec/new?filename=Klarna_Rest_Core_Store_OrderManagementStore_SetNewOrderAmountAndOrderLines_System_String_Klarna_Rest_Core_Model_OrderManagementSetNewOrderAmountAndLines_.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Store.OrderManagementStore.SetNewOrderAmountAndOrderLines(System.String%2CKlarna.Rest.Core.Model.OrderManagementSetNewOrderAmountAndLines)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.0/Klarna.Rest/Klarna.Rest.Core/Store/OrderManagementStore.cs/#L120">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Store_OrderManagementStore_SetNewOrderAmountAndOrderLines_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.SetNewOrderAmountAndOrderLines*"></a>
+  <h4 id="Klarna_Rest_Core_Store_OrderManagementStore_SetNewOrderAmountAndOrderLines_System_String_Klarna_Rest_Core_Model_OrderManagementSetNewOrderAmountAndLines_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.SetNewOrderAmountAndOrderLines(System.String,Klarna.Rest.Core.Model.OrderManagementSetNewOrderAmountAndLines)">SetNewOrderAmountAndOrderLines(String, OrderManagementSetNewOrderAmountAndLines)</h4>
+  <div class="markdown level1 summary"><p>Set new order amount and order lines
+<a href="https://developers.klarna.com/api/#order-management-api-set-new-order-amount-and-order-lines">https://developers.klarna.com/api/#order-management-api-set-new-order-amount-and-order-lines</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task SetNewOrderAmountAndOrderLines(string orderId, OrderManagementSetNewOrderAmountAndLines newOrderAmountAndLines)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">orderId</span></td>
+        <td><p>Id of order to update</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Klarna.Rest.Core.Model.OrderManagementSetNewOrderAmountAndLines.html">OrderManagementSetNewOrderAmountAndLines</a></td>
+        <td><span class="parametername">newOrderAmountAndLines</span></td>
+        <td><p>The <a class="xref" href="Klarna.Rest.Core.Model.OrderManagementSetNewOrderAmountAndLines.html">OrderManagementSetNewOrderAmountAndLines</a> object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.0/apiSpec/new?filename=Klarna_Rest_Core_Store_OrderManagementStore_TriggerResendOfCustomerCommunication_System_String_System_String_.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Store.OrderManagementStore.TriggerResendOfCustomerCommunication(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.0/Klarna.Rest/Klarna.Rest.Core/Store/OrderManagementStore.cs/#L150">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Store_OrderManagementStore_TriggerResendOfCustomerCommunication_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.TriggerResendOfCustomerCommunication*"></a>
+  <h4 id="Klarna_Rest_Core_Store_OrderManagementStore_TriggerResendOfCustomerCommunication_System_String_System_String_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.TriggerResendOfCustomerCommunication(System.String,System.String)">TriggerResendOfCustomerCommunication(String, String)</h4>
+  <div class="markdown level1 summary"><p>Trigger resend of customer communication
+<a href="https://developers.klarna.com/api/#order-management-api-trigger-resend-of-customer-communication">https://developers.klarna.com/api/#order-management-api-trigger-resend-of-customer-communication</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task TriggerResendOfCustomerCommunication(string orderId, string captureId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">orderId</span></td>
+        <td><p>Id of order that contains the capture</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">captureId</span></td>
+        <td><p>Id of capture to resend</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.0/apiSpec/new?filename=Klarna_Rest_Core_Store_OrderManagementStore_UpdateCustomerAddresses_System_String_Klarna_Rest_Core_Model_OrderManagementCustomerAddresses_.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Store.OrderManagementStore.UpdateCustomerAddresses(System.String%2CKlarna.Rest.Core.Model.OrderManagementCustomerAddresses)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.0/Klarna.Rest/Klarna.Rest.Core/Store/OrderManagementStore.cs/#L51">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Store_OrderManagementStore_UpdateCustomerAddresses_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.UpdateCustomerAddresses*"></a>
+  <h4 id="Klarna_Rest_Core_Store_OrderManagementStore_UpdateCustomerAddresses_System_String_Klarna_Rest_Core_Model_OrderManagementCustomerAddresses_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.UpdateCustomerAddresses(System.String,Klarna.Rest.Core.Model.OrderManagementCustomerAddresses)">UpdateCustomerAddresses(String, OrderManagementCustomerAddresses)</h4>
+  <div class="markdown level1 summary"><p>Update customer addresses
+<a href="https://developers.klarna.com/api/#order-management-api-update-customer-addresses">https://developers.klarna.com/api/#order-management-api-update-customer-addresses</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task UpdateCustomerAddresses(string orderId, OrderManagementCustomerAddresses customerAddresses)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">orderId</span></td>
+        <td><p>Id of order to update</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Klarna.Rest.Core.Model.OrderManagementCustomerAddresses.html">OrderManagementCustomerAddresses</a></td>
+        <td><span class="parametername">customerAddresses</span></td>
+        <td><p>The <a class="xref" href="Klarna.Rest.Core.Store.OrderManagementStore.html#Klarna_Rest_Core_Store_OrderManagementStore_UpdateCustomerAddresses_System_String_Klarna_Rest_Core_Model_OrderManagementCustomerAddresses_">UpdateCustomerAddresses(String, OrderManagementCustomerAddresses)</a> object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.0/apiSpec/new?filename=Klarna_Rest_Core_Store_OrderManagementStore_UpdateMerchantReferences_System_String_Klarna_Rest_Core_Model_OrderManagementMerchantReferences_.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Store.OrderManagementStore.UpdateMerchantReferences(System.String%2CKlarna.Rest.Core.Model.OrderManagementMerchantReferences)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.0/Klarna.Rest/Klarna.Rest.Core/Store/OrderManagementStore.cs/#L78">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Store_OrderManagementStore_UpdateMerchantReferences_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.UpdateMerchantReferences*"></a>
+  <h4 id="Klarna_Rest_Core_Store_OrderManagementStore_UpdateMerchantReferences_System_String_Klarna_Rest_Core_Model_OrderManagementMerchantReferences_" data-uid="Klarna.Rest.Core.Store.OrderManagementStore.UpdateMerchantReferences(System.String,Klarna.Rest.Core.Model.OrderManagementMerchantReferences)">UpdateMerchantReferences(String, OrderManagementMerchantReferences)</h4>
+  <div class="markdown level1 summary"><p>Update merchant references
+<a href="https://developers.klarna.com/api/#order-management-api-update-merchant-references">https://developers.klarna.com/api/#order-management-api-update-merchant-references</a></p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task UpdateMerchantReferences(string orderId, OrderManagementMerchantReferences merchantReferences)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">orderId</span></td>
+        <td><p>Id of order to update</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Klarna.Rest.Core.Model.OrderManagementMerchantReferences.html">OrderManagementMerchantReferences</a></td>
+        <td><span class="parametername">merchantReferences</span></td>
+        <td><p>The <a class="xref" href="Klarna.Rest.Core.Model.OrderManagementMerchantReferences.html">OrderManagementMerchantReferences</a> object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.0/apiSpec/new?filename=Klarna_Rest_Core_Store_OrderManagementStore.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Store.OrderManagementStore%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.0/Klarna.Rest/Klarna.Rest.Core/Store/OrderManagementStore.cs/#L14" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) 2005-2019 Klarna Bank AB (publ). All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

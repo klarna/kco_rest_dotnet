@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class HostedPaymentPageStore
+   | Klarna Checkout REST.Core .NET SDK </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class HostedPaymentPageStore
+   | Klarna Checkout REST.Core .NET SDK ">
+    <meta name="generator" content="docfx 2.40.5.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <div class="subnav navbar navbar-default" style="display: table; width:100%;">
+          <a href="index.html" style="display: table-cell; vertical-align: middle;">
+            <img id="logo" class="svg" src="../api/logo.png" alt="" style="height: 40px; margin: 10px 15px 10px 10px">
+          </a>
+          <div class="container hide-when-search" id="breadcrumb" style="display: table-cell; vertical-align: middle; padding: 4px 0 0 0;">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Klarna.Rest.Core.Store.HostedPaymentPageStore">
+  
+  
+  <h1 id="Klarna_Rest_Core_Store_HostedPaymentPageStore" data-uid="Klarna.Rest.Core.Store.HostedPaymentPageStore" class="text-break">Class HostedPaymentPageStore
+  </h1>
+  <div class="markdown level0 summary"><p>Hosted Payment Page API
+Hosted Payment Page (HPP) API is a service that lets you integrate Klarna Payments without the need of hosting the web page that manages the client side of Klarna Payments.
+A complete HPP payment session will involve three of Klarna services:</p>
+<ul>
+<li>Klarna Payments API to start a payment session.</li>
+<li>Hosted Payment Page API to distribute a payment session.</li>
+<li>Order Management API to capture payment or refund consumer.</li>
+</ul>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="Klarna.Rest.Core.Commuication.BaseRestClient.html">BaseRestClient</a></div>
+    <div class="level2"><a class="xref" href="Klarna.Rest.Core.Commuication.BaseStore.html">BaseStore</a></div>
+    <div class="level3"><span class="xref">HostedPaymentPageStore</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Commuication.BaseStore.html#Klarna_Rest_Core_Commuication_BaseStore_ApiControllerUri">BaseStore.ApiControllerUri</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Commuication.BaseRestClient.html#Klarna_Rest_Core_Commuication_BaseRestClient_ApiSession">BaseRestClient.ApiSession</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Commuication.BaseRestClient.html#Klarna_Rest_Core_Commuication_BaseRestClient_Post__1_System_String_System_Object_">BaseRestClient.Post&lt;T&gt;(String, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Commuication.BaseRestClient.html#Klarna_Rest_Core_Commuication_BaseRestClient_Post_System_String_System_Object_">BaseRestClient.Post(String, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Commuication.BaseRestClient.html#Klarna_Rest_Core_Commuication_BaseRestClient_Patch_System_String_System_Object_">BaseRestClient.Patch(String, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Commuication.BaseRestClient.html#Klarna_Rest_Core_Commuication_BaseRestClient_Delete_System_String_">BaseRestClient.Delete(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Commuication.BaseRestClient.html#Klarna_Rest_Core_Commuication_BaseRestClient_Put__1_System_String_System_Object_">BaseRestClient.Put&lt;T&gt;(String, Object)</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Commuication.BaseRestClient.html#Klarna_Rest_Core_Commuication_BaseRestClient_Get__1_System_String_System_Collections_Generic_IDictionary_System_String_System_String__">BaseRestClient.Get&lt;T&gt;(String, IDictionary&lt;String, String&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Commuication.BaseRestClient.html#Klarna_Rest_Core_Commuication_BaseRestClient_Get_System_String_">BaseRestClient.Get(String)</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Commuication.BaseRestClient.html#Klarna_Rest_Core_Commuication_BaseRestClient_GetStream_System_String_">BaseRestClient.GetStream(String)</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Klarna.Rest.Core.Store.html">Klarna.Rest.Core.Store</a></h6>
+  <h6><strong>Assembly</strong>: Klarna.Rest.Core.dll</h6>
+  <h5 id="Klarna_Rest_Core_Store_HostedPaymentPageStore_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class HostedPaymentPageStore : BaseStore</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.0/apiSpec/new?filename=Klarna_Rest_Core_Store_HostedPaymentPageStore_CreateSession_Klarna_Rest_Core_Model_HostedPaymentPageCreateSessionRequest_.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Store.HostedPaymentPageStore.CreateSession(Klarna.Rest.Core.Model.HostedPaymentPageCreateSessionRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.0/Klarna.Rest/Klarna.Rest.Core/Store/HostedPaymentPageStore.cs/#L27">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Store_HostedPaymentPageStore_CreateSession_" data-uid="Klarna.Rest.Core.Store.HostedPaymentPageStore.CreateSession*"></a>
+  <h4 id="Klarna_Rest_Core_Store_HostedPaymentPageStore_CreateSession_Klarna_Rest_Core_Model_HostedPaymentPageCreateSessionRequest_" data-uid="Klarna.Rest.Core.Store.HostedPaymentPageStore.CreateSession(Klarna.Rest.Core.Model.HostedPaymentPageCreateSessionRequest)">CreateSession(HostedPaymentPageCreateSessionRequest)</h4>
+  <div class="markdown level1 summary"><p>Create a new HPP session</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;HostedPaymentPageCreateSessionResponse&gt; CreateSession(HostedPaymentPageCreateSessionRequest session)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Klarna.Rest.Core.Model.HostedPaymentPageCreateSessionRequest.html">HostedPaymentPageCreateSessionRequest</a></td>
+        <td><span class="parametername">session</span></td>
+        <td><p>The <a class="xref" href="Klarna.Rest.Core.Model.HostedPaymentPageCreateSessionRequest.html">HostedPaymentPageCreateSessionRequest</a> object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Klarna.Rest.Core.Model.HostedPaymentPageCreateSessionResponse.html">HostedPaymentPageCreateSessionResponse</a>&gt;</td>
+        <td><p>A single <a class="xref" href="Klarna.Rest.Core.Model.HostedPaymentPageCreateSessionResponse.html">HostedPaymentPageCreateSessionResponse</a> object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.0/apiSpec/new?filename=Klarna_Rest_Core_Store_HostedPaymentPageStore_DistributeLinkToSession_System_String_Klarna_Rest_Core_Model_HostedPaymentPageDistributeLink_.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Store.HostedPaymentPageStore.DistributeLinkToSession(System.String%2CKlarna.Rest.Core.Model.HostedPaymentPageDistributeLink)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.0/Klarna.Rest/Klarna.Rest.Core/Store/HostedPaymentPageStore.cs/#L43">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Store_HostedPaymentPageStore_DistributeLinkToSession_" data-uid="Klarna.Rest.Core.Store.HostedPaymentPageStore.DistributeLinkToSession*"></a>
+  <h4 id="Klarna_Rest_Core_Store_HostedPaymentPageStore_DistributeLinkToSession_System_String_Klarna_Rest_Core_Model_HostedPaymentPageDistributeLink_" data-uid="Klarna.Rest.Core.Store.HostedPaymentPageStore.DistributeLinkToSession(System.String,Klarna.Rest.Core.Model.HostedPaymentPageDistributeLink)">DistributeLinkToSession(String, HostedPaymentPageDistributeLink)</h4>
+  <div class="markdown level1 summary"><p>Distribute link to the HPP session</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DistributeLinkToSession(string sessionId, HostedPaymentPageDistributeLink distribution)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">sessionId</span></td>
+        <td><p>HPP session id</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Klarna.Rest.Core.Model.HostedPaymentPageDistributeLink.html">HostedPaymentPageDistributeLink</a></td>
+        <td><span class="parametername">distribution</span></td>
+        <td><p>The <a class="xref" href="Klarna.Rest.Core.Model.HostedPaymentPageDistributeLink.html">HostedPaymentPageDistributeLink</a> object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.0/apiSpec/new?filename=Klarna_Rest_Core_Store_HostedPaymentPageStore_GetSessionStatus_System_String_.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Store.HostedPaymentPageStore.GetSessionStatus(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.0/Klarna.Rest/Klarna.Rest.Core/Store/HostedPaymentPageStore.cs/#L55">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Store_HostedPaymentPageStore_GetSessionStatus_" data-uid="Klarna.Rest.Core.Store.HostedPaymentPageStore.GetSessionStatus*"></a>
+  <h4 id="Klarna_Rest_Core_Store_HostedPaymentPageStore_GetSessionStatus_System_String_" data-uid="Klarna.Rest.Core.Store.HostedPaymentPageStore.GetSessionStatus(System.String)">GetSessionStatus(String)</h4>
+  <div class="markdown level1 summary"><p>Get HPP session status</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;HostedPaymentPageSessionStatus&gt; GetSessionStatus(string sessionId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">sessionId</span></td>
+        <td><p>HPP session id</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Klarna.Rest.Core.Model.HostedPaymentPageSessionStatus.html">HostedPaymentPageSessionStatus</a>&gt;</td>
+        <td><p>A single <a class="xref" href="Klarna.Rest.Core.Model.HostedPaymentPageSessionStatus.html">HostedPaymentPageSessionStatus</a> object</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.0/apiSpec/new?filename=Klarna_Rest_Core_Store_HostedPaymentPageStore.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Store.HostedPaymentPageStore%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.0/Klarna.Rest/Klarna.Rest.Core/Store/HostedPaymentPageStore.cs/#L18" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) 2005-2019 Klarna Bank AB (publ). All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
