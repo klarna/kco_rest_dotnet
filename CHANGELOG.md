@@ -49,6 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - TokenCustomerTokenStatusUpdateRequest;
     - TokenDirectDebitInformation;
 - Add support for disabling an HPP session;
+- Add ability to use Klarna-Idempotency-Key when creating order;
 
 
 ## v3.0.5 - 2018-01-10
