@@ -16,6 +16,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CheckoutOrder model: Add `tags` property;
 - CheckoutOrderLine model: Add `shipping_attributes` property;
 - CheckoutShippingOption model: Add `delivery_details` propery.
+
+**Customer Token API**
+
+- TokenCustomerTokenV1 model: Add `card` and `direct_debit` properties;
+- TokenOrder model: Add `authorized_payment_method` property.
     
 
 ### Added
@@ -30,6 +35,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - CheckoutRecurringOrderRequestV1;
     - CheckoutShippingAttributes;
     - CheckoutTimeslotV1.
+
+**Customer Token API**
+
+- New models:
+    - TokenAuthorizedPaymentMethod;
+    - TokenCardInformation;
+    - TokenCustomerTokenStatusUpdateRequest;
+    - TokenDirectDebitInformation;
+
 
 ## v3.0.5 - 2018-01-10
 

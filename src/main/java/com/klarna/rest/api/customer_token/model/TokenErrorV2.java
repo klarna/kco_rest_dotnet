@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * TokenErrorV2
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T11:40:30.975Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T13:23:40.795Z")
 public class TokenErrorV2 {
   @JsonProperty("correlation_id")
   private String correlationId = null;

@@ -22,50 +22,80 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * TokenMerchantUrls
+ * TokenAuthorizedPaymentMethod
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T13:23:40.795Z")
-public class TokenMerchantUrls {
-  @JsonProperty("confirmation")
-  private String confirmation = null;
+public class TokenAuthorizedPaymentMethod {
+  /**
+   * Gets or Sets type
+   */
+  public enum TypeEnum {
+    INVOICE("invoice"),
+    
+    FIXED_AMOUNT("fixed_amount"),
+    
+    PIX("pix"),
+    
+    BASE_ACCOUNT("base_account"),
+    
+    DEFERRED_INTEREST("deferred_interest"),
+    
+    DIRECT_DEBIT("direct_debit"),
+    
+    DIRECT_BANK_TRANSFER("direct_bank_transfer"),
+    
+    B2B_INVOICE("b2b_invoice"),
+    
+    CARD("card"),
+    
+    SLICE_IT_BY_CARD("slice_it_by_card");
 
-  @JsonProperty("push")
-  private String push = null;
+    private String value;
 
-  public TokenMerchantUrls confirmation(String confirmation) {
-    this.confirmation = confirmation;
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static TypeEnum fromValue(String text) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("type")
+  private TypeEnum type = null;
+
+  public TokenAuthorizedPaymentMethod type(TypeEnum type) {
+    this.type = type;
     return this;
   }
 
    /**
-   * URL of merchant confirmation page. (max 2000 characters)
-   * @return confirmation
+   * Get type
+   * @return type
   **/
-  @ApiModelProperty(required = true, value = "URL of merchant confirmation page. (max 2000 characters)")
-  public String getConfirmation() {
-    return confirmation;
+  @ApiModelProperty(required = true, value = "")
+  public TypeEnum getType() {
+    return type;
   }
 
-  public void setConfirmation(String confirmation) {
-    this.confirmation = confirmation;
-  }
-
-  public TokenMerchantUrls push(String push) {
-    this.push = push;
-    return this;
-  }
-
-   /**
-   * URL that will be requested when an order is completed. Should be different than checkout and confirmation URLs. (max 2000 characters)
-   * @return push
-  **/
-  @ApiModelProperty(value = "URL that will be requested when an order is completed. Should be different than checkout and confirmation URLs. (max 2000 characters)")
-  public String getPush() {
-    return push;
-  }
-
-  public void setPush(String push) {
-    this.push = push;
+  public void setType(TypeEnum type) {
+    this.type = type;
   }
 
 
@@ -77,24 +107,22 @@ public class TokenMerchantUrls {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TokenMerchantUrls merchantUrls = (TokenMerchantUrls) o;
-    return Objects.equals(this.confirmation, merchantUrls.confirmation) &&
-        Objects.equals(this.push, merchantUrls.push);
+    TokenAuthorizedPaymentMethod authorizedPaymentMethod = (TokenAuthorizedPaymentMethod) o;
+    return Objects.equals(this.type, authorizedPaymentMethod.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(confirmation, push);
+    return Objects.hash(type);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TokenMerchantUrls {\n");
+    sb.append("class TokenAuthorizedPaymentMethod {\n");
     
-    sb.append("    confirmation: ").append(toIndentedString(confirmation)).append("\n");
-    sb.append("    push: ").append(toIndentedString(push)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

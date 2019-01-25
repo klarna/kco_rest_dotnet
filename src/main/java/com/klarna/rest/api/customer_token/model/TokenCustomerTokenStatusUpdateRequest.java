@@ -22,50 +22,29 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * TokenMerchantUrls
+ * TokenCustomerTokenStatusUpdateRequest
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T13:23:40.795Z")
-public class TokenMerchantUrls {
-  @JsonProperty("confirmation")
-  private String confirmation = null;
+public class TokenCustomerTokenStatusUpdateRequest {
+  @JsonProperty("status")
+  private String status = null;
 
-  @JsonProperty("push")
-  private String push = null;
-
-  public TokenMerchantUrls confirmation(String confirmation) {
-    this.confirmation = confirmation;
+  public TokenCustomerTokenStatusUpdateRequest status(String status) {
+    this.status = status;
     return this;
   }
 
    /**
-   * URL of merchant confirmation page. (max 2000 characters)
-   * @return confirmation
+   * The token status to update to. Can be &#39;CANCELLED&#39;.
+   * @return status
   **/
-  @ApiModelProperty(required = true, value = "URL of merchant confirmation page. (max 2000 characters)")
-  public String getConfirmation() {
-    return confirmation;
+  @ApiModelProperty(example = "CANCELLED", required = true, value = "The token status to update to. Can be 'CANCELLED'.")
+  public String getStatus() {
+    return status;
   }
 
-  public void setConfirmation(String confirmation) {
-    this.confirmation = confirmation;
-  }
-
-  public TokenMerchantUrls push(String push) {
-    this.push = push;
-    return this;
-  }
-
-   /**
-   * URL that will be requested when an order is completed. Should be different than checkout and confirmation URLs. (max 2000 characters)
-   * @return push
-  **/
-  @ApiModelProperty(value = "URL that will be requested when an order is completed. Should be different than checkout and confirmation URLs. (max 2000 characters)")
-  public String getPush() {
-    return push;
-  }
-
-  public void setPush(String push) {
-    this.push = push;
+  public void setStatus(String status) {
+    this.status = status;
   }
 
 
@@ -77,24 +56,22 @@ public class TokenMerchantUrls {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TokenMerchantUrls merchantUrls = (TokenMerchantUrls) o;
-    return Objects.equals(this.confirmation, merchantUrls.confirmation) &&
-        Objects.equals(this.push, merchantUrls.push);
+    TokenCustomerTokenStatusUpdateRequest customerTokenStatusUpdateRequest = (TokenCustomerTokenStatusUpdateRequest) o;
+    return Objects.equals(this.status, customerTokenStatusUpdateRequest.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(confirmation, push);
+    return Objects.hash(status);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TokenMerchantUrls {\n");
+    sb.append("class TokenCustomerTokenStatusUpdateRequest {\n");
     
-    sb.append("    confirmation: ").append(toIndentedString(confirmation)).append("\n");
-    sb.append("    push: ").append(toIndentedString(push)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

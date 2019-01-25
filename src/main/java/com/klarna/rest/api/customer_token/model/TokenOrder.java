@@ -18,14 +18,18 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.klarna.rest.api.customer_token.model.TokenAuthorizedPaymentMethod;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
  * TokenOrder
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T11:40:30.975Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T13:23:40.795Z")
 public class TokenOrder {
+  @JsonProperty("authorized_payment_method")
+  private TokenAuthorizedPaymentMethod authorizedPaymentMethod = null;
+
   @JsonProperty("fraud_status")
   private String fraudStatus = null;
 
@@ -35,16 +39,34 @@ public class TokenOrder {
   @JsonProperty("redirect_url")
   private String redirectUrl = null;
 
+  public TokenOrder authorizedPaymentMethod(TokenAuthorizedPaymentMethod authorizedPaymentMethod) {
+    this.authorizedPaymentMethod = authorizedPaymentMethod;
+    return this;
+  }
+
+   /**
+   * The payment method authorized for the order
+   * @return authorizedPaymentMethod
+  **/
+  @ApiModelProperty(value = "The payment method authorized for the order")
+  public TokenAuthorizedPaymentMethod getAuthorizedPaymentMethod() {
+    return authorizedPaymentMethod;
+  }
+
+  public void setAuthorizedPaymentMethod(TokenAuthorizedPaymentMethod authorizedPaymentMethod) {
+    this.authorizedPaymentMethod = authorizedPaymentMethod;
+  }
+
   public TokenOrder fraudStatus(String fraudStatus) {
     this.fraudStatus = fraudStatus;
     return this;
   }
 
    /**
-   * Get fraudStatus
+   * Fraud status for the order. Either ACCEPTED, PENDING or REJECTED.
    * @return fraudStatus
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "Fraud status for the order. Either ACCEPTED, PENDING or REJECTED.")
   public String getFraudStatus() {
     return fraudStatus;
   }
@@ -59,10 +81,10 @@ public class TokenOrder {
   }
 
    /**
-   * Get orderId
+   * The unique order ID (max 255 characters).
    * @return orderId
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "The unique order ID (max 255 characters).")
   public String getOrderId() {
     return orderId;
   }
@@ -77,10 +99,10 @@ public class TokenOrder {
   }
 
    /**
-   * Get redirectUrl
+   * URL to redirect the customer to after placing the order.
    * @return redirectUrl
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "https://credit.klarna.com/v1/sessions/0b1d9815-165e-42e2-8867-35bc03789e00/redirect", required = true, value = "URL to redirect the customer to after placing the order.")
   public String getRedirectUrl() {
     return redirectUrl;
   }
@@ -99,14 +121,15 @@ public class TokenOrder {
       return false;
     }
     TokenOrder order = (TokenOrder) o;
-    return Objects.equals(this.fraudStatus, order.fraudStatus) &&
+    return Objects.equals(this.authorizedPaymentMethod, order.authorizedPaymentMethod) &&
+        Objects.equals(this.fraudStatus, order.fraudStatus) &&
         Objects.equals(this.orderId, order.orderId) &&
         Objects.equals(this.redirectUrl, order.redirectUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fraudStatus, orderId, redirectUrl);
+    return Objects.hash(authorizedPaymentMethod, fraudStatus, orderId, redirectUrl);
   }
 
 
@@ -115,6 +138,7 @@ public class TokenOrder {
     StringBuilder sb = new StringBuilder();
     sb.append("class TokenOrder {\n");
     
+    sb.append("    authorizedPaymentMethod: ").append(toIndentedString(authorizedPaymentMethod)).append("\n");
     sb.append("    fraudStatus: ").append(toIndentedString(fraudStatus)).append("\n");
     sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("    redirectUrl: ").append(toIndentedString(redirectUrl)).append("\n");

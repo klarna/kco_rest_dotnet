@@ -22,50 +22,50 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * TokenAttachment
+ * TokenDirectDebitInformation
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T13:23:40.795Z")
-public class TokenAttachment {
-  @JsonProperty("body")
-  private String body = null;
+public class TokenDirectDebitInformation {
+  @JsonProperty("brand")
+  private String brand = null;
 
-  @JsonProperty("content_type")
-  private String contentType = null;
+  @JsonProperty("masked_number")
+  private String maskedNumber = null;
 
-  public TokenAttachment body(String body) {
-    this.body = body;
+  public TokenDirectDebitInformation brand(String brand) {
+    this.brand = brand;
     return this;
   }
 
    /**
-   * This field should be a &lt;b&gt;string&lt;/b&gt; containing the body of the attachment. The body should be an object containing any of the keys and sub objects described below serialised to JSON.
-   * @return body
+   * Bank name
+   * @return brand
   **/
-  @ApiModelProperty(example = "{\"marketplace_seller_info\":[{\"product_category\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}", required = true, value = "This field should be a <b>string</b> containing the body of the attachment. The body should be an object containing any of the keys and sub objects described below serialised to JSON.")
-  public String getBody() {
-    return body;
+  @ApiModelProperty(required = true, value = "Bank name")
+  public String getBrand() {
+    return brand;
   }
 
-  public void setBody(String body) {
-    this.body = body;
+  public void setBrand(String brand) {
+    this.brand = brand;
   }
 
-  public TokenAttachment contentType(String contentType) {
-    this.contentType = contentType;
+  public TokenDirectDebitInformation maskedNumber(String maskedNumber) {
+    this.maskedNumber = maskedNumber;
     return this;
   }
 
    /**
-   * The content type of the body property.
-   * @return contentType
+   * Masked bank account number
+   * @return maskedNumber
   **/
-  @ApiModelProperty(example = "application/vnd.klarna.internal.emd-v2+json", required = true, value = "The content type of the body property.")
-  public String getContentType() {
-    return contentType;
+  @ApiModelProperty(example = "**********124", required = true, value = "Masked bank account number")
+  public String getMaskedNumber() {
+    return maskedNumber;
   }
 
-  public void setContentType(String contentType) {
-    this.contentType = contentType;
+  public void setMaskedNumber(String maskedNumber) {
+    this.maskedNumber = maskedNumber;
   }
 
 
@@ -77,24 +77,24 @@ public class TokenAttachment {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TokenAttachment attachment = (TokenAttachment) o;
-    return Objects.equals(this.body, attachment.body) &&
-        Objects.equals(this.contentType, attachment.contentType);
+    TokenDirectDebitInformation directDebitInformation = (TokenDirectDebitInformation) o;
+    return Objects.equals(this.brand, directDebitInformation.brand) &&
+        Objects.equals(this.maskedNumber, directDebitInformation.maskedNumber);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(body, contentType);
+    return Objects.hash(brand, maskedNumber);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TokenAttachment {\n");
+    sb.append("class TokenDirectDebitInformation {\n");
     
-    sb.append("    body: ").append(toIndentedString(body)).append("\n");
-    sb.append("    contentType: ").append(toIndentedString(contentType)).append("\n");
+    sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
+    sb.append("    maskedNumber: ").append(toIndentedString(maskedNumber)).append("\n");
     sb.append("}");
     return sb.toString();
   }
