@@ -20,6 +20,7 @@ import com.klarna.rest.Client;
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
 import com.klarna.rest.api.customer_token.model.TokenCustomerTokenOrder;
+import com.klarna.rest.api.customer_token.model.TokenCustomerTokenStatusUpdateRequest;
 import com.klarna.rest.api.customer_token.model.TokenCustomerTokenV1;
 import com.klarna.rest.api.customer_token.model.TokenOrder;
 import org.junit.Before;
@@ -99,5 +100,48 @@ public class TokensApiTest extends TestCase {
         final String requestPayout = transport.requestPayout.toString();
         assertTrue(requestPayout.contains("\"order_amount\":100"));
         assertTrue(requestPayout.contains("\"purchase_currency\":\"EUR\""));
+    }
+
+    @Test
+    public void testCreateOrderWithKey() throws IOException {
+        when(transport.conn.getResponseCode()).thenReturn(200);
+        when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
+        }});
+
+        final String payload = "{\"fraud_status\": \"ACCEPTED\", \"order_id\": \"order-id-123\"}";
+        when(transport.conn.getInputStream()).thenReturn(this.makeInputStream(payload));
+
+        Client client = new Client(transport);
+        TokensApi api = client.newTokensApi("fake-token-id");
+
+        TokenCustomerTokenOrder data = new TokenCustomerTokenOrder()
+                .orderAmount(100L)
+                .purchaseCurrency("EUR");
+
+        TokenOrder order = api.createOrder(data, "my-idempotency-key");
+
+        verify(transport.conn, times(1)).setRequestMethod("POST");
+        assertEquals("/customer-token/v1/tokens/fake-token-id/order", transport.requestPath);
+
+        assertEquals("my-idempotency-key", transport.requestHeaders.get("Klarna-Idempotency-Key"));
+    }
+
+    @Test
+    public void testUpdateStatus() throws IOException {
+        when(transport.conn.getResponseCode()).thenReturn(202);
+        when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
+        }});
+
+        Client client = new Client(transport);
+        TokensApi api = client.newTokensApi("fake-token-id");
+
+        TokenCustomerTokenStatusUpdateRequest status = new TokenCustomerTokenStatusUpdateRequest().status("CANCELLED");
+
+        api.updateStatus(status);
+
+        verify(transport.conn, times(1)).setRequestMethod("PATCH");
+        assertEquals("/customer-token/v1/tokens/fake-token-id/status", transport.requestPath);
     }
 }

@@ -106,4 +106,32 @@ public class CustomerTokenExample {
             }
         }
     }
+
+    public static class UpdateStatusExample {
+        /**
+         * Runs the example code.
+         *
+         * @param args Command line arguments
+         */
+        public static void main(final String[] args) {
+            String username = "PK01038_a813060918c5";
+            String password = "R1QkI2yB95lPq4Es";
+            String customerToken = "customerToken";
+
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
+            TokensApi tokensApi = client.newTokensApi(customerToken);
+
+            try {
+                TokenCustomerTokenStatusUpdateRequest status = new TokenCustomerTokenStatusUpdateRequest()
+                    .status("CANCELLED");
+                tokensApi.updateStatus(status);
+                System.out.println("Token patch request has been accepted and is being processed");
+
+            } catch (IOException e) {
+                System.out.println("Connection problem: " + e.getMessage());
+            } catch (ApiException e) {
+                System.out.println("API issue: " + e.getMessage());
+            }
+        }
+    }
 }
