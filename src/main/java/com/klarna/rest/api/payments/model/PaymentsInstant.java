@@ -24,31 +24,13 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * PaymentsInstant
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T15:02:16.248Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T16:26:10.932Z")
 public class PaymentsInstant {
-  @JsonProperty("nano")
-  private Integer nano = null;
-
   @JsonProperty("epoch_second")
   private Long epochSecond = null;
 
-  public PaymentsInstant nano(Integer nano) {
-    this.nano = nano;
-    return this;
-  }
-
-   /**
-   * Get nano
-   * @return nano
-  **/
-  @ApiModelProperty(value = "")
-  public Integer getNano() {
-    return nano;
-  }
-
-  public void setNano(Integer nano) {
-    this.nano = nano;
-  }
+  @JsonProperty("nano")
+  private Integer nano = null;
 
   public PaymentsInstant epochSecond(Long epochSecond) {
     this.epochSecond = epochSecond;
@@ -68,6 +50,24 @@ public class PaymentsInstant {
     this.epochSecond = epochSecond;
   }
 
+  public PaymentsInstant nano(Integer nano) {
+    this.nano = nano;
+    return this;
+  }
+
+   /**
+   * Get nano
+   * @return nano
+  **/
+  @ApiModelProperty(value = "")
+  public Integer getNano() {
+    return nano;
+  }
+
+  public void setNano(Integer nano) {
+    this.nano = nano;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -78,13 +78,13 @@ public class PaymentsInstant {
       return false;
     }
     PaymentsInstant instant = (PaymentsInstant) o;
-    return Objects.equals(this.nano, instant.nano) &&
-        Objects.equals(this.epochSecond, instant.epochSecond);
+    return Objects.equals(this.epochSecond, instant.epochSecond) &&
+        Objects.equals(this.nano, instant.nano);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(nano, epochSecond);
+    return Objects.hash(epochSecond, nano);
   }
 
 
@@ -93,8 +93,8 @@ public class PaymentsInstant {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentsInstant {\n");
     
-    sb.append("    nano: ").append(toIndentedString(nano)).append("\n");
     sb.append("    epochSecond: ").append(toIndentedString(epochSecond)).append("\n");
+    sb.append("    nano: ").append(toIndentedString(nano)).append("\n");
     sb.append("}");
     return sb.toString();
   }

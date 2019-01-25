@@ -26,17 +26,8 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * PaymentsCustomerTokenCreationRequest
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T15:02:16.248Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T16:26:10.932Z")
 public class PaymentsCustomerTokenCreationRequest {
-  @JsonProperty("purchase_country")
-  private String purchaseCountry = null;
-
-  @JsonProperty("purchase_currency")
-  private String purchaseCurrency = null;
-
-  @JsonProperty("locale")
-  private String locale = null;
-
   @JsonProperty("billing_address")
   private PaymentsAddress billingAddress = null;
 
@@ -82,59 +73,14 @@ public class PaymentsCustomerTokenCreationRequest {
   @JsonProperty("intended_use")
   private IntendedUseEnum intendedUse = null;
 
-  public PaymentsCustomerTokenCreationRequest purchaseCountry(String purchaseCountry) {
-    this.purchaseCountry = purchaseCountry;
-    return this;
-  }
+  @JsonProperty("locale")
+  private String locale = null;
 
-   /**
-   * ISO 3166 alpha-2 purchase country.
-   * @return purchaseCountry
-  **/
-  @ApiModelProperty(example = "US", required = true, value = "ISO 3166 alpha-2 purchase country.")
-  public String getPurchaseCountry() {
-    return purchaseCountry;
-  }
+  @JsonProperty("purchase_country")
+  private String purchaseCountry = null;
 
-  public void setPurchaseCountry(String purchaseCountry) {
-    this.purchaseCountry = purchaseCountry;
-  }
-
-  public PaymentsCustomerTokenCreationRequest purchaseCurrency(String purchaseCurrency) {
-    this.purchaseCurrency = purchaseCurrency;
-    return this;
-  }
-
-   /**
-   * ISO 4217 purchase currency.
-   * @return purchaseCurrency
-  **/
-  @ApiModelProperty(example = "USD", required = true, value = "ISO 4217 purchase currency.")
-  public String getPurchaseCurrency() {
-    return purchaseCurrency;
-  }
-
-  public void setPurchaseCurrency(String purchaseCurrency) {
-    this.purchaseCurrency = purchaseCurrency;
-  }
-
-  public PaymentsCustomerTokenCreationRequest locale(String locale) {
-    this.locale = locale;
-    return this;
-  }
-
-   /**
-   * RFC 1766 customer&#39;s locale.
-   * @return locale
-  **/
-  @ApiModelProperty(example = "en-US", required = true, value = "RFC 1766 customer's locale.")
-  public String getLocale() {
-    return locale;
-  }
-
-  public void setLocale(String locale) {
-    this.locale = locale;
-  }
+  @JsonProperty("purchase_currency")
+  private String purchaseCurrency = null;
 
   public PaymentsCustomerTokenCreationRequest billingAddress(PaymentsAddress billingAddress) {
     this.billingAddress = billingAddress;
@@ -208,6 +154,60 @@ public class PaymentsCustomerTokenCreationRequest {
     this.intendedUse = intendedUse;
   }
 
+  public PaymentsCustomerTokenCreationRequest locale(String locale) {
+    this.locale = locale;
+    return this;
+  }
+
+   /**
+   * RFC 1766 customer&#39;s locale.
+   * @return locale
+  **/
+  @ApiModelProperty(example = "en-US", required = true, value = "RFC 1766 customer's locale.")
+  public String getLocale() {
+    return locale;
+  }
+
+  public void setLocale(String locale) {
+    this.locale = locale;
+  }
+
+  public PaymentsCustomerTokenCreationRequest purchaseCountry(String purchaseCountry) {
+    this.purchaseCountry = purchaseCountry;
+    return this;
+  }
+
+   /**
+   * ISO 3166 alpha-2 purchase country.
+   * @return purchaseCountry
+  **/
+  @ApiModelProperty(example = "US", required = true, value = "ISO 3166 alpha-2 purchase country.")
+  public String getPurchaseCountry() {
+    return purchaseCountry;
+  }
+
+  public void setPurchaseCountry(String purchaseCountry) {
+    this.purchaseCountry = purchaseCountry;
+  }
+
+  public PaymentsCustomerTokenCreationRequest purchaseCurrency(String purchaseCurrency) {
+    this.purchaseCurrency = purchaseCurrency;
+    return this;
+  }
+
+   /**
+   * ISO 4217 purchase currency.
+   * @return purchaseCurrency
+  **/
+  @ApiModelProperty(example = "USD", required = true, value = "ISO 4217 purchase currency.")
+  public String getPurchaseCurrency() {
+    return purchaseCurrency;
+  }
+
+  public void setPurchaseCurrency(String purchaseCurrency) {
+    this.purchaseCurrency = purchaseCurrency;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -218,18 +218,18 @@ public class PaymentsCustomerTokenCreationRequest {
       return false;
     }
     PaymentsCustomerTokenCreationRequest customerTokenCreationRequest = (PaymentsCustomerTokenCreationRequest) o;
-    return Objects.equals(this.purchaseCountry, customerTokenCreationRequest.purchaseCountry) &&
-        Objects.equals(this.purchaseCurrency, customerTokenCreationRequest.purchaseCurrency) &&
-        Objects.equals(this.locale, customerTokenCreationRequest.locale) &&
-        Objects.equals(this.billingAddress, customerTokenCreationRequest.billingAddress) &&
+    return Objects.equals(this.billingAddress, customerTokenCreationRequest.billingAddress) &&
         Objects.equals(this.customer, customerTokenCreationRequest.customer) &&
         Objects.equals(this.description, customerTokenCreationRequest.description) &&
-        Objects.equals(this.intendedUse, customerTokenCreationRequest.intendedUse);
+        Objects.equals(this.intendedUse, customerTokenCreationRequest.intendedUse) &&
+        Objects.equals(this.locale, customerTokenCreationRequest.locale) &&
+        Objects.equals(this.purchaseCountry, customerTokenCreationRequest.purchaseCountry) &&
+        Objects.equals(this.purchaseCurrency, customerTokenCreationRequest.purchaseCurrency);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(purchaseCountry, purchaseCurrency, locale, billingAddress, customer, description, intendedUse);
+    return Objects.hash(billingAddress, customer, description, intendedUse, locale, purchaseCountry, purchaseCurrency);
   }
 
 
@@ -238,13 +238,13 @@ public class PaymentsCustomerTokenCreationRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentsCustomerTokenCreationRequest {\n");
     
-    sb.append("    purchaseCountry: ").append(toIndentedString(purchaseCountry)).append("\n");
-    sb.append("    purchaseCurrency: ").append(toIndentedString(purchaseCurrency)).append("\n");
-    sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
     sb.append("    billingAddress: ").append(toIndentedString(billingAddress)).append("\n");
     sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    intendedUse: ").append(toIndentedString(intendedUse)).append("\n");
+    sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+    sb.append("    purchaseCountry: ").append(toIndentedString(purchaseCountry)).append("\n");
+    sb.append("    purchaseCurrency: ").append(toIndentedString(purchaseCurrency)).append("\n");
     sb.append("}");
     return sb.toString();
   }

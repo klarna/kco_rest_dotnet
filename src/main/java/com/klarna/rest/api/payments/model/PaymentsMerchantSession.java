@@ -27,34 +27,16 @@ import java.util.List;
 /**
  * PaymentsMerchantSession
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T15:02:16.248Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T16:26:10.932Z")
 public class PaymentsMerchantSession {
-  @JsonProperty("session_id")
-  private String sessionId = null;
-
   @JsonProperty("client_token")
   private String clientToken = null;
 
   @JsonProperty("payment_method_categories")
   private List<PaymentsPaymentMethodCategory> paymentMethodCategories = null;
 
-  public PaymentsMerchantSession sessionId(String sessionId) {
-    this.sessionId = sessionId;
-    return this;
-  }
-
-   /**
-   * Id of the created session
-   * @return sessionId
-  **/
-  @ApiModelProperty(example = "0b1d9815-165e-42e2-8867-35bc03789e00", required = true, value = "Id of the created session")
-  public String getSessionId() {
-    return sessionId;
-  }
-
-  public void setSessionId(String sessionId) {
-    this.sessionId = sessionId;
-  }
+  @JsonProperty("session_id")
+  private String sessionId = null;
 
   public PaymentsMerchantSession clientToken(String clientToken) {
     this.clientToken = clientToken;
@@ -100,6 +82,24 @@ public class PaymentsMerchantSession {
     this.paymentMethodCategories = paymentMethodCategories;
   }
 
+  public PaymentsMerchantSession sessionId(String sessionId) {
+    this.sessionId = sessionId;
+    return this;
+  }
+
+   /**
+   * Id of the created session
+   * @return sessionId
+  **/
+  @ApiModelProperty(example = "0b1d9815-165e-42e2-8867-35bc03789e00", required = true, value = "Id of the created session")
+  public String getSessionId() {
+    return sessionId;
+  }
+
+  public void setSessionId(String sessionId) {
+    this.sessionId = sessionId;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -110,14 +110,14 @@ public class PaymentsMerchantSession {
       return false;
     }
     PaymentsMerchantSession merchantSession = (PaymentsMerchantSession) o;
-    return Objects.equals(this.sessionId, merchantSession.sessionId) &&
-        Objects.equals(this.clientToken, merchantSession.clientToken) &&
-        Objects.equals(this.paymentMethodCategories, merchantSession.paymentMethodCategories);
+    return Objects.equals(this.clientToken, merchantSession.clientToken) &&
+        Objects.equals(this.paymentMethodCategories, merchantSession.paymentMethodCategories) &&
+        Objects.equals(this.sessionId, merchantSession.sessionId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(sessionId, clientToken, paymentMethodCategories);
+    return Objects.hash(clientToken, paymentMethodCategories, sessionId);
   }
 
 
@@ -126,9 +126,9 @@ public class PaymentsMerchantSession {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentsMerchantSession {\n");
     
-    sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
     sb.append("    clientToken: ").append(toIndentedString(clientToken)).append("\n");
     sb.append("    paymentMethodCategories: ").append(toIndentedString(paymentMethodCategories)).append("\n");
+    sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

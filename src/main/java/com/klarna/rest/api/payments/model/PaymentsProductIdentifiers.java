@@ -24,8 +24,11 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * PaymentsProductIdentifiers
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T15:02:16.248Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T16:26:10.932Z")
 public class PaymentsProductIdentifiers {
+  @JsonProperty("brand")
+  private String brand = null;
+
   @JsonProperty("category_path")
   private String categoryPath = null;
 
@@ -35,8 +38,23 @@ public class PaymentsProductIdentifiers {
   @JsonProperty("manufacturer_part_number")
   private String manufacturerPartNumber = null;
 
-  @JsonProperty("brand")
-  private String brand = null;
+  public PaymentsProductIdentifiers brand(String brand) {
+    this.brand = brand;
+    return this;
+  }
+
+   /**
+   * The product&#39;s brand name as generally recognized by consumers. If no brand is available for a product, do not supply any value.
+   * @return brand
+  **/
+  @ApiModelProperty(example = "Intel", value = "The product's brand name as generally recognized by consumers. If no brand is available for a product, do not supply any value.")
+  public String getBrand() {
+    return brand;
+  }
+
+  public void setBrand(String brand) {
+    this.brand = brand;
+  }
 
   public PaymentsProductIdentifiers categoryPath(String categoryPath) {
     this.categoryPath = categoryPath;
@@ -92,24 +110,6 @@ public class PaymentsProductIdentifiers {
     this.manufacturerPartNumber = manufacturerPartNumber;
   }
 
-  public PaymentsProductIdentifiers brand(String brand) {
-    this.brand = brand;
-    return this;
-  }
-
-   /**
-   * The product&#39;s brand name as generally recognized by consumers. If no brand is available for a product, do not supply any value.
-   * @return brand
-  **/
-  @ApiModelProperty(example = "Intel", value = "The product's brand name as generally recognized by consumers. If no brand is available for a product, do not supply any value.")
-  public String getBrand() {
-    return brand;
-  }
-
-  public void setBrand(String brand) {
-    this.brand = brand;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -120,15 +120,15 @@ public class PaymentsProductIdentifiers {
       return false;
     }
     PaymentsProductIdentifiers productIdentifiers = (PaymentsProductIdentifiers) o;
-    return Objects.equals(this.categoryPath, productIdentifiers.categoryPath) &&
+    return Objects.equals(this.brand, productIdentifiers.brand) &&
+        Objects.equals(this.categoryPath, productIdentifiers.categoryPath) &&
         Objects.equals(this.globalTradeItemNumber, productIdentifiers.globalTradeItemNumber) &&
-        Objects.equals(this.manufacturerPartNumber, productIdentifiers.manufacturerPartNumber) &&
-        Objects.equals(this.brand, productIdentifiers.brand);
+        Objects.equals(this.manufacturerPartNumber, productIdentifiers.manufacturerPartNumber);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(categoryPath, globalTradeItemNumber, manufacturerPartNumber, brand);
+    return Objects.hash(brand, categoryPath, globalTradeItemNumber, manufacturerPartNumber);
   }
 
 
@@ -137,10 +137,10 @@ public class PaymentsProductIdentifiers {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentsProductIdentifiers {\n");
     
+    sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
     sb.append("    categoryPath: ").append(toIndentedString(categoryPath)).append("\n");
     sb.append("    globalTradeItemNumber: ").append(toIndentedString(globalTradeItemNumber)).append("\n");
     sb.append("    manufacturerPartNumber: ").append(toIndentedString(manufacturerPartNumber)).append("\n");
-    sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
     sb.append("}");
     return sb.toString();
   }

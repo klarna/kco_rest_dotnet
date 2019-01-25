@@ -24,31 +24,13 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * PaymentsCustomerTokenCreationResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T15:02:16.248Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T16:26:10.932Z")
 public class PaymentsCustomerTokenCreationResponse {
-  @JsonProperty("token_id")
-  private String tokenId = null;
-
   @JsonProperty("redirect_url")
   private String redirectUrl = null;
 
-  public PaymentsCustomerTokenCreationResponse tokenId(String tokenId) {
-    this.tokenId = tokenId;
-    return this;
-  }
-
-   /**
-   * Used when placing the order
-   * @return tokenId
-  **/
-  @ApiModelProperty(example = "0b1d9815-165e-42e2-8867-35bc03789e00", required = true, value = "Used when placing the order")
-  public String getTokenId() {
-    return tokenId;
-  }
-
-  public void setTokenId(String tokenId) {
-    this.tokenId = tokenId;
-  }
+  @JsonProperty("token_id")
+  private String tokenId = null;
 
   public PaymentsCustomerTokenCreationResponse redirectUrl(String redirectUrl) {
     this.redirectUrl = redirectUrl;
@@ -68,6 +50,24 @@ public class PaymentsCustomerTokenCreationResponse {
     this.redirectUrl = redirectUrl;
   }
 
+  public PaymentsCustomerTokenCreationResponse tokenId(String tokenId) {
+    this.tokenId = tokenId;
+    return this;
+  }
+
+   /**
+   * Used when placing the order
+   * @return tokenId
+  **/
+  @ApiModelProperty(example = "0b1d9815-165e-42e2-8867-35bc03789e00", required = true, value = "Used when placing the order")
+  public String getTokenId() {
+    return tokenId;
+  }
+
+  public void setTokenId(String tokenId) {
+    this.tokenId = tokenId;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -78,13 +78,13 @@ public class PaymentsCustomerTokenCreationResponse {
       return false;
     }
     PaymentsCustomerTokenCreationResponse customerTokenCreationResponse = (PaymentsCustomerTokenCreationResponse) o;
-    return Objects.equals(this.tokenId, customerTokenCreationResponse.tokenId) &&
-        Objects.equals(this.redirectUrl, customerTokenCreationResponse.redirectUrl);
+    return Objects.equals(this.redirectUrl, customerTokenCreationResponse.redirectUrl) &&
+        Objects.equals(this.tokenId, customerTokenCreationResponse.tokenId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(tokenId, redirectUrl);
+    return Objects.hash(redirectUrl, tokenId);
   }
 
 
@@ -93,8 +93,8 @@ public class PaymentsCustomerTokenCreationResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentsCustomerTokenCreationResponse {\n");
     
-    sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
     sb.append("    redirectUrl: ").append(toIndentedString(redirectUrl)).append("\n");
+    sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

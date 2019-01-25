@@ -24,13 +24,10 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * PaymentsCustomer
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T15:02:16.248Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T16:26:10.932Z")
 public class PaymentsCustomer {
   @JsonProperty("date_of_birth")
   private String dateOfBirth = null;
-
-  @JsonProperty("title")
-  private String title = null;
 
   @JsonProperty("gender")
   private String gender = null;
@@ -40,15 +37,6 @@ public class PaymentsCustomer {
 
   @JsonProperty("national_identification_number")
   private String nationalIdentificationNumber = null;
-
-  @JsonProperty("type")
-  private String type = null;
-
-  @JsonProperty("vat_id")
-  private String vatId = null;
-
-  @JsonProperty("organization_registration_id")
-  private String organizationRegistrationId = null;
 
   /**
    * Organization entity type
@@ -106,6 +94,18 @@ public class PaymentsCustomer {
   @JsonProperty("organization_entity_type")
   private OrganizationEntityTypeEnum organizationEntityType = null;
 
+  @JsonProperty("organization_registration_id")
+  private String organizationRegistrationId = null;
+
+  @JsonProperty("title")
+  private String title = null;
+
+  @JsonProperty("type")
+  private String type = null;
+
+  @JsonProperty("vat_id")
+  private String vatId = null;
+
   public PaymentsCustomer dateOfBirth(String dateOfBirth) {
     this.dateOfBirth = dateOfBirth;
     return this;
@@ -122,24 +122,6 @@ public class PaymentsCustomer {
 
   public void setDateOfBirth(String dateOfBirth) {
     this.dateOfBirth = dateOfBirth;
-  }
-
-  public PaymentsCustomer title(String title) {
-    this.title = title;
-    return this;
-  }
-
-   /**
-   * The customer&#39;s title
-   * @return title
-  **/
-  @ApiModelProperty(value = "The customer's title")
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
   }
 
   public PaymentsCustomer gender(String gender) {
@@ -196,6 +178,60 @@ public class PaymentsCustomer {
     this.nationalIdentificationNumber = nationalIdentificationNumber;
   }
 
+  public PaymentsCustomer organizationEntityType(OrganizationEntityTypeEnum organizationEntityType) {
+    this.organizationEntityType = organizationEntityType;
+    return this;
+  }
+
+   /**
+   * Organization entity type
+   * @return organizationEntityType
+  **/
+  @ApiModelProperty(value = "Organization entity type")
+  public OrganizationEntityTypeEnum getOrganizationEntityType() {
+    return organizationEntityType;
+  }
+
+  public void setOrganizationEntityType(OrganizationEntityTypeEnum organizationEntityType) {
+    this.organizationEntityType = organizationEntityType;
+  }
+
+  public PaymentsCustomer organizationRegistrationId(String organizationRegistrationId) {
+    this.organizationRegistrationId = organizationRegistrationId;
+    return this;
+  }
+
+   /**
+   * Organization registration id
+   * @return organizationRegistrationId
+  **/
+  @ApiModelProperty(value = "Organization registration id")
+  public String getOrganizationRegistrationId() {
+    return organizationRegistrationId;
+  }
+
+  public void setOrganizationRegistrationId(String organizationRegistrationId) {
+    this.organizationRegistrationId = organizationRegistrationId;
+  }
+
+  public PaymentsCustomer title(String title) {
+    this.title = title;
+    return this;
+  }
+
+   /**
+   * The customer&#39;s title
+   * @return title
+  **/
+  @ApiModelProperty(value = "The customer's title")
+  public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
   public PaymentsCustomer type(String type) {
     this.type = type;
     return this;
@@ -232,42 +268,6 @@ public class PaymentsCustomer {
     this.vatId = vatId;
   }
 
-  public PaymentsCustomer organizationRegistrationId(String organizationRegistrationId) {
-    this.organizationRegistrationId = organizationRegistrationId;
-    return this;
-  }
-
-   /**
-   * Organization registration id
-   * @return organizationRegistrationId
-  **/
-  @ApiModelProperty(value = "Organization registration id")
-  public String getOrganizationRegistrationId() {
-    return organizationRegistrationId;
-  }
-
-  public void setOrganizationRegistrationId(String organizationRegistrationId) {
-    this.organizationRegistrationId = organizationRegistrationId;
-  }
-
-  public PaymentsCustomer organizationEntityType(OrganizationEntityTypeEnum organizationEntityType) {
-    this.organizationEntityType = organizationEntityType;
-    return this;
-  }
-
-   /**
-   * Organization entity type
-   * @return organizationEntityType
-  **/
-  @ApiModelProperty(value = "Organization entity type")
-  public OrganizationEntityTypeEnum getOrganizationEntityType() {
-    return organizationEntityType;
-  }
-
-  public void setOrganizationEntityType(OrganizationEntityTypeEnum organizationEntityType) {
-    this.organizationEntityType = organizationEntityType;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -279,19 +279,19 @@ public class PaymentsCustomer {
     }
     PaymentsCustomer customer = (PaymentsCustomer) o;
     return Objects.equals(this.dateOfBirth, customer.dateOfBirth) &&
-        Objects.equals(this.title, customer.title) &&
         Objects.equals(this.gender, customer.gender) &&
         Objects.equals(this.lastFourSsn, customer.lastFourSsn) &&
         Objects.equals(this.nationalIdentificationNumber, customer.nationalIdentificationNumber) &&
-        Objects.equals(this.type, customer.type) &&
-        Objects.equals(this.vatId, customer.vatId) &&
+        Objects.equals(this.organizationEntityType, customer.organizationEntityType) &&
         Objects.equals(this.organizationRegistrationId, customer.organizationRegistrationId) &&
-        Objects.equals(this.organizationEntityType, customer.organizationEntityType);
+        Objects.equals(this.title, customer.title) &&
+        Objects.equals(this.type, customer.type) &&
+        Objects.equals(this.vatId, customer.vatId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dateOfBirth, title, gender, lastFourSsn, nationalIdentificationNumber, type, vatId, organizationRegistrationId, organizationEntityType);
+    return Objects.hash(dateOfBirth, gender, lastFourSsn, nationalIdentificationNumber, organizationEntityType, organizationRegistrationId, title, type, vatId);
   }
 
 
@@ -301,14 +301,14 @@ public class PaymentsCustomer {
     sb.append("class PaymentsCustomer {\n");
     
     sb.append("    dateOfBirth: ").append(toIndentedString(dateOfBirth)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    gender: ").append(toIndentedString(gender)).append("\n");
     sb.append("    lastFourSsn: ").append(toIndentedString(lastFourSsn)).append("\n");
     sb.append("    nationalIdentificationNumber: ").append(toIndentedString(nationalIdentificationNumber)).append("\n");
+    sb.append("    organizationEntityType: ").append(toIndentedString(organizationEntityType)).append("\n");
+    sb.append("    organizationRegistrationId: ").append(toIndentedString(organizationRegistrationId)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    vatId: ").append(toIndentedString(vatId)).append("\n");
-    sb.append("    organizationRegistrationId: ").append(toIndentedString(organizationRegistrationId)).append("\n");
-    sb.append("    organizationEntityType: ").append(toIndentedString(organizationEntityType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
