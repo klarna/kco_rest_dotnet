@@ -14,16 +14,20 @@
 package com.klarna.rest.api.order_management.model;
 
 import java.util.Objects;
-
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import com.klarna.rest.api.order_management.model.OrderManagementOrderLine;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * RefundObject
+ * OrderManagementRefundObject
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-09-06T11:24:04.099Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T15:29:29.393Z")
 public class OrderManagementRefundObject {
   @JsonProperty("refunded_amount")
   private Long refundedAmount = null;
@@ -39,12 +43,12 @@ public class OrderManagementRefundObject {
     return this;
   }
 
-  /**
+   /**
    * Refunded amount in minor units.
    * minimum: 0
    * maximum: 100000000
    * @return refundedAmount
-   **/
+  **/
   @ApiModelProperty(required = true, value = "Refunded amount in minor units.")
   public Long getRefundedAmount() {
     return refundedAmount;
@@ -59,10 +63,10 @@ public class OrderManagementRefundObject {
     return this;
   }
 
-  /**
+   /**
    * Description of the refund shown to the customer. Max length is 255 characters.
    * @return description
-   **/
+  **/
   @ApiModelProperty(value = "Description of the refund shown to the customer. Max length is 255 characters.")
   public String getDescription() {
     return description;
@@ -85,10 +89,10 @@ public class OrderManagementRefundObject {
     return this;
   }
 
-  /**
+   /**
    * Order lines for the refund shown to the customer. Optional but increases the customer experience. Maximum 1000 order lines.
    * @return orderLines
-   **/
+  **/
   @ApiModelProperty(value = "Order lines for the refund shown to the customer. Optional but increases the customer experience. Maximum 1000 order lines.")
   public List<OrderManagementOrderLine> getOrderLines() {
     return orderLines;
@@ -109,8 +113,8 @@ public class OrderManagementRefundObject {
     }
     OrderManagementRefundObject refundObject = (OrderManagementRefundObject) o;
     return Objects.equals(this.refundedAmount, refundObject.refundedAmount) &&
-            Objects.equals(this.description, refundObject.description) &&
-            Objects.equals(this.orderLines, refundObject.orderLines);
+        Objects.equals(this.description, refundObject.description) &&
+        Objects.equals(this.orderLines, refundObject.orderLines);
   }
 
   @Override
@@ -122,8 +126,8 @@ public class OrderManagementRefundObject {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class RefundObject {\n");
-
+    sb.append("class OrderManagementRefundObject {\n");
+    
     sb.append("    refundedAmount: ").append(toIndentedString(refundedAmount)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    orderLines: ").append(toIndentedString(orderLines)).append("\n");

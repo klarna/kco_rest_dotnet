@@ -24,9 +24,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 **Hosted Payment page API**
 
-- HPPOptionsV1 mode: Add `payment_fallback` and `payment_method_categories` properties;
+- HPPOptionsV1 model: Add `payment_fallback` and `payment_method_categories` properties;
 - HPPSessionResponseV1 model: Add `session_id` property;
 - HPPSessionResponseV1.StatusEnum: Add `BACK`, `DISABLED` and `ERROR` statuses to enum.
+
+**Order Management API**
+
+- OrderManagementInitialPaymentMethodDto model: Add `number_of_installments` property;
+ 
 
 ### Added
 
