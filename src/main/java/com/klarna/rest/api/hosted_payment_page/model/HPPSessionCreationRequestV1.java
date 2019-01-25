@@ -1,6 +1,6 @@
 /*
  * HPP
- * Hosted payment page
+ * Hosted Payment Page
  *
  * OpenAPI spec version: 1.0
  * 
@@ -26,7 +26,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * HPPSessionCreationRequestV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T12:00:32.809Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T14:10:11.289Z")
 public class HPPSessionCreationRequestV1 {
   @JsonProperty("merchant_urls")
   private HPPMerchantUrlsV1 merchantUrls = null;
@@ -43,10 +43,10 @@ public class HPPSessionCreationRequestV1 {
   }
 
    /**
-   * Urls used to redirect the consumer
+   * URLs used to redirect the Consumer
    * @return merchantUrls
   **/
-  @ApiModelProperty(required = true, value = "Urls used to redirect the consumer")
+  @ApiModelProperty(required = true, value = "URLs used to redirect the Consumer")
   public HPPMerchantUrlsV1 getMerchantUrls() {
     return merchantUrls;
   }
@@ -79,10 +79,10 @@ public class HPPSessionCreationRequestV1 {
   }
 
    /**
-   * Url for the KP session
+   * URL of the KP Session or KCO Order to be hosted by the HPP Session
    * @return paymentSessionUrl
   **/
-  @ApiModelProperty(example = "https://api.klarna.com/payments/v1/sessions/92d97f60-7a78-46a5-8f68-c56fe52dc4af", required = true, value = "Url for the KP session")
+  @ApiModelProperty(example = "One of https://api.klarna.com/payments/v1/sessions/92d97f60-7a78-46a5-8f68-c56fe52dc4af or https://api.klarna.com/checkout/v3/orders/92d97f60-7a78-46a5-8f68-c56fe52dc4af", required = true, value = "URL of the KP Session or KCO Order to be hosted by the HPP Session")
   public String getPaymentSessionUrl() {
     return paymentSessionUrl;
   }

@@ -21,7 +21,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - TokenCustomerTokenV1 model: Add `card` and `direct_debit` properties;
 - TokenOrder model: Add `authorized_payment_method` property.
-    
+
+**Hosted Payment page API**
+
+- HPPOptionsV1 mode: Add `payment_fallback` and `payment_method_categories` properties;
+- HPPSessionResponseV1 model: Add `session_id` property;
+- HPPSessionResponseV1.StatusEnum: Add `BACK`, `DISABLED` and `ERROR` statuses to enum.
 
 ### Added
 
@@ -43,6 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - TokenCardInformation;
     - TokenCustomerTokenStatusUpdateRequest;
     - TokenDirectDebitInformation;
+- Add support for disabling an HPP session;
 
 
 ## v3.0.5 - 2018-01-10

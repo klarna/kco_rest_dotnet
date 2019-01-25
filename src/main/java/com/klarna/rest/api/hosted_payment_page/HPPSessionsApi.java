@@ -94,7 +94,7 @@ public class HPPSessionsApi extends BaseApi {
         final ApiResponse response = this.post(path, data);
 
         response.expectSuccessful()
-                .expectStatusCode(Response.Status.OK);
+                .expectStatusCode(Response.Status.OK, Response.Status.CREATED);
     }
 
     /**
@@ -117,5 +117,24 @@ public class HPPSessionsApi extends BaseApi {
                 .expectContentType(MediaType.APPLICATION_JSON);
 
         return fromJson(response.getBody(), HPPSessionResponseV1.class);
+    }
+
+    /**
+     * Disables HPP session.
+     *
+     * @see examples.HostedPaymentPageExample.DisableHPPSessionExample
+     *
+     * @param sessionId HPP session id
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
+     */
+    public void disable(final String sessionId)
+            throws ApiException, IOException {
+        final String path = String.format("%s/%s", PATH, sessionId);
+        final ApiResponse response = this.delete(path);
+
+        response.expectSuccessful()
+                .expectStatusCode(Response.Status.NO_CONTENT);
     }
 }

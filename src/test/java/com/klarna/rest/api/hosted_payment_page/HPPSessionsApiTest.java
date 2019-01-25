@@ -138,4 +138,20 @@ public class HPPSessionsApiTest extends TestCase {
         assertTrue(requestPayout.contains("\"purchase_type\":\"BUY\""));
         assertTrue(requestPayout.contains("\"payment_session_url\":\"https://api.klarna.com/payments/v1/sessions/92d97f60\""));
     }
+
+    @Test
+    public void testDisableSession() throws IOException {
+        when(transport.conn.getResponseCode()).thenReturn(204);
+        when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>(){{
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
+        }});
+
+        Client client = new Client(transport);
+        HPPSessionsApi api = client.newHPPSessionsApi();
+
+        api.disable("my-session-id");
+
+        verify(transport.conn, times(1)).setRequestMethod("DELETE");
+        assertEquals("/hpp/v1/sessions/my-session-id", transport.requestPath);
+    }
 }

@@ -15,6 +15,7 @@
  */
 
 /**
- * Hosted Payment Page API.
+ * Hosted Payment Page API models.
  */
-package com.klarna.rest.api.hosted_payment_page;
+
+package com.klarna.rest.api.hosted_payment_page.model;
