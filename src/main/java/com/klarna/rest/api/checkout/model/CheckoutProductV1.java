@@ -22,50 +22,50 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * CheckoutMerchantRequestedCheckbox
+ * CheckoutProductV1
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T11:03:40.852Z")
-public class CheckoutMerchantRequestedCheckbox {
-  @JsonProperty("id")
-  private String id = null;
+public class CheckoutProductV1 {
+  @JsonProperty("name")
+  private String name = null;
 
-  @JsonProperty("checked")
-  private Boolean checked = false;
+  @JsonProperty("identifier")
+  private String identifier = null;
 
-  public CheckoutMerchantRequestedCheckbox id(String id) {
-    this.id = id;
+  public CheckoutProductV1 name(String name) {
+    this.name = name;
     return this;
   }
 
    /**
-   * Get id
-   * @return id
+   * Carrier product name
+   * @return name
   **/
-  @ApiModelProperty(value = "")
-  public String getId() {
-    return id;
+  @ApiModelProperty(value = "Carrier product name")
+  public String getName() {
+    return name;
   }
 
-  public void setId(String id) {
-    this.id = id;
+  public void setName(String name) {
+    this.name = name;
   }
 
-  public CheckoutMerchantRequestedCheckbox checked(Boolean checked) {
-    this.checked = checked;
+  public CheckoutProductV1 identifier(String identifier) {
+    this.identifier = identifier;
     return this;
   }
 
    /**
-   * Get checked
-   * @return checked
+   * Carrier product identifier
+   * @return identifier
   **/
-  @ApiModelProperty(value = "")
-  public Boolean isChecked() {
-    return checked;
+  @ApiModelProperty(value = "Carrier product identifier")
+  public String getIdentifier() {
+    return identifier;
   }
 
-  public void setChecked(Boolean checked) {
-    this.checked = checked;
+  public void setIdentifier(String identifier) {
+    this.identifier = identifier;
   }
 
 
@@ -77,24 +77,24 @@ public class CheckoutMerchantRequestedCheckbox {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CheckoutMerchantRequestedCheckbox merchantRequestedCheckbox = (CheckoutMerchantRequestedCheckbox) o;
-    return Objects.equals(this.id, merchantRequestedCheckbox.id) &&
-        Objects.equals(this.checked, merchantRequestedCheckbox.checked);
+    CheckoutProductV1 productV1 = (CheckoutProductV1) o;
+    return Objects.equals(this.name, productV1.name) &&
+        Objects.equals(this.identifier, productV1.identifier);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, checked);
+    return Objects.hash(name, identifier);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CheckoutMerchantRequestedCheckbox {\n");
+    sb.append("class CheckoutProductV1 {\n");
     
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    checked: ").append(toIndentedString(checked)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    identifier: ").append(toIndentedString(identifier)).append("\n");
     sb.append("}");
     return sb.toString();
   }

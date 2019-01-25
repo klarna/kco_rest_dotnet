@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * CheckoutOptions
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-01T15:17:45.358Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T11:03:40.852Z")
 public class CheckoutOptions {
   @JsonProperty("acquiring_channel")
   private String acquiringChannel = null;
@@ -99,10 +99,10 @@ public class CheckoutOptions {
   }
 
    /**
-   * Acquiring channel for the order. Use MOTO for \&quot;Mail Order Telephone Order\&quot; or ECOMMERCE for \&quot;E-commerce\&quot;. Default : ECOMMERCE
+   * Acquiring channel for the order. Use MOTO for \&quot;Mail Order Telephone Order\&quot; or ECOMMERCE for \&quot;E-commerce\&quot; or IN_STORE for \&quot;Purchase in boutique\&quot;. Default : ECOMMERCE
    * @return acquiringChannel
   **/
-  @ApiModelProperty(example = "eCommerce", value = "Acquiring channel for the order. Use MOTO for \"Mail Order Telephone Order\" or ECOMMERCE for \"E-commerce\". Default : ECOMMERCE")
+  @ApiModelProperty(example = "eCommerce", value = "Acquiring channel for the order. Use MOTO for \"Mail Order Telephone Order\" or ECOMMERCE for \"E-commerce\" or IN_STORE for \"Purchase in boutique\". Default : ECOMMERCE")
   public String getAcquiringChannel() {
     return acquiringChannel;
   }

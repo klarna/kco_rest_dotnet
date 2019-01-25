@@ -19,13 +19,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.klarna.rest.api.checkout.model.CheckoutProductIdentifiers;
+import com.klarna.rest.api.checkout.model.CheckoutShippingAttributes;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
  * CheckoutOrderLine
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-01T15:17:45.358Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T11:03:40.852Z")
 public class CheckoutOrderLine {
   @JsonProperty("type")
   private String type = null;
@@ -68,6 +69,9 @@ public class CheckoutOrderLine {
 
   @JsonProperty("product_identifiers")
   private CheckoutProductIdentifiers productIdentifiers = null;
+
+  @JsonProperty("shipping_attributes")
+  private CheckoutShippingAttributes shippingAttributes = null;
 
   public CheckoutOrderLine type(String type) {
     this.type = type;
@@ -326,6 +330,24 @@ public class CheckoutOrderLine {
     this.productIdentifiers = productIdentifiers;
   }
 
+  public CheckoutOrderLine shippingAttributes(CheckoutShippingAttributes shippingAttributes) {
+    this.shippingAttributes = shippingAttributes;
+    return this;
+  }
+
+   /**
+   * Shipping attributes of an item
+   * @return shippingAttributes
+  **/
+  @ApiModelProperty(value = "Shipping attributes of an item")
+  public CheckoutShippingAttributes getShippingAttributes() {
+    return shippingAttributes;
+  }
+
+  public void setShippingAttributes(CheckoutShippingAttributes shippingAttributes) {
+    this.shippingAttributes = shippingAttributes;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -349,12 +371,13 @@ public class CheckoutOrderLine {
         Objects.equals(this.merchantData, orderLine.merchantData) &&
         Objects.equals(this.productUrl, orderLine.productUrl) &&
         Objects.equals(this.imageUrl, orderLine.imageUrl) &&
-        Objects.equals(this.productIdentifiers, orderLine.productIdentifiers);
+        Objects.equals(this.productIdentifiers, orderLine.productIdentifiers) &&
+        Objects.equals(this.shippingAttributes, orderLine.shippingAttributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, reference, name, quantity, quantityUnit, unitPrice, taxRate, totalAmount, totalDiscountAmount, totalTaxAmount, merchantData, productUrl, imageUrl, productIdentifiers);
+    return Objects.hash(type, reference, name, quantity, quantityUnit, unitPrice, taxRate, totalAmount, totalDiscountAmount, totalTaxAmount, merchantData, productUrl, imageUrl, productIdentifiers, shippingAttributes);
   }
 
 
@@ -377,6 +400,7 @@ public class CheckoutOrderLine {
     sb.append("    productUrl: ").append(toIndentedString(productUrl)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
     sb.append("    productIdentifiers: ").append(toIndentedString(productIdentifiers)).append("\n");
+    sb.append("    shippingAttributes: ").append(toIndentedString(shippingAttributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

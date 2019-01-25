@@ -18,13 +18,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.klarna.rest.api.checkout.model.CheckoutDeliveryDetailsV1;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
  * CheckoutShippingOption
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-01T15:17:45.358Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T11:03:40.852Z")
 public class CheckoutShippingOption {
   @JsonProperty("id")
   private String id = null;
@@ -52,6 +53,9 @@ public class CheckoutShippingOption {
 
   @JsonProperty("shipping_method")
   private String shippingMethod = null;
+
+  @JsonProperty("delivery_details")
+  private CheckoutDeliveryDetailsV1 deliveryDetails = null;
 
   public CheckoutShippingOption id(String id) {
     this.id = id;
@@ -215,6 +219,24 @@ public class CheckoutShippingOption {
     this.shippingMethod = shippingMethod;
   }
 
+  public CheckoutShippingOption deliveryDetails(CheckoutDeliveryDetailsV1 deliveryDetails) {
+    this.deliveryDetails = deliveryDetails;
+    return this;
+  }
+
+   /**
+   * The delivery details for this shipping option
+   * @return deliveryDetails
+  **/
+  @ApiModelProperty(value = "The delivery details for this shipping option")
+  public CheckoutDeliveryDetailsV1 getDeliveryDetails() {
+    return deliveryDetails;
+  }
+
+  public void setDeliveryDetails(CheckoutDeliveryDetailsV1 deliveryDetails) {
+    this.deliveryDetails = deliveryDetails;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -233,12 +255,13 @@ public class CheckoutShippingOption {
         Objects.equals(this.taxAmount, shippingOption.taxAmount) &&
         Objects.equals(this.taxRate, shippingOption.taxRate) &&
         Objects.equals(this.preselected, shippingOption.preselected) &&
-        Objects.equals(this.shippingMethod, shippingOption.shippingMethod);
+        Objects.equals(this.shippingMethod, shippingOption.shippingMethod) &&
+        Objects.equals(this.deliveryDetails, shippingOption.deliveryDetails);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, promo, price, taxAmount, taxRate, preselected, shippingMethod);
+    return Objects.hash(id, name, description, promo, price, taxAmount, taxRate, preselected, shippingMethod, deliveryDetails);
   }
 
 
@@ -256,6 +279,7 @@ public class CheckoutShippingOption {
     sb.append("    taxRate: ").append(toIndentedString(taxRate)).append("\n");
     sb.append("    preselected: ").append(toIndentedString(preselected)).append("\n");
     sb.append("    shippingMethod: ").append(toIndentedString(shippingMethod)).append("\n");
+    sb.append("    deliveryDetails: ").append(toIndentedString(deliveryDetails)).append("\n");
     sb.append("}");
     return sb.toString();
   }

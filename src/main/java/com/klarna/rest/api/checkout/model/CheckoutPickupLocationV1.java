@@ -18,30 +18,34 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.klarna.rest.api.checkout.model.CheckoutAddress;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * CheckoutMerchantRequestedCheckbox
+ * CheckoutPickupLocationV1
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T11:03:40.852Z")
-public class CheckoutMerchantRequestedCheckbox {
+public class CheckoutPickupLocationV1 {
   @JsonProperty("id")
   private String id = null;
 
-  @JsonProperty("checked")
-  private Boolean checked = false;
+  @JsonProperty("name")
+  private String name = null;
 
-  public CheckoutMerchantRequestedCheckbox id(String id) {
+  @JsonProperty("address")
+  private CheckoutAddress address = null;
+
+  public CheckoutPickupLocationV1 id(String id) {
     this.id = id;
     return this;
   }
 
    /**
-   * Get id
+   * Id
    * @return id
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Id")
   public String getId() {
     return id;
   }
@@ -50,22 +54,40 @@ public class CheckoutMerchantRequestedCheckbox {
     this.id = id;
   }
 
-  public CheckoutMerchantRequestedCheckbox checked(Boolean checked) {
-    this.checked = checked;
+  public CheckoutPickupLocationV1 name(String name) {
+    this.name = name;
     return this;
   }
 
    /**
-   * Get checked
-   * @return checked
+   * Name of the location
+   * @return name
   **/
-  @ApiModelProperty(value = "")
-  public Boolean isChecked() {
-    return checked;
+  @ApiModelProperty(value = "Name of the location")
+  public String getName() {
+    return name;
   }
 
-  public void setChecked(Boolean checked) {
-    this.checked = checked;
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public CheckoutPickupLocationV1 address(CheckoutAddress address) {
+    this.address = address;
+    return this;
+  }
+
+   /**
+   * Location adress
+   * @return address
+  **/
+  @ApiModelProperty(value = "Location adress")
+  public CheckoutAddress getAddress() {
+    return address;
+  }
+
+  public void setAddress(CheckoutAddress address) {
+    this.address = address;
   }
 
 
@@ -77,24 +99,26 @@ public class CheckoutMerchantRequestedCheckbox {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CheckoutMerchantRequestedCheckbox merchantRequestedCheckbox = (CheckoutMerchantRequestedCheckbox) o;
-    return Objects.equals(this.id, merchantRequestedCheckbox.id) &&
-        Objects.equals(this.checked, merchantRequestedCheckbox.checked);
+    CheckoutPickupLocationV1 pickupLocationV1 = (CheckoutPickupLocationV1) o;
+    return Objects.equals(this.id, pickupLocationV1.id) &&
+        Objects.equals(this.name, pickupLocationV1.name) &&
+        Objects.equals(this.address, pickupLocationV1.address);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, checked);
+    return Objects.hash(id, name, address);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CheckoutMerchantRequestedCheckbox {\n");
+    sb.append("class CheckoutPickupLocationV1 {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    checked: ").append(toIndentedString(checked)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("}");
     return sb.toString();
   }

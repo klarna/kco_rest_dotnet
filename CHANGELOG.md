@@ -7,6 +7,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v3.0.6 - 2018-01-26
+
+### Changed
+
+**Checkout API**
+
+- CheckoutOrder model: Add `tags` property;
+- CheckoutOrderLine model: Add `shipping_attributes` property;
+- CheckoutShippingOption model: Add `delivery_details` propery.
+    
+
+### Added
+
+**Checkout API**
+
+- New models:
+    - CheckoutDeliveryDetailsV1;
+    - CheckoutDimensions;
+    - CheckoutPickupLocationV1;
+    - CheckoutProductV1;
+    - CheckoutRecurringOrderRequestV1;
+    - CheckoutShippingAttributes;
+    - CheckoutTimeslotV1.
+
 ## v3.0.5 - 2018-01-10
 
 ### Security

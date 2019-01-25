@@ -38,7 +38,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * CheckoutAggregatedOrderRequestV2
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-01T15:17:45.358Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T11:03:40.852Z")
 public class CheckoutAggregatedOrderRequestV2 {
   @JsonProperty("locale")
   private String locale = null;
