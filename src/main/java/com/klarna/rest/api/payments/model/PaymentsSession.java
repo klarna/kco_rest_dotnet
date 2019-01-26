@@ -28,48 +28,43 @@ import com.klarna.rest.api.payments.model.PaymentsOrderLine;
 import com.klarna.rest.api.payments.model.PaymentsPaymentMethodCategory;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.threeten.bp.OffsetDateTime;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * PaymentsSession
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T15:02:16.248Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T16:26:10.932Z")
 public class PaymentsSession {
-  @JsonProperty("design")
-  private String design = null;
+  @JsonProperty("acquiring_channel")
+  private String acquiringChannel = null;
 
-  @JsonProperty("purchase_country")
-  private String purchaseCountry = null;
-
-  @JsonProperty("purchase_currency")
-  private String purchaseCurrency = null;
-
-  @JsonProperty("locale")
-  private String locale = null;
+  @JsonProperty("attachment")
+  private PaymentsAttachment attachment = null;
 
   @JsonProperty("billing_address")
   private PaymentsAddress billingAddress = null;
 
-  @JsonProperty("shipping_address")
-  private PaymentsAddress shippingAddress = null;
+  @JsonProperty("client_token")
+  private String clientToken = null;
 
-  @JsonProperty("order_amount")
-  private Long orderAmount = null;
-
-  @JsonProperty("order_tax_amount")
-  private Long orderTaxAmount = null;
-
-  @JsonProperty("order_lines")
-  private List<PaymentsOrderLine> orderLines = new ArrayList<PaymentsOrderLine>();
+  @JsonProperty("custom_payment_method_ids")
+  private List<String> customPaymentMethodIds = null;
 
   @JsonProperty("customer")
   private PaymentsCustomer customer = null;
 
-  @JsonProperty("merchant_urls")
-  private PaymentsMerchantUrls merchantUrls = null;
+  @JsonProperty("design")
+  private String design = null;
+
+  @JsonProperty("expires_at")
+  private PaymentsInstant expiresAt = null;
+
+  @JsonProperty("locale")
+  private String locale = null;
+
+  @JsonProperty("merchant_data")
+  private String merchantData = null;
 
   @JsonProperty("merchant_reference1")
   private String merchantReference1 = null;
@@ -77,17 +72,32 @@ public class PaymentsSession {
   @JsonProperty("merchant_reference2")
   private String merchantReference2 = null;
 
-  @JsonProperty("merchant_data")
-  private String merchantData = null;
+  @JsonProperty("merchant_urls")
+  private PaymentsMerchantUrls merchantUrls = null;
 
   @JsonProperty("options")
   private PaymentsOptions options = null;
 
-  @JsonProperty("attachment")
-  private PaymentsAttachment attachment = null;
+  @JsonProperty("order_amount")
+  private Long orderAmount = null;
 
-  @JsonProperty("custom_payment_method_ids")
-  private List<String> customPaymentMethodIds = null;
+  @JsonProperty("order_lines")
+  private List<PaymentsOrderLine> orderLines = new ArrayList<PaymentsOrderLine>();
+
+  @JsonProperty("order_tax_amount")
+  private Long orderTaxAmount = null;
+
+  @JsonProperty("payment_method_categories")
+  private List<PaymentsPaymentMethodCategory> paymentMethodCategories = null;
+
+  @JsonProperty("purchase_country")
+  private String purchaseCountry = null;
+
+  @JsonProperty("purchase_currency")
+  private String purchaseCurrency = null;
+
+  @JsonProperty("shipping_address")
+  private PaymentsAddress shippingAddress = null;
 
   /**
    * The current status of the session. Possible values: &#39;complete&#39;, &#39;incomplete&#39; where &#39;complete&#39; is set when the order has been placed.
@@ -127,88 +137,40 @@ public class PaymentsSession {
   @JsonProperty("status")
   private StatusEnum status = null;
 
-  @JsonProperty("client_token")
-  private String clientToken = null;
-
-  @JsonProperty("expires_at")
-  private OffsetDateTime expiresAt = null;
-
-  @JsonProperty("acquiring_channel")
-  private String acquiringChannel = null;
-
-  @JsonProperty("payment_method_categories")
-  private List<PaymentsPaymentMethodCategory> paymentMethodCategories = null;
-
-  public PaymentsSession design(String design) {
-    this.design = design;
+  public PaymentsSession acquiringChannel(String acquiringChannel) {
+    this.acquiringChannel = acquiringChannel;
     return this;
   }
 
    /**
-   * Get design
-   * @return design
+   * Type of acquiring channel
+   * @return acquiringChannel
   **/
-  @ApiModelProperty(value = "")
-  public String getDesign() {
-    return design;
+  @ApiModelProperty(example = "in_store", value = "Type of acquiring channel")
+  public String getAcquiringChannel() {
+    return acquiringChannel;
   }
 
-  public void setDesign(String design) {
-    this.design = design;
+  public void setAcquiringChannel(String acquiringChannel) {
+    this.acquiringChannel = acquiringChannel;
   }
 
-  public PaymentsSession purchaseCountry(String purchaseCountry) {
-    this.purchaseCountry = purchaseCountry;
+  public PaymentsSession attachment(PaymentsAttachment attachment) {
+    this.attachment = attachment;
     return this;
   }
 
    /**
-   * ISO 3166 alpha-2 purchase country.
-   * @return purchaseCountry
+   * Additional purchase information required for some industries.
+   * @return attachment
   **/
-  @ApiModelProperty(example = "US", required = true, value = "ISO 3166 alpha-2 purchase country.")
-  public String getPurchaseCountry() {
-    return purchaseCountry;
+  @ApiModelProperty(value = "Additional purchase information required for some industries.")
+  public PaymentsAttachment getAttachment() {
+    return attachment;
   }
 
-  public void setPurchaseCountry(String purchaseCountry) {
-    this.purchaseCountry = purchaseCountry;
-  }
-
-  public PaymentsSession purchaseCurrency(String purchaseCurrency) {
-    this.purchaseCurrency = purchaseCurrency;
-    return this;
-  }
-
-   /**
-   * ISO 4217 purchase currency.
-   * @return purchaseCurrency
-  **/
-  @ApiModelProperty(example = "USD", required = true, value = "ISO 4217 purchase currency.")
-  public String getPurchaseCurrency() {
-    return purchaseCurrency;
-  }
-
-  public void setPurchaseCurrency(String purchaseCurrency) {
-    this.purchaseCurrency = purchaseCurrency;
-  }
-
-  public PaymentsSession locale(String locale) {
-    this.locale = locale;
-    return this;
-  }
-
-   /**
-   * RFC 1766 customer&#39;s locale.
-   * @return locale
-  **/
-  @ApiModelProperty(example = "en-US", required = true, value = "RFC 1766 customer's locale.")
-  public String getLocale() {
-    return locale;
-  }
-
-  public void setLocale(String locale) {
-    this.locale = locale;
+  public void setAttachment(PaymentsAttachment attachment) {
+    this.attachment = attachment;
   }
 
   public PaymentsSession billingAddress(PaymentsAddress billingAddress) {
@@ -229,83 +191,39 @@ public class PaymentsSession {
     this.billingAddress = billingAddress;
   }
 
-  public PaymentsSession shippingAddress(PaymentsAddress shippingAddress) {
-    this.shippingAddress = shippingAddress;
+   /**
+   * Token to be passed to the JS client
+   * @return clientToken
+  **/
+  @ApiModelProperty(example = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJzZXNzaW9uX2lkIiA6ICIw", value = "Token to be passed to the JS client")
+  public String getClientToken() {
+    return clientToken;
+  }
+
+  public PaymentsSession customPaymentMethodIds(List<String> customPaymentMethodIds) {
+    this.customPaymentMethodIds = customPaymentMethodIds;
+    return this;
+  }
+
+  public PaymentsSession addCustomPaymentMethodIdsItem(String customPaymentMethodIdsItem) {
+    if (this.customPaymentMethodIds == null) {
+      this.customPaymentMethodIds = new ArrayList<String>();
+    }
+    this.customPaymentMethodIds.add(customPaymentMethodIdsItem);
     return this;
   }
 
    /**
-   * Unless the customer has explicitly chosen to enter a separate shipping address, this is a clone of billing_address.
-   * @return shippingAddress
+   * Ids for custom payment methods available in a given order. Only applicable in GB/US sessions.
+   * @return customPaymentMethodIds
   **/
-  @ApiModelProperty(value = "Unless the customer has explicitly chosen to enter a separate shipping address, this is a clone of billing_address.")
-  public PaymentsAddress getShippingAddress() {
-    return shippingAddress;
+  @ApiModelProperty(value = "Ids for custom payment methods available in a given order. Only applicable in GB/US sessions.")
+  public List<String> getCustomPaymentMethodIds() {
+    return customPaymentMethodIds;
   }
 
-  public void setShippingAddress(PaymentsAddress shippingAddress) {
-    this.shippingAddress = shippingAddress;
-  }
-
-  public PaymentsSession orderAmount(Long orderAmount) {
-    this.orderAmount = orderAmount;
-    return this;
-  }
-
-   /**
-   * Non-negative, minor units. Total amount of the order, including tax and any discounts.
-   * minimum: 0
-   * @return orderAmount
-  **/
-  @ApiModelProperty(required = true, value = "Non-negative, minor units. Total amount of the order, including tax and any discounts.")
-  public Long getOrderAmount() {
-    return orderAmount;
-  }
-
-  public void setOrderAmount(Long orderAmount) {
-    this.orderAmount = orderAmount;
-  }
-
-  public PaymentsSession orderTaxAmount(Long orderTaxAmount) {
-    this.orderTaxAmount = orderTaxAmount;
-    return this;
-  }
-
-   /**
-   * Non-negative, minor units. The total tax amount of the order.
-   * minimum: 0
-   * @return orderTaxAmount
-  **/
-  @ApiModelProperty(required = true, value = "Non-negative, minor units. The total tax amount of the order.")
-  public Long getOrderTaxAmount() {
-    return orderTaxAmount;
-  }
-
-  public void setOrderTaxAmount(Long orderTaxAmount) {
-    this.orderTaxAmount = orderTaxAmount;
-  }
-
-  public PaymentsSession orderLines(List<PaymentsOrderLine> orderLines) {
-    this.orderLines = orderLines;
-    return this;
-  }
-
-  public PaymentsSession addOrderLinesItem(PaymentsOrderLine orderLinesItem) {
-    this.orderLines.add(orderLinesItem);
-    return this;
-  }
-
-   /**
-   * The applicable order lines (max 1000)
-   * @return orderLines
-  **/
-  @ApiModelProperty(required = true, value = "The applicable order lines (max 1000)")
-  public List<PaymentsOrderLine> getOrderLines() {
-    return orderLines;
-  }
-
-  public void setOrderLines(List<PaymentsOrderLine> orderLines) {
-    this.orderLines = orderLines;
+  public void setCustomPaymentMethodIds(List<String> customPaymentMethodIds) {
+    this.customPaymentMethodIds = customPaymentMethodIds;
   }
 
   public PaymentsSession customer(PaymentsCustomer customer) {
@@ -326,22 +244,67 @@ public class PaymentsSession {
     this.customer = customer;
   }
 
-  public PaymentsSession merchantUrls(PaymentsMerchantUrls merchantUrls) {
-    this.merchantUrls = merchantUrls;
+  public PaymentsSession design(String design) {
+    this.design = design;
     return this;
   }
 
    /**
-   * The merchant_urls object.
-   * @return merchantUrls
+   * Get design
+   * @return design
   **/
-  @ApiModelProperty(value = "The merchant_urls object.")
-  public PaymentsMerchantUrls getMerchantUrls() {
-    return merchantUrls;
+  @ApiModelProperty(value = "")
+  public String getDesign() {
+    return design;
   }
 
-  public void setMerchantUrls(PaymentsMerchantUrls merchantUrls) {
-    this.merchantUrls = merchantUrls;
+  public void setDesign(String design) {
+    this.design = design;
+  }
+
+   /**
+   * Session expiration date
+   * @return expiresAt
+  **/
+  @ApiModelProperty(value = "Session expiration date")
+  public PaymentsInstant getExpiresAt() {
+    return expiresAt;
+  }
+
+  public PaymentsSession locale(String locale) {
+    this.locale = locale;
+    return this;
+  }
+
+   /**
+   * RFC 1766 customer&#39;s locale.
+   * @return locale
+  **/
+  @ApiModelProperty(example = "en-US", required = true, value = "RFC 1766 customer's locale.")
+  public String getLocale() {
+    return locale;
+  }
+
+  public void setLocale(String locale) {
+    this.locale = locale;
+  }
+
+  public PaymentsSession merchantData(String merchantData) {
+    this.merchantData = merchantData;
+    return this;
+  }
+
+   /**
+   * Pass through field (max 1024 characters).
+   * @return merchantData
+  **/
+  @ApiModelProperty(example = "{\"order_speicif\":[{\"substore\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}", value = "Pass through field (max 1024 characters).")
+  public String getMerchantData() {
+    return merchantData;
+  }
+
+  public void setMerchantData(String merchantData) {
+    this.merchantData = merchantData;
   }
 
   public PaymentsSession merchantReference1(String merchantReference1) {
@@ -380,22 +343,22 @@ public class PaymentsSession {
     this.merchantReference2 = merchantReference2;
   }
 
-  public PaymentsSession merchantData(String merchantData) {
-    this.merchantData = merchantData;
+  public PaymentsSession merchantUrls(PaymentsMerchantUrls merchantUrls) {
+    this.merchantUrls = merchantUrls;
     return this;
   }
 
    /**
-   * Pass through field (max 1024 characters).
-   * @return merchantData
+   * The merchant_urls object.
+   * @return merchantUrls
   **/
-  @ApiModelProperty(example = "{\"order_speicif\":[{\"substore\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}", value = "Pass through field (max 1024 characters).")
-  public String getMerchantData() {
-    return merchantData;
+  @ApiModelProperty(value = "The merchant_urls object.")
+  public PaymentsMerchantUrls getMerchantUrls() {
+    return merchantUrls;
   }
 
-  public void setMerchantData(String merchantData) {
-    this.merchantData = merchantData;
+  public void setMerchantUrls(PaymentsMerchantUrls merchantUrls) {
+    this.merchantUrls = merchantUrls;
   }
 
   public PaymentsSession options(PaymentsOptions options) {
@@ -416,93 +379,65 @@ public class PaymentsSession {
     this.options = options;
   }
 
-  public PaymentsSession attachment(PaymentsAttachment attachment) {
-    this.attachment = attachment;
+  public PaymentsSession orderAmount(Long orderAmount) {
+    this.orderAmount = orderAmount;
     return this;
   }
 
    /**
-   * Additional purchase information required for some industries.
-   * @return attachment
+   * Non-negative, minor units. Total amount of the order, including tax and any discounts.
+   * minimum: 0
+   * @return orderAmount
   **/
-  @ApiModelProperty(value = "Additional purchase information required for some industries.")
-  public PaymentsAttachment getAttachment() {
-    return attachment;
+  @ApiModelProperty(required = true, value = "Non-negative, minor units. Total amount of the order, including tax and any discounts.")
+  public Long getOrderAmount() {
+    return orderAmount;
   }
 
-  public void setAttachment(PaymentsAttachment attachment) {
-    this.attachment = attachment;
+  public void setOrderAmount(Long orderAmount) {
+    this.orderAmount = orderAmount;
   }
 
-  public PaymentsSession customPaymentMethodIds(List<String> customPaymentMethodIds) {
-    this.customPaymentMethodIds = customPaymentMethodIds;
+  public PaymentsSession orderLines(List<PaymentsOrderLine> orderLines) {
+    this.orderLines = orderLines;
     return this;
   }
 
-  public PaymentsSession addCustomPaymentMethodIdsItem(String customPaymentMethodIdsItem) {
-    if (this.customPaymentMethodIds == null) {
-      this.customPaymentMethodIds = new ArrayList<String>();
-    }
-    this.customPaymentMethodIds.add(customPaymentMethodIdsItem);
-    return this;
-  }
-
-   /**
-   * Ids for custom payment methods available in a given order. Only applicable in GB/US sessions.
-   * @return customPaymentMethodIds
-  **/
-  @ApiModelProperty(value = "Ids for custom payment methods available in a given order. Only applicable in GB/US sessions.")
-  public List<String> getCustomPaymentMethodIds() {
-    return customPaymentMethodIds;
-  }
-
-  public void setCustomPaymentMethodIds(List<String> customPaymentMethodIds) {
-    this.customPaymentMethodIds = customPaymentMethodIds;
-  }
-
-   /**
-   * The current status of the session. Possible values: &#39;complete&#39;, &#39;incomplete&#39; where &#39;complete&#39; is set when the order has been placed.
-   * @return status
-  **/
-  @ApiModelProperty(example = "complete", value = "The current status of the session. Possible values: 'complete', 'incomplete' where 'complete' is set when the order has been placed.")
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-   /**
-   * Token to be passed to the JS client
-   * @return clientToken
-  **/
-  @ApiModelProperty(example = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ewogICJzZXNzaW9uX2lkIiA6ICIw", value = "Token to be passed to the JS client")
-  public String getClientToken() {
-    return clientToken;
-  }
-
-   /**
-   * Session expiration date
-   * @return expiresAt
-  **/
-  @ApiModelProperty(value = "Session expiration date")
-  public OffsetDateTime getExpiresAt() {
-    return expiresAt;
-  }
-
-  public PaymentsSession acquiringChannel(String acquiringChannel) {
-    this.acquiringChannel = acquiringChannel;
+  public PaymentsSession addOrderLinesItem(PaymentsOrderLine orderLinesItem) {
+    this.orderLines.add(orderLinesItem);
     return this;
   }
 
    /**
-   * Type of acquiring channel
-   * @return acquiringChannel
+   * The applicable order lines (max 1000)
+   * @return orderLines
   **/
-  @ApiModelProperty(example = "in_store", value = "Type of acquiring channel")
-  public String getAcquiringChannel() {
-    return acquiringChannel;
+  @ApiModelProperty(required = true, value = "The applicable order lines (max 1000)")
+  public List<PaymentsOrderLine> getOrderLines() {
+    return orderLines;
   }
 
-  public void setAcquiringChannel(String acquiringChannel) {
-    this.acquiringChannel = acquiringChannel;
+  public void setOrderLines(List<PaymentsOrderLine> orderLines) {
+    this.orderLines = orderLines;
+  }
+
+  public PaymentsSession orderTaxAmount(Long orderTaxAmount) {
+    this.orderTaxAmount = orderTaxAmount;
+    return this;
+  }
+
+   /**
+   * Non-negative, minor units. The total tax amount of the order.
+   * minimum: 0
+   * @return orderTaxAmount
+  **/
+  @ApiModelProperty(required = true, value = "Non-negative, minor units. The total tax amount of the order.")
+  public Long getOrderTaxAmount() {
+    return orderTaxAmount;
+  }
+
+  public void setOrderTaxAmount(Long orderTaxAmount) {
+    this.orderTaxAmount = orderTaxAmount;
   }
 
    /**
@@ -512,6 +447,69 @@ public class PaymentsSession {
   @ApiModelProperty(value = "Available payment method categories")
   public List<PaymentsPaymentMethodCategory> getPaymentMethodCategories() {
     return paymentMethodCategories;
+  }
+
+  public PaymentsSession purchaseCountry(String purchaseCountry) {
+    this.purchaseCountry = purchaseCountry;
+    return this;
+  }
+
+   /**
+   * ISO 3166 alpha-2 purchase country.
+   * @return purchaseCountry
+  **/
+  @ApiModelProperty(example = "US", required = true, value = "ISO 3166 alpha-2 purchase country.")
+  public String getPurchaseCountry() {
+    return purchaseCountry;
+  }
+
+  public void setPurchaseCountry(String purchaseCountry) {
+    this.purchaseCountry = purchaseCountry;
+  }
+
+  public PaymentsSession purchaseCurrency(String purchaseCurrency) {
+    this.purchaseCurrency = purchaseCurrency;
+    return this;
+  }
+
+   /**
+   * ISO 4217 purchase currency.
+   * @return purchaseCurrency
+  **/
+  @ApiModelProperty(example = "USD", required = true, value = "ISO 4217 purchase currency.")
+  public String getPurchaseCurrency() {
+    return purchaseCurrency;
+  }
+
+  public void setPurchaseCurrency(String purchaseCurrency) {
+    this.purchaseCurrency = purchaseCurrency;
+  }
+
+  public PaymentsSession shippingAddress(PaymentsAddress shippingAddress) {
+    this.shippingAddress = shippingAddress;
+    return this;
+  }
+
+   /**
+   * Unless the customer has explicitly chosen to enter a separate shipping address, this is a clone of billing_address.
+   * @return shippingAddress
+  **/
+  @ApiModelProperty(value = "Unless the customer has explicitly chosen to enter a separate shipping address, this is a clone of billing_address.")
+  public PaymentsAddress getShippingAddress() {
+    return shippingAddress;
+  }
+
+  public void setShippingAddress(PaymentsAddress shippingAddress) {
+    this.shippingAddress = shippingAddress;
+  }
+
+   /**
+   * The current status of the session. Possible values: &#39;complete&#39;, &#39;incomplete&#39; where &#39;complete&#39; is set when the order has been placed.
+   * @return status
+  **/
+  @ApiModelProperty(example = "complete", value = "The current status of the session. Possible values: 'complete', 'incomplete' where 'complete' is set when the order has been placed.")
+  public StatusEnum getStatus() {
+    return status;
   }
 
 
@@ -524,33 +522,33 @@ public class PaymentsSession {
       return false;
     }
     PaymentsSession session = (PaymentsSession) o;
-    return Objects.equals(this.design, session.design) &&
-        Objects.equals(this.purchaseCountry, session.purchaseCountry) &&
-        Objects.equals(this.purchaseCurrency, session.purchaseCurrency) &&
-        Objects.equals(this.locale, session.locale) &&
+    return Objects.equals(this.acquiringChannel, session.acquiringChannel) &&
+        Objects.equals(this.attachment, session.attachment) &&
         Objects.equals(this.billingAddress, session.billingAddress) &&
-        Objects.equals(this.shippingAddress, session.shippingAddress) &&
-        Objects.equals(this.orderAmount, session.orderAmount) &&
-        Objects.equals(this.orderTaxAmount, session.orderTaxAmount) &&
-        Objects.equals(this.orderLines, session.orderLines) &&
+        Objects.equals(this.clientToken, session.clientToken) &&
+        Objects.equals(this.customPaymentMethodIds, session.customPaymentMethodIds) &&
         Objects.equals(this.customer, session.customer) &&
-        Objects.equals(this.merchantUrls, session.merchantUrls) &&
+        Objects.equals(this.design, session.design) &&
+        Objects.equals(this.expiresAt, session.expiresAt) &&
+        Objects.equals(this.locale, session.locale) &&
+        Objects.equals(this.merchantData, session.merchantData) &&
         Objects.equals(this.merchantReference1, session.merchantReference1) &&
         Objects.equals(this.merchantReference2, session.merchantReference2) &&
-        Objects.equals(this.merchantData, session.merchantData) &&
+        Objects.equals(this.merchantUrls, session.merchantUrls) &&
         Objects.equals(this.options, session.options) &&
-        Objects.equals(this.attachment, session.attachment) &&
-        Objects.equals(this.customPaymentMethodIds, session.customPaymentMethodIds) &&
-        Objects.equals(this.status, session.status) &&
-        Objects.equals(this.clientToken, session.clientToken) &&
-        Objects.equals(this.expiresAt, session.expiresAt) &&
-        Objects.equals(this.acquiringChannel, session.acquiringChannel) &&
-        Objects.equals(this.paymentMethodCategories, session.paymentMethodCategories);
+        Objects.equals(this.orderAmount, session.orderAmount) &&
+        Objects.equals(this.orderLines, session.orderLines) &&
+        Objects.equals(this.orderTaxAmount, session.orderTaxAmount) &&
+        Objects.equals(this.paymentMethodCategories, session.paymentMethodCategories) &&
+        Objects.equals(this.purchaseCountry, session.purchaseCountry) &&
+        Objects.equals(this.purchaseCurrency, session.purchaseCurrency) &&
+        Objects.equals(this.shippingAddress, session.shippingAddress) &&
+        Objects.equals(this.status, session.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(design, purchaseCountry, purchaseCurrency, locale, billingAddress, shippingAddress, orderAmount, orderTaxAmount, orderLines, customer, merchantUrls, merchantReference1, merchantReference2, merchantData, options, attachment, customPaymentMethodIds, status, clientToken, expiresAt, acquiringChannel, paymentMethodCategories);
+    return Objects.hash(acquiringChannel, attachment, billingAddress, clientToken, customPaymentMethodIds, customer, design, expiresAt, locale, merchantData, merchantReference1, merchantReference2, merchantUrls, options, orderAmount, orderLines, orderTaxAmount, paymentMethodCategories, purchaseCountry, purchaseCurrency, shippingAddress, status);
   }
 
 
@@ -559,28 +557,28 @@ public class PaymentsSession {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentsSession {\n");
     
-    sb.append("    design: ").append(toIndentedString(design)).append("\n");
-    sb.append("    purchaseCountry: ").append(toIndentedString(purchaseCountry)).append("\n");
-    sb.append("    purchaseCurrency: ").append(toIndentedString(purchaseCurrency)).append("\n");
-    sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+    sb.append("    acquiringChannel: ").append(toIndentedString(acquiringChannel)).append("\n");
+    sb.append("    attachment: ").append(toIndentedString(attachment)).append("\n");
     sb.append("    billingAddress: ").append(toIndentedString(billingAddress)).append("\n");
-    sb.append("    shippingAddress: ").append(toIndentedString(shippingAddress)).append("\n");
-    sb.append("    orderAmount: ").append(toIndentedString(orderAmount)).append("\n");
-    sb.append("    orderTaxAmount: ").append(toIndentedString(orderTaxAmount)).append("\n");
-    sb.append("    orderLines: ").append(toIndentedString(orderLines)).append("\n");
+    sb.append("    clientToken: ").append(toIndentedString(clientToken)).append("\n");
+    sb.append("    customPaymentMethodIds: ").append(toIndentedString(customPaymentMethodIds)).append("\n");
     sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
-    sb.append("    merchantUrls: ").append(toIndentedString(merchantUrls)).append("\n");
+    sb.append("    design: ").append(toIndentedString(design)).append("\n");
+    sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
+    sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
+    sb.append("    merchantData: ").append(toIndentedString(merchantData)).append("\n");
     sb.append("    merchantReference1: ").append(toIndentedString(merchantReference1)).append("\n");
     sb.append("    merchantReference2: ").append(toIndentedString(merchantReference2)).append("\n");
-    sb.append("    merchantData: ").append(toIndentedString(merchantData)).append("\n");
+    sb.append("    merchantUrls: ").append(toIndentedString(merchantUrls)).append("\n");
     sb.append("    options: ").append(toIndentedString(options)).append("\n");
-    sb.append("    attachment: ").append(toIndentedString(attachment)).append("\n");
-    sb.append("    customPaymentMethodIds: ").append(toIndentedString(customPaymentMethodIds)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    clientToken: ").append(toIndentedString(clientToken)).append("\n");
-    sb.append("    expiresAt: ").append(toIndentedString(expiresAt)).append("\n");
-    sb.append("    acquiringChannel: ").append(toIndentedString(acquiringChannel)).append("\n");
+    sb.append("    orderAmount: ").append(toIndentedString(orderAmount)).append("\n");
+    sb.append("    orderLines: ").append(toIndentedString(orderLines)).append("\n");
+    sb.append("    orderTaxAmount: ").append(toIndentedString(orderTaxAmount)).append("\n");
     sb.append("    paymentMethodCategories: ").append(toIndentedString(paymentMethodCategories)).append("\n");
+    sb.append("    purchaseCountry: ").append(toIndentedString(purchaseCountry)).append("\n");
+    sb.append("    purchaseCurrency: ").append(toIndentedString(purchaseCurrency)).append("\n");
+    sb.append("    shippingAddress: ").append(toIndentedString(shippingAddress)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");
     return sb.toString();
   }

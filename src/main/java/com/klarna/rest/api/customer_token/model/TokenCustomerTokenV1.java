@@ -18,19 +18,63 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.klarna.rest.api.customer_token.model.TokenCardInformation;
+import com.klarna.rest.api.customer_token.model.TokenDirectDebitInformation;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
  * TokenCustomerTokenV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T11:40:30.975Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T13:23:40.795Z")
 public class TokenCustomerTokenV1 {
+  @JsonProperty("card")
+  private TokenCardInformation card = null;
+
+  @JsonProperty("direct_debit")
+  private TokenDirectDebitInformation directDebit = null;
+
   @JsonProperty("payment_method_type")
   private String paymentMethodType = null;
 
   @JsonProperty("status")
   private String status = null;
+
+  public TokenCustomerTokenV1 card(TokenCardInformation card) {
+    this.card = card;
+    return this;
+  }
+
+   /**
+   * Card payment information
+   * @return card
+  **/
+  @ApiModelProperty(value = "Card payment information")
+  public TokenCardInformation getCard() {
+    return card;
+  }
+
+  public void setCard(TokenCardInformation card) {
+    this.card = card;
+  }
+
+  public TokenCustomerTokenV1 directDebit(TokenDirectDebitInformation directDebit) {
+    this.directDebit = directDebit;
+    return this;
+  }
+
+   /**
+   * Direct debit payment information
+   * @return directDebit
+  **/
+  @ApiModelProperty(value = "Direct debit payment information")
+  public TokenDirectDebitInformation getDirectDebit() {
+    return directDebit;
+  }
+
+  public void setDirectDebit(TokenDirectDebitInformation directDebit) {
+    this.directDebit = directDebit;
+  }
 
   public TokenCustomerTokenV1 paymentMethodType(String paymentMethodType) {
     this.paymentMethodType = paymentMethodType;
@@ -78,13 +122,15 @@ public class TokenCustomerTokenV1 {
       return false;
     }
     TokenCustomerTokenV1 customerTokenV1 = (TokenCustomerTokenV1) o;
-    return Objects.equals(this.paymentMethodType, customerTokenV1.paymentMethodType) &&
+    return Objects.equals(this.card, customerTokenV1.card) &&
+        Objects.equals(this.directDebit, customerTokenV1.directDebit) &&
+        Objects.equals(this.paymentMethodType, customerTokenV1.paymentMethodType) &&
         Objects.equals(this.status, customerTokenV1.status);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(paymentMethodType, status);
+    return Objects.hash(card, directDebit, paymentMethodType, status);
   }
 
 
@@ -93,6 +139,8 @@ public class TokenCustomerTokenV1 {
     StringBuilder sb = new StringBuilder();
     sb.append("class TokenCustomerTokenV1 {\n");
     
+    sb.append("    card: ").append(toIndentedString(card)).append("\n");
+    sb.append("    directDebit: ").append(toIndentedString(directDebit)).append("\n");
     sb.append("    paymentMethodType: ").append(toIndentedString(paymentMethodType)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");

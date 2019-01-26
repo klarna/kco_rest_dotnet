@@ -1,6 +1,6 @@
 /*
  * HPP
- * Hosted payment page
+ * Hosted Payment Page
  *
  * OpenAPI spec version: 1.0
  * 
@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * HPPMerchantUrlsV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T12:00:32.809Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T14:10:11.289Z")
 public class HPPMerchantUrlsV1 {
   @JsonProperty("cancel")
   private String cancel = null;

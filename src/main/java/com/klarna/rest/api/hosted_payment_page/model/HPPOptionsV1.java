@@ -1,6 +1,6 @@
 /*
  * HPP
- * Hosted payment page
+ * Hosted Payment Page
  *
  * OpenAPI spec version: 1.0
  * 
@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * HPPOptionsV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T12:00:32.809Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T14:10:11.289Z")
 public class HPPOptionsV1 {
   @JsonProperty("background_images")
   private List<HPPBackgroundImageV1> backgroundImages = null;
@@ -38,8 +38,55 @@ public class HPPOptionsV1 {
   @JsonProperty("page_title")
   private String pageTitle = null;
 
+  @JsonProperty("payment_fallback")
+  private Boolean paymentFallback = null;
+
   /**
-   * Payment method category to show
+   * Gets or Sets paymentMethodCategories
+   */
+  public enum PaymentMethodCategoriesEnum {
+    DIRECT_DEBIT("DIRECT_DEBIT"),
+    
+    DIRECT_BANK_TRANSFER("DIRECT_BANK_TRANSFER"),
+    
+    PAY_NOW("PAY_NOW"),
+    
+    PAY_LATER("PAY_LATER"),
+    
+    PAY_OVER_TIME("PAY_OVER_TIME");
+
+    private String value;
+
+    PaymentMethodCategoriesEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static PaymentMethodCategoriesEnum fromValue(String text) {
+      for (PaymentMethodCategoriesEnum b : PaymentMethodCategoriesEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("payment_method_categories")
+  private List<PaymentMethodCategoriesEnum> paymentMethodCategories = null;
+
+  /**
+   * Payment Method Category to show on the Payment Page. All available categories will be given to the customer if none is specified using payment_method_category or payment_method_categories. Ignored field for KCO Orders.
    */
   public enum PaymentMethodCategoryEnum {
     DIRECT_DEBIT("DIRECT_DEBIT"),
@@ -144,10 +191,10 @@ public class HPPOptionsV1 {
   }
 
    /**
-   * Images to use for the background
+   * Array of Images to use for the background. Best matching resolution will be used.
    * @return backgroundImages
   **/
-  @ApiModelProperty(value = "Images to use for the background")
+  @ApiModelProperty(value = "Array of Images to use for the background. Best matching resolution will be used.")
   public List<HPPBackgroundImageV1> getBackgroundImages() {
     return backgroundImages;
   }
@@ -162,10 +209,10 @@ public class HPPOptionsV1 {
   }
 
    /**
-   * URL for the logo to be included in the HPP page
+   * URL of the logo to be displayed
    * @return logoUrl
   **/
-  @ApiModelProperty(example = "https://example.com/logo.jpg", value = "URL for the logo to be included in the HPP page")
+  @ApiModelProperty(example = "https://example.com/logo.jpg", value = "URL of the logo to be displayed")
   public String getLogoUrl() {
     return logoUrl;
   }
@@ -180,10 +227,10 @@ public class HPPOptionsV1 {
   }
 
    /**
-   * Title for the HPP page
+   * Title for the Payment Page
    * @return pageTitle
   **/
-  @ApiModelProperty(example = "Complete your purchase", value = "Title for the HPP page")
+  @ApiModelProperty(example = "Complete your purchase", value = "Title for the Payment Page")
   public String getPageTitle() {
     return pageTitle;
   }
@@ -192,16 +239,60 @@ public class HPPOptionsV1 {
     this.pageTitle = pageTitle;
   }
 
+  public HPPOptionsV1 paymentFallback(Boolean paymentFallback) {
+    this.paymentFallback = paymentFallback;
+    return this;
+  }
+
+   /**
+   * Whether or not the Payment Page will show fallback payment methods to the Consumer if the the specified payment methods fail. Ignored field for KCO Orders.
+   * @return paymentFallback
+  **/
+  @ApiModelProperty(example = "true", value = "Whether or not the Payment Page will show fallback payment methods to the Consumer if the the specified payment methods fail. Ignored field for KCO Orders.")
+  public Boolean isPaymentFallback() {
+    return paymentFallback;
+  }
+
+  public void setPaymentFallback(Boolean paymentFallback) {
+    this.paymentFallback = paymentFallback;
+  }
+
+  public HPPOptionsV1 paymentMethodCategories(List<PaymentMethodCategoriesEnum> paymentMethodCategories) {
+    this.paymentMethodCategories = paymentMethodCategories;
+    return this;
+  }
+
+  public HPPOptionsV1 addPaymentMethodCategoriesItem(PaymentMethodCategoriesEnum paymentMethodCategoriesItem) {
+    if (this.paymentMethodCategories == null) {
+      this.paymentMethodCategories = new ArrayList<PaymentMethodCategoriesEnum>();
+    }
+    this.paymentMethodCategories.add(paymentMethodCategoriesItem);
+    return this;
+  }
+
+   /**
+   * Payment Method Categories to show on the Payment Page. All available categories will be given to the customer if none is specified using payment_method_category or payment_method_categories. Ignored field for KCO Orders.
+   * @return paymentMethodCategories
+  **/
+  @ApiModelProperty(example = "\"pay_later\"", value = "Payment Method Categories to show on the Payment Page. All available categories will be given to the customer if none is specified using payment_method_category or payment_method_categories. Ignored field for KCO Orders.")
+  public List<PaymentMethodCategoriesEnum> getPaymentMethodCategories() {
+    return paymentMethodCategories;
+  }
+
+  public void setPaymentMethodCategories(List<PaymentMethodCategoriesEnum> paymentMethodCategories) {
+    this.paymentMethodCategories = paymentMethodCategories;
+  }
+
   public HPPOptionsV1 paymentMethodCategory(PaymentMethodCategoryEnum paymentMethodCategory) {
     this.paymentMethodCategory = paymentMethodCategory;
     return this;
   }
 
    /**
-   * Payment method category to show
+   * Payment Method Category to show on the Payment Page. All available categories will be given to the customer if none is specified using payment_method_category or payment_method_categories. Ignored field for KCO Orders.
    * @return paymentMethodCategory
   **/
-  @ApiModelProperty(example = "pay_later", value = "Payment method category to show")
+  @ApiModelProperty(example = "pay_later", value = "Payment Method Category to show on the Payment Page. All available categories will be given to the customer if none is specified using payment_method_category or payment_method_categories. Ignored field for KCO Orders.")
   public PaymentMethodCategoryEnum getPaymentMethodCategory() {
     return paymentMethodCategory;
   }
@@ -241,13 +332,15 @@ public class HPPOptionsV1 {
     return Objects.equals(this.backgroundImages, optionsV1.backgroundImages) &&
         Objects.equals(this.logoUrl, optionsV1.logoUrl) &&
         Objects.equals(this.pageTitle, optionsV1.pageTitle) &&
+        Objects.equals(this.paymentFallback, optionsV1.paymentFallback) &&
+        Objects.equals(this.paymentMethodCategories, optionsV1.paymentMethodCategories) &&
         Objects.equals(this.paymentMethodCategory, optionsV1.paymentMethodCategory) &&
         Objects.equals(this.purchaseType, optionsV1.purchaseType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(backgroundImages, logoUrl, pageTitle, paymentMethodCategory, purchaseType);
+    return Objects.hash(backgroundImages, logoUrl, pageTitle, paymentFallback, paymentMethodCategories, paymentMethodCategory, purchaseType);
   }
 
 
@@ -259,6 +352,8 @@ public class HPPOptionsV1 {
     sb.append("    backgroundImages: ").append(toIndentedString(backgroundImages)).append("\n");
     sb.append("    logoUrl: ").append(toIndentedString(logoUrl)).append("\n");
     sb.append("    pageTitle: ").append(toIndentedString(pageTitle)).append("\n");
+    sb.append("    paymentFallback: ").append(toIndentedString(paymentFallback)).append("\n");
+    sb.append("    paymentMethodCategories: ").append(toIndentedString(paymentMethodCategories)).append("\n");
     sb.append("    paymentMethodCategory: ").append(toIndentedString(paymentMethodCategory)).append("\n");
     sb.append("    purchaseType: ").append(toIndentedString(purchaseType)).append("\n");
     sb.append("}");

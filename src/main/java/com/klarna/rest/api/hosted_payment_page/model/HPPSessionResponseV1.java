@@ -1,6 +1,6 @@
 /*
  * HPP
- * Hosted payment page
+ * Hosted Payment Page
  *
  * OpenAPI spec version: 1.0
  * 
@@ -25,16 +25,21 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * HPPSessionResponseV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T12:00:32.809Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T14:10:11.289Z")
 public class HPPSessionResponseV1 {
   @JsonProperty("authorization_token")
   private String authorizationToken = null;
 
+  @JsonProperty("session_id")
+  private String sessionId = null;
+
   /**
-   * Current session status
+   * Current HPP Session status
    */
   public enum StatusEnum {
     WAITING("WAITING"),
+    
+    BACK("BACK"),
     
     IN_PROGRESS("IN_PROGRESS"),
     
@@ -42,7 +47,11 @@ public class HPPSessionResponseV1 {
     
     CANCELLED("CANCELLED"),
     
-    FAILED("FAILED");
+    FAILED("FAILED"),
+    
+    DISABLED("DISABLED"),
+    
+    ERROR("ERROR");
 
     private String value;
 
@@ -83,10 +92,10 @@ public class HPPSessionResponseV1 {
   }
 
    /**
-   * Authorization token (with KP API)
+   * Authorization token (only for KP Sessions)
    * @return authorizationToken
   **/
-  @ApiModelProperty(example = "70850a20-a2a0-5c70-810c-096fa6f850bb", value = "Authorization token (with KP API)")
+  @ApiModelProperty(example = "70850a20-a2a0-5c70-810c-096fa6f850bb", value = "Authorization token (only for KP Sessions)")
   public String getAuthorizationToken() {
     return authorizationToken;
   }
@@ -95,16 +104,34 @@ public class HPPSessionResponseV1 {
     this.authorizationToken = authorizationToken;
   }
 
+  public HPPSessionResponseV1 sessionId(String sessionId) {
+    this.sessionId = sessionId;
+    return this;
+  }
+
+   /**
+   * The id of the HPP Session
+   * @return sessionId
+  **/
+  @ApiModelProperty(example = "a15b228c-02ad-11e9-8eb2-f2801f1b9fd1", value = "The id of the HPP Session")
+  public String getSessionId() {
+    return sessionId;
+  }
+
+  public void setSessionId(String sessionId) {
+    this.sessionId = sessionId;
+  }
+
   public HPPSessionResponseV1 status(StatusEnum status) {
     this.status = status;
     return this;
   }
 
    /**
-   * Current session status
+   * Current HPP Session status
    * @return status
   **/
-  @ApiModelProperty(example = "COMPLETED", value = "Current session status")
+  @ApiModelProperty(example = "COMPLETED", value = "Current HPP Session status")
   public StatusEnum getStatus() {
     return status;
   }
@@ -142,13 +169,14 @@ public class HPPSessionResponseV1 {
     }
     HPPSessionResponseV1 sessionResponseV1 = (HPPSessionResponseV1) o;
     return Objects.equals(this.authorizationToken, sessionResponseV1.authorizationToken) &&
+        Objects.equals(this.sessionId, sessionResponseV1.sessionId) &&
         Objects.equals(this.status, sessionResponseV1.status) &&
         Objects.equals(this.updatedAt, sessionResponseV1.updatedAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(authorizationToken, status, updatedAt);
+    return Objects.hash(authorizationToken, sessionId, status, updatedAt);
   }
 
 
@@ -158,6 +186,7 @@ public class HPPSessionResponseV1 {
     sb.append("class HPPSessionResponseV1 {\n");
     
     sb.append("    authorizationToken: ").append(toIndentedString(authorizationToken)).append("\n");
+    sb.append("    sessionId: ").append(toIndentedString(sessionId)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    updatedAt: ").append(toIndentedString(updatedAt)).append("\n");
     sb.append("}");

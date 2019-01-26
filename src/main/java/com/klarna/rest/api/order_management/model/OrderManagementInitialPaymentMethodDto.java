@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * OrderManagementInitialPaymentMethodDto
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T13:50:00.500Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T15:29:29.393Z")
 public class OrderManagementInitialPaymentMethodDto {
   /**
    * The type of the initial payment method.
@@ -85,6 +85,9 @@ public class OrderManagementInitialPaymentMethodDto {
   @JsonProperty("description")
   private String description = null;
 
+  @JsonProperty("number_of_installments")
+  private Integer numberOfInstallments = null;
+
   public OrderManagementInitialPaymentMethodDto type(TypeEnum type) {
     this.type = type;
     return this;
@@ -94,7 +97,7 @@ public class OrderManagementInitialPaymentMethodDto {
    * The type of the initial payment method.
    * @return type
   **/
-  @ApiModelProperty(example = "INVOICE", value = "The type of the initial payment method.")
+  @ApiModelProperty(example = "FIXED_AMOUNT", value = "The type of the initial payment method.")
   public TypeEnum getType() {
     return type;
   }
@@ -112,13 +115,31 @@ public class OrderManagementInitialPaymentMethodDto {
    * The description of the initial payment method.
    * @return description
   **/
-  @ApiModelProperty(example = "Pay later", value = "The description of the initial payment method.")
+  @ApiModelProperty(example = "Slice it (Fixed Payments)", value = "The description of the initial payment method.")
   public String getDescription() {
     return description;
   }
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public OrderManagementInitialPaymentMethodDto numberOfInstallments(Integer numberOfInstallments) {
+    this.numberOfInstallments = numberOfInstallments;
+    return this;
+  }
+
+   /**
+   * The number of installments (if applicable).
+   * @return numberOfInstallments
+  **/
+  @ApiModelProperty(example = "3", value = "The number of installments (if applicable).")
+  public Integer getNumberOfInstallments() {
+    return numberOfInstallments;
+  }
+
+  public void setNumberOfInstallments(Integer numberOfInstallments) {
+    this.numberOfInstallments = numberOfInstallments;
   }
 
 
@@ -132,12 +153,13 @@ public class OrderManagementInitialPaymentMethodDto {
     }
     OrderManagementInitialPaymentMethodDto initialPaymentMethodDto = (OrderManagementInitialPaymentMethodDto) o;
     return Objects.equals(this.type, initialPaymentMethodDto.type) &&
-        Objects.equals(this.description, initialPaymentMethodDto.description);
+        Objects.equals(this.description, initialPaymentMethodDto.description) &&
+        Objects.equals(this.numberOfInstallments, initialPaymentMethodDto.numberOfInstallments);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, description);
+    return Objects.hash(type, description, numberOfInstallments);
   }
 
 
@@ -148,6 +170,7 @@ public class OrderManagementInitialPaymentMethodDto {
     
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    numberOfInstallments: ").append(toIndentedString(numberOfInstallments)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * TokenOrderLine
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T11:40:30.975Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T13:23:40.795Z")
 public class TokenOrderLine {
   @JsonProperty("image_url")
   private String imageUrl = null;
@@ -147,10 +147,10 @@ public class TokenOrderLine {
   }
 
    /**
-   * URL to an image that can be later embedded in communications between Klarna and the customer. (max 1024 characters)
+   * URL to the product that can be later used in communications between Klarna and the customer. (max 1024 characters)
    * @return productUrl
   **/
-  @ApiModelProperty(example = "https://www.estore.com/products/f2a8d7e34", value = "URL to an image that can be later embedded in communications between Klarna and the customer. (max 1024 characters)")
+  @ApiModelProperty(example = "https://www.estore.com/products/f2a8d7e34", value = "URL to the product that can be later used in communications between Klarna and the customer. (max 1024 characters)")
   public String getProductUrl() {
     return productUrl;
   }
@@ -202,10 +202,10 @@ public class TokenOrderLine {
   }
 
    /**
-   * Article number, SKU or similar.
+   * Article number, SKU or similar. Max length is 64 characters.
    * @return reference
   **/
-  @ApiModelProperty(example = "19-402-USA", value = "Article number, SKU or similar.")
+  @ApiModelProperty(example = "19-402-USA", value = "Article number, SKU or similar. Max length is 64 characters.")
   public String getReference() {
     return reference;
   }
@@ -238,11 +238,11 @@ public class TokenOrderLine {
   }
 
    /**
-   * Includes tax and discount. Must match (quantity * unit_price) - total_discount_amount within ��quantity. (max value: 100000000)
+   * Includes tax and discount. Must match (quantity * unit_price) - total_discount_amount within ±quantity. (max value: 100000000)
    * maximum: 100000000
    * @return totalAmount
   **/
-  @ApiModelProperty(required = true, value = "Includes tax and discount. Must match (quantity * unit_price) - total_discount_amount within ��quantity. (max value: 100000000)")
+  @ApiModelProperty(required = true, value = "Includes tax and discount. Must match (quantity * unit_price) - total_discount_amount within ±quantity. (max value: 100000000)")
   public Long getTotalAmount() {
     return totalAmount;
   }
@@ -276,10 +276,10 @@ public class TokenOrderLine {
   }
 
    /**
-   * Must be within ��1 of total_amount - total_amount * 10000 / (10000 + tax_rate). Negative when type is discount.
+   * Must be within ±1 of total_amount - total_amount * 10000 / (10000 + tax_rate). Negative when type is discount.
    * @return totalTaxAmount
   **/
-  @ApiModelProperty(value = "Must be within ��1 of total_amount - total_amount * 10000 / (10000 + tax_rate). Negative when type is discount.")
+  @ApiModelProperty(value = "Must be within ±1 of total_amount - total_amount * 10000 / (10000 + tax_rate). Negative when type is discount.")
   public Long getTotalTaxAmount() {
     return totalTaxAmount;
   }

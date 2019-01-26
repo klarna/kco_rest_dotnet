@@ -25,16 +25,34 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * PaymentsPaymentMethodCategory
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T15:02:16.248Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T16:26:10.932Z")
 public class PaymentsPaymentMethodCategory {
+  @JsonProperty("asset_urls")
+  private PaymentsAssetUrls assetUrls = null;
+
   @JsonProperty("identifier")
   private String identifier = null;
 
   @JsonProperty("name")
   private String name = null;
 
-  @JsonProperty("asset_urls")
-  private PaymentsAssetUrls assetUrls = null;
+  public PaymentsPaymentMethodCategory assetUrls(PaymentsAssetUrls assetUrls) {
+    this.assetUrls = assetUrls;
+    return this;
+  }
+
+   /**
+   * Asset URLs
+   * @return assetUrls
+  **/
+  @ApiModelProperty(value = "Asset URLs")
+  public PaymentsAssetUrls getAssetUrls() {
+    return assetUrls;
+  }
+
+  public void setAssetUrls(PaymentsAssetUrls assetUrls) {
+    this.assetUrls = assetUrls;
+  }
 
   public PaymentsPaymentMethodCategory identifier(String identifier) {
     this.identifier = identifier;
@@ -72,24 +90,6 @@ public class PaymentsPaymentMethodCategory {
     this.name = name;
   }
 
-  public PaymentsPaymentMethodCategory assetUrls(PaymentsAssetUrls assetUrls) {
-    this.assetUrls = assetUrls;
-    return this;
-  }
-
-   /**
-   * Asset URLs
-   * @return assetUrls
-  **/
-  @ApiModelProperty(value = "Asset URLs")
-  public PaymentsAssetUrls getAssetUrls() {
-    return assetUrls;
-  }
-
-  public void setAssetUrls(PaymentsAssetUrls assetUrls) {
-    this.assetUrls = assetUrls;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -100,14 +100,14 @@ public class PaymentsPaymentMethodCategory {
       return false;
     }
     PaymentsPaymentMethodCategory paymentMethodCategory = (PaymentsPaymentMethodCategory) o;
-    return Objects.equals(this.identifier, paymentMethodCategory.identifier) &&
-        Objects.equals(this.name, paymentMethodCategory.name) &&
-        Objects.equals(this.assetUrls, paymentMethodCategory.assetUrls);
+    return Objects.equals(this.assetUrls, paymentMethodCategory.assetUrls) &&
+        Objects.equals(this.identifier, paymentMethodCategory.identifier) &&
+        Objects.equals(this.name, paymentMethodCategory.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(identifier, name, assetUrls);
+    return Objects.hash(assetUrls, identifier, name);
   }
 
 
@@ -116,9 +116,9 @@ public class PaymentsPaymentMethodCategory {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentsPaymentMethodCategory {\n");
     
+    sb.append("    assetUrls: ").append(toIndentedString(assetUrls)).append("\n");
     sb.append("    identifier: ").append(toIndentedString(identifier)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    assetUrls: ").append(toIndentedString(assetUrls)).append("\n");
     sb.append("}");
     return sb.toString();
   }

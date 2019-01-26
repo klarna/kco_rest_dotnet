@@ -24,31 +24,13 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * PaymentsAttachment
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T15:02:16.248Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T16:26:10.932Z")
 public class PaymentsAttachment {
-  @JsonProperty("content_type")
-  private String contentType = null;
-
   @JsonProperty("body")
   private String body = null;
 
-  public PaymentsAttachment contentType(String contentType) {
-    this.contentType = contentType;
-    return this;
-  }
-
-   /**
-   * The content type of the body property.
-   * @return contentType
-  **/
-  @ApiModelProperty(example = "application/vnd.klarna.internal.emd-v2+json", required = true, value = "The content type of the body property.")
-  public String getContentType() {
-    return contentType;
-  }
-
-  public void setContentType(String contentType) {
-    this.contentType = contentType;
-  }
+  @JsonProperty("content_type")
+  private String contentType = null;
 
   public PaymentsAttachment body(String body) {
     this.body = body;
@@ -68,6 +50,24 @@ public class PaymentsAttachment {
     this.body = body;
   }
 
+  public PaymentsAttachment contentType(String contentType) {
+    this.contentType = contentType;
+    return this;
+  }
+
+   /**
+   * The content type of the body property.
+   * @return contentType
+  **/
+  @ApiModelProperty(example = "application/vnd.klarna.internal.emd-v2+json", required = true, value = "The content type of the body property.")
+  public String getContentType() {
+    return contentType;
+  }
+
+  public void setContentType(String contentType) {
+    this.contentType = contentType;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -78,13 +78,13 @@ public class PaymentsAttachment {
       return false;
     }
     PaymentsAttachment attachment = (PaymentsAttachment) o;
-    return Objects.equals(this.contentType, attachment.contentType) &&
-        Objects.equals(this.body, attachment.body);
+    return Objects.equals(this.body, attachment.body) &&
+        Objects.equals(this.contentType, attachment.contentType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(contentType, body);
+    return Objects.hash(body, contentType);
   }
 
 
@@ -93,8 +93,8 @@ public class PaymentsAttachment {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentsAttachment {\n");
     
-    sb.append("    contentType: ").append(toIndentedString(contentType)).append("\n");
     sb.append("    body: ").append(toIndentedString(body)).append("\n");
+    sb.append("    contentType: ").append(toIndentedString(contentType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

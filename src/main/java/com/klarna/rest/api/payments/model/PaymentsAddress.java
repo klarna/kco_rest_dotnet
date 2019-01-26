@@ -24,19 +24,37 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * PaymentsAddress
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T15:02:16.248Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T16:26:10.932Z")
 public class PaymentsAddress {
-  @JsonProperty("given_name")
-  private String givenName = null;
+  @JsonProperty("attention")
+  private String attention = null;
 
-  @JsonProperty("family_name")
-  private String familyName = null;
+  @JsonProperty("city")
+  private String city = null;
+
+  @JsonProperty("country")
+  private String country = null;
 
   @JsonProperty("email")
   private String email = null;
 
-  @JsonProperty("title")
-  private String title = null;
+  @JsonProperty("family_name")
+  private String familyName = null;
+
+  @JsonProperty("given_name")
+  private String givenName = null;
+
+  @JsonProperty("organization_name")
+  private String organizationName = null;
+
+  @JsonProperty("phone")
+  private String phone = null;
+
+  @JsonProperty("postal_code")
+  private String postalCode = null;
+
+  @JsonProperty("region")
+  private String region = null;
 
   @JsonProperty("street_address")
   private String streetAddress = null;
@@ -44,61 +62,61 @@ public class PaymentsAddress {
   @JsonProperty("street_address2")
   private String streetAddress2 = null;
 
-  @JsonProperty("postal_code")
-  private String postalCode = null;
+  @JsonProperty("title")
+  private String title = null;
 
-  @JsonProperty("city")
-  private String city = null;
-
-  @JsonProperty("region")
-  private String region = null;
-
-  @JsonProperty("phone")
-  private String phone = null;
-
-  @JsonProperty("country")
-  private String country = null;
-
-  @JsonProperty("organization_name")
-  private String organizationName = null;
-
-  @JsonProperty("attention")
-  private String attention = null;
-
-  public PaymentsAddress givenName(String givenName) {
-    this.givenName = givenName;
+  public PaymentsAddress attention(String attention) {
+    this.attention = attention;
     return this;
   }
 
    /**
-   * Given name.
-   * @return givenName
+   * Attention
+   * @return attention
   **/
-  @ApiModelProperty(example = "John", value = "Given name.")
-  public String getGivenName() {
-    return givenName;
+  @ApiModelProperty(value = "Attention")
+  public String getAttention() {
+    return attention;
   }
 
-  public void setGivenName(String givenName) {
-    this.givenName = givenName;
+  public void setAttention(String attention) {
+    this.attention = attention;
   }
 
-  public PaymentsAddress familyName(String familyName) {
-    this.familyName = familyName;
+  public PaymentsAddress city(String city) {
+    this.city = city;
     return this;
   }
 
    /**
-   * Family name.
-   * @return familyName
+   * City.
+   * @return city
   **/
-  @ApiModelProperty(example = "Doe", value = "Family name.")
-  public String getFamilyName() {
-    return familyName;
+  @ApiModelProperty(example = "Beverly Hills", value = "City.")
+  public String getCity() {
+    return city;
   }
 
-  public void setFamilyName(String familyName) {
-    this.familyName = familyName;
+  public void setCity(String city) {
+    this.city = city;
+  }
+
+  public PaymentsAddress country(String country) {
+    this.country = country;
+    return this;
+  }
+
+   /**
+   * ISO 3166 alpha-2. Country.
+   * @return country
+  **/
+  @ApiModelProperty(example = "US", value = "ISO 3166 alpha-2. Country.")
+  public String getCountry() {
+    return country;
+  }
+
+  public void setCountry(String country) {
+    this.country = country;
   }
 
   public PaymentsAddress email(String email) {
@@ -119,22 +137,112 @@ public class PaymentsAddress {
     this.email = email;
   }
 
-  public PaymentsAddress title(String title) {
-    this.title = title;
+  public PaymentsAddress familyName(String familyName) {
+    this.familyName = familyName;
     return this;
   }
 
    /**
-   * Title.
-   * @return title
+   * Family name.
+   * @return familyName
   **/
-  @ApiModelProperty(example = "Mr", value = "Title.")
-  public String getTitle() {
-    return title;
+  @ApiModelProperty(example = "Doe", value = "Family name.")
+  public String getFamilyName() {
+    return familyName;
   }
 
-  public void setTitle(String title) {
-    this.title = title;
+  public void setFamilyName(String familyName) {
+    this.familyName = familyName;
+  }
+
+  public PaymentsAddress givenName(String givenName) {
+    this.givenName = givenName;
+    return this;
+  }
+
+   /**
+   * Given name.
+   * @return givenName
+  **/
+  @ApiModelProperty(example = "John", value = "Given name.")
+  public String getGivenName() {
+    return givenName;
+  }
+
+  public void setGivenName(String givenName) {
+    this.givenName = givenName;
+  }
+
+  public PaymentsAddress organizationName(String organizationName) {
+    this.organizationName = organizationName;
+    return this;
+  }
+
+   /**
+   * Organization name
+   * @return organizationName
+  **/
+  @ApiModelProperty(value = "Organization name")
+  public String getOrganizationName() {
+    return organizationName;
+  }
+
+  public void setOrganizationName(String organizationName) {
+    this.organizationName = organizationName;
+  }
+
+  public PaymentsAddress phone(String phone) {
+    this.phone = phone;
+    return this;
+  }
+
+   /**
+   * Phone number.
+   * @return phone
+  **/
+  @ApiModelProperty(example = "333444555", value = "Phone number.")
+  public String getPhone() {
+    return phone;
+  }
+
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
+
+  public PaymentsAddress postalCode(String postalCode) {
+    this.postalCode = postalCode;
+    return this;
+  }
+
+   /**
+   * Postal/post code.
+   * @return postalCode
+  **/
+  @ApiModelProperty(example = "90210", value = "Postal/post code.")
+  public String getPostalCode() {
+    return postalCode;
+  }
+
+  public void setPostalCode(String postalCode) {
+    this.postalCode = postalCode;
+  }
+
+  public PaymentsAddress region(String region) {
+    this.region = region;
+    return this;
+  }
+
+   /**
+   * State or Region.
+   * @return region
+  **/
+  @ApiModelProperty(example = "CA", value = "State or Region.")
+  public String getRegion() {
+    return region;
+  }
+
+  public void setRegion(String region) {
+    this.region = region;
   }
 
   public PaymentsAddress streetAddress(String streetAddress) {
@@ -173,130 +281,22 @@ public class PaymentsAddress {
     this.streetAddress2 = streetAddress2;
   }
 
-  public PaymentsAddress postalCode(String postalCode) {
-    this.postalCode = postalCode;
+  public PaymentsAddress title(String title) {
+    this.title = title;
     return this;
   }
 
    /**
-   * Postal/post code.
-   * @return postalCode
+   * Title.
+   * @return title
   **/
-  @ApiModelProperty(example = "90210", value = "Postal/post code.")
-  public String getPostalCode() {
-    return postalCode;
+  @ApiModelProperty(example = "Mr", value = "Title.")
+  public String getTitle() {
+    return title;
   }
 
-  public void setPostalCode(String postalCode) {
-    this.postalCode = postalCode;
-  }
-
-  public PaymentsAddress city(String city) {
-    this.city = city;
-    return this;
-  }
-
-   /**
-   * City.
-   * @return city
-  **/
-  @ApiModelProperty(example = "Beverly Hills", value = "City.")
-  public String getCity() {
-    return city;
-  }
-
-  public void setCity(String city) {
-    this.city = city;
-  }
-
-  public PaymentsAddress region(String region) {
-    this.region = region;
-    return this;
-  }
-
-   /**
-   * State or Region.
-   * @return region
-  **/
-  @ApiModelProperty(example = "CA", value = "State or Region.")
-  public String getRegion() {
-    return region;
-  }
-
-  public void setRegion(String region) {
-    this.region = region;
-  }
-
-  public PaymentsAddress phone(String phone) {
-    this.phone = phone;
-    return this;
-  }
-
-   /**
-   * Phone number.
-   * @return phone
-  **/
-  @ApiModelProperty(example = "333444555", value = "Phone number.")
-  public String getPhone() {
-    return phone;
-  }
-
-  public void setPhone(String phone) {
-    this.phone = phone;
-  }
-
-  public PaymentsAddress country(String country) {
-    this.country = country;
-    return this;
-  }
-
-   /**
-   * ISO 3166 alpha-2. Country.
-   * @return country
-  **/
-  @ApiModelProperty(example = "US", value = "ISO 3166 alpha-2. Country.")
-  public String getCountry() {
-    return country;
-  }
-
-  public void setCountry(String country) {
-    this.country = country;
-  }
-
-  public PaymentsAddress organizationName(String organizationName) {
-    this.organizationName = organizationName;
-    return this;
-  }
-
-   /**
-   * Organization name
-   * @return organizationName
-  **/
-  @ApiModelProperty(value = "Organization name")
-  public String getOrganizationName() {
-    return organizationName;
-  }
-
-  public void setOrganizationName(String organizationName) {
-    this.organizationName = organizationName;
-  }
-
-  public PaymentsAddress attention(String attention) {
-    this.attention = attention;
-    return this;
-  }
-
-   /**
-   * Attention
-   * @return attention
-  **/
-  @ApiModelProperty(value = "Attention")
-  public String getAttention() {
-    return attention;
-  }
-
-  public void setAttention(String attention) {
-    this.attention = attention;
+  public void setTitle(String title) {
+    this.title = title;
   }
 
 
@@ -309,24 +309,24 @@ public class PaymentsAddress {
       return false;
     }
     PaymentsAddress address = (PaymentsAddress) o;
-    return Objects.equals(this.givenName, address.givenName) &&
-        Objects.equals(this.familyName, address.familyName) &&
+    return Objects.equals(this.attention, address.attention) &&
+        Objects.equals(this.city, address.city) &&
+        Objects.equals(this.country, address.country) &&
         Objects.equals(this.email, address.email) &&
-        Objects.equals(this.title, address.title) &&
+        Objects.equals(this.familyName, address.familyName) &&
+        Objects.equals(this.givenName, address.givenName) &&
+        Objects.equals(this.organizationName, address.organizationName) &&
+        Objects.equals(this.phone, address.phone) &&
+        Objects.equals(this.postalCode, address.postalCode) &&
+        Objects.equals(this.region, address.region) &&
         Objects.equals(this.streetAddress, address.streetAddress) &&
         Objects.equals(this.streetAddress2, address.streetAddress2) &&
-        Objects.equals(this.postalCode, address.postalCode) &&
-        Objects.equals(this.city, address.city) &&
-        Objects.equals(this.region, address.region) &&
-        Objects.equals(this.phone, address.phone) &&
-        Objects.equals(this.country, address.country) &&
-        Objects.equals(this.organizationName, address.organizationName) &&
-        Objects.equals(this.attention, address.attention);
+        Objects.equals(this.title, address.title);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(givenName, familyName, email, title, streetAddress, streetAddress2, postalCode, city, region, phone, country, organizationName, attention);
+    return Objects.hash(attention, city, country, email, familyName, givenName, organizationName, phone, postalCode, region, streetAddress, streetAddress2, title);
   }
 
 
@@ -335,19 +335,19 @@ public class PaymentsAddress {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentsAddress {\n");
     
-    sb.append("    givenName: ").append(toIndentedString(givenName)).append("\n");
-    sb.append("    familyName: ").append(toIndentedString(familyName)).append("\n");
+    sb.append("    attention: ").append(toIndentedString(attention)).append("\n");
+    sb.append("    city: ").append(toIndentedString(city)).append("\n");
+    sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    familyName: ").append(toIndentedString(familyName)).append("\n");
+    sb.append("    givenName: ").append(toIndentedString(givenName)).append("\n");
+    sb.append("    organizationName: ").append(toIndentedString(organizationName)).append("\n");
+    sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
+    sb.append("    postalCode: ").append(toIndentedString(postalCode)).append("\n");
+    sb.append("    region: ").append(toIndentedString(region)).append("\n");
     sb.append("    streetAddress: ").append(toIndentedString(streetAddress)).append("\n");
     sb.append("    streetAddress2: ").append(toIndentedString(streetAddress2)).append("\n");
-    sb.append("    postalCode: ").append(toIndentedString(postalCode)).append("\n");
-    sb.append("    city: ").append(toIndentedString(city)).append("\n");
-    sb.append("    region: ").append(toIndentedString(region)).append("\n");
-    sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
-    sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    organizationName: ").append(toIndentedString(organizationName)).append("\n");
-    sb.append("    attention: ").append(toIndentedString(attention)).append("\n");
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("}");
     return sb.toString();
   }

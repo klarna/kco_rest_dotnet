@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * TokenAttachment
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T11:40:30.975Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T13:23:40.795Z")
 public class TokenAttachment {
   @JsonProperty("body")
   private String body = null;
@@ -59,7 +59,7 @@ public class TokenAttachment {
    * The content type of the body property.
    * @return contentType
   **/
-  @ApiModelProperty(example = "schemas/application/vnd.klarna.internal.emd-v2+json", required = true, value = "The content type of the body property.")
+  @ApiModelProperty(example = "application/vnd.klarna.internal.emd-v2+json", required = true, value = "The content type of the body property.")
   public String getContentType() {
     return contentType;
   }

@@ -30,7 +30,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * OrderManagementCapture
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T13:50:00.500Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T15:29:29.393Z")
 public class OrderManagementCapture {
   @JsonProperty("capture_id")
   private String captureId = null;
@@ -126,7 +126,7 @@ public class OrderManagementCapture {
    * The time of the capture. Specified in ISO 8601.
    * @return capturedAt
   **/
-  @ApiModelProperty(example = "2015-11-19T01:51:17+00:00", value = "The time of the capture. Specified in ISO 8601.")
+  @ApiModelProperty(example = "2015-11-19T01:51:17.000Z", value = "The time of the capture. Specified in ISO 8601.")
   public OffsetDateTime getCapturedAt() {
     return capturedAt;
   }

@@ -24,8 +24,14 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * PaymentsOptions
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T15:02:16.248Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T16:26:10.932Z")
 public class PaymentsOptions {
+  @JsonProperty("color_border")
+  private String colorBorder = null;
+
+  @JsonProperty("color_border_selected")
+  private String colorBorderSelected = null;
+
   @JsonProperty("color_button")
   private String colorButton = null;
 
@@ -38,29 +44,59 @@ public class PaymentsOptions {
   @JsonProperty("color_checkbox_checkmark")
   private String colorCheckboxCheckmark = null;
 
+  @JsonProperty("color_details")
+  private String colorDetails = null;
+
   @JsonProperty("color_header")
   private String colorHeader = null;
 
   @JsonProperty("color_link")
   private String colorLink = null;
 
-  @JsonProperty("color_border")
-  private String colorBorder = null;
-
-  @JsonProperty("color_border_selected")
-  private String colorBorderSelected = null;
-
   @JsonProperty("color_text")
   private String colorText = null;
-
-  @JsonProperty("color_details")
-  private String colorDetails = null;
 
   @JsonProperty("color_text_secondary")
   private String colorTextSecondary = null;
 
   @JsonProperty("radius_border")
   private String radiusBorder = null;
+
+  public PaymentsOptions colorBorder(String colorBorder) {
+    this.colorBorder = colorBorder;
+    return this;
+  }
+
+   /**
+   * CSS hex color, e.g. \&quot;#FF9900\&quot;
+   * @return colorBorder
+  **/
+  @ApiModelProperty(example = "#FF9900", value = "CSS hex color, e.g. \"#FF9900\"")
+  public String getColorBorder() {
+    return colorBorder;
+  }
+
+  public void setColorBorder(String colorBorder) {
+    this.colorBorder = colorBorder;
+  }
+
+  public PaymentsOptions colorBorderSelected(String colorBorderSelected) {
+    this.colorBorderSelected = colorBorderSelected;
+    return this;
+  }
+
+   /**
+   * CSS hex color, e.g. \&quot;#FF9900\&quot;
+   * @return colorBorderSelected
+  **/
+  @ApiModelProperty(example = "#FF9900", value = "CSS hex color, e.g. \"#FF9900\"")
+  public String getColorBorderSelected() {
+    return colorBorderSelected;
+  }
+
+  public void setColorBorderSelected(String colorBorderSelected) {
+    this.colorBorderSelected = colorBorderSelected;
+  }
 
   public PaymentsOptions colorButton(String colorButton) {
     this.colorButton = colorButton;
@@ -134,6 +170,24 @@ public class PaymentsOptions {
     this.colorCheckboxCheckmark = colorCheckboxCheckmark;
   }
 
+  public PaymentsOptions colorDetails(String colorDetails) {
+    this.colorDetails = colorDetails;
+    return this;
+  }
+
+   /**
+   * CSS hex color, e.g. \&quot;#FF9900\&quot;
+   * @return colorDetails
+  **/
+  @ApiModelProperty(example = "#FF9900", value = "CSS hex color, e.g. \"#FF9900\"")
+  public String getColorDetails() {
+    return colorDetails;
+  }
+
+  public void setColorDetails(String colorDetails) {
+    this.colorDetails = colorDetails;
+  }
+
   public PaymentsOptions colorHeader(String colorHeader) {
     this.colorHeader = colorHeader;
     return this;
@@ -170,42 +224,6 @@ public class PaymentsOptions {
     this.colorLink = colorLink;
   }
 
-  public PaymentsOptions colorBorder(String colorBorder) {
-    this.colorBorder = colorBorder;
-    return this;
-  }
-
-   /**
-   * CSS hex color, e.g. \&quot;#FF9900\&quot;
-   * @return colorBorder
-  **/
-  @ApiModelProperty(example = "#FF9900", value = "CSS hex color, e.g. \"#FF9900\"")
-  public String getColorBorder() {
-    return colorBorder;
-  }
-
-  public void setColorBorder(String colorBorder) {
-    this.colorBorder = colorBorder;
-  }
-
-  public PaymentsOptions colorBorderSelected(String colorBorderSelected) {
-    this.colorBorderSelected = colorBorderSelected;
-    return this;
-  }
-
-   /**
-   * CSS hex color, e.g. \&quot;#FF9900\&quot;
-   * @return colorBorderSelected
-  **/
-  @ApiModelProperty(example = "#FF9900", value = "CSS hex color, e.g. \"#FF9900\"")
-  public String getColorBorderSelected() {
-    return colorBorderSelected;
-  }
-
-  public void setColorBorderSelected(String colorBorderSelected) {
-    this.colorBorderSelected = colorBorderSelected;
-  }
-
   public PaymentsOptions colorText(String colorText) {
     this.colorText = colorText;
     return this;
@@ -222,24 +240,6 @@ public class PaymentsOptions {
 
   public void setColorText(String colorText) {
     this.colorText = colorText;
-  }
-
-  public PaymentsOptions colorDetails(String colorDetails) {
-    this.colorDetails = colorDetails;
-    return this;
-  }
-
-   /**
-   * CSS hex color, e.g. \&quot;#FF9900\&quot;
-   * @return colorDetails
-  **/
-  @ApiModelProperty(example = "#FF9900", value = "CSS hex color, e.g. \"#FF9900\"")
-  public String getColorDetails() {
-    return colorDetails;
-  }
-
-  public void setColorDetails(String colorDetails) {
-    this.colorDetails = colorDetails;
   }
 
   public PaymentsOptions colorTextSecondary(String colorTextSecondary) {
@@ -288,23 +288,23 @@ public class PaymentsOptions {
       return false;
     }
     PaymentsOptions options = (PaymentsOptions) o;
-    return Objects.equals(this.colorButton, options.colorButton) &&
+    return Objects.equals(this.colorBorder, options.colorBorder) &&
+        Objects.equals(this.colorBorderSelected, options.colorBorderSelected) &&
+        Objects.equals(this.colorButton, options.colorButton) &&
         Objects.equals(this.colorButtonText, options.colorButtonText) &&
         Objects.equals(this.colorCheckbox, options.colorCheckbox) &&
         Objects.equals(this.colorCheckboxCheckmark, options.colorCheckboxCheckmark) &&
+        Objects.equals(this.colorDetails, options.colorDetails) &&
         Objects.equals(this.colorHeader, options.colorHeader) &&
         Objects.equals(this.colorLink, options.colorLink) &&
-        Objects.equals(this.colorBorder, options.colorBorder) &&
-        Objects.equals(this.colorBorderSelected, options.colorBorderSelected) &&
         Objects.equals(this.colorText, options.colorText) &&
-        Objects.equals(this.colorDetails, options.colorDetails) &&
         Objects.equals(this.colorTextSecondary, options.colorTextSecondary) &&
         Objects.equals(this.radiusBorder, options.radiusBorder);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(colorButton, colorButtonText, colorCheckbox, colorCheckboxCheckmark, colorHeader, colorLink, colorBorder, colorBorderSelected, colorText, colorDetails, colorTextSecondary, radiusBorder);
+    return Objects.hash(colorBorder, colorBorderSelected, colorButton, colorButtonText, colorCheckbox, colorCheckboxCheckmark, colorDetails, colorHeader, colorLink, colorText, colorTextSecondary, radiusBorder);
   }
 
 
@@ -313,16 +313,16 @@ public class PaymentsOptions {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentsOptions {\n");
     
+    sb.append("    colorBorder: ").append(toIndentedString(colorBorder)).append("\n");
+    sb.append("    colorBorderSelected: ").append(toIndentedString(colorBorderSelected)).append("\n");
     sb.append("    colorButton: ").append(toIndentedString(colorButton)).append("\n");
     sb.append("    colorButtonText: ").append(toIndentedString(colorButtonText)).append("\n");
     sb.append("    colorCheckbox: ").append(toIndentedString(colorCheckbox)).append("\n");
     sb.append("    colorCheckboxCheckmark: ").append(toIndentedString(colorCheckboxCheckmark)).append("\n");
+    sb.append("    colorDetails: ").append(toIndentedString(colorDetails)).append("\n");
     sb.append("    colorHeader: ").append(toIndentedString(colorHeader)).append("\n");
     sb.append("    colorLink: ").append(toIndentedString(colorLink)).append("\n");
-    sb.append("    colorBorder: ").append(toIndentedString(colorBorder)).append("\n");
-    sb.append("    colorBorderSelected: ").append(toIndentedString(colorBorderSelected)).append("\n");
     sb.append("    colorText: ").append(toIndentedString(colorText)).append("\n");
-    sb.append("    colorDetails: ").append(toIndentedString(colorDetails)).append("\n");
     sb.append("    colorTextSecondary: ").append(toIndentedString(colorTextSecondary)).append("\n");
     sb.append("    radiusBorder: ").append(toIndentedString(radiusBorder)).append("\n");
     sb.append("}");

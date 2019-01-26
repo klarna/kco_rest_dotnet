@@ -135,4 +135,31 @@ public class HostedPaymentPageExample {
             }
         }
     }
+
+    public static class DisableHPPSessionExample {
+
+        /**
+         * Runs the example code.
+         *
+         * @param args Command line arguments
+         */
+        public static void main(final String[] args) {
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
+            String sessionId = "sessionId";
+
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
+            HPPSessionsApi HPPSessionsApi = client.newHPPSessionsApi();
+
+            try {
+                HPPSessionsApi.disable(sessionId);
+                System.out.println("The session has been disabled");
+
+            } catch (IOException e) {
+                System.out.println("Connection problem: " + e.getMessage());
+            } catch (ApiException e) {
+                System.out.println("API issue: " + e.getMessage());
+            }
+        }
+    }
 }

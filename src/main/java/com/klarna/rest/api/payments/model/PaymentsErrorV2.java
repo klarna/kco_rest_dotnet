@@ -26,16 +26,34 @@ import java.util.List;
 /**
  * PaymentsErrorV2
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T15:02:16.248Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T16:26:10.932Z")
 public class PaymentsErrorV2 {
+  @JsonProperty("correlation_id")
+  private String correlationId = null;
+
   @JsonProperty("error_code")
   private String errorCode = null;
 
   @JsonProperty("error_messages")
   private List<String> errorMessages = null;
 
-  @JsonProperty("correlation_id")
-  private String correlationId = null;
+  public PaymentsErrorV2 correlationId(String correlationId) {
+    this.correlationId = correlationId;
+    return this;
+  }
+
+   /**
+   * Get correlationId
+   * @return correlationId
+  **/
+  @ApiModelProperty(value = "")
+  public String getCorrelationId() {
+    return correlationId;
+  }
+
+  public void setCorrelationId(String correlationId) {
+    this.correlationId = correlationId;
+  }
 
   public PaymentsErrorV2 errorCode(String errorCode) {
     this.errorCode = errorCode;
@@ -81,24 +99,6 @@ public class PaymentsErrorV2 {
     this.errorMessages = errorMessages;
   }
 
-  public PaymentsErrorV2 correlationId(String correlationId) {
-    this.correlationId = correlationId;
-    return this;
-  }
-
-   /**
-   * Get correlationId
-   * @return correlationId
-  **/
-  @ApiModelProperty(value = "")
-  public String getCorrelationId() {
-    return correlationId;
-  }
-
-  public void setCorrelationId(String correlationId) {
-    this.correlationId = correlationId;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -109,14 +109,14 @@ public class PaymentsErrorV2 {
       return false;
     }
     PaymentsErrorV2 errorV2 = (PaymentsErrorV2) o;
-    return Objects.equals(this.errorCode, errorV2.errorCode) &&
-        Objects.equals(this.errorMessages, errorV2.errorMessages) &&
-        Objects.equals(this.correlationId, errorV2.correlationId);
+    return Objects.equals(this.correlationId, errorV2.correlationId) &&
+        Objects.equals(this.errorCode, errorV2.errorCode) &&
+        Objects.equals(this.errorMessages, errorV2.errorMessages);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(errorCode, errorMessages, correlationId);
+    return Objects.hash(correlationId, errorCode, errorMessages);
   }
 
 
@@ -125,9 +125,9 @@ public class PaymentsErrorV2 {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentsErrorV2 {\n");
     
+    sb.append("    correlationId: ").append(toIndentedString(correlationId)).append("\n");
     sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
     sb.append("    errorMessages: ").append(toIndentedString(errorMessages)).append("\n");
-    sb.append("    correlationId: ").append(toIndentedString(correlationId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

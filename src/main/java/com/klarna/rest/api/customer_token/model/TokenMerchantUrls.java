@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * TokenMerchantUrls
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T11:40:30.975Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T13:23:40.795Z")
 public class TokenMerchantUrls {
   @JsonProperty("confirmation")
   private String confirmation = null;

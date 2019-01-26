@@ -18,6 +18,7 @@ package com.klarna.rest.api.customer_token;
 
 import com.klarna.rest.api.BaseApi;
 import com.klarna.rest.api.customer_token.model.TokenCustomerTokenOrder;
+import com.klarna.rest.api.customer_token.model.TokenCustomerTokenStatusUpdateRequest;
 import com.klarna.rest.api.customer_token.model.TokenCustomerTokenV1;
 import com.klarna.rest.api.customer_token.model.TokenOrder;
 import com.klarna.rest.api.payments.PaymentsOrdersApi;
@@ -28,6 +29,8 @@ import com.klarna.rest.model.ApiResponse;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Customer Token API: Tokens resource.
@@ -77,13 +80,53 @@ public class TokensApi extends BaseApi {
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
     public TokenOrder createOrder(final TokenCustomerTokenOrder order) throws ApiException, IOException {
+        return createOrder(order, null);
+    }
+
+    /**
+     * Creates a new order using the customer token.
+     *
+     * @see examples.CustomerTokenExample.CreateOrderExample
+     *
+     * @param order Order details
+     * @param klarnaIdempotencyKey Klarna idempotency key
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
+     */
+    public TokenOrder createOrder(final TokenCustomerTokenOrder order, final String klarnaIdempotencyKey) throws ApiException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(order);
-        final ApiResponse response = this.post(PATH + "/order", data);
+
+        Map<String, String> headers = new HashMap<>();
+        if (klarnaIdempotencyKey != null) {
+            headers.put("Klarna-Idempotency-Key", klarnaIdempotencyKey);
+        }
+
+        final ApiResponse response = this.post(PATH + "/order", data, headers);
 
         response.expectSuccessful()
                 .expectStatusCode(Response.Status.OK)
                 .expectContentType(MediaType.APPLICATION_JSON);
 
         return fromJson(response.getBody(), TokenOrder.class);
+    }
+
+    /**
+     * Updates the status of a customer token
+     *
+     * @see examples.CustomerTokenExample.UpdateStatusExample
+     *
+     * @return server response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
+     */
+    public void updateStatus(final TokenCustomerTokenStatusUpdateRequest status) throws ApiException, IOException {
+        final byte[] data = objectMapper.writeValueAsBytes(status);
+        final ApiResponse response = this.patch(PATH + "/status", data);
+
+        response.expectSuccessful()
+                .expectStatusCode(Response.Status.ACCEPTED);
     }
 }

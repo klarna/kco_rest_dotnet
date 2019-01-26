@@ -18,22 +18,62 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.klarna.rest.api.payments.model.PaymentsAuthorizedPaymentMethod;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
  * PaymentsOrder
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T15:02:16.248Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T16:26:10.932Z")
 public class PaymentsOrder {
+  @JsonProperty("authorized_payment_method")
+  private PaymentsAuthorizedPaymentMethod authorizedPaymentMethod = null;
+
+  @JsonProperty("fraud_status")
+  private String fraudStatus = null;
+
   @JsonProperty("order_id")
   private String orderId = null;
 
   @JsonProperty("redirect_url")
   private String redirectUrl = null;
 
-  @JsonProperty("fraud_status")
-  private String fraudStatus = null;
+  public PaymentsOrder authorizedPaymentMethod(PaymentsAuthorizedPaymentMethod authorizedPaymentMethod) {
+    this.authorizedPaymentMethod = authorizedPaymentMethod;
+    return this;
+  }
+
+   /**
+   * The payment method authorized for the order
+   * @return authorizedPaymentMethod
+  **/
+  @ApiModelProperty(value = "The payment method authorized for the order")
+  public PaymentsAuthorizedPaymentMethod getAuthorizedPaymentMethod() {
+    return authorizedPaymentMethod;
+  }
+
+  public void setAuthorizedPaymentMethod(PaymentsAuthorizedPaymentMethod authorizedPaymentMethod) {
+    this.authorizedPaymentMethod = authorizedPaymentMethod;
+  }
+
+  public PaymentsOrder fraudStatus(String fraudStatus) {
+    this.fraudStatus = fraudStatus;
+    return this;
+  }
+
+   /**
+   * Fraud status for the order. Either ACCEPTED, PENDING or REJECTED.
+   * @return fraudStatus
+  **/
+  @ApiModelProperty(required = true, value = "Fraud status for the order. Either ACCEPTED, PENDING or REJECTED.")
+  public String getFraudStatus() {
+    return fraudStatus;
+  }
+
+  public void setFraudStatus(String fraudStatus) {
+    this.fraudStatus = fraudStatus;
+  }
 
   public PaymentsOrder orderId(String orderId) {
     this.orderId = orderId;
@@ -71,24 +111,6 @@ public class PaymentsOrder {
     this.redirectUrl = redirectUrl;
   }
 
-  public PaymentsOrder fraudStatus(String fraudStatus) {
-    this.fraudStatus = fraudStatus;
-    return this;
-  }
-
-   /**
-   * Fraud status for the order. Either ACCEPTED, PENDING or REJECTED.
-   * @return fraudStatus
-  **/
-  @ApiModelProperty(required = true, value = "Fraud status for the order. Either ACCEPTED, PENDING or REJECTED.")
-  public String getFraudStatus() {
-    return fraudStatus;
-  }
-
-  public void setFraudStatus(String fraudStatus) {
-    this.fraudStatus = fraudStatus;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -99,14 +121,15 @@ public class PaymentsOrder {
       return false;
     }
     PaymentsOrder order = (PaymentsOrder) o;
-    return Objects.equals(this.orderId, order.orderId) &&
-        Objects.equals(this.redirectUrl, order.redirectUrl) &&
-        Objects.equals(this.fraudStatus, order.fraudStatus);
+    return Objects.equals(this.authorizedPaymentMethod, order.authorizedPaymentMethod) &&
+        Objects.equals(this.fraudStatus, order.fraudStatus) &&
+        Objects.equals(this.orderId, order.orderId) &&
+        Objects.equals(this.redirectUrl, order.redirectUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderId, redirectUrl, fraudStatus);
+    return Objects.hash(authorizedPaymentMethod, fraudStatus, orderId, redirectUrl);
   }
 
 
@@ -115,9 +138,10 @@ public class PaymentsOrder {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentsOrder {\n");
     
+    sb.append("    authorizedPaymentMethod: ").append(toIndentedString(authorizedPaymentMethod)).append("\n");
+    sb.append("    fraudStatus: ").append(toIndentedString(fraudStatus)).append("\n");
     sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
     sb.append("    redirectUrl: ").append(toIndentedString(redirectUrl)).append("\n");
-    sb.append("    fraudStatus: ").append(toIndentedString(fraudStatus)).append("\n");
     sb.append("}");
     return sb.toString();
   }

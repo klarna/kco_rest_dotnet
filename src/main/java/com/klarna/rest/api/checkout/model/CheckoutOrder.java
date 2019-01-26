@@ -37,7 +37,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * CheckoutOrder
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-01T15:17:45.358Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T11:03:40.852Z")
 public class CheckoutOrder {
   @JsonProperty("order_id")
   private String orderId = null;
@@ -138,6 +138,9 @@ public class CheckoutOrder {
   @JsonProperty("billing_countries")
   private List<String> billingCountries = null;
 
+  @JsonProperty("tags")
+  private List<String> tags = null;
+
    /**
    * The unique order ID (max 255 characters).
    * @return orderId
@@ -236,7 +239,6 @@ public class CheckoutOrder {
   public void setBillingAddress(CheckoutAddress billingAddress) {
     this.billingAddress = billingAddress;
   }
-
 
   public CheckoutOrder shippingAddress(CheckoutAddress shippingAddress) {
     this.shippingAddress = shippingAddress;
@@ -669,16 +671,42 @@ public class CheckoutOrder {
   }
 
    /**
-   * A list of countries (ISO 3166 alpha-2) to specify allowed billing countries. Not yet used
+   * A list of countries (ISO 3166 alpha-2) to specify allowed billing countries.
    * @return billingCountries
   **/
-  @ApiModelProperty(example = "[\"us\",\"gb\"]", value = "A list of countries (ISO 3166 alpha-2) to specify allowed billing countries. Not yet used")
+  @ApiModelProperty(example = "[\"us\",\"gb\"]", value = "A list of countries (ISO 3166 alpha-2) to specify allowed billing countries.")
   public List<String> getBillingCountries() {
     return billingCountries;
   }
 
   public void setBillingCountries(List<String> billingCountries) {
     this.billingCountries = billingCountries;
+  }
+
+  public CheckoutOrder tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public CheckoutOrder addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<String>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * The product&#39;s extra features
+   * @return tags
+  **/
+  @ApiModelProperty(example = "\"[\\\"dangerous_goods\\\", \\\"bulky\\\"]\"", value = "The product's extra features")
+  public List<String> getTags() {
+    return tags;
+  }
+
+  public void setTags(List<String> tags) {
+    this.tags = tags;
   }
 
 
@@ -723,12 +751,13 @@ public class CheckoutOrder {
         Objects.equals(this.recurring, order.recurring) &&
         Objects.equals(this.recurringToken, order.recurringToken) &&
         Objects.equals(this.recurringDescription, order.recurringDescription) &&
-        Objects.equals(this.billingCountries, order.billingCountries);
+        Objects.equals(this.billingCountries, order.billingCountries) &&
+        Objects.equals(this.tags, order.tags);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderId, name, purchaseCountry, purchaseCurrency, locale, status, billingAddress, shippingAddress, orderAmount, orderTaxAmount, orderLines, customer, merchantUrls, htmlSnippet, merchantReference1, merchantReference2, startedAt, completedAt, lastModifiedAt, options, attachment, externalPaymentMethods, externalCheckouts, shippingCountries, shippingOptions, merchantData, gui, merchantRequested, selectedShippingOption, recurring, recurringToken, recurringDescription, billingCountries);
+    return Objects.hash(orderId, name, purchaseCountry, purchaseCurrency, locale, status, billingAddress, shippingAddress, orderAmount, orderTaxAmount, orderLines, customer, merchantUrls, htmlSnippet, merchantReference1, merchantReference2, startedAt, completedAt, lastModifiedAt, options, attachment, externalPaymentMethods, externalCheckouts, shippingCountries, shippingOptions, merchantData, gui, merchantRequested, selectedShippingOption, recurring, recurringToken, recurringDescription, billingCountries, tags);
   }
 
 
@@ -770,6 +799,7 @@ public class CheckoutOrder {
     sb.append("    recurringToken: ").append(toIndentedString(recurringToken)).append("\n");
     sb.append("    recurringDescription: ").append(toIndentedString(recurringDescription)).append("\n");
     sb.append("    billingCountries: ").append(toIndentedString(billingCountries)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("}");
     return sb.toString();
   }
