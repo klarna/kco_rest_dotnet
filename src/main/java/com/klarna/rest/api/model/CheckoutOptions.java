@@ -35,6 +35,11 @@ public class CheckoutOptions extends Model {
     private Boolean dateOfBirthMandatory;
 
     /**
+     * If customers date of birth is mandatory.
+     */
+    private Boolean phoneMandatory;
+
+    /**
      * If the customer should be able to supply a different shipping address.
      */
     private Boolean allowSeparateShippingAddress;
@@ -163,6 +168,27 @@ public class CheckoutOptions extends Model {
      */
     public CheckoutOptions setDateOfBirthMandatory(final Boolean mandatory) {
         this.dateOfBirthMandatory = mandatory;
+
+        return this;
+    }
+
+    /**
+     * Gets whether the customer phone is mandatory.
+     *
+     * @return If it is mandatory
+     */
+    public Boolean getPhoneMandatory() {
+        return this.phoneMandatory;
+    }
+
+    /**
+     * Sets whether the customer needs to provide a phone.
+     *
+     * @param mandatory If phone number should be mandatory
+     * @return Same instance
+     */
+    public CheckoutOptions setPhoneMandatory(final Boolean mandatory) {
+        this.phoneMandatory = mandatory;
 
         return this;
     }

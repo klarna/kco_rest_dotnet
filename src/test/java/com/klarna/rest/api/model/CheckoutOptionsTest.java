@@ -218,4 +218,12 @@ public class CheckoutOptionsTest extends TestCase {
         options.setVatExcluded(true);
         assertTrue(options.getVatExcluded());
     }
+
+    @Test
+    public void testPhoneMandatory() {
+        assertNull(options.getPhoneMandatory());
+
+        options.setPhoneMandatory(true);
+        assertTrue(options.getPhoneMandatory());
+    }
 }
