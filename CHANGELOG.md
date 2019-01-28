@@ -8,10 +8,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+### Changed
+
+- Fix version formatting in Markdown to better conform with Keep a Changelog
+
 ### Added
+
 - Repo now has an Apache 2.0 LICENSE file on its root
 
-## v3.0.6 - 2018-01-26
+## [3.0.6] - 2018-01-26
 
 ### Changed
 
@@ -69,7 +75,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New model:
     - PaymentsAuthorizedPaymentMethod;
 
-## v3.0.5 - 2018-01-10
+## [3.0.5] - 2018-01-10
 
 ### Security
 
@@ -83,25 +89,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [keepachangelog](https://keepachangelog.com/en/1.0.0/) and [markdownlint](https://github.com/markdownlint/markdownlint) alignment modifications to `CHANGELOG`
 
-## v3.0.4 - 2018-12-11
+## [3.0.4] - 2018-12-11
 
 ### Added
 
 - Payments API: Add ability to set Shipping Address for Sessions.
 
-## v3.0.3 - 2018-12-06
+## [3.0.3] - 2018-12-06
 
 ### Added
 
 - Checkout API: Add support of phone_mandatory field for Checkout options.
 
-## v3.0.2 - 2018-11-12
+## [3.0.2] - 2018-11-12
 
 ### Changed
 
 - Update com.fasterxml.jackson.* to 2.9.7 version.
 
-## v3.0.1 - 2018-11-12
+## [3.0.1] - 2018-11-12
 
 ### Security
 
@@ -109,7 +115,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   FasterXML jackson-databind through 2.8.10 and 2.9.x through 2.9.3 allows
   unauthenticated remote code execution because of an incomplete fix for the [CVE-2017-7525](https://nvd.nist.gov/vuln/detail/CVE-2017-7525) deserialization flaw.
 
-## v3.0.0 - 2018-11-12 (Major release)
+## [3.0.0] - 2018-11-12 (Major release)
 
 > **⚠️ No backward compatibility**
 
@@ -129,7 +135,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Actualize all the API models;
 
-## v2.2.2 - 2018-09-06
+## [2.2.2] - 2018-09-06
 
 ### Added
 
@@ -146,25 +152,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [Shipping Delay missing from CaptureData #5](https://github.com/klarna/kco_rest_java/issues/5);
 - Release is fully backward-compatible;
 
-## v2.2.0 - 2016-02-15
+## [2.2.0] - 2016-02-15
 
 ### Added
 
 - **NEW META-112** Updating MerchantUrls model for shipping_option_update, address_update & notification - *Christer.G*
 
-## v2.1.0 - 2015-12-07
+## [2.1.0] - 2015-12-07
 
 ### Added
 
 - **NEW META-13** Allow for 201 response on refund - *Joakim.L*
 
-## v2.0.1 - 2015-10-15
+## [2.0.1] - 2015-10-15
 
 ### Fixed
 
 - **FIX MINT-2322** Fix issues with connection still allocated exceptions - *Joakim.L*
 
-## v2.0.0 - 2015-06-30
+## [2.0.0] - 2015-06-30
 
 ### Added
 
@@ -175,13 +181,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **NEW MINT-2233** Add support for Extra Merchant Data - *Christer.G*
 - **NEW MINT-2247** Add support for external payment methods and checkouts - *Christer.G*
 
-## v1.0.1 - 2015-03-30
+## [1.0.1] - 2015-03-30
 
 ### Fixed
 
 - **FIX MINT-2105** Add custom Javadoc template - *Andrew.M*
 
-## v1.0.0 - 2015-01-16
+## [1.0.0] - 2015-01-16
 
 ### Added
 
