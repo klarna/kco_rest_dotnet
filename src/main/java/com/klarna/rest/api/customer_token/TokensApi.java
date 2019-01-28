@@ -117,7 +117,8 @@ public class TokensApi extends BaseApi {
      *
      * @see examples.CustomerTokenExample.UpdateStatusExample
      *
-     * @return server response
+     * @param status The token status to update to.
+     *
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
