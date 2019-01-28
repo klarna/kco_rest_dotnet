@@ -17,7 +17,7 @@ namespace Klarna.Rest.Core.Serialization
         protected JsonSerializerSettings SerializerSettings = new JsonSerializerSettings
         {
             NullValueHandling = NullValueHandling.Ignore,
-            DefaultValueHandling = DefaultValueHandling.Ignore,
+            DefaultValueHandling = DefaultValueHandling.Include,
             Converters = new List<JsonConverter>()
             {
                 new IsoDateTimeConverter
