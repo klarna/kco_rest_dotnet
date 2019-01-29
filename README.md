@@ -35,21 +35,21 @@ Example files can be found in the
 <dependency>
     <groupId>com.klarna</groupId>
     <artifactId>kco-rest</artifactId>
-    <version>2.2.3</version>
+    <version>2.2.4</version>
 </dependency>
 ```
 
 ### Installation with Ivy
 
 ```xml
-<dependency org="com.klarna" name="kco-rest" revision="2.2.3"/>
+<dependency org="com.klarna" name="kco-rest" revision="2.2.4"/>
 ```
 
 ### Installation with Gradle
 
 ```gradle
 dependencies {
-    compile group: 'com.klarna', name: 'kco-rest', version: '2.2.3'
+    compile group: 'com.klarna', name: 'kco-rest', version: '2.2.4'
 }
 ```
 
