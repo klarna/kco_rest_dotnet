@@ -1,0 +1,12 @@
+{{!Copyright (c) 2005-2019 Klarna Bank AB (publ). All rights reserved.}}
+
+<div class="subnav navbar navbar-default" style="display: table; width:100%;">
+  <a href="index.html" style="display: table-cell; vertical-align: middle;">
+    <img id="logo" class="svg" src="{{_rel}}{{{_appLogoPath}}}{{^_appLogoPath}}logo.svg{{/_appLogoPath}}" alt="{{_appName}}" style="height: 40px; margin: 10px 15px 10px 10px" />
+  </a>
+  <div class="container hide-when-search" id="breadcrumb" style="display: table-cell; vertical-align: middle; padding: 4px 0 0 0;">
+    <ul class="breadcrumb">
+      <li>{{_tocTitle}}</li>
+    </ul>
+  </div>
+</div>
