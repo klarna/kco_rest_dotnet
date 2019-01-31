@@ -1,4 +1,13 @@
 ﻿{
+  "card": {
+    "brand": "VISA",
+    "expiry_date": "12/2020",
+    "masked_number": "**1234"
+  },
+  "direct_debit": {
+    "brand": "string",
+    "masked_number": "**124"
+  },
   "payment_method_type": "INVOICE",
   "status": "ACTIVE"
 }
