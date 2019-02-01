@@ -25,100 +25,54 @@ namespace Klarna.Rest.Core.Commuication
             _jsonSerializer = jsonSerializer;
         }
 
-        protected async Task<T> Post<T>(string url, object data)
+        protected async Task Post(string url, object data = null, IDictionary<string, string> headers = null)
         {
-            var message = GetMessage(HttpMethod.Post, url);
-            var json = Serialize(data);
-            using (message.Content = new StringContent(json, Encoding.UTF8, "application/json"))
-            {
-                using (var client = GetClient())
-                {
-                    var result = await client.SendAsync(message);
-
-                    await ThrowIfError(result);
-
-                    return await DeserializeOrDefault<T>(result);
-                }
-            }
+            await MakeRequest(HttpMethod.Post, url, data, headers);
+        }
+        
+        protected async Task<T> Post<T>(string url, object data = null, IDictionary<string, string> headers = null)
+        {
+            var result = await MakeRequest(HttpMethod.Post, url, data, headers);
+            return await DeserializeOrDefault<T>(result);
         }
 
-        protected async Task Post(string url, object data = null)
+        protected async Task Patch(string url, object data = null, IDictionary<string, string> headers = null)
         {
-            var message = GetMessage(HttpMethod.Post, url);
-            var json = data == null ? string.Empty : Serialize(data);
-            using (message.Content = new StringContent(json, Encoding.UTF8, "application/json"))
-            {
-                using (var client = GetClient())
-                {
-                    var result = await client.SendAsync(message);
-
-                    await ThrowIfError(result);
-                }
-            }
+            await MakeRequest(new HttpMethod("PATCH"), url, data, headers);
         }
 
-        protected async Task Patch(string url, object data)
+        protected async Task Delete(string url, object data = null, IDictionary<string, string> headers = null)
         {
-            var message = GetMessage(new HttpMethod("PATCH"), url);
-            var json = data == null ? string.Empty : Serialize(data);
-            using (message.Content = new StringContent(json, Encoding.UTF8, "application/json"))
-            {
-                using (var client = GetClient())
-                {
-                    var result = await client.SendAsync(message);
-
-                    await ThrowIfError(result);
-                }
-            }
+            await MakeRequest(HttpMethod.Delete, url, data, headers);
+        }
+        
+        protected async Task<T> Delete<T>(string url, object data = null, IDictionary<string, string> headers = null)
+        {
+            var result = await MakeRequest(HttpMethod.Delete, url, data, headers);
+            return await DeserializeOrDefault<T>(result);
         }
 
-        protected async Task Delete(string url)
+        protected async Task<T> Put<T>(string url, object data = null, IDictionary<string, string> headers = null)
         {
-            using (var client = GetClient())
-            {
-                var result = await client.SendAsync(GetMessage(HttpMethod.Delete, url));
-
-                await ThrowIfError(result);
-            }
+            
+            var result = await MakeRequest(HttpMethod.Put, url, data, headers);
+            return await DeserializeOrDefault<T>(result);
         }
-
-        protected async Task<T> Put<T>(string url, object data)
+        
+        protected async Task Put(string url, object data = null, IDictionary<string, string> headers = null)
         {
-            var message = GetMessage(HttpMethod.Put, url);
-            var json = Serialize(data);
-            using (message.Content = new StringContent(json, Encoding.UTF8, "application/json"))
-            {
-                using (var client = GetClient())
-                {
-                    var result = await client.SendAsync(message);
-
-                    await ThrowIfError(result);
-
-                    return await DeserializeOrDefault<T>(result);
-                }
-            }
+            await MakeRequest(HttpMethod.Put, url, data, headers);
         }
 
         protected async Task<T> Get<T>(string url, IDictionary<string, string> headers = null)
         {
-            using (var client = GetClient())
-            {
-                var result = await client.SendAsync(GetMessage(HttpMethod.Get, url));
-
-                await ThrowIfError(result);
-
-                return await DeserializeOrDefault<T>(result);
-            }
+            var result = await MakeRequest(HttpMethod.Get, url, null, headers);
+            return await DeserializeOrDefault<T>(result);
         }
 
-        protected async Task Get(string url)
+        protected async Task Get(string url, IDictionary<string, string> headers = null)
         {
-            using (var client = GetClient())
-            {
-                var result = await client.SendAsync(GetMessage(HttpMethod.Get, url));
-
-                await ThrowIfError(result);
-            }
+            await MakeRequest(HttpMethod.Get, url, null, headers);
         }
 
         protected async Task<Stream> GetStream(string url)
@@ -132,8 +86,39 @@ namespace Klarna.Rest.Core.Commuication
                 return await result.Content.ReadAsStreamAsync();
             }
         }
+        
+        private async Task<HttpResponseMessage> MakeRequest(
+            HttpMethod method, string url, object data = null, IDictionary<string, string> headers = null)
+        {
+            var message = GetMessage(method, url, headers);
+            var json = data == null ? string.Empty : Serialize(data);
+            var result = new HttpResponseMessage();
+            
+            using (message.Content = new StringContent(json, Encoding.UTF8, "application/json"))
+            {
+                using (var client = GetClient())
+                {
+//                     Console.WriteLine("DEBUG MODE: Request\n"
+//                              + ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n"
+//                              + method + ": " + url + "\n"
+//                              + "Headers: " + headers + "\n"
+//                              + "Payout: " + json + "\n");
+                    
+                    result = await client.SendAsync(message);
+                    
+//                    Console.WriteLine("DEBUG MODE: Response\n"
+//                                      + "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n"
+//                                      + "Code: " + result.StatusCode + "\n"
+//                                      + "Headers: " + Serialize(result.Headers) + "\n"
+//                                      + "Body: " + await result.Content.ReadAsStringAsync() + "\n");
 
-        private HttpRequestMessage GetMessage(HttpMethod method, string resource, IDictionary<string, string> headers = null)
+                    await ThrowIfError(result);
+                }
+            }
+            return result;
+        }
+
+        private static HttpRequestMessage GetMessage(HttpMethod method, string resource, IDictionary<string, string> headers = null)
         {
             var message = new HttpRequestMessage(method, resource);
             message.Headers.Accept.Clear();
@@ -168,11 +153,7 @@ namespace Klarna.Rest.Core.Commuication
         private async Task<T> DeserializeOrDefault<T>(HttpResponseMessage result)
         {
             var content = await result.Content.ReadAsStringAsync();
-            if (!string.IsNullOrEmpty(content))
-            {
-                return _jsonSerializer.Deserialize<T>(content);
-            }
-            return default(T);
+            return !string.IsNullOrEmpty(content) ? _jsonSerializer.Deserialize<T>(content) : default(T);
         }
 
         private string Serialize(object data)
@@ -180,7 +161,7 @@ namespace Klarna.Rest.Core.Commuication
             return _jsonSerializer.Serialize(data);
         }
 
-        private async Task ThrowIfError(HttpResponseMessage result)
+        private static async Task ThrowIfError(HttpResponseMessage result)
         {
             if (!result.IsSuccessStatusCode)
             {
