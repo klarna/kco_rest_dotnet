@@ -85,7 +85,7 @@ namespace Klarna.Rest.Core.Model
         /// A list of allowed customer types. Supported types: person & organization
         /// </summary>
         [JsonProperty(PropertyName = "allowed_customer_types")]
-        public string AllowedCustomerTypes { get; set; }
+        public ICollection<string> AllowedCustomerTypes { get; set; }
         /// <summary>
         /// If true, the Order Detail subtotals view is expanded. Default: false
         /// </summary>
