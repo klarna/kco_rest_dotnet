@@ -165,3 +165,6 @@ $RECYCLE.BIN/
 # DocFX artifacts
 docfx_project/_site
 docfx_project/obj
+
+# IDE
+.idea
