@@ -35,7 +35,7 @@ namespace Klarna.Rest.Core.Store
                 {"end_date", endDate},
                 {"currency_code", currencyCode}
             };
-            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, null, nvm);
+            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, "summary", nvm);
 
             var response = await Get<ICollection<SettlementsPayoutSummary>>(url);
 
