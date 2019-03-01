@@ -175,11 +175,10 @@ To contribute, the following criteria needs to be fulfilled:
 
 ## Questions and feedback
 
-[If you have any questions concerning this product,
-please contact [developers@klarna.com](mailto:developers@klarna.com).](If you have any questions concerning this product or the implementation,
+If you have any questions concerning this product or the implementation,
 please create an issue: https://github.com/klarna/kco_rest_java/issues/new/choose
 
-Use an official Klarna Contact us form (https://klarna.com) if you have a question about the integration.)
+Use an official Klarna Contact us form (https://klarna.com) if you have a question about the integration.
 
 ## License
 
