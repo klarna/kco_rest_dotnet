@@ -75,7 +75,9 @@ Additional documentation can be found at https://developers.klarna.com.
 
 ## Questions and feedback
 If you have any questions concerning this product or the implementation,
-please contact [developers@klarna.com](mailto:developers@klarna.com).
+please create an issue: https://github.com/klarna/kco_rest_dotnet/issues/new/choose
+
+Use an official Klarna Contact us form (https://klarna.com) if you have a question about the integration.
 
 
 ## How to contribute
