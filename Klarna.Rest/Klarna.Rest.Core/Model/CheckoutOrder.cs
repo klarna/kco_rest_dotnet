@@ -159,7 +159,7 @@ namespace Klarna.Rest.Core.Model
         /// Stored merchant requested data.
         /// </summary>
         /// <remarks>Read only</remarks>
-        [JsonProperty(PropertyName = "merchant_requeted")]
+        [JsonProperty(PropertyName = "merchant_requested")]
         public MerchantRequested MerchantRequested { get; set; }
         /// <summary>
         /// Current shipping options selected by the customer.
