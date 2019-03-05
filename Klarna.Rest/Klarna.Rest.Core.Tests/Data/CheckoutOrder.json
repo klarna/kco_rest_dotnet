@@ -113,7 +113,7 @@
     "national_identification_number_mandatory": false,
     "additional_merchant_terms": "string",
     "radius_border": "5px",
-    "allowed_customer_types": "[\"person\", \"organization\"]",
+    "allowed_customer_types": ["person", "organization"],
     "show_subtotal_detail": false,
     "additional_checkboxes": [
       {
