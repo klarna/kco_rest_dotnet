@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD024 -->
+<!-- markdownlint-disable MD024 MD036 -->
 
 # Changelog
 
@@ -17,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Repo now has an Apache 2.0 LICENSE file on its root
 
-## [3.0.6] - 2018-01-26
+## [3.0.6] - 2019-01-26
 
 ### Changed
 
@@ -46,36 +46,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - PaymentsOrder model: Add `authorized_payment_method` property;
 
-
 ### Added
 
 **Checkout API**
 
 - New models:
-    - CheckoutDeliveryDetailsV1;
-    - CheckoutDimensions;
-    - CheckoutPickupLocationV1;
-    - CheckoutProductV1;
-    - CheckoutRecurringOrderRequestV1;
-    - CheckoutShippingAttributes;
-    - CheckoutTimeslotV1.
+  - CheckoutDeliveryDetailsV1;
+  - CheckoutDimensions;
+  - CheckoutPickupLocationV1;
+  - CheckoutProductV1;
+  - CheckoutRecurringOrderRequestV1;
+  - CheckoutShippingAttributes;
+  - CheckoutTimeslotV1.
 
 **Customer Token API**
 
 - New models:
-    - TokenAuthorizedPaymentMethod;
-    - TokenCardInformation;
-    - TokenCustomerTokenStatusUpdateRequest;
-    - TokenDirectDebitInformation;
+  - TokenAuthorizedPaymentMethod;
+  - TokenCardInformation;
+  - TokenCustomerTokenStatusUpdateRequest;
+  - TokenDirectDebitInformation;
 - Add support for disabling an HPP session;
 - Add ability to use Klarna-Idempotency-Key when creating order;
 
 **Payments API**
 
 - New model:
-    - PaymentsAuthorizedPaymentMethod;
+  - PaymentsAuthorizedPaymentMethod;
 
-## [3.0.5] - 2018-01-10
+## [3.0.5] - 2019-01-10
 
 ### Security
 
@@ -187,8 +186,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **FIX MINT-2105** Add custom Javadoc template - *Andrew.M*
 
-## [1.0.0] - 2015-01-16
+## 1.0.0 - 2015-01-16
 
 ### Added
 
 - **NEW MINT-1842** Support checkout v3 and ordermanagement v1 APIs - *Joakim.L*
+
+[Unreleased]: https://github.com/klarna/kco_rest_java/compare/v3.0.6...HEAD
+[3.0.6]: https://github.com/klarna/kco_rest_java/compare/v3.0.5...v3.0.6
+[3.0.5]: https://github.com/klarna/kco_rest_java/compare/v3.0.4...v3.0.5
+[3.0.4]: https://github.com/klarna/kco_rest_java/compare/v3.0.3...v3.0.4
+[3.0.3]: https://github.com/klarna/kco_rest_java/compare/v3.0.2...v3.0.3
+[3.0.2]: https://github.com/klarna/kco_rest_java/compare/v3.0.1...v3.0.2
+[3.0.1]: https://github.com/klarna/kco_rest_java/compare/v3.0.0...v3.0.1
+[3.0.0]: https://github.com/klarna/kco_rest_java/compare/v2.2.2...v3.0.0
+[2.2.2]: https://github.com/klarna/kco_rest_java/compare/v2.2.0...v2.2.2
+[2.2.0]: https://github.com/klarna/kco_rest_java/compare/v2.1.0...v2.2.0
+[2.1.0]: https://github.com/klarna/kco_rest_java/compare/v2.0.1...v2.1.0
+[2.0.1]: https://github.com/klarna/kco_rest_java/compare/v2.0.0...v2.1.1
+[2.0.0]: https://github.com/klarna/kco_rest_java/compare/v1.0.1...v2.0.0
+[1.0.1]: https://github.com/klarna/kco_rest_java/compare/v1.0.0...v1.0.1
