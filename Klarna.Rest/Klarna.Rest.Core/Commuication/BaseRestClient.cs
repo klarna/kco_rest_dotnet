@@ -91,10 +91,9 @@ namespace Klarna.Rest.Core.Commuication
             HttpMethod method, string url, object data = null, IDictionary<string, string> headers = null)
         {
             var message = GetMessage(method, url, headers);
-            var json = data == null ? string.Empty : Serialize(data);
             var result = new HttpResponseMessage();
             
-            using (message.Content = new StringContent(json, Encoding.UTF8, "application/json"))
+            using (message.Content = GetMessageContent(data))
             {
                 using (var client = GetClient())
                 {
@@ -148,6 +147,13 @@ namespace Klarna.Rest.Core.Commuication
             client.DefaultRequestHeaders.Add("User-Agent", ApiSession.UserAgent);
             client.DefaultRequestHeaders.ExpectContinue = false;
             return client;
+        }
+
+        private HttpContent GetMessageContent(object data)
+        {
+            if (data == null) return null;
+
+            return new StringContent(Serialize(data), Encoding.UTF8, "application/json");
         }
 
         private async Task<T> DeserializeOrDefault<T>(HttpResponseMessage result)
