@@ -47,7 +47,7 @@ namespace Klarna.Rest.Core.Model
         [JsonProperty(PropertyName = "tax_rate")]
         public int TaxRate { get; set; }
         /// <summary>
-        /// Includes tax and discount. Must match (quantity * unit_price) - total_discount_amount within ±quantity. (max value: 100000000)
+        /// Includes tax and discount. Must match (quantity * unit_price) - total_discount_amount within Â±quantity. (max value: 100000000)
         /// </summary>
         /// <remarks>Required</remarks>
         [JsonProperty(PropertyName = "total_amount")]
@@ -58,7 +58,7 @@ namespace Klarna.Rest.Core.Model
         [JsonProperty(PropertyName = "total_discount_amount")]
         public int TotalDiscountAmount { get; set; }
         /// <summary>
-        /// Must be within ±1 of total_amount - total_amount * 10000 / (10000 + tax_rate). Negative when type is discount.
+        /// Must be within Â±1 of total_amount - total_amount * 10000 / (10000 + tax_rate). Negative when type is discount.
         /// </summary>
         /// <remarks>Required</remarks>
         [JsonProperty(PropertyName = "total_tax_amount")]
@@ -83,5 +83,12 @@ namespace Klarna.Rest.Core.Model
         /// </summary>
         [JsonProperty(PropertyName = "product_identifiers")]
         public ProductIdentifiers ProductIdentifiers { get; set; }
+
+        /// <summary>
+        /// Shipping attributes of an item
+        /// </summary>
+        /// <value>Shipping attributes of an item</value>
+        [JsonProperty(PropertyName = "shipping_attributes")]
+        public ShippingAttributes ShippingAttributes { get; set; }
     }
 }

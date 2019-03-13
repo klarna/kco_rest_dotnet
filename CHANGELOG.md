@@ -9,6 +9,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.1.1] - 2019-03-13 (Maintenance / BugFix Release)
+
+### Changed
+
+- Sample program made more verbose, code is better annotated and sample credentials are removed
+- Better illustrate use of `CheckoutOrderOptions.AllowedCustomerTypes` in example / sample app
+- Started augmenting documentation for methods
+
+### Added
+
+- .nuspec file to improve available metadata on nuget.org
+
+### Fixed
+
+- Fix up `CHANGELOG` to better reflect issues resolved by previous release
+- Resolves [https://github.com/klarna/kco_rest_dotnet/issues/27](https://github.com/klarna/kco_rest_dotnet/issues/27)
+- Resolves [https://github.com/klarna/kco_rest_dotnet/issues/33](https://github.com/klarna/kco_rest_dotnet/issues/33)
+
 ## [3.1.0] - 2019-03-06 (**Partial backward compatibility**)
 
 ### Changed
@@ -31,6 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Resolves [https://github.com/klarna/kco_rest_dotnet/issues/8](https://github.com/klarna/kco_rest_dotnet/issues/8)
 - Resolves [https://github.com/klarna/kco_rest_dotnet/issues/15](https://github.com/klarna/kco_rest_dotnet/issues/15)
+- Resolves [https://github.com/klarna/kco_rest_dotnet/issues/18](https://github.com/klarna/kco_rest_dotnet/issues/18)
 - Resolves [https://github.com/klarna/kco_rest_dotnet/issues/19](https://github.com/klarna/kco_rest_dotnet/issues/19)
 - Fixes failing tests
 
@@ -89,6 +108,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **NEW MINT-1912** Support checkout v3 and ordermanagement v1 APIs - *Joakim.L*
 
 [Unreleased]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.0...HEAD
+[3.1.1]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.0...v3.1.1
 [3.1.0]: https://github.com/klarna/kco_rest_dotnet/compare/v3.0.0...v3.1.0
 [3.0.0]: https://github.com/klarna/kco_rest_dotnet/compare/v2.2.0...v3.0.0
 [2.2.0]: https://github.com/klarna/kco_rest_dotnet/compare/v2.1.0...v2.2.0

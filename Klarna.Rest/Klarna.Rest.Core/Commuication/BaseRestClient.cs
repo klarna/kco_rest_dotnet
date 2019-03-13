@@ -13,18 +13,36 @@ using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Commuication
 {
+    /// <summary>
+    /// A base class for HTTP clients used to communicate with the Klarna APIs
+    /// </summary>
     public abstract class BaseRestClient
     {
+        /// <summary>
+        /// Session information related to this RestClient
+        /// </summary>
         protected readonly ApiSession ApiSession;
 
         private readonly IJsonSerializer _jsonSerializer;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="apiSession">The API session instance used to communicate with Klarna APIs</param>
+        /// <param name="jsonSerializer">The JSON Serializer instance to use when sending / receiving data</param>
         protected BaseRestClient(ApiSession apiSession, IJsonSerializer jsonSerializer)
         {
             ApiSession = apiSession;
             _jsonSerializer = jsonSerializer;
         }
 
+        /// <summary>
+        /// Handles HTTP POST calls
+        /// </summary>
+        /// <param name="url">The URL to call</param>
+        /// <param name="data">The POST data to send</param>
+        /// <param name="headers">The HTTP headers to send when performing a POST request</param>
+        /// <returns></returns>
         protected async Task Post(string url, object data = null, IDictionary<string, string> headers = null)
         {
             await MakeRequest(HttpMethod.Post, url, data, headers);
