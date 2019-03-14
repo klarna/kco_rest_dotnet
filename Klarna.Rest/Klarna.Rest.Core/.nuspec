@@ -1,10 +1,13 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
+    <!-- Required elements-->
     <id>$id$</id>
     <version>$version$</version>
-    <title>$title$</title>
+    <description>.NET SDK library for Klarna Services</description>
     <authors>klarna</authors>
+    <!-- Optional elements -->
+    <title>$title$</title>
     <owners>klarna</owners>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>
     <projectUrl>https://github.com/klarna/kco_rest_dotnet.git</projectUrl>
