@@ -62,6 +62,7 @@ namespace Klarna.Rest.Core.Examples
                     ColorLink = "#FF9900",
                     DateOfBirthMandatory = false,
                     ShippingDetails = "bar",
+                    AllowedCustomerTypes = new List<string>(){"person", "organization"}
                 }
             };
 

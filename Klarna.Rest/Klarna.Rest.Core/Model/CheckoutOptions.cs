@@ -6,7 +6,7 @@ namespace Klarna.Rest.Core.Model
     public class CheckoutOptions
     {
         /// <summary>
-        /// Acquiring channel for the order. Use MOTO for "Mail Order Telephone Order" or ECOMMERCE for "E-commerce". Default : ECOMMERCE
+        /// Acquiring channel for the order. Use MOTO for &quot;Mail Order Telephone Order&quot; or ECOMMERCE for &quot;E-commerce&quot;. Default : ECOMMERCE
         /// </summary>
         [JsonProperty(PropertyName = "acquiring_channel")]
         public string AcquiringChannel { get; set; }
@@ -16,32 +16,32 @@ namespace Klarna.Rest.Core.Model
         [JsonProperty(PropertyName = "allow_separate_shipping_address")]
         public bool AllowSeparateShippingAddress { get; set; }
         /// <summary>
-        /// CSS hex color, e.g. "#FF9900"
+        /// CSS hex color, e.g. &quot;#FF9900&quot;
         /// </summary>
         [JsonProperty(PropertyName = "color_button")]
         public string ColorButton { get; set; }
         /// <summary>
-        /// CSS hex color, e.g. "#FF9900"
+        /// CSS hex color, e.g. &quot;#FF9900&quot;
         /// </summary>
         [JsonProperty(PropertyName = "color_button_text")]
         public string ColorButtonText { get; set; }
         /// <summary>
-        /// CSS hex color, e.g. "#FF9900"
+        /// CSS hex color, e.g. &quot;#FF9900&quot;
         /// </summary>
         [JsonProperty(PropertyName = "color_checkbox")]
         public string ColorCheckbox { get; set; }
         /// <summary>
-        /// CSS hex color, e.g. "#FF9900"
+        /// CSS hex color, e.g. &quot;#FF9900&quot;
         /// </summary>
         [JsonProperty(PropertyName = "color_checkbox_checkmark")]
         public string ColorCheckboxCheckmark { get; set; }
         /// <summary>
-        /// CSS hex color, e.g. "#FF9900"
+        /// CSS hex color, e.g. &quot;#FF9900&quot;
         /// </summary>
         [JsonProperty(PropertyName = "colorheader")]
         public string ColorHeader { get; set; }
         /// <summary>
-        /// CSS hex color, e.g. "#FF9900"
+        /// CSS hex color, e.g. &quot;#FF9900&quot;
         /// </summary>
         [JsonProperty(PropertyName = "color_link")]
         public string ColorLink { get; set; }
@@ -51,7 +51,7 @@ namespace Klarna.Rest.Core.Model
         [JsonProperty(PropertyName = "date_of_birth_mandatory")]
         public bool DateOfBirthMandatory { get; set; }
         /// <summary>
-        /// A message that will be presented on the confirmation page under the headline "Delivery".
+        /// A message that will be presented on the confirmation page under the headline &quot;Delivery&quot;.
         /// </summary>
         [JsonProperty(PropertyName = "shipping_details")]
         public string ShippingDetails { get; set; }
@@ -82,7 +82,7 @@ namespace Klarna.Rest.Core.Model
         [JsonProperty(PropertyName = "radius_border")]
         public string RadiusBorder { get; set; }
         /// <summary>
-        /// A list of allowed customer types. Supported types: person & organization
+        /// A list of allowed customer types. Supported types: person &amp; organization
         /// </summary>
         [JsonProperty(PropertyName = "allowed_customer_types")]
         public ICollection<string> AllowedCustomerTypes { get; set; }

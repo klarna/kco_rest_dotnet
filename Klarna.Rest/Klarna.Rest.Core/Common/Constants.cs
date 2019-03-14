@@ -1,11 +1,14 @@
 ﻿namespace Klarna.Rest.Core.Common
 {
+    /// <summary>
+    /// .NET SDK library for Klarna Services Constants
+    /// </summary>
     public class Constants
     {
         /// <summary>
         /// The current version of .NET SDK library for Klarna Services
         /// </summary>
-        public const string Version = "3.1.0.0";
+        public const string Version = "3.1.1.0";
 
         /// <summary>
         /// The API for the European live environment (https://api.klarna.com/)
