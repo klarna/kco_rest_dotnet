@@ -60,7 +60,7 @@
       "total_discount_amount": 0,
       "total_tax_amount": 5000,
       "merchant_data": "{\"marketplace_seller_info\":[{\"product_category\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}",
-      "product_url": "https://www.estore.com/products/f2a8d7e34",
+      "product_url": "https://www.example.com/products/f2a8d7e34",
       "image_url": "https://www.exampleobjects.com/logo.png",
       "product_identifiers": {
         "category_path": "Electronics Store > Computers & Tablets > Desktops",
@@ -76,16 +76,16 @@
     "organization_registration_id": "556737-0431"
   },
   "merchant_urls": {
-    "terms": "https://www.estore.com/terms.html",
-    "cancellation_terms": "https://www.estore.com/terms/cancellation.html",
-    "checkout": "https://www.estore.com/checkout.html",
-    "confirmation": "https://www.estore.com/confirmation.html",
-    "push": "https://www.estore.com/api/push",
-    "validation": "https://www.estore.com/api/validation",
-    "shipping_option_update": "https://www.estore.com/api/shipment",
-    "address_update": "https://www.estore.com/api/address",
-    "notification": "https://www.estore.com/api/pending",
-    "country_change": "https://www.estore.com/api/country"
+    "terms": "https://www.example.com/terms.html",
+    "cancellation_terms": "https://www.example.com/terms/cancellation.html",
+    "checkout": "https://www.example.com/checkout.html",
+    "confirmation": "https://www.example.com/confirmation.html",
+    "push": "https://www.example.com/api/push",
+    "validation": "https://www.example.com/api/validation",
+    "shipping_option_update": "https://www.example.com/api/shipment",
+    "address_update": "https://www.example.com/api/address",
+    "notification": "https://www.example.com/api/pending",
+    "country_change": "https://www.example.com/api/country"
   },
   "html_snippet": "<div id='klarna-checkout-container'><script>alert('Initializing Klarna Checkout');</script></div>",
   "merchant_reference1": "45aa52f387871e3a210645d4",

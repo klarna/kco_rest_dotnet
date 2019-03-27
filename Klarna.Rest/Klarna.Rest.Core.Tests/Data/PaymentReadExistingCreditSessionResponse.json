@@ -48,7 +48,7 @@
       "total_discount_amount": 0,
       "total_tax_amount": 0,
       "merchant_data": "{\"marketplace_seller_info\":[{\"product_category\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}",
-      "product_url": "https://www.estore.com/products/f2a8d7e34",
+      "product_url": "https://www.example.com/products/f2a8d7e34",
       "image_url": "https://www.exampleobjects.com/logo.png",
       "product_identifiers": {
         "category_path": "Electronics Store > Computers & Tablets > Desktops",
