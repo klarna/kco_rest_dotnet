@@ -23,10 +23,10 @@ namespace Klarna.Rest.Core.Examples
                 OrderTaxAmount = 2000,
                 MerchantUrls = new CheckoutMerchantUrls
                 {
-                    Terms = "https://www.estore.com/terms.html",
-                    Checkout = "https://www.estore.com/checkout.html",
-                    Confirmation = "https://www.estore.com/confirmation.html",
-                    Push = "https://www.estore.com/push.html"
+                    Terms = "https://www.example.com/terms.html",
+                    Checkout = "https://www.example.com/checkout.html",
+                    Confirmation = "https://www.example.com/confirmation.html",
+                    Push = "https://www.example.com/push.html"
                 },
                 OrderLines = new List<OrderLine>()
                 {
