@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Klarna.Rest.Core.Common;
 using Klarna.Rest.Core.Commuication;
@@ -211,6 +213,31 @@ namespace Klarna.Rest.Core.Store
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/refunds");
 
             await Post(url, refund);
+        }
+
+        /// <summary>
+        /// Create a refund and follow the Location header to fetch the data
+        /// <a href="https://developers.klarna.com/api/#order-management-api-create-a-refund">https://developers.klarna.com/api/#order-management-api-create-a-refund</a>
+        /// </summary>
+        /// <param name="orderId">Id of order to create a refund</param>
+        /// <param name="refund">The <see cref="OrderManagementRefund"/> object</param>
+        /// <returns></returns>
+        public async Task<OrderManagementGetRefundResponse> CreateAndFetchRefund(string orderId, OrderManagementRefund refund)
+        {
+            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/refunds");
+
+            var response = new Ref<HttpResponseMessage>();
+            await Post(url, refund, null, response);
+
+            var headers = response.Value.Headers;
+            url = headers.Location.ToString();
+
+            if (!string.IsNullOrEmpty(url))
+            {
+                return await Get<OrderManagementGetRefundResponse>(url);
+            }
+
+            return default(OrderManagementGetRefundResponse);
         }
 
         /// <summary>

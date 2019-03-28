@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -43,54 +44,56 @@ namespace Klarna.Rest.Core.Commuication
         /// <param name="data">The POST data to send</param>
         /// <param name="headers">The HTTP headers to send when performing a POST request</param>
         /// <returns></returns>
-        protected async Task Post(string url, object data = null, IDictionary<string, string> headers = null)
+        protected async Task Post(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
         {
-            await MakeRequest(HttpMethod.Post, url, data, headers);
+            await MakeRequest(HttpMethod.Post, url, data, headers, outResponse);
         }
         
-        protected async Task<T> Post<T>(string url, object data = null, IDictionary<string, string> headers = null)
+        protected async Task<T> Post<T>(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
         {
-            var result = await MakeRequest(HttpMethod.Post, url, data, headers);
+            var result = await MakeRequest(HttpMethod.Post, url, data, headers, outResponse);
             return await DeserializeOrDefault<T>(result);
         }
 
-        protected async Task Patch(string url, object data = null, IDictionary<string, string> headers = null)
+        protected async Task Patch(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
         {
-            await MakeRequest(new HttpMethod("PATCH"), url, data, headers);
+            await MakeRequest(new HttpMethod("PATCH"), url, data, headers, outResponse);
         }
 
-        protected async Task Delete(string url, object data = null, IDictionary<string, string> headers = null)
+        protected async Task Delete(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
         {
-            await MakeRequest(HttpMethod.Delete, url, data, headers);
+            await MakeRequest(HttpMethod.Delete, url, data, headers, outResponse);
         }
         
-        protected async Task<T> Delete<T>(string url, object data = null, IDictionary<string, string> headers = null)
+        protected async Task<T> Delete<T>(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
         {
-            var result = await MakeRequest(HttpMethod.Delete, url, data, headers);
+            var result = await MakeRequest(HttpMethod.Delete, url, data, headers, outResponse);
             return await DeserializeOrDefault<T>(result);
         }
 
-        protected async Task<T> Put<T>(string url, object data = null, IDictionary<string, string> headers = null)
+        protected async Task<T> Put<T>(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
         {
             
-            var result = await MakeRequest(HttpMethod.Put, url, data, headers);
+            var result = await MakeRequest(HttpMethod.Put, url, data, headers, outResponse);
             return await DeserializeOrDefault<T>(result);
         }
         
-        protected async Task Put(string url, object data = null, IDictionary<string, string> headers = null)
+        protected async Task Put(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
         {
-            await MakeRequest(HttpMethod.Put, url, data, headers);
+            await MakeRequest(HttpMethod.Put, url, data, headers, outResponse);
         }
 
-        protected async Task<T> Get<T>(string url, IDictionary<string, string> headers = null)
+        protected async Task<T> Get<T>(
+            string url, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
         {
-            var result = await MakeRequest(HttpMethod.Get, url, null, headers);
+            var result = await MakeRequest(HttpMethod.Get, url, null, headers, outResponse);
             return await DeserializeOrDefault<T>(result);
         }
 
-        protected async Task Get(string url, IDictionary<string, string> headers = null)
+        protected async Task Get(
+            string url, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> response = null)
         {
-            await MakeRequest(HttpMethod.Get, url, null, headers);
+            await MakeRequest(HttpMethod.Get, url, null, headers, response);
         }
 
         protected async Task<Stream> GetStream(string url)
@@ -106,10 +109,10 @@ namespace Klarna.Rest.Core.Commuication
         }
         
         private async Task<HttpResponseMessage> MakeRequest(
-            HttpMethod method, string url, object data = null, IDictionary<string, string> headers = null)
+            HttpMethod method, string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
         {
             var message = GetMessage(method, url, headers);
-            var result = new HttpResponseMessage();
+            HttpResponseMessage result;
             
             using (message.Content = GetMessageContent(data))
             {
@@ -131,6 +134,11 @@ namespace Klarna.Rest.Core.Commuication
 
                     await ThrowIfError(result);
                 }
+            }
+
+            if (outResponse != null)
+            {
+                outResponse.Value = result;
             }
             return result;
         }

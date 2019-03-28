@@ -177,7 +177,11 @@ namespace Klarna.Rest.Core.Examples
                             }
                     }
                 };
-               klarna.OrderManagement.CreateRefund(orderId,refundData).RunSynchronously();
+               var refund = klarna.OrderManagement.CreateAndFetchRefund(orderId,refundData).Result;
+               Console.WriteLine("Order has been refunded");
+               Console.WriteLine(refund.RefundId);
+               Console.WriteLine(refund.RefundedAt);
+               Console.WriteLine(refund.RefundedAmount);
             }
             catch (ApiException ex)
             {
