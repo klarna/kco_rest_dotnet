@@ -178,12 +178,36 @@ namespace Klarna.Rest.Core.Store
         /// <param name="orderId">Id of order to create capture</param>
         /// <param name="capture">The <see cref="OrderManagementCapture"/> object</param>
         /// <returns>Object of <see cref="OrderManagementCapture"/> </returns>
-        public async Task<OrderManagementCapture> CreateCapture(string orderId, OrderManagementCreateCapture capture)
+        public async Task CreateCapture(string orderId, OrderManagementCreateCapture capture)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/captures");
 
-            OrderManagementCapture response = await Post<OrderManagementCapture>(url, capture);
-            return response;
+            await Post(url, capture);
+        }
+        
+        /// <summary>
+        /// Create capture and follow the Location header to fetch the data
+        /// <a href="https://developers.klarna.com/api/#order-management-api-create-capture">https://developers.klarna.com/api/#order-management-api-create-capture</a>
+        /// </summary>
+        /// <param name="orderId">Id of order to create capture</param>
+        /// <param name="capture">The <see cref="OrderManagementCapture"/> object</param>
+        /// <returns>Object of <see cref="OrderManagementCapture"/> </returns>
+        public async Task<OrderManagementCapture> CreateAndFetchCapture(string orderId, OrderManagementCreateCapture capture)
+        {
+            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/captures");
+            var response = new Ref<HttpResponseMessage>();
+
+            await Post(url, capture, null, response);
+
+            var headers = response.Value.Headers;
+            url = headers.Location.ToString();
+
+            if (!string.IsNullOrEmpty(url))
+            {
+                return await Get<OrderManagementCapture>(url);
+            }
+
+            return default(OrderManagementCapture);
         }
 
         /// <summary>
