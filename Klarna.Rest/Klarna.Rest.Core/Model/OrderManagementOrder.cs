@@ -122,7 +122,7 @@ namespace Klarna.Rest.Core.Model
         /// <summary>
         /// Text field for storing data about the order. Set at order creation.
         /// </summary>
-        [JsonProperty(PropertyName = "marchant_data")]
+        [JsonProperty(PropertyName = "merchant_data")]
         public string MerchantData { get; set; }
         /// <summary>
         /// Initial payment method for this order
