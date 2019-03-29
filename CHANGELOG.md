@@ -9,6 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Change the license element in .nuspec
+
+### Added
+
+- OrderManagement: Add method to create and fetch a Refund
+- OrderManagement: Add method to create and fetch a Capture
+- Communication: Add a possiblity for Store entities to get the raw response
+
+### Fixed
+
+- OrderManagement: Fix the Capture create method. Warning: the method signature was changed
+- OrderManagementOrder model: Fix the typo in json field name. marchant_data -> merchant_data
+
 ## [3.1.1] - 2019-03-14 (Maintenance / BugFix Release)
 
 ### Changed
