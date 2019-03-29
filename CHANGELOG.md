@@ -7,22 +7,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [3.1.2] - 2019-03-29 (Enhancements / BugFix Release)
 
 ### Changed
 
 - Change the license element in .nuspec
+- Update the example domain URLs
 
 ### Added
 
-- OrderManagement: Add method to create and fetch a Refund
-- OrderManagement: Add method to create and fetch a Capture
+- Resolves [#36](https://github.com/klarna/kco_rest_dotnet/issues/36): OrderManagement: Add method to create and fetch a Refund
+- Resolves [#17](https://github.com/klarna/kco_rest_dotnet/issues/17): OrderManagement: Add method to create and fetch a Capture
 - Communication: Add a possiblity for Store entities to get the raw response
 
 ### Fixed
 
 - OrderManagement: Fix the Capture create method. Warning: the method signature was changed
-- OrderManagementOrder model: Fix the typo in json field name. marchant_data -> merchant_data
+- Resolves [#37](https://github.com/klarna/kco_rest_dotnet/issues/37): OrderManagementOrder model: Fix the typo in json field name. marchant_data -> merchant_data
 
 ## [3.1.1] - 2019-03-14 (Maintenance / BugFix Release)
 
