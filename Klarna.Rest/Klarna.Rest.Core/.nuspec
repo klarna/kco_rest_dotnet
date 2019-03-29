@@ -3,7 +3,7 @@
   <metadata>
     <!-- Required elements-->
     <id>Klarna.Rest.Core</id>
-    <version>3.1.1</version>
+    <version>$version$</version>
     <description>.NET SDK library for Klarna Services</description>
     <authors>klarna</authors>
     <!-- Optional elements -->
