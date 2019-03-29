@@ -1,0 +1,1556 @@
+{
+  "homepages": [],
+  "source_base_path": "/Users/aleksandr.zinovev/klarna/sdks/kco_rest_dotnet/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Common.Constants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Common.Constants.html",
+          "hash": "WNcvnMyJTpaTislan6SiuA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Common.KlarnaEnvironment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Common.KlarnaEnvironment.html",
+          "hash": "YV+RbzVmai1t2lTyhiZ64Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Common.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Common.html",
+          "hash": "M2028PX3QC0hHMtxzmwUFA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Commuication.ApiException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Commuication.ApiException.html",
+          "hash": "2/RPirIlCWeIuQVlV6tTjw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Commuication.BaseRestClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Commuication.BaseRestClient.html",
+          "hash": "DFQluos/Up0g8MF+z0K1CA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Commuication.BaseStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Commuication.BaseStore.html",
+          "hash": "VdS+7pz8lABp03NdVbfs9w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Commuication.Dto.ApiCredentials.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Commuication.Dto.ApiCredentials.html",
+          "hash": "hRBFO0iQqk6RKjVd7w+/pg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Commuication.Dto.ApiSession.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Commuication.Dto.ApiSession.html",
+          "hash": "A8NqUyhMeP3WQvd1WkNLag=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Commuication.Dto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Commuication.Dto.html",
+          "hash": "u+juJIKL7ov22XVy46kFyQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Commuication.Ref-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Commuication.Ref-1.html",
+          "hash": "ikivAzNUA3bzQTgs5jyvjg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Commuication.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Commuication.html",
+          "hash": "aLPL8XbQU2woC5nZKYOOUg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Klarna.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Klarna.html",
+          "hash": "aquJTeqFEtCLL7NVrHNBrQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.AdditionalCheckbox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.AdditionalCheckbox.html",
+          "hash": "MrgNlrcVQK2BTP4PhzXo3w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.AdditionalCheckboxV2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.AdditionalCheckboxV2.html",
+          "hash": "hJoHslYSFDdwkYLpt0k3Xw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.Attachment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.Attachment.html",
+          "hash": "zJuqFd77ydHYzGIz40aAtg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.CallbackAddressUpdateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.CallbackAddressUpdateRequest.html",
+          "hash": "MFF/Ev+B/nQ371nkuoNCtQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.CallbackAddressUpdateResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.CallbackAddressUpdateResponse.html",
+          "hash": "qHNg8h4oEkDfdzk+N08vOg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.CallbackCountryChangeRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.CallbackCountryChangeRequest.html",
+          "hash": "znjtXDWyq1TOWHcF+UZBSg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.CallbackCountryChangeResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.CallbackCountryChangeResponse.html",
+          "hash": "0PsjhVglYc/txe7d1PHXEA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.CallbackOrderValidationRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.CallbackOrderValidationRequest.html",
+          "hash": "RoeGM6BVa4XGYxZbamS8zA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.CallbackShippingOptionUpdateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.CallbackShippingOptionUpdateRequest.html",
+          "hash": "62BJCk6okDQojAVmzfuoSA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.CallbackShippingOptionUpdateResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.CallbackShippingOptionUpdateResponse.html",
+          "hash": "O+K8aK0LJyz3B7z+VzYQ9w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.CheckoutAddressInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.CheckoutAddressInfo.html",
+          "hash": "VKl9zROOuV6MydFHtbLDDw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.CheckoutCustomer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.CheckoutCustomer.html",
+          "hash": "ZVuvrPUvB8A7r+5nDxuFiw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.CheckoutMerchantUrls.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.CheckoutMerchantUrls.html",
+          "hash": "8DXHYJuybzeZZ2W4XFHZeA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.CheckoutOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.CheckoutOptions.html",
+          "hash": "LWN91QW+L03o94pmJ8dgbA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.CheckoutOrder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.CheckoutOrder.html",
+          "hash": "MYMiEo8Qg9Kqk6GnzBKgOA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.CustomerDirectDebitTokenDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.CustomerDirectDebitTokenDetails.html",
+          "hash": "2pzNk3QNHWG9Rv2630FVug=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.CustomerTokenAddressInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.CustomerTokenAddressInfo.html",
+          "hash": "B7sHt/Hq/O6CvOIL8ONtyQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.CustomerTokenCardDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.CustomerTokenCardDetails.html",
+          "hash": "tBaAG9IUMFqt+MLMgw5xKQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.CustomerTokenCreateOrderResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.CustomerTokenCreateOrderResponse.html",
+          "hash": "6ZdLAPa4ew5eVRAoGfr7XA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.CustomerTokenDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.CustomerTokenDetails.html",
+          "hash": "XDhchQOfFQ23SJSWEVVpUg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.CustomerTokenMerchantUrls.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.CustomerTokenMerchantUrls.html",
+          "hash": "GiW6sc17ntGaKevHswwsow=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.CustomerTokenOrder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.CustomerTokenOrder.html",
+          "hash": "LNdXLtvCmIlnVWXwe4/cmA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.Dimensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.Dimensions.html",
+          "hash": "6Ma2PVYenfhzUHLLLJt+rA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.Enum.CreditSessionStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.Enum.CreditSessionStatus.html",
+          "hash": "YiDdQY4vE320sW/2uY1AQQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.Enum.HostedPaymentPageDistributionMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.Enum.HostedPaymentPageDistributionMethod.html",
+          "hash": "vov3siQlaAGjPXdhbWgOSQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.Enum.HostedPaymentPagePaymentMethodCategory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.Enum.HostedPaymentPagePaymentMethodCategory.html",
+          "hash": "IDB23Q3bCPDPYqQBQYSeSQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.Enum.HostedPaymentPagePurchaseType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.Enum.HostedPaymentPagePurchaseType.html",
+          "hash": "RPcKIfgdzikSwnvqmLePIA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.Enum.HostedPaymentPageStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.Enum.HostedPaymentPageStatus.html",
+          "hash": "7M30/hnHMnW+FBxcjyy4oQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.Enum.MerchantSettlementType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.Enum.MerchantSettlementType.html",
+          "hash": "rzzU/3WJ5pTLzq9K9D7AWA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.Enum.OrderLineType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.Enum.OrderLineType.html",
+          "hash": "z8v481EIpguFek/plfBFlQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.Enum.OrderManagementFraudStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.Enum.OrderManagementFraudStatus.html",
+          "hash": "guAM3X6qIKZ0FXQd5z6CTw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.Enum.OrderManagementInitialPaymentMethodType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.Enum.OrderManagementInitialPaymentMethodType.html",
+          "hash": "KeS2i2H12yl84DpJoeD7ow=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.Enum.OrderManagementOrderStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.Enum.OrderManagementOrderStatus.html",
+          "hash": "6nZBX6safS5cEhnA+PIl5g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.Enum.OrderManagementShippingMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.Enum.OrderManagementShippingMethod.html",
+          "hash": "dsyA/x6qqn+J0NkKgfBKFg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.Enum.PaymentCustomerOrganizationEntityType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.Enum.PaymentCustomerOrganizationEntityType.html",
+          "hash": "S/do54dZqddEqrlzlUyXkQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.Enum.PaymentOrderFraudStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.Enum.PaymentOrderFraudStatus.html",
+          "hash": "QXTeIYKZQ1GB0W24odeAkA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.Enum.ShippingMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.Enum.ShippingMethod.html",
+          "hash": "P178G5r/dfogpWkuSlUybw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.Enum.TransactionType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.Enum.TransactionType.html",
+          "hash": "Mgc1GJdUDoHIRb8d/X3uKw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.Enum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.Enum.html",
+          "hash": "Lq055lvCDHjw0GIQDdUMMw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.ErrorMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.ErrorMessage.html",
+          "hash": "1Q5ScfIPGj+hSNFfU74kKA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.ExpiresAt.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.ExpiresAt.html",
+          "hash": "dIVpqzO4KOkfzo0RAdMfUw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.ExternalCheckout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.ExternalCheckout.html",
+          "hash": "Sri9TYavFjZc1UE2aUlTDA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.Gui.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.Gui.html",
+          "hash": "5t3Oc4ZrzHen7X9sRCDp9Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.HostedPaymentPageBackgroundImage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.HostedPaymentPageBackgroundImage.html",
+          "hash": "VbCAZ+AW2HDjW7lpxQpPtg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.HostedPaymentPageContactInformation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.HostedPaymentPageContactInformation.html",
+          "hash": "48GphAbbtsppZGTUvBMDmA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.HostedPaymentPageCreateSessionRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.HostedPaymentPageCreateSessionRequest.html",
+          "hash": "2yzoLGv53Afp7VUsDw8/zg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.HostedPaymentPageCreateSessionResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.HostedPaymentPageCreateSessionResponse.html",
+          "hash": "SC+dN8o2AvBxlw1ZbGpoxQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.HostedPaymentPageDistributeLink.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.HostedPaymentPageDistributeLink.html",
+          "hash": "lk3s22nGXL4F6Ks88peFHg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.HostedPaymentPageMerchantUrls.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.HostedPaymentPageMerchantUrls.html",
+          "hash": "bENnt7pXW2zpEWFWv2BTaQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.HostedPaymentPageOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.HostedPaymentPageOptions.html",
+          "hash": "PTHFyM5ul7wBESkyyO0Gqg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.HostedPaymentPageSessionStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.HostedPaymentPageSessionStatus.html",
+          "hash": "lE+1NA63/mMcUZksf8lcPw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.MerchantRequested.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.MerchantRequested.html",
+          "hash": "StqhZoo7erUiIF7V6lgq+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.MerchantRequestedAdditionalCheckbox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.MerchantRequestedAdditionalCheckbox.html",
+          "hash": "p34ZI4FK8grXr7IWhbXkdg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.OrderLine.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.OrderLine.html",
+          "hash": "14PUjEeWvkG4zdLa5X1gMw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.OrderManagementAddShippingInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.OrderManagementAddShippingInfo.html",
+          "hash": "n7SlazPvrmuk5EyR2S5Kow=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.OrderManagementAddressInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.OrderManagementAddressInfo.html",
+          "hash": "fft+E7u1YeEKAm6rF8eDSQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.OrderManagementCapture.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.OrderManagementCapture.html",
+          "hash": "HCHH6qtV1g+U0r9LfCtrfw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.OrderManagementCreateCapture.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.OrderManagementCreateCapture.html",
+          "hash": "VhyEXqsm6fFq3GtW/ZcgyA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.OrderManagementCustomer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.OrderManagementCustomer.html",
+          "hash": "JHT0q9HR09y9xU2D4s32iw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.OrderManagementCustomerAddresses.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.OrderManagementCustomerAddresses.html",
+          "hash": "ynmvRmGVUWvqyO+J3/v4Uw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.html",
+          "hash": "qlJCm+39vYAEKqiuIW+pXQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.OrderManagementInitialPaymentMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.OrderManagementInitialPaymentMethod.html",
+          "hash": "eWp0ChmXj5eLcBlDPXBiUA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.OrderManagementMerchantReferences.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.OrderManagementMerchantReferences.html",
+          "hash": "+sMyc9aAr3fxqnuyomM2rA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.OrderManagementOrder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.OrderManagementOrder.html",
+          "hash": "xeXLrd9UedOJsqKos9ZhHg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.OrderManagementRefund.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.OrderManagementRefund.html",
+          "hash": "TZVGQSewrqgBcupyQ9Cs3w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.OrderManagementSetNewOrderAmountAndLines.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.OrderManagementSetNewOrderAmountAndLines.html",
+          "hash": "GB8e3VU48qWn2THZz4VMKw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.OrderManagementShippingInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.OrderManagementShippingInfo.html",
+          "hash": "WLumH5Xj+he1FjqH8gAbxg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.Pagination.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.Pagination.html",
+          "hash": "mRjpc0FyJNt6s92ginWdgQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.PaymentAddressInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.PaymentAddressInfo.html",
+          "hash": "oXT6JYuMRxjg81nVJpGasA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.PaymentCreditSession.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.PaymentCreditSession.html",
+          "hash": "/RlcQF9LLYsdHx7gD9qv5w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.PaymentCreditSessionResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.PaymentCreditSessionResponse.html",
+          "hash": "3gRnKLT6a/nCDAbeZM1r/Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.PaymentCustomer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.PaymentCustomer.html",
+          "hash": "VWE2nhhgGJrtN4CTPRpGfQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.PaymentGenerateConsumerTokenRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.PaymentGenerateConsumerTokenRequest.html",
+          "hash": "v6tV+TQuRzhC9fhTke9yZg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.PaymentGenerateConsumerTokenResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.PaymentGenerateConsumerTokenResponse.html",
+          "hash": "FbFPFW11qcykM1ewVGaxew=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.PaymentMerchantUrls.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.PaymentMerchantUrls.html",
+          "hash": "6c9MH+eon9wyhVq3J1DH9w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.PaymentMethodCategory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.PaymentMethodCategory.html",
+          "hash": "CS7KPAHjLKO6CWVE7nE9ZQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.PaymentMethodCategoryAssetUrls.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.PaymentMethodCategoryAssetUrls.html",
+          "hash": "KkhU/r3+Mko0Q5pDWGASZQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.PaymentOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.PaymentOptions.html",
+          "hash": "PSbufMeAd2v3KfDiCGmS/Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.PaymentOrder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.PaymentOrder.html",
+          "hash": "m3OT/jw8mYfroPzRO3U+TA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.PaymentOrderResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.PaymentOrderResponse.html",
+          "hash": "UhvWbG+0DRa3enLcdY00Zw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.PaymentProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.PaymentProvider.html",
+          "hash": "RoBBfhWPgEROyG/EChzHrg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.ProductIdentifiers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.ProductIdentifiers.html",
+          "hash": "2ZVLTzGwnA6rOZ8pdsn8yA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.SettlementsGetAllPayoutsResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.SettlementsGetAllPayoutsResponse.html",
+          "hash": "HKayMMegX08k6PX+jWIJGw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.SettlementsGetTransactionsResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.SettlementsGetTransactionsResponse.html",
+          "hash": "UNgVGnmtAr1jI7XoC5heBw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.SettlementsPayout.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.SettlementsPayout.html",
+          "hash": "bip+/RzU2uBZjPsyUZ706A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.SettlementsPayoutSummary.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.SettlementsPayoutSummary.html",
+          "hash": "5e8MttqRyaXiOumma6kIzg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.SettlementsPayoutTotals.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.SettlementsPayoutTotals.html",
+          "hash": "IqRBhe7z3H4ide/puNGWIQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.ShippingAttributes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.ShippingAttributes.html",
+          "hash": "yfXwvRMMABC3t1r9hQCVtQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.ShippingOption.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.ShippingOption.html",
+          "hash": "nRBEwSfqTjv+8ab6CxzJwQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.Transaction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.Transaction.html",
+          "hash": "bQLBAkHkwtlG/Edj4b8jRA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.VirtualCardCard.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.VirtualCardCard.html",
+          "hash": "UWL7fh8uFuWjrTqDrMsGrA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.VirtualCardCreateSettlementRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.VirtualCardCreateSettlementRequest.html",
+          "hash": "pDHbUU62R/8sDr2nF97MwA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.VirtualCardSettlement.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.VirtualCardSettlement.html",
+          "hash": "5X1ZR/pSq7onuVjQqVEd1g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Model.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Model.html",
+          "hash": "WaQ784Fm8JpVaHKmwV7P+A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Serialization.IJsonSerializer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Serialization.IJsonSerializer.html",
+          "hash": "fk0r+uCyTSm34bWvuW9WwA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Serialization.JsonSerializer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Serialization.JsonSerializer.html",
+          "hash": "7Iq4sEx4xEymV0JNfHTkaQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Serialization.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Serialization.html",
+          "hash": "kqdImFCs2B6WZR03Zwx08g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Store.CheckoutStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Store.CheckoutStore.html",
+          "hash": "wQ7kVHIEwf2P1UFp50z1gQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Store.CustomerTokenStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Store.CustomerTokenStore.html",
+          "hash": "MY1b+ItYoUf1wnB/QcP4fg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Store.HostedPaymentPageStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Store.HostedPaymentPageStore.html",
+          "hash": "75eY4zVOk7F2xu78S2OLlg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Store.OrderManagementStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Store.OrderManagementStore.html",
+          "hash": "P96gvlN9KM4nayBAxLCA7A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Store.PaymentStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Store.PaymentStore.html",
+          "hash": "gNf/L8m1K/xO7PyuUTv8zQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Store.SettlementStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Store.SettlementStore.html",
+          "hash": "RsFocS0mgxV8GnGd0lzFdQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Store.VirtualCardServiceStore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Store.VirtualCardServiceStore.html",
+          "hash": "9JFXBMt05nb/T/x2QKr/yg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.Store.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.Store.html",
+          "hash": "ru+f99U2k42PQWkcTXIxMg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Klarna.Rest.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Klarna.Rest.Core.html",
+          "hash": "IWPOtbabPXSjREgw0kuUnA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "KEfpl61EnqfmliwAyNJs/w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "api/logo.png",
+      "output": {
+        "resource": {
+          "relative_path": "api/logo.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "r06a9bPx+t19/SRZ+DrXdQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "+u3WU9/kee5UGAUqkEiitA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "t7iiFrmuYmrKWisdq+lN6Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "urSMgwNk1Q1f9YmxCwitBw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 118,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
