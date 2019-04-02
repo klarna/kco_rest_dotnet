@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * HPPBackgroundImageV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T14:10:11.289Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:49:10.959Z")
 public class HPPBackgroundImageV1 {
   @JsonProperty("url")
   private String url = null;

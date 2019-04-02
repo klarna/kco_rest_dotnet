@@ -24,10 +24,16 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * HPPMerchantUrlsV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T14:10:11.289Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:49:10.959Z")
 public class HPPMerchantUrlsV1 {
+  @JsonProperty("back")
+  private String back = null;
+
   @JsonProperty("cancel")
   private String cancel = null;
+
+  @JsonProperty("error")
+  private String error = null;
 
   @JsonProperty("failure")
   private String failure = null;
@@ -35,11 +41,32 @@ public class HPPMerchantUrlsV1 {
   @JsonProperty("privacy_policy")
   private String privacyPolicy = null;
 
+  @JsonProperty("status_update")
+  private String statusUpdate = null;
+
   @JsonProperty("success")
   private String success = null;
 
   @JsonProperty("terms")
   private String terms = null;
+
+  public HPPMerchantUrlsV1 back(String back) {
+    this.back = back;
+    return this;
+  }
+
+   /**
+   * Back URL
+   * @return back
+  **/
+  @ApiModelProperty(example = "https://example.com/back?sid=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&hppId={{session_id}}", value = "Back URL")
+  public String getBack() {
+    return back;
+  }
+
+  public void setBack(String back) {
+    this.back = back;
+  }
 
   public HPPMerchantUrlsV1 cancel(String cancel) {
     this.cancel = cancel;
@@ -47,10 +74,10 @@ public class HPPMerchantUrlsV1 {
   }
 
    /**
-   * Cancel url
+   * Cancel URL
    * @return cancel
   **/
-  @ApiModelProperty(example = "https://example.com/cancel", required = true, value = "Cancel url")
+  @ApiModelProperty(example = "https://example.com/cancel?sid=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&hppId={{session_id}}", value = "Cancel URL")
   public String getCancel() {
     return cancel;
   }
@@ -59,16 +86,34 @@ public class HPPMerchantUrlsV1 {
     this.cancel = cancel;
   }
 
+  public HPPMerchantUrlsV1 error(String error) {
+    this.error = error;
+    return this;
+  }
+
+   /**
+   * System error URL
+   * @return error
+  **/
+  @ApiModelProperty(example = "https://example.com/error?sid=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&hppId={{session_id}}", value = "System error URL")
+  public String getError() {
+    return error;
+  }
+
+  public void setError(String error) {
+    this.error = error;
+  }
+
   public HPPMerchantUrlsV1 failure(String failure) {
     this.failure = failure;
     return this;
   }
 
    /**
-   * Failure url
+   * Failure URL
    * @return failure
   **/
-  @ApiModelProperty(example = "https://example.com/fail", required = true, value = "Failure url")
+  @ApiModelProperty(example = "https://example.com/fail?sid=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&hppId={{session_id}}", value = "Failure URL")
   public String getFailure() {
     return failure;
   }
@@ -83,10 +128,10 @@ public class HPPMerchantUrlsV1 {
   }
 
    /**
-   * Privacy policy url
+   * Privacy policy URL
    * @return privacyPolicy
   **/
-  @ApiModelProperty(example = "https://example.com/privacy_policy", value = "Privacy policy url")
+  @ApiModelProperty(example = "https://example.com/privacy_policy", value = "Privacy policy URL")
   public String getPrivacyPolicy() {
     return privacyPolicy;
   }
@@ -95,16 +140,34 @@ public class HPPMerchantUrlsV1 {
     this.privacyPolicy = privacyPolicy;
   }
 
+  public HPPMerchantUrlsV1 statusUpdate(String statusUpdate) {
+    this.statusUpdate = statusUpdate;
+    return this;
+  }
+
+   /**
+   * Status update URL
+   * @return statusUpdate
+  **/
+  @ApiModelProperty(example = "https://example.com/status_update?sid=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&secret=yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy&hppId={{session_id}}", value = "Status update URL")
+  public String getStatusUpdate() {
+    return statusUpdate;
+  }
+
+  public void setStatusUpdate(String statusUpdate) {
+    this.statusUpdate = statusUpdate;
+  }
+
   public HPPMerchantUrlsV1 success(String success) {
     this.success = success;
     return this;
   }
 
    /**
-   * Success url
+   * Success URL
    * @return success
   **/
-  @ApiModelProperty(example = "https://example.com/success?token={{authorization_token}}", required = true, value = "Success url")
+  @ApiModelProperty(example = "https://example.com/success?sid=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&hppId={{session_id}}&token={{authorization_token}}", value = "Success URL")
   public String getSuccess() {
     return success;
   }
@@ -119,10 +182,10 @@ public class HPPMerchantUrlsV1 {
   }
 
    /**
-   * Terms url
+   * Terms URL
    * @return terms
   **/
-  @ApiModelProperty(example = "https://example.com/terms", value = "Terms url")
+  @ApiModelProperty(example = "https://example.com/terms", value = "Terms URL")
   public String getTerms() {
     return terms;
   }
@@ -141,16 +204,19 @@ public class HPPMerchantUrlsV1 {
       return false;
     }
     HPPMerchantUrlsV1 merchantUrlsV1 = (HPPMerchantUrlsV1) o;
-    return Objects.equals(this.cancel, merchantUrlsV1.cancel) &&
+    return Objects.equals(this.back, merchantUrlsV1.back) &&
+        Objects.equals(this.cancel, merchantUrlsV1.cancel) &&
+        Objects.equals(this.error, merchantUrlsV1.error) &&
         Objects.equals(this.failure, merchantUrlsV1.failure) &&
         Objects.equals(this.privacyPolicy, merchantUrlsV1.privacyPolicy) &&
+        Objects.equals(this.statusUpdate, merchantUrlsV1.statusUpdate) &&
         Objects.equals(this.success, merchantUrlsV1.success) &&
         Objects.equals(this.terms, merchantUrlsV1.terms);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(cancel, failure, privacyPolicy, success, terms);
+    return Objects.hash(back, cancel, error, failure, privacyPolicy, statusUpdate, success, terms);
   }
 
 
@@ -159,9 +225,12 @@ public class HPPMerchantUrlsV1 {
     StringBuilder sb = new StringBuilder();
     sb.append("class HPPMerchantUrlsV1 {\n");
     
+    sb.append("    back: ").append(toIndentedString(back)).append("\n");
     sb.append("    cancel: ").append(toIndentedString(cancel)).append("\n");
+    sb.append("    error: ").append(toIndentedString(error)).append("\n");
     sb.append("    failure: ").append(toIndentedString(failure)).append("\n");
     sb.append("    privacyPolicy: ").append(toIndentedString(privacyPolicy)).append("\n");
+    sb.append("    statusUpdate: ").append(toIndentedString(statusUpdate)).append("\n");
     sb.append("    success: ").append(toIndentedString(success)).append("\n");
     sb.append("    terms: ").append(toIndentedString(terms)).append("\n");
     sb.append("}");
