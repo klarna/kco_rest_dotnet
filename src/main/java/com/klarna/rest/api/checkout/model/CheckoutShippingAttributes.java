@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * CheckoutShippingAttributes
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T11:03:40.852Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:22:48.232Z")
 public class CheckoutShippingAttributes {
   @JsonProperty("weight")
   private Long weight = null;
