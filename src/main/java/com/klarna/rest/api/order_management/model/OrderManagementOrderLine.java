@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * OrderManagementOrderLine
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T15:29:29.393Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T10:02:16.667Z")
 public class OrderManagementOrderLine {
   @JsonProperty("reference")
   private String reference = null;
@@ -167,11 +167,11 @@ public class OrderManagementOrderLine {
   }
 
    /**
-   * Total amount including tax and discounts. Must match &#39;quantity * unit_price - total_discount_amount&#39;.
+   * Total amount including tax and discounts (&#x60;quantity * unit_price - total_discount_amount&#x60;).
    * maximum: 100000000
    * @return totalAmount
   **/
-  @ApiModelProperty(required = true, value = "Total amount including tax and discounts. Must match 'quantity * unit_price - total_discount_amount'.")
+  @ApiModelProperty(required = true, value = "Total amount including tax and discounts (`quantity * unit_price - total_discount_amount`).")
   public Long getTotalAmount() {
     return totalAmount;
   }

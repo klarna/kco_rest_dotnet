@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * OrderManagementUpdateShippingInfo
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T15:29:29.393Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T10:02:16.667Z")
 public class OrderManagementUpdateShippingInfo {
   @JsonProperty("shipping_info")
   private List<OrderManagementShippingInfo> shippingInfo = new ArrayList<OrderManagementShippingInfo>();

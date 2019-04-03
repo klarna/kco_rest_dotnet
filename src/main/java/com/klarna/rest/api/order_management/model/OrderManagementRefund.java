@@ -28,7 +28,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * OrderManagementRefund
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T15:29:29.393Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T10:02:16.667Z")
 public class OrderManagementRefund {
   @JsonProperty("refund_id")
   private String refundId = null;
@@ -45,23 +45,22 @@ public class OrderManagementRefund {
   @JsonProperty("order_lines")
   private List<OrderManagementOrderLine> orderLines = null;
 
-  /**
-  * This API call is used to read information on a refund.
-  *
-  * @return refund id
- **/
-  @ApiModelProperty(value = "Refund ID.")
+  public OrderManagementRefund refundId(String refundId) {
+    this.refundId = refundId;
+    return this;
+  }
+
+   /**
+   * The refund id. Generated when the refund is created.
+   * @return refundId
+  **/
+  @ApiModelProperty(example = "b2cb4f2e-2781-4359-80ad-555735ebb8d8", value = "The refund id. Generated when the refund is created.")
   public String getRefundId() {
     return refundId;
   }
 
   public void setRefundId(String refundId) {
     this.refundId = refundId;
-  }
-
-  public OrderManagementRefund refundId(String refundId) {
-    this.refundId = refundId;
-    return this;
   }
 
   public OrderManagementRefund refundedAmount(Long refundedAmount) {
@@ -154,7 +153,8 @@ public class OrderManagementRefund {
       return false;
     }
     OrderManagementRefund refund = (OrderManagementRefund) o;
-    return Objects.equals(this.refundedAmount, refund.refundedAmount) &&
+    return Objects.equals(this.refundId, refund.refundId) &&
+        Objects.equals(this.refundedAmount, refund.refundedAmount) &&
         Objects.equals(this.refundedAt, refund.refundedAt) &&
         Objects.equals(this.description, refund.description) &&
         Objects.equals(this.orderLines, refund.orderLines);
@@ -162,7 +162,7 @@ public class OrderManagementRefund {
 
   @Override
   public int hashCode() {
-    return Objects.hash(refundedAmount, refundedAt, description, orderLines);
+    return Objects.hash(refundId, refundedAmount, refundedAt, description, orderLines);
   }
 
 
@@ -171,6 +171,7 @@ public class OrderManagementRefund {
     StringBuilder sb = new StringBuilder();
     sb.append("class OrderManagementRefund {\n");
     
+    sb.append("    refundId: ").append(toIndentedString(refundId)).append("\n");
     sb.append("    refundedAmount: ").append(toIndentedString(refundedAmount)).append("\n");
     sb.append("    refundedAt: ").append(toIndentedString(refundedAt)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
