@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * PaymentsMerchantUrls
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T16:26:10.932Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T12:40:06.653Z")
 public class PaymentsMerchantUrls {
   @JsonProperty("confirmation")
   private String confirmation = null;
@@ -41,10 +41,10 @@ public class PaymentsMerchantUrls {
   }
 
    /**
-   * URL of merchant confirmation page (max 2000 characters).
+   * URL of merchant confirmation page. Insert {session.id} and/or {order.id} as placeholder to connect either of those IDs to the URL (max 2000 characters).
    * @return confirmation
   **/
-  @ApiModelProperty(required = true, value = "URL of merchant confirmation page (max 2000 characters).")
+  @ApiModelProperty(required = true, value = "URL of merchant confirmation page. Insert {session.id} and/or {order.id} as placeholder to connect either of those IDs to the URL (max 2000 characters).")
   public String getConfirmation() {
     return confirmation;
   }
@@ -59,10 +59,10 @@ public class PaymentsMerchantUrls {
   }
 
    /**
-   * URL for notifications on pending orders (max 2000 characters).
+   * URL for notifications on pending orders. Insert {session.id} and/or {order.id} as placeholder to connect either of those IDs to the URL (max 2000 characters).
    * @return notification
   **/
-  @ApiModelProperty(value = "URL for notifications on pending orders (max 2000 characters).")
+  @ApiModelProperty(value = "URL for notifications on pending orders. Insert {session.id} and/or {order.id} as placeholder to connect either of those IDs to the URL (max 2000 characters).")
   public String getNotification() {
     return notification;
   }
@@ -77,10 +77,10 @@ public class PaymentsMerchantUrls {
   }
 
    /**
-   * URL that will be requested when an order is completed. Should be different than checkout and confirmation URLs (max 2000 characters).
+   * URL that will be requested when an order is completed. Should be different than checkout and confirmation URLs. Insert {session.id} and/or {order.id} as placeholder to connect either of those IDs to the URL (max 2000 characters).
    * @return push
   **/
-  @ApiModelProperty(value = "URL that will be requested when an order is completed. Should be different than checkout and confirmation URLs (max 2000 characters).")
+  @ApiModelProperty(value = "URL that will be requested when an order is completed. Should be different than checkout and confirmation URLs. Insert {session.id} and/or {order.id} as placeholder to connect either of those IDs to the URL (max 2000 characters).")
   public String getPush() {
     return push;
   }

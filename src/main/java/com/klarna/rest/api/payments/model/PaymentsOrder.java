@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * PaymentsOrder
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T16:26:10.932Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T12:40:06.653Z")
 public class PaymentsOrder {
   @JsonProperty("authorized_payment_method")
   private PaymentsAuthorizedPaymentMethod authorizedPaymentMethod = null;
