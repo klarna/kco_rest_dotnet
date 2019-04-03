@@ -20,6 +20,8 @@ import com.klarna.rest.api.checkout.CheckoutOrdersApi;
 import com.klarna.rest.api.customer_token.TokensApi;
 import com.klarna.rest.api.hosted_payment_page.HPPSessionsApi;
 import com.klarna.rest.api.merchant_card_service.VirtualCreditCardApi;
+import com.klarna.rest.api.merchant_card_service.VirtualCreditCardPromisesApi;
+import com.klarna.rest.api.merchant_card_service.VirtualCreditCardSettlementsApi;
 import com.klarna.rest.api.order_management.OrderManagementCapturesApi;
 import com.klarna.rest.api.order_management.OrderManagementOrdersApi;
 import com.klarna.rest.api.order_management.OrderManagementRefundsApi;
@@ -108,12 +110,36 @@ public class Client {
     /**
      * Creates a new VirtualCreditCardApi resource instance.
      *
+     * @deprecated As of 3.0.7, renaming in Merchant Card Service API.
+     *             Use {@link #newVirtualCreditCardSettlementsApi} instead.
+     *
+     * @return new instance
+     */
+    @Deprecated
+    public VirtualCreditCardApi newVirtualCreditCardApi() {
+        return new VirtualCreditCardApi(transport);
+    }
+
+    /**
+     * Creates a new VirtualCreditCardSettlementsApi resource instance.
+     *
      * @see examples.MerchantCardServiceExample
      *
      * @return new instance
      */
-    public VirtualCreditCardApi newVirtualCreditCardApi() {
-        return new VirtualCreditCardApi(transport);
+    public VirtualCreditCardSettlementsApi newVirtualCreditCardSettlementsApi() {
+        return new VirtualCreditCardSettlementsApi(transport);
+    }
+
+    /**
+     * Creates a new VirtualCreditCardPromisesApi resource instance.
+     *
+     * @see examples.MerchantCardServiceExample
+     *
+     * @return new instance
+     */
+    public VirtualCreditCardPromisesApi newVirtualCreditCardPromisesApi() {
+        return new VirtualCreditCardPromisesApi(transport);
     }
 
     /**
