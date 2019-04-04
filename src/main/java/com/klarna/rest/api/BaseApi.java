@@ -212,6 +212,16 @@ public abstract class BaseApi {
         return this.makeRequest(Method.DELETE, path, null, headers);
     }
 
+    /**
+     * Due to bad API design SDK has this inconsistent delete method. Headers and Body params were mixed comparing
+     * to other HTTP methods.
+     *
+     * This method allows to keep backward compatibility.
+     */
+    protected ApiResponse delete(final String path, Map<String, String> headers, final byte[] data) throws ApiException, IOException {
+        return this.makeRequest(Method.DELETE, path, data, headers);
+    }
+
     protected ApiResponse makeRequest(
             final Method method,
             final String path,
