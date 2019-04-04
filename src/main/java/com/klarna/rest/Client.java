@@ -19,6 +19,8 @@ package com.klarna.rest;
 import com.klarna.rest.api.checkout.CheckoutOrdersApi;
 import com.klarna.rest.api.customer_token.TokensApi;
 import com.klarna.rest.api.hosted_payment_page.HPPSessionsApi;
+import com.klarna.rest.api.instant_shopping.InstantShoppingButtonKeysApi;
+import com.klarna.rest.api.instant_shopping.InstantShoppingOrdersApi;
 import com.klarna.rest.api.merchant_card_service.VirtualCreditCardApi;
 import com.klarna.rest.api.merchant_card_service.VirtualCreditCardPromisesApi;
 import com.klarna.rest.api.merchant_card_service.VirtualCreditCardSettlementsApi;
@@ -230,5 +232,27 @@ public class Client {
      */
     public SettlementsReportsApi newSettlementsReportsApi() {
         return new SettlementsReportsApi(transport);
+    }
+
+    /**
+     * Creates a new InstantShoppingOrdersApi resource instance.
+     *
+     * @see examples.InstantShoppingExample
+     *
+     * @return new instance
+     */
+    public InstantShoppingOrdersApi newInstantShoppingOrdersApi(final String authorizationToken) {
+        return new InstantShoppingOrdersApi(transport, authorizationToken);
+    }
+
+    /**
+     * Creates a new InstantShoppingButtonKeysApi resource instance.
+     *
+     * @see examples.InstantShoppingExample
+     *
+     * @return new instance
+     */
+    public InstantShoppingButtonKeysApi newInstantShoppingButtonKeysApi() {
+        return new InstantShoppingButtonKeysApi(transport);
     }
 }

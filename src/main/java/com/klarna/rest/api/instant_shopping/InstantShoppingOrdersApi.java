@@ -44,10 +44,10 @@ public class InstantShoppingOrdersApi extends BaseApi {
 
     protected String authorizationToken;
 
-    public InstantShoppingOrdersApi(final HttpTransport transport, String authorization_token) {
+    public InstantShoppingOrdersApi(final HttpTransport transport, String authorizationToken) {
         super(transport);
-        this.authorizationToken = authorization_token;
-        this.PATH += "/" + authorization_token;
+        this.authorizationToken = authorizationToken;
+        this.PATH += "/" + authorizationToken;
     }
 
     /**

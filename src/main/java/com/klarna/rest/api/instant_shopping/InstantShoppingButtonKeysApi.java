@@ -105,7 +105,7 @@ public class InstantShoppingButtonKeysApi extends BaseApi {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
-    public InstantShoppingButtonSetupOptionsV1 updateButtonKey(String buttonKey)
+    public InstantShoppingButtonSetupOptionsV1 fetchButtonKeyOptions(String buttonKey)
             throws ApiException, IOException {
         final String path = String.format("%s/%s", PATH, buttonKey);
         final ApiResponse response = this.get(path);
