@@ -16,10 +16,8 @@
 package examples;
 
 import com.klarna.rest.Client;
-import com.klarna.rest.api.checkout.model.CheckoutOrderLine;
-import com.klarna.rest.api.hosted_payment_page.HPPSessionsApi;
-import com.klarna.rest.api.hosted_payment_page.model.*;
 import com.klarna.rest.api.instant_shopping.InstantShoppingButtonKeysApi;
+import com.klarna.rest.api.instant_shopping.InstantShoppingOrdersApi;
 import com.klarna.rest.api.instant_shopping.model.*;
 import com.klarna.rest.http_transport.HttpTransport;
 import com.klarna.rest.model.ApiException;
@@ -177,6 +175,154 @@ public class InstantShoppingExample {
             try {
                 InstantShoppingButtonSetupOptionsV1 button = api.fetchButtonKeyOptions(buttonKey);
                 System.out.println(button);
+
+            } catch (IOException e) {
+                System.out.println("Connection problem: " + e.getMessage());
+            } catch (ApiException e) {
+                System.out.println("API issue: " + e.getMessage());
+            }
+        }
+    }
+
+    public static class DeclineOrderExample {
+
+        /**
+         * Runs the example code.
+         *
+         * @param args Command line arguments
+         */
+        public static void main(final String[] args) {
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
+            String authorizationToken = "auth-token-123";
+
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
+            InstantShoppingOrdersApi api = client.newInstantShoppingOrdersApi(authorizationToken);
+
+            try {
+                InstantShoppingMerchantDeclineOrderRequestV1 reason = new InstantShoppingMerchantDeclineOrderRequestV1()
+                        .denyCode("out_of_stock")
+                        .denyMessage("The product you ordered is out of stock")
+                        .denyRedirectUrl("https://example.com/denied");
+
+                api.declineAuthorizedOrder(reason);
+                System.out.println("Order has been declined");
+
+            } catch (IOException e) {
+                System.out.println("Connection problem: " + e.getMessage());
+            } catch (ApiException e) {
+                System.out.println("API issue: " + e.getMessage());
+            }
+        }
+    }
+
+    public static class RertieveOrderExample {
+
+        /**
+         * Runs the example code.
+         *
+         * @param args Command line arguments
+         */
+        public static void main(final String[] args) {
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
+            String authorizationToken = "auth-token-123";
+
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
+            InstantShoppingOrdersApi api = client.newInstantShoppingOrdersApi(authorizationToken);
+
+            try {
+                InstantShoppingMerchantGetOrderResponseV1 order = api.retrieveAuthorizedOrder();
+                System.out.println(order);
+
+            } catch (IOException e) {
+                System.out.println("Connection problem: " + e.getMessage());
+            } catch (ApiException e) {
+                System.out.println("API issue: " + e.getMessage());
+            }
+        }
+    }
+
+    public static class ApproveOrderExample {
+
+        /**
+         * Runs the example code.
+         *
+         * @param args Command line arguments
+         */
+        public static void main(final String[] args) {
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
+            String authorizationToken = "auth-token-123";
+
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
+            InstantShoppingOrdersApi api = client.newInstantShoppingOrdersApi(authorizationToken);
+
+            InstantShoppingAddressV1 address = new InstantShoppingAddressV1()
+                    .givenName("Jane")
+                    .familyName("Doe")
+                    .email("jane@doe.com")
+                    .title("Ms")
+                    .streetAddress("Lombard St 10")
+                    .streetAddress2("Apt 214")
+                    .postalCode("90210")
+                    .city("Beverly Hills")
+                    .region("CA")
+                    .phone("333444555")
+                    .country("US");
+
+            try {
+                InstantShoppingMerchantCreateOrderRequestV1 order = new InstantShoppingMerchantCreateOrderRequestV1()
+                    .name("Women's Fashion")
+                    .purchaseCountry("US")
+                    .purchaseCurrency("USD")
+                    .locale("en-US")
+                    .billingAddress(address)
+                    .shippingAddress(address)
+                        .orderAmount(50000L)
+                        .orderTaxAmount(5000L)
+                        .orderLines(Arrays.asList(new InstantShoppingOrderLineV1()
+                                .name("Red T-Shirt")
+                                .type(InstantShoppingOrderLineV1.TypeEnum.PHYSICAL)
+                                .reference("19-402-USA")
+                                .quantity(5L)
+                                .quantityUnit("pcs")
+                                .taxRate(1000L)
+                                .totalAmount(50000L)
+                                .totalDiscountAmount(0L)
+                                .totalTaxAmount(5000L)
+                                .unitPrice(10000L)
+                                .productUrl("https://www.estore.com/products/f2a8d7e34")
+                                .imageUrl("https://www.exampleobjects.com/logo.png")
+                                .productIdentifiers(new InstantShoppingProductIdentifiersV1()
+                                        .categoryPath("Electronics Store > Computers & Tablets > Desktops")
+                                        .globalTradeItemNumber("735858293167")
+                                        .manufacturerPartNumber("BOXNUC5CPYH")
+                                        .brand("Intel")
+                                )
+                        ))
+                        .merchantUrls(new InstantShoppingMerchantUrlsV1()
+                                .terms("https://example.com/terms")
+                                .notification("https://example.com/notification")
+                                .confirmation("https://example.com/confirn")
+                                .push("https://example.com/push")
+                                .placeOrder("https://example.com/place")
+                        )
+                        .customer(new InstantShoppingCustomerV1()
+                                .dateOfBirth("1995-10-20")
+                                .title("Mr")
+                                .gender("male")
+                                .lastFourSsn("0512")
+                                .nationalIdentificationNumber("3108971100")
+                                .type("person")
+                                .vatId("string")
+                                .organizationRegistrationId("556737-0431")
+                                .organizationEntityType("LIMITED_COMPANY")
+                        );
+
+
+                InstantShoppingMerchantCreateOrderResponseV1 status = api.approveAuthorizedOrder(order);
+                System.out.println(status);
 
             } catch (IOException e) {
                 System.out.println("Connection problem: " + e.getMessage());
