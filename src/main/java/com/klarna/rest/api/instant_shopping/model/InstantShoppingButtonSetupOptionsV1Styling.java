@@ -18,76 +18,34 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingButtonSetupOptionsV1StylingTheme;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- *  
+ * InstantShoppingButtonSetupOptionsV1Styling
  */
-@ApiModel(description = " ")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-10T09:33:39.178Z")
-public class InstantShoppingErrorResponseV1 {
-  @JsonProperty("error_code")
-  private String errorCode = null;
+public class InstantShoppingButtonSetupOptionsV1Styling {
+  @JsonProperty("theme")
+  private InstantShoppingButtonSetupOptionsV1StylingTheme theme = null;
 
-  @JsonProperty("error_message")
-  private String errorMessage = null;
-
-  @JsonProperty("correlation_id")
-  private String correlationId = null;
-
-  public InstantShoppingErrorResponseV1 errorCode(String errorCode) {
-    this.errorCode = errorCode;
+  public InstantShoppingButtonSetupOptionsV1Styling theme(InstantShoppingButtonSetupOptionsV1StylingTheme theme) {
+    this.theme = theme;
     return this;
   }
 
    /**
-   *  
-   * @return errorCode
+   * Get theme
+   * @return theme
   **/
-  @ApiModelProperty(value = " ")
-  public String getErrorCode() {
-    return errorCode;
+  @ApiModelProperty(value = "")
+  public InstantShoppingButtonSetupOptionsV1StylingTheme getTheme() {
+    return theme;
   }
 
-  public void setErrorCode(String errorCode) {
-    this.errorCode = errorCode;
-  }
-
-  public InstantShoppingErrorResponseV1 errorMessage(String errorMessage) {
-    this.errorMessage = errorMessage;
-    return this;
-  }
-
-   /**
-   *  
-   * @return errorMessage
-  **/
-  @ApiModelProperty(value = " ")
-  public String getErrorMessage() {
-    return errorMessage;
-  }
-
-  public void setErrorMessage(String errorMessage) {
-    this.errorMessage = errorMessage;
-  }
-
-  public InstantShoppingErrorResponseV1 correlationId(String correlationId) {
-    this.correlationId = correlationId;
-    return this;
-  }
-
-   /**
-   *  
-   * @return correlationId
-  **/
-  @ApiModelProperty(value = " ")
-  public String getCorrelationId() {
-    return correlationId;
-  }
-
-  public void setCorrelationId(String correlationId) {
-    this.correlationId = correlationId;
+  public void setTheme(InstantShoppingButtonSetupOptionsV1StylingTheme theme) {
+    this.theme = theme;
   }
 
 
@@ -99,26 +57,22 @@ public class InstantShoppingErrorResponseV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InstantShoppingErrorResponseV1 errorResponseV1 = (InstantShoppingErrorResponseV1) o;
-    return Objects.equals(this.errorCode, errorResponseV1.errorCode) &&
-        Objects.equals(this.errorMessage, errorResponseV1.errorMessage) &&
-        Objects.equals(this.correlationId, errorResponseV1.correlationId);
+    InstantShoppingButtonSetupOptionsV1Styling buttonSetupOptionsV1Styling = (InstantShoppingButtonSetupOptionsV1Styling) o;
+    return Objects.equals(this.theme, buttonSetupOptionsV1Styling.theme);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(errorCode, errorMessage, correlationId);
+    return Objects.hash(theme);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InstantShoppingErrorResponseV1 {\n");
+    sb.append("class InstantShoppingButtonSetupOptionsV1Styling {\n");
     
-    sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
-    sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
-    sb.append("    correlationId: ").append(toIndentedString(correlationId)).append("\n");
+    sb.append("    theme: ").append(toIndentedString(theme)).append("\n");
     sb.append("}");
     return sb.toString();
   }

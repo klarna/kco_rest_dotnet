@@ -22,71 +22,50 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * InstantShoppingMerchantDeclineOrderRequestV1
+ * InstantShoppingAttachmentV1
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-10T09:33:39.178Z")
-public class InstantShoppingMerchantDeclineOrderRequestV1 {
-  @JsonProperty("deny_redirect_url")
-  private String denyRedirectUrl = null;
+public class InstantShoppingAttachmentV1 {
+  @JsonProperty("body")
+  private String body = null;
 
-  @JsonProperty("deny_code")
-  private String denyCode = null;
+  @JsonProperty("content_type")
+  private String contentType = null;
 
-  @JsonProperty("deny_message")
-  private String denyMessage = null;
-
-  public InstantShoppingMerchantDeclineOrderRequestV1 denyRedirectUrl(String denyRedirectUrl) {
-    this.denyRedirectUrl = denyRedirectUrl;
+  public InstantShoppingAttachmentV1 body(String body) {
+    this.body = body;
     return this;
   }
 
    /**
-   * If you specify a redirect_url then we will redirect the consumer to this page and do not show any information dialog within the Instant Shopping flow.
-   * @return denyRedirectUrl
+   * This field should be a _string_ containing the body of the attachment. The body should be an object containing any of the keys and sub objects described below serialised to JSON
+   * @return body
   **/
-  @ApiModelProperty(example = "https://theestore.se/rejected.html", value = "If you specify a redirect_url then we will redirect the consumer to this page and do not show any information dialog within the Instant Shopping flow.")
-  public String getDenyRedirectUrl() {
-    return denyRedirectUrl;
+  @ApiModelProperty(example = "", value = "This field should be a _string_ containing the body of the attachment. The body should be an object containing any of the keys and sub objects described below serialised to JSON")
+  public String getBody() {
+    return body;
   }
 
-  public void setDenyRedirectUrl(String denyRedirectUrl) {
-    this.denyRedirectUrl = denyRedirectUrl;
+  public void setBody(String body) {
+    this.body = body;
   }
 
-  public InstantShoppingMerchantDeclineOrderRequestV1 denyCode(String denyCode) {
-    this.denyCode = denyCode;
+  public InstantShoppingAttachmentV1 contentType(String contentType) {
+    this.contentType = contentType;
     return this;
   }
 
    /**
-   * Acceptable values for code are: &#39;address_error&#39;, &#39;item_out_of_stock&#39;, &#39;consumer_underaged&#39;, &#39;unsupported_shipping_address&#39;. You don&#39;t need to specify a message for these codes. &#39;other&#39; is also an acceptable value for which you may specify a message which will be shown to the consumer. It is important that the language of the message matches the locale of the Instant Shopping.
-   * @return denyCode
+   * The content type of the body property.
+   * @return contentType
   **/
-  @ApiModelProperty(example = "other", value = "Acceptable values for code are: 'address_error', 'item_out_of_stock', 'consumer_underaged', 'unsupported_shipping_address'. You don't need to specify a message for these codes. 'other' is also an acceptable value for which you may specify a message which will be shown to the consumer. It is important that the language of the message matches the locale of the Instant Shopping.")
-  public String getDenyCode() {
-    return denyCode;
+  @ApiModelProperty(example = "application/vnd.klarna.internal.emd-v2+json", value = "The content type of the body property.")
+  public String getContentType() {
+    return contentType;
   }
 
-  public void setDenyCode(String denyCode) {
-    this.denyCode = denyCode;
-  }
-
-  public InstantShoppingMerchantDeclineOrderRequestV1 denyMessage(String denyMessage) {
-    this.denyMessage = denyMessage;
-    return this;
-  }
-
-   /**
-   * A message that will be shown to the consumer when denied
-   * @return denyMessage
-  **/
-  @ApiModelProperty(example = "You are not permitted to purchase this product", value = "A message that will be shown to the consumer when denied")
-  public String getDenyMessage() {
-    return denyMessage;
-  }
-
-  public void setDenyMessage(String denyMessage) {
-    this.denyMessage = denyMessage;
+  public void setContentType(String contentType) {
+    this.contentType = contentType;
   }
 
 
@@ -98,26 +77,24 @@ public class InstantShoppingMerchantDeclineOrderRequestV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InstantShoppingMerchantDeclineOrderRequestV1 merchantDeclineOrderRequestV1 = (InstantShoppingMerchantDeclineOrderRequestV1) o;
-    return Objects.equals(this.denyRedirectUrl, merchantDeclineOrderRequestV1.denyRedirectUrl) &&
-        Objects.equals(this.denyCode, merchantDeclineOrderRequestV1.denyCode) &&
-        Objects.equals(this.denyMessage, merchantDeclineOrderRequestV1.denyMessage);
+    InstantShoppingAttachmentV1 attachmentV1 = (InstantShoppingAttachmentV1) o;
+    return Objects.equals(this.body, attachmentV1.body) &&
+        Objects.equals(this.contentType, attachmentV1.contentType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(denyRedirectUrl, denyCode, denyMessage);
+    return Objects.hash(body, contentType);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InstantShoppingMerchantDeclineOrderRequestV1 {\n");
+    sb.append("class InstantShoppingAttachmentV1 {\n");
     
-    sb.append("    denyRedirectUrl: ").append(toIndentedString(denyRedirectUrl)).append("\n");
-    sb.append("    denyCode: ").append(toIndentedString(denyCode)).append("\n");
-    sb.append("    denyMessage: ").append(toIndentedString(denyMessage)).append("\n");
+    sb.append("    body: ").append(toIndentedString(body)).append("\n");
+    sb.append("    contentType: ").append(toIndentedString(contentType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

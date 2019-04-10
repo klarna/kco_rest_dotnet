@@ -1,6 +1,6 @@
 /*
  * Klarna Instant Shopping
- * The Instant Shopping API is serving two purposes:  to manage the orders as they result from the Instant Shopping purchase flow  to generate Instant Shopping Button keys necessary for setting up the Instant Shopping flow both onsite and offsite    The 'authorizations' endpoint is relevant to authorize the orders. The 'buttons' endpoint is relevant to manage the button setup options.   Note that as soon as a purchase initiated through Instant Shopping is authorized with Klarna, the order should be read and handled using the Order Management API.    Button Setup Options is the library for creating and maintaining Instant Shopping Button Keys.  The API is accessible through a few different URLS. There are different URLs for testing and for making live purchases as well as different URLs for depending on if you are based in Europe or in the U.S.  All interaction with Klarna's APIs must be done over HTTPS. To authenticate with Klarna you use your API Credentials and HTTP Basic auth.  The credentials consist of two elements:  Username - Consists of your Merchant ID (eid) - a unique number that identifies your e-store, combined with a random string.  Password - a string which is associated with your Merchant ID and is used to authorize use of Klarna's APIs  Note: The API credentials are separate from your Merchant ID, and it is possible to have several API credentials associated with the same Merchant ID.  The credentials should be sent as an authorization header for every request with the username and password.  You receive both your live and test credentials by contacting Klarna sales for your country.  If the credentials are missing or wrong Klarna will respond with 401 Unauthorized. You can read more about HTTP Basic auth in the Wikipedia article. The username and password the username:password in base64. [https://gist.github.com/brandonmwest/a2632d0a65088a20c00a](Examples)  
+ * The Instant Shopping API is serving two purposes:  to manage the orders as they result from the Instant Shopping purchase flow  to generate Instant Shopping Button keys necessary for setting up the Instant Shopping flow both onsite and offsite    The 'authorizations' endpoint is relevant to authorize the orders. The 'buttons' endpoint is relevant to manage the button setup options.   Note that as soon as a purchase initiated through Instant Shopping is authorized with Klarna, the order should be read and handled using the Order Management API.    Button Setup Options is the library for creating and maintaining Instant Shopping Button Keys.  The API is accessible through a few different URLS. There are different URLs for testing and for making live purchases as well as different URLs for depending on if you are based in Europe or in the U.S.  All interaction with Klarna's APIs must be done over HTTPS. To authenticate with Klarna you use your API Credentials and HTTP Basic auth.  The credentials consist of two elements:  Username - Consists of your Merchant ID (eid) - a unique number that identifies your e-store, combined with a random string.  Password - a string which is associated with your Merchant ID and is used to authorize use of Klarna's APIs  Note: The API credentials are separate from your Merchant ID, and it is possible to have several API credentials associated with the same Merchant ID.  The credentials should be sent as an authorization header for every request with the username and password.  You receive both your live and test credentials by contacting Klarna sales for your country.  If the credentials are missing or wrong Klarna will respond with 401 Unauthorized. You can read more about HTTP Basic auth in the Wikipedia article. The username and password the username:password in base64. [https://gist.github.com/brandonmwest/a2632d0a65088a20c00a](Examples)   You can read more about Klarna Data types at https://developers.klarna.com/api/#data-types, e.g. the date format is ISO 8601
  *
  * OpenAPI spec version: 1.0.0
  * Contact: instant.shopping.e@klarna.com
@@ -18,8 +18,9 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.klarna.rest.api.instant_shopping.model.InstantShoppingButtonSetupOptionsV1Attachment;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingAttachmentV1;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingButtonSetupOptionsV1MerchantUrls;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingButtonSetupOptionsV1Styling;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingOptionsV1;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingOrderLineV1;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingShippingOptionV1;
@@ -32,7 +33,7 @@ import java.util.List;
  * ButtonSetupOptions defines the attributes for a button in Instant Shopping.
  */
 @ApiModel(description = "ButtonSetupOptions defines the attributes for a button in Instant Shopping.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-04T11:30:13.537Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-10T09:33:39.178Z")
 public class InstantShoppingButtonSetupOptionsV1 {
   @JsonProperty("button_key")
   private String buttonKey = null;
@@ -70,20 +71,23 @@ public class InstantShoppingButtonSetupOptionsV1 {
   @JsonProperty("merchant_reference2")
   private String merchantReference2 = null;
 
-  @JsonProperty("merchant_data")
-  private String merchantData = null;
-
   @JsonProperty("options")
   private InstantShoppingOptionsV1 options = null;
 
+  @JsonProperty("merchant_data")
+  private String merchantData = null;
+
   @JsonProperty("attachment")
-  private InstantShoppingButtonSetupOptionsV1Attachment attachment = null;
+  private InstantShoppingAttachmentV1 attachment = null;
 
   @JsonProperty("order_lines")
   private List<InstantShoppingOrderLineV1> orderLines = null;
 
   @JsonProperty("shipping_options")
   private List<InstantShoppingShippingOptionV1> shippingOptions = null;
+
+  @JsonProperty("styling")
+  private InstantShoppingButtonSetupOptionsV1Styling styling = null;
 
   public InstantShoppingButtonSetupOptionsV1 buttonKey(String buttonKey) {
     this.buttonKey = buttonKey;
@@ -317,24 +321,6 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.merchantReference2 = merchantReference2;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 merchantData(String merchantData) {
-    this.merchantData = merchantData;
-    return this;
-  }
-
-   /**
-   * Pass through field (max 6000 characters).
-   * @return merchantData
-  **/
-  @ApiModelProperty(value = "Pass through field (max 6000 characters).")
-  public String getMerchantData() {
-    return merchantData;
-  }
-
-  public void setMerchantData(String merchantData) {
-    this.merchantData = merchantData;
-  }
-
   public InstantShoppingButtonSetupOptionsV1 options(InstantShoppingOptionsV1 options) {
     this.options = options;
     return this;
@@ -353,21 +339,39 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.options = options;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 attachment(InstantShoppingButtonSetupOptionsV1Attachment attachment) {
+  public InstantShoppingButtonSetupOptionsV1 merchantData(String merchantData) {
+    this.merchantData = merchantData;
+    return this;
+  }
+
+   /**
+   * Pass through field (max 1024 characters).
+   * @return merchantData
+  **/
+  @ApiModelProperty(value = "Pass through field (max 1024 characters).")
+  public String getMerchantData() {
+    return merchantData;
+  }
+
+  public void setMerchantData(String merchantData) {
+    this.merchantData = merchantData;
+  }
+
+  public InstantShoppingButtonSetupOptionsV1 attachment(InstantShoppingAttachmentV1 attachment) {
     this.attachment = attachment;
     return this;
   }
 
    /**
-   * Get attachment
+   * Additional purchase information required for some industries.
    * @return attachment
   **/
-  @ApiModelProperty(value = "")
-  public InstantShoppingButtonSetupOptionsV1Attachment getAttachment() {
+  @ApiModelProperty(value = "Additional purchase information required for some industries.")
+  public InstantShoppingAttachmentV1 getAttachment() {
     return attachment;
   }
 
-  public void setAttachment(InstantShoppingButtonSetupOptionsV1Attachment attachment) {
+  public void setAttachment(InstantShoppingAttachmentV1 attachment) {
     this.attachment = attachment;
   }
 
@@ -423,6 +427,24 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.shippingOptions = shippingOptions;
   }
 
+  public InstantShoppingButtonSetupOptionsV1 styling(InstantShoppingButtonSetupOptionsV1Styling styling) {
+    this.styling = styling;
+    return this;
+  }
+
+   /**
+   * Get styling
+   * @return styling
+  **/
+  @ApiModelProperty(value = "")
+  public InstantShoppingButtonSetupOptionsV1Styling getStyling() {
+    return styling;
+  }
+
+  public void setStyling(InstantShoppingButtonSetupOptionsV1Styling styling) {
+    this.styling = styling;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -445,16 +467,17 @@ public class InstantShoppingButtonSetupOptionsV1 {
         Objects.equals(this.orderTaxAmount, buttonSetupOptionsV1.orderTaxAmount) &&
         Objects.equals(this.merchantReference1, buttonSetupOptionsV1.merchantReference1) &&
         Objects.equals(this.merchantReference2, buttonSetupOptionsV1.merchantReference2) &&
-        Objects.equals(this.merchantData, buttonSetupOptionsV1.merchantData) &&
         Objects.equals(this.options, buttonSetupOptionsV1.options) &&
+        Objects.equals(this.merchantData, buttonSetupOptionsV1.merchantData) &&
         Objects.equals(this.attachment, buttonSetupOptionsV1.attachment) &&
         Objects.equals(this.orderLines, buttonSetupOptionsV1.orderLines) &&
-        Objects.equals(this.shippingOptions, buttonSetupOptionsV1.shippingOptions);
+        Objects.equals(this.shippingOptions, buttonSetupOptionsV1.shippingOptions) &&
+        Objects.equals(this.styling, buttonSetupOptionsV1.styling);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(buttonKey, disabled, merchantUrls, purchaseCurrency, purchaseCountry, billingCountries, shippingCountries, locale, orderAmount, orderTaxAmount, merchantReference1, merchantReference2, merchantData, options, attachment, orderLines, shippingOptions);
+    return Objects.hash(buttonKey, disabled, merchantUrls, purchaseCurrency, purchaseCountry, billingCountries, shippingCountries, locale, orderAmount, orderTaxAmount, merchantReference1, merchantReference2, options, merchantData, attachment, orderLines, shippingOptions, styling);
   }
 
 
@@ -475,11 +498,12 @@ public class InstantShoppingButtonSetupOptionsV1 {
     sb.append("    orderTaxAmount: ").append(toIndentedString(orderTaxAmount)).append("\n");
     sb.append("    merchantReference1: ").append(toIndentedString(merchantReference1)).append("\n");
     sb.append("    merchantReference2: ").append(toIndentedString(merchantReference2)).append("\n");
-    sb.append("    merchantData: ").append(toIndentedString(merchantData)).append("\n");
     sb.append("    options: ").append(toIndentedString(options)).append("\n");
+    sb.append("    merchantData: ").append(toIndentedString(merchantData)).append("\n");
     sb.append("    attachment: ").append(toIndentedString(attachment)).append("\n");
     sb.append("    orderLines: ").append(toIndentedString(orderLines)).append("\n");
     sb.append("    shippingOptions: ").append(toIndentedString(shippingOptions)).append("\n");
+    sb.append("    styling: ").append(toIndentedString(styling)).append("\n");
     sb.append("}");
     return sb.toString();
   }
