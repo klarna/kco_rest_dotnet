@@ -85,7 +85,7 @@ public class InstantShoppingOrdersApi extends BaseApi {
     public void declineAuthorizedOrder(InstantShoppingMerchantDeclineOrderRequestV1 declineReason)
             throws ApiException, IOException {
         final byte[] data = objectMapper.writeValueAsBytes(declineReason);
-        final ApiResponse response = this.delete(PATH, null, data);
+        final ApiResponse response = this.delete(PATH, data, null);
 
         response.expectSuccessful()
                 .expectStatusCode(Response.Status.NO_CONTENT);

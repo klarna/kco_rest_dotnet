@@ -150,9 +150,28 @@ public class InstantShoppingOrdersApiTest extends TestCase {
     }
 
     @Test
-    @Ignore("Test ignored: Decline model marked as read-only but MUST NOT")
     public void testDeclineAuthorizedOrder() throws IOException {
-        fail("Decline model marked as read-only but MUST NOT");
+        when(transport.conn.getResponseCode()).thenReturn(204);
+        when(transport.conn.getHeaderFields()).thenReturn(new HashMap<String, List<String>>() {{
+            put("Content-Type", Arrays.asList(MediaType.APPLICATION_JSON));
+        }});
+
+        Client client = new Client(transport);
+        InstantShoppingOrdersApi api = client.newInstantShoppingOrdersApi("auth-token-123");
+
+        InstantShoppingMerchantDeclineOrderRequestV1 reason = new InstantShoppingMerchantDeclineOrderRequestV1()
+                .denyCode("out_of_stock")
+                .denyMessage("The item you try to buy is out of stock")
+                .denyRedirectUrl("https://example.com/deny");
+
+        api.declineAuthorizedOrder(reason);
+
+        verify(transport.conn, times(1)).setRequestMethod("DELETE");
+        assertEquals("/instantshopping/v1/authorizations/auth-token-123", transport.requestPath);
+
+        final String requestPayout = transport.requestPayout.toString();
+        assertTrue(requestPayout.contains("\"deny_code\":\"out_of_stock\""));
+        assertTrue(requestPayout.contains("\"deny_message\":\"The item you try to buy is out of stock\""));
     }
 
     @Test
