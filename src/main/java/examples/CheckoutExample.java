@@ -202,4 +202,72 @@ public class CheckoutExample {
             }
         }
     }
+
+    /**
+     * Creates a checkout order including discounts.
+     */
+    public static class DiscountsExample {
+
+        /**
+         * Runs the example code.
+         *
+         * @param args Command line arguments
+         */
+        public static void main(final String[] args) {
+            String username = "K123456_abcd12345";
+            String password = "sharedSecret";
+
+            Client client = new Client(username, password, HttpTransport.EU_TEST_BASE_URL);
+            CheckoutOrdersApi checkoutOrdersApi = client.newCheckoutOrdersApi();
+
+            final List<CheckoutOrderLine> lines = Arrays.asList(
+                    new CheckoutOrderLine()
+                            .type("physical")
+                            .reference("19-402-USA")
+                            .name("Red T-Shirt")
+                            .quantity(1L)
+                            .quantityUnit("pcs")
+                            .unitPrice(10000L)
+                            .taxRate(1000L)
+                            .totalAmount(10000L)
+                            .totalTaxAmount(909L),
+
+                    // Add a discount as an order line
+                    new CheckoutOrderLine()
+                            .type("discount")
+                            .reference("10-gbp-order-discount")
+                            .name("Discount")
+                            .quantity(1L)
+                            .unitPrice(-1000L)
+                            .taxRate(1000L)
+                            .totalAmount(-1000L)
+                            .totalTaxAmount(-91L)
+            );
+
+            final CheckoutMerchantUrls urls = new CheckoutMerchantUrls()
+                    .terms("http://www.example.com/toc")
+                    .checkout("http://www.example.com/checkout?klarna_order_id={checkout.order.id}")
+                    .confirmation("http://www.example.com/thank-you?klarna_order_id={checkout.order.id}")
+                    .push("http://www.example.com/create_order?klarna_order_id={checkout.order.id}");
+
+            CheckoutOrder data = new CheckoutOrder()
+                    .purchaseCountry("GB")
+                    .purchaseCurrency("GBP")
+                    .locale("EN-GB")
+                    .orderAmount(9000L)
+                    .orderTaxAmount(818L)
+                    .orderLines(lines)
+                    .merchantUrls(urls);
+
+            try {
+                CheckoutOrder order = checkoutOrdersApi.create(data);
+                System.out.println(order.getHtmlSnippet());
+
+            } catch (IOException e) {
+                System.out.println("Connection problem: " + e.getMessage());
+            } catch (ApiException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
 }
