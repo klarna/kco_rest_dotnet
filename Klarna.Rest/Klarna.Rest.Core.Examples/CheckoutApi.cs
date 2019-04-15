@@ -85,6 +85,81 @@ namespace Klarna.Rest.Core.Examples
         }
     }
 
+    public class DiscountsExample
+    {
+        /// <summary>
+        /// Run the example code.
+        /// Remember to replace username and password with valid Klarna credentials. 
+        /// </summary>
+        static void Main()
+        {
+            var username = "0_abc";
+            var password = "sharedsecret";
+
+            var client = new Klarna(username, password, KlarnaEnvironment.TestingEurope);
+
+            var order = new CheckoutOrder
+            {
+                PurchaseCountry = "gb",
+                PurchaseCurrency = "gbp",
+                Locale = "en-gb",
+                OrderAmount = 9000,
+                OrderTaxAmount = 818,
+                MerchantUrls = new CheckoutMerchantUrls
+                {
+                    Terms = "https://www.example.com/terms.html",
+                    Checkout = "https://www.example.com/checkout.html",
+                    Confirmation = "https://www.example.com/confirmation.html",
+                    Push = "https://www.example.com/push.html"
+                },
+                OrderLines = new List<OrderLine>()
+                {
+                    new OrderLine
+                    {
+                        Type = OrderLineType.physical,
+                        Reference = "19-402-USA",
+                        Name = "Red T-Shirt",
+                        Quantity = 1,
+                        QuantityUnit = "pcs",
+                        UnitPrice = 10000,
+                        TaxRate = 1000,
+                        TotalAmount = 10000,
+                        TotalTaxAmount = 909
+                    },
+
+                    // Set a discount
+                    new OrderLine
+                    {
+                        Type = OrderLineType.discount,
+                        Reference = "10-gbp-order-discount",
+                        Name = "Discount",
+                        Quantity = 1,
+                        UnitPrice = -1000,
+                        TaxRate = 1000,
+                        TotalAmount = -1000,
+                        TotalTaxAmount = -91
+                    }
+                },
+            };
+
+            try
+            {
+                var createdOrder = client.Checkout.CreateOrder(order).Result;
+                Console.WriteLine(createdOrder.HtmlSnippet);
+            }
+            catch (ApiException ex)
+            {
+                Console.WriteLine(ex.ErrorMessage.ErrorCode);
+                Console.WriteLine(ex.ErrorMessage.ErrorMessages);
+                Console.WriteLine(ex.ErrorMessage.CorrelationId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+    }
+
     /// <summary>
     /// Retrieves a checkout order
     /// </summary>
