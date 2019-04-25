@@ -112,7 +112,7 @@ public class Client {
     /**
      * Creates a new VirtualCreditCardApi resource instance.
      *
-     * @deprecated As of 3.0.7, renaming in Merchant Card Service API.
+     * @deprecated As of 3.1.0, renaming in Merchant Card Service API.
      *             Use {@link #newVirtualCreditCardSettlementsApi} instead.
      *
      * @return new instance

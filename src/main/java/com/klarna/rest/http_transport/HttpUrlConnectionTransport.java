@@ -189,7 +189,7 @@ public class HttpUrlConnectionTransport implements HttpTransport {
     /**
      * Sends HTTP DELETE request to specified path.
      *
-     * @deprecated As of 3.0.7, adding `data` params to delete in order to cover the InstantShoppingApi
+     * @deprecated As of 3.1.0, adding `data` params to delete in order to cover the InstantShoppingApi
      *              Use {@link #delete(String, byte[], Map)} instead.
      *
      * @param path URL path
