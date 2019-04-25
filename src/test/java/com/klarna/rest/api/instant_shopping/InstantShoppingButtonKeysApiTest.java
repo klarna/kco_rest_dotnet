@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Klarna AB
+ * Copyright 2019 Klarna AB
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -94,8 +94,8 @@ public class InstantShoppingButtonKeysApiTest extends TestCase {
             "            \"total_discount_amount\": 0,\n" +
             "            \"total_tax_amount\": 5000,\n" +
             "            \"unit_price\": 10000,\n" +
-            "            \"product_url\": \"https://www.estore.com/products/f2a8d7e34\",\n" +
-            "            \"image_url\": \"https://www.exampleobjects.com/logo.png\",\n" +
+            "            \"product_url\": \"https://www.example.com/products/f2a8d7e34\",\n" +
+            "            \"image_url\": \"https://www.example.com/logo.png\",\n" +
             "            \"product_identifiers\": {\n" +
             "                \"category_path\": \"Electronics Store > Computers & Tablets > Desktops\",\n" +
             "                \"global_trade_item_number\": \"735858293167\",\n" +

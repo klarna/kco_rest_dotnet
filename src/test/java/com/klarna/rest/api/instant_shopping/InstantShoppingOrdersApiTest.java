@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Klarna AB
+ * Copyright 2019 Klarna AB
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -92,8 +92,8 @@ public class InstantShoppingOrdersApiTest extends TestCase {
             "            \"total_discount_amount\": 0,\n" +
             "            \"total_tax_amount\": 5000,\n" +
             "            \"unit_price\": 10000,\n" +
-            "            \"product_url\": \"https://www.estore.com/products/f2a8d7e34\",\n" +
-            "            \"image_url\": \"https://www.exampleobjects.com/logo.png\",\n" +
+            "            \"product_url\": \"https://www.example.com/products/f2a8d7e34\",\n" +
+            "            \"image_url\": \"https://www.example.com/logo.png\",\n" +
             "            \"product_identifiers\": {\n" +
             "                \"category_path\": \"Electronics Store > Computers & Tablets > Desktops\",\n" +
             "                \"global_trade_item_number\": \"735858293167\",\n" +
@@ -105,11 +105,11 @@ public class InstantShoppingOrdersApiTest extends TestCase {
             "    \"merchant_reference1\": \"45aa52f387871e3a210645d4\",\n" +
             "    \"merchant_reference2\": \"45aa52f387871e3a210645d4\",\n" +
             "    \"merchant_urls\": {\n" +
-            "        \"terms\": \"https://theestore.se/terms\",\n" +
-            "        \"notification\": \"https://theestore.se/notify\",\n" +
-            "        \"confirmation\": \"https://theestore.se/\",\n" +
-            "        \"push\": \"https://theestore.se/push\",\n" +
-            "        \"place_order\": \"https://theestore.se/place-order\"\n" +
+            "        \"terms\": \"https://example.com/terms\",\n" +
+            "        \"notification\": \"https://example.com/notify\",\n" +
+            "        \"confirmation\": \"https://example.com/\",\n" +
+            "        \"push\": \"https://example.com/push\",\n" +
+            "        \"place_order\": \"https://example.com/place-order\"\n" +
             "    },\n" +
             "    \"customer\": {\n" +
             "        \"date_of_birth\": \"1995-10-20\",\n" +
@@ -161,7 +161,7 @@ public class InstantShoppingOrdersApiTest extends TestCase {
 
         InstantShoppingMerchantDeclineOrderRequestV1 reason = new InstantShoppingMerchantDeclineOrderRequestV1()
                 .denyCode("out_of_stock")
-                .denyMessage("The item you try to buy is out of stock")
+                .denyMessage("The item you are trying to buy is out of stock")
                 .denyRedirectUrl("https://example.com/deny");
 
         api.declineAuthorizedOrder(reason);
@@ -171,7 +171,7 @@ public class InstantShoppingOrdersApiTest extends TestCase {
 
         final String requestPayout = transport.requestPayout.toString();
         assertTrue(requestPayout.contains("\"deny_code\":\"out_of_stock\""));
-        assertTrue(requestPayout.contains("\"deny_message\":\"The item you try to buy is out of stock\""));
+        assertTrue(requestPayout.contains("\"deny_message\":\"The item you are trying to buy is out of stock\""));
     }
 
     @Test
