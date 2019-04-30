@@ -18,6 +18,7 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.klarna.rest.api.payments.model.PaymentsAuthorizedPaymentMethod;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -26,8 +27,11 @@ import java.util.List;
 /**
  * PaymentsErrorV2
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T16:26:10.932Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T12:40:06.653Z")
 public class PaymentsErrorV2 {
+  @JsonProperty("authorized_payment_method_v1")
+  private PaymentsAuthorizedPaymentMethod authorizedPaymentMethodV1 = null;
+
   @JsonProperty("correlation_id")
   private String correlationId = null;
 
@@ -36,6 +40,30 @@ public class PaymentsErrorV2 {
 
   @JsonProperty("error_messages")
   private List<String> errorMessages = null;
+
+  @JsonProperty("fraud_status")
+  private String fraudStatus = null;
+
+  @JsonProperty("reason")
+  private String reason = null;
+
+  public PaymentsErrorV2 authorizedPaymentMethodV1(PaymentsAuthorizedPaymentMethod authorizedPaymentMethodV1) {
+    this.authorizedPaymentMethodV1 = authorizedPaymentMethodV1;
+    return this;
+  }
+
+   /**
+   * Get authorizedPaymentMethodV1
+   * @return authorizedPaymentMethodV1
+  **/
+  @ApiModelProperty(value = "")
+  public PaymentsAuthorizedPaymentMethod getAuthorizedPaymentMethodV1() {
+    return authorizedPaymentMethodV1;
+  }
+
+  public void setAuthorizedPaymentMethodV1(PaymentsAuthorizedPaymentMethod authorizedPaymentMethodV1) {
+    this.authorizedPaymentMethodV1 = authorizedPaymentMethodV1;
+  }
 
   public PaymentsErrorV2 correlationId(String correlationId) {
     this.correlationId = correlationId;
@@ -99,6 +127,42 @@ public class PaymentsErrorV2 {
     this.errorMessages = errorMessages;
   }
 
+  public PaymentsErrorV2 fraudStatus(String fraudStatus) {
+    this.fraudStatus = fraudStatus;
+    return this;
+  }
+
+   /**
+   * Get fraudStatus
+   * @return fraudStatus
+  **/
+  @ApiModelProperty(value = "")
+  public String getFraudStatus() {
+    return fraudStatus;
+  }
+
+  public void setFraudStatus(String fraudStatus) {
+    this.fraudStatus = fraudStatus;
+  }
+
+  public PaymentsErrorV2 reason(String reason) {
+    this.reason = reason;
+    return this;
+  }
+
+   /**
+   * Get reason
+   * @return reason
+  **/
+  @ApiModelProperty(value = "")
+  public String getReason() {
+    return reason;
+  }
+
+  public void setReason(String reason) {
+    this.reason = reason;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -109,14 +173,17 @@ public class PaymentsErrorV2 {
       return false;
     }
     PaymentsErrorV2 errorV2 = (PaymentsErrorV2) o;
-    return Objects.equals(this.correlationId, errorV2.correlationId) &&
+    return Objects.equals(this.authorizedPaymentMethodV1, errorV2.authorizedPaymentMethodV1) &&
+        Objects.equals(this.correlationId, errorV2.correlationId) &&
         Objects.equals(this.errorCode, errorV2.errorCode) &&
-        Objects.equals(this.errorMessages, errorV2.errorMessages);
+        Objects.equals(this.errorMessages, errorV2.errorMessages) &&
+        Objects.equals(this.fraudStatus, errorV2.fraudStatus) &&
+        Objects.equals(this.reason, errorV2.reason);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(correlationId, errorCode, errorMessages);
+    return Objects.hash(authorizedPaymentMethodV1, correlationId, errorCode, errorMessages, fraudStatus, reason);
   }
 
 
@@ -125,9 +192,12 @@ public class PaymentsErrorV2 {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentsErrorV2 {\n");
     
+    sb.append("    authorizedPaymentMethodV1: ").append(toIndentedString(authorizedPaymentMethodV1)).append("\n");
     sb.append("    correlationId: ").append(toIndentedString(correlationId)).append("\n");
     sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
     sb.append("    errorMessages: ").append(toIndentedString(errorMessages)).append("\n");
+    sb.append("    fraudStatus: ").append(toIndentedString(fraudStatus)).append("\n");
+    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -26,7 +26,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * CheckoutOrderLine
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T11:03:40.852Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:22:48.232Z")
 public class CheckoutOrderLine {
   @JsonProperty("type")
   private String type = null;
@@ -249,7 +249,7 @@ public class CheckoutOrderLine {
    * Must be within ±1 of total_amount - total_amount \\* 10000 / (10000 + tax_rate). Negative when type is discount.
    * @return totalTaxAmount
   **/
-  @ApiModelProperty(example = "5000", required = true, value = "Must be within ±1 of total_amount - total_amount \\* 10000 / (10000 + tax_rate). Negative when type is discount.")
+  @ApiModelProperty(example = "4545", required = true, value = "Must be within ±1 of total_amount - total_amount \\* 10000 / (10000 + tax_rate). Negative when type is discount.")
   public Long getTotalTaxAmount() {
     return totalTaxAmount;
   }
@@ -264,10 +264,10 @@ public class CheckoutOrderLine {
   }
 
    /**
-   * Pass through field. (max 255 characters)
+   * Pass through field. (max 1024 characters)
    * @return merchantData
   **/
-  @ApiModelProperty(example = "{\"marketplace_seller_info\":[{\"product_category\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}", value = "Pass through field. (max 255 characters)")
+  @ApiModelProperty(example = "{\"marketplace_seller_info\":[{\"product_category\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}", value = "Pass through field. (max 1024 characters)")
   public String getMerchantData() {
     return merchantData;
   }

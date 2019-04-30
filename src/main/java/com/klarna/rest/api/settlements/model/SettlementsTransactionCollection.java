@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * SettlementsTransactionCollection
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-11-02T15:08:22.912Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T13:02:14.665Z")
 public class SettlementsTransactionCollection {
   @JsonProperty("transactions")
   private List<SettlementsTransaction> transactions = new ArrayList<SettlementsTransaction>();

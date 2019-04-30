@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * CheckoutOptions
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T11:03:40.852Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:22:48.232Z")
 public class CheckoutOptions {
   @JsonProperty("acquiring_channel")
   private String acquiringChannel = null;
@@ -60,9 +60,6 @@ public class CheckoutOptions {
   @JsonProperty("shipping_details")
   private String shippingDetails = null;
 
-  @JsonProperty("phone_mandatory")
-  private Boolean phoneMandatory = false;
-
   @JsonProperty("title_mandatory")
   private Boolean titleMandatory = false;
 
@@ -74,6 +71,9 @@ public class CheckoutOptions {
 
   @JsonProperty("additional_merchant_terms")
   private String additionalMerchantTerms = null;
+
+  @JsonProperty("phone_mandatory")
+  private Boolean phoneMandatory = false;
 
   @JsonProperty("radius_border")
   private String radiusBorder = null;
@@ -99,10 +99,10 @@ public class CheckoutOptions {
   }
 
    /**
-   * Acquiring channel for the order. Use MOTO for \&quot;Mail Order Telephone Order\&quot; or ECOMMERCE for \&quot;E-commerce\&quot; or IN_STORE for \&quot;Purchase in boutique\&quot;. Default : ECOMMERCE
+   * Acquiring channel for the order. Use MOTO for \&quot;Mail Order Telephone Order\&quot; or ECOMMERCE for \&quot;E-commerce\&quot; or IN_STORE for \&quot;Purchase in boutique\&quot; or TELESALES for \&quot;Telesales/telemarketing\&quot;. Default : ECOMMERCE
    * @return acquiringChannel
   **/
-  @ApiModelProperty(example = "eCommerce", value = "Acquiring channel for the order. Use MOTO for \"Mail Order Telephone Order\" or ECOMMERCE for \"E-commerce\" or IN_STORE for \"Purchase in boutique\". Default : ECOMMERCE")
+  @ApiModelProperty(example = "eCommerce", value = "Acquiring channel for the order. Use MOTO for \"Mail Order Telephone Order\" or ECOMMERCE for \"E-commerce\" or IN_STORE for \"Purchase in boutique\" or TELESALES for \"Telesales/telemarketing\". Default : ECOMMERCE")
   public String getAcquiringChannel() {
     return acquiringChannel;
   }
@@ -273,24 +273,6 @@ public class CheckoutOptions {
     this.shippingDetails = shippingDetails;
   }
 
-  public CheckoutOptions phoneMandatory(Boolean phoneMandatory) {
-    this.phoneMandatory = phoneMandatory;
-    return this;
-  }
-
-  /**
-   * Checks phone is mandatory
-   * @return phoneMandatory
-   **/
-  @ApiModelProperty(value = "Checks phone is mandatory")
-  public Boolean isPhoneMandatory() {
-    return phoneMandatory;
-  }
-
-  public void setPhoneMandatory(Boolean phoneMandatory) {
-    this.phoneMandatory = phoneMandatory;
-  }
-
   public CheckoutOptions titleMandatory(Boolean titleMandatory) {
     this.titleMandatory = titleMandatory;
     return this;
@@ -361,6 +343,24 @@ public class CheckoutOptions {
 
   public void setAdditionalMerchantTerms(String additionalMerchantTerms) {
     this.additionalMerchantTerms = additionalMerchantTerms;
+  }
+
+  public CheckoutOptions phoneMandatory(Boolean phoneMandatory) {
+    this.phoneMandatory = phoneMandatory;
+    return this;
+  }
+
+   /**
+   * If true, the consumer can not skip phone (in countries were this usually is possible). Only available for orders for DACH countries.
+   * @return phoneMandatory
+  **/
+  @ApiModelProperty(value = "If true, the consumer can not skip phone (in countries were this usually is possible). Only available for orders for DACH countries.")
+  public Boolean isPhoneMandatory() {
+    return phoneMandatory;
+  }
+
+  public void setPhoneMandatory(Boolean phoneMandatory) {
+    this.phoneMandatory = phoneMandatory;
   }
 
   public CheckoutOptions radiusBorder(String radiusBorder) {
@@ -507,11 +507,11 @@ public class CheckoutOptions {
         Objects.equals(this.colorLink, options.colorLink) &&
         Objects.equals(this.dateOfBirthMandatory, options.dateOfBirthMandatory) &&
         Objects.equals(this.shippingDetails, options.shippingDetails) &&
-        Objects.equals(this.phoneMandatory, options.phoneMandatory) &&
         Objects.equals(this.titleMandatory, options.titleMandatory) &&
         Objects.equals(this.additionalCheckbox, options.additionalCheckbox) &&
         Objects.equals(this.nationalIdentificationNumberMandatory, options.nationalIdentificationNumberMandatory) &&
         Objects.equals(this.additionalMerchantTerms, options.additionalMerchantTerms) &&
+        Objects.equals(this.phoneMandatory, options.phoneMandatory) &&
         Objects.equals(this.radiusBorder, options.radiusBorder) &&
         Objects.equals(this.allowedCustomerTypes, options.allowedCustomerTypes) &&
         Objects.equals(this.showSubtotalDetail, options.showSubtotalDetail) &&
@@ -522,7 +522,7 @@ public class CheckoutOptions {
 
   @Override
   public int hashCode() {
-    return Objects.hash(acquiringChannel, allowSeparateShippingAddress, colorButton, colorButtonText, colorCheckbox, colorCheckboxCheckmark, colorHeader, colorLink, dateOfBirthMandatory, shippingDetails, titleMandatory, additionalCheckbox, nationalIdentificationNumberMandatory, additionalMerchantTerms, radiusBorder, allowedCustomerTypes, showSubtotalDetail, additionalCheckboxes, requireValidateCallbackSuccess, vatRemoved);
+    return Objects.hash(acquiringChannel, allowSeparateShippingAddress, colorButton, colorButtonText, colorCheckbox, colorCheckboxCheckmark, colorHeader, colorLink, dateOfBirthMandatory, shippingDetails, titleMandatory, additionalCheckbox, nationalIdentificationNumberMandatory, additionalMerchantTerms, phoneMandatory, radiusBorder, allowedCustomerTypes, showSubtotalDetail, additionalCheckboxes, requireValidateCallbackSuccess, vatRemoved);
   }
 
 
@@ -541,11 +541,11 @@ public class CheckoutOptions {
     sb.append("    colorLink: ").append(toIndentedString(colorLink)).append("\n");
     sb.append("    dateOfBirthMandatory: ").append(toIndentedString(dateOfBirthMandatory)).append("\n");
     sb.append("    shippingDetails: ").append(toIndentedString(shippingDetails)).append("\n");
-    sb.append("    phoneMandatory: ").append(toIndentedString(phoneMandatory)).append("\n");
     sb.append("    titleMandatory: ").append(toIndentedString(titleMandatory)).append("\n");
     sb.append("    additionalCheckbox: ").append(toIndentedString(additionalCheckbox)).append("\n");
     sb.append("    nationalIdentificationNumberMandatory: ").append(toIndentedString(nationalIdentificationNumberMandatory)).append("\n");
     sb.append("    additionalMerchantTerms: ").append(toIndentedString(additionalMerchantTerms)).append("\n");
+    sb.append("    phoneMandatory: ").append(toIndentedString(phoneMandatory)).append("\n");
     sb.append("    radiusBorder: ").append(toIndentedString(radiusBorder)).append("\n");
     sb.append("    allowedCustomerTypes: ").append(toIndentedString(allowedCustomerTypes)).append("\n");
     sb.append("    showSubtotalDetail: ").append(toIndentedString(showSubtotalDetail)).append("\n");

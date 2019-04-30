@@ -25,7 +25,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * HPPSessionResponseV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T14:10:11.289Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:49:10.959Z")
 public class HPPSessionResponseV1 {
   @JsonProperty("authorization_token")
   private String authorizationToken = null;

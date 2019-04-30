@@ -19,7 +19,11 @@ package com.klarna.rest;
 import com.klarna.rest.api.checkout.CheckoutOrdersApi;
 import com.klarna.rest.api.customer_token.TokensApi;
 import com.klarna.rest.api.hosted_payment_page.HPPSessionsApi;
+import com.klarna.rest.api.instant_shopping.InstantShoppingButtonKeysApi;
+import com.klarna.rest.api.instant_shopping.InstantShoppingOrdersApi;
 import com.klarna.rest.api.merchant_card_service.VirtualCreditCardApi;
+import com.klarna.rest.api.merchant_card_service.VirtualCreditCardPromisesApi;
+import com.klarna.rest.api.merchant_card_service.VirtualCreditCardSettlementsApi;
 import com.klarna.rest.api.order_management.OrderManagementCapturesApi;
 import com.klarna.rest.api.order_management.OrderManagementOrdersApi;
 import com.klarna.rest.api.order_management.OrderManagementRefundsApi;
@@ -108,12 +112,36 @@ public class Client {
     /**
      * Creates a new VirtualCreditCardApi resource instance.
      *
+     * @deprecated As of 3.1.0, renaming in Merchant Card Service API.
+     *             Use {@link #newVirtualCreditCardSettlementsApi} instead.
+     *
+     * @return new instance
+     */
+    @Deprecated
+    public VirtualCreditCardApi newVirtualCreditCardApi() {
+        return new VirtualCreditCardApi(transport);
+    }
+
+    /**
+     * Creates a new VirtualCreditCardSettlementsApi resource instance.
+     *
      * @see examples.MerchantCardServiceExample
      *
      * @return new instance
      */
-    public VirtualCreditCardApi newVirtualCreditCardApi() {
-        return new VirtualCreditCardApi(transport);
+    public VirtualCreditCardSettlementsApi newVirtualCreditCardSettlementsApi() {
+        return new VirtualCreditCardSettlementsApi(transport);
+    }
+
+    /**
+     * Creates a new VirtualCreditCardPromisesApi resource instance.
+     *
+     * @see examples.MerchantCardServiceExample
+     *
+     * @return new instance
+     */
+    public VirtualCreditCardPromisesApi newVirtualCreditCardPromisesApi() {
+        return new VirtualCreditCardPromisesApi(transport);
     }
 
     /**
@@ -204,5 +232,27 @@ public class Client {
      */
     public SettlementsReportsApi newSettlementsReportsApi() {
         return new SettlementsReportsApi(transport);
+    }
+
+    /**
+     * Creates a new InstantShoppingOrdersApi resource instance.
+     *
+     * @see examples.InstantShoppingExample
+     *
+     * @return new instance
+     */
+    public InstantShoppingOrdersApi newInstantShoppingOrdersApi(final String authorizationToken) {
+        return new InstantShoppingOrdersApi(transport, authorizationToken);
+    }
+
+    /**
+     * Creates a new InstantShoppingButtonKeysApi resource instance.
+     *
+     * @see examples.InstantShoppingExample
+     *
+     * @return new instance
+     */
+    public InstantShoppingButtonKeysApi newInstantShoppingButtonKeysApi() {
+        return new InstantShoppingButtonKeysApi(transport);
     }
 }

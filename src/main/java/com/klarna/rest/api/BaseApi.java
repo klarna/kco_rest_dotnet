@@ -208,8 +208,13 @@ public abstract class BaseApi {
         return this.delete(path, null);
     }
 
+    @Deprecated
     protected ApiResponse delete(final String path, Map<String, String> headers) throws ApiException, IOException {
         return this.makeRequest(Method.DELETE, path, null, headers);
+    }
+
+    protected ApiResponse delete(final String path, final byte[] data, Map<String, String> headers) throws ApiException, IOException {
+        return this.makeRequest(Method.DELETE, path, data, headers);
     }
 
     protected ApiResponse makeRequest(
@@ -237,7 +242,7 @@ public abstract class BaseApi {
                 break;
 
             case DELETE:
-                response = this.transport.delete(path, headers);
+                response = this.transport.delete(path, data, headers);
                 break;
 
             default: throw new IOException("Unknown request method " + method);

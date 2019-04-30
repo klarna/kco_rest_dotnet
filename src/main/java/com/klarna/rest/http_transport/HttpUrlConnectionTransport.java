@@ -189,6 +189,9 @@ public class HttpUrlConnectionTransport implements HttpTransport {
     /**
      * Sends HTTP DELETE request to specified path.
      *
+     * @deprecated As of 3.1.0, adding `data` params to delete in order to cover the InstantShoppingApi
+     *              Use {@link #delete(String, byte[], Map)} instead.
+     *
      * @param path URL path
      * @param headers HTTP request headers
      * @return Processed response
@@ -196,12 +199,31 @@ public class HttpUrlConnectionTransport implements HttpTransport {
      *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
      * @throws IOException if an error occurred when connecting to the server or when parsing a response.
      */
+    @Deprecated
     public ApiResponse delete(final String path, Map<String, String> headers) throws
             ApiException, IOException {
         HttpURLConnection conn = this.buildConnection(path, headers);
         conn.setRequestMethod("DELETE");
 
         return this.makeRequest(conn, null);
+    }
+
+    /**
+     * Sends HTTP DELETE request to specified path.
+     *
+     * @param path URL path
+     * @param headers HTTP request headers
+     * @return Processed response
+     * @throws ApiException if API server returned non-20x HTTP CODE and response contains
+     *                      a <a href="https://developers.klarna.com/api/#errors">Error</a>
+     * @throws IOException if an error occurred when connecting to the server or when parsing a response.
+     */
+    public ApiResponse delete(final String path, final byte[] data, Map<String, String> headers) throws
+            ApiException, IOException {
+        HttpURLConnection conn = this.buildConnection(path, headers);
+        conn.setRequestMethod("DELETE");
+
+        return this.makeRequest(conn, data);
     }
 
     /**

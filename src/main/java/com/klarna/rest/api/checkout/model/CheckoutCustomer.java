@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * CheckoutCustomer
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T11:03:40.852Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:22:48.232Z")
 public class CheckoutCustomer {
   @JsonProperty("date_of_birth")
   private String dateOfBirth = null;
@@ -34,6 +34,9 @@ public class CheckoutCustomer {
 
   @JsonProperty("organization_registration_id")
   private String organizationRegistrationId = null;
+
+  @JsonProperty("gender")
+  private String gender = null;
 
   public CheckoutCustomer dateOfBirth(String dateOfBirth) {
     this.dateOfBirth = dateOfBirth;
@@ -89,6 +92,24 @@ public class CheckoutCustomer {
     this.organizationRegistrationId = organizationRegistrationId;
   }
 
+  public CheckoutCustomer gender(String gender) {
+    this.gender = gender;
+    return this;
+  }
+
+   /**
+   * The gender of the person. This is not known in all markets 
+   * @return gender
+  **/
+  @ApiModelProperty(example = "male", value = "The gender of the person. This is not known in all markets ")
+  public String getGender() {
+    return gender;
+  }
+
+  public void setGender(String gender) {
+    this.gender = gender;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -101,12 +122,13 @@ public class CheckoutCustomer {
     CheckoutCustomer customer = (CheckoutCustomer) o;
     return Objects.equals(this.dateOfBirth, customer.dateOfBirth) &&
         Objects.equals(this.type, customer.type) &&
-        Objects.equals(this.organizationRegistrationId, customer.organizationRegistrationId);
+        Objects.equals(this.organizationRegistrationId, customer.organizationRegistrationId) &&
+        Objects.equals(this.gender, customer.gender);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dateOfBirth, type, organizationRegistrationId);
+    return Objects.hash(dateOfBirth, type, organizationRegistrationId, gender);
   }
 
 
@@ -118,6 +140,7 @@ public class CheckoutCustomer {
     sb.append("    dateOfBirth: ").append(toIndentedString(dateOfBirth)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    organizationRegistrationId: ").append(toIndentedString(organizationRegistrationId)).append("\n");
+    sb.append("    gender: ").append(toIndentedString(gender)).append("\n");
     sb.append("}");
     return sb.toString();
   }

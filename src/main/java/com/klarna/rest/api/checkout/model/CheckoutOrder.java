@@ -37,7 +37,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * CheckoutOrder
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T11:03:40.852Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:22:48.232Z")
 public class CheckoutOrder {
   @JsonProperty("order_id")
   private String orderId = null;
@@ -240,15 +240,6 @@ public class CheckoutOrder {
     this.billingAddress = billingAddress;
   }
 
-  public CheckoutOrder shippingAddress(CheckoutAddress shippingAddress) {
-    this.shippingAddress = shippingAddress;
-    return this;
-  }
-
-  public void setShippingAddress(CheckoutAddress shippingAddress) {
-    this.shippingAddress = shippingAddress;
-  }
-
    /**
    * Unless the customer has explicitly chosen to enter a separate shipping address, this is a clone of billing_address.
    * @return shippingAddress
@@ -256,6 +247,15 @@ public class CheckoutOrder {
   @ApiModelProperty(value = "Unless the customer has explicitly chosen to enter a separate shipping address, this is a clone of billing_address.")
   public CheckoutAddress getShippingAddress() {
     return shippingAddress;
+  }
+
+  public CheckoutOrder shippingAddress(CheckoutAddress shippingAddress) {
+    this.shippingAddress = shippingAddress;
+    return this;
+  }
+
+  public void setShippingAddress(CheckoutAddress shippingAddress) {
+    this.shippingAddress = shippingAddress;
   }
 
   public CheckoutOrder orderAmount(Long orderAmount) {
@@ -287,7 +287,7 @@ public class CheckoutOrder {
    * minimum: 0
    * @return orderTaxAmount
   **/
-  @ApiModelProperty(example = "5000", required = true, value = "Non-negative, minor units. The total tax amount of the order.")
+  @ApiModelProperty(example = "4545", required = true, value = "Non-negative, minor units. The total tax amount of the order.")
   public Long getOrderTaxAmount() {
     return orderTaxAmount;
   }
@@ -573,10 +573,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * Pass through field (max 1024 characters).
+   * Pass through field (max 6000 characters).
    * @return merchantData
   **/
-  @ApiModelProperty(example = "{\"marketplace_seller_info\":[{\"product_category\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}", value = "Pass through field (max 1024 characters).")
+  @ApiModelProperty(example = "{\"marketplace_seller_info\":[{\"product_category\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}", value = "Pass through field (max 6000 characters).")
   public String getMerchantData() {
     return merchantData;
   }

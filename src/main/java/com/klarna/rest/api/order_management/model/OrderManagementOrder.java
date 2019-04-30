@@ -33,7 +33,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * OrderManagementOrder
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-25T15:29:29.393Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T10:02:16.667Z")
 public class OrderManagementOrder {
   @JsonProperty("order_id")
   private String orderId = null;
@@ -156,10 +156,10 @@ public class OrderManagementOrder {
   }
 
    /**
-   * The unique order ID. No longer than 255 characters.
+   * The unique order ID. Cannot be longer than 255 characters.
    * @return orderId
   **/
-  @ApiModelProperty(example = "f3392f8b-6116-4073-ab96-e330819e2c07", value = "The unique order ID. No longer than 255 characters.")
+  @ApiModelProperty(example = "f3392f8b-6116-4073-ab96-e330819e2c07", value = "The unique order ID. Cannot be longer than 255 characters.")
   public String getOrderId() {
     return orderId;
   }
@@ -362,10 +362,10 @@ public class OrderManagementOrder {
   }
 
    /**
-   * Merchant reference 1. Can be used to store your internal reference to the order.
+   * The order number that the merchant should assign to the order. This is how a customer would reference the purchase they made. If supplied, it is labeled as the Order Number within post purchase communications as well as the Klarna App.
    * @return merchantReference1
   **/
-  @ApiModelProperty(example = "10001", value = "Merchant reference 1. Can be used to store your internal reference to the order.")
+  @ApiModelProperty(example = "10001", value = "The order number that the merchant should assign to the order. This is how a customer would reference the purchase they made. If supplied, it is labeled as the Order Number within post purchase communications as well as the Klarna App.")
   public String getMerchantReference1() {
     return merchantReference1;
   }
@@ -380,10 +380,10 @@ public class OrderManagementOrder {
   }
 
    /**
-   * Merchant reference 2. Can be used to store your internal reference to the order.
+   * Can be used to store your internal reference to the order. This is generally an internal reference number that merchants use as alternate identifier that matches their internal ERP or Order Management system.
    * @return merchantReference2
   **/
-  @ApiModelProperty(example = "501", value = "Merchant reference 2. Can be used to store your internal reference to the order.")
+  @ApiModelProperty(example = "501", value = "Can be used to store your internal reference to the order. This is generally an internal reference number that merchants use as alternate identifier that matches their internal ERP or Order Management system.")
   public String getMerchantReference2() {
     return merchantReference2;
   }
@@ -398,10 +398,10 @@ public class OrderManagementOrder {
   }
 
    /**
-   * Customer friendly reference id, used as order reference when communicating with the customer.
+   * A Klarna generated reference that is shorter than the Klarna Order Id and is used as a customer friendly reference. It is most often used as a reference when Klarna is communicating with the customer with regard to payment statuses.
    * @return klarnaReference
   **/
-  @ApiModelProperty(example = "K4MADNY", value = "Customer friendly reference id, used as order reference when communicating with the customer.")
+  @ApiModelProperty(example = "K4MADNY", value = "A Klarna generated reference that is shorter than the Klarna Order Id and is used as a customer friendly reference. It is most often used as a reference when Klarna is communicating with the customer with regard to payment statuses.")
   public String getKlarnaReference() {
     return klarnaReference;
   }
