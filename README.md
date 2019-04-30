@@ -1,4 +1,4 @@
-# Official Klarna Checkout REST.Core .NET SDK
+# Official Klarna REST.Core .NET SDK
 [![NuGet Version][nuget-shield]](https://www.nuget.org/packages/Klarna.Rest.Core/)
 
 ## Welcome to Klarna. Smoooth payments.
