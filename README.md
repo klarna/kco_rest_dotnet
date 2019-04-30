@@ -1,4 +1,4 @@
-# Klarna REST Java SDK
+# Official Klarna REST Java SDK
 [![Maven Version][maven-image]](https://search.maven.org/search?q=a:kco-rest)
 [![Build Status][travis-image]](https://travis-ci.org/klarna/kco_rest_java)
 [![Coverage Status][coveralls-image]](https://coveralls.io/r/klarna/kco_rest_java)
