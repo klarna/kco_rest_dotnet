@@ -16,6 +16,8 @@ options made available by Klarna.
 
 ## Get started
 
+SDK covers all of Klarna API: https://developers.klarna.com/api/
+
 ### Prerequisites
 * Microsoft .NET Framework 4 or above
 * [API credentials](#api-credentials)
@@ -69,7 +71,7 @@ Klarna API documentation: https://developers.klarna.com/api/
 SDK References: https://klarna.github.io/kco_rest_dotnet/
 
 
-Example files can be found in the [Klarna.Rest/Klarna.Rest.Core.Examples/](examples) project.
+Example files can be found in the [Klarna.Rest/Klarna.Rest.Core.Examples/](examples) project.  
 Additional documentation can be found at https://developers.klarna.com.
 
 
