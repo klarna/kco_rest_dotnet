@@ -3,19 +3,6 @@
 [![Build Status][travis-image]](https://travis-ci.org/klarna/kco_rest_java)
 [![Coverage Status][coveralls-image]](https://coveralls.io/r/klarna/kco_rest_java)
 
-## Welcome to Klarna. Smoooth payments.
-
-### Klarna Checkout
-
-A full checkout experience embedded on your site. It lets your customers check out on your
-site with only their email and ZIP, and pay with the major payment methods including the specific
-Klarna payment methods. All available in one integration.
-
-### Klarna Payments
-
-Klarna offers three payment methods. Pay now, Pay later and Slice it. It offers your consumers
-to try before they buy, finance purchases on your store, or make use of other payment
-options made available by Klarna.
 
 ## Getting started
 
