@@ -33,7 +33,8 @@ import java.util.Map;
  * Merchant Card Service API: Virtual credit card resource.
  *
  * @deprecated As of 3.1.0, renaming in Merchant Card Service API.
- *             Use {@link #VirtualCreditCardSettlementsApi} instead.
+ *             Use VirtualCreditCardSettlementsApi instead.
+ * @see VirtualCreditCardSettlementsApi
  *
  * The Merchant Card Service (MCS) API is used to settle orders with virtual credit cards.
  */

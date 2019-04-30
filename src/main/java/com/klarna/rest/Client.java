@@ -237,6 +237,7 @@ public class Client {
     /**
      * Creates a new InstantShoppingOrdersApi resource instance.
      *
+     * @param authorizationToken authorization token
      * @see examples.InstantShoppingExample
      *
      * @return new instance

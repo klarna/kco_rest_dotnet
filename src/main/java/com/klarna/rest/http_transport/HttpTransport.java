@@ -140,6 +140,7 @@ public interface HttpTransport {
      * Sends HTTP DELETE request to specified path.
      *
      * @param path URL path.
+     * @param data Data to be sent to API server in a payload.
      * @param headers HTTP request headers
      * @return Processed response
      * @throws ApiException if API server returned non-20x HTTP CODE and response contains
