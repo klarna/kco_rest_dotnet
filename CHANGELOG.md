@@ -7,15 +7,56 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+
 ## [Unreleased]
+
+### Changed 
+
+### Added
+
+
+## [3.1.0] - 2019-04-30
 
 ### Changed
 
 - Fix version formatting in Markdown to better conform with Keep a Changelog
+- Mark `VirtualCreditCardApi` as deprecated. Move `VirtualCreditCardApi` to `VirtualCreditCardSettlementsApi` [**DEPRECATED**]
+- Checkout API: Actualize models
+- Customer Token API: Actualize models
+- HPP API: Actualize models and update examples
+- CardService API: Actualize models
+- Order Management API: Actualize models
+- Payments API: Actualize models
+- Settlements API: Actualize models.
 
 ### Added
 
+- Add support of `BODY` payload when using `DELETE` method
 - Repo now has an Apache 2.0 LICENSE file on its root
+- TokenErrorV2 model: new fields `authorized_payment_method_v1`, `fraud_status`, `reason`
+- HPPMerchantUrlsV1 model: new fields `back`, `error`, `status_update`
+- HPPResponseEntity model: [**breaking changes**]
+    - Change `StatusCodeEnum` model. Add details to the enum names
+    -  _100 -> _100_CONTINUE
+    -  _101 -> _101_SWITCHING_PROTOCOLS
+    -  _102 -> _102_PROCESSING
+    -  ...
+    -  _200 -> _200_OK
+    -  _201 -> _201_CREATED
+    -  _204 -> _204_NO_CONTENT
+- CardService API new models:
+    - CardServiceCardSpecification
+    - CardServicePromiseCreatedResponse
+    - CardServicePromiseRequest
+    - CardServicePromiseResponse
+- Payments API PaymentsErrorV2 model: add fields `authorized_payment_method_v1` (PaymentsAuthorizedPaymentMethod model), `fraud_status`, `reason`
+- Add support of Virtual Credit Card Promises (with examples)
+- Instant Shopping API:
+    - Add support of declining order
+    - Update the model to the latest version
+    - Add Button Keys examples
+    - Cover with Unit tests
+
 
 ## [3.0.6] - 2019-01-26
 
