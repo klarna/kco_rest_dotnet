@@ -7,6 +7,10 @@ script:
   - dotnet restore Klarna.Rest/
   - dotnet build Klarna.Rest/
   - dotnet test Klarna.Rest/
+after_success:
+  - dotnet tool install coveralls.net --version 1.0.0 --tool-path tools
+  - dotnet test Klarna.Rest /p:CollectCoverage=true /p:CoverletOutput=TestResults/Coverage /p:CoverletOutputFormat=opencover  /p:Exclude="[xunit.*]*"
+  - ./tools/csmacnz.Coveralls --opencover -i Klarna.Rest/Klarna.Rest.Core.Tests/BuildReports/Coverage.opencover.xml
 global:
   - DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
   - DOTNET_CLI_TELEMETRY_OPTOUT=1

@@ -170,3 +170,5 @@ docfx_project/obj
 
 # IDE
 .idea
+
+tools/
