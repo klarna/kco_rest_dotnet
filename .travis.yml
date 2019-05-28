@@ -1,5 +1,12 @@
 language: csharp
 mono: none
-dotnet: 2.2.171
+sudo: required
+dist: xenial
+dotnet: 2.2
 script:
+  - dotnet restore
+  - dotnet build
   - dotnet test Klarna.Rest/
+global:
+  - DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
+  - DOTNET_CLI_TELEMETRY_OPTOUT=1
