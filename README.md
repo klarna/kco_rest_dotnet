@@ -1,6 +1,7 @@
 # Official Klarna REST.Core .NET SDK
 [![NuGet Version][nuget-shield]](https://www.nuget.org/packages/Klarna.Rest.Core/)
 [![Build Status][travis-image]](https://travis-ci.org/klarna/kco_rest_dotnet)
+[![Coverage Status][coveralls-image]](https://coveralls.io/r/klarna/kco_rest_dotnet?branch=v3.1)
 
 ## Welcome to Klarna. Smoooth payments.
 
@@ -106,3 +107,4 @@ Klarna Checkout REST .NET SDK is licensed under
 
 [nuget-shield]: https://img.shields.io/nuget/v/Klarna.Rest.Core.svg?style=flat
 [travis-image]: https://img.shields.io/travis/klarna/kco_rest_dotnet/v3.1.svg?style=flat
+[coveralls-image]: https://img.shields.io/coveralls/klarna/kco_rest_dotnet/v3.1.svg?style=flat
