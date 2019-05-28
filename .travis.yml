@@ -10,7 +10,10 @@ script:
 after_success:
   - dotnet tool install coveralls.net --version 1.0.0 --tool-path tools
   - dotnet test Klarna.Rest /p:CollectCoverage=true /p:CoverletOutput=TestResults/Coverage /p:CoverletOutputFormat=opencover  /p:Exclude="[xunit.*]*"
-  - ./tools/csmacnz.Coveralls --opencover -i Klarna.Rest/Klarna.Rest.Core.Tests/BuildReports/Coverage.opencover.xml
+  - REPO_COMMIT_AUTHOR=$(git show -s --pretty=format:"%cn")
+  - REPO_COMMIT_AUTHOR_EMAIL=$(git show -s --pretty=format:"%ce")
+  - REPO_COMMIT_MESSAGE=$(git show -s --pretty=format:"%s")
+  - ./tools/csmacnz.Coveralls --opencover -i Klarna.Rest/Klarna.Rest.Core.Tests/TestResults/Coverage.opencover.xml --repoToken $COVERALLS_REPO_TOKEN --commitId $TRAVIS_COMMIT --commitBranch $TRAVIS_BRANCH --commitAuthor "$REPO_COMMIT_AUTHOR" --commitEmail "$REPO_COMMIT_AUTHOR_EMAIL" --commitMessage "$REPO_COMMIT_MESSAGE" --jobId $TRAVIS_JOB_ID  --serviceName travis-ci  --useRelativePaths
 global:
   - DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
   - DOTNET_CLI_TELEMETRY_OPTOUT=1
