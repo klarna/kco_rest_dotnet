@@ -4,8 +4,8 @@ sudo: required
 dist: xenial
 dotnet: 2.2
 script:
-  - dotnet restore
-  - dotnet build
+  - dotnet restore Klarna.Rest/
+  - dotnet build Klarna.Rest/
   - dotnet test Klarna.Rest/
 global:
   - DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
