@@ -198,18 +198,22 @@ namespace Klarna.Rest.Core.Commuication
             if (!result.IsSuccessStatusCode)
             {
                 var content = await result.Content.ReadAsStringAsync();
-                ErrorMessage errorMessage = null;
-                Exception innerException = null;
-                
+                var errorMessage = new ErrorMessage();
+
                 try
                 {
                     errorMessage = JsonConvert.DeserializeObject<ErrorMessage>(content);
                 }
                 catch (Exception ex)
                 {
-                    innerException = ex;
+                    errorMessage.ErrorMessages = new []{content};
                 }
-                throw new ApiException($"Error when calling {result.RequestMessage.Method.ToString().ToUpperInvariant()} {result.RequestMessage.RequestUri}.", result.StatusCode, errorMessage, innerException);
+
+                throw new ApiException(
+                    $"Error when calling {result.RequestMessage.Method.ToString().ToUpperInvariant()} {result.RequestMessage.RequestUri}.",
+                    result.StatusCode,
+                    errorMessage,
+                    null);
             }
         }
     }

@@ -115,9 +115,21 @@ namespace Sample
                 var updatedOrder = klarna.Checkout.UpdateOrder(fetchedOrder).Result;
                 Console.WriteLine("Klarna API responded with updated order details for order with ID {0:G}", updatedOrder.OrderId);
             }
-            catch (AggregateException ex)
+            catch (AggregateException ae)
             {
-                Console.WriteLine(ex);
+                foreach (var e in ae.InnerExceptions) {
+                    if (e is ApiException)
+                    {
+                        var apiException = (ApiException) e;
+                        Console.WriteLine("Status code: " + apiException.StatusCode);
+                        Console.WriteLine("Error: " + string.Join("; ", apiException.ErrorMessage.ErrorMessages));
+                    }
+                    else {
+                        // Rethrow any other exception or process it
+                        Console.WriteLine(e.Message);
+                        throw;
+                    }
+                }
             }
         }
     }

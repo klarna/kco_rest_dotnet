@@ -66,15 +66,21 @@ namespace Klarna.Rest.Core.Examples
                 }
 
             }
-            catch (ApiException ex)
+            catch (AggregateException ae)
             {
-                Console.WriteLine(ex.ErrorMessage.ErrorCode);
-                Console.WriteLine(ex.ErrorMessage.ErrorMessages);
-                Console.WriteLine(ex.ErrorMessage.CorrelationId);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                foreach (var e in ae.InnerExceptions) {
+                    if (e is ApiException)
+                    {
+                        var apiException = (ApiException) e;
+                        Console.WriteLine("Status code: " + apiException.StatusCode);
+                        Console.WriteLine("Error: " + string.Join("; ", apiException.ErrorMessage.ErrorMessages));
+                    }
+                    else {
+                        // Rethrow any other exception or process it
+                        Console.WriteLine(e.Message);
+                        throw;
+                    }
+                }
             }
         }
         /// <summary>
@@ -95,15 +101,21 @@ namespace Klarna.Rest.Core.Examples
                 var orderslines = session.OrderLines;
 
             }
-            catch (ApiException ex)
+            catch (AggregateException ae)
             {
-                Console.WriteLine(ex.ErrorMessage.ErrorCode);
-                Console.WriteLine(ex.ErrorMessage.ErrorMessages);
-                Console.WriteLine(ex.ErrorMessage.CorrelationId);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                foreach (var e in ae.InnerExceptions) {
+                    if (e is ApiException)
+                    {
+                        var apiException = (ApiException) e;
+                        Console.WriteLine("Status code: " + apiException.StatusCode);
+                        Console.WriteLine("Error: " + string.Join("; ", apiException.ErrorMessage.ErrorMessages));
+                    }
+                    else {
+                        // Rethrow any other exception or process it
+                        Console.WriteLine(e.Message);
+                        throw;
+                    }
+                }
             }
         }
         /// <summary>
@@ -122,15 +134,21 @@ namespace Klarna.Rest.Core.Examples
 
 
             }
-            catch (ApiException ex)
+            catch (AggregateException ae)
             {
-                Console.WriteLine(ex.ErrorMessage.ErrorCode);
-                Console.WriteLine(ex.ErrorMessage.ErrorMessages);
-                Console.WriteLine(ex.ErrorMessage.CorrelationId);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                foreach (var e in ae.InnerExceptions) {
+                    if (e is ApiException)
+                    {
+                        var apiException = (ApiException) e;
+                        Console.WriteLine("Status code: " + apiException.StatusCode);
+                        Console.WriteLine("Error: " + string.Join("; ", apiException.ErrorMessage.ErrorMessages));
+                    }
+                    else {
+                        // Rethrow any other exception or process it
+                        Console.WriteLine(e.Message);
+                        throw;
+                    }
+                }
             }
         }
         public void CreateConsumerToken()
@@ -159,15 +177,21 @@ namespace Klarna.Rest.Core.Examples
                 Console.WriteLine("Consumer Token ID: " + consumertoken.TokenId);
 
             }
-            catch (ApiException ex)
+            catch (AggregateException ae)
             {
-                Console.WriteLine(ex.ErrorMessage.ErrorCode);
-                Console.WriteLine(ex.ErrorMessage.ErrorMessages);
-                Console.WriteLine(ex.ErrorMessage.CorrelationId);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                foreach (var e in ae.InnerExceptions) {
+                    if (e is ApiException)
+                    {
+                        var apiException = (ApiException) e;
+                        Console.WriteLine("Status code: " + apiException.StatusCode);
+                        Console.WriteLine("Error: " + string.Join("; ", apiException.ErrorMessage.ErrorMessages));
+                    }
+                    else {
+                        // Rethrow any other exception or process it
+                        Console.WriteLine(e.Message);
+                        throw;
+                    }
+                }
             }
         }
 

@@ -24,15 +24,21 @@ namespace Klarna.Rest.Core.Examples
 
                 var order = klarna.OrderManagement.GetOrder(orderId).Result;
             }
-            catch (ApiException ex)
+            catch (AggregateException ae)
             {
-                Console.WriteLine(ex.ErrorMessage.ErrorCode);
-                Console.WriteLine(ex.ErrorMessage.ErrorMessages);
-                Console.WriteLine(ex.ErrorMessage.CorrelationId);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                foreach (var e in ae.InnerExceptions) {
+                    if (e is ApiException)
+                    {
+                        var apiException = (ApiException) e;
+                        Console.WriteLine("Status code: " + apiException.StatusCode);
+                        Console.WriteLine("Error: " + string.Join("; ", apiException.ErrorMessage.ErrorMessages));
+                    }
+                    else {
+                        // Rethrow any other exception or process it
+                        Console.WriteLine(e.Message);
+                        throw;
+                    }
+                }
             }
 
         }
@@ -51,15 +57,21 @@ namespace Klarna.Rest.Core.Examples
 
                klarna.OrderManagement.AcknowledgeOrder(orderId).RunSynchronously();
             }
-            catch (ApiException ex)
+            catch (AggregateException ae)
             {
-                Console.WriteLine(ex.ErrorMessage.ErrorCode);
-                Console.WriteLine(ex.ErrorMessage.ErrorMessages);
-                Console.WriteLine(ex.ErrorMessage.CorrelationId);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                foreach (var e in ae.InnerExceptions) {
+                    if (e is ApiException)
+                    {
+                        var apiException = (ApiException) e;
+                        Console.WriteLine("Status code: " + apiException.StatusCode);
+                        Console.WriteLine("Error: " + string.Join("; ", apiException.ErrorMessage.ErrorMessages));
+                    }
+                    else {
+                        // Rethrow any other exception or process it
+                        Console.WriteLine(e.Message);
+                        throw;
+                    }
+                }
             }
 
         }
@@ -110,15 +122,21 @@ namespace Klarna.Rest.Core.Examples
                 klarna.OrderManagement.CreateCapture(orderId, captureData).RunSynchronously();
 
             }
-            catch (ApiException ex)
+            catch (AggregateException ae)
             {
-                Console.WriteLine(ex.ErrorMessage.ErrorCode);
-                Console.WriteLine(ex.ErrorMessage.ErrorMessages);
-                Console.WriteLine(ex.ErrorMessage.CorrelationId);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                foreach (var e in ae.InnerExceptions) {
+                    if (e is ApiException)
+                    {
+                        var apiException = (ApiException) e;
+                        Console.WriteLine("Status code: " + apiException.StatusCode);
+                        Console.WriteLine("Error: " + string.Join("; ", apiException.ErrorMessage.ErrorMessages));
+                    }
+                    else {
+                        // Rethrow any other exception or process it
+                        Console.WriteLine(e.Message);
+                        throw;
+                    }
+                }
             }
         }
         /// <summary>
@@ -135,15 +153,21 @@ namespace Klarna.Rest.Core.Examples
             {
                 klarna.OrderManagement.CancelOrder(orderId).RunSynchronously();
             }
-            catch (ApiException ex)
+            catch (AggregateException ae)
             {
-                Console.WriteLine(ex.ErrorMessage.ErrorCode);
-                Console.WriteLine(ex.ErrorMessage.ErrorMessages);
-                Console.WriteLine(ex.ErrorMessage.CorrelationId);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                foreach (var e in ae.InnerExceptions) {
+                    if (e is ApiException)
+                    {
+                        var apiException = (ApiException) e;
+                        Console.WriteLine("Status code: " + apiException.StatusCode);
+                        Console.WriteLine("Error: " + string.Join("; ", apiException.ErrorMessage.ErrorMessages));
+                    }
+                    else {
+                        // Rethrow any other exception or process it
+                        Console.WriteLine(e.Message);
+                        throw;
+                    }
+                }
             }
         }
         /// <summary>
@@ -183,15 +207,21 @@ namespace Klarna.Rest.Core.Examples
                Console.WriteLine(refund.RefundedAt);
                Console.WriteLine(refund.RefundedAmount);
             }
-            catch (ApiException ex)
+            catch (AggregateException ae)
             {
-                Console.WriteLine(ex.ErrorMessage.ErrorCode);
-                Console.WriteLine(ex.ErrorMessage.ErrorMessages);
-                Console.WriteLine(ex.ErrorMessage.CorrelationId);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                foreach (var e in ae.InnerExceptions) {
+                    if (e is ApiException)
+                    {
+                        var apiException = (ApiException) e;
+                        Console.WriteLine("Status code: " + apiException.StatusCode);
+                        Console.WriteLine("Error: " + string.Join("; ", apiException.ErrorMessage.ErrorMessages));
+                    }
+                    else {
+                        // Rethrow any other exception or process it
+                        Console.WriteLine(e.Message);
+                        throw;
+                    }
+                }
             }
         }
         /// <summary>
@@ -209,15 +239,21 @@ namespace Klarna.Rest.Core.Examples
             {
                 klarna.OrderManagement.TriggerResendOfCustomerCommunication(orderId, captureId).RunSynchronously();
             }
-            catch (ApiException ex)
+            catch (AggregateException ae)
             {
-                Console.WriteLine(ex.ErrorMessage.ErrorCode);
-                Console.WriteLine(ex.ErrorMessage.ErrorMessages);
-                Console.WriteLine(ex.ErrorMessage.CorrelationId);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                foreach (var e in ae.InnerExceptions) {
+                    if (e is ApiException)
+                    {
+                        var apiException = (ApiException) e;
+                        Console.WriteLine("Status code: " + apiException.StatusCode);
+                        Console.WriteLine("Error: " + string.Join("; ", apiException.ErrorMessage.ErrorMessages));
+                    }
+                    else {
+                        // Rethrow any other exception or process it
+                        Console.WriteLine(e.Message);
+                        throw;
+                    }
+                }
             }
         }
     }

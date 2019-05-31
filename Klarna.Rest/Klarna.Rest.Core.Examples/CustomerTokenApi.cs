@@ -25,15 +25,21 @@ namespace Klarna.Rest.Core.Examples
                 Console.WriteLine("payment method: " + session.PaymentMethodType);
                 Console.WriteLine("Status: " + session.Status);
             }
-            catch (ApiException ex)
+            catch (AggregateException ae)
             {
-                Console.WriteLine(ex.ErrorMessage.ErrorCode);
-                Console.WriteLine(ex.ErrorMessage.ErrorMessages);
-                Console.WriteLine(ex.ErrorMessage.CorrelationId);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                foreach (var e in ae.InnerExceptions) {
+                    if (e is ApiException)
+                    {
+                        var apiException = (ApiException) e;
+                        Console.WriteLine("Status code: " + apiException.StatusCode);
+                        Console.WriteLine("Error: " + string.Join("; ", apiException.ErrorMessage.ErrorMessages));
+                    }
+                    else {
+                        // Rethrow any other exception or process it
+                        Console.WriteLine(e.Message);
+                        throw;
+                    }
+                }
             }
         }
         public void CreateOrderOnCustomerToken()
@@ -70,15 +76,21 @@ namespace Klarna.Rest.Core.Examples
                 var order = klarna.CustomerToken.CreateOrder(customerToken, orderData).Result;
                 Console.WriteLine("OrderId: " + order.OrderId);
             }
-            catch (ApiException ex)
+            catch (AggregateException ae)
             {
-                Console.WriteLine(ex.ErrorMessage.ErrorCode);
-                Console.WriteLine(ex.ErrorMessage.ErrorMessages);
-                Console.WriteLine(ex.ErrorMessage.CorrelationId);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                foreach (var e in ae.InnerExceptions) {
+                    if (e is ApiException)
+                    {
+                        var apiException = (ApiException) e;
+                        Console.WriteLine("Status code: " + apiException.StatusCode);
+                        Console.WriteLine("Error: " + string.Join("; ", apiException.ErrorMessage.ErrorMessages));
+                    }
+                    else {
+                        // Rethrow any other exception or process it
+                        Console.WriteLine(e.Message);
+                        throw;
+                    }
+                }
             }
         }
     }
