@@ -44,5 +44,17 @@ namespace Klarna.Rest.Core.Store
             return response;
         }
 
+        /// <summary>
+        /// Update the status of a customer token
+        /// </summary>
+        /// <param name="customerToken">Customer token</param>
+        /// <param name="update">A <see cref="CustomerTokenStatusUpdateRequest"/> object</param>
+        /// <returns><see cref="CustomerTokenCreateOrderResponse"/></returns>
+        public async Task UpdateStatus(string customerToken, CustomerTokenStatusUpdateRequest update)
+        {
+            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{customerToken}/status");
+
+            await Patch(url, update);
+        }
     }
 }
