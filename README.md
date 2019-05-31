@@ -21,10 +21,6 @@ Register here to be able to test your SDK integration before go live:
 * [https://playground.eu.portal.klarna.com/developer-sign-up](https://playground.eu.portal.klarna.com/developer-sign-up) - for EU countries
 * [https://playground.us.portal.klarna.com/developer-sign-up](https://playground.us.portal.klarna.com/developer-sign-up) - for the US
 
-Later you need to register as a Klarna merchant to get a production credentials
-
-* [https://developers.klarna.com/en/gb/kco-v3](https://developers.klarna.com/en/gb/kco-v3)
-
 ## Installing the Java SDK
 
 The Java SDK requires **Java 1.7** version or higher.
