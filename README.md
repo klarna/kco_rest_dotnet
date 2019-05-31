@@ -33,7 +33,7 @@ To install the Java SDK from the Central Maven repository using Maven, add the f
 <dependency>
     <groupId>com.klarna</groupId>
     <artifactId>kco-rest</artifactId>
-    <version>[3.0,)</version>
+    <version>[3.1,)</version>
 </dependency>
 ```
 
@@ -43,7 +43,7 @@ To install the Java SDK from the Central Maven repository using Gradle, add the 
 
 ```groovy
 dependencies {
-    compile group: 'com.klarna', name: 'kco-rest', version:'3.0+'
+    compile group: 'com.klarna', name: 'kco-rest', version:'3.1+'
 }
 ```
 
