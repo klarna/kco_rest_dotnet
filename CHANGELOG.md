@@ -15,6 +15,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 
+## [3.1.1] - 2019-05-31
+
+### Security
+
+- Fix: upgrade `com.fasterxml.jackson.core:jackson-databind` to version **2.9.9**
+  
+  A Polymorphic Typing issue was discovered in FasterXML jackson-databind 2.x before 2.9.9.
+  When Default Typing is enabled (either globally or for a specific property) for an externally exposed JSON endpoint,
+  the service has the mysql-connector-java jar (8.0.14 or earlier) in the classpath, and an attacker can host a crafted
+  MySQL server reachable by the victim, an attacker can send a crafted JSON message that allows them to read arbitrary
+  local files on the server. This occurs because of missing com.mysql.cj.jdbc.admin.MiniAdmin validation.
+
+  [CVE-2019-12086](https://nvd.nist.gov/vuln/detail/CVE-2019-12086)
+
+
 ## [3.1.0] - 2019-04-30
 
 ### Changed
