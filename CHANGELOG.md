@@ -10,6 +10,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.1.3] - 2019-05-31 (Enhancements)
+
+### Changed
+
+- Change the process of handling non-json errors from the API servers. Fix the example to show the real error processing workflow.
+- Update examples files to show the real error processing workflow.
+
+### Added
+
+- CustomerToken API: Add support of the Status update;
+- Examples: Add "How to use discounts" exmaple.
+
 
 ## [3.1.2] - 2019-03-29 (Enhancements / BugFix Release)
 

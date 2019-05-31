@@ -1,7 +1,7 @@
 # Official Klarna REST.Core .NET SDK
 [![NuGet Version][nuget-shield]](https://www.nuget.org/packages/Klarna.Rest.Core/)
 [![Build Status][travis-image]](https://travis-ci.org/klarna/kco_rest_dotnet)
-[![Coverage Status][coveralls-image]](https://coveralls.io/r/klarna/kco_rest_dotnet?branch=v3.1)
+[![Coverage Status][coveralls-image]](https://coveralls.io/r/klarna/kco_rest_dotnet?branch=v3.x)
 
 ## Welcome to Klarna. Smoooth payments.
 
@@ -33,14 +33,11 @@ Register here to be able to test your SDK integration before go live:
 - https://playground.eu.portal.klarna.com/developer-sign-up - for EU countries
 - https://playground.us.portal.klarna.com/developer-sign-up - for the US
 
-Later you need to register as a Klarna merchant to get a production credentials
-
-- https://developers.klarna.com/en/gb/kco-v3
-
 
 ## Installation and Usage
 
-Example files can be found in the [examples](Klarna.Rest/Klarna.Rest.Core.Examples) project.
+Example files can be found in the [examples](Klarna.Rest/Klarna.Rest.Core.Examples) project.  
+Also you can run [Sample project](Klarna.Rest/Sample) 
 
 ### Package Manager
 
@@ -106,5 +103,5 @@ Klarna Checkout REST .NET SDK is licensed under
 [Apache License, Version 2.0](http://www.apache.org/LICENSE-2.0)
 
 [nuget-shield]: https://img.shields.io/nuget/v/Klarna.Rest.Core.svg?style=flat
-[travis-image]: https://img.shields.io/travis/klarna/kco_rest_dotnet/v3.1.svg?style=flat
-[coveralls-image]: https://img.shields.io/coveralls/klarna/kco_rest_dotnet/v3.1.svg?style=flat
+[travis-image]: https://img.shields.io/travis/klarna/kco_rest_dotnet/v3.x.svg?style=flat
+[coveralls-image]: https://img.shields.io/coveralls/klarna/kco_rest_dotnet/v3.x.svg?style=flat
