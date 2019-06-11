@@ -15,6 +15,8 @@
  */
 package com.klarna.rest;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.klarna.rest.api.DefaultMapper;
 import com.klarna.rest.model.ApiException;
 import com.klarna.rest.model.ErrorMessage;
 import org.junit.Before;
@@ -23,7 +25,9 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
@@ -82,6 +86,17 @@ public class ApiExceptionTest extends TestCase {
     @Test
     public void testGetErrorMessage() {
         assertSame(message, exception.getErrorMessage());
+    }
+
+    @Test(expected = Test.None.class /* no exception expected */)
+    public void testBuildErrorMessage() throws IOException {
+        ObjectMapper mapper = new DefaultMapper();
+        ErrorMessage message = mapper.readValue("{ \"error_code\" : \"ERROR_CODE\", \"error_message\" : " +
+                "\"This is a single human readable english message to aid in debugging\", \"correlation_id\" :" +
+                " \"Unique id for this request used for troubleshooting.\" }", ErrorMessage.class);
+
+        assertEquals(Collections.singletonList("This is a single human readable english message to aid in debugging"),
+                message.getErrorMessages());
     }
 
     @Test

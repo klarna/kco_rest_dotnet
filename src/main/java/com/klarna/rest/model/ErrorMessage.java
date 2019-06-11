@@ -18,6 +18,7 @@ package com.klarna.rest.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,6 +37,12 @@ public class ErrorMessage {
      */
     @JsonProperty("error_code")
     private String errorCode;
+
+    /**
+     * Single error messages.
+     */
+    @JsonProperty("error_message")
+    private String errorMessage;
 
     /**
      * List of error messages.
@@ -76,7 +83,17 @@ public class ErrorMessage {
      * @return Error messages
      */
     public List<String> getErrorMessages() {
-        return this.errorMessages;
+        // In order to keep backward compatibility we need to convert a single error_message to a plural form of errors
+        ArrayList<String> messages = new ArrayList<>();
+
+        if (this.errorMessages != null) {
+            messages.addAll(this.errorMessages);
+        }
+
+        if (this.errorMessage != null) {
+            messages.add(this.errorMessage);
+        }
+        return messages;
     }
 
     /**
