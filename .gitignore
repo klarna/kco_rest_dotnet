@@ -170,5 +170,6 @@ docfx_project/obj
 
 # IDE
 .idea
+.vs
 
 tools/
