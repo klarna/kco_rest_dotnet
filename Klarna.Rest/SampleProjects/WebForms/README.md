@@ -22,7 +22,7 @@ Check the example: [Checkout.aspx.cs](WebForms/Checkout.aspx/Checkout.aspx.cs)
 
 ## Demo and Results
 
-All the steps in the [Checkout.aspx.cs](WebForms/Checkout.aspx/Checkout.aspx.cs) are covered by comments and
+All the steps in the [Checkout.aspx.cs](WebForms/Checkout.aspx.cs) are covered by comments and
 logs. Check the source code and use your browser to render the HTML Snippet.
 
 ![](sample1.png) 
