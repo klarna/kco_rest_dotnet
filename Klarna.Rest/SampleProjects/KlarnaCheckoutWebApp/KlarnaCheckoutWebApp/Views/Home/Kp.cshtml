@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Klarna Payment Example";
+}
+<h2>@ViewBag.Title.</h2>
+
+
+@if (@ViewBag.Error != null)
+{
+    <p>@ViewBag.Error</p>
+}
+else
+{
+    <div class="card" style="width: 50%;">
+        <ul class="list-group">
+            @for (var i = 0; i < ViewBag.Payments.Count; i++)
+            {
+                var payment = ViewBag.Payments[i];
+                <li class="list-group-item"><img src="@payment.AssetUrls.Standard"/> @payment.Name</li>
+            }
+        </ul>
+    </div>
+    
+    <script>
+        window.klarnaAsyncCallback = function () {
+            Klarna.Payments.init({
+                client_token: "@ViewBag.ClientToken"
+            });
+
+            Klarna.Payments.load({
+                    container: '#klarna-payments-container',
+                    payment_method_category: 'pay_later'
+                },
+                function(res) {
+                    console.log(res);
+                    
+                    if (res.show_form) {
+                        $('#place-order-button').removeAttr('disabled')
+                    }
+                }
+            );
+        };
+        
+        function placeOrder() {
+            Klarna.Payments.authorize({
+                    payment_method_category: "pay_later"
+                },
+                {},
+                function(res) {
+                    console.log(res);
+                    
+                    if (res.approved) {
+                        var form = $('<form action="/Home/KpApprove" method="post">' +
+                            '<input type="text" name="authorization_token" value="' + res.authorization_token + '" />' +
+                            '</form>');
+                        $('body').append(form);
+                        form.submit();
+                    }
+                }
+            );
+        }
+    </script>
+    <script src="https://x.klarnacdn.net/kp/lib/v1/api.js" async></script>
+    <div id="klarna-payments-container"></div>
+    <button id="place-order-button" type="button" class="btn btn-success" onclick="placeOrder()" disabled>Place Order</button>
+    @Html.Raw(ViewBag.HTMLSnippet)
+}

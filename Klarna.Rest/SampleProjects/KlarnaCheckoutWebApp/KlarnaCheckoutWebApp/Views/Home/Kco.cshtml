@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Klarna Checkout Example";
+}
+<h2>@ViewBag.Title.</h2>
+
+<div>
+@foreach (var line in ViewBag.Logs)
+{
+    <p style="margin:0"><small>@line</small></p>
+}
+</div>
+
+@if (@ViewBag.Error != null)
+{
+    <p>@ViewBag.Error</p>
+}
+else
+{
+    @Html.Raw(ViewBag.HTMLSnippet)
+}
