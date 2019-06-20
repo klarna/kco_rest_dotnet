@@ -1,5 +1,5 @@
 ASP.NET [MVC Web App](https://dotnet.microsoft.com/apps/aspnet/mvc) Sample Project
-=============================================
+==================================================================================
 
 The ASP.NET MVC sample project demonstrates how to work with the Klarna Checkout and Klarna Payments.
 
@@ -23,5 +23,5 @@ After running the project you will find two example flows: **Klarna Checkout** a
 Click the "See example" button to see the demo page.
 
 ![](asp.net_mvc.png)
---
+--------------------
 ![](kp_demo.png)
