@@ -19,8 +19,8 @@
             <div class="col-4">
                 <div class="card" style="width: 18rem;">
                     <figure class="figure card-body">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Bright_red_tomato_and_cross_section02.jpg/320px-Bright_red_tomato_and_cross_section02.jpg" class="figure-img img-fluid rounded" alt="">
-                        <figcaption class="figure-caption">Image from <a href="https://commons.wikimedia.org/wiki/File:Bright_red_tomato_and_cross_section02.jpg">Wikimedia</a> site. </figcaption>
+                        <img src="https://images.pexels.com/photos/48802/tomato-bunch-mature-red-48802.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=100" class="figure-img img-fluid rounded" alt="">
+                        <figcaption class="figure-caption">Image from <a href="https://www.pexels.com/photo/5-red-cherry-tomatoes-48802/">www.pexels.com</a> site</figcaption>
                     </figure>
 
                     <div class="card-body">
@@ -28,37 +28,42 @@
                         <p class="card-text">A bright red tomato. Size of uncut tomato is approx 10cm in diameter</p>
                         <p><strong>10 kg</strong></p>
                         <a href="#" class="btn btn-secondary">Go to details</a>
-                    </div>
-                </div>
-                <div class="card" style="width: 18rem;">
-                    <figure class="figure card-body">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Bananas_white_background_DS.jpg/320px-Bananas_white_background_DS.jpg" class="figure-img img-fluid rounded" alt="Augustus Binu">
-                        <figcaption class="figure-caption">Image from <a href="https://commons.wikimedia.org/wiki/File:Bananas_white_background_DS.jpg">Wikimedia</a> site. (c) Augustus Binu</figcaption>
-                    </figure>
-                    <div class="card-body">
-                        <h5 class="card-title">Bananas</h5>
-                            <p class="card-text">Bananas box package</p>
-                        <p><strong>1 box pack</strong></p>
-                        <a href="#" class="btn btn-secondary">Go to details</a>
+                        <a href="#" class="btn btn-danger">Delete</a>
                     </div>
                 </div>
             </div>
             <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                    <figure class="figure card-body">
+                        <img src="https://images.pexels.com/photos/2116020/pexels-photo-2116020.jpeg?auto=compress&cs=tinysrgb&h=300" class="figure-img img-fluid rounded" alt="Augustus Binu">
+                        <figcaption class="figure-caption">Image from <a href="https://www.pexels.com/photo/ripe-bananas-2116020/">www.pexels.com</a> site</figcaption>
+                    </figure>
+                    <div class="card-body">
+                        <h5 class="card-title">Bananas</h5>
+                        <p class="card-text">Bananas box package</p>
+                        <p><strong>1 box pack</strong></p>
+                        <a href="#" class="btn btn-secondary">Go to details</a>
+                        <a href="#" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <h3>Shopping cart</h3>
                 <table class="table">
                     <tbody>
-                        <tr>
-                            <th scope="row">10 x Tomatoes</th>
-                            <td>60 £</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1 x Box Bananas</th>
-                            <td>40 £</td>
-                        </tr>
+                    <tr>
+                        <th scope="row">10 x Tomatoes</th>
+                        <td>60 &pound;</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">1 x Box Bananas</th>
+                        <td>40 &pound;</td>
+                    </tr>
 
-                        <tr class="table-primary">
-                            <th scope="col">Total</th>
-                            <th scope="col">100 £</th>
-                        </tr>
+                    <tr class="table-primary">
+                        <th scope="col">Total</th>
+                        <th scope="col">100 &pound;</th>
+                    </tr>
                     </tbody>
                 </table>
                 <form id="form1" runat="server">
@@ -67,15 +72,6 @@
             </div>
         </div>
     </div>
-
-    <footer class="footer mt-auto py-3">
-        <div class="container text-center">
-            <span class="text-muted">
-        Wikimedia CC 3.0 <a href="https://creativecommons.org/licenses/by-sa/3.0/">License</a>
-                and <a href="https://wiki.creativecommons.org/wiki/License_Versions#Detailed_attribution_comparison_chart">Attribution info</a>
-    </span>
-        </div>
-    </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
