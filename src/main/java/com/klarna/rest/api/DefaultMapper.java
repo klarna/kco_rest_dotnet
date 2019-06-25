@@ -20,6 +20,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.text.SimpleDateFormat;
+
 /**
  * FasterXML jackson ObjectMapper with predefined settings.
  */
@@ -28,5 +30,6 @@ public class DefaultMapper extends ObjectMapper {
         this.findAndRegisterModules();
         this.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         this.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        this.setDateFormat(new SimpleDateFormat());
     }
 }
