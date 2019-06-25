@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 
@@ -97,16 +98,17 @@ namespace WebForms
                 {
                     if (e is ApiException)
                     {
-                        var apiException = (ApiException)e;
-                        var error = "Status code: " + apiException.StatusCode + "; Error: "
-                                        + string.Join("; ", apiException.ErrorMessage.ErrorMessages);
-                        Console.WriteLine(error);
-                        PutHTMLLogs($"Error happened: {error}");
+                        var apiException = (ApiException) e;
+                        var error = "Status code: " + apiException.StatusCode;
+                        var exceptionMessage = string.Join("; ", apiException.ErrorMessage.ErrorMessages);
+                        Console.WriteLine(error, exceptionMessage);
+                        PutHTMLLogs($"An Error occured: {error}");
+                        HTMLSnippet.InnerHtml = exceptionMessage;
                     }
                     else
                     {
                         Console.WriteLine(e.Message);
-                        PutHTMLLogs($"Error happened: {e.Message}");
+                        PutHTMLLogs($"An Error occured: {e.Message}");
                     }
                 }
             }
@@ -115,7 +117,7 @@ namespace WebForms
         protected void PutHTMLLogs(string line)
         {
             var date = DateTime.Now.ToString("HH:mm:ss.fff");
-            logs.InnerHtml = logs.InnerHtml + $"<p style=\"margin: 2px\"><small>[{date}] {line}</small></p>";
+            logs.InnerHtml = logs.InnerHtml + $"<pre>[{date}] {HttpUtility.HtmlEncode(line)}</pre>";
         }
     }
 }
