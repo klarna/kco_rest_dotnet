@@ -1,7 +1,5 @@
 # ASP.NET [Web Forms](https://dotnet.microsoft.com/apps/aspnet/web-forms) Sample Project
 
-=============================================
-
 The ASP.NET Web Forms sample project demonstrates the simple use case "How to generate the Klarna Checkout"
 
 ## Run Project
