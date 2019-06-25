@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Klarna.Rest.Core\Klarna.Rest.Core.csproj" />
+    <ProjectReference Include="..\..\Klarna.Rest.Core\Klarna.Rest.Core.csproj" />
   </ItemGroup>
 
 </Project>
