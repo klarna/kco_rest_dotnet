@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "SDK Examples Home Page";
+}
+
+<div class="jumbotron">
+    <h1>ASP.NET Klarna SDK Examples</h1>
+    <p class="lead">ASP.NET Klarna Example project shows the SDK usage in the "real" environment.</p>
+    <p><a href="https://developers.klarna.com" class="btn btn-secondary btn-lg">Read the full documentation &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Klarna Checkout</h2>
+        <p>
+            Seamless and mobile optimized solution that 
+            delivers a best-in-class user experience
+        </p>
+        <p><a class="btn btn-primary" href="@Url.Action("KcoCart", "Home")">See example &raquo;</a></p>
+    </div>
+    <div class="col-md-6">
+        <h2>Klarna Payment</h2>
+        <p>Pay now, Pay later and Slice it. It offers your consumers to try before they buy, finance purchases on your store, or make use of other payment options made available by Klarna.</p>
+        <p><a class="btn btn-primary" href="@Url.Action("Kp", "Home")">See example &raquo;</a></p>
+    </div>
+</div>
