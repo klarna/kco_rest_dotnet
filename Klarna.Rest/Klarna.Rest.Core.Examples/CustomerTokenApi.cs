@@ -14,6 +14,7 @@ namespace Klarna.Rest.Core.Examples
         /// </summary>
         public void GetCustomerTokenDetails()
         {
+            // X-Example: GET /customer-token/v1/tokens/{customerToken}
             var username = "0_abc";
             var password = "sharedsecret";
 
@@ -41,9 +42,11 @@ namespace Klarna.Rest.Core.Examples
                     }
                 }
             }
+            // /X-Example: GET /customer-token/v1/tokens/{customerToken}
         }
         public void CreateOrderOnCustomerToken()
         {
+            // X-Example: POST /customer-token/v1/tokens/{customerToken}/order
             var username = "0_abc";
             var password = "sharedsecret";
 
@@ -92,6 +95,7 @@ namespace Klarna.Rest.Core.Examples
                     }
                 }
             }
+            // /X-Example: POST /customer-token/v1/tokens/{customerToken}/order
         }
     }
 }

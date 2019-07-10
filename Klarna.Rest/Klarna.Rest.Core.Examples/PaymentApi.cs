@@ -11,6 +11,7 @@ namespace Klarna.Rest.Core.Examples
     {
         public void CreateSession()
         {
+            // X-Example: POST /payments/v1/sessions
             var username = "0_abc";
             var password = "sharedsecret";
 
@@ -64,7 +65,6 @@ namespace Klarna.Rest.Core.Examples
                     Console.WriteLine("Assets Url: "+category.AssetUrls);
                     Console.WriteLine("Unique Identifier: "+category.Identifier);
                 }
-
             }
             catch (AggregateException ae)
             {
@@ -82,12 +82,14 @@ namespace Klarna.Rest.Core.Examples
                     }
                 }
             }
+            // /X-Example: POST /payments/v1/sessions
         }
         /// <summary>
         /// Reads the session.
         /// </summary>
         public void ReadSession()
         {
+            // X-Example: GET /payments/v1/sessions/{session_id}
             var username = "0_abc";
             var password = "sharedsecret";
 
@@ -117,12 +119,14 @@ namespace Klarna.Rest.Core.Examples
                     }
                 }
             }
+            // /X-Example: GET /payments/v1/sessions/{session_id}
         }
         /// <summary>
         /// Deletes the authorization.
         /// </summary>
         public void DeleteAuthorization()
         {
+            // X-Example: DELETE /payments/v1/authorizations/{authorizationToken}
             var username = "0_abc";
             var password = "sharedsecret";
 
@@ -150,9 +154,11 @@ namespace Klarna.Rest.Core.Examples
                     }
                 }
             }
+            // /X-Example: DELETE /payments/v1/authorizations/{authorizationToken}
         }
         public void CreateConsumerToken()
         {
+            // X-Example: POST /payments/v1/authorizations/{authorizationToken}/customer-token
             var username = "0_abc";
             var password = "sharedsecret";
 
@@ -193,6 +199,7 @@ namespace Klarna.Rest.Core.Examples
                     }
                 }
             }
+            // /X-Example: POST /payments/v1/authorizations/{authorizationToken}/customer-token
         }
 
     }

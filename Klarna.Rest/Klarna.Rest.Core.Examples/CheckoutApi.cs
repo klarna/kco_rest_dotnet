@@ -18,6 +18,7 @@ namespace Klarna.Rest.Core.Examples
         /// </summary>
         static void Main()
         {
+            // X-Example: POST /checkout/v3/orders
             var username = "0_abc";
             var password = "sharedsecret";
 
@@ -88,6 +89,7 @@ namespace Klarna.Rest.Core.Examples
                     }
                 }
             }
+            // /X-Example: POST /checkout/v3/orders
         }
     }
 
@@ -183,6 +185,7 @@ namespace Klarna.Rest.Core.Examples
         /// </summary>
         public static void Main()
         {
+            // X-Example: GET /checkout/v3/orders/{order_id}
             var username = "0_abc";
             var password = "sharedsecret";
             var orderId = "1234";
@@ -210,6 +213,7 @@ namespace Klarna.Rest.Core.Examples
                     }
                 }
             }
+            // /X-Example: GET /checkout/v3/orders/{order_id}
         }
 
         /// <summary>
@@ -223,6 +227,7 @@ namespace Klarna.Rest.Core.Examples
             /// </summary>
             public static void Main()
             {
+                // X-Example: POST /checkout/v3/orders/{order_id}
                 var username = "0_abc";
                 var password = "sharedsecret";
                 var orderId = "1234";
@@ -277,6 +282,7 @@ namespace Klarna.Rest.Core.Examples
                         }
                     }
                 }
+                // /X-Example: POST /checkout/v3/orders/{order_id}
             }
         }
     }

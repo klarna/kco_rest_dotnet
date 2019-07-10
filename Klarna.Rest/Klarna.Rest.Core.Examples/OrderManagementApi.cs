@@ -14,6 +14,7 @@ namespace Klarna.Rest.Core.Examples
         /// </summary>
         public void GetOrder()
         {
+            // X-Example: GET /ordermanagement/v1/orders/{order_id}
             var username = "0_abc";
             var password = "sharedsecret";
 
@@ -40,13 +41,14 @@ namespace Klarna.Rest.Core.Examples
                     }
                 }
             }
-
+            // /X-Example: GET /ordermanagement/v1/orders/{order_id}
         }
         /// <summary>
         /// Acknowledges the order.
         /// </summary>
         public void AcknowledgeOrder()
         {
+            // X-Example: POST /ordermanagement/v1/orders/{order_id}/acknowledge
             var username = "0_abc";
             var password = "sharedsecret";
 
@@ -73,13 +75,14 @@ namespace Klarna.Rest.Core.Examples
                     }
                 }
             }
-
+            // /X-Example: POST /ordermanagement/v1/orders/{order_id}/acknowledge
         }
         /// <summary>
         /// Captures the order.
         /// </summary>
         public void CaptureOrder()
         {
+            // X-Example: POST /ordermanagement/v1/orders/{order_id}/captures
             var username = "0_abc";
             var password = "sharedsecret";
 
@@ -138,12 +141,14 @@ namespace Klarna.Rest.Core.Examples
                     }
                 }
             }
+            // /X-Example: POST /ordermanagement/v1/orders/{order_id}/captures
         }
         /// <summary>
         /// Cancels the order.
         /// </summary>
         public void CancelOrder()
         {
+            // X-Example: POST /ordermanagement/v1/orders/{order_id}/cancel
             var username = "0_abc";
             var password = "sharedsecret";
 
@@ -169,12 +174,14 @@ namespace Klarna.Rest.Core.Examples
                     }
                 }
             }
+            // /X-Example: POST /ordermanagement/v1/orders/{order_id}/cancel
         }
         /// <summary>
         /// Refunds the order.
         /// </summary>
         public void RefundOrder()
         {
+            // X-Example: POST /ordermanagement/v1/orders/{order_id}/refunds
             var username = "0_abc";
             var password = "sharedsecret";
 
@@ -223,12 +230,14 @@ namespace Klarna.Rest.Core.Examples
                     }
                 }
             }
+            // /X-Example: POST /ordermanagement/v1/orders/{order_id}/refunds
         }
         /// <summary>
         /// Resends the consumer sendouts.
         /// </summary>
         public void ResendConsumerSendouts()
         {
+            // X-Example: POST /ordermanagement/v1/orders/{order_id}/captures/{capture_id}/trigger-send-out
             var username = "0_abc";
             var password = "sharedsecret";
 
@@ -255,6 +264,7 @@ namespace Klarna.Rest.Core.Examples
                     }
                 }
             }
+            // /X-Example: POST /ordermanagement/v1/orders/{order_id}/captures/{capture_id}/trigger-send-out
         }
     }
 }
