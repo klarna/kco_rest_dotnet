@@ -24,10 +24,7 @@ namespace Klarna.Rest.Core.Store
         public async Task<CheckoutOrder> CreateOrder(CheckoutOrder order)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri);
-
-            var response = await Post<CheckoutOrder>(url, order);
-
-            return response;
+            return await Post<CheckoutOrder>(url, order).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -40,10 +37,7 @@ namespace Klarna.Rest.Core.Store
         public async Task<CheckoutOrder> GetOrder(string orderId)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, orderId);
-
-            var response = await Get<CheckoutOrder>(url);
-
-            return response;
+            return await Get<CheckoutOrder>(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -56,10 +50,7 @@ namespace Klarna.Rest.Core.Store
         public async Task<CheckoutOrder> UpdateOrder(CheckoutOrder order)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, order.OrderId);
-
-            var response = await Post<CheckoutOrder>(url, order);
-
-            return response;
+            return await Post<CheckoutOrder>(url, order).ConfigureAwait(false);
         }
     }
 }

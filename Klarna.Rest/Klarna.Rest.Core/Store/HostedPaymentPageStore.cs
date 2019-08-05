@@ -28,10 +28,7 @@ namespace Klarna.Rest.Core.Store
             HostedPaymentPageCreateSessionRequest session)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri);
-
-            var response = await Post<HostedPaymentPageCreateSessionResponse>(url, session);
-
-            return response;
+            return await Post<HostedPaymentPageCreateSessionResponse>(url, session).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -40,11 +37,10 @@ namespace Klarna.Rest.Core.Store
         /// <param name="sessionId">HPP session id</param>
         /// <param name="distribution">The <see cref="HostedPaymentPageDistributeLink"/> object</param>
         /// <returns></returns>
-        public async Task DistributeLinkToSession(string sessionId, HostedPaymentPageDistributeLink distribution)
+        public Task DistributeLinkToSession(string sessionId, HostedPaymentPageDistributeLink distribution)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{sessionId}/distribution");
-
-            await Post(url);
+            return Post(url);
         }
 
         /// <summary>
@@ -55,10 +51,7 @@ namespace Klarna.Rest.Core.Store
         public async Task<HostedPaymentPageSessionStatus> GetSessionStatus(string sessionId)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{sessionId}/status");
-
-            var response = await Get<HostedPaymentPageSessionStatus>(url);
-
-            return response;
+            return await Get<HostedPaymentPageSessionStatus>(url).ConfigureAwait(false);
         }
     }
 }

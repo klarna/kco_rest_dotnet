@@ -27,10 +27,7 @@ namespace Klarna.Rest.Core.Store
         public async Task<VirtualCardSettlement> CreateSettlement(VirtualCardCreateSettlementRequest request)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri);
-
-            var response = await Post<VirtualCardSettlement>(url, request);
-
-            return response;
+            return await Post<VirtualCardSettlement>(url, request).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -43,10 +40,7 @@ namespace Klarna.Rest.Core.Store
         public async Task<VirtualCardSettlement> GetSettlement(string settlementId, string keyId)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, settlementId);
-
-            var response = await Get<VirtualCardSettlement>(url, new Dictionary<string, string>{ { "KeyId", keyId } });
-
-            return response;
+            return await Get<VirtualCardSettlement>(url, new Dictionary<string, string>{ { "KeyId", keyId } }).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -59,10 +53,7 @@ namespace Klarna.Rest.Core.Store
         public async Task<VirtualCardSettlement> GetSettlementForOrder(string orderId, string keyId)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"order/{orderId}");
-
-            var response = await Get<VirtualCardSettlement>(url, new Dictionary<string, string> { { "KeyId", keyId } });
-
-            return response;
+            return await Get<VirtualCardSettlement>(url, new Dictionary<string, string> { { "KeyId", keyId } }).ConfigureAwait(false);
         }
     }
 }

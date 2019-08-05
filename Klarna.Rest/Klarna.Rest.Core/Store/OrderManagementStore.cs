@@ -23,11 +23,10 @@ namespace Klarna.Rest.Core.Store
         /// </summary>
         /// <param name="orderId">Id of order to release</param>
         /// <returns></returns>
-        public async Task ReleaseRemainingAuthorization(string orderId)
+        public Task ReleaseRemainingAuthorization(string orderId)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/release-remaining_authorization");
-
-            await Post(url);
+            return Post(url);
         }
 
         /// <summary>
@@ -36,11 +35,10 @@ namespace Klarna.Rest.Core.Store
         /// </summary>
         /// <param name="orderId">Id of order to extend</param>
         /// <returns></returns>
-        public async Task ExtendAuthorizationTime(string orderId)
+        public Task ExtendAuthorizationTime(string orderId)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/extend-authorization-time");
-
-            await Post(url);
+            return Post(url);
         }
 
         /// <summary>
@@ -50,11 +48,10 @@ namespace Klarna.Rest.Core.Store
         /// <param name="orderId">Id of order to update</param>
         /// <param name="customerAddresses">The <see cref="UpdateCustomerAddresses"/> object</param>
         /// <returns></returns>
-        public async Task UpdateCustomerAddresses(string orderId, OrderManagementCustomerAddresses customerAddresses)
+        public Task UpdateCustomerAddresses(string orderId, OrderManagementCustomerAddresses customerAddresses)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/customer-details");
-
-            await Patch(url, customerAddresses);
+            return Patch(url, customerAddresses);
         }
 
         /// <summary>
@@ -63,11 +60,10 @@ namespace Klarna.Rest.Core.Store
         /// </summary>
         /// <param name="orderId">Id of order to cancel</param>
         /// <returns></returns>
-        public async Task CancelOrder(string orderId)
+        public Task CancelOrder(string orderId)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/cancel");
-
-            await Post(url);
+            return Post(url);
         }
 
         /// <summary>
@@ -77,11 +73,10 @@ namespace Klarna.Rest.Core.Store
         /// <param name="orderId">Id of order to update</param>
         /// <param name="merchantReferences">The <see cref="OrderManagementMerchantReferences"/> object</param>
         /// <returns></returns>
-        public async Task UpdateMerchantReferences(string orderId, OrderManagementMerchantReferences merchantReferences)
+        public Task UpdateMerchantReferences(string orderId, OrderManagementMerchantReferences merchantReferences)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/merchant-references");
-
-            await Patch(url, merchantReferences);
+            return Patch(url, merchantReferences);
         }
 
         /// <summary>
@@ -90,11 +85,10 @@ namespace Klarna.Rest.Core.Store
         /// </summary>
         /// <param name="orderId">Id of order to acknowledge</param>
         /// <returns></returns>
-        public async Task AcknowledgeOrder(string orderId)
+        public Task AcknowledgeOrder(string orderId)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/acknowledge");
-
-            await Post(url);
+            return Post(url);
         }
 
         /// <summary>
@@ -106,10 +100,7 @@ namespace Klarna.Rest.Core.Store
         public async Task<OrderManagementOrder> GetOrder(string orderId)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}");
-
-            var response = await Get<OrderManagementOrder>(url);
-
-            return response;
+            return await Get<OrderManagementOrder>(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -119,11 +110,10 @@ namespace Klarna.Rest.Core.Store
         /// <param name="orderId">Id of order to update</param>
         /// <param name="newOrderAmountAndLines">The <see cref="OrderManagementSetNewOrderAmountAndLines"/> object</param>
         /// <returns></returns>
-        public async Task SetNewOrderAmountAndOrderLines(string orderId, OrderManagementSetNewOrderAmountAndLines newOrderAmountAndLines)
+        public Task SetNewOrderAmountAndOrderLines(string orderId, OrderManagementSetNewOrderAmountAndLines newOrderAmountAndLines)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/authorization");
-
-            await Patch(url, newOrderAmountAndLines);
+            return Patch(url, newOrderAmountAndLines);
         }
 
         /// <summary>
@@ -136,10 +126,7 @@ namespace Klarna.Rest.Core.Store
         public async Task<OrderManagementCapture> GetCapture(string orderId, string captureId)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/captures/{captureId}");
-
-            var response = await Get<OrderManagementCapture>(url);
-
-            return response;
+            return await Get<OrderManagementCapture>(url);
         }
 
         /// <summary>
@@ -149,11 +136,10 @@ namespace Klarna.Rest.Core.Store
         /// <param name="orderId">Id of order that contains the capture</param>
         /// <param name="captureId">Id of capture to resend</param>
         /// <returns></returns>
-        public async Task TriggerResendOfCustomerCommunication(string orderId, string captureId)
+        public Task TriggerResendOfCustomerCommunication(string orderId, string captureId)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/captures/{captureId}/trigger-send-out");
-
-            await Post(url);
+            return Post(url);
         }
 
         /// <summary>
@@ -165,10 +151,7 @@ namespace Klarna.Rest.Core.Store
         public async Task<ICollection<OrderManagementCapture>> GetCapturesForOrder(string orderId)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/captures");
-
-            var response = await Get<ICollection<OrderManagementCapture>>(url);
-
-            return response;
+            return await Get<ICollection<OrderManagementCapture>>(url);
         }
 
         /// <summary>
@@ -178,11 +161,10 @@ namespace Klarna.Rest.Core.Store
         /// <param name="orderId">Id of order to create capture</param>
         /// <param name="capture">The <see cref="OrderManagementCapture"/> object</param>
         /// <returns>Object of <see cref="OrderManagementCapture"/> </returns>
-        public async Task CreateCapture(string orderId, OrderManagementCreateCapture capture)
+        public Task CreateCapture(string orderId, OrderManagementCreateCapture capture)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/captures");
-
-            await Post(url, capture);
+            return Post(url, capture);
         }
         
         /// <summary>
@@ -197,14 +179,14 @@ namespace Klarna.Rest.Core.Store
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/captures");
             var response = new Ref<HttpResponseMessage>();
 
-            await Post(url, capture, null, response);
+            await Post(url, capture, null, response).ConfigureAwait(false);
 
             var headers = response.Value.Headers;
             url = headers.Location.ToString();
 
             if (!string.IsNullOrEmpty(url))
             {
-                return await Get<OrderManagementCapture>(url);
+                return await Get<OrderManagementCapture>(url).ConfigureAwait(false);
             }
 
             return default(OrderManagementCapture);
@@ -218,11 +200,10 @@ namespace Klarna.Rest.Core.Store
         /// <param name="captureId">Id of capture to add shipping info</param>
         /// <param name="shippingInfo">The <see cref="OrderManagementAddShippingInfo"/> object</param>
         /// <returns></returns>
-        public async Task AddShippingInfoToCapture(string orderId, string captureId, OrderManagementAddShippingInfo shippingInfo)
+        public Task AddShippingInfoToCapture(string orderId, string captureId, OrderManagementAddShippingInfo shippingInfo)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/captures/{captureId}/shipping-info");
-
-            await Post(url, shippingInfo);
+            return Post(url, shippingInfo);
         }
 
         /// <summary>
@@ -232,11 +213,10 @@ namespace Klarna.Rest.Core.Store
         /// <param name="orderId">Id of order to create a refund</param>
         /// <param name="refund">The <see cref="OrderManagementRefund"/> object</param>
         /// <returns></returns>
-        public async Task CreateRefund(string orderId, OrderManagementRefund refund)
+        public Task CreateRefund(string orderId, OrderManagementRefund refund)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/refunds");
-
-            await Post(url, refund);
+            return Post(url, refund);
         }
 
         /// <summary>
@@ -251,14 +231,14 @@ namespace Klarna.Rest.Core.Store
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/refunds");
 
             var response = new Ref<HttpResponseMessage>();
-            await Post(url, refund, null, response);
+            await Post(url, refund, null, response).ConfigureAwait(false);
 
             var headers = response.Value.Headers;
             url = headers.Location.ToString();
 
             if (!string.IsNullOrEmpty(url))
             {
-                return await Get<OrderManagementGetRefundResponse>(url);
+                return await Get<OrderManagementGetRefundResponse>(url).ConfigureAwait(false);
             }
 
             return default(OrderManagementGetRefundResponse);
@@ -274,8 +254,7 @@ namespace Klarna.Rest.Core.Store
         public async Task<OrderManagementGetRefundResponse> GetRefundForOrder(string orderId, string refundId)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/refunds/{refundId}");
-
-            return await Get<OrderManagementGetRefundResponse>(url);
+            return await Get<OrderManagementGetRefundResponse>(url).ConfigureAwait(false);
         }
     }
 }

@@ -24,10 +24,7 @@ namespace Klarna.Rest.Core.Store
         public async Task<PaymentCreditSessionResponse> CreateCreditSession(PaymentCreditSession creditSession)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri);
-
-            var response = await Post<PaymentCreditSessionResponse>(url, creditSession);
-
-            return response;
+            return await Post<PaymentCreditSessionResponse>(url, creditSession).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -39,10 +36,7 @@ namespace Klarna.Rest.Core.Store
         public async Task<PaymentCreditSession> GetCreditSession(string sessionId)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, sessionId);
-
-            var response = await Get<PaymentCreditSession>(url);
-
-            return response;
+            return await Get<PaymentCreditSession>(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -52,11 +46,10 @@ namespace Klarna.Rest.Core.Store
         /// <param name="sessionId">Id of the credit session to update</param>
         /// <param name="creditSession">The <see cref="PaymentCreditSession"/> object</param>
         /// <returns></returns>
-        public async Task UpdateCreditSession(string sessionId, PaymentCreditSession creditSession)
+        public Task UpdateCreditSession(string sessionId, PaymentCreditSession creditSession)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, sessionId);
-
-            await Post(url, creditSession);
+            return Post(url, creditSession);
         }
 
         /// <summary>
@@ -65,11 +58,10 @@ namespace Klarna.Rest.Core.Store
         /// </summary>
         /// <param name="authorizationToken">Authorization token from JS client</param>
         /// <returns></returns>
-        public async Task CancelAuthorization(string authorizationToken)
+        public Task CancelAuthorization(string authorizationToken)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllers.PaymentAuthorizations, authorizationToken);
-
-            await Delete(url);
+            return Delete(url);
         }
 
         /// <summary>
@@ -82,10 +74,7 @@ namespace Klarna.Rest.Core.Store
         public async Task<PaymentGenerateConsumerTokenResponse> GenerateConsumerToken(string authorizationToken, PaymentGenerateConsumerTokenRequest consumerTokenRequest)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllers.PaymentAuthorizations, $"{authorizationToken}/customer-token");
-
-            var response = await Post<PaymentGenerateConsumerTokenResponse>(url, consumerTokenRequest);
-
-            return response;
+            return await Post<PaymentGenerateConsumerTokenResponse>(url, consumerTokenRequest).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -98,10 +87,7 @@ namespace Klarna.Rest.Core.Store
         public async Task<PaymentOrderResponse> CreateOrder(string authorizationToken, PaymentOrder order)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllers.PaymentAuthorizations, $"{authorizationToken}/order");
-
-            var response = await Post<PaymentOrderResponse>(url, order);
-
-            return response;
+            return await Post<PaymentOrderResponse>(url, order).ConfigureAwait(false);
         }
     }
 }
