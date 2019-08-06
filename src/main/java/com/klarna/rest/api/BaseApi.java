@@ -102,6 +102,10 @@ public abstract class BaseApi {
         this.objectMapper = objectMapper;
     }
 
+    public ObjectMapper getObjectMapper() {
+        return this.objectMapper;
+    }
+
     public ApiResponse getLastResponse() {
         return lastResponse;
     }
