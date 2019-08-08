@@ -25,7 +25,7 @@ namespace Klarna.Rest.Core.Store
         /// <returns></returns>
         public Task ReleaseRemainingAuthorization(string orderId)
         {
-            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/release-remaining_authorization");
+            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/release-remaining-authorization");
             return Post(url);
         }
 
