@@ -37,9 +37,7 @@ namespace Klarna.Rest.Core.Store
             };
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, "summary", nvm);
 
-            var response = await Get<ICollection<SettlementsPayoutSummary>>(url);
-
-            return response;
+            return await Get<ICollection<SettlementsPayoutSummary>>(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -50,10 +48,7 @@ namespace Klarna.Rest.Core.Store
         public async Task<SettlementsPayout> GetPayout(string paymentReference)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, paymentReference);
-
-            var response = await Get<SettlementsPayout>(url);
-
-            return response;
+            return await Get<SettlementsPayout>(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -68,37 +63,34 @@ namespace Klarna.Rest.Core.Store
         public async Task<SettlementsGetAllPayoutsResponse> GetAllPayouts(string startDate = "", string endDate = "", string currencyCode = "",
             int size = 0, int offset = 0)
         {
-            var nvm = new NameValueCollection();
+            var parameters = new NameValueCollection();
             if (!string.IsNullOrEmpty(startDate))
             {
-                nvm.Add("start_date", startDate);
+                parameters.Add("start_date", startDate);
             }
 
             if (!string.IsNullOrEmpty(endDate))
             {
-                nvm.Add("end_date", endDate);
+                parameters.Add("end_date", endDate);
             }
 
             if (!string.IsNullOrEmpty(currencyCode))
             {
-                nvm.Add("currency_code", currencyCode);
+                parameters.Add("currency_code", currencyCode);
             }
 
             if (size > 0)
             {
-                nvm.Add("size", size.ToString("F0"));
+                parameters.Add("size", size.ToString("F0"));
             }
 
             if (offset > 0)
             {
-                nvm.Add("offset", offset.ToString("F0"));
+                parameters.Add("offset", offset.ToString("F0"));
             }
 
-            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, null, nvm);
-
-            var response = await Get<SettlementsGetAllPayoutsResponse>(url);
-
-            return response;
+            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, null, parameters);
+            return await Get<SettlementsGetAllPayoutsResponse>(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -112,32 +104,29 @@ namespace Klarna.Rest.Core.Store
         public async Task<SettlementsGetTransactionsResponse> GetTransactions(string paymentReference = "", string orderId = "",
             int size = 0, int offset = 0)
         {
-            var nvm = new NameValueCollection();
+            var parameters = new NameValueCollection();
             if (!string.IsNullOrEmpty(paymentReference))
             {
-                nvm.Add("payment_reference", paymentReference);
+                parameters.Add("payment_reference", paymentReference);
             }
 
             if (!string.IsNullOrEmpty(orderId))
             {
-                nvm.Add("order_id", orderId);
+                parameters.Add("order_id", orderId);
             }
 
             if (size > 0)
             {
-                nvm.Add("size", size.ToString("F0"));
+                parameters.Add("size", size.ToString("F0"));
             }
 
             if (offset > 0)
             {
-                nvm.Add("offset", offset.ToString("F0"));
+                parameters.Add("offset", offset.ToString("F0"));
             }
 
-            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllers.SettlementTransactions, null, nvm);
-
-            var response = await Get<SettlementsGetTransactionsResponse>(url);
-
-            return response;
+            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllers.SettlementTransactions, null, parameters);
+            return await Get<SettlementsGetTransactionsResponse>(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -147,13 +136,12 @@ namespace Klarna.Rest.Core.Store
         /// </summary>
         /// <param name="paymentReference">The reference id of the payout</param>
         /// <returns>A <see cref="Stream"/> of content type text/csv</returns>
-        public async Task<Stream> GetCsvPayoutReport(string paymentReference)
+        public Task<Stream> GetCsvPayoutReport(string paymentReference)
         {
-            var nvm = new NameValueCollection{{"payment_reference", paymentReference}};
+            var parameters = new NameValueCollection{{"payment_reference", paymentReference}};
+            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllers.SettlementReports, "payout-with-transactions", parameters);
 
-            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllers.SettlementReports, "payout-with-transactions", nvm);
-
-            return await GetStream(url);
+            return GetStream(url);
         }
 
         /// <summary>
@@ -164,17 +152,16 @@ namespace Klarna.Rest.Core.Store
         /// <param name="startDate">Required. ISO-8601 formatted date with optional time string</param>
         /// <param name="endDate">Required. ISO-8601 formatted date with optional time string</param>
         /// <returns>A <see cref="Stream"/> of content type text/csv</returns>
-        public async Task<Stream> GetCsvSummary(string startDate, string endDate)
+        public Task<Stream> GetCsvSummary(string startDate, string endDate)
         {
-            var nvm = new NameValueCollection
+            var parameters = new NameValueCollection
             {
                 { "start_date", startDate },
                 { "end_date", endDate }
             };
 
-            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllers.SettlementReports, "payouts-summary-with-transactions", nvm);
-
-            return await GetStream(url);
+            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllers.SettlementReports, "payouts-summary-with-transactions", parameters);
+            return GetStream(url);
         }
 
         /// <summary>
@@ -182,13 +169,12 @@ namespace Klarna.Rest.Core.Store
         /// </summary>
         /// <param name="paymentReference">Required. The reference id of the payout</param>
         /// <returns>A <see cref="Stream"/> of content type application/pdf</returns>
-        public async Task<Stream> GetPdfPayoutSummary(string paymentReference)
+        public Task<Stream> GetPdfPayoutSummary(string paymentReference)
         {
-            var nvm = new NameValueCollection { { "payment_reference", paymentReference } };
+            var parameters = new NameValueCollection { { "payment_reference", paymentReference } };
+            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllers.SettlementReports, "payout", parameters);
 
-            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllers.SettlementReports, "payout", nvm);
-
-            return await GetStream(url);
+            return GetStream(url);
         }
 
         /// <summary>
@@ -197,18 +183,16 @@ namespace Klarna.Rest.Core.Store
         /// <param name="startDate">Required. ISO-8601 formatted date with optional time string</param>
         /// <param name="endDate">Required. ISO-8601 formatted date with optional time string</param>
         /// <returns>A <see cref="Stream"/> of content type application/pdf</returns>
-        public async Task<Stream> GetPdfSummary(string startDate, string endDate)
+        public Task<Stream> GetPdfSummary(string startDate, string endDate)
         {
-            var nvm = new NameValueCollection
+            var parameters = new NameValueCollection
             {
                 { "start_date", startDate },
                 { "end_date", endDate }
             };
+            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllers.SettlementReports, "payouts-summary", parameters);
 
-            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllers.SettlementReports, "payouts-summary", nvm);
-
-            return await GetStream(url);
+            return GetStream(url);
         }
-
     }
 }

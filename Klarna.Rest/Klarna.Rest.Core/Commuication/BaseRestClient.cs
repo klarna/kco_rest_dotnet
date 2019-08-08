@@ -44,67 +44,67 @@ namespace Klarna.Rest.Core.Commuication
         /// <param name="data">The POST data to send</param>
         /// <param name="headers">The HTTP headers to send when performing a POST request</param>
         /// <returns></returns>
-        protected async Task Post(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
+        protected Task Post(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
         {
-            await MakeRequest(HttpMethod.Post, url, data, headers, outResponse);
+            return MakeRequest(HttpMethod.Post, url, data, headers, outResponse);
         }
         
         protected async Task<T> Post<T>(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
         {
-            var result = await MakeRequest(HttpMethod.Post, url, data, headers, outResponse);
-            return await DeserializeOrDefault<T>(result);
+            var result = await MakeRequest(HttpMethod.Post, url, data, headers, outResponse).ConfigureAwait(false);
+            return await DeserializeOrDefault<T>(result).ConfigureAwait(false);
         }
 
-        protected async Task Patch(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
+        protected Task Patch(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
         {
-            await MakeRequest(new HttpMethod("PATCH"), url, data, headers, outResponse);
+            return MakeRequest(new HttpMethod("PATCH"), url, data, headers, outResponse);
         }
 
-        protected async Task Delete(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
+        protected Task Delete(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
         {
-            await MakeRequest(HttpMethod.Delete, url, data, headers, outResponse);
+            return MakeRequest(HttpMethod.Delete, url, data, headers, outResponse);
         }
         
         protected async Task<T> Delete<T>(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
         {
-            var result = await MakeRequest(HttpMethod.Delete, url, data, headers, outResponse);
-            return await DeserializeOrDefault<T>(result);
+            var result = await MakeRequest(HttpMethod.Delete, url, data, headers, outResponse).ConfigureAwait(false);
+            return await DeserializeOrDefault<T>(result).ConfigureAwait(false);
         }
 
         protected async Task<T> Put<T>(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
         {
             
-            var result = await MakeRequest(HttpMethod.Put, url, data, headers, outResponse);
-            return await DeserializeOrDefault<T>(result);
+            var result = await MakeRequest(HttpMethod.Put, url, data, headers, outResponse).ConfigureAwait(false);
+            return await DeserializeOrDefault<T>(result).ConfigureAwait(false);
         }
         
-        protected async Task Put(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
+        protected Task Put(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
         {
-            await MakeRequest(HttpMethod.Put, url, data, headers, outResponse);
+            return MakeRequest(HttpMethod.Put, url, data, headers, outResponse);
         }
 
         protected async Task<T> Get<T>(
             string url, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
         {
-            var result = await MakeRequest(HttpMethod.Get, url, null, headers, outResponse);
-            return await DeserializeOrDefault<T>(result);
+            var result = await MakeRequest(HttpMethod.Get, url, null, headers, outResponse).ConfigureAwait(false);
+            return await DeserializeOrDefault<T>(result).ConfigureAwait(false);
         }
 
-        protected async Task Get(
+        protected Task Get(
             string url, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> response = null)
         {
-            await MakeRequest(HttpMethod.Get, url, null, headers, response);
+            return MakeRequest(HttpMethod.Get, url, null, headers, response);
         }
 
         protected async Task<Stream> GetStream(string url)
         {
             using (var client = GetClient())
             {
-                var result = await client.SendAsync(GetMessage(HttpMethod.Get, url));
+                var result = await client.SendAsync(GetMessage(HttpMethod.Get, url)).ConfigureAwait(false);
 
-                await ThrowIfError(result);
+                await ThrowIfError(result).ConfigureAwait(false);
 
-                return await result.Content.ReadAsStreamAsync();
+                return await result.Content.ReadAsStreamAsync().ConfigureAwait(false);
             }
         }
         
@@ -184,7 +184,7 @@ namespace Klarna.Rest.Core.Commuication
 
         private async Task<T> DeserializeOrDefault<T>(HttpResponseMessage result)
         {
-            var content = await result.Content.ReadAsStringAsync();
+            var content = await result.Content.ReadAsStringAsync().ConfigureAwait(false);
             return !string.IsNullOrEmpty(content) ? _jsonSerializer.Deserialize<T>(content) : default(T);
         }
 
@@ -197,7 +197,7 @@ namespace Klarna.Rest.Core.Commuication
         {
             if (!result.IsSuccessStatusCode)
             {
-                var content = await result.Content.ReadAsStringAsync();
+                var content = await result.Content.ReadAsStringAsync().ConfigureAwait(false);
                 var errorMessage = new ErrorMessage();
 
                 try

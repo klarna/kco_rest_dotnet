@@ -24,9 +24,7 @@ namespace Klarna.Rest.Core.Store
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, customerToken);
 
-            var response = await Get<CustomerTokenDetails>(url);
-
-            return response;
+            return await Get<CustomerTokenDetails>(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -38,10 +36,7 @@ namespace Klarna.Rest.Core.Store
         public async Task<CustomerTokenCreateOrderResponse> CreateOrder(string customerToken, CustomerTokenOrder order)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{customerToken}/order");
-
-            var response = await Post<CustomerTokenCreateOrderResponse>(url, order);
-
-            return response;
+            return await Post<CustomerTokenCreateOrderResponse>(url, order).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -50,11 +45,10 @@ namespace Klarna.Rest.Core.Store
         /// <param name="customerToken">Customer token</param>
         /// <param name="update">A <see cref="CustomerTokenStatusUpdateRequest"/> object</param>
         /// <returns><see cref="CustomerTokenCreateOrderResponse"/></returns>
-        public async Task UpdateStatus(string customerToken, CustomerTokenStatusUpdateRequest update)
+        public Task UpdateStatus(string customerToken, CustomerTokenStatusUpdateRequest update)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{customerToken}/status");
-
-            await Patch(url, update);
+            return Patch(url, update);
         }
     }
 }
