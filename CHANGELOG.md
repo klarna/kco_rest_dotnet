@@ -10,11 +10,44 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+### Added
+
+### Fixed
+
+
+## [3.1.4] - 2019-08-09 (Enhancements / BugFix Release)
+
+### Changed
+
+- Resolves [#57](https://github.com/klarna/kco_rest_dotnet/issues/57):
+    Combine similar OrderManager Refund models into a single one.
+    Add missing field to OrderManagementRefund model;
+- Resolves [#55](https://github.com/klarna/kco_rest_dotnet/issues/55):
+    Refactoring: Rethink async/await and add ConfigureAwait in order to avoid dead-locking.
+
+### Added
+
+- Sample projects:
+    * Add [WebForms](https://github.com/klarna/kco_rest_dotnet/tree/v3.x/Klarna.Rest/SampleProjects/WebForms) sample app;
+    * Add [WebApp MVC](https://github.com/klarna/kco_rest_dotnet/tree/v3.x/Klarna.Rest/SampleProjects/KlarnaCheckoutWebApp) sample app.
+
+### Fixed
+
+- Resolves [#53](https://github.com/klarna/kco_rest_dotnet/issues/53):
+    Actualize the CheckoutOrder and OrderManagementOrder models;
+- Resolves [#56](https://github.com/klarna/kco_rest_dotnet/issues/56):
+    Order management: Fix typo in the release remaining authorization endpoint.
+
+
+
 ## [3.1.3] - 2019-05-31 (Enhancements)
 
 ### Changed
 
-- Change the process of handling non-json errors from the API servers. Fix the example to show the real error processing workflow.
+- Change the process of handling non-json errors from the API servers.
+    Fix the example to show the real error processing workflow.
 - Update examples files to show the real error processing workflow.
 
 ### Added
@@ -32,14 +65,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Resolves [#36](https://github.com/klarna/kco_rest_dotnet/issues/36): OrderManagement: Add method to create and fetch a Refund
-- Resolves [#17](https://github.com/klarna/kco_rest_dotnet/issues/17): OrderManagement: Add method to create and fetch a Capture
+- Resolves [#36](https://github.com/klarna/kco_rest_dotnet/issues/36):
+    OrderManagement: Add method to create and fetch a Refund
+- Resolves [#17](https://github.com/klarna/kco_rest_dotnet/issues/17):
+    OrderManagement: Add method to create and fetch a Capture
 - Communication: Add a possiblity for Store entities to get the raw response
 
 ### Fixed
 
 - OrderManagement: Fix the Capture create method. Warning: the method signature was changed
-- Resolves [#37](https://github.com/klarna/kco_rest_dotnet/issues/37): OrderManagementOrder model: Fix the typo in json field name. marchant_data -> merchant_data
+- Resolves [#37](https://github.com/klarna/kco_rest_dotnet/issues/37):
+    OrderManagementOrder model: Fix the typo in json field name. marchant_data -> merchant_data
 
 ## [3.1.1] - 2019-03-14 (Maintenance / BugFix Release)
 
@@ -56,8 +92,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Fix up `CHANGELOG` to better reflect issues resolved by previous release
-- Resolves [https://github.com/klarna/kco_rest_dotnet/issues/27](https://github.com/klarna/kco_rest_dotnet/issues/27)
-- Resolves [https://github.com/klarna/kco_rest_dotnet/issues/33](https://github.com/klarna/kco_rest_dotnet/issues/33)
+- Resolves [#27](https://github.com/klarna/kco_rest_dotnet/issues/27):
+    Fix cannot send a content-body with this verb-type issue
+- Resolves [#33](https://github.com/klarna/kco_rest_dotnet/issues/33):
+    Checkout API: Fix missing Shipping Attributes for OrderLines Model
 
 ## [3.1.0] - 2019-03-06 (**Partial backward compatibility**)
 
@@ -139,7 +177,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **NEW MINT-1912** Support checkout v3 and ordermanagement v1 APIs - *Joakim.L*
 
-[Unreleased]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.0...HEAD
+[Unreleased]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.4...HEAD
+[3.1.4]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.3...v3.1.4
+[3.1.3]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.2...v3.1.3
+[3.1.2]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.1...v3.1.2
 [3.1.1]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.0...v3.1.1
 [3.1.0]: https://github.com/klarna/kco_rest_dotnet/compare/v3.0.0...v3.1.0
 [3.0.0]: https://github.com/klarna/kco_rest_dotnet/compare/v2.2.0...v3.0.0
