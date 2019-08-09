@@ -37,10 +37,22 @@ Register here to be able to test your SDK integration before go live:
 
 ## Installation and Usage
 
-Example files can be found in the [examples](Klarna.Rest/Klarna.Rest.Core.Examples) project.  
-Also you can run [Sample project](Klarna.Rest/Sample)
+### Examples
 
-### Package Manager
+Example files can be found in the [examples](Klarna.Rest/Klarna.Rest.Core.Examples) project.    
+
+### Sample Apps
+
+Also you can check for the [Sample projects](Klarna.Rest/SampleProjects):
+
+- [Sample](Klarna.Rest/SampleProjects/Sample)
+    Simple projects for demonstrating a backend API call
+- [WebApp MVC](Klarna.Rest/SampleProjects/KlarnaCheckoutWebApp)
+    MVC project for demonstrating Klarna Checkout and Klarna Payment
+- [WebForms](Klarna.Rest/SampleProjects/WebForms)
+    WebForms project with Klarna Checkout integrated
+
+### Installation with Package Manager
 
 To install the Klarna .NET Core SDK, run the following command in the *Package Manager Console*:
 
