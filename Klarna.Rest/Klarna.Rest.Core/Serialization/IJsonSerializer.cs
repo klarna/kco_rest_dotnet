@@ -11,11 +11,12 @@
         /// <param name="item">The object to serialize</param>
         /// <returns></returns>
         string Serialize(object item);
+        
         /// <summary>
         /// Should deserialize the json data to object of type T.
         /// </summary>
-        /// <typeparam name="T">Objec Type to deserialize into</typeparam>
-        /// <param name="json">Json data to deserialize</param>
+        /// <typeparam name="T">Object Type to deserialize into</typeparam>
+        /// <param name="json">JSON data to deserialize</param>
         /// <returns></returns>
         T Deserialize<T>(string json);
     }

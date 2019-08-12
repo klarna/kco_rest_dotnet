@@ -3,7 +3,10 @@ using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
 {
-    public class CallbackShippingOptionUpdateRequest
+        /// <summary>
+        ///
+        /// </summary>
+        public class CallbackShippingOptionUpdateRequest
     {
         /// <summary>
         /// Non-negative, minor units. Total total amount of the order, including tax and any discounts.

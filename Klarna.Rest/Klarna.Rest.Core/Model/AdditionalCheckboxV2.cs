@@ -2,6 +2,9 @@ using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class AdditionalCheckboxV2
     {
         /// <summary>

@@ -2,6 +2,9 @@
 
 namespace Klarna.Rest.Core.Model
 {
+    /// <summary>
+    ///
+    /// </summary>
     public class ExpiresAt
     {
         [JsonProperty(PropertyName = "nano")]

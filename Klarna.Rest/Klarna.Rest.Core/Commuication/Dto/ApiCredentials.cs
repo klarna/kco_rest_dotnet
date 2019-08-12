@@ -6,7 +6,8 @@
     public class ApiCredentials
     {
         /// <summary>
-        /// Consists of your Merchant ID (eid) - a unique number that identifies your e-store, combined with a random string.
+        /// Consists of your Merchant ID (eid) - a unique number that identifies your e-store, combined
+        /// with a random string.
         /// </summary>
         public string Username { get; set; }
         /// <summary>

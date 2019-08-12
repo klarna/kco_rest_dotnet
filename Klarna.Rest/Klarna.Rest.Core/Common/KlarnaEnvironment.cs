@@ -1,7 +1,8 @@
 ﻿namespace Klarna.Rest.Core.Common
 {
     /// <summary>
-    /// The API is accessible through a few different URLS. There are different URLs for testing and for making live purchases as well as different URLs for depending on if you are based in Europe or in the U.S.
+    /// The API is accessible through a few different URLS. There are different URLs for testing and for making
+    /// live purchases as well as different URLs for depending on if you are based in Europe or in the U.S.
     /// </summary>
     public enum KlarnaEnvironment
     {

@@ -9,7 +9,9 @@ namespace Klarna.Rest.Core.Store
 {
     /// <summary>
     /// Hosted Payment Page API
-    /// Hosted Payment Page (HPP) API is a service that lets you integrate Klarna Payments without the need of hosting the web page that manages the client side of Klarna Payments.
+    /// Hosted Payment Page (HPP) API is a service that lets you integrate Klarna Payments without the need of hosting
+    /// the web page that manages the client side of Klarna Payments.
+    /// 
     /// A complete HPP payment session will involve three of Klarna services:
     /// * Klarna Payments API to start a payment session.
     /// * Hosted Payment Page API to distribute a payment session.
@@ -17,10 +19,11 @@ namespace Klarna.Rest.Core.Store
     /// </summary>
     public class HostedPaymentPageStore : BaseStore
     {
-        internal HostedPaymentPageStore(ApiSession apiSession, IJsonSerializer jsonSerializer) : base(apiSession, ApiControllers.HostedPaymentPage, jsonSerializer) { }
+        internal HostedPaymentPageStore(ApiSession apiSession, IJsonSerializer jsonSerializer) :
+            base(apiSession, ApiControllers.HostedPaymentPage, jsonSerializer) { }
 
         /// <summary>
-        /// Create a new HPP session
+        /// Creates a new HPP session
         /// </summary>
         /// <param name="session">The <see cref="HostedPaymentPageCreateSessionRequest"/> object</param>
         /// <returns>A single <see cref="HostedPaymentPageCreateSessionResponse"/> object</returns>
@@ -32,10 +35,10 @@ namespace Klarna.Rest.Core.Store
         }
 
         /// <summary>
-        /// Distribute link to the HPP session
+        /// Distributes link to the HPP session
         /// </summary>
         /// <param name="sessionId">HPP session id</param>
-        /// <param name="distribution">The <see cref="HostedPaymentPageDistributeLink"/> object</param>
+        /// <param name="distribution">The <see cref="HostedPaymentPageDistributeLink"/>object</param>
         /// <returns></returns>
         public Task DistributeLinkToSession(string sessionId, HostedPaymentPageDistributeLink distribution)
         {
@@ -44,7 +47,7 @@ namespace Klarna.Rest.Core.Store
         }
 
         /// <summary>
-        /// Get HPP session status
+        /// Gets HPP session status
         /// </summary>
         /// <param name="sessionId">HPP session id</param>
         /// <returns>A single <see cref="HostedPaymentPageSessionStatus"/> object</returns>
