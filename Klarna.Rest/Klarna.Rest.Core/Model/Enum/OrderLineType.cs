@@ -1,7 +1,7 @@
 namespace Klarna.Rest.Core.Model.Enum
 {
     /// <summary>
-    ///
+    /// Order line product type.
     /// </summary>
     public enum OrderLineType
     {
