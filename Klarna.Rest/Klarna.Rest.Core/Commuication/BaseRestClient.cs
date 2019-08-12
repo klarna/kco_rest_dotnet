@@ -349,7 +349,7 @@ namespace Klarna.Rest.Core.Commuication
                 {
                     errorMessage = JsonConvert.DeserializeObject<ErrorMessage>(content);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     errorMessage.ErrorMessages = new []{content};
                 }
