@@ -11,7 +11,7 @@ namespace Klarna.Rest.Core.Model
         /// The total amount of commissions, in minor units
         /// </summary>
         [JsonProperty(PropertyName = "commission_amount")]
-        public int ComissionAmount { get; set; }
+        public int CommissionAmount { get; set; }
         /// <summary>
         /// The total amount of money that has been repaid by the merchant from the debt to Klarna, in minor units
         /// </summary>

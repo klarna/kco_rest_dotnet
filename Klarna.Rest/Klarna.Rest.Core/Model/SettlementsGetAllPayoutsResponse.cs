@@ -17,6 +17,6 @@ namespace Klarna.Rest.Core.Model
         /// Pagination information
         /// </summary>
         [JsonProperty(PropertyName = "pagination")]
-        public Pagination Paginatinon { get; set; }
+        public Pagination Pagination { get; set; }
     }
 }
