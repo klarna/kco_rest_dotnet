@@ -3,6 +3,10 @@
 [![Build Status][travis-image]](https://travis-ci.org/klarna/kco_rest_java)
 [![Coverage Status][coveralls-image]](https://coveralls.io/r/klarna/kco_rest_java)
 
+## Shop now. Pay later.
+
+Shop at your favorite stores today and experience the freedom to pay later with Klarna.
+
 
 ## Getting started
 
