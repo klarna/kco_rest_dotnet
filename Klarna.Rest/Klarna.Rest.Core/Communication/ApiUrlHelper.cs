@@ -1,7 +1,7 @@
 ﻿using System.Collections.Specialized;
 using System.Linq;
 
-namespace Klarna.Rest.Core.Commuication
+namespace Klarna.Rest.Core.Communication
 {
     /// <summary>
     /// Helper util. Contains small tools to work with URL and query strings.

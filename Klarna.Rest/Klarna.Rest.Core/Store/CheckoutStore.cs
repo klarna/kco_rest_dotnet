@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Klarna.Rest.Core.Common;
-using Klarna.Rest.Core.Commuication;
-using Klarna.Rest.Core.Commuication.Dto;
+using Klarna.Rest.Core.Communication;
+using Klarna.Rest.Core.Communication.Dto;
 using Klarna.Rest.Core.Model;
 using Klarna.Rest.Core.Serialization;
 
