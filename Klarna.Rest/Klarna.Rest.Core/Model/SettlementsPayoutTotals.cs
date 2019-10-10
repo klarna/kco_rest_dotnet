@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
 {
@@ -7,6 +8,12 @@ namespace Klarna.Rest.Core.Model
     /// </summary>
     public class SettlementsPayoutTotals
     {
+        [Obsolete("ComissionAmount has a typo in the name and marked as deprecated. Use CommissionAmount instead.")]
+        public int ComissionAmount
+        {
+            get => CommissionAmount;
+            set => CommissionAmount = value;
+        }
         /// <summary>
         /// The total amount of commissions, in minor units
         /// </summary>
