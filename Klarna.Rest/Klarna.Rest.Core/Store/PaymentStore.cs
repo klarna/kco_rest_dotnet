@@ -13,13 +13,16 @@ namespace Klarna.Rest.Core.Store
     /// </summary>
     public class PaymentStore : BaseStore
     {
-        internal PaymentStore(ApiSession apiSession, IJsonSerializer jsonSerializer) : base(apiSession, ApiControllers.PaymentSessions, jsonSerializer) { }
+        internal PaymentStore(ApiSession apiSession, IJsonSerializer jsonSerializer) :
+            base(apiSession, ApiControllers.PaymentSessions, jsonSerializer) { }
 
         /// <summary>
-        /// Create a new credit session
-        /// <a href="https://developers.klarna.com/api/#payments-api-create-a-new-credit-session">https://developers.klarna.com/api/#payments-api-create-a-new-credit-session</a>
+        /// Creates a new credit session
+        /// <a href="https://developers.klarna.com/api/#payments-api-create-a-new-credit-session">
+        ///     https://developers.klarna.com/api/#payments-api-create-a-new-credit-session
+        /// </a>
         /// </summary>
-        /// <param name="creditSession">The <see cref="PaymentCreditSession"/> object</param>
+        /// <param name="creditSession">The <see cref="PaymentCreditSession"/>object</param>
         /// <returns><see cref="PaymentCreditSessionResponse"/></returns>
         public async Task<PaymentCreditSessionResponse> CreateCreditSession(PaymentCreditSession creditSession)
         {
@@ -28,8 +31,10 @@ namespace Klarna.Rest.Core.Store
         }
 
         /// <summary>
-        /// Read an existing credit session
-        /// <a href="https://developers.klarna.com/api/#payments-api-read-an-existing-credit-session">https://developers.klarna.com/api/#payments-api-read-an-existing-credit-session</a>
+        /// Reads an existing credit session
+        /// <a href="https://developers.klarna.com/api/#payments-api-read-an-existing-credit-session">
+        ///     https://developers.klarna.com/api/#payments-api-read-an-existing-credit-session
+        /// </a>
         /// </summary>
         /// <param name="sessionId">Id of the credit session to retrieve</param>
         /// <returns><see cref="PaymentCreditSession"/></returns>
@@ -40,8 +45,10 @@ namespace Klarna.Rest.Core.Store
         }
 
         /// <summary>
-        /// Update an existing credit session
-        /// <a href="https://developers.klarna.com/api/#payments-api-update-an-existing-credit-session">https://developers.klarna.com/api/#payments-api-update-an-existing-credit-session</a>
+        /// Updates an existing credit session
+        /// <a href="https://developers.klarna.com/api/#payments-api-update-an-existing-credit-session">
+        ///     https://developers.klarna.com/api/#payments-api-update-an-existing-credit-session
+        /// </a>
         /// </summary>
         /// <param name="sessionId">Id of the credit session to update</param>
         /// <param name="creditSession">The <see cref="PaymentCreditSession"/> object</param>
@@ -53,8 +60,10 @@ namespace Klarna.Rest.Core.Store
         }
 
         /// <summary>
-        /// Cancel an existing authorization
-        /// <a href="https://developers.klarna.com/api/#payments-api-cancel-an-existing-authorization">https://developers.klarna.com/api/#payments-api-cancel-an-existing-authorization</a>
+        /// Cancels an existing authorization
+        /// <a href="https://developers.klarna.com/api/#payments-api-cancel-an-existing-authorization">
+        ///     https://developers.klarna.com/api/#payments-api-cancel-an-existing-authorization
+        /// </a>
         /// </summary>
         /// <param name="authorizationToken">Authorization token from JS client</param>
         /// <returns></returns>
@@ -65,28 +74,37 @@ namespace Klarna.Rest.Core.Store
         }
 
         /// <summary>
-        /// Generate a consumer token
-        /// <a href="https://developers.klarna.com/api/#payments-api-generate-a-consumer-token">https://developers.klarna.com/api/#payments-api-generate-a-consumer-token</a>
+        /// Generates a consumer token
+        /// <a href="https://developers.klarna.com/api/#payments-api-generate-a-consumer-token">
+        ///     https://developers.klarna.com/api/#payments-api-generate-a-consumer-token
+        /// </a>
         /// </summary>
         /// <param name="authorizationToken">Authorization token from JS client</param>
         /// <param name="consumerTokenRequest">The <see cref="PaymentGenerateConsumerTokenRequest"/> object</param>
         /// <returns><see cref="PaymentGenerateConsumerTokenResponse"/></returns>
-        public async Task<PaymentGenerateConsumerTokenResponse> GenerateConsumerToken(string authorizationToken, PaymentGenerateConsumerTokenRequest consumerTokenRequest)
+        public async Task<PaymentGenerateConsumerTokenResponse> GenerateConsumerToken(string authorizationToken,
+            PaymentGenerateConsumerTokenRequest consumerTokenRequest)
         {
-            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllers.PaymentAuthorizations, $"{authorizationToken}/customer-token");
+            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl,
+                ApiControllers.PaymentAuthorizations,
+                $"{authorizationToken}/customer-token");
             return await Post<PaymentGenerateConsumerTokenResponse>(url, consumerTokenRequest).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// Create a new order
-        /// <a href="https://developers.klarna.com/api/#payments-api-create-a-new-order">https://developers.klarna.com/api/#payments-api-create-a-new-order</a>
+        /// Creates a new order
+        /// <a href="https://developers.klarna.com/api/#payments-api-create-a-new-order">
+        ///     https://developers.klarna.com/api/#payments-api-create-a-new-order
+        /// </a>
         /// </summary>
         /// <param name="authorizationToken">Authorization token from JS client</param>
         /// <param name="order">The <see cref="PaymentOrder"/> object</param>
         /// <returns><see cref="PaymentOrderResponse"/></returns>
         public async Task<PaymentOrderResponse> CreateOrder(string authorizationToken, PaymentOrder order)
         {
-            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllers.PaymentAuthorizations, $"{authorizationToken}/order");
+            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl,
+                ApiControllers.PaymentAuthorizations,
+                $"{authorizationToken}/order");
             return await Post<PaymentOrderResponse>(url, order).ConfigureAwait(false);
         }
     }

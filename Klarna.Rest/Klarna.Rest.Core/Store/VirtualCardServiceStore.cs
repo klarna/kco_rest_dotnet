@@ -16,10 +16,11 @@ namespace Klarna.Rest.Core.Store
     /// </summary>
     public class VirtualCardServiceStore : BaseStore
     {
-        internal VirtualCardServiceStore(ApiSession apiSession, IJsonSerializer jsonSerializer) : base(apiSession, ApiControllers.VirtualCardService, jsonSerializer) { }
+        internal VirtualCardServiceStore(ApiSession apiSession, IJsonSerializer jsonSerializer) :
+            base(apiSession, ApiControllers.VirtualCardService, jsonSerializer) { }
 
         /// <summary>
-        /// Create a new settlement
+        /// Creates a new settlement
         /// To create a settlement resource provide a completed order identifier and (optionally) a promise identifier.
         /// </summary>
         /// <param name="request">The <see cref="VirtualCardCreateSettlementRequest"/> object</param>
@@ -31,7 +32,7 @@ namespace Klarna.Rest.Core.Store
         }
 
         /// <summary>
-        /// Retrieve an existing settlement
+        /// Retrieves an existing settlement
         /// To read the settlement resource provide the settlement identifier.
         /// </summary>
         /// <param name="settlementId">Unique settlement identifier.</param>
@@ -44,7 +45,7 @@ namespace Klarna.Rest.Core.Store
         }
 
         /// <summary>
-        /// Retrieve a settled order's settlement
+        /// Retrieves a settled order's settlement
         /// To read the order's settlement resource provide the order identifier.
         /// </summary>
         /// <param name="orderId">Unique identifier for the order associated to the settlement.</param>

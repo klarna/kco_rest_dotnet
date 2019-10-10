@@ -4,6 +4,9 @@ using Newtonsoft.Json;
 namespace Klarna.Rest.Core.Model
 {
     /// <summary>
+    ///
+    /// </summary>
+    /// <summary>
     /// Get all payouts response object
     /// </summary>
     public class SettlementsGetAllPayoutsResponse

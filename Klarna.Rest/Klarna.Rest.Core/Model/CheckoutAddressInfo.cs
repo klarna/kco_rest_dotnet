@@ -2,20 +2,47 @@ using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
 {
+    /// <summary>
+    ///
+    /// </summary>
     public class CheckoutAddressInfo
     {
+        /// <summary>
+        /// Gets organization name
+        /// </summary>
         [JsonProperty(PropertyName = "organization_name")]
         public string OrganizationName { get; set; }
+        
+        /// <summary>
+        /// Gets Shipping Reference
+        /// </summary>
         [JsonProperty(PropertyName = "reference")]
         public string Reference { get; set; }
+        
+        /// <summary>
+        /// Gets attention
+        /// </summary>
         [JsonProperty(PropertyName = "attention")]
         public string Attention { get; set; }
+        
+        /// <summary>
+        /// Gets firstname
+        /// </summary>
         [JsonProperty(PropertyName = "given_name")]
         public string GivenName { get; set; }
+        
+        /// <summary>
+        /// Gets lastname
+        /// </summary>
         [JsonProperty(PropertyName = "family_name")]
         public string FamilyName { get; set; }
+        
+        /// <summary>
+        /// Gets e-mail
+        /// </summary>
         [JsonProperty(PropertyName = "email")]
         public string Email { get; set; }
+        
         /// <summary>
         /// Title.
         /// Valid values for UK:

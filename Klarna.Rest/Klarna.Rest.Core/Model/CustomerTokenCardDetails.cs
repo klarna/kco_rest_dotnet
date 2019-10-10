@@ -1,6 +1,9 @@
 ﻿using Newtonsoft.Json;
 namespace Klarna.Rest.Core.Model
 {
+    /// <summary>
+    ///
+    /// </summary>
     public class CustomerTokenCardDetails
     {
         [JsonProperty(PropertyName = "brand")]

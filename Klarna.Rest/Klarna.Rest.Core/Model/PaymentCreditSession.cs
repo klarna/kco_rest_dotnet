@@ -6,6 +6,9 @@ using Newtonsoft.Json.Converters;
 
 namespace Klarna.Rest.Core.Model
 {
+    /// <summary>
+    ///
+    /// </summary>
     public class PaymentCreditSession
     {
         /// <summary>

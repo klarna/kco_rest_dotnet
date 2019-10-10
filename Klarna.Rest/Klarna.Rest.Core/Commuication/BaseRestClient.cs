@@ -41,66 +41,163 @@ namespace Klarna.Rest.Core.Commuication
         /// Handles HTTP POST calls
         /// </summary>
         /// <param name="url">The URL to call</param>
-        /// <param name="data">The POST data to send</param>
-        /// <param name="headers">The HTTP headers to send when performing a POST request</param>
+        /// <param name="data">The data to send</param>
+        /// <param name="headers">The HTTP headers to send when performing a request</param>
+        /// <param name="outResponse">Ref to raw HttpResponseMessage message</param>
         /// <returns></returns>
-        protected Task Post(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
+        protected Task Post(string url,
+            object data = null,
+            IDictionary<string, string> headers = null,
+            Ref<HttpResponseMessage> outResponse = null)
         {
             return MakeRequest(HttpMethod.Post, url, data, headers, outResponse);
         }
         
-        protected async Task<T> Post<T>(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
+        /// <summary>
+        /// Handles HTTP POST calls
+        /// </summary>
+        /// <param name="url">The URL to call</param>
+        /// <param name="data">The data to send</param>
+        /// <param name="headers">The HTTP headers to send when performing a request</param>
+        /// <param name="outResponse">Ref to raw HttpResponseMessage message</param>
+        /// <typeparam name="T">Type to convert response message to</typeparam>
+        /// <returns>HTTP response deserialized to T type</returns>
+        protected async Task<T> Post<T>(string url,
+            object data = null,
+            IDictionary<string, string> headers = null,
+            Ref<HttpResponseMessage> outResponse = null)
         {
             var result = await MakeRequest(HttpMethod.Post, url, data, headers, outResponse).ConfigureAwait(false);
             return await DeserializeOrDefault<T>(result).ConfigureAwait(false);
         }
 
-        protected Task Patch(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
+        /// <summary>
+        /// Handles HTTP PATCH calls
+        /// </summary>
+        /// <param name="url">The URL to call</param>
+        /// <param name="data">The data to send</param>
+        /// <param name="headers">The HTTP headers to send when performing a request</param>
+        /// <param name="outResponse">Ref to raw HttpResponseMessage message</param>
+        /// <returns></returns>
+        protected Task Patch(string url,
+            object data = null,
+            IDictionary<string, string> headers = null,
+            Ref<HttpResponseMessage> outResponse = null)
         {
             return MakeRequest(new HttpMethod("PATCH"), url, data, headers, outResponse);
         }
 
-        protected Task Delete(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
+        /// <summary>
+        /// Handles HTTP DELETE calls
+        /// </summary>
+        /// <param name="url">The URL to call</param>
+        /// <param name="data">The data to send</param>
+        /// <param name="headers">The HTTP headers to send when performing a request</param>
+        /// <param name="outResponse">Ref to raw HttpResponseMessage message</param>
+        /// <returns></returns>
+        protected Task Delete(string url,
+            object data = null,
+            IDictionary<string, string> headers = null,
+            Ref<HttpResponseMessage> outResponse = null)
         {
             return MakeRequest(HttpMethod.Delete, url, data, headers, outResponse);
         }
         
-        protected async Task<T> Delete<T>(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
+        /// <summary>
+        /// Handles HTTP PATCH calls
+        /// </summary>
+        /// <param name="url">The URL to call</param>
+        /// <param name="data">The data to send</param>
+        /// <param name="headers">The HTTP headers to send when performing a request</param>
+        /// <param name="outResponse">Ref to raw HttpResponseMessage message</param>
+        /// <typeparam name="T">Type to convert response message to</typeparam>
+        /// <returns>HTTP response deserialized to T type</returns>
+        protected async Task<T> Delete<T>(string url,
+            object data = null,
+            IDictionary<string, string> headers = null,
+            Ref<HttpResponseMessage> outResponse = null)
         {
             var result = await MakeRequest(HttpMethod.Delete, url, data, headers, outResponse).ConfigureAwait(false);
             return await DeserializeOrDefault<T>(result).ConfigureAwait(false);
         }
 
-        protected async Task<T> Put<T>(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
+        /// <summary>
+        /// Handles HTTP PUT calls
+        /// </summary>
+        /// <param name="url">The URL to call</param>
+        /// <param name="data">The data to send</param>
+        /// <param name="headers">The HTTP headers to send when performing a request</param>
+        /// <param name="outResponse">Ref to raw HttpResponseMessage message</param>
+        /// <typeparam name="T">Type to convert response message to</typeparam>
+        /// <returns>HTTP response deserialized to T type</returns>
+        protected async Task<T> Put<T>(string url,
+            object data = null,
+            IDictionary<string, string> headers = null,
+            Ref<HttpResponseMessage> outResponse = null)
         {
             
             var result = await MakeRequest(HttpMethod.Put, url, data, headers, outResponse).ConfigureAwait(false);
             return await DeserializeOrDefault<T>(result).ConfigureAwait(false);
         }
         
-        protected Task Put(string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
+        /// <summary>
+        /// Handles HTTP PUT calls
+        /// </summary>
+        /// <param name="url">The URL to call</param>
+        /// <param name="data">The data to send</param>
+        /// <param name="headers">The HTTP headers to send when performing a request</param>
+        /// <param name="outResponse">Ref to raw HttpResponseMessage message</param>
+        /// <returns></returns>
+        protected Task Put(string url,
+            object data = null,
+            IDictionary<string, string> headers = null,
+            Ref<HttpResponseMessage> outResponse = null)
         {
             return MakeRequest(HttpMethod.Put, url, data, headers, outResponse);
         }
 
-        protected async Task<T> Get<T>(
-            string url, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
+        /// <summary>
+        /// Handles HTTP GET calls
+        /// </summary>
+        /// <param name="url">The URL to call</param>
+        /// <param name="headers">The HTTP headers to send when performing a request</param>
+        /// <param name="outResponse">Ref to raw HttpResponseMessage message</param>
+        /// <typeparam name="T">Type to convert response message to</typeparam>
+        /// <returns>HTTP response deserialized to T type</returns>
+        protected async Task<T> Get<T>(string url,
+            IDictionary<string, string> headers = null,
+            Ref<HttpResponseMessage> outResponse = null)
         {
             var result = await MakeRequest(HttpMethod.Get, url, null, headers, outResponse).ConfigureAwait(false);
             return await DeserializeOrDefault<T>(result).ConfigureAwait(false);
         }
 
-        protected Task Get(
-            string url, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> response = null)
+        /// <summary>
+        /// Handles HTTP GET calls
+        /// </summary>
+        /// <param name="url">The URL to call</param>
+        /// <param name="headers">The HTTP headers to send when performing a request</param>
+        /// <param name="response">Ref to raw HttpResponseMessage message</param>
+        /// <returns></returns>
+        protected Task Get(string url,
+            IDictionary<string, string> headers = null,
+            Ref<HttpResponseMessage> response = null)
         {
             return MakeRequest(HttpMethod.Get, url, null, headers, response);
         }
 
+        /// <summary>
+        /// Performs an HTTP call and returns result as a binary stream.
+        /// Used to download binary/text files, like CSVs and PDFs.
+        /// </summary>
+        /// <param name="url">Stream endpoint</param>
+        /// <returns>Stream</returns>
         protected async Task<Stream> GetStream(string url)
         {
             using (var client = GetClient())
             {
-                var result = await client.SendAsync(GetMessage(HttpMethod.Get, url)).ConfigureAwait(false);
+                var result = await client.SendAsync(GetHttpMessage(HttpMethod.Get, url)).
+                    ConfigureAwait(false);
 
                 await ThrowIfError(result).ConfigureAwait(false);
 
@@ -108,10 +205,23 @@ namespace Klarna.Rest.Core.Commuication
             }
         }
         
+        /// <summary>
+        /// Executes an HTTP call to specified endpoint.
+        /// </summary>
+        /// <param name="method">HTTP method</param>
+        /// <param name="url">Endpoint</param>
+        /// <param name="data">Payload data</param>
+        /// <param name="headers">HTTP headers</param>
+        /// <param name="outResponse">Ref variable to return raw HttpResponseMessage instance</param>
+        /// <returns>HTTP call result</returns>
         private async Task<HttpResponseMessage> MakeRequest(
-            HttpMethod method, string url, object data = null, IDictionary<string, string> headers = null, Ref<HttpResponseMessage> outResponse = null)
+            HttpMethod method,
+            string url,
+            object data = null,
+            IDictionary<string, string> headers = null,
+            Ref<HttpResponseMessage> outResponse = null)
         {
-            var message = GetMessage(method, url, headers);
+            var message = GetHttpMessage(method, url, headers);
             HttpResponseMessage result;
             
             using (message.Content = GetMessageContent(data))
@@ -143,7 +253,16 @@ namespace Klarna.Rest.Core.Commuication
             return result;
         }
 
-        private static HttpRequestMessage GetMessage(HttpMethod method, string resource, IDictionary<string, string> headers = null)
+        /// <summary>
+        /// Builds HttpRequestMessage instance based on HTTP Method, endpoint and HTTP headers.
+        /// </summary>
+        /// <param name="method">HTTP method</param>
+        /// <param name="resource">Resource endpoint</param>
+        /// <param name="headers">HTTP headers</param>
+        /// <returns>HttpRequestMessage instance</returns>
+        private static HttpRequestMessage GetHttpMessage(HttpMethod method,
+            string resource,
+            IDictionary<string, string> headers = null)
         {
             var message = new HttpRequestMessage(method, resource);
             message.Headers.Accept.Clear();
@@ -158,6 +277,10 @@ namespace Klarna.Rest.Core.Commuication
             return message;
         }
 
+        /// <summary>
+        /// Builds default HttpClient instance.
+        /// </summary>
+        /// <returns>HttpClient instance</returns>
         private HttpClient GetClient()
         {
             var handler = new HttpClientHandler();
@@ -175,6 +298,11 @@ namespace Klarna.Rest.Core.Commuication
             return client;
         }
 
+        /// <summary>
+        /// Serializes data to the HttpContent compatible structure. 
+        /// </summary>
+        /// <param name="data">Data to be sent to the server</param>
+        /// <returns>HttpContent-based data</returns>
         private HttpContent GetMessageContent(object data)
         {
             if (data == null) return null;
@@ -182,17 +310,34 @@ namespace Klarna.Rest.Core.Commuication
             return new StringContent(Serialize(data), Encoding.UTF8, "application/json");
         }
 
+        /// <summary>
+        /// Deserializes HttpResponseMessage data to specified type. Returns default value in case of failure. 
+        /// </summary>
+        /// <param name="result">HttpResponseMessage instance</param>
+        /// <typeparam name="T">Type to convert message to</typeparam>
+        /// <returns>Instance of T type</returns>
         private async Task<T> DeserializeOrDefault<T>(HttpResponseMessage result)
         {
             var content = await result.Content.ReadAsStringAsync().ConfigureAwait(false);
             return !string.IsNullOrEmpty(content) ? _jsonSerializer.Deserialize<T>(content) : default(T);
         }
 
+        /// <summary>
+        /// Serializes data to JSON.
+        /// </summary>
+        /// <param name="data">Data to be serialized</param>
+        /// <returns>JSON representation of data</returns>
         private string Serialize(object data)
         {
             return _jsonSerializer.Serialize(data);
         }
 
+        /// <summary>
+        /// Checks the HttpResponseMessage status code and throw an ApiException in case of non 2xx response.
+        /// </summary>
+        /// <param name="result">HttpResponseMessage instance</param>
+        /// <returns></returns>
+        /// <exception cref="ApiException">Throws in case of non 2xx response</exception>
         private static async Task ThrowIfError(HttpResponseMessage result)
         {
             if (!result.IsSuccessStatusCode)
@@ -204,13 +349,14 @@ namespace Klarna.Rest.Core.Commuication
                 {
                     errorMessage = JsonConvert.DeserializeObject<ErrorMessage>(content);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     errorMessage.ErrorMessages = new []{content};
                 }
 
                 throw new ApiException(
-                    $"Error when calling {result.RequestMessage.Method.ToString().ToUpperInvariant()} {result.RequestMessage.RequestUri}.",
+                    $"Error when calling {result.RequestMessage.Method.ToString().ToUpperInvariant()} " +
+                    $"{result.RequestMessage.RequestUri}.",
                     result.StatusCode,
                     errorMessage,
                     null);

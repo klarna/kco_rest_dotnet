@@ -20,7 +20,8 @@ namespace Klarna.Rest.Core.Commuication
         /// <param name="apiControllerUri">The API endpoint to call</param>
         /// <param name="jsonSerializer">The JSON Serializer instance to use when sending / receiving data</param>
         /// <returns></returns>
-        protected BaseStore(ApiSession apiSession, string apiControllerUri, IJsonSerializer jsonSerializer) : base(apiSession, jsonSerializer)
+        protected BaseStore(ApiSession apiSession, string apiControllerUri, IJsonSerializer jsonSerializer) :
+            base(apiSession, jsonSerializer)
         {
             ApiControllerUri = apiControllerUri;
         }

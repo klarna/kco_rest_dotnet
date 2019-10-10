@@ -2,6 +2,9 @@ using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
 {
+    /// <summary>
+    ///
+    /// </summary>
     public class MerchantRequestedAdditionalCheckbox
     {
         [JsonProperty(PropertyName = "id")]

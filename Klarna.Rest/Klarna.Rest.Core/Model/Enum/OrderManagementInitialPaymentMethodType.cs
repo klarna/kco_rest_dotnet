@@ -1,5 +1,8 @@
 ﻿namespace Klarna.Rest.Core.Model.Enum
 {
+    /// <summary>
+    ///
+    /// </summary>
     public enum OrderManagementInitialPaymentMethodType
     {
         INVOICE,

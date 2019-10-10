@@ -3,12 +3,25 @@ using System.Linq;
 
 namespace Klarna.Rest.Core.Commuication
 {
+    /// <summary>
+    /// Helper util. Contains small tools to work with URL and query strings.
+    /// </summary>
     internal static class ApiUrlHelper
     {
-        public static string GetApiUrlForController(string baseApiUrl, string controller, string append = null,
+        /// <summary>
+        /// Builds the API URL based on the Klarna environment, controller and extra 
+        /// </summary>
+        /// <param name="baseApiUrl">Environment URL (like https://api.klarna.com)</param>
+        /// <param name="controllerUrl">Controller URL</param>
+        /// <param name="append">URL appendix</param>
+        /// <param name="parameters">Extra parameters (will be added as a query string after "?")</param>
+        /// <returns>API URL</returns>
+        public static string GetApiUrlForController(string baseApiUrl,
+            string controllerUrl,
+            string append = null,
             NameValueCollection parameters = null)
         {
-            var controllerUri = $"{baseApiUrl.TrimEnd('/')}/{controller.TrimStart('/')}{(!string.IsNullOrEmpty(append) ? $"/{append}" : string.Empty)}";
+            var controllerUri = $"{baseApiUrl.TrimEnd('/')}/{controllerUrl.TrimStart('/')}{(!string.IsNullOrEmpty(append) ? $"/{append}" : string.Empty)}";
 
             if (parameters == null || parameters.Count == 0)
                 return controllerUri;
@@ -16,10 +29,15 @@ namespace Klarna.Rest.Core.Commuication
             return $"{controllerUri}{(controllerUri.IndexOf('?') > -1 ? "&" : "?")}{parameters.ToQueryString()}";
         }
 
-        private static string ToQueryString(this NameValueCollection nvc)
+        /// <summary>
+        /// Converts collection to query URL params
+        /// </summary>
+        /// <param name="urlParams">Name-Value Collection to convert to query params</param>
+        /// <returns>URL query params</returns>
+        private static string ToQueryString(this NameValueCollection urlParams)
         {
             return string.Join("&",
-                nvc.AllKeys.Distinct().Select(a => a + "=" + nvc[a]));
+                urlParams.AllKeys.Distinct().Select(a => a + "=" + urlParams[a]));
         }
     }
 }
