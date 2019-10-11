@@ -1,5 +1,5 @@
 ﻿using Klarna.Rest.Core.Common;
-using Klarna.Rest.Core.Commuication.Dto;
+using Klarna.Rest.Core.Communication.Dto;
 using Klarna.Rest.Core.Serialization;
 using Klarna.Rest.Core.Store;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Klarna.Rest.Core.Common;
-using Klarna.Rest.Core.Commuication.Dto;
+using Klarna.Rest.Core.Communication.Dto;
 using Klarna.Rest.Core.Serialization;
 
 namespace Klarna.Rest.Core.Examples
