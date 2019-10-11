@@ -353,7 +353,9 @@ namespace Klarna.Rest.Core.Communication
                     errorMessage.ErrorMessages = new []{content};
                 }
 
-                throw new ApiException(
+                // We still throw an obsolete ApiException in order to keep the backward compatibility
+                // Will be removed in future versions (after v3.1.4).
+                throw new Commuication.ApiException(
                     $"Error when calling {result.RequestMessage.Method.ToString().ToUpperInvariant()} " +
                     $"{result.RequestMessage.RequestUri}.",
                     result.StatusCode,
