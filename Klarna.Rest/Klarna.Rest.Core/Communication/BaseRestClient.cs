@@ -288,6 +288,12 @@ namespace Klarna.Rest.Core.Communication
                 handler.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
             }
 
+            if (ApiSession.Proxy != null)
+            {
+                handler.Proxy = ApiSession.Proxy;
+                handler.UseProxy = true;
+            }
+
             handler.UseCookies = true;
             handler.Credentials = new NetworkCredential(ApiSession.Credentials.Username, ApiSession.Credentials.Password);
 
