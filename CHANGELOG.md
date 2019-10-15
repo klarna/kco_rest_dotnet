@@ -17,6 +17,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 
+## [3.1.5] - 2019-10-15 (Enhancements / BugFix Release)
+
+### Changed
+
+- Refactoring: Fix typo in Communication namespace. Commuication -> Communication.
+  Throw the ApiException from the old namespace in order to keep the backward compatibility.
+  [Typo in Klarna.Rest/Klarna.Rest.Core/Commuication namespace #70](https://github.com/klarna/kco_rest_dotnet/issues/70)
+
+### Added
+
+- Add ability to set an HTTP proxy. [Allow usage of WebProxy in HttpClient #66](https://github.com/klarna/kco_rest_dotnet/issues/66)
+
+### Fixed
+
+- Fix typos in Settlements models. [Typo in SettlementsGetAllPayoutsResponse.cs "Paginatinon" #64](https://github.com/klarna/kco_rest_dotnet/issues/64)
+
+
 ## [3.1.4] - 2019-08-09 (Enhancements / BugFix Release)
 
 ### Changed
@@ -177,7 +194,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **NEW MINT-1912** Support checkout v3 and ordermanagement v1 APIs - *Joakim.L*
 
-[Unreleased]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.4...HEAD
+[Unreleased]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.5...HEAD
+[3.1.5]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.4...v3.1.5
 [3.1.4]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.3...v3.1.4
 [3.1.3]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.2...v3.1.3
 [3.1.2]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.1...v3.1.2
