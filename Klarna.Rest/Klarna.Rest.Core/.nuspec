@@ -15,5 +15,11 @@
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <copyright>Copyright 2018 - 2019 Klarna AB</copyright>
     <tags>Klarna Checkout Payments SDK REST Integration library</tags>
+
+    <dependencies>
+      <group>
+        <dependency id="Newtonsoft.Json" version="11.0.2" />
+      </group>
+    </dependencies>
   </metadata>
 </package>

@@ -17,6 +17,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 
+## [3.1.6.1] - 2019-10-16 (Enhancements)
+
+### Changed
+
+- nuspec file now has all the SDK dependencies
+
+
 ## [3.1.5] - 2019-10-15 (Enhancements / BugFix Release)
 
 ### Changed
