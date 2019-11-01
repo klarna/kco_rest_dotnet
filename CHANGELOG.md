@@ -7,8 +7,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-
-## [Unreleased] (BugFix Release)
+## [Unreleased]
 
 ### Changed
 
@@ -16,7 +15,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+
+## [3.1.7] (BugFix Release)
+
+### Fixed
+
 - HostedPaymentPage distribute session method did not send a body payout. Resolves [#72](https://github.com/klarna/kco_rest_dotnet/issues/72);
+- Fix the authorization_token property for the HostedPaymentPageSessionStatus model. Actualize model. Resolves [#73](https://github.com/klarna/kco_rest_dotnet/issues/73)
 
 
 ## [3.1.6.1] - 2019-10-16 (Enhancements)
