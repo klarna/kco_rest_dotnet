@@ -208,7 +208,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **NEW MINT-1912** Support checkout v3 and ordermanagement v1 APIs - *Joakim.L*
 
-[Unreleased]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.5...HEAD
+[Unreleased]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.7...HEAD
+[3.1.7]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.6.1...v3.1.7
+[3.1.6.1]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.5...v3.1.6.1
 [3.1.5]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.4...v3.1.5
 [3.1.4]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.3...v3.1.4
 [3.1.3]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.2...v3.1.3
