@@ -43,7 +43,7 @@ namespace Klarna.Rest.Core.Store
         public Task DistributeLinkToSession(string sessionId, HostedPaymentPageDistributeLink distribution)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{sessionId}/distribution");
-            return Post(url);
+            return Post(url, distribution);
         }
 
         /// <summary>
