@@ -1,4 +1,5 @@
-﻿using Klarna.Rest.Core.Model.Enum;
+﻿using System;
+using Klarna.Rest.Core.Model.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -12,8 +13,17 @@ namespace Klarna.Rest.Core.Model
         /// <summary>
         /// KP authorization token
         /// </summary>
-        [JsonProperty(PropertyName = "auth_token")]
-        public string AuthToken { get; set; }
+        [Obsolete("AuthToken is no longer supported by HPP. Consider using AuthorizationToken instead.")]
+        public string AuthToken
+        {
+            get => AuthoziationToken;
+            set => AuthoziationToken = value;
+        }
+        /// <summary>
+        /// KP authorization token
+        /// </summary>
+        [JsonProperty(PropertyName = "authorization_token")]
+        public string AuthoziationToken { get; set; }
         /// <summary>
         /// Current session status
         /// </summary>
@@ -25,5 +35,10 @@ namespace Klarna.Rest.Core.Model
         /// </summary>
         [JsonProperty(PropertyName = "updated_at")]
         public string UpdatedAt { get; set; }
+        /// <summary>
+        /// The id of the HPP Session
+        /// </summary>
+        [JsonProperty(PropertyName = "session_id")]
+        public string SessionId { get; set; }
     }
 }
