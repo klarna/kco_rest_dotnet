@@ -16,14 +16,14 @@ namespace Klarna.Rest.Core.Model
         [Obsolete("AuthToken is no longer supported by HPP. Consider using AuthorizationToken instead.")]
         public string AuthToken
         {
-            get => AuthoziationToken;
-            set => AuthoziationToken = value;
+            get => AuthorizationToken;
+            set => AuthorizationToken = value;
         }
         /// <summary>
         /// KP authorization token
         /// </summary>
         [JsonProperty(PropertyName = "authorization_token")]
-        public string AuthoziationToken { get; set; }
+        public string AuthorizationToken { get; set; }
         /// <summary>
         /// Current session status
         /// </summary>
@@ -35,6 +35,7 @@ namespace Klarna.Rest.Core.Model
         /// </summary>
         [JsonProperty(PropertyName = "updated_at")]
         public string UpdatedAt { get; set; }
+        
         /// <summary>
         /// The id of the HPP Session
         /// </summary>
