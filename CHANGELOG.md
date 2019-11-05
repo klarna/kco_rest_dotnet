@@ -20,13 +20,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fix deserialization issue with "expires_at" of PaymentsSession object [34](https://github.com/klarna/kco_rest_java/issues/34)
+- Fix deserialization issue with "expires_at" of PaymentsSession object [34](https://github.com/klarna/kco_rest_java/issues/34)  
   Change type of `expired_at` field to `OffsetDateTime` instead of `PaymentsInstant`. **Backward incompatible**
 
 ### Changed
 
 - Change the jackson version to 2.9.9.1 to reduce vulnerabilities
-- PaymentsErrorV2: Rename `authorized_payment_method_v1` to `authorized_payment_method` since a bug in a documentation. 
+- PaymentsErrorV2: Rename `authorized_payment_method_v1` to `authorized_payment_method` since a bug in a documentation.  
   `authorized_payment_method_v1` property never existed before **Backward incompatible**
 - Add processing of single error message
 - Change Jackson DefaultMapper DateTime serialization. Change default time serialization from a timestamp to the ISO 8601
