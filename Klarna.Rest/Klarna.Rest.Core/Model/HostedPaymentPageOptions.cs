@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Klarna.Rest.Core.Model.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -8,6 +9,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     /// Create hosted payment page options
     /// </summary>
+    [Obsolete("This model is being deprecated. Use OptionsV1 from Klarna.Rest.Core.Model.HostedPaymentPage namespace instead")]
     public class HostedPaymentPageOptions
     {
         /// <summary>

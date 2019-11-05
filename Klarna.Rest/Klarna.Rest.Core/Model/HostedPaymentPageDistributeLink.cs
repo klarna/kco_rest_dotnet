@@ -1,4 +1,5 @@
-﻿using Klarna.Rest.Core.Model.Enum;
+﻿using System;
+using Klarna.Rest.Core.Model.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -7,6 +8,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     /// Hosted payment page distribute link
     /// </summary>
+    [Obsolete("This model is being deprecated. Use DistributionRequestV1 from Klarna.Rest.Core.Model.HostedPaymentPage namespace instead")]
     public class HostedPaymentPageDistributeLink
     {
         /// <summary>

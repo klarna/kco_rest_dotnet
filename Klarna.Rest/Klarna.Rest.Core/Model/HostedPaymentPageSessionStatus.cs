@@ -8,6 +8,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     /// Hosted payment page session status
     /// </summary>
+    [Obsolete("This model is being deprecated. Use SessionResponseV1 from Klarna.Rest.Core.Model.HostedPaymentPage namespace instead")]
     public class HostedPaymentPageSessionStatus
     {
         /// <summary>

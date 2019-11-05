@@ -1,5 +1,8 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Klarna.Rest.Core.Model;
+using Klarna.Rest.Core.Model.Enum;
+using Klarna.Rest.Core.Model.HostedPaymentPage;
 using Newtonsoft.Json;
 using Xunit;
 
@@ -81,6 +84,18 @@ namespace Klarna.Rest.Core.Tests.Models
         {
             var json = File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "Data", "HostedPaymentPageCreateSessionResponse.json"));
             var response = JsonConvert.DeserializeObject<HostedPaymentPageCreateSessionResponse>(json);
+        }
+        
+        [Fact]
+        public void TestClient()
+        {
+            SessionResponseV1 responseObject = new SessionResponseV1();
+            responseObject.Status = HostedPaymentPageStatus.COMPLETED;
+            responseObject.AuthorizationToken = "b4bd3423-24e3";
+            responseObject.UpdatedAt = "2038-01-19T03:14:07.000Z";
+            responseObject.SessionId = "1234";
+            HostedPaymentPageSessionStatus casted = responseObject;
+            Assert.True(casted.AuthorizationToken.Equals("b4bd3423-24e3"));
         }
     }
 

@@ -1,10 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
 {
     /// <summary>
     /// Hosted payment page contact information
     /// </summary>
+    [Obsolete("This model is being deprecated. Use DistributionContactV1 from Klarna.Rest.Core.Model.HostedPaymentPage namespace instead")]
     public class HostedPaymentPageContactInformation
     {
         /// <summary>
