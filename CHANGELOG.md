@@ -26,7 +26,7 @@ and fixes [#77](https://github.com/klarna/kco_rest_dotnet/issues/77)
 
 - Overloaded HostedPaymentPageStore methods to use new HPP models.
 
-## Fixed
+### Fixed
 
 - Fixes the GET endpoint for sessions to be `/hpp/v1/sessions/{sessionid}` instead of `/hpp/v1/sessions/{session}/status`. Fixes [#78](https://github.com/klarna/kco_rest_dotnet/issues/78)
 
@@ -223,7 +223,8 @@ and fixes [#77](https://github.com/klarna/kco_rest_dotnet/issues/77)
 
 - **NEW MINT-1912** Support checkout v3 and ordermanagement v1 APIs - *Joakim.L*
 
-[Unreleased]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.7...HEAD
+[Unreleased]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.8...HEAD
+[3.1.8]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.7...v3.1.8
 [3.1.7]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.6.1...v3.1.7
 [3.1.6.1]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.5...v3.1.6.1
 [3.1.5]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.4...v3.1.5
