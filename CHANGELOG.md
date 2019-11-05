@@ -7,18 +7,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-
 ## [Unreleased]
 
 ### Fixed
 
+### Changed
+
+### Added
+
+
+## [3.2.0] - 2019-10-05
+
+### Fixed
+
 - Fix deserialization issue with "expires_at" of PaymentsSession object (34)[https://github.com/klarna/kco_rest_java/issues/34]
-  Change type of `expired_at` field to `OffsetDateTime` instead of `PaymentsInstant`
+  Change type of `expired_at` field to `OffsetDateTime` instead of `PaymentsInstant`. **Backward incompatible**
 
 ### Changed
 
 - PaymentsErrorV2: Rename `authorized_payment_method_v1` to `authorized_payment_method` since a bug in a documentation. 
-  `authorized_payment_method_v1` property never existed before
+  `authorized_payment_method_v1` property never existed before **Backward incompatible**
 
 ### Added
 
@@ -260,7 +268,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **NEW MINT-1842** Support checkout v3 and ordermanagement v1 APIs - *Joakim.L*
 
-[Unreleased]: https://github.com/klarna/kco_rest_java/compare/v3.1.1...HEAD
+[Unreleased]: https://github.com/klarna/kco_rest_java/compare/v3.2.0...HEAD
+[3.2.0]: https://github.com/klarna/kco_rest_java/compare/v3.1.1...v3.2.0
 [3.1.1]: https://github.com/klarna/kco_rest_java/compare/v3.1.0...v3.1.1
 [3.1.0]: https://github.com/klarna/kco_rest_java/compare/v3.0.6...v3.1.0
 [3.0.6]: https://github.com/klarna/kco_rest_java/compare/v3.0.5...v3.0.6
