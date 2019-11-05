@@ -82,7 +82,7 @@ namespace Klarna.Rest.Core.Store
         /// <returns>A single <see cref="HppModel.SessionResponseV1"/> object</returns>
         public async Task<HppModel.SessionResponseV1> GetSessionStatus(string sessionId)
         {
-            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{sessionId}/status");
+            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{sessionId}");
             return await Get<HppModel.SessionResponseV1>(url).ConfigureAwait(false);
         }
     }
