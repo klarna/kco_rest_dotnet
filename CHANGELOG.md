@@ -25,14 +25,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Change the jackson version to 2.9.9.1 to reduce vulnerabilities
 - PaymentsErrorV2: Rename `authorized_payment_method_v1` to `authorized_payment_method` since a bug in a documentation. 
   `authorized_payment_method_v1` property never existed before **Backward incompatible**
+- Add processing of single error message
+- Change Jackson DefaultMapper DateTime serialization. Change default time serialization from a timestamp to the ISO 8601
 
 ### Added
 
 - PaymentsCreateOrderRequest: add `authorization_token` property
 - PaymentsSession: add `authorization_token` property
 - PaymentsCustomerTokenCreationResponse: add `billing_address`, `customer` and `payment_method_reference` properties
+- Add ability to get the API ObjectMapper
 
 
 ## [3.1.1] - 2019-05-31
