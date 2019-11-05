@@ -15,6 +15,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [3.1.8] (Enhancements/Bugfix Release)
+
+### Changed
+
+- Generated HPP models and put them in a new namespace Klarna.Rest.Core.Model.HostedPaymentPage. Generated models have all fields in the API
+and fixes [#77](https://github.com/klarna/kco_rest_dotnet/issues/77)
+
+### Added
+
+- Overloaded HostedPaymentPageStore methods to use new HPP models.
+
+## Fixed
+
+- Fixes the GET endpoint for sessions to be `/hpp/v1/sessions/{sessionid}` instead of `/hpp/v1/sessions/{session}/status`. Fixes [#78](https://github.com/klarna/kco_rest_dotnet/issues/78)
+
 
 ## [3.1.7] (BugFix Release)
 
