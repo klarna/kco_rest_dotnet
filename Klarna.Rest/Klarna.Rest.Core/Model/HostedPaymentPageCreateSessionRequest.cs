@@ -1,10 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
 {
     /// <summary>
     /// Create hosted payment page session request
     /// </summary>
+    [Obsolete("This model is being deprecated. Use SessionCreationRequestV1 from Klarna.Rest.Core.Model.HostedPaymentPage namespace instead")]
     public class HostedPaymentPageCreateSessionRequest
     {
         /// <summary>
