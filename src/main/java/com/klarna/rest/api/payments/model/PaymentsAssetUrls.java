@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * PaymentsAssetUrls
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T12:40:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-11-05T12:55:42.744Z")
 public class PaymentsAssetUrls {
   @JsonProperty("descriptive")
   private String descriptive = null;
@@ -41,7 +41,7 @@ public class PaymentsAssetUrls {
    * Decriptive asset URL
    * @return descriptive
   **/
-  @ApiModelProperty(example = "https://cdn.klarna.com/1.0/shared/image/generic/badge/en_us/pay_later/descriptive/pink.svg", value = "Decriptive asset URL")
+  @ApiModelProperty(example = "https://x.klarnacdn.net/payment-method/assets/badges/generic/klarna.svg", value = "Decriptive asset URL")
   public String getDescriptive() {
     return descriptive;
   }
@@ -59,7 +59,7 @@ public class PaymentsAssetUrls {
    * Standard asset URL
    * @return standard
   **/
-  @ApiModelProperty(example = "https://cdn.klarna.com/1.0/shared/image/generic/badge/en_us/pay_later/standard/pink.svg", value = "Standard asset URL")
+  @ApiModelProperty(example = "https://x.klarnacdn.net/payment-method/assets/badges/generic/klarna.svg", value = "Standard asset URL")
   public String getStandard() {
     return standard;
   }

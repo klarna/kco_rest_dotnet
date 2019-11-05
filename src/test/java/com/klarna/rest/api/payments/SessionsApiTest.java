@@ -16,13 +16,12 @@
 
 package com.klarna.rest.api.payments;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.klarna.rest.Client;
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
-import com.klarna.rest.api.payments.model.PaymentsAddress;
-import com.klarna.rest.api.payments.model.PaymentsMerchantSession;
-import com.klarna.rest.api.payments.model.PaymentsMerchantUrls;
-import com.klarna.rest.api.payments.model.PaymentsSession;
+import com.klarna.rest.api.DefaultMapper;
+import com.klarna.rest.api.payments.model.*;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -78,6 +77,16 @@ public class SessionsApiTest extends TestCase {
         final String requestPayout = transport.requestPayout.toString();
         assertTrue(requestPayout.contains("\"order_amount\":100"));
         assertTrue(requestPayout.contains("\"confirmation\":\"https://example.com/confirm\""));
+    }
+
+    @Test
+    public void testCreatePaymentsSessionModel() throws IOException {
+        ObjectMapper mapper = new DefaultMapper();
+        String data = "{\"acquiring_channel\": \"test\", \"order_amount\": 12345, \"expires_at\": \"2019-11-07T10:10:54.991Z\"}";
+        PaymentsSession request = mapper.readValue(data, PaymentsSession.class);
+        assertEquals("test", request.getAcquiringChannel());
+        assertEquals(12345, request.getOrderAmount().longValue());
+        assertEquals("2019-11-07T10:10:54.991Z",request.getExpiresAt().toString());
     }
 
     @Test

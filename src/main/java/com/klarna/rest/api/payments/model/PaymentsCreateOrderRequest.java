@@ -21,26 +21,30 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.klarna.rest.api.payments.model.PaymentsAddress;
 import com.klarna.rest.api.payments.model.PaymentsAttachment;
 import com.klarna.rest.api.payments.model.PaymentsCustomer;
-import com.klarna.rest.api.payments.model.PaymentsInstant;
 import com.klarna.rest.api.payments.model.PaymentsMerchantUrls;
 import com.klarna.rest.api.payments.model.PaymentsOptions;
 import com.klarna.rest.api.payments.model.PaymentsOrderLine;
 import com.klarna.rest.api.payments.model.PaymentsPaymentMethodCategory;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.threeten.bp.OffsetDateTime;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * PaymentsCreateOrderRequest
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T12:40:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-11-05T12:55:42.744Z")
 public class PaymentsCreateOrderRequest {
   @JsonProperty("acquiring_channel")
   private String acquiringChannel = null;
 
   @JsonProperty("attachment")
   private PaymentsAttachment attachment = null;
+
+  @JsonProperty("authorization_token")
+  private String authorizationToken = null;
 
   @JsonProperty("auto_capture")
   private Boolean autoCapture = false;
@@ -61,7 +65,7 @@ public class PaymentsCreateOrderRequest {
   private String design = null;
 
   @JsonProperty("expires_at")
-  private PaymentsInstant expiresAt = null;
+  private OffsetDateTime expiresAt = null;
 
   @JsonProperty("locale")
   private String locale = null;
@@ -176,6 +180,15 @@ public class PaymentsCreateOrderRequest {
     this.attachment = attachment;
   }
 
+   /**
+   * Authorization token.
+   * @return authorizationToken
+  **/
+  @ApiModelProperty(value = "Authorization token.")
+  public String getAuthorizationToken() {
+    return authorizationToken;
+  }
+
   public PaymentsCreateOrderRequest autoCapture(Boolean autoCapture) {
     this.autoCapture = autoCapture;
     return this;
@@ -288,7 +301,7 @@ public class PaymentsCreateOrderRequest {
    * @return expiresAt
   **/
   @ApiModelProperty(value = "Session expiration date")
-  public PaymentsInstant getExpiresAt() {
+  public OffsetDateTime getExpiresAt() {
     return expiresAt;
   }
 
@@ -334,10 +347,10 @@ public class PaymentsCreateOrderRequest {
   }
 
    /**
-   * Used for storing merchant&#39;s internal order number or other reference. If set, will be shown on the confirmation page as \&quot;order number\&quot; (max 255 characters).
+   * Used for storing merchant&#39;s internal order number or other reference. If set, will be shown on the confirmation page as \&quot;order number\&quot; and send to the customer in the confirmation mail after a successful direct bank transfer payment. It will also be included in the payments description in the customer&#39;s bank account (max 255 characters).
    * @return merchantReference1
   **/
-  @ApiModelProperty(example = "45aa52f387871e3a210645d4", value = "Used for storing merchant's internal order number or other reference. If set, will be shown on the confirmation page as \"order number\" (max 255 characters).")
+  @ApiModelProperty(example = "45aa52f387871e3a210645d4", value = "Used for storing merchant's internal order number or other reference. If set, will be shown on the confirmation page as \"order number\" and send to the customer in the confirmation mail after a successful direct bank transfer payment. It will also be included in the payments description in the customer's bank account (max 255 characters).")
   public String getMerchantReference1() {
     return merchantReference1;
   }
@@ -545,6 +558,7 @@ public class PaymentsCreateOrderRequest {
     PaymentsCreateOrderRequest createOrderRequest = (PaymentsCreateOrderRequest) o;
     return Objects.equals(this.acquiringChannel, createOrderRequest.acquiringChannel) &&
         Objects.equals(this.attachment, createOrderRequest.attachment) &&
+        Objects.equals(this.authorizationToken, createOrderRequest.authorizationToken) &&
         Objects.equals(this.autoCapture, createOrderRequest.autoCapture) &&
         Objects.equals(this.billingAddress, createOrderRequest.billingAddress) &&
         Objects.equals(this.clientToken, createOrderRequest.clientToken) &&
@@ -570,7 +584,7 @@ public class PaymentsCreateOrderRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(acquiringChannel, attachment, autoCapture, billingAddress, clientToken, customPaymentMethodIds, customer, design, expiresAt, locale, merchantData, merchantReference1, merchantReference2, merchantUrls, options, orderAmount, orderLines, orderTaxAmount, paymentMethodCategories, purchaseCountry, purchaseCurrency, shippingAddress, status);
+    return Objects.hash(acquiringChannel, attachment, authorizationToken, autoCapture, billingAddress, clientToken, customPaymentMethodIds, customer, design, expiresAt, locale, merchantData, merchantReference1, merchantReference2, merchantUrls, options, orderAmount, orderLines, orderTaxAmount, paymentMethodCategories, purchaseCountry, purchaseCurrency, shippingAddress, status);
   }
 
 
@@ -581,6 +595,7 @@ public class PaymentsCreateOrderRequest {
     
     sb.append("    acquiringChannel: ").append(toIndentedString(acquiringChannel)).append("\n");
     sb.append("    attachment: ").append(toIndentedString(attachment)).append("\n");
+    sb.append("    authorizationToken: ").append(toIndentedString(authorizationToken)).append("\n");
     sb.append("    autoCapture: ").append(toIndentedString(autoCapture)).append("\n");
     sb.append("    billingAddress: ").append(toIndentedString(billingAddress)).append("\n");
     sb.append("    clientToken: ").append(toIndentedString(clientToken)).append("\n");

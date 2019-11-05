@@ -18,19 +18,84 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.klarna.rest.api.payments.model.PaymentsAddress;
+import com.klarna.rest.api.payments.model.PaymentsCustomer;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
  * PaymentsCustomerTokenCreationResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T12:40:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-11-05T12:55:42.744Z")
 public class PaymentsCustomerTokenCreationResponse {
+  @JsonProperty("billing_address")
+  private PaymentsAddress billingAddress = null;
+
+  @JsonProperty("customer")
+  private PaymentsCustomer customer = null;
+
+  @JsonProperty("payment_method_reference")
+  private String paymentMethodReference = null;
+
   @JsonProperty("redirect_url")
   private String redirectUrl = null;
 
   @JsonProperty("token_id")
   private String tokenId = null;
+
+  public PaymentsCustomerTokenCreationResponse billingAddress(PaymentsAddress billingAddress) {
+    this.billingAddress = billingAddress;
+    return this;
+  }
+
+   /**
+   * Billing address of the customer.
+   * @return billingAddress
+  **/
+  @ApiModelProperty(value = "Billing address of the customer.")
+  public PaymentsAddress getBillingAddress() {
+    return billingAddress;
+  }
+
+  public void setBillingAddress(PaymentsAddress billingAddress) {
+    this.billingAddress = billingAddress;
+  }
+
+  public PaymentsCustomerTokenCreationResponse customer(PaymentsCustomer customer) {
+    this.customer = customer;
+    return this;
+  }
+
+   /**
+   * Customer specific information.
+   * @return customer
+  **/
+  @ApiModelProperty(value = "Customer specific information.")
+  public PaymentsCustomer getCustomer() {
+    return customer;
+  }
+
+  public void setCustomer(PaymentsCustomer customer) {
+    this.customer = customer;
+  }
+
+  public PaymentsCustomerTokenCreationResponse paymentMethodReference(String paymentMethodReference) {
+    this.paymentMethodReference = paymentMethodReference;
+    return this;
+  }
+
+   /**
+   * Used to connect customer with payment method when it is present.
+   * @return paymentMethodReference
+  **/
+  @ApiModelProperty(example = "0b1d9815-165e-42e2-8867-35bc03789e00", value = "Used to connect customer with payment method when it is present.")
+  public String getPaymentMethodReference() {
+    return paymentMethodReference;
+  }
+
+  public void setPaymentMethodReference(String paymentMethodReference) {
+    this.paymentMethodReference = paymentMethodReference;
+  }
 
   public PaymentsCustomerTokenCreationResponse redirectUrl(String redirectUrl) {
     this.redirectUrl = redirectUrl;
@@ -78,13 +143,16 @@ public class PaymentsCustomerTokenCreationResponse {
       return false;
     }
     PaymentsCustomerTokenCreationResponse customerTokenCreationResponse = (PaymentsCustomerTokenCreationResponse) o;
-    return Objects.equals(this.redirectUrl, customerTokenCreationResponse.redirectUrl) &&
+    return Objects.equals(this.billingAddress, customerTokenCreationResponse.billingAddress) &&
+        Objects.equals(this.customer, customerTokenCreationResponse.customer) &&
+        Objects.equals(this.paymentMethodReference, customerTokenCreationResponse.paymentMethodReference) &&
+        Objects.equals(this.redirectUrl, customerTokenCreationResponse.redirectUrl) &&
         Objects.equals(this.tokenId, customerTokenCreationResponse.tokenId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(redirectUrl, tokenId);
+    return Objects.hash(billingAddress, customer, paymentMethodReference, redirectUrl, tokenId);
   }
 
 
@@ -93,6 +161,9 @@ public class PaymentsCustomerTokenCreationResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentsCustomerTokenCreationResponse {\n");
     
+    sb.append("    billingAddress: ").append(toIndentedString(billingAddress)).append("\n");
+    sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
+    sb.append("    paymentMethodReference: ").append(toIndentedString(paymentMethodReference)).append("\n");
     sb.append("    redirectUrl: ").append(toIndentedString(redirectUrl)).append("\n");
     sb.append("    tokenId: ").append(toIndentedString(tokenId)).append("\n");
     sb.append("}");

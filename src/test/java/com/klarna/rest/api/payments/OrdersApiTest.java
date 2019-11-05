@@ -16,9 +16,11 @@
 
 package com.klarna.rest.api.payments;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.klarna.rest.Client;
 import com.klarna.rest.FakeHttpUrlConnectionTransport;
 import com.klarna.rest.TestCase;
+import com.klarna.rest.api.DefaultMapper;
 import com.klarna.rest.api.payments.model.*;
 import org.junit.Before;
 import org.junit.Rule;
@@ -77,6 +79,16 @@ public class OrdersApiTest extends TestCase {
         final String requestPayout = transport.requestPayout.toString();
         assertTrue(requestPayout.contains("\"order_amount\":100"));
         assertTrue(requestPayout.contains("\"confirmation\":\"https://example.com/confirm\""));
+    }
+
+    @Test
+    public void testCreateOrderRequestModel() throws IOException {
+        ObjectMapper mapper = new DefaultMapper();
+        String data = "{\"acquiring_channel\": \"test\", \"auto_capture\": true, \"expires_at\": \"2019-11-07T10:10:54.991Z\"}";
+        PaymentsCreateOrderRequest request = mapper.readValue(data, PaymentsCreateOrderRequest.class);
+        assertEquals("test", request.getAcquiringChannel());
+        assertTrue(request.isAutoCapture());
+        assertEquals("2019-11-07T10:10:54.991Z",request.getExpiresAt().toString());
     }
 
     @Test
