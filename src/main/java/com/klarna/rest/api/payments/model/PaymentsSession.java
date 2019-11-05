@@ -21,26 +21,30 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.klarna.rest.api.payments.model.PaymentsAddress;
 import com.klarna.rest.api.payments.model.PaymentsAttachment;
 import com.klarna.rest.api.payments.model.PaymentsCustomer;
-import com.klarna.rest.api.payments.model.PaymentsInstant;
 import com.klarna.rest.api.payments.model.PaymentsMerchantUrls;
 import com.klarna.rest.api.payments.model.PaymentsOptions;
 import com.klarna.rest.api.payments.model.PaymentsOrderLine;
 import com.klarna.rest.api.payments.model.PaymentsPaymentMethodCategory;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.threeten.bp.OffsetDateTime;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * PaymentsSession
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T12:40:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-11-05T12:55:42.744Z")
 public class PaymentsSession {
   @JsonProperty("acquiring_channel")
   private String acquiringChannel = null;
 
   @JsonProperty("attachment")
   private PaymentsAttachment attachment = null;
+
+  @JsonProperty("authorization_token")
+  private String authorizationToken = null;
 
   @JsonProperty("billing_address")
   private PaymentsAddress billingAddress = null;
@@ -58,7 +62,7 @@ public class PaymentsSession {
   private String design = null;
 
   @JsonProperty("expires_at")
-  private PaymentsInstant expiresAt = null;
+  private OffsetDateTime expiresAt = null;
 
   @JsonProperty("locale")
   private String locale = null;
@@ -173,6 +177,15 @@ public class PaymentsSession {
     this.attachment = attachment;
   }
 
+   /**
+   * Authorization token.
+   * @return authorizationToken
+  **/
+  @ApiModelProperty(value = "Authorization token.")
+  public String getAuthorizationToken() {
+    return authorizationToken;
+  }
+
   public PaymentsSession billingAddress(PaymentsAddress billingAddress) {
     this.billingAddress = billingAddress;
     return this;
@@ -267,7 +280,7 @@ public class PaymentsSession {
    * @return expiresAt
   **/
   @ApiModelProperty(value = "Session expiration date")
-  public PaymentsInstant getExpiresAt() {
+  public OffsetDateTime getExpiresAt() {
     return expiresAt;
   }
 
@@ -313,10 +326,10 @@ public class PaymentsSession {
   }
 
    /**
-   * Used for storing merchant&#39;s internal order number or other reference. If set, will be shown on the confirmation page as \&quot;order number\&quot; (max 255 characters).
+   * Used for storing merchant&#39;s internal order number or other reference. If set, will be shown on the confirmation page as \&quot;order number\&quot; and send to the customer in the confirmation mail after a successful direct bank transfer payment. It will also be included in the payments description in the customer&#39;s bank account (max 255 characters).
    * @return merchantReference1
   **/
-  @ApiModelProperty(example = "45aa52f387871e3a210645d4", value = "Used for storing merchant's internal order number or other reference. If set, will be shown on the confirmation page as \"order number\" (max 255 characters).")
+  @ApiModelProperty(example = "45aa52f387871e3a210645d4", value = "Used for storing merchant's internal order number or other reference. If set, will be shown on the confirmation page as \"order number\" and send to the customer in the confirmation mail after a successful direct bank transfer payment. It will also be included in the payments description in the customer's bank account (max 255 characters).")
   public String getMerchantReference1() {
     return merchantReference1;
   }
@@ -524,6 +537,7 @@ public class PaymentsSession {
     PaymentsSession session = (PaymentsSession) o;
     return Objects.equals(this.acquiringChannel, session.acquiringChannel) &&
         Objects.equals(this.attachment, session.attachment) &&
+        Objects.equals(this.authorizationToken, session.authorizationToken) &&
         Objects.equals(this.billingAddress, session.billingAddress) &&
         Objects.equals(this.clientToken, session.clientToken) &&
         Objects.equals(this.customPaymentMethodIds, session.customPaymentMethodIds) &&
@@ -548,7 +562,7 @@ public class PaymentsSession {
 
   @Override
   public int hashCode() {
-    return Objects.hash(acquiringChannel, attachment, billingAddress, clientToken, customPaymentMethodIds, customer, design, expiresAt, locale, merchantData, merchantReference1, merchantReference2, merchantUrls, options, orderAmount, orderLines, orderTaxAmount, paymentMethodCategories, purchaseCountry, purchaseCurrency, shippingAddress, status);
+    return Objects.hash(acquiringChannel, attachment, authorizationToken, billingAddress, clientToken, customPaymentMethodIds, customer, design, expiresAt, locale, merchantData, merchantReference1, merchantReference2, merchantUrls, options, orderAmount, orderLines, orderTaxAmount, paymentMethodCategories, purchaseCountry, purchaseCurrency, shippingAddress, status);
   }
 
 
@@ -559,6 +573,7 @@ public class PaymentsSession {
     
     sb.append("    acquiringChannel: ").append(toIndentedString(acquiringChannel)).append("\n");
     sb.append("    attachment: ").append(toIndentedString(attachment)).append("\n");
+    sb.append("    authorizationToken: ").append(toIndentedString(authorizationToken)).append("\n");
     sb.append("    billingAddress: ").append(toIndentedString(billingAddress)).append("\n");
     sb.append("    clientToken: ").append(toIndentedString(clientToken)).append("\n");
     sb.append("    customPaymentMethodIds: ").append(toIndentedString(customPaymentMethodIds)).append("\n");

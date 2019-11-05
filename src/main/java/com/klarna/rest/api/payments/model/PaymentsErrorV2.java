@@ -27,10 +27,10 @@ import java.util.List;
 /**
  * PaymentsErrorV2
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T12:40:06.653Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-11-05T12:55:42.744Z")
 public class PaymentsErrorV2 {
-  @JsonProperty("authorized_payment_method_v1")
-  private PaymentsAuthorizedPaymentMethod authorizedPaymentMethodV1 = null;
+  @JsonProperty("authorized_payment_method")
+  private PaymentsAuthorizedPaymentMethod authorizedPaymentMethod = null;
 
   @JsonProperty("correlation_id")
   private String correlationId = null;
@@ -47,22 +47,22 @@ public class PaymentsErrorV2 {
   @JsonProperty("reason")
   private String reason = null;
 
-  public PaymentsErrorV2 authorizedPaymentMethodV1(PaymentsAuthorizedPaymentMethod authorizedPaymentMethodV1) {
-    this.authorizedPaymentMethodV1 = authorizedPaymentMethodV1;
+  public PaymentsErrorV2 authorizedPaymentMethod(PaymentsAuthorizedPaymentMethod authorizedPaymentMethod) {
+    this.authorizedPaymentMethod = authorizedPaymentMethod;
     return this;
   }
 
    /**
-   * Get authorizedPaymentMethodV1
-   * @return authorizedPaymentMethodV1
+   * Get authorizedPaymentMethod
+   * @return authorizedPaymentMethod
   **/
   @ApiModelProperty(value = "")
-  public PaymentsAuthorizedPaymentMethod getAuthorizedPaymentMethodV1() {
-    return authorizedPaymentMethodV1;
+  public PaymentsAuthorizedPaymentMethod getAuthorizedPaymentMethod() {
+    return authorizedPaymentMethod;
   }
 
-  public void setAuthorizedPaymentMethodV1(PaymentsAuthorizedPaymentMethod authorizedPaymentMethodV1) {
-    this.authorizedPaymentMethodV1 = authorizedPaymentMethodV1;
+  public void setAuthorizedPaymentMethod(PaymentsAuthorizedPaymentMethod authorizedPaymentMethod) {
+    this.authorizedPaymentMethod = authorizedPaymentMethod;
   }
 
   public PaymentsErrorV2 correlationId(String correlationId) {
@@ -173,7 +173,7 @@ public class PaymentsErrorV2 {
       return false;
     }
     PaymentsErrorV2 errorV2 = (PaymentsErrorV2) o;
-    return Objects.equals(this.authorizedPaymentMethodV1, errorV2.authorizedPaymentMethodV1) &&
+    return Objects.equals(this.authorizedPaymentMethod, errorV2.authorizedPaymentMethod) &&
         Objects.equals(this.correlationId, errorV2.correlationId) &&
         Objects.equals(this.errorCode, errorV2.errorCode) &&
         Objects.equals(this.errorMessages, errorV2.errorMessages) &&
@@ -183,7 +183,7 @@ public class PaymentsErrorV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(authorizedPaymentMethodV1, correlationId, errorCode, errorMessages, fraudStatus, reason);
+    return Objects.hash(authorizedPaymentMethod, correlationId, errorCode, errorMessages, fraudStatus, reason);
   }
 
 
@@ -192,7 +192,7 @@ public class PaymentsErrorV2 {
     StringBuilder sb = new StringBuilder();
     sb.append("class PaymentsErrorV2 {\n");
     
-    sb.append("    authorizedPaymentMethodV1: ").append(toIndentedString(authorizedPaymentMethodV1)).append("\n");
+    sb.append("    authorizedPaymentMethod: ").append(toIndentedString(authorizedPaymentMethod)).append("\n");
     sb.append("    correlationId: ").append(toIndentedString(correlationId)).append("\n");
     sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
     sb.append("    errorMessages: ").append(toIndentedString(errorMessages)).append("\n");
