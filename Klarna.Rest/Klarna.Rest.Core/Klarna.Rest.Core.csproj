@@ -29,6 +29,11 @@
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="Model\HostedPaymentPage" />
+  </ItemGroup>
+
   <PropertyGroup>
     <SignKey>$(AssemblyOriginatorKeyFile)</SignKey>
     <Assembly>$(SolutionDir)Klarna.Rest.Core/$(OutputPath)/$(TargetFramework)/$(AssemblyName).dll</Assembly>

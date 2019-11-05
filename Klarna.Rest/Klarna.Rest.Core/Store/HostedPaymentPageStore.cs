@@ -1,8 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Klarna.Rest.Core.Common;
 using Klarna.Rest.Core.Communication;
 using Klarna.Rest.Core.Communication.Dto;
 using Klarna.Rest.Core.Model;
+using HppModel = Klarna.Rest.Core.Model.HostedPaymentPage;
 using Klarna.Rest.Core.Serialization;
 
 namespace Klarna.Rest.Core.Store
@@ -27,6 +29,8 @@ namespace Klarna.Rest.Core.Store
         /// </summary>
         /// <param name="session">The <see cref="HostedPaymentPageCreateSessionRequest"/> object</param>
         /// <returns>A single <see cref="HostedPaymentPageCreateSessionResponse"/> object</returns>
+        [Obsolete("HostedPaymentPageCreateSessionResponse and HostedPaymentPageCreateSessionRequest are " +
+                  "using the old model. Please use SessionCreationResponseV1 and SessionCreationRequestV1 instead")]
         public async Task<HostedPaymentPageCreateSessionResponse> CreateSession(
             HostedPaymentPageCreateSessionRequest session)
         {
@@ -35,12 +39,37 @@ namespace Klarna.Rest.Core.Store
         }
 
         /// <summary>
+        /// Creates a new HPP session
+        /// </summary>
+        /// <param name="session">The <see cref="HostedPaymentPageCreateSessionRequest"/> object</param>
+        /// <returns>A single <see cref="HostedPaymentPageCreateSessionResponse"/> object</returns>
+        public async Task<HppModel.SessionCreationResponseV1> CreateSession(
+            HppModel.SessionCreationRequestV1 session)
+        {
+            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri);
+            return await Post<HppModel.SessionCreationResponseV1>(url, session).ConfigureAwait(false);
+        }
+
+        /// <summary>
         /// Distributes link to the HPP session
         /// </summary>
         /// <param name="sessionId">HPP session id</param>
         /// <param name="distribution">The <see cref="HostedPaymentPageDistributeLink"/>object</param>
         /// <returns></returns>
+        [Obsolete("HostedPaymentPageDistributeLink using the old model. Please use DistributionRequestV1 instead")]
         public Task DistributeLinkToSession(string sessionId, HostedPaymentPageDistributeLink distribution)
+        {
+            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{sessionId}/distribution");
+            return Post(url, distribution);
+        }
+
+        /// <summary>
+        /// Distributes link to the HPP session
+        /// </summary>
+        /// <param name="sessionId">HPP session id</param>
+        /// <param name="distribution">The <see cref="HostedPaymentPageDistributeLink"/>object</param>
+        /// <returns></returns>
+        public Task DistributeLinkToSession(string sessionId, HppModel.DistributionRequestV1 distribution)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{sessionId}/distribution");
             return Post(url, distribution);
@@ -51,10 +80,10 @@ namespace Klarna.Rest.Core.Store
         /// </summary>
         /// <param name="sessionId">HPP session id</param>
         /// <returns>A single <see cref="HostedPaymentPageSessionStatus"/> object</returns>
-        public async Task<HostedPaymentPageSessionStatus> GetSessionStatus(string sessionId)
+        public async Task<HppModel.SessionResponseV1> GetSessionStatus(string sessionId)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{sessionId}/status");
-            return await Get<HostedPaymentPageSessionStatus>(url).ConfigureAwait(false);
+            return await Get<HppModel.SessionResponseV1>(url).ConfigureAwait(false);
         }
     }
 }
