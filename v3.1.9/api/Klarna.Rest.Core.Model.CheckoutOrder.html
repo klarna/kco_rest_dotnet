@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class CheckoutOrder
    | Klarna Checkout REST.Core .NET SDK ">
-    <meta name="generator" content="docfx 2.40.12.0">
+    <meta name="generator" content="docfx 2.47.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -95,7 +95,7 @@
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_Attachment.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.Attachment%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L126">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L155">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_Attachment_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.Attachment*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_Attachment" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.Attachment">Attachment</h4>
@@ -118,7 +118,8 @@ public Attachment Attachment { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="Klarna.Rest.Core.Model.Attachment.html">Attachment</a></td>
-        <td></td>
+        <td><p>Additional purchase information required for some industries.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -127,7 +128,7 @@ public Attachment Attachment { get; set; }</code></pre>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_BillingCheckoutAddress.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.BillingCheckoutAddress%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L47">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L57">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_BillingCheckoutAddress_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.BillingCheckoutAddress*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_BillingCheckoutAddress" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.BillingCheckoutAddress">BillingCheckoutAddress</h4>
@@ -150,7 +151,41 @@ public CheckoutAddressInfo BillingCheckoutAddress { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="Klarna.Rest.Core.Model.CheckoutAddressInfo.html">CheckoutAddressInfo</a></td>
-        <td></td>
+        <td><p>Once the customer has provided any data in the checkout iframe, updates to this object will be ignored (without generating an error).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_BillingCountries.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.BillingCountries%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L239">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOrder_BillingCountries_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.BillingCountries*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_BillingCountries" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.BillingCountries">BillingCountries</h4>
+  <div class="markdown level1 summary"><p>A list of countries (ISO 3166 alpha-2) to specify allowed billing countries.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;billing_countries&quot;)]
+public ICollection&lt;string&gt; BillingCountries { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><p>A list of countries (ISO 3166 alpha-2) to specify allowed billing countries.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -159,7 +194,7 @@ public CheckoutAddressInfo BillingCheckoutAddress { get; set; }</code></pre>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_CheckoutCustomer.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.CheckoutCustomer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L76">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L92">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_CheckoutCustomer_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.CheckoutCustomer*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_CheckoutCustomer" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.CheckoutCustomer">CheckoutCustomer</h4>
@@ -182,7 +217,8 @@ public CheckoutCustomer CheckoutCustomer { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="Klarna.Rest.Core.Model.CheckoutCustomer.html">CheckoutCustomer</a></td>
-        <td></td>
+        <td><p>Information about the liable customer of the order.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -191,11 +227,11 @@ public CheckoutCustomer CheckoutCustomer { get; set; }</code></pre>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_CheckoutOptions.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.CheckoutOptions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L121">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L148">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_CheckoutOptions_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.CheckoutOptions*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_CheckoutOptions" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.CheckoutOptions">CheckoutOptions</h4>
-  <div class="markdown level1 summary"><p>Options for the purchase.</p>
+  <div class="markdown level1 summary"><p>Options for this purchase.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -214,7 +250,8 @@ public CheckoutOptions CheckoutOptions { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="Klarna.Rest.Core.Model.CheckoutOptions.html">CheckoutOptions</a></td>
-        <td></td>
+        <td><p>Options for this purchase.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -223,7 +260,7 @@ public CheckoutOptions CheckoutOptions { get; set; }</code></pre>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_CompletedAt.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.CompletedAt%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L110">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L134">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_CompletedAt_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.CompletedAt*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_CompletedAt" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.CompletedAt">CompletedAt</h4>
@@ -246,19 +283,17 @@ public string CompletedAt { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>ISO 8601 datetime. When the customer completed the order.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Klarna_Rest_Core_Model_CheckoutOrder_CompletedAt_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Read only</p>
-</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_ExternalCheckouts.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.ExternalCheckouts%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L136">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L169">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_ExternalCheckouts_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.ExternalCheckouts*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_ExternalCheckouts" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.ExternalCheckouts">ExternalCheckouts</h4>
@@ -267,7 +302,7 @@ public string CompletedAt { get; set; }</code></pre>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;externa_checkouts&quot;)]
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;external_checkouts&quot;)]
 public ICollection&lt;PaymentProvider&gt; ExternalCheckouts { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
@@ -281,7 +316,8 @@ public ICollection&lt;PaymentProvider&gt; ExternalCheckouts { get; set; }</code>
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="Klarna.Rest.Core.Model.PaymentProvider.html">PaymentProvider</a>&gt;</td>
-        <td></td>
+        <td><p>List of external checkouts.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -290,7 +326,7 @@ public ICollection&lt;PaymentProvider&gt; ExternalCheckouts { get; set; }</code>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_ExternalPaymentMethods.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.ExternalPaymentMethods%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L131">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L162">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_ExternalPaymentMethods_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.ExternalPaymentMethods*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_ExternalPaymentMethods" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.ExternalPaymentMethods">ExternalPaymentMethods</h4>
@@ -313,7 +349,8 @@ public ICollection&lt;PaymentProvider&gt; ExternalPaymentMethods { get; set; }</
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="Klarna.Rest.Core.Model.PaymentProvider.html">PaymentProvider</a>&gt;</td>
-        <td></td>
+        <td><p>List of external payment methods.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -322,7 +359,7 @@ public ICollection&lt;PaymentProvider&gt; ExternalPaymentMethods { get; set; }</
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_Gui.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.Gui%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L156">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L197">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_Gui_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.Gui*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_Gui" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.Gui">Gui</h4>
@@ -345,7 +382,8 @@ public Gui Gui { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="Klarna.Rest.Core.Model.Gui.html">Gui</a></td>
-        <td></td>
+        <td><p>The gui object.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -354,7 +392,7 @@ public Gui Gui { get; set; }</code></pre>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_HtmlSnippet.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.HtmlSnippet%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L88">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L106">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_HtmlSnippet_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.HtmlSnippet*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_HtmlSnippet" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.HtmlSnippet">HtmlSnippet</h4>
@@ -377,19 +415,17 @@ public string HtmlSnippet { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>The HTML snippet that is used to render the checkout in an iframe.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Klarna_Rest_Core_Model_CheckoutOrder_HtmlSnippet_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Read only</p>
-</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_LastModifiedAt.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.LastModifiedAt%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L116">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L141">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_LastModifiedAt_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.LastModifiedAt*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_LastModifiedAt" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.LastModifiedAt">LastModifiedAt</h4>
@@ -412,19 +448,17 @@ public string LastModifiedAt { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>ISO 8601 datetime. When the order was last modified.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Klarna_Rest_Core_Model_CheckoutOrder_LastModifiedAt_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Read only</p>
-</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_Locale.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.Locale%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L36">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L43">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_Locale_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.Locale*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_Locale" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.Locale">Locale</h4>
@@ -447,23 +481,21 @@ public string Locale { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>RFC 1766 customer's locale.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Klarna_Rest_Core_Model_CheckoutOrder_Locale_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Required</p>
-</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_MerchantData.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.MerchantData%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L151">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L190">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_MerchantData_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.MerchantData*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_MerchantData" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.MerchantData">MerchantData</h4>
-  <div class="markdown level1 summary"><p>Pass through field (max 1024 characters).</p>
+  <div class="markdown level1 summary"><p>Pass through field (max 6000 characters).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -482,7 +514,8 @@ public string MerchantData { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>Pass through field (max 6000 characters).</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -491,11 +524,11 @@ public string MerchantData { get; set; }</code></pre>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_MerchantReference1.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.MerchantReference1%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L93">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L113">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_MerchantReference1_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.MerchantReference1*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_MerchantReference1" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.MerchantReference1">MerchantReference1</h4>
-  <div class="markdown level1 summary"><p>Used for storing merchant's internal order number or other reference. If set, will be shown on the confirmation page as &quot;order number&quot; (max 255 characters).</p>
+  <div class="markdown level1 summary"><p>Used for storing merchant's internal order number or other reference. If set, will be shown on the confirmation page as &amp;quot;order number&amp;quot; (max 255 characters).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -514,7 +547,8 @@ public string MerchantReference1 { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>Used for storing merchant's internal order number or other reference. If set, will be shown on the confirmation page as &amp;quot;order number&amp;quot; (max 255 characters).</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -523,11 +557,11 @@ public string MerchantReference1 { get; set; }</code></pre>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_MerchantReference2.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.MerchantReference2%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L98">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L120">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_MerchantReference2_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.MerchantReference2*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_MerchantReference2" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.MerchantReference2">MerchantReference2</h4>
-  <div class="markdown level1 summary"><p>Used for storing merchant's internal order number of other reference (max 255 characters).</p>
+  <div class="markdown level1 summary"><p>Used for storing merchant's internal order number or other reference (max 255 characters).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -546,7 +580,8 @@ public string MerchantReference2 { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>Used for storing merchant's internal order number or other reference (max 255 characters).</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -555,11 +590,11 @@ public string MerchantReference2 { get; set; }</code></pre>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_MerchantRequested.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.MerchantRequested%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L162">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L204">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_MerchantRequested_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.MerchantRequested*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_MerchantRequested" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.MerchantRequested">MerchantRequested</h4>
-  <div class="markdown level1 summary"><p>Stored merchant requested data.</p>
+  <div class="markdown level1 summary"><p>Stores merchant requested data.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -578,23 +613,21 @@ public MerchantRequested MerchantRequested { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="Klarna.Rest.Core.Model.MerchantRequested.html">MerchantRequested</a></td>
-        <td></td>
+        <td><p>Stores merchant requested data.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Klarna_Rest_Core_Model_CheckoutOrder_MerchantRequested_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Read only</p>
-</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_MerchantUrls.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.MerchantUrls%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L82">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L99">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_MerchantUrls_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.MerchantUrls*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_MerchantUrls" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.MerchantUrls">MerchantUrls</h4>
-  <div class="markdown level1 summary"><p>The MerchantUrls object.</p>
+  <div class="markdown level1 summary"><p>The merchant_urls object.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -613,19 +646,17 @@ public CheckoutMerchantUrls MerchantUrls { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="Klarna.Rest.Core.Model.CheckoutMerchantUrls.html">CheckoutMerchantUrls</a></td>
-        <td></td>
+        <td><p>The merchant_urls object.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Klarna_Rest_Core_Model_CheckoutOrder_MerchantUrls_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Required</p>
-</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_Name.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L18">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L22">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_Name_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.Name*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_Name" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.Name">Name</h4>
@@ -648,19 +679,17 @@ public string Name { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>The merchant name (max 255 characters).</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Klarna_Rest_Core_Model_CheckoutOrder_Name_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Read only</p>
-</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_OrderAmount.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.OrderAmount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L59">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L71">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_OrderAmount_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.OrderAmount*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_OrderAmount" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.OrderAmount">OrderAmount</h4>
@@ -683,19 +712,17 @@ public int OrderAmount { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>Non-negative, minor units. Total amount of the order, including tax and any discounts.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Klarna_Rest_Core_Model_CheckoutOrder_OrderAmount_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Required</p>
-</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_OrderId.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.OrderId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L12">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L15">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_OrderId_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.OrderId*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_OrderId" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.OrderId">OrderId</h4>
@@ -718,19 +745,17 @@ public string OrderId { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>The unique order ID (max 255 characters).</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Klarna_Rest_Core_Model_CheckoutOrder_OrderId_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Read only</p>
-</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_OrderLines.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.OrderLines%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L71">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L85">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_OrderLines_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.OrderLines*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_OrderLines" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.OrderLines">OrderLines</h4>
@@ -753,19 +778,17 @@ public ICollection&lt;OrderLine&gt; OrderLines { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="Klarna.Rest.Core.Model.OrderLine.html">OrderLine</a>&gt;</td>
-        <td></td>
+        <td><p>The applicable order lines (max 1000)</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Klarna_Rest_Core_Model_CheckoutOrder_OrderLines_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Required</p>
-</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_OrderTaxAmount.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.OrderTaxAmount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L65">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L78">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_OrderTaxAmount_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.OrderTaxAmount*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_OrderTaxAmount" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.OrderTaxAmount">OrderTaxAmount</h4>
@@ -788,19 +811,17 @@ public int OrderTaxAmount { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><p>Non-negative, minor units. The total tax amount of the order.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Klarna_Rest_Core_Model_CheckoutOrder_OrderTaxAmount_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Required</p>
-</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_PurchaseCountry.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.PurchaseCountry%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L24">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L29">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_PurchaseCountry_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.PurchaseCountry*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_PurchaseCountry" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.PurchaseCountry">PurchaseCountry</h4>
@@ -823,19 +844,17 @@ public string PurchaseCountry { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>ISO 3166 alpha-2 purchase country.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Klarna_Rest_Core_Model_CheckoutOrder_PurchaseCountry_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Required</p>
-</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_PurchaseCurrency.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.PurchaseCurrency%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L30">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L36">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_PurchaseCurrency_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.PurchaseCurrency*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_PurchaseCurrency" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.PurchaseCurrency">PurchaseCurrency</h4>
@@ -858,19 +877,17 @@ public string PurchaseCurrency { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>ISO 4217 purchase currency.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Klarna_Rest_Core_Model_CheckoutOrder_PurchaseCurrency_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Required</p>
-</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_Recurring.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.Recurring%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L173">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L218">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_Recurring_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.Recurring*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_Recurring" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.Recurring">Recurring</h4>
@@ -893,7 +910,8 @@ public bool Recurring { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
-        <td></td>
+        <td><p>Indicates whether this purchase will create a token that can be used by the merchant to create recurring purchases. This must be enabled for the merchant to use. Default: false</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -902,11 +920,11 @@ public bool Recurring { get; set; }</code></pre>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_RecurringDescription.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.RecurringDescription%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L185">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L232">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_RecurringDescription_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.RecurringDescription*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_RecurringDescription" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.RecurringDescription">RecurringDescription</h4>
-  <div class="markdown level1 summary"><p>Description recurring subscriptions.</p>
+  <div class="markdown level1 summary"><p>Description recurring subscription.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -925,19 +943,17 @@ public string RecurringDescription { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>Description recurring subscription.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Klarna_Rest_Core_Model_CheckoutOrder_RecurringDescription_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Read only</p>
-</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_RecurringToken.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.RecurringToken%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L179">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L225">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_RecurringToken_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.RecurringToken*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_RecurringToken" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.RecurringToken">RecurringToken</h4>
@@ -960,19 +976,17 @@ public string RecurringToken { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>Token to be used when creating recurring orders.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Klarna_Rest_Core_Model_CheckoutOrder_RecurringToken_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Read only</p>
-</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_SelectedShippingOption.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.SelectedShippingOption%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L168">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L211">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_SelectedShippingOption_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.SelectedShippingOption*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_SelectedShippingOption" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.SelectedShippingOption">SelectedShippingOption</h4>
@@ -995,23 +1009,21 @@ public ShippingOption SelectedShippingOption { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="Klarna.Rest.Core.Model.ShippingOption.html">ShippingOption</a></td>
-        <td></td>
+        <td><p>Current shipping options selected by the customer.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Klarna_Rest_Core_Model_CheckoutOrder_SelectedShippingOption_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Read only</p>
-</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_ShippingCheckoutAddress.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.ShippingCheckoutAddress%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L53">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L64">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_ShippingCheckoutAddress_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.ShippingCheckoutAddress*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_ShippingCheckoutAddress" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.ShippingCheckoutAddress">ShippingCheckoutAddress</h4>
-  <div class="markdown level1 summary"><p>Unless the customer has explicitly chosen to enter a separate shipping address, this is a clone of BillingAddress.</p>
+  <div class="markdown level1 summary"><p>Unless the customer has explicitly chosen to enter a separate shipping address, this is a clone of billing_address.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1030,23 +1042,21 @@ public CheckoutAddressInfo ShippingCheckoutAddress { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><a class="xref" href="Klarna.Rest.Core.Model.CheckoutAddressInfo.html">CheckoutAddressInfo</a></td>
-        <td></td>
+        <td><p>Unless the customer has explicitly chosen to enter a separate shipping address, this is a clone of billing_address.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Klarna_Rest_Core_Model_CheckoutOrder_ShippingCheckoutAddress_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Read only</p>
-</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_ShippingCountries.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.ShippingCountries%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L141">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L176">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_ShippingCountries_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.ShippingCountries*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_ShippingCountries" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.ShippingCountries">ShippingCountries</h4>
-  <div class="markdown level1 summary"><p>A list of countries (ISO 3166 alpha-2). Default is PurchaseCountry only.</p>
+  <div class="markdown level1 summary"><p>A list of countries (ISO 3166 alpha-2). Default is purchase_country only.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1065,7 +1075,8 @@ public ICollection&lt;string&gt; ShippingCountries { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<span class="xref">System.String</span>&gt;</td>
-        <td></td>
+        <td><p>A list of countries (ISO 3166 alpha-2). Default is purchase_country only.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1074,7 +1085,7 @@ public ICollection&lt;string&gt; ShippingCountries { get; set; }</code></pre>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_ShippingOptions.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.ShippingOptions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L146">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L183">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_ShippingOptions_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.ShippingOptions*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_ShippingOptions" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.ShippingOptions">ShippingOptions</h4>
@@ -1097,7 +1108,8 @@ public ICollection&lt;ShippingOption&gt; ShippingOptions { get; set; }</code></p
     <tbody>
       <tr>
         <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="Klarna.Rest.Core.Model.ShippingOption.html">ShippingOption</a>&gt;</td>
-        <td></td>
+        <td><p>A list of shipping options available for this order.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1106,7 +1118,7 @@ public ICollection&lt;ShippingOption&gt; ShippingOptions { get; set; }</code></p
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_StartedAt.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.StartedAt%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L104">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L127">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_StartedAt_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.StartedAt*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_StartedAt" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.StartedAt">StartedAt</h4>
@@ -1129,19 +1141,17 @@ public string StartedAt { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>ISO 8601 datetime. When the merchant created the order.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Klarna_Rest_Core_Model_CheckoutOrder_StartedAt_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Read only</p>
-</div>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_Status.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.Status%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L42">View Source</a>
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L50">View Source</a>
   </span>
   <a id="Klarna_Rest_Core_Model_CheckoutOrder_Status_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.Status*"></a>
   <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_Status" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.Status">Status</h4>
@@ -1164,13 +1174,44 @@ public string Status { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td></td>
+        <td><p>The current status of the order.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Klarna_Rest_Core_Model_CheckoutOrder_Status_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Read only</p>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder_Tags.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder.Tags%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L246">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOrder_Tags_" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.Tags*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOrder_Tags" data-uid="Klarna.Rest.Core.Model.CheckoutOrder.Tags">Tags</h4>
+  <div class="markdown level1 summary"><p>The product's extra features</p>
 </div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;tags&quot;)]
+public ICollection&lt;string&gt; Tags { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><p>The product's extra features</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
@@ -1182,7 +1223,7 @@ public string Status { get; set; }</code></pre>
                     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOrder.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOrder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L6" class="contribution-link">View Source</a>
+                    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOrder.cs/#L9" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

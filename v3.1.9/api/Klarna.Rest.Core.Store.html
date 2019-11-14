@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Namespace Klarna.Rest.Core.Store
    | Klarna Checkout REST.Core .NET SDK ">
-    <meta name="generator" content="docfx 2.40.12.0">
+    <meta name="generator" content="docfx 2.47.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -61,12 +61,15 @@ As soon as the purchase is completed the order should be read and handled using 
 </section>
       <h4><a class="xref" href="Klarna.Rest.Core.Store.CustomerTokenStore.html">CustomerTokenStore</a></h4>
       <section><p>Customer Token API
-The Customer Token API is used to charge customers with a tokenized Klarna payment method and can be used for recurring purchases, subscriptions and for storing a customer's payment method. Tokens are created using the generate a customer token call in the payments API.</p>
+The Customer Token API is used to charge customers with a tokenized Klarna payment method and can be used
+for recurring purchases, subscriptions and for storing a customer's payment method. Tokens are created using
+the generate a customer token call in the payments API.</p>
 </section>
       <h4><a class="xref" href="Klarna.Rest.Core.Store.HostedPaymentPageStore.html">HostedPaymentPageStore</a></h4>
       <section><p>Hosted Payment Page API
-Hosted Payment Page (HPP) API is a service that lets you integrate Klarna Payments without the need of hosting the web page that manages the client side of Klarna Payments.
-A complete HPP payment session will involve three of Klarna services:</p>
+Hosted Payment Page (HPP) API is a service that lets you integrate Klarna Payments without the need of hosting
+the web page that manages the client side of Klarna Payments.</p>
+<p>A complete HPP payment session will involve three of Klarna services:</p>
 <ul>
 <li>Klarna Payments API to start a payment session.</li>
 <li>Hosted Payment Page API to distribute a payment session.</li>
@@ -74,7 +77,9 @@ A complete HPP payment session will involve three of Klarna services:</p>
 </ul>
 </section>
       <h4><a class="xref" href="Klarna.Rest.Core.Store.OrderManagementStore.html">OrderManagementStore</a></h4>
-      <section><p>The Order Management API is used for handling an order after the customer has completed the purchase. It is used for updating, capturing and refunding an order as well as to see the history of events that have affected this order.</p>
+      <section><p>The Order Management API is used for handling an order after the customer has completed the purchase.
+It is used for updating, capturing and refunding an order as well as to see the history of events that
+have affected this order.</p>
 </section>
       <h4><a class="xref" href="Klarna.Rest.Core.Store.PaymentStore.html">PaymentStore</a></h4>
       <section><p>The payments API is used to create a session to offer Klarna's payment methods as part of your checkout.
@@ -84,7 +89,8 @@ As soon as the purchase is completed the order should be read and handled using 
       <section><p>This API gives you access to your payouts and transactions.
 Resources are split into two broad types:</p>
 <ul>
-<li>Collections, including pagination information: collections are queryable, typically by the attributes of the sub-resource as well as pagination.</li>
+<li>Collections, including pagination information: collections are queryable, typically by the attributes of
+the sub-resource as well as pagination.</li>
 <li>Entity resources containing a single entity.</li>
 </ul>
 </section>

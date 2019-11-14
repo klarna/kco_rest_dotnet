@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class OrderManagementGetRefundResponse
    | Klarna Checkout REST.Core .NET SDK ">
-    <meta name="generator" content="docfx 2.40.12.0">
+    <meta name="generator" content="docfx 2.47.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -51,15 +51,32 @@
   
   <h1 id="Klarna_Rest_Core_Model_OrderManagementGetRefundResponse" data-uid="Klarna.Rest.Core.Model.OrderManagementGetRefundResponse" class="text-break">Class OrderManagementGetRefundResponse
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Deprecated</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">OrderManagementGetRefundResponse</span></div>
+    <div class="level1"><a class="xref" href="Klarna.Rest.Core.Model.OrderManagementRefund.html">OrderManagementRefund</a></div>
+    <div class="level2"><span class="xref">OrderManagementGetRefundResponse</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Model.OrderManagementRefund.html#Klarna_Rest_Core_Model_OrderManagementRefund_RefundId">OrderManagementRefund.RefundId</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Model.OrderManagementRefund.html#Klarna_Rest_Core_Model_OrderManagementRefund_RefundedAmount">OrderManagementRefund.RefundedAmount</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Model.OrderManagementRefund.html#Klarna_Rest_Core_Model_OrderManagementRefund_RefundedAt">OrderManagementRefund.RefundedAt</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Model.OrderManagementRefund.html#Klarna_Rest_Core_Model_OrderManagementRefund_Description">OrderManagementRefund.Description</a>
+    </div>
+    <div>
+      <a class="xref" href="Klarna.Rest.Core.Model.OrderManagementRefund.html#Klarna_Rest_Core_Model_OrderManagementRefund_OrderLines">OrderManagementRefund.OrderLines</a>
+    </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
@@ -86,233 +103,9 @@
   <h6><strong>Assembly</strong>: Klarna.Rest.Core.dll</h6>
   <h5 id="Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class OrderManagementGetRefundResponse</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use OrderManagementRefund model instead&quot;)]
+public class OrderManagementGetRefundResponse : OrderManagementRefund</code></pre>
   </div>
-  <h3 id="properties">Properties
-  </h3>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_Description.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.Description%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/OrderManagementGetRefundResponse.cs/#L29">View Source</a>
-  </span>
-  <a id="Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_Description_" data-uid="Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.Description*"></a>
-  <h4 id="Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_Description" data-uid="Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.Description">Description</h4>
-  <div class="markdown level1 summary"><p>Description of the refund shown to the customer. Max length is 255 characters.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;description&quot;)]
-public string Description { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_MerchantReversal.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.MerchantReversal%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/OrderManagementGetRefundResponse.cs/#L47">View Source</a>
-  </span>
-  <a id="Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_MerchantReversal_" data-uid="Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.MerchantReversal*"></a>
-  <h4 id="Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_MerchantReversal" data-uid="Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.MerchantReversal">MerchantReversal</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;merchant_reversal&quot;)]
-public bool MerchantReversal { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_OrderLines.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.OrderLines%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/OrderManagementGetRefundResponse.cs/#L35">View Source</a>
-  </span>
-  <a id="Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_OrderLines_" data-uid="Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.OrderLines*"></a>
-  <h4 id="Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_OrderLines" data-uid="Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.OrderLines">OrderLines</h4>
-  <div class="markdown level1 summary"><p>Order lines for the refund shown to the customer. Optional but increases the customer experience. Maximum 1000 order lines.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;order_lines&quot;)]
-public ICollection&lt;OrderLine&gt; OrderLines { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="Klarna.Rest.Core.Model.OrderLine.html">OrderLine</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_ProcessedOrderLines.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.ProcessedOrderLines%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/OrderManagementGetRefundResponse.cs/#L41">View Source</a>
-  </span>
-  <a id="Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_ProcessedOrderLines_" data-uid="Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.ProcessedOrderLines*"></a>
-  <h4 id="Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_ProcessedOrderLines" data-uid="Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.ProcessedOrderLines">ProcessedOrderLines</h4>
-  <div class="markdown level1 summary"><p>Order lines for the refund shown to the customer. Optional but increases the customer experience. Maximum 1000 order lines.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;processed_order_lines&quot;)]
-public ICollection&lt;OrderLine&gt; ProcessedOrderLines { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="Klarna.Rest.Core.Model.OrderLine.html">OrderLine</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_RefundedAmount.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.RefundedAmount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/OrderManagementGetRefundResponse.cs/#L17">View Source</a>
-  </span>
-  <a id="Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_RefundedAmount_" data-uid="Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.RefundedAmount*"></a>
-  <h4 id="Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_RefundedAmount" data-uid="Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.RefundedAmount">RefundedAmount</h4>
-  <div class="markdown level1 summary"><p>Refunded amount in minor units.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;refunded_amount&quot;)]
-public int RefundedAmount { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_RefundedAt.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.RefundedAt%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/OrderManagementGetRefundResponse.cs/#L23">View Source</a>
-  </span>
-  <a id="Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_RefundedAt_" data-uid="Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.RefundedAt*"></a>
-  <h4 id="Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_RefundedAt" data-uid="Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.RefundedAt">RefundedAt</h4>
-  <div class="markdown level1 summary"><p>Date for refund</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;refunded_at&quot;)]
-public string RefundedAt { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_RefundId.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.RefundId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/OrderManagementGetRefundResponse.cs/#L11">View Source</a>
-  </span>
-  <a id="Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_RefundId_" data-uid="Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.RefundId*"></a>
-  <h4 id="Klarna_Rest_Core_Model_OrderManagementGetRefundResponse_RefundId" data-uid="Klarna.Rest.Core.Model.OrderManagementGetRefundResponse.RefundId">RefundId</h4>
-  <div class="markdown level1 summary"><p>Refund ID</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;refund_id&quot;)]
-public string RefundId { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
 </article>
           </div>
           
@@ -324,7 +117,7 @@ public string RefundId { get; set; }</code></pre>
                     <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_OrderManagementGetRefundResponse.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.OrderManagementGetRefundResponse%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/OrderManagementGetRefundResponse.cs/#L6" class="contribution-link">View Source</a>
+                    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/OrderManagementGetRefundResponse.cs/#L9" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
