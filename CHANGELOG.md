@@ -15,6 +15,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [3.1.9] (Enhancements Release) - 2019-11-14
+
+### Added
+
+- Hosted Payment Pages: Add support of session disabling
+
+
 ## [3.1.8] (Enhancements/Bugfix Release)
 
 ### Changed
@@ -223,7 +230,8 @@ and fixes [#77](https://github.com/klarna/kco_rest_dotnet/issues/77)
 
 - **NEW MINT-1912** Support checkout v3 and ordermanagement v1 APIs - *Joakim.L*
 
-[Unreleased]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.8...HEAD
+[Unreleased]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.9...HEAD
+[3.1.9]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.8...v3.1.9
 [3.1.8]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.7...v3.1.8
 [3.1.7]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.6.1...v3.1.7
 [3.1.6.1]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.5...v3.1.6.1
