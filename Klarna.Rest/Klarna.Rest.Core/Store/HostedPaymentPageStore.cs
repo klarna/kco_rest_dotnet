@@ -85,5 +85,16 @@ namespace Klarna.Rest.Core.Store
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{sessionId}");
             return await Get<HppModel.SessionResponseV1>(url).ConfigureAwait(false);
         }
+
+        /// <summary>
+        /// Disables HPP session
+        /// </summary>
+        /// <param name="sessionId">HPP session id</param>
+        /// <returns></returns>
+        public Task DisableSession(string sessionId)
+        {
+            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{sessionId}");
+            return Delete(url);
+        }
     }
 }
