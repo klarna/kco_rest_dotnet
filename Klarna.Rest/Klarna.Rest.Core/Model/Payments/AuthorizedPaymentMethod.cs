@@ -8,7 +8,7 @@ namespace Klarna.Rest.Core.Model.Payments {
   /// 
   /// </summary>
   [DataContract]
-  public class PaymentsAuthorizedPaymentMethod {
+  public class AuthorizedPaymentMethod {
     /// <summary>
     /// Gets or Sets Type
     /// </summary>
@@ -23,7 +23,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class PaymentsAuthorizedPaymentMethod {\n");
+      sb.Append("class AuthorizedPaymentMethod {\n");
       sb.Append("  Type: ").Append(Type).Append("\n");
       sb.Append("}\n");
       return sb.ToString();

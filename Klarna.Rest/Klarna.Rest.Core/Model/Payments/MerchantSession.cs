@@ -9,7 +9,7 @@ namespace Klarna.Rest.Core.Model.Payments {
   /// 
   /// </summary>
   [DataContract]
-  public class PaymentsMerchantSession {
+  public class MerchantSession {
     /// <summary>
     /// Token to be passed to the JS client
     /// </summary>
@@ -24,7 +24,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <value>Available payment method categories</value>
     [DataMember(Name="payment_method_categories", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "payment_method_categories")]
-    public List<PaymentsPaymentMethodCategory> PaymentMethodCategories { get; set; }
+    public List<PaymentMethodCategory> PaymentMethodCategories { get; set; }
 
     /// <summary>
     /// Id of the created session
@@ -41,7 +41,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class PaymentsMerchantSession {\n");
+      sb.Append("class MerchantSession {\n");
       sb.Append("  ClientToken: ").Append(ClientToken).Append("\n");
       sb.Append("  PaymentMethodCategories: ").Append(PaymentMethodCategories).Append("\n");
       sb.Append("  SessionId: ").Append(SessionId).Append("\n");

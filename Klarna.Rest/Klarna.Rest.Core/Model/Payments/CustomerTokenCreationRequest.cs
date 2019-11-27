@@ -8,14 +8,14 @@ namespace Klarna.Rest.Core.Model.Payments {
   /// 
   /// </summary>
   [DataContract]
-  public class PaymentsCustomerTokenCreationRequest {
+  public class CustomerTokenCreationRequest {
     /// <summary>
     /// Once the customer has provided any data, updates to this object will be ignored (without generating an error).
     /// </summary>
     /// <value>Once the customer has provided any data, updates to this object will be ignored (without generating an error).</value>
     [DataMember(Name="billing_address", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "billing_address")]
-    public PaymentsAddress BillingAddress { get; set; }
+    public Address BillingAddress { get; set; }
 
     /// <summary>
     /// Information about the liable customer of the order.
@@ -23,7 +23,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <value>Information about the liable customer of the order.</value>
     [DataMember(Name="customer", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "customer")]
-    public PaymentsCustomer Customer { get; set; }
+    public Customer Customer { get; set; }
 
     /// <summary>
     /// Description of the purpose of the token.
@@ -72,7 +72,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class PaymentsCustomerTokenCreationRequest {\n");
+      sb.Append("class CustomerTokenCreationRequest {\n");
       sb.Append("  BillingAddress: ").Append(BillingAddress).Append("\n");
       sb.Append("  Customer: ").Append(Customer).Append("\n");
       sb.Append("  Description: ").Append(Description).Append("\n");

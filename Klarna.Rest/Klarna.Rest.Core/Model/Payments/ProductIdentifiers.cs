@@ -8,7 +8,7 @@ namespace Klarna.Rest.Core.Model.Payments {
   /// 
   /// </summary>
   [DataContract]
-  public class PaymentsProductIdentifiers {
+  public class ProductIdentifiers {
     /// <summary>
     /// The product's brand name as generally recognized by consumers. If no brand is available for a product, do not supply any value.
     /// </summary>
@@ -48,7 +48,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class PaymentsProductIdentifiers {\n");
+      sb.Append("class ProductIdentifiers {\n");
       sb.Append("  Brand: ").Append(Brand).Append("\n");
       sb.Append("  CategoryPath: ").Append(CategoryPath).Append("\n");
       sb.Append("  GlobalTradeItemNumber: ").Append(GlobalTradeItemNumber).Append("\n");

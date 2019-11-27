@@ -8,7 +8,7 @@ namespace Klarna.Rest.Core.Model.Payments {
   /// 
   /// </summary>
   [DataContract]
-  public class PaymentsOptions {
+  public class Options {
     /// <summary>
     /// CSS hex color, e.g. \"#FF9900\"
     /// </summary>
@@ -112,7 +112,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class PaymentsOptions {\n");
+      sb.Append("class Options {\n");
       sb.Append("  ColorBorder: ").Append(ColorBorder).Append("\n");
       sb.Append("  ColorBorderSelected: ").Append(ColorBorderSelected).Append("\n");
       sb.Append("  ColorButton: ").Append(ColorButton).Append("\n");

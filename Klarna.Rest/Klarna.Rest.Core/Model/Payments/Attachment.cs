@@ -8,7 +8,7 @@ namespace Klarna.Rest.Core.Model.Payments {
   /// 
   /// </summary>
   [DataContract]
-  public class PaymentsAttachment {
+  public class Attachment {
     /// <summary>
     /// This field should be a <b>string</b> containing the body of the attachment. The body should be an object containing any of the keys and sub objects described below serialised to JSON.
     /// </summary>
@@ -32,7 +32,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class PaymentsAttachment {\n");
+      sb.Append("class Attachment {\n");
       sb.Append("  Body: ").Append(Body).Append("\n");
       sb.Append("  ContentType: ").Append(ContentType).Append("\n");
       sb.Append("}\n");

@@ -9,7 +9,7 @@ namespace Klarna.Rest.Core.Model.Payments {
   /// 
   /// </summary>
   [DataContract]
-  public class PaymentsSession {
+  public class CreateOrderRequest {
     /// <summary>
     /// Type of acquiring channel
     /// </summary>
@@ -24,7 +24,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <value>Additional purchase information required for some industries.</value>
     [DataMember(Name="attachment", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "attachment")]
-    public PaymentsAttachment Attachment { get; set; }
+    public Attachment Attachment { get; set; }
 
     /// <summary>
     /// Authorization token.
@@ -35,12 +35,20 @@ namespace Klarna.Rest.Core.Model.Payments {
     public string AuthorizationToken { get; set; }
 
     /// <summary>
+    /// Allow merchant to trigger auto capturing.
+    /// </summary>
+    /// <value>Allow merchant to trigger auto capturing.</value>
+    [DataMember(Name="auto_capture", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "auto_capture")]
+    public bool? AutoCapture { get; set; }
+
+    /// <summary>
     /// Once the customer has provided any data in the checkout iframe, updates to this object will be ignored (without generating an error).
     /// </summary>
     /// <value>Once the customer has provided any data in the checkout iframe, updates to this object will be ignored (without generating an error).</value>
     [DataMember(Name="billing_address", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "billing_address")]
-    public PaymentsAddress BillingAddress { get; set; }
+    public Address BillingAddress { get; set; }
 
     /// <summary>
     /// Token to be passed to the JS client
@@ -64,7 +72,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <value>Information about the liable customer of the order.</value>
     [DataMember(Name="customer", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "customer")]
-    public PaymentsCustomer Customer { get; set; }
+    public Customer Customer { get; set; }
 
     /// <summary>
     /// Gets or Sets Design
@@ -79,7 +87,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <value>Session expiration date</value>
     [DataMember(Name="expires_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "expires_at")]
-    public PaymentsInstant ExpiresAt { get; set; }
+    public Instant ExpiresAt { get; set; }
 
     /// <summary>
     /// RFC 1766 customer's locale.
@@ -119,7 +127,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <value>The merchant_urls object.</value>
     [DataMember(Name="merchant_urls", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "merchant_urls")]
-    public PaymentsMerchantUrls MerchantUrls { get; set; }
+    public MerchantUrls MerchantUrls { get; set; }
 
     /// <summary>
     /// Options for this purchase.
@@ -127,7 +135,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <value>Options for this purchase.</value>
     [DataMember(Name="options", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "options")]
-    public PaymentsOptions Options { get; set; }
+    public Options Options { get; set; }
 
     /// <summary>
     /// Non-negative, minor units. Total amount of the order, including tax and any discounts.
@@ -143,7 +151,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <value>The applicable order lines (max 1000)</value>
     [DataMember(Name="order_lines", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "order_lines")]
-    public List<PaymentsOrderLine> OrderLines { get; set; }
+    public List<OrderLine> OrderLines { get; set; }
 
     /// <summary>
     /// Non-negative, minor units. The total tax amount of the order.
@@ -159,7 +167,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <value>Available payment method categories</value>
     [DataMember(Name="payment_method_categories", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "payment_method_categories")]
-    public List<PaymentsPaymentMethodCategory> PaymentMethodCategories { get; set; }
+    public List<PaymentMethodCategory> PaymentMethodCategories { get; set; }
 
     /// <summary>
     /// ISO 3166 alpha-2 purchase country.
@@ -183,7 +191,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <value>Unless the customer has explicitly chosen to enter a separate shipping address, this is a clone of billing_address.</value>
     [DataMember(Name="shipping_address", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "shipping_address")]
-    public PaymentsAddress ShippingAddress { get; set; }
+    public Address ShippingAddress { get; set; }
 
     /// <summary>
     /// The current status of the session. Possible values: 'complete', 'incomplete' where 'complete' is set when the order has been placed.
@@ -200,10 +208,11 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class PaymentsSession {\n");
+      sb.Append("class CreateOrderRequest {\n");
       sb.Append("  AcquiringChannel: ").Append(AcquiringChannel).Append("\n");
       sb.Append("  Attachment: ").Append(Attachment).Append("\n");
       sb.Append("  AuthorizationToken: ").Append(AuthorizationToken).Append("\n");
+      sb.Append("  AutoCapture: ").Append(AutoCapture).Append("\n");
       sb.Append("  BillingAddress: ").Append(BillingAddress).Append("\n");
       sb.Append("  ClientToken: ").Append(ClientToken).Append("\n");
       sb.Append("  CustomPaymentMethodIds: ").Append(CustomPaymentMethodIds).Append("\n");

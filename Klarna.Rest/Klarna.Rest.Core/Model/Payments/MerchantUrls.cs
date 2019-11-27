@@ -8,7 +8,7 @@ namespace Klarna.Rest.Core.Model.Payments {
   /// 
   /// </summary>
   [DataContract]
-  public class PaymentsMerchantUrls {
+  public class MerchantUrls {
     /// <summary>
     /// URL of merchant confirmation page. Insert {session.id} and/or {order.id} as placeholder to connect either of those IDs to the URL (max 2000 characters).
     /// </summary>
@@ -40,7 +40,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class PaymentsMerchantUrls {\n");
+      sb.Append("class MerchantUrls {\n");
       sb.Append("  Confirmation: ").Append(Confirmation).Append("\n");
       sb.Append("  Notification: ").Append(Notification).Append("\n");
       sb.Append("  Push: ").Append(Push).Append("\n");

@@ -8,7 +8,7 @@ namespace Klarna.Rest.Core.Model.Payments {
   /// 
   /// </summary>
   [DataContract]
-  public class PaymentsOrderLine {
+  public class OrderLine {
     /// <summary>
     /// URL to an image that can be later embedded in communications between Klarna and the customer. (max 1024 characters)
     /// </summary>
@@ -39,7 +39,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <value>Additional information identifying an item</value>
     [DataMember(Name="product_identifiers", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "product_identifiers")]
-    public PaymentsProductIdentifiers ProductIdentifiers { get; set; }
+    public ProductIdentifiers ProductIdentifiers { get; set; }
 
     /// <summary>
     /// URL to the product that can be later used in communications between Klarna and the customer. (max 1024 characters)
@@ -128,7 +128,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class PaymentsOrderLine {\n");
+      sb.Append("class OrderLine {\n");
       sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
       sb.Append("  MerchantData: ").Append(MerchantData).Append("\n");
       sb.Append("  Name: ").Append(Name).Append("\n");

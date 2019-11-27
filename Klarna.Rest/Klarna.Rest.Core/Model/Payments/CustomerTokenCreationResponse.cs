@@ -8,14 +8,14 @@ namespace Klarna.Rest.Core.Model.Payments {
   /// 
   /// </summary>
   [DataContract]
-  public class PaymentsCustomerTokenCreationResponse {
+  public class CustomerTokenCreationResponse {
     /// <summary>
     /// Billing address of the customer.
     /// </summary>
     /// <value>Billing address of the customer.</value>
     [DataMember(Name="billing_address", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "billing_address")]
-    public PaymentsAddress BillingAddress { get; set; }
+    public Address BillingAddress { get; set; }
 
     /// <summary>
     /// Customer specific information.
@@ -23,7 +23,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <value>Customer specific information.</value>
     [DataMember(Name="customer", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "customer")]
-    public PaymentsCustomer Customer { get; set; }
+    public Customer Customer { get; set; }
 
     /// <summary>
     /// Used to connect customer with payment method when it is present.
@@ -56,7 +56,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class PaymentsCustomerTokenCreationResponse {\n");
+      sb.Append("class CustomerTokenCreationResponse {\n");
       sb.Append("  BillingAddress: ").Append(BillingAddress).Append("\n");
       sb.Append("  Customer: ").Append(Customer).Append("\n");
       sb.Append("  PaymentMethodReference: ").Append(PaymentMethodReference).Append("\n");

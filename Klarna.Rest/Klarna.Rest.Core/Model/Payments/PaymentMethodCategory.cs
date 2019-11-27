@@ -8,14 +8,14 @@ namespace Klarna.Rest.Core.Model.Payments {
   /// 
   /// </summary>
   [DataContract]
-  public class PaymentsPaymentMethodCategory {
+  public class PaymentMethodCategory {
     /// <summary>
     /// Asset URLs
     /// </summary>
     /// <value>Asset URLs</value>
     [DataMember(Name="asset_urls", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "asset_urls")]
-    public PaymentsAssetUrls AssetUrls { get; set; }
+    public AssetUrls AssetUrls { get; set; }
 
     /// <summary>
     /// Id for the category
@@ -40,7 +40,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class PaymentsPaymentMethodCategory {\n");
+      sb.Append("class PaymentMethodCategory {\n");
       sb.Append("  AssetUrls: ").Append(AssetUrls).Append("\n");
       sb.Append("  Identifier: ").Append(Identifier).Append("\n");
       sb.Append("  Name: ").Append(Name).Append("\n");

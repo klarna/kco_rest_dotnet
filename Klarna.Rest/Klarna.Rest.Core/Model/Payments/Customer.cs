@@ -8,7 +8,7 @@ namespace Klarna.Rest.Core.Model.Payments {
   /// 
   /// </summary>
   [DataContract]
-  public class PaymentsCustomer {
+  public class Customer {
     /// <summary>
     /// ISO 8601 date. The customer date of birth.
     /// </summary>
@@ -88,7 +88,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class PaymentsCustomer {\n");
+      sb.Append("class Customer {\n");
       sb.Append("  DateOfBirth: ").Append(DateOfBirth).Append("\n");
       sb.Append("  Gender: ").Append(Gender).Append("\n");
       sb.Append("  LastFourSsn: ").Append(LastFourSsn).Append("\n");

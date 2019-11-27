@@ -8,7 +8,7 @@ namespace Klarna.Rest.Core.Model.Payments {
   /// 
   /// </summary>
   [DataContract]
-  public class PaymentsAddress {
+  public class Address {
     /// <summary>
     /// Attention
     /// </summary>
@@ -120,7 +120,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class PaymentsAddress {\n");
+      sb.Append("class Address {\n");
       sb.Append("  Attention: ").Append(Attention).Append("\n");
       sb.Append("  City: ").Append(City).Append("\n");
       sb.Append("  Country: ").Append(Country).Append("\n");

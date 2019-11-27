@@ -8,14 +8,14 @@ namespace Klarna.Rest.Core.Model.Payments {
   /// 
   /// </summary>
   [DataContract]
-  public class PaymentsOrder {
+  public class Order {
     /// <summary>
     /// The payment method authorized for the order
     /// </summary>
     /// <value>The payment method authorized for the order</value>
     [DataMember(Name="authorized_payment_method", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "authorized_payment_method")]
-    public PaymentsAuthorizedPaymentMethod AuthorizedPaymentMethod { get; set; }
+    public AuthorizedPaymentMethod AuthorizedPaymentMethod { get; set; }
 
     /// <summary>
     /// Fraud status for the order. Either ACCEPTED, PENDING or REJECTED.
@@ -48,7 +48,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class PaymentsOrder {\n");
+      sb.Append("class Order {\n");
       sb.Append("  AuthorizedPaymentMethod: ").Append(AuthorizedPaymentMethod).Append("\n");
       sb.Append("  FraudStatus: ").Append(FraudStatus).Append("\n");
       sb.Append("  OrderId: ").Append(OrderId).Append("\n");

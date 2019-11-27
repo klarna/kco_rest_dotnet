@@ -9,13 +9,13 @@ namespace Klarna.Rest.Core.Model.Payments {
   /// 
   /// </summary>
   [DataContract]
-  public class PaymentsErrorV2 {
+  public class ErrorV2 {
     /// <summary>
     /// Gets or Sets AuthorizedPaymentMethod
     /// </summary>
     [DataMember(Name="authorized_payment_method", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "authorized_payment_method")]
-    public PaymentsAuthorizedPaymentMethod AuthorizedPaymentMethod { get; set; }
+    public AuthorizedPaymentMethod AuthorizedPaymentMethod { get; set; }
 
     /// <summary>
     /// Gets or Sets CorrelationId
@@ -59,7 +59,7 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class PaymentsErrorV2 {\n");
+      sb.Append("class ErrorV2 {\n");
       sb.Append("  AuthorizedPaymentMethod: ").Append(AuthorizedPaymentMethod).Append("\n");
       sb.Append("  CorrelationId: ").Append(CorrelationId).Append("\n");
       sb.Append("  ErrorCode: ").Append(ErrorCode).Append("\n");

@@ -8,20 +8,22 @@ namespace Klarna.Rest.Core.Model.Payments {
   /// 
   /// </summary>
   [DataContract]
-  public class PaymentsInstant {
+  public class AssetUrls {
     /// <summary>
-    /// Gets or Sets EpochSecond
+    /// Decriptive asset URL
     /// </summary>
-    [DataMember(Name="epoch_second", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "epoch_second")]
-    public long? EpochSecond { get; set; }
+    /// <value>Decriptive asset URL</value>
+    [DataMember(Name="descriptive", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "descriptive")]
+    public string Descriptive { get; set; }
 
     /// <summary>
-    /// Gets or Sets Nano
+    /// Standard asset URL
     /// </summary>
-    [DataMember(Name="nano", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "nano")]
-    public int? Nano { get; set; }
+    /// <value>Standard asset URL</value>
+    [DataMember(Name="standard", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "standard")]
+    public string Standard { get; set; }
 
 
     /// <summary>
@@ -30,9 +32,9 @@ namespace Klarna.Rest.Core.Model.Payments {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class PaymentsInstant {\n");
-      sb.Append("  EpochSecond: ").Append(EpochSecond).Append("\n");
-      sb.Append("  Nano: ").Append(Nano).Append("\n");
+      sb.Append("class AssetUrls {\n");
+      sb.Append("  Descriptive: ").Append(Descriptive).Append("\n");
+      sb.Append("  Standard: ").Append(Standard).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }
