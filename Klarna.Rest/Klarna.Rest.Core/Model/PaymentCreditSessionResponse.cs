@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
@@ -6,6 +7,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     ///
     /// </summary>
+    [Obsolete("This model is being deprecated. Use MerchantSession model from Klarna.Rest.Core.Model.Payments namespace instead")]
     public class PaymentCreditSessionResponse
     {
         /// <summary>
