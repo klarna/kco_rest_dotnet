@@ -1,3 +1,4 @@
+using System;
 using System.Text;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
@@ -7,6 +8,7 @@ namespace Klarna.Rest.Core.Model {
     /// <summary>
     /// Customer token status update
     /// </summary>
+    [Obsolete("This model is being deprecated. Use CustomerTokenStatusUpdateRequest model from Klarna.Rest.Core.Model.CustomerToken namespace instead")]
     [DataContract]
     public class CustomerTokenStatusUpdateRequest {
         /// <summary>

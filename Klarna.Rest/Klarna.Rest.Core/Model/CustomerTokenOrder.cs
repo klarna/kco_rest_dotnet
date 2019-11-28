@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
@@ -6,6 +7,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     /// Customer token order object
     /// </summary>
+    [Obsolete("This model is being deprecated. Use Order model from Klarna.Rest.Core.Model.CustomerToken namespace instead")]
     public class CustomerTokenOrder
     {
         /// <summary>
