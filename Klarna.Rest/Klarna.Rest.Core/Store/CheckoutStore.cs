@@ -1,8 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Klarna.Rest.Core.Common;
 using Klarna.Rest.Core.Communication;
 using Klarna.Rest.Core.Communication.Dto;
 using Klarna.Rest.Core.Model;
+using Klarna.Rest.Core.Model.Checkout;
 using Klarna.Rest.Core.Serialization;
 
 namespace Klarna.Rest.Core.Store
@@ -24,10 +26,26 @@ namespace Klarna.Rest.Core.Store
         /// </summary>
         /// <param name="order">The <see cref="CheckoutOrder"/> object</param>
         /// <returns><see cref="CheckoutOrder"/></returns>
+        [Obsolete("CreateOrder is using the old model CheckoutOrder. " +
+                  "Please use Order from Klarna.Rest.Core.Model.Checkout namespace")]
         public async Task<CheckoutOrder> CreateOrder(CheckoutOrder order)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri);
             return await Post<CheckoutOrder>(url, order).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Use this API call to create a new order.
+        /// <a href="https://developers.klarna.com/api/#checkout-api-create-a-new-order">
+        ///     https://developers.klarna.com/api/#checkout-api-create-a-new-order
+        /// </a>
+        /// </summary>
+        /// <param name="order">The <see cref="Order"/> object</param>
+        /// <returns><see cref="Order"/></returns>
+        public async Task<Order> CreateOrder(Order order)
+        {
+            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri);
+            return await Post<Order>(url, order).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -39,11 +57,11 @@ namespace Klarna.Rest.Core.Store
         /// </a>
         /// </summary>
         /// <param name="orderId">ID of the order to retrieve</param>
-        /// <returns><see cref="CheckoutOrder"/></returns>
-        public async Task<CheckoutOrder> GetOrder(string orderId)
+        /// <returns><see cref="Order"/></returns>
+        public async Task<Order> GetOrder(string orderId)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, orderId);
-            return await Get<CheckoutOrder>(url).ConfigureAwait(false);
+            return await Get<Order>(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -55,10 +73,27 @@ namespace Klarna.Rest.Core.Store
         /// </summary>
         /// <param name="order">The <see cref="CheckoutOrder"/> object</param>
         /// <returns><see cref="CheckoutOrder"/></returns>
+        [Obsolete("UpdateOrder is using the old model CheckoutOrder. " +
+                  "Please use Order from Klarna.Rest.Core.Model.Checkout namespace")]
         public async Task<CheckoutOrder> UpdateOrder(CheckoutOrder order)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, order.OrderId);
             return await Post<CheckoutOrder>(url, order).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Updates an existing order.
+        /// Please note: an order can only be updated when the status is 'checkout_incomplete'.
+        /// <a href="https://developers.klarna.com/api/#checkout-api-update-an-order">
+        ///     https://developers.klarna.com/api/#checkout-api-update-an-order
+        /// </a>
+        /// </summary>
+        /// <param name="order">The <see cref="Order"/> object</param>
+        /// <returns><see cref="Order"/></returns>
+        public async Task<Order> UpdateOrder(Order order)
+        {
+            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, order.OrderId);
+            return await Post<Order>(url, order).ConfigureAwait(false);
         }
     }
 }

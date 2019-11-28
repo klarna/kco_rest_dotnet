@@ -1,5 +1,7 @@
+
 using Klarna.Rest.Core.Model;
 using Klarna.Rest.Core.Model.HostedPaymentPage;
+using Klarna.Rest.Core.Model.Checkout;
 
 using Xunit;
 
@@ -14,6 +16,12 @@ namespace Klarna.Rest.Core.Tests.Models
         public void HppSessionCreationCompatibility()
         {
             Assert.True(typeof(SessionResponseV1).IsSubclassOf(typeof(HostedPaymentPageSessionStatus)));
+        }
+        
+        [Fact]
+        public void CheckoutOrderCompatibility()
+        {
+            Assert.True(typeof(Order).IsSubclassOf(typeof(CheckoutOrder)));
         }
     }
 }
