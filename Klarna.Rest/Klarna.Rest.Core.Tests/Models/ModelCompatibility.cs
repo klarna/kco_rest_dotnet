@@ -1,4 +1,5 @@
 using Klarna.Rest.Core.Model;
+using Klarna.Rest.Core.Model.CustomerToken;
 using Klarna.Rest.Core.Model.HostedPaymentPage;
 
 using Xunit;
@@ -14,6 +15,12 @@ namespace Klarna.Rest.Core.Tests.Models
         public void HppSessionCreationCompatibility()
         {
             Assert.True(typeof(SessionResponseV1).IsSubclassOf(typeof(HostedPaymentPageSessionStatus)));
+        }
+        
+        [Fact]
+        public void CustomerTokenCompatibility()
+        {
+            Assert.True(typeof(CustomerTokenV1).IsSubclassOf(typeof(CustomerTokenDetails)));
         }
     }
 }
