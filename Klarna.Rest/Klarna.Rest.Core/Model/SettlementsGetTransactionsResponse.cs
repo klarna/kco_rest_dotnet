@@ -6,6 +6,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     /// Get transaction response object
     /// </summary>
+    [Obsolete("This model is being deprecated. Please use the TransactionCollection model from Klarna.Rest.Core.Model.Settlements")]
     public class SettlementsGetTransactionsResponse
     {
         /// <summary>

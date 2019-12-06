@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Threading.Tasks;
@@ -21,6 +22,27 @@ namespace Klarna.Rest.Core.Store
     {
         internal SettlementStore(ApiSession apiSession, IJsonSerializer jsonSerializer) :
             base(apiSession, ApiControllers.SettlementPayouts, jsonSerializer) { }
+
+        /// <summary>
+        /// Returns a summary of payouts for each currency code in a date range.
+        /// </summary>
+        /// <param name="startDate">ISO-8601 formatted date with optional time string</param>
+        /// <param name="endDate">ISO-8601 formatted date with optional time string</param>
+        /// <param name="currencyCode">ISO-3166 Currency Code.</param>
+        /// <returns>Collection of <see cref="SettlementsPayoutSummary"/></returns>
+        [Obsolete("HostedPaymentPageDistributeLink using the old model. Please use DistributionRequestV1 instead")]
+        public async Task<ICollection<SettlementsPayoutSummary>> GetPayoutsSummary(string startDate, string endDate, string currencyCode)
+        {
+            var nvm = new NameValueCollection
+            {
+                {"start_date", startDate},
+                {"end_date", endDate},
+                {"currency_code", currencyCode}
+            };
+            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, "summary", nvm);
+
+            return await Get<ICollection<SettlementsPayoutSummary>>(url).ConfigureAwait(false);
+        }
 
         /// <summary>
         /// Returns a summary of payouts for each currency code in a date range.

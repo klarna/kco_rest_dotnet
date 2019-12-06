@@ -5,6 +5,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     /// Payout summary object
     /// </summary>
+    [Obsolete("This model is being deprecated. Please use the PayoutSummary model from Klarna.Rest.Core.Model.Settlements")]
     public class SettlementsPayoutSummary
     {
         /// <summary>
