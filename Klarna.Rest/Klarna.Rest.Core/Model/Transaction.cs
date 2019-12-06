@@ -1,4 +1,5 @@
-﻿using Klarna.Rest.Core.Model.Enum;
+﻿using System;
+using Klarna.Rest.Core.Model.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 

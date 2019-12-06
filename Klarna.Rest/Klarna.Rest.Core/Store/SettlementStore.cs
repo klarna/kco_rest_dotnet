@@ -45,26 +45,6 @@ namespace Klarna.Rest.Core.Store
         }
 
         /// <summary>
-        /// Returns a summary of payouts for each currency code in a date range.
-        /// </summary>
-        /// <param name="startDate">ISO-8601 formatted date with optional time string</param>
-        /// <param name="endDate">ISO-8601 formatted date with optional time string</param>
-        /// <param name="currencyCode">ISO-3166 Currency Code.</param>
-        /// <returns>Collection of <see cref="SettlementsPayoutSummary"/></returns>
-        public async Task<ICollection<SettlementsPayoutSummary>> GetPayoutsSummary(string startDate, string endDate, string currencyCode)
-        {
-            var nvm = new NameValueCollection
-            {
-                {"start_date", startDate},
-                {"end_date", endDate},
-                {"currency_code", currencyCode}
-            };
-            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, "summary", nvm);
-
-            return await Get<ICollection<SettlementsPayoutSummary>>(url).ConfigureAwait(false);
-        }
-
-        /// <summary>
         /// Returns a specific payout based on a given payment reference.
         /// </summary>
         /// <param name="paymentReference">The reference id of the payout</param>
