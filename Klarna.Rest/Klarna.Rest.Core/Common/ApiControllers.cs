@@ -54,5 +54,10 @@
         /// Endpoint for https://developers.klarna.com/api/#merchant-card-service-api-create-a-new-settlement
         /// </summary>
         public const string VirtualCardService = "merchantcard/v3/settlements";
+        
+        /// <summary>
+        /// Endpoint for https://developers.klarna.com/api/#merchant-card-service-api-create-a-new-settlement
+        /// </summary>
+        public const string VirtualCreditCardPromise = "merchantcard/v3/promises";
     }
 }

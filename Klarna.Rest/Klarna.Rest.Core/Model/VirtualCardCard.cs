@@ -1,10 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
 {
     /// <summary>
     /// Virtual Card card object
     /// </summary>
+    [Obsolete("This model is being deprecated. Use Card from Klarna.Rest.Core.Model.MerchantCardService namespace instead")]
     public class VirtualCardCard
     {
         /// <summary>

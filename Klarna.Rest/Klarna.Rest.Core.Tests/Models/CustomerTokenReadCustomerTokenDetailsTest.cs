@@ -3,6 +3,7 @@ using System.IO;
 using Klarna.Rest.Core.Model;
 using Klarna.Rest.Core.Model.Enum;
 using Klarna.Rest.Core.Model.HostedPaymentPage;
+using Klarna.Rest.Core.Model.MerchantCardService;
 using Newtonsoft.Json;
 using Xunit;
 
@@ -195,6 +196,21 @@ namespace Klarna.Rest.Core.Tests.Models
         {
             var json = File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "Data", "VirtualCardServiceGetSettledOrdersSettlementResponse.json"));
             var response = JsonConvert.DeserializeObject<VirtualCardSettlement>(json);
+        }
+        
+        [Fact]
+        public void TestClient()
+        {
+            SettlementResponse newResponse = new SettlementResponse();
+            newResponse.SettlementId = "ABCD1234";
+            newResponse.OrderId = "DEFG5678";
+            newResponse.CreatedAt = "2038-01-19T03:14:07.000Z";
+            newResponse.ExpiresAt = "2038-01-27T03:14:07.000Z";
+            VirtualCardSettlement casted = newResponse;
+            Assert.True(casted.SettlementId.Equals("ABCD1234"));
+            Assert.True(casted.OrderId.Equals("DEFG5678"));
+            Assert.True(casted.CreatedAt.Equals("2038-01-19T03:14:07.000Z"));
+            Assert.True(casted.ExpiresAt.Equals("2038-01-27T03:14:07.000Z"));
         }
     }
 
