@@ -5,11 +5,9 @@ using Newtonsoft.Json;
 namespace Klarna.Rest.Core.Model
 {
     /// <summary>
-    ///
-    /// </summary>
-    /// <summary>
     /// Get all payouts response object
     /// </summary>
+    [Obsolete("This model is being deprecated. Please use the PayoutCollection model from Klarna.Rest.Core.Model.Settlements")]
     public class SettlementsGetAllPayoutsResponse
     {
         /// <summary>

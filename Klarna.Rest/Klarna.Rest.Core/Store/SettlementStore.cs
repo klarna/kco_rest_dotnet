@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.IO;
 using System.Threading.Tasks;
@@ -29,6 +30,7 @@ namespace Klarna.Rest.Core.Store
         /// <param name="endDate">ISO-8601 formatted date with optional time string</param>
         /// <param name="currencyCode">ISO-3166 Currency Code.</param>
         /// <returns>Collection of <see cref="SettlementsPayoutSummary"/></returns>
+        [Obsolete("HostedPaymentPageDistributeLink using the old model. Please use DistributionRequestV1 instead")]
         public async Task<ICollection<SettlementsPayoutSummary>> GetPayoutsSummary(string startDate, string endDate, string currencyCode)
         {
             var nvm = new NameValueCollection

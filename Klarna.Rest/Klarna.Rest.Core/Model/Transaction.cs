@@ -1,4 +1,5 @@
-﻿using Klarna.Rest.Core.Model.Enum;
+﻿using System;
+using Klarna.Rest.Core.Model.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -7,6 +8,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     /// The settlements API transaction object
     /// </summary>
+    [Obsolete("This model is being deprecated. Please use the Transaction model from Klarna.Rest.Core.Model.Settlements")]
     public class Transaction
     {
         /// <summary>
