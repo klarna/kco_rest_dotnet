@@ -11,32 +11,7 @@ namespace Klarna.Rest.Core.Model.Settlements {
   /// 
   /// </summary>
   [DataContract]
-  public class ErrorResponse {
-    /// <summary>
-    /// ERROR_CODE
-    /// </summary>
-    /// <value>ERROR_CODE</value>
-    [DataMember(Name="error_code", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "error_code")]
-    public string ErrorCode { get; set; }
-
-    /// <summary>
-    /// Array of error messages
-    /// </summary>
-    /// <value>Array of error messages</value>
-    [DataMember(Name="error_messages", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "error_messages")]
-    public List<string> ErrorMessages { get; set; }
-
-    /// <summary>
-    /// Unique id for this request used for troubleshooting.
-    /// </summary>
-    /// <value>Unique id for this request used for troubleshooting.</value>
-    [DataMember(Name="correlation_id", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "correlation_id")]
-    public string CorrelationId { get; set; }
-
-
+  public class ErrorResponse: ErrorMessage {
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>
