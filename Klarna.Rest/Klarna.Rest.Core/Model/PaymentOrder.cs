@@ -9,6 +9,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     ///
     /// </summary>
+    [Obsolete("This model is being deprecated. Use the Order model from Klarna.Rest.Core.Model.Payments namespace instead")]
     public class PaymentOrder
     {
         /// <summary>

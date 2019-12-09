@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <Folder Include="Model\HostedPaymentPage" />
+    <Folder Include="Model\Payments" />
   </ItemGroup>
 
   <PropertyGroup>
