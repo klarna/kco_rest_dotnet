@@ -7,7 +7,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     ///
     /// </summary>
-    [Obsolete("This model is being deprecated. Use UpdateAuthorization model from Klarna.Rest.Core.Model.OrderManagement namespace instead")]
+    [Obsolete("This model is being deprecated. Use the UpdateAuthorization model from Klarna.Rest.Core.Model.OrderManagement namespace instead")]
     public class OrderManagementSetNewOrderAmountAndLines
     {
         /// <summary>

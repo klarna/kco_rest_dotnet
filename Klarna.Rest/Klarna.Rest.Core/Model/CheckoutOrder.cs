@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
@@ -6,6 +7,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     /// 
     /// </summary>
+    [Obsolete("This model is being deprecated. Use the Order model from Klarna.Rest.Core.Model.Checkout namespace instead")]
     public class CheckoutOrder
     {
         /// <summary>

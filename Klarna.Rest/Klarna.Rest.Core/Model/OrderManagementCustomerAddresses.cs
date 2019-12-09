@@ -6,7 +6,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     ///
     /// </summary>
-    [Obsolete("This model is being deprecated. Use UpdateCustomer model from Klarna.Rest.Core.Model.OrderManagement namespace instead")]
+    [Obsolete("This model is being deprecated. Use the UpdateCustomer model from Klarna.Rest.Core.Model.OrderManagement namespace instead")]
     public class OrderManagementCustomerAddresses
     {
         /// <summary>
