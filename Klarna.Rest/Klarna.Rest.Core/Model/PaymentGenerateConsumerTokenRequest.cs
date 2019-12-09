@@ -6,7 +6,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     ///
     /// </summary>
-    [Obsolete("This model is being deprecated. Use CustomerTokenCreationRequest model from Klarna.Rest.Core.Model.Payments namespace instead")]
+    [Obsolete("This model is being deprecated. Use the CustomerTokenCreationRequest model from Klarna.Rest.Core.Model.Payments namespace instead")]
     public class PaymentGenerateConsumerTokenRequest
     {
         /// <summary>

@@ -6,7 +6,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     ///
     /// </summary>
-    [Obsolete("This model is being deprecated. Use Options model from Klarna.Rest.Core.Model.Payments namespace instead")]
+    [Obsolete("This model is being deprecated. Use the Options model from Klarna.Rest.Core.Model.Payments namespace instead")]
     public class PaymentOptions
     {
         /// <summary>
