@@ -2,7 +2,7 @@
 using Klarna.Rest.Core.Model;
 using Klarna.Rest.Core.Model.HostedPaymentPage;
 using Klarna.Rest.Core.Model.Payments;
-using Klarna.Rest.Core.Model.Checkout;
+using Checkout = Klarna.Rest.Core.Model.Checkout;
 
 using Xunit;
 
@@ -28,7 +28,7 @@ namespace Klarna.Rest.Core.Tests.Models
         [Fact]
         public void CheckoutOrderCompatibility()
         {
-            Assert.True(typeof(Order).IsSubclassOf(typeof(CheckoutOrder)));
+            Assert.True(typeof(Checkout.Order).IsSubclassOf(typeof(CheckoutOrder)));
         }
     }
 }

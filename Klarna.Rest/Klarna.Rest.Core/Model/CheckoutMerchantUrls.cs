@@ -6,7 +6,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     ///
     /// </summary>
-    [Obsolete("This model is being deprecated. Use MerchantURLs from Klarna.Rest.Core.Model.Checkout namespace instead")]
+    [Obsolete("This model is being deprecated. Use the MerchantURLs model from Klarna.Rest.Core.Model.Checkout namespace instead")]
     public class CheckoutMerchantUrls
     {
         /// <summary>
