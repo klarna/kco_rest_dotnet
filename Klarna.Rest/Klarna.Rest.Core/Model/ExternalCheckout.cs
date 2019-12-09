@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
@@ -6,6 +7,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     ///
     /// </summary>
+    [Obsolete("This model was never used and will be removed in future versions")]
     public class ExternalCheckout
     {
         /// <summary>

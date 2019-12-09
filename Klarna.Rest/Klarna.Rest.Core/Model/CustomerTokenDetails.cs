@@ -6,7 +6,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     /// Customer token details object
     /// </summary>
-    [Obsolete("This model is being deprecated. Use CustomerTokenV1 model from Klarna.Rest.Core.Model.CustomerToken namespace instead")]
+    [Obsolete("This model is being deprecated. Use the CustomerTokenV1 model from Klarna.Rest.Core.Model.CustomerToken namespace instead")]
     public class CustomerTokenDetails
     {
         /// <summary>
