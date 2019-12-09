@@ -7,7 +7,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     ///
     /// </summary>
-    [Obsolete("This model is being deprecated. Use Capture model from Klarna.Rest.Core.Model.OrderManagement namespace instead")]
+    [Obsolete("This model is being deprecated. Use the Capture model from Klarna.Rest.Core.Model.OrderManagement namespace instead")]
     public class OrderManagementCapture
     {
         /// <summary>

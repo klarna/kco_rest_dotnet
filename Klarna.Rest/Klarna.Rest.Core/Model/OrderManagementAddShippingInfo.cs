@@ -7,7 +7,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     ///
     /// </summary>
-    [Obsolete("This model is being deprecated. Use UpdateShippingInfo model from Klarna.Rest.Core.Model.OrderManagement namespace instead")]
+    [Obsolete("This model is being deprecated. Use the UpdateShippingInfo model from Klarna.Rest.Core.Model.OrderManagement namespace instead")]
     public class OrderManagementAddShippingInfo
     {
         /// <summary>
