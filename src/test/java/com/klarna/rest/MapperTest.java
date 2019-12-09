@@ -69,12 +69,12 @@ public class MapperTest extends TestCase {
                 LocalDate.of(2008, 6, 30),
                 LocalTime.of(12, 30, 40, 987654321),
                 ZoneOffset.UTC);
-        assertEquals(order.getStartedAt(), startedAt);
+        assertEquals(startedAt, order.getStartedAt());
 
         OffsetDateTime completedAt = OffsetDateTime.of(
                 LocalDate.of(2018, 8, 8),
                 LocalTime.of(8, 37, 22),
                 ZoneOffset.UTC);
-        assertEquals(order.getCompletedAt(), completedAt);
+        assertEquals(completedAt, order.getCompletedAt());
     }
 }
