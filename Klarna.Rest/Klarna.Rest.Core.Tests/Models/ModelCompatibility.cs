@@ -2,7 +2,7 @@
 using Klarna.Rest.Core.Model;
 using Klarna.Rest.Core.Model.CustomerToken;
 using Klarna.Rest.Core.Model.HostedPaymentPage;
-using Klarna.Rest.Core.Model.OrderManagement;
+using OrderManagement = Klarna.Rest.Core.Model.OrderManagement;
 using Klarna.Rest.Core.Model.Payments;
 using Checkout = Klarna.Rest.Core.Model.Checkout;
 
@@ -36,19 +36,19 @@ namespace Klarna.Rest.Core.Tests.Models
         [Fact]
         public void OrderManagementCaptureCompatibility()
         {
-            Assert.True(typeof(Capture).IsSubclassOf(typeof(OrderManagementCapture)));
+            Assert.True(typeof(OrderManagement.Capture).IsSubclassOf(typeof(OrderManagementCapture)));
         }
 
         [Fact]
         public void OrderManagementOrderCompatibility()
         {
-            Assert.True(typeof(Order).IsSubclassOf(typeof(OrderManagementOrder)));
+            Assert.True(typeof(OrderManagement.Order).IsSubclassOf(typeof(OrderManagementOrder)));
         }
 
         [Fact]
         public void OrderManagementRefundCompatibility()
         {
-            Assert.True(typeof(Refund).IsSubclassOf(typeof(OrderManagementGetRefundResponse)));
+            Assert.True(typeof(OrderManagement.Refund).IsSubclassOf(typeof(OrderManagementGetRefundResponse)));
         }
 
         public void CheckoutOrderCompatibility()
