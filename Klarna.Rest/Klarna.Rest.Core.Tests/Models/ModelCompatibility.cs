@@ -1,5 +1,6 @@
 
 using Klarna.Rest.Core.Model;
+using Klarna.Rest.Core.Model.CustomerToken;
 using Klarna.Rest.Core.Model.HostedPaymentPage;
 using Klarna.Rest.Core.Model.OrderManagement;
 using Klarna.Rest.Core.Model.Payments;
@@ -25,7 +26,13 @@ namespace Klarna.Rest.Core.Tests.Models
         {
             Assert.True(typeof(SessionResponseV1).IsSubclassOf(typeof(HostedPaymentPageSessionStatus)));
         }
- 
+        
+        [Fact]
+        public void CustomerTokenCompatibility()
+        {
+            Assert.True(typeof(CustomerTokenV1).IsSubclassOf(typeof(CustomerTokenDetails)));
+        }
+
         [Fact]
         public void OrderManagementCaptureCompatibility()
         {
