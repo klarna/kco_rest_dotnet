@@ -49,4 +49,32 @@ public class MapperTest extends TestCase {
         assertEquals("{\"startTime\":\"2008-06-30T12:30:40.987654321Z\"}", mapper.writeValueAsString(subscription));
 
     }
+
+    /**
+     * Tests datetime conversion from string to OffsetDateTime and vice versa
+     *
+     * @throws IOException
+     */
+    @Test
+    public void testDateTimeMapping() throws IOException {
+        ObjectMapper mapper = new DefaultMapper();
+
+        String data = "{\"started_at\": \"2008-06-30T12:30:40.987654321Z\", " +
+                "\"completed_at\": \"2018-08-08T08:37:22Z\", \"order_amount\": 12345}";
+        CheckoutOrder order = mapper.readValue(data, CheckoutOrder.class);
+
+        assertEquals(12345L, order.getOrderAmount().longValue());
+
+        OffsetDateTime startedAt = OffsetDateTime.of(
+                LocalDate.of(2008, 6, 30),
+                LocalTime.of(12, 30, 40, 987654321),
+                ZoneOffset.UTC);
+        assertEquals(order.getStartedAt(), startedAt);
+
+        OffsetDateTime completedAt = OffsetDateTime.of(
+                LocalDate.of(2018, 8, 8),
+                LocalTime.of(8, 37, 22),
+                ZoneOffset.UTC);
+        assertEquals(order.getCompletedAt(), completedAt);
+    }
 }
