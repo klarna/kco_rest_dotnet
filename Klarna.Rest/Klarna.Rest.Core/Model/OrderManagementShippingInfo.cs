@@ -1,4 +1,5 @@
-﻿using Klarna.Rest.Core.Model.Enum;
+﻿using System;
+using Klarna.Rest.Core.Model.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -7,6 +8,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     ///
     /// </summary>
+    [Obsolete("This model is being deprecated. Use ShippingInfo model from Klarna.Rest.Core.Model.OrderManagement namespace instead")]
     public class OrderManagementShippingInfo
     {
         /// <summary>
