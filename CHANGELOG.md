@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fix InvalidDefinitionException Jackson exception when working with conversion from `String` to `DateTimeOffset` type.
+  [#12](https://github.com/klarna/kco_rest_java/issues/12)
+
 ### Changed
 
 ### Added
@@ -20,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fix deserialization issue with "expires_at" of PaymentsSession object [34](https://github.com/klarna/kco_rest_java/issues/34)  
+- Fix deserialization issue with "expires_at" of PaymentsSession object [#34](https://github.com/klarna/kco_rest_java/issues/34)  
   Change type of `expired_at` field to `OffsetDateTime` instead of `PaymentsInstant`. **Backward incompatible**
 
 ### Changed
