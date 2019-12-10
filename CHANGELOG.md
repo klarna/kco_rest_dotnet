@@ -15,6 +15,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+
+## [3.1.10] (Enhancements Release/Auto-generated models) - 2019-12-10
+
+This release contains fully updated API models. All the models were split by appropriate API entitities
+and all the models are auto-generated now. This change simplifies keeping up-to-date changes in the API 
+request/response.
+
+> Note: all the models from the Model namespace are marked as obsolete and will be removed in future releases
+
+### Added
+
+- New auto-generated models and Store support of these models **Full backward compatibility**:
+  - Checkout API
+  - Customer Token API
+  - Merchant Card Services API
+  - Order Management API
+  - Payments API
+  - Settlements API
+- Add support of the latest [2019-12-10] API features
+
+### Fixed
+
+- Fixed Sample application namespaces. Use non-obsolete Communication namespace.
+
+
+
 ## [3.1.9] (Enhancements Release) - 2019-11-14
 
 ### Added
@@ -230,7 +256,8 @@ and fixes [#77](https://github.com/klarna/kco_rest_dotnet/issues/77)
 
 - **NEW MINT-1912** Support checkout v3 and ordermanagement v1 APIs - *Joakim.L*
 
-[Unreleased]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.9...HEAD
+[Unreleased]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.10...HEAD
+[3.1.10]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.9...v3.1.10
 [3.1.9]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.8...v3.1.9
 [3.1.8]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.7...v3.1.8
 [3.1.7]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.6.1...v3.1.7

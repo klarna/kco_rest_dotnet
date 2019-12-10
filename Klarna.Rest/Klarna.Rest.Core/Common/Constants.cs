@@ -8,7 +8,7 @@
         /// <summary>
         /// The current version of .NET SDK library for Klarna Services
         /// </summary>
-        public const string Version = "3.1.9";
+        public const string Version = "3.1.10";
 
         /// <summary>
         /// The API for the European live environment
