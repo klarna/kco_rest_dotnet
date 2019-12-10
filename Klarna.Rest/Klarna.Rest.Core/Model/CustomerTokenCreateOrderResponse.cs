@@ -1,10 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
 {
     /// <summary>
     /// Create order using customer token response object
     /// </summary>
+    [Obsolete("This model is being deprecated. Use the Order model from Klarna.Rest.Core.Model.CustomerToken namespace instead")]
     public class CustomerTokenCreateOrderResponse
     {
         /// <summary>

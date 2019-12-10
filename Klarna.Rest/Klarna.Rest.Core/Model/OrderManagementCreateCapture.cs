@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
@@ -6,6 +7,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     ///
     /// </summary>
+    [Obsolete("This model is being deprecated. Use the CaptureObject model from Klarna.Rest.Core.Model.OrderManagement namespace instead")]
     public class OrderManagementCreateCapture
     {
         /// <summary>

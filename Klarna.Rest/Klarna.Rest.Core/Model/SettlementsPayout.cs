@@ -1,12 +1,15 @@
-﻿using Klarna.Rest.Core.Model.Enum;
+﻿using System;
+using Klarna.Rest.Core.Model.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Klarna.Rest.Core.Model.Settlements;
 
 namespace Klarna.Rest.Core.Model
 {
     /// <summary>
     /// The payout object
     /// </summary>
+    [Obsolete("This model is being deprecated. Please use the Payout model from Klarna.Rest.Core.Model.Settlements")]
     public class SettlementsPayout
     {
         /// <summary>

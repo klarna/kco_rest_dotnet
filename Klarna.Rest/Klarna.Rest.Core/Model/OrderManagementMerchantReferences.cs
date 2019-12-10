@@ -1,10 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
 {
     /// <summary>
     ///
     /// </summary>
+    [Obsolete("This model is being deprecated. Use the UpdateMerchantReferences model from Klarna.Rest.Core.Model.OrderManagement namespace instead")]
     public class OrderManagementMerchantReferences
     {
         /// <summary>
