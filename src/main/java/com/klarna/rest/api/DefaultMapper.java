@@ -33,6 +33,9 @@ import java.text.SimpleDateFormat;
  */
 public class DefaultMapper extends ObjectMapper {
     public DefaultMapper() {
+
+        // Add a custom serializer/deserializer in case of missing DateTime module:
+        // https://github.com/klarna/kco_rest_java/issues/12
         SimpleModule module = new SimpleModule();
         module.addDeserializer(OffsetDateTime.class, new DateDeserializer<OffsetDateTime>(OffsetDateTime.class));
         module.addDeserializer(LocalDateTime.class, new DateDeserializer<LocalDateTime>(LocalDateTime.class));
@@ -43,8 +46,8 @@ public class DefaultMapper extends ObjectMapper {
         module.addSerializer(LocalDate.class, new DateSerializer<LocalDate>());
 
         this.registerModule(module);
-        this.findAndRegisterModules();
 
+        this.findAndRegisterModules();
         this.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         this.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         this.setDateFormat(new SimpleDateFormat());
