@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Klarna.Rest.Core.Model.Settlements;
 
 namespace Klarna.Rest.Core.Model
 {

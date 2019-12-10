@@ -30,7 +30,7 @@ namespace Klarna.Rest.Core.Store
         /// <param name="startDate">ISO-8601 formatted date with optional time string</param>
         /// <param name="endDate">ISO-8601 formatted date with optional time string</param>
         /// <param name="currencyCode">ISO-3166 Currency Code.</param>
-        /// <returns>Collection of <see cref="SettlementsPayoutSummary"/></returns>
+        /// <returns>Collection of <see cref="PayoutSummary"/></returns>
         [Obsolete("HostedPaymentPageDistributeLink using the old model. Please use DistributionRequestV1 instead")]
         public async Task<ICollection<PayoutSummary>> GetPayoutsSummary(string startDate, string endDate, string currencyCode)
         {
@@ -49,7 +49,7 @@ namespace Klarna.Rest.Core.Store
         /// Returns a specific payout based on a given payment reference.
         /// </summary>
         /// <param name="paymentReference">The reference id of the payout</param>
-        /// <returns>A single <see cref="SettlementsPayout"/> object</returns>
+        /// <returns>A single <see cref="Payout"/> object</returns>
         public async Task<Payout> GetPayout(string paymentReference)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, paymentReference);
@@ -67,7 +67,7 @@ namespace Klarna.Rest.Core.Store
         ///     a default of 20 will be used.
         /// </param>
         /// <param name="offset">Optional. The current offset. Describes "where" in a collection the current starts.</param>
-        /// <returns><see cref="SettlementsGetAllPayoutsResponse"/></returns>
+        /// <returns><see cref="PayoutCollection"/></returns>
         public async Task<PayoutCollection> GetAllPayouts(string startDate = "",
             string endDate = "",
             string currencyCode = "",
@@ -113,7 +113,7 @@ namespace Klarna.Rest.Core.Store
         ///     a default of 20 will be used.
         /// </param>
         /// <param name="offset">Optional. The current offset. Describes "where" in a collection the current starts.</param>
-        /// <returns></returns>
+        /// <returns><see cref="TransactionCollection"/></returns>
         public async Task<TransactionCollection> GetTransactions(string paymentReference = "", string orderId = "",
             int size = 0, int offset = 0)
         {
