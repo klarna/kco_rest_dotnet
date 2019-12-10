@@ -1,0 +1,456 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class OrderManagementCapture
+   | Klarna Checkout REST.Core .NET SDK </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class OrderManagementCapture
+   | Klarna Checkout REST.Core .NET SDK ">
+    <meta name="generator" content="docfx 2.47.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <div class="subnav navbar navbar-default" style="display: table; width:100%;">
+          <a href="index.html" style="display: table-cell; vertical-align: middle;">
+            <img id="logo" class="svg" src="../api/logo.png" alt="" style="height: 40px; margin: 10px 15px 10px 10px">
+          </a>
+          <div class="container hide-when-search" id="breadcrumb" style="display: table-cell; vertical-align: middle; padding: 4px 0 0 0;">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture">
+  
+  
+  <h1 id="Klarna_Rest_Core_Model_OrderManagementCapture" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture" class="text-break">Class OrderManagementCapture
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">OrderManagementCapture</span></div>
+      <div class="level2"><a class="xref" href="Klarna.Rest.Core.Model.OrderManagement.Capture.html">Capture</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Klarna.Rest.Core.Model.html">Klarna.Rest.Core.Model</a></h6>
+  <h6><strong>Assembly</strong>: Klarna.Rest.Core.dll</h6>
+  <h5 id="Klarna_Rest_Core_Model_OrderManagementCapture_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;This model is being deprecated. Use the Capture model from Klarna.Rest.Core.Model.OrderManagement namespace instead&quot;)]
+public class OrderManagementCapture</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_OrderManagementCapture_BillingAddress.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.OrderManagementCapture.BillingAddress%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/OrderManagementCapture.cs/#L51">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_OrderManagementCapture_BillingAddress_" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture.BillingAddress*"></a>
+  <h4 id="Klarna_Rest_Core_Model_OrderManagementCapture_BillingAddress" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture.BillingAddress">BillingAddress</h4>
+  <div class="markdown level1 summary"><p>Billing address for the capture.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;billing_address&quot;)]
+public OrderManagementAddressInfo BillingAddress { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Klarna.Rest.Core.Model.OrderManagementAddressInfo.html">OrderManagementAddressInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_OrderManagementCapture_CapturedAmount.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.OrderManagementCapture.CapturedAmount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/OrderManagementCapture.cs/#L26">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_OrderManagementCapture_CapturedAmount_" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture.CapturedAmount*"></a>
+  <h4 id="Klarna_Rest_Core_Model_OrderManagementCapture_CapturedAmount" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture.CapturedAmount">CapturedAmount</h4>
+  <div class="markdown level1 summary"><p>The captured amount in minor units.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;captured_amount&quot;)]
+public int CapturedAmount { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_OrderManagementCapture_CapturedAt.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.OrderManagementCapture.CapturedAt%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/OrderManagementCapture.cs/#L31">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_OrderManagementCapture_CapturedAt_" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture.CapturedAt*"></a>
+  <h4 id="Klarna_Rest_Core_Model_OrderManagementCapture_CapturedAt" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture.CapturedAt">CapturedAt</h4>
+  <div class="markdown level1 summary"><p>The time of the capture. Specified in ISO 8601.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;captured_at&quot;)]
+public string CapturedAt { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_OrderManagementCapture_CaptureId.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.OrderManagementCapture.CaptureId%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/OrderManagementCapture.cs/#L16">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_OrderManagementCapture_CaptureId_" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture.CaptureId*"></a>
+  <h4 id="Klarna_Rest_Core_Model_OrderManagementCapture_CaptureId" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture.CaptureId">CaptureId</h4>
+  <div class="markdown level1 summary"><p>The capture id. Generated when the capture is created.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;capture_id&quot;)]
+public string CaptureId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_OrderManagementCapture_Description.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.OrderManagementCapture.Description%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/OrderManagementCapture.cs/#L36">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_OrderManagementCapture_Description_" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture.Description*"></a>
+  <h4 id="Klarna_Rest_Core_Model_OrderManagementCapture_Description" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture.Description">Description</h4>
+  <div class="markdown level1 summary"><p>Description of the capture shown to the customer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;description&quot;)]
+public string Description { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_OrderManagementCapture_KlarnaReference.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.OrderManagementCapture.KlarnaReference%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/OrderManagementCapture.cs/#L21">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_OrderManagementCapture_KlarnaReference_" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture.KlarnaReference*"></a>
+  <h4 id="Klarna_Rest_Core_Model_OrderManagementCapture_KlarnaReference" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture.KlarnaReference">KlarnaReference</h4>
+  <div class="markdown level1 summary"><p>Customer friendly reference id, used as a reference when communicating with the customer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;klarna_reference&quot;)]
+public string KlarnaReference { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_OrderManagementCapture_OrderLines.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.OrderManagementCapture.OrderLines%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/OrderManagementCapture.cs/#L41">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_OrderManagementCapture_OrderLines_" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture.OrderLines*"></a>
+  <h4 id="Klarna_Rest_Core_Model_OrderManagementCapture_OrderLines" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture.OrderLines">OrderLines</h4>
+  <div class="markdown level1 summary"><p>List of order lines for the capture shown to the customer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;order_lines&quot;)]
+public ICollection&lt;OrderLine&gt; OrderLines { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="Klarna.Rest.Core.Model.OrderLine.html">OrderLine</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_OrderManagementCapture_RefundedAmount.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.OrderManagementCapture.RefundedAmount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/OrderManagementCapture.cs/#L46">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_OrderManagementCapture_RefundedAmount_" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture.RefundedAmount*"></a>
+  <h4 id="Klarna_Rest_Core_Model_OrderManagementCapture_RefundedAmount" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture.RefundedAmount">RefundedAmount</h4>
+  <div class="markdown level1 summary"><p>Refunded amount for this capture in minor units.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;refunded_amount&quot;)]
+public int RefundedAmount { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_OrderManagementCapture_ShippingAddress.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.OrderManagementCapture.ShippingAddress%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/OrderManagementCapture.cs/#L56">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_OrderManagementCapture_ShippingAddress_" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture.ShippingAddress*"></a>
+  <h4 id="Klarna_Rest_Core_Model_OrderManagementCapture_ShippingAddress" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture.ShippingAddress">ShippingAddress</h4>
+  <div class="markdown level1 summary"><p>Shipping address for the capture</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;shipping_address&quot;)]
+public OrderManagementAddressInfo ShippingAddress { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Klarna.Rest.Core.Model.OrderManagementAddressInfo.html">OrderManagementAddressInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_OrderManagementCapture_ShippingInfo.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.OrderManagementCapture.ShippingInfo%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/OrderManagementCapture.cs/#L61">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_OrderManagementCapture_ShippingInfo_" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture.ShippingInfo*"></a>
+  <h4 id="Klarna_Rest_Core_Model_OrderManagementCapture_ShippingInfo" data-uid="Klarna.Rest.Core.Model.OrderManagementCapture.ShippingInfo">ShippingInfo</h4>
+  <div class="markdown level1 summary"><p>Shipping information for this capture.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;shipping_info&quot;)]
+public ICollection&lt;OrderManagementShippingInfo&gt; ShippingInfo { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="Klarna.Rest.Core.Model.OrderManagementShippingInfo.html">OrderManagementShippingInfo</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_OrderManagementCapture.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.OrderManagementCapture%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/OrderManagementCapture.cs/#L10" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) 2005-2019 Klarna Bank AB (publ). All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

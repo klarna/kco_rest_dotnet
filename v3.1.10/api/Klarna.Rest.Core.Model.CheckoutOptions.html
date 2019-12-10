@@ -1,0 +1,778 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class CheckoutOptions
+   | Klarna Checkout REST.Core .NET SDK </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class CheckoutOptions
+   | Klarna Checkout REST.Core .NET SDK ">
+    <meta name="generator" content="docfx 2.47.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <div class="subnav navbar navbar-default" style="display: table; width:100%;">
+          <a href="index.html" style="display: table-cell; vertical-align: middle;">
+            <img id="logo" class="svg" src="../api/logo.png" alt="" style="height: 40px; margin: 10px 15px 10px 10px">
+          </a>
+          <div class="container hide-when-search" id="breadcrumb" style="display: table-cell; vertical-align: middle; padding: 4px 0 0 0;">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Klarna.Rest.Core.Model.CheckoutOptions">
+  
+  
+  <h1 id="Klarna_Rest_Core_Model_CheckoutOptions" data-uid="Klarna.Rest.Core.Model.CheckoutOptions" class="text-break">Class CheckoutOptions
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">CheckoutOptions</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Klarna.Rest.Core.Model.html">Klarna.Rest.Core.Model</a></h6>
+  <h6><strong>Assembly</strong>: Klarna.Rest.Core.dll</h6>
+  <h5 id="Klarna_Rest_Core_Model_CheckoutOptions_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;This model is being deprecated. Use the Options model from Klarna.Rest.Core.Model.Checkout namespace instead&quot;)]
+public class CheckoutOptions</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOptions_AcquiringChannel.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOptions.AcquiringChannel%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOptions.cs/#L16">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOptions_AcquiringChannel_" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.AcquiringChannel*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOptions_AcquiringChannel" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.AcquiringChannel">AcquiringChannel</h4>
+  <div class="markdown level1 summary"><p>Acquiring channel for the order. Use MOTO for &quot;Mail Order Telephone Order&quot; or ECOMMERCE for &quot;E-commerce&quot;. Default : ECOMMERCE</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;acquiring_channel&quot;)]
+public string AcquiringChannel { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOptions_AdditionalCheckbox.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOptions.AdditionalCheckbox%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOptions.cs/#L72">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOptions_AdditionalCheckbox_" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.AdditionalCheckbox*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOptions_AdditionalCheckbox" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.AdditionalCheckbox">AdditionalCheckbox</h4>
+  <div class="markdown level1 summary"><p>Additional merchant defined checkbox. e.g. for Newsletter opt-in.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;additional_checkbox&quot;)]
+public AdditionalCheckbox AdditionalCheckbox { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Klarna.Rest.Core.Model.AdditionalCheckbox.html">AdditionalCheckbox</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Klarna_Rest_Core_Model_CheckoutOptions_AdditionalCheckbox_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Required</p>
+</div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOptions_AdditionalCheckboxes.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOptions.AdditionalCheckboxes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOptions.cs/#L102">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOptions_AdditionalCheckboxes_" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.AdditionalCheckboxes*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOptions_AdditionalCheckboxes" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.AdditionalCheckboxes">AdditionalCheckboxes</h4>
+  <div class="markdown level1 summary"><p>Additional merchant defined checkboxes. e.g. for Newsletter opt-in.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;additional_checkboxes&quot;)]
+public ICollection&lt;AdditionalCheckboxV2&gt; AdditionalCheckboxes { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="Klarna.Rest.Core.Model.AdditionalCheckboxV2.html">AdditionalCheckboxV2</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOptions_AdditionalMerchantTerms.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOptions.AdditionalMerchantTerms%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOptions.cs/#L82">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOptions_AdditionalMerchantTerms_" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.AdditionalMerchantTerms*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOptions_AdditionalMerchantTerms" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.AdditionalMerchantTerms">AdditionalMerchantTerms</h4>
+  <div class="markdown level1 summary"><p>Additional merchant defined field. e.g. Extra terms and conditions to show.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;additional_merchant_terms&quot;)]
+public string AdditionalMerchantTerms { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOptions_AllowedCustomerTypes.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOptions.AllowedCustomerTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOptions.cs/#L92">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOptions_AllowedCustomerTypes_" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.AllowedCustomerTypes*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOptions_AllowedCustomerTypes" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.AllowedCustomerTypes">AllowedCustomerTypes</h4>
+  <div class="markdown level1 summary"><p>A list of allowed customer types. Supported types: person &amp; organization</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;allowed_customer_types&quot;)]
+public ICollection&lt;string&gt; AllowedCustomerTypes { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.ICollection</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOptions_AllowSeparateShippingAddress.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOptions.AllowSeparateShippingAddress%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOptions.cs/#L21">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOptions_AllowSeparateShippingAddress_" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.AllowSeparateShippingAddress*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOptions_AllowSeparateShippingAddress" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.AllowSeparateShippingAddress">AllowSeparateShippingAddress</h4>
+  <div class="markdown level1 summary"><p>If true, the consumer can enter different billing and shipping addresses. Default: false</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;allow_separate_shipping_address&quot;)]
+public bool AllowSeparateShippingAddress { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOptions_ColorButton.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOptions.ColorButton%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOptions.cs/#L26">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOptions_ColorButton_" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.ColorButton*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOptions_ColorButton" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.ColorButton">ColorButton</h4>
+  <div class="markdown level1 summary"><p>CSS hex color, e.g. &quot;#FF9900&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;color_button&quot;)]
+public string ColorButton { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOptions_ColorButtonText.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOptions.ColorButtonText%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOptions.cs/#L31">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOptions_ColorButtonText_" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.ColorButtonText*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOptions_ColorButtonText" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.ColorButtonText">ColorButtonText</h4>
+  <div class="markdown level1 summary"><p>CSS hex color, e.g. &quot;#FF9900&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;color_button_text&quot;)]
+public string ColorButtonText { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOptions_ColorCheckbox.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOptions.ColorCheckbox%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOptions.cs/#L36">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOptions_ColorCheckbox_" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.ColorCheckbox*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOptions_ColorCheckbox" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.ColorCheckbox">ColorCheckbox</h4>
+  <div class="markdown level1 summary"><p>CSS hex color, e.g. &quot;#FF9900&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;color_checkbox&quot;)]
+public string ColorCheckbox { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOptions_ColorCheckboxCheckmark.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOptions.ColorCheckboxCheckmark%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOptions.cs/#L41">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOptions_ColorCheckboxCheckmark_" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.ColorCheckboxCheckmark*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOptions_ColorCheckboxCheckmark" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.ColorCheckboxCheckmark">ColorCheckboxCheckmark</h4>
+  <div class="markdown level1 summary"><p>CSS hex color, e.g. &quot;#FF9900&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;color_checkbox_checkmark&quot;)]
+public string ColorCheckboxCheckmark { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOptions_ColorHeader.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOptions.ColorHeader%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOptions.cs/#L46">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOptions_ColorHeader_" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.ColorHeader*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOptions_ColorHeader" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.ColorHeader">ColorHeader</h4>
+  <div class="markdown level1 summary"><p>CSS hex color, e.g. &quot;#FF9900&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;colorheader&quot;)]
+public string ColorHeader { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOptions_ColorLink.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOptions.ColorLink%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOptions.cs/#L51">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOptions_ColorLink_" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.ColorLink*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOptions_ColorLink" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.ColorLink">ColorLink</h4>
+  <div class="markdown level1 summary"><p>CSS hex color, e.g. &quot;#FF9900&quot;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;color_link&quot;)]
+public string ColorLink { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOptions_DateOfBirthMandatory.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOptions.DateOfBirthMandatory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOptions.cs/#L56">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOptions_DateOfBirthMandatory_" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.DateOfBirthMandatory*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOptions_DateOfBirthMandatory" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.DateOfBirthMandatory">DateOfBirthMandatory</h4>
+  <div class="markdown level1 summary"><p>If true, the consumer cannot skip date of birth. Default: false</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;date_of_birth_mandatory&quot;)]
+public bool DateOfBirthMandatory { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOptions_NationalIdentificationNumberMandatory.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOptions.NationalIdentificationNumberMandatory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOptions.cs/#L77">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOptions_NationalIdentificationNumberMandatory_" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.NationalIdentificationNumberMandatory*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOptions_NationalIdentificationNumberMandatory" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.NationalIdentificationNumberMandatory">NationalIdentificationNumberMandatory</h4>
+  <div class="markdown level1 summary"><p>Additional merchant defined field. e.g. for purchases that MUST have a national insurance number.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;national_identification_number_mandatory&quot;)]
+public bool NationalIdentificationNumberMandatory { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOptions_RadiusBorder.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOptions.RadiusBorder%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOptions.cs/#L87">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOptions_RadiusBorder_" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.RadiusBorder*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOptions_RadiusBorder" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.RadiusBorder">RadiusBorder</h4>
+  <div class="markdown level1 summary"><p>Border radius.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;radius_border&quot;)]
+public string RadiusBorder { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOptions_RequireValidateCallbackSuccess.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOptions.RequireValidateCallbackSuccess%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOptions.cs/#L107">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOptions_RequireValidateCallbackSuccess_" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.RequireValidateCallbackSuccess*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOptions_RequireValidateCallbackSuccess" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.RequireValidateCallbackSuccess">RequireValidateCallbackSuccess</h4>
+  <div class="markdown level1 summary"><p>If true, validate callback must get a positive response to not stop purchase. Default: false.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;require_validate_callback_success&quot;)]
+public bool RequireValidateCallbackSuccess { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOptions_ShippingDetails.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOptions.ShippingDetails%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOptions.cs/#L61">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOptions_ShippingDetails_" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.ShippingDetails*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOptions_ShippingDetails" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.ShippingDetails">ShippingDetails</h4>
+  <div class="markdown level1 summary"><p>A message that will be presented on the confirmation page under the headline &quot;Delivery&quot;.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;shipping_details&quot;)]
+public string ShippingDetails { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOptions_ShowSubtotalDetail.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOptions.ShowSubtotalDetail%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOptions.cs/#L97">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOptions_ShowSubtotalDetail_" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.ShowSubtotalDetail*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOptions_ShowSubtotalDetail" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.ShowSubtotalDetail">ShowSubtotalDetail</h4>
+  <div class="markdown level1 summary"><p>If true, the Order Detail subtotals view is expanded. Default: false</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;show_subtotal_detail&quot;)]
+public bool ShowSubtotalDetail { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOptions_TitleMandatory.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOptions.TitleMandatory%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOptions.cs/#L66">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOptions_TitleMandatory_" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.TitleMandatory*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOptions_TitleMandatory" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.TitleMandatory">TitleMandatory</h4>
+  <div class="markdown level1 summary"><p>If specified to false, title becomes optional. Only available for orders for country GB.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;title_mandatory&quot;)]
+public bool TitleMandatory { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOptions_VatExcluded.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOptions.VatExcluded%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOptions.cs/#L112">View Source</a>
+  </span>
+  <a id="Klarna_Rest_Core_Model_CheckoutOptions_VatExcluded_" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.VatExcluded*"></a>
+  <h4 id="Klarna_Rest_Core_Model_CheckoutOptions_VatExcluded" data-uid="Klarna.Rest.Core.Model.CheckoutOptions.VatExcluded">VatExcluded</h4>
+  <div class="markdown level1 summary"><p>If true, VAT is not included in total price</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(PropertyName = &quot;vat_excluded&quot;)]
+public bool VatExcluded { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/klarna/kco_rest_dotnet/new/v3.x/apiSpec/new?filename=Klarna_Rest_Core_Model_CheckoutOptions.md&amp;value=---%0Auid%3A%20Klarna.Rest.Core.Model.CheckoutOptions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core/Model/CheckoutOptions.cs/#L10" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) 2005-2019 Klarna Bank AB (publ). All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
