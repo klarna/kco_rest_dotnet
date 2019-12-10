@@ -25,8 +25,8 @@ namespace Klarna.Rest.Core.Store
         /// To create a settlement resource provide a completed order identifier and (optionally) a promise identifier.
         /// </summary>
         /// <param name="request">The <see cref="VirtualCardCreateSettlementRequest"/> object</param>
-        /// <returns>A single <see cref="VirtualCardSettlement"/> object</returns>
-        [Obsolete("VirtualCardCreateSettlementRequest and VirtualCardSettlement are using the old model. " +
+        /// <returns>A single <see cref="SettlementResponse"/> object</returns>
+        [Obsolete("VirtualCardCreateSettlementRequest and VirtualCardSettlement are using deprecated models. " +
                   "Please use SettlementRequest and SettlementResponse instead")]
         public async Task<SettlementResponse> CreateSettlement(VirtualCardCreateSettlementRequest request)
         {
@@ -39,7 +39,7 @@ namespace Klarna.Rest.Core.Store
         /// To create a settlement resource provide a completed order identifier and (optionally) a promise identifier.
         /// </summary>
         /// <param name="request">The <see cref="VirtualCardCreateSettlementRequest"/> object</param>
-        /// <returns>A single <see cref="VirtualCardSettlement"/> object</returns>
+        /// <returns>A single <see cref="SettlementResponse"/> object</returns>
         public async Task<SettlementResponse> CreateSettlement(SettlementRequest request)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri);
@@ -89,7 +89,7 @@ namespace Klarna.Rest.Core.Store
         /// To read the promise resource simply provide a promise identifier.
         /// </summary>
         /// <param name="promiseId"></param>
-        /// <returns>A single <see cref="VirtualCardSettlement"/> object</returns>
+        /// <returns>A single <see cref="SettlementResponse"/> object</returns>
         public async Task<SettlementResponse> ReadPromise(string promiseId)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllers.VirtualCreditCardPromise, promiseId);

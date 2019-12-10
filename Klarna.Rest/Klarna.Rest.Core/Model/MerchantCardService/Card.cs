@@ -8,47 +8,7 @@ namespace Klarna.Rest.Core.Model.MerchantCardService {
   /// 
   /// </summary>
   [DataContract]
-  public class Card {
-    /// <summary>
-    /// Identifier to reference order line.
-    /// </summary>
-    /// <value>Identifier to reference order line.</value>
-    [DataMember(Name="reference", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "reference")]
-    public string Reference { get; set; }
-
-    /// <summary>
-    /// Unique card identifier.
-    /// </summary>
-    /// <value>Unique card identifier.</value>
-    [DataMember(Name="card_id", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "card_id")]
-    public string CardId { get; set; }
-
-    /// <summary>
-    /// The total amount available on the card. In minor units. The number of decimals are controlled by the currency.
-    /// </summary>
-    /// <value>The total amount available on the card. In minor units. The number of decimals are controlled by the currency.</value>
-    [DataMember(Name="amount", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "amount")]
-    public long? Amount { get; set; }
-
-    /// <summary>
-    /// The ISO 4217 code states which currency it is and how many decimals the amount has.
-    /// </summary>
-    /// <value>The ISO 4217 code states which currency it is and how many decimals the amount has.</value>
-    [DataMember(Name="currency", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "currency")]
-    public string Currency { get; set; }
-
-    /// <summary>
-    /// Encrypted, PCI compliant card data.
-    /// </summary>
-    /// <value>Encrypted, PCI compliant card data.</value>
-    [DataMember(Name="pci_data", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "pci_data")]
-    public string PciData { get; set; }
-
+  public class Card: VirtualCardCard {
     /// <summary>
     /// Initialization vector for symmetric decryption with the AES key.
     /// </summary>
@@ -56,31 +16,6 @@ namespace Klarna.Rest.Core.Model.MerchantCardService {
     [DataMember(Name="iv", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "iv")]
     public string Iv { get; set; }
-
-    /// <summary>
-    /// The symmetric key complying the Advanced Encryption Standard.
-    /// </summary>
-    /// <value>The symmetric key complying the Advanced Encryption Standard.</value>
-    [DataMember(Name="aes_key", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "aes_key")]
-    public string AesKey { get; set; }
-
-    /// <summary>
-    /// The brand of the card.
-    /// </summary>
-    /// <value>The brand of the card.</value>
-    [DataMember(Name="brand", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "brand")]
-    public string Brand { get; set; }
-
-    /// <summary>
-    /// Card holder name on the card.
-    /// </summary>
-    /// <value>Card holder name on the card.</value>
-    [DataMember(Name="holder", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "holder")]
-    public string Holder { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

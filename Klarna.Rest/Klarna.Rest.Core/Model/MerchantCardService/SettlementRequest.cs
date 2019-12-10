@@ -8,32 +8,7 @@ namespace Klarna.Rest.Core.Model.MerchantCardService {
   /// 
   /// </summary>
   [DataContract]
-  public class SettlementRequest {
-    /// <summary>
-    /// Unique identifier for the promise associated to the settlement.
-    /// </summary>
-    /// <value>Unique identifier for the promise associated to the settlement.</value>
-    [DataMember(Name="promise_id", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "promise_id")]
-    public string PromiseId { get; set; }
-
-    /// <summary>
-    /// Unique identifier for the order associated to the settlement.
-    /// </summary>
-    /// <value>Unique identifier for the order associated to the settlement.</value>
-    [DataMember(Name="order_id", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "order_id")]
-    public string OrderId { get; set; }
-
-    /// <summary>
-    /// Unique identifier for the public key to be used for encryption of the card data.
-    /// </summary>
-    /// <value>Unique identifier for the public key to be used for encryption of the card data.</value>
-    [DataMember(Name="key_id", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "key_id")]
-    public string KeyId { get; set; }
-
-
+  public class SettlementRequest: VirtualCardCreateSettlementRequest {
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

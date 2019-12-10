@@ -6,7 +6,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     /// Virtual Card card object
     /// </summary>
-    [Obsolete("This model is being deprecated. Use Card from Klarna.Rest.Core.Model.MerchantCardService namespace instead")]
+    [Obsolete("This model is being deprecated. Use the Card model from Klarna.Rest.Core.Model.MerchantCardService namespace instead")]
     public class VirtualCardCard
     {
         /// <summary>

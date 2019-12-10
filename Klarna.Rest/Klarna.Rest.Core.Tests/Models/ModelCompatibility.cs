@@ -4,6 +4,7 @@ using Klarna.Rest.Core.Model.CustomerToken;
 using Klarna.Rest.Core.Model.HostedPaymentPage;
 using Klarna.Rest.Core.Model.Payments;
 using Checkout = Klarna.Rest.Core.Model.Checkout;
+using MerchantCardService = Klarna.Rest.Core.Model.MerchantCardService;
 using OrderManagement = Klarna.Rest.Core.Model.OrderManagement;
 using Settlements = Klarna.Rest.Core.Model.Settlements;
 
@@ -104,6 +105,18 @@ namespace Klarna.Rest.Core.Tests.Models
         public void SettlementsErrorResponseCompatibility()
         {
             Assert.True(typeof(Settlements.ErrorResponse).IsSubclassOf(typeof(ErrorMessage)));
+        }
+
+        [Fact]
+        public void MerchantCardServiceCardCompatibility()
+        {
+            Assert.True(typeof(MerchantCardService.Card).IsSubclassOf(typeof(VirtualCardCard)));
+        }
+
+        [Fact]
+        public void MerchantCardServiceSettlementRequestCompatibility()
+        {
+            Assert.True(typeof(MerchantCardService.SettlementRequest).IsSubclassOf(typeof(VirtualCardCreateSettlementRequest)));
         }
     }
 }
