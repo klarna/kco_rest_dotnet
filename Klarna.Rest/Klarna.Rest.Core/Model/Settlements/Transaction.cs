@@ -11,119 +11,7 @@ namespace Klarna.Rest.Core.Model.Settlements {
   /// 
   /// </summary>
   [DataContract]
-  public class Transaction {
-    /// <summary>
-    /// Total amount of the specific transaction, in minor units
-    /// </summary>
-    /// <value>Total amount of the specific transaction, in minor units</value>
-    [DataMember(Name="amount", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "amount")]
-    public long? Amount { get; set; }
-
-    /// <summary>
-    /// The Klarna assigned id reference of a specific capture
-    /// </summary>
-    /// <value>The Klarna assigned id reference of a specific capture</value>
-    [DataMember(Name="capture_id", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "capture_id")]
-    public Guid? CaptureId { get; set; }
-
-    /// <summary>
-    /// Merchant assigned reference, typically a reference to an order management system id
-    /// </summary>
-    /// <value>Merchant assigned reference, typically a reference to an order management system id</value>
-    [DataMember(Name="merchant_reference1", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "merchant_reference1")]
-    public string MerchantReference1 { get; set; }
-
-    /// <summary>
-    /// ISO-8601 formatted date-time string
-    /// </summary>
-    /// <value>ISO-8601 formatted date-time string</value>
-    [DataMember(Name="sale_date", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "sale_date")]
-    public DateTime? SaleDate { get; set; }
-
-    /// <summary>
-    /// The type of transaction.
-    /// </summary>
-    /// <value>The type of transaction.</value>
-    [DataMember(Name="type", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "type")]
-    public string Type { get; set; }
-
-    /// <summary>
-    /// ISO-8601 formatted date-time string
-    /// </summary>
-    /// <value>ISO-8601 formatted date-time string</value>
-    [DataMember(Name="capture_date", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "capture_date")]
-    public DateTime? CaptureDate { get; set; }
-
-    /// <summary>
-    /// Reference to the specific payout the transaction is part of, if available.
-    /// </summary>
-    /// <value>Reference to the specific payout the transaction is part of, if available.</value>
-    [DataMember(Name="payment_reference", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "payment_reference")]
-    public string PaymentReference { get; set; }
-
-    /// <summary>
-    /// The Klarna assigned order id reference
-    /// </summary>
-    /// <value>The Klarna assigned order id reference</value>
-    [DataMember(Name="order_id", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "order_id")]
-    public Guid? OrderId { get; set; }
-
-    /// <summary>
-    /// Link to the payout that this transaction is part of
-    /// </summary>
-    /// <value>Link to the payout that this transaction is part of</value>
-    [DataMember(Name="payout", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "payout")]
-    public string Payout { get; set; }
-
-    /// <summary>
-    /// The Klarna assigned id reference of a specific refund
-    /// </summary>
-    /// <value>The Klarna assigned id reference of a specific refund</value>
-    [DataMember(Name="refund_id", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "refund_id")]
-    public Guid? RefundId { get; set; }
-
-    /// <summary>
-    /// The Klarna assigned short order id reference
-    /// </summary>
-    /// <value>The Klarna assigned short order id reference</value>
-    [DataMember(Name="short_order_id", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "short_order_id")]
-    public string ShortOrderId { get; set; }
-
-    /// <summary>
-    /// Merchant assigned reference, typically a reference to an order management system id
-    /// </summary>
-    /// <value>Merchant assigned reference, typically a reference to an order management system id</value>
-    [DataMember(Name="merchant_reference2", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "merchant_reference2")]
-    public string MerchantReference2 { get; set; }
-
-    /// <summary>
-    /// ISO-3166 Currency Code.
-    /// </summary>
-    /// <value>ISO-3166 Currency Code.</value>
-    [DataMember(Name="currency_code", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "currency_code")]
-    public string CurrencyCode { get; set; }
-
-    /// <summary>
-    /// ISO Alpha-2 Country Code
-    /// </summary>
-    /// <value>ISO Alpha-2 Country Code</value>
-    [DataMember(Name="purchase_country", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "purchase_country")]
-    public string PurchaseCountry { get; set; }
-
+  public class Transaction: Model.Transaction {
     /// <summary>
     /// VAT (Value added tax) rate on Klarna fees
     /// </summary>
@@ -187,7 +75,6 @@ namespace Klarna.Rest.Core.Model.Settlements {
     [DataMember(Name="detailed_type", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "detailed_type")]
     public string DetailedType { get; set; }
-
 
     /// <summary>
     /// Get the string presentation of the object

@@ -11,22 +11,7 @@ namespace Klarna.Rest.Core.Model.Settlements {
   /// 
   /// </summary>
   [DataContract]
-  public class TransactionCollection {
-    /// <summary>
-    /// Gets or Sets Transactions
-    /// </summary>
-    [DataMember(Name="transactions", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "transactions")]
-    public List<Transaction> Transactions { get; set; }
-
-    /// <summary>
-    /// Gets or Sets Pagination
-    /// </summary>
-    [DataMember(Name="pagination", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "pagination")]
-    public Pagination Pagination { get; set; }
-
-
+  public class TransactionCollection: SettlementsGetTransactionsResponse {
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

@@ -11,63 +11,7 @@ namespace Klarna.Rest.Core.Model.Settlements {
   /// 
   /// </summary>
   [DataContract]
-  public class Payout {
-    /// <summary>
-    /// Gets or Sets Totals
-    /// </summary>
-    [DataMember(Name="totals", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "totals")]
-    public Totals Totals { get; set; }
-
-    /// <summary>
-    /// The reference id of the payout
-    /// </summary>
-    /// <value>The reference id of the payout</value>
-    [DataMember(Name="payment_reference", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "payment_reference")]
-    public string PaymentReference { get; set; }
-
-    /// <summary>
-    /// ISO-8601 formatted date-time string
-    /// </summary>
-    /// <value>ISO-8601 formatted date-time string</value>
-    [DataMember(Name="payout_date", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "payout_date")]
-    public DateTime? PayoutDate { get; set; }
-
-    /// <summary>
-    /// ISO-3166 Currency Code.
-    /// </summary>
-    /// <value>ISO-3166 Currency Code.</value>
-    [DataMember(Name="currency_code", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "currency_code")]
-    public string CurrencyCode { get; set; }
-
-    /// <summary>
-    /// Whether the amounts are net or gross
-    /// </summary>
-    /// <value>Whether the amounts are net or gross</value>
-    [DataMember(Name="merchant_settlement_type", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "merchant_settlement_type")]
-    public string MerchantSettlementType { get; set; }
-
-    /// <summary>
-    /// The merchant id
-    /// </summary>
-    /// <value>The merchant id</value>
-    [DataMember(Name="merchant_id", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "merchant_id")]
-    public string MerchantId { get; set; }
-
-    /// <summary>
-    /// Link to the transactions that are part of this payout
-    /// </summary>
-    /// <value>Link to the transactions that are part of this payout</value>
-    [DataMember(Name="transactions", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "transactions")]
-    public string Transactions { get; set; }
-
-
+  public class Payout: SettlementsPayout {
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>
