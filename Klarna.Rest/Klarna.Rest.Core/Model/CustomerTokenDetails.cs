@@ -27,13 +27,13 @@ namespace Klarna.Rest.Core.Model
         /// </summary>
         /// <value>The card details.</value>
         [JsonProperty(PropertyName = "card")]
-        public CustomerTokenCardDetails CardDetails { get; set; }
+        public CustomerToken.CardInformation CardDetails { get; set; }
         /// <summary>
         /// The direct debit details of the token. Is only populated if the token is based on direct debit
         /// </summary>
         /// <value>The direct debit token details.</value>
         [JsonProperty(PropertyName = "direct_debit")]
-        public CustomerDirectDebitTokenDetails DirectDebitTokenDetails  { get; set; }
+        public CustomerToken.DirectDebitInformation DirectDebitTokenDetails  { get; set; }
     }
 
 

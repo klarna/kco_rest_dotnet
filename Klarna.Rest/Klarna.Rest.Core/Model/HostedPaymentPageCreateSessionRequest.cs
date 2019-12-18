@@ -13,12 +13,12 @@ namespace Klarna.Rest.Core.Model
         /// Urls used to redirect the consumer
         /// </summary>
         [JsonProperty(PropertyName = "merchant_urls")]
-        public HostedPaymentPageMerchantUrls MerchantUrls { get; set; }
+        public HostedPaymentPage.MerchantUrlsV1 MerchantUrls { get; set; }
         /// <summary>
         /// Options
         /// </summary>
         [JsonProperty(PropertyName = "options")]
-        public HostedPaymentPageOptions Options { get; set; }
+        public HostedPaymentPage.OptionsV1 Options { get; set; }
         /// <summary>
         /// Url for the KP session
         /// </summary>

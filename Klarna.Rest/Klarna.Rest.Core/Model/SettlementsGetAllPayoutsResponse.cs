@@ -14,7 +14,7 @@ namespace Klarna.Rest.Core.Model
         /// Array of payouts
         /// </summary>
         [JsonProperty(PropertyName = "payouts")]
-        public ICollection<SettlementsPayout> Payouts { get; set; }
+        public ICollection<Settlements.Payout> Payouts { get; set; }
         /// <summary>
         /// Pagination information
         /// </summary>

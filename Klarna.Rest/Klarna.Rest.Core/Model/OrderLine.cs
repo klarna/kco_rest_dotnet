@@ -85,7 +85,7 @@ namespace Klarna.Rest.Core.Model
         /// Additional information identifying an item
         /// </summary>
         [JsonProperty(PropertyName = "product_identifiers")]
-        public ProductIdentifiers ProductIdentifiers { get; set; }
+        public Checkout.ProductIdentifiers ProductIdentifiers { get; set; }
 
         /// <summary>
         /// Shipping attributes of an item

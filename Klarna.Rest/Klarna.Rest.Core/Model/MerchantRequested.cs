@@ -19,6 +19,6 @@ namespace Klarna.Rest.Core.Model
         /// </summary>
         /// <remarks>Read only</remarks>
         [JsonProperty(PropertyName = "additional_checkboxes")]
-        public ICollection<MerchantRequestedAdditionalCheckbox> AdditionalCheckboxes { get; set; }
+        public ICollection<Checkout.CheckboxV2> AdditionalCheckboxes { get; set; }
     }
 }

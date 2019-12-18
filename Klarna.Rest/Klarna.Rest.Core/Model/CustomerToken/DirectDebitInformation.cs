@@ -8,24 +8,7 @@ namespace Klarna.Rest.Core.Model.CustomerToken {
   /// 
   /// </summary>
   [DataContract]
-  public class DirectDebitInformation {
-    /// <summary>
-    /// Bank name
-    /// </summary>
-    /// <value>Bank name</value>
-    [DataMember(Name="brand", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "brand")]
-    public string Brand { get; set; }
-
-    /// <summary>
-    /// Masked bank account number
-    /// </summary>
-    /// <value>Masked bank account number</value>
-    [DataMember(Name="masked_number", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "masked_number")]
-    public string MaskedNumber { get; set; }
-
-
+  public class DirectDebitInformation: CustomerDirectDebitTokenDetails {
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>
