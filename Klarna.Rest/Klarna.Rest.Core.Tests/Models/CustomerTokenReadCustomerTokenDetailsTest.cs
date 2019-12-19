@@ -77,14 +77,14 @@ namespace Klarna.Rest.Core.Tests.Models
         public void CanDeserializeRequest()
         {
             var json = File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "Data", "HostedPaymentPageCreateSessionRequest.json"));
-            var request = JsonConvert.DeserializeObject<HostedPaymentPageCreateSessionRequest>(json);
+            var request = JsonConvert.DeserializeObject<Model.HostedPaymentPage.SessionCreationRequestV1>(json);
         }
 
         [Fact]
         public void CanDeserializeResponse()
         {
             var json = File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "Data", "HostedPaymentPageCreateSessionResponse.json"));
-            var response = JsonConvert.DeserializeObject<HostedPaymentPageCreateSessionResponse>(json);
+            var response = JsonConvert.DeserializeObject<Model.HostedPaymentPage.SessionCreationResponseV1>(json);
         }
         
         [Fact]
@@ -95,7 +95,7 @@ namespace Klarna.Rest.Core.Tests.Models
             responseObject.AuthorizationToken = "b4bd3423-24e3";
             responseObject.UpdatedAt = "2038-01-19T03:14:07.000Z";
             responseObject.SessionId = "1234";
-            HostedPaymentPageSessionStatus casted = responseObject;
+            Model.HostedPaymentPage.SessionResponseV1 casted = responseObject;
             Assert.True(casted.AuthorizationToken.Equals("b4bd3423-24e3"));
         }
     }

@@ -15,13 +15,13 @@ namespace Klarna.Rest.Core.Model
         /// Contact information for the link distribution
         /// </summary>
         [JsonProperty(PropertyName = "contact_information")]
-        public HostedPaymentPage.DistributionContactV1 ContactInformation { get; set; }
+        public HostedPaymentPageContactInformation ContactInformation { get; set; }
         /// <summary>
         /// Method used for distribution
         /// </summary>
         [JsonProperty(PropertyName = "method")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public HostedPaymentPage.DistributionRequestV1 Method { get; set; }
+        public HostedPaymentPageDistributionMethod Method { get; set; }
         /// <summary>
         /// INSTORE_PURCHASE
         /// </summary>

@@ -16,7 +16,7 @@ namespace Klarna.Rest.Core.Model
         /// Images to use for the background
         /// </summary>
         [JsonProperty(PropertyName = "background_images")]
-        public ICollection<HostedPaymentPage.BackgroundImageV1> BackgroundImages { get; set; }
+        public ICollection<HostedPaymentPageBackgroundImage> BackgroundImages { get; set; }
         /// <summary>
         /// URL for the logo to be included in the HPP page
         /// </summary>
@@ -31,12 +31,14 @@ namespace Klarna.Rest.Core.Model
         /// Payment method category to show
         /// </summary>
         [JsonProperty(PropertyName = "payment_method_category")]
-        public string PaymentMethodCategory { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public HostedPaymentPagePaymentMethodCategory PaymentMethodCategory { get; set; }
         /// <summary>
         /// The type of this purchase
         /// </summary>
         [JsonProperty(PropertyName = "purchase_type")]
-        public string PurchaseType { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public HostedPaymentPagePurchaseType PurchaseType { get; set; }
 
     }
 }

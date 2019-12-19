@@ -29,7 +29,8 @@ namespace Klarna.Rest.Core.Model
         /// Current session status
         /// </summary>
         [JsonProperty(PropertyName = "status")]
-        public string Status { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public HostedPaymentPageStatus Status { get; set; }
         /// <summary>
         /// Latest status update time
         /// </summary>
