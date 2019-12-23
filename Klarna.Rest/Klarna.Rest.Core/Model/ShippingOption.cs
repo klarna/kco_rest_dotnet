@@ -18,7 +18,7 @@ namespace Klarna.Rest.Core.Model
         /// <summary>
         /// Name.
         /// </summary>
-        /// <remarks>Reqiured</remarks>
+        /// <remarks>Required</remarks>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
         /// <summary>

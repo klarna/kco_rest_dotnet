@@ -15,6 +15,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+## [3.1.11] (Enhancements Release/Auto-generated models) - 2019-12-23
+
+### Changed
+
+- Examples now use new models instead of the deprecated ones
+
+### Added
+
+- Order Management
+  - Added new values to `OrderManagementInitialPaymentMethodType` Enum
+- Hosted Payment Page
+  - Added new values to `HostedPaymentPageStatus` Enum
+- Checkout
+  - Added new values to `ShippingMethod` Enum
+
+### Fixed
+
+- Models introduced in [3.1.10] were causing side-effects, for example to use `Klarna.Rest.Core.Model.OrderManagement.Capture` you had to use the legacy `Klarna.Rest.Core.Model.Orderline` and not `Klarna.Rest.Core.Model.OrderManagement.Orderline`. You can now use `Klarna.Rest.Core.Model.OrderManagement.Orderline`.
+- Class documentation updated to fix broken links to example code
 
 ## [3.1.10] (Enhancements Release/Auto-generated models) - 2019-12-10
 
@@ -256,7 +275,8 @@ and fixes [#77](https://github.com/klarna/kco_rest_dotnet/issues/77)
 
 - **NEW MINT-1912** Support checkout v3 and ordermanagement v1 APIs - *Joakim.L*
 
-[Unreleased]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.10...HEAD
+[Unreleased]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.11...HEAD
+[3.1.11]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.10...v3.1.11
 [3.1.10]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.9...v3.1.10
 [3.1.9]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.8...v3.1.9
 [3.1.8]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.7...v3.1.8
