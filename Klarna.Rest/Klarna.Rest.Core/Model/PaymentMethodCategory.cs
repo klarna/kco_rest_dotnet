@@ -23,6 +23,6 @@ namespace Klarna.Rest.Core.Model
         /// Asset URLs
         /// </summary>
         [JsonProperty(PropertyName = "asset_urls")]
-        public PaymentMethodCategoryAssetUrls AssetUrls { get; set; }
+        public Payments.AssetUrls AssetUrls { get; set; }
     }
 }

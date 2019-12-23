@@ -28,7 +28,7 @@ namespace Klarna.Rest.Core.Model
         /// Once the customer has provided any data, updates to this object will be ignored (without generating an error).
         /// </summary>
         [JsonProperty(PropertyName = "billing_address")]
-        public PaymentAddressInfo BillingAddress { get; set; }
+        public Payments.Address BillingAddress { get; set; }
         /// <summary>
         /// Information about the liable customer of the order.
         /// </summary>

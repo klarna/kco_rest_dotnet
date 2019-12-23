@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Klarna.Rest.Core.Common;
-using Klarna.Rest.Core.Model;
 using Klarna.Rest.Core.Model.Enum;
 
 namespace Klarna.Rest.Core.Examples

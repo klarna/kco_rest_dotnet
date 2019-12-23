@@ -8,23 +8,7 @@ namespace Klarna.Rest.Core.Model.OrderManagement {
   /// 
   /// </summary>
   [DataContract]
-  public class InitialPaymentMethodDto {
-    /// <summary>
-    /// The type of the initial payment method.
-    /// </summary>
-    /// <value>The type of the initial payment method.</value>
-    [DataMember(Name="type", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "type")]
-    public string Type { get; set; }
-
-    /// <summary>
-    /// The description of the initial payment method.
-    /// </summary>
-    /// <value>The description of the initial payment method.</value>
-    [DataMember(Name="description", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "description")]
-    public string Description { get; set; }
-
+  public class InitialPaymentMethodDto : OrderManagementInitialPaymentMethod{
     /// <summary>
     /// The number of installments (if applicable).
     /// </summary>

@@ -8,32 +8,7 @@ namespace Klarna.Rest.Core.Model.Payments {
   /// 
   /// </summary>
   [DataContract]
-  public class PaymentMethodCategory {
-    /// <summary>
-    /// Asset URLs
-    /// </summary>
-    /// <value>Asset URLs</value>
-    [DataMember(Name="asset_urls", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "asset_urls")]
-    public AssetUrls AssetUrls { get; set; }
-
-    /// <summary>
-    /// Id for the category
-    /// </summary>
-    /// <value>Id for the category</value>
-    [DataMember(Name="identifier", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "identifier")]
-    public string Identifier { get; set; }
-
-    /// <summary>
-    /// Name of the category
-    /// </summary>
-    /// <value>Name of the category</value>
-    [DataMember(Name="name", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "name")]
-    public string Name { get; set; }
-
-
+  public class PaymentMethodCategory : Model.PaymentMethodCategory {
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

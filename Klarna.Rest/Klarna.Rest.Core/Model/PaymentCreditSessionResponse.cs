@@ -26,6 +26,6 @@ namespace Klarna.Rest.Core.Model
         /// Available payment method categories
         /// </summary>
         [JsonProperty(PropertyName = "payment_method_categories")]
-        public ICollection<PaymentMethodCategory> PaymentMethodCategories { get; set; }
+        public ICollection<Payments.PaymentMethodCategory> PaymentMethodCategories { get; set; }
     }
 }

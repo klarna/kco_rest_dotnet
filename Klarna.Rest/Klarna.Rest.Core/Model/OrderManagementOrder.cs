@@ -117,21 +117,21 @@ namespace Klarna.Rest.Core.Model
         /// </summary>
         /// <value>Information about the customer placing the order.</value>
         [JsonProperty(PropertyName = "customer")]
-        public OrderManagementCustomer Customer { get; set; }
+        public OrderManagement.Customer Customer { get; set; }
 
         /// <summary>
         /// Customer billing address.
         /// </summary>
         /// <value>Customer billing address.</value>
         [JsonProperty(PropertyName = "billing_address")]
-        public OrderManagementAddressInfo BillingAddress { get; set; }
+        public OrderManagement.Address BillingAddress { get; set; }
 
         /// <summary>
         /// Customer shipping address.
         /// </summary>
         /// <value>Customer shipping address.</value>
         [JsonProperty(PropertyName = "shipping_address")]
-        public OrderManagementAddressInfo ShippingAddress { get; set; }
+        public OrderManagement.Address ShippingAddress { get; set; }
 
         /// <summary>
         /// The time for the purchase. Formatted according to ISO 8601.
@@ -159,14 +159,14 @@ namespace Klarna.Rest.Core.Model
         /// </summary>
         /// <value>List of captures for this order.</value>
         [JsonProperty(PropertyName = "captures")]
-        public ICollection<OrderManagementCapture> Captures { get; set; }
+        public ICollection<OrderManagement.Capture> Captures { get; set; }
 
         /// <summary>
         /// List of refunds for this order.
         /// </summary>
         /// <value>List of refunds for this order.</value>
         [JsonProperty(PropertyName = "refunds")]
-        public ICollection<OrderManagementRefund> Refunds { get; set; }
+        public ICollection<OrderManagement.Refund> Refunds { get; set; }
 
         /// <summary>
         /// Text field for storing data about the order. Set at order creation.
@@ -180,6 +180,6 @@ namespace Klarna.Rest.Core.Model
         /// </summary>
         /// <value>Initial payment method for this order</value>
         [JsonProperty(PropertyName = "initial_payment_method")]
-        public OrderManagementInitialPaymentMethod InitialPaymentMethod { get; set; }
+        public OrderManagement.InitialPaymentMethodDto InitialPaymentMethod { get; set; }
     }
 }

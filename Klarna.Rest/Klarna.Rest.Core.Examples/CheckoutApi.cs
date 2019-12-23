@@ -52,7 +52,7 @@ namespace Klarna.Rest.Core.Examples
                         TotalDiscountAmount = 0,
                     }
                 },
-                CheckoutOptions = new Model.Checkout.Options
+                CheckoutOptions = new Options
                 {
                     AllowSeparateShippingAddress = false,
                     ColorButton = "#FF9900",

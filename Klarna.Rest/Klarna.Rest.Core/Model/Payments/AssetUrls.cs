@@ -8,24 +8,7 @@ namespace Klarna.Rest.Core.Model.Payments {
   /// 
   /// </summary>
   [DataContract]
-  public class AssetUrls {
-    /// <summary>
-    /// Decriptive asset URL
-    /// </summary>
-    /// <value>Decriptive asset URL</value>
-    [DataMember(Name="descriptive", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "descriptive")]
-    public string Descriptive { get; set; }
-
-    /// <summary>
-    /// Standard asset URL
-    /// </summary>
-    /// <value>Standard asset URL</value>
-    [DataMember(Name="standard", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "standard")]
-    public string Standard { get; set; }
-
-
+  public class AssetUrls : PaymentMethodCategoryAssetUrls{
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

@@ -24,6 +24,6 @@ namespace Klarna.Rest.Core.Model
         /// New set of order lines for the order.
         /// </summary>
         [JsonProperty(PropertyName = "order_lines")]
-        public ICollection<OrderLine> OrderLines { get; set; }
+        public ICollection<OrderManagement.OrderLine> OrderLines { get; set; }
     }
 }
