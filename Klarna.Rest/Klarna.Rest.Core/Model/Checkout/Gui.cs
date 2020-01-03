@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using LegacyModels = Klarna.Rest.Core.Model;
 
 namespace Klarna.Rest.Core.Model.Checkout {
 
@@ -9,16 +10,7 @@ namespace Klarna.Rest.Core.Model.Checkout {
   /// 
   /// </summary>
   [DataContract]
-  public class Gui {
-    /// <summary>
-    /// An array of options to define the checkout behaviour. Supported options: <b>disable_autofocus</b>, <b>minimal_confirmation</b>.
-    /// </summary>
-    /// <value>An array of options to define the checkout behaviour. Supported options: <b>disable_autofocus</b>, <b>minimal_confirmation</b>.</value>
-    [DataMember(Name="options", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "options")]
-    public List<string> Options { get; set; }
-
-
+  public class Gui: LegacyModels.Gui {
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

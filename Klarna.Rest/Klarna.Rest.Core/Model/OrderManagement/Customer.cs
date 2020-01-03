@@ -2,6 +2,7 @@ using System;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using LegacyModels = Klarna.Rest.Core.Model;
 
 namespace Klarna.Rest.Core.Model.OrderManagement {
 
@@ -9,23 +10,7 @@ namespace Klarna.Rest.Core.Model.OrderManagement {
   /// 
   /// </summary>
   [DataContract]
-  public class Customer {
-    /// <summary>
-    /// The customer date of birth. ISO 8601. 
-    /// </summary>
-    /// <value>The customer date of birth. ISO 8601. </value>
-    [DataMember(Name="date_of_birth", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "date_of_birth")]
-    public DateTime? DateOfBirth { get; set; }
-
-    /// <summary>
-    /// The customer national identification number
-    /// </summary>
-    /// <value>The customer national identification number</value>
-    [DataMember(Name="national_identification_number", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "national_identification_number")]
-    public string NationalIdentificationNumber { get; set; }
-
+  public class Customer : LegacyModels.OrderManagementCustomer {
 
     /// <summary>
     /// Get the string presentation of the object

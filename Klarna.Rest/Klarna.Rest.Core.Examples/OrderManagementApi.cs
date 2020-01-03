@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Klarna.Rest.Core.Common;
 using Klarna.Rest.Core.Communication;
 using Klarna.Rest.Core.Model.Enum;
-using Klarna.Rest.Core.Model;
+using Klarna.Rest.Core.Model.OrderManagement;
 
 namespace Klarna.Rest.Core.Examples
 {
@@ -87,7 +87,7 @@ namespace Klarna.Rest.Core.Examples
             var orderId = "abc-abcdefg-abc";
             try
             {
-                var captureData = new OrderManagementCreateCapture
+                var captureData = new CaptureObject()
                 {
                     CapturedAmount = 10000,
                     Description = "Full capture of the order",
@@ -105,9 +105,9 @@ namespace Klarna.Rest.Core.Examples
                                 TotalDiscountAmount = 0,
                             }
                         },
-                    ShippingInfo = new List<OrderManagementShippingInfo>()
+                    ShippingInfo = new List<ShippingInfo>()
                     {
-                        new OrderManagementShippingInfo
+                        new ShippingInfo
                         {
                             ShippingMethod = OrderManagementShippingMethod.PickUpPoint,
                             ShippingCompany = "PostNord",
@@ -182,7 +182,7 @@ namespace Klarna.Rest.Core.Examples
             var orderId = "abc-abcdefg-abc";
             try
             {
-                var refundData = new OrderManagementRefund
+                var refundData = new RefundObject()
                 {
                     RefundedAmount = 10000,
                     Description = "Full refund for order",

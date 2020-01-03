@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using LegacyModels = Klarna.Rest.Core.Model;
 
 namespace Klarna.Rest.Core.Model.Checkout {
 
@@ -9,24 +10,7 @@ namespace Klarna.Rest.Core.Model.Checkout {
   /// 
   /// </summary>
   [DataContract]
-  public class MerchantRequested {
-    /// <summary>
-    /// Informs whether the additional_checkbox is checked or not, when applicable.
-    /// </summary>
-    /// <value>Informs whether the additional_checkbox is checked or not, when applicable.</value>
-    [DataMember(Name="additional_checkbox", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "additional_checkbox")]
-    public bool? AdditionalCheckbox { get; set; }
-
-    /// <summary>
-    /// Informs whether the additional_checkboxes is checked or not, when applicable.
-    /// </summary>
-    /// <value>Informs whether the additional_checkboxes is checked or not, when applicable.</value>
-    [DataMember(Name="additional_checkboxes", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "additional_checkboxes")]
-    public List<MerchantRequestedCheckbox> AdditionalCheckboxes { get; set; }
-
-
+  public class MerchantRequested: LegacyModels.MerchantRequested {
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

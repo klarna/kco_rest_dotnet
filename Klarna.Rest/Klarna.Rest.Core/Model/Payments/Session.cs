@@ -9,7 +9,7 @@ namespace Klarna.Rest.Core.Model.Payments {
   /// 
   /// </summary>
   [DataContract]
-  public class Session : PaymentCreditSession{
+  public class Session : PaymentCreditSession {
     /// <summary>
     /// Authorization token.
     /// </summary>

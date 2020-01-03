@@ -15,12 +15,12 @@ namespace Klarna.Rest.Core.Model
         /// </summary>
         /// <remarks>Required</remarks>
         [JsonProperty(PropertyName = "transactions")]
-        public ICollection<Transaction> Transactions { get; set; }
+        public ICollection<Settlements.Transaction> Transactions { get; set; }
         /// <summary>
         /// Pagination information
         /// </summary>
         /// <remarks>Required</remarks>
         [JsonProperty(PropertyName = "pagination")]
-        public Pagination Pagination { get; set; }
+        public Settlements.Pagination Pagination { get; set; }
     }
 }

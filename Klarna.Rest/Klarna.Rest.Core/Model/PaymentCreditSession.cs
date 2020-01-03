@@ -39,12 +39,12 @@ namespace Klarna.Rest.Core.Model
         /// Once the customer has provided any data in the checkout iframe, updates to this object will be ignored (without generating an error).
         /// </summary>
         [JsonProperty(PropertyName = "billing_address")]
-        public PaymentAddressInfo BillingAddress { get; set; }
+        public Payments.Address BillingAddress { get; set; }
         /// <summary>
         /// Unless the customer has explicitly chosen to enter a separate shipping address, this is a clone of billing_address.
         /// </summary>
         [JsonProperty(PropertyName = "shipping_address")]
-        public PaymentAddressInfo ShippingAddress { get; set; }
+        public Payments.Address ShippingAddress { get; set; }
         /// <summary>
         /// Non-negative, minor units. Total amount of the order, including tax and any discounts.
         /// </summary>
@@ -62,17 +62,17 @@ namespace Klarna.Rest.Core.Model
         /// </summary>
         /// <remarks>Required</remarks>
         [JsonProperty(PropertyName = "order_lines")]
-        public ICollection<OrderLine> OrderLines { get; set; }
+        public ICollection<Payments.OrderLine> OrderLines { get; set; }
         /// <summary>
         /// Information about the liable customer of the order.
         /// </summary>
         [JsonProperty(PropertyName = "customer")]
-        public PaymentCustomer Customer { get; set; }
+        public Payments.Customer Customer { get; set; }
         /// <summary>
         /// The merchant_urls object.
         /// </summary>
         [JsonProperty(PropertyName = "merchant_urls")]
-        public PaymentMerchantUrls MerchantUrls { get; set; }
+        public Payments.MerchantUrls MerchantUrls { get; set; }
         /// <summary>
         /// Used for storing merchant's internal order number or other reference. If set, will be shown on the confirmation page as "order number" (max 255 characters).
         /// </summary>
@@ -92,12 +92,12 @@ namespace Klarna.Rest.Core.Model
         /// Options for this purchase.
         /// </summary>
         [JsonProperty(PropertyName = "options")]
-        public PaymentOptions Options { get; set; }
+        public Payments.Options Options { get; set; }
         /// <summary>
         /// Additional purchase information required for some industries.
         /// </summary>
         [JsonProperty(PropertyName = "attachment")]
-        public Attachment Attachment { get; set; }
+        public Payments.Attachment Attachment { get; set; }
         /// <summary>
         /// Ids for custom payment methods available in a given order. Only applicable in GB/US sessions.
         /// </summary>

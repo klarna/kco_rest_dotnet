@@ -1,6 +1,7 @@
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using LegacyModels = Klarna.Rest.Core.Model;
 
 namespace Klarna.Rest.Core.Model.Checkout {
 
@@ -8,128 +9,7 @@ namespace Klarna.Rest.Core.Model.Checkout {
   /// 
   /// </summary>
   [DataContract]
-  public class OrderLine {
-    /// <summary>
-    /// Order line type. Possible values:<ul><li><em>physical</em></li><li><em>discount</em></li><li><em>shipping_fee</em></li><li><em>sales_tax</em></li><li><em>digital</em></li><li><em>gift_card</em></li><li><em>store_credit</em></li><li><em>surcharge</em></li></ul>
-    /// </summary>
-    /// <value>Order line type. Possible values:<ul><li><em>physical</em></li><li><em>discount</em></li><li><em>shipping_fee</em></li><li><em>sales_tax</em></li><li><em>digital</em></li><li><em>gift_card</em></li><li><em>store_credit</em></li><li><em>surcharge</em></li></ul></value>
-    [DataMember(Name="type", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "type")]
-    public string Type { get; set; }
-
-    /// <summary>
-    /// Article number, SKU or similar.
-    /// </summary>
-    /// <value>Article number, SKU or similar.</value>
-    [DataMember(Name="reference", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "reference")]
-    public string Reference { get; set; }
-
-    /// <summary>
-    /// Descriptive item name.
-    /// </summary>
-    /// <value>Descriptive item name.</value>
-    [DataMember(Name="name", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "name")]
-    public string Name { get; set; }
-
-    /// <summary>
-    /// Non-negative. The item quantity.
-    /// </summary>
-    /// <value>Non-negative. The item quantity.</value>
-    [DataMember(Name="quantity", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "quantity")]
-    public long? Quantity { get; set; }
-
-    /// <summary>
-    /// Unit used to describe the quantity, e.g. kg, pcs... If defined has to be 1-8 characters
-    /// </summary>
-    /// <value>Unit used to describe the quantity, e.g. kg, pcs... If defined has to be 1-8 characters</value>
-    [DataMember(Name="quantity_unit", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "quantity_unit")]
-    public string QuantityUnit { get; set; }
-
-    /// <summary>
-    /// Minor units. Includes tax, excludes discount. (max value: 100000000)
-    /// </summary>
-    /// <value>Minor units. Includes tax, excludes discount. (max value: 100000000)</value>
-    [DataMember(Name="unit_price", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "unit_price")]
-    public long? UnitPrice { get; set; }
-
-    /// <summary>
-    /// Non-negative. In percent, two implicit decimals. I.e 2500 = 25%. (max value: 10000)
-    /// </summary>
-    /// <value>Non-negative. In percent, two implicit decimals. I.e 2500 = 25%. (max value: 10000)</value>
-    [DataMember(Name="tax_rate", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "tax_rate")]
-    public long? TaxRate { get; set; }
-
-    /// <summary>
-    /// Includes tax and discount. Must match (quantity \\* unit_price) - total_discount_amount within ±quantity. (max value: 100000000)
-    /// </summary>
-    /// <value>Includes tax and discount. Must match (quantity \\* unit_price) - total_discount_amount within ±quantity. (max value: 100000000)</value>
-    [DataMember(Name="total_amount", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "total_amount")]
-    public long? TotalAmount { get; set; }
-
-    /// <summary>
-    /// Non-negative minor units. Includes tax.
-    /// </summary>
-    /// <value>Non-negative minor units. Includes tax.</value>
-    [DataMember(Name="total_discount_amount", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "total_discount_amount")]
-    public long? TotalDiscountAmount { get; set; }
-
-    /// <summary>
-    /// Must be within ±1 of total_amount - total_amount \\* 10000 / (10000 + tax_rate). Negative when type is discount.
-    /// </summary>
-    /// <value>Must be within ±1 of total_amount - total_amount \\* 10000 / (10000 + tax_rate). Negative when type is discount.</value>
-    [DataMember(Name="total_tax_amount", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "total_tax_amount")]
-    public long? TotalTaxAmount { get; set; }
-
-    /// <summary>
-    /// Pass through field. (max 1024 characters)
-    /// </summary>
-    /// <value>Pass through field. (max 1024 characters)</value>
-    [DataMember(Name="merchant_data", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "merchant_data")]
-    public string MerchantData { get; set; }
-
-    /// <summary>
-    /// URL to the product page that can be later embedded in communications between Klarna and the customer. (max 1024 characters)
-    /// </summary>
-    /// <value>URL to the product page that can be later embedded in communications between Klarna and the customer. (max 1024 characters)</value>
-    [DataMember(Name="product_url", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "product_url")]
-    public string ProductUrl { get; set; }
-
-    /// <summary>
-    /// URL to an image that can be later embedded in communications between Klarna and the customer. (max 1024 characters)
-    /// </summary>
-    /// <value>URL to an image that can be later embedded in communications between Klarna and the customer. (max 1024 characters)</value>
-    [DataMember(Name="image_url", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "image_url")]
-    public string ImageUrl { get; set; }
-
-    /// <summary>
-    /// Additional information identifying an item
-    /// </summary>
-    /// <value>Additional information identifying an item</value>
-    [DataMember(Name="product_identifiers", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "product_identifiers")]
-    public ProductIdentifiers ProductIdentifiers { get; set; }
-
-    /// <summary>
-    /// Shipping attributes of an item
-    /// </summary>
-    /// <value>Shipping attributes of an item</value>
-    [DataMember(Name="shipping_attributes", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "shipping_attributes")]
-    public ShippingAttributes ShippingAttributes { get; set; }
-
-
+  public class OrderLine : LegacyModels.OrderLine {
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

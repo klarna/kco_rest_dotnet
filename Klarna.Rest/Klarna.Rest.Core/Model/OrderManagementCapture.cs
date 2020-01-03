@@ -39,7 +39,7 @@ namespace Klarna.Rest.Core.Model
         /// List of order lines for the capture shown to the customer.
         /// </summary>
         [JsonProperty(PropertyName = "order_lines")]
-        public ICollection<OrderLine> OrderLines { get; set; }
+        public ICollection<OrderManagement.OrderLine> OrderLines { get; set; }
         /// <summary>
         /// Refunded amount for this capture in minor units.
         /// </summary>
@@ -49,16 +49,16 @@ namespace Klarna.Rest.Core.Model
         /// Billing address for the capture.
         /// </summary>
         [JsonProperty(PropertyName = "billing_address")]
-        public OrderManagementAddressInfo BillingAddress { get; set; }
+        public OrderManagement.Address BillingAddress { get; set; }
         /// <summary>
         /// Shipping address for the capture
         /// </summary>
         [JsonProperty(PropertyName = "shipping_address")]
-        public OrderManagementAddressInfo ShippingAddress { get; set; }
+        public OrderManagement.Address ShippingAddress { get; set; }
         /// <summary>
         /// Shipping information for this capture.
         /// </summary>
         [JsonProperty(PropertyName = "shipping_info")]
-        public ICollection<OrderManagementShippingInfo> ShippingInfo { get; set; }
+        public ICollection<OrderManagement.ShippingInfo> ShippingInfo { get; set; }
     }
 }

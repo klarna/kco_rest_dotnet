@@ -38,6 +38,6 @@ namespace Klarna.Rest.Core.Model
         /// Order lines for the refund shown to the customer. Optional but increases the customer experience. Maximum 1000 order lines.
         /// </summary>
         [JsonProperty(PropertyName = "order_lines")]
-        public ICollection<OrderLine> OrderLines { get; set; }
+        public ICollection<OrderManagement.OrderLine> OrderLines { get; set; }
     }
 }

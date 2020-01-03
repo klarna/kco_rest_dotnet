@@ -1,6 +1,7 @@
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
+using LegacyModels = Klarna.Rest.Core.Model;
 
 namespace Klarna.Rest.Core.Model.CustomerToken {
 
@@ -8,24 +9,7 @@ namespace Klarna.Rest.Core.Model.CustomerToken {
   /// 
   /// </summary>
   [DataContract]
-  public class Attachment {
-    /// <summary>
-    /// This field should be a <b>string</b> containing the body of the attachment. The body should be an object containing any of the keys and sub objects described below serialised to JSON.
-    /// </summary>
-    /// <value>This field should be a <b>string</b> containing the body of the attachment. The body should be an object containing any of the keys and sub objects described below serialised to JSON.</value>
-    [DataMember(Name="body", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "body")]
-    public string Body { get; set; }
-
-    /// <summary>
-    /// The content type of the body property.
-    /// </summary>
-    /// <value>The content type of the body property.</value>
-    [DataMember(Name="content_type", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "content_type")]
-    public string ContentType { get; set; }
-
-
+  public class Attachment: LegacyModels.Attachment {
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

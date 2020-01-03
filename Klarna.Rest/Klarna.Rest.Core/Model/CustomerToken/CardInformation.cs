@@ -8,32 +8,7 @@ namespace Klarna.Rest.Core.Model.CustomerToken {
   /// 
   /// </summary>
   [DataContract]
-  public class CardInformation {
-    /// <summary>
-    /// Card brand
-    /// </summary>
-    /// <value>Card brand</value>
-    [DataMember(Name="brand", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "brand")]
-    public string Brand { get; set; }
-
-    /// <summary>
-    /// Card expiration date
-    /// </summary>
-    /// <value>Card expiration date</value>
-    [DataMember(Name="expiry_date", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "expiry_date")]
-    public string ExpiryDate { get; set; }
-
-    /// <summary>
-    /// Masked credit card number
-    /// </summary>
-    /// <value>Masked credit card number</value>
-    [DataMember(Name="masked_number", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "masked_number")]
-    public string MaskedNumber { get; set; }
-
-
+  public class CardInformation: CustomerTokenCardDetails {
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

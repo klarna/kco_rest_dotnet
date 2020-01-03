@@ -5,11 +5,14 @@
     /// </summary>
     public enum HostedPaymentPageStatus
     {
-        WAITING, 
+        WAITING,
+        BACK,
         IN_PROGRESS,
         COMPLETED,
         CANCELLED,
         FAILED,
-        LEGACY
+        LEGACY,
+        DISABLED,
+        ERROR
     }
 }

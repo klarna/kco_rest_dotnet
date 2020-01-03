@@ -8,24 +8,7 @@ namespace Klarna.Rest.Core.Model.HostedPaymentPage {
   /// 
   /// </summary>
   [DataContract]
-  public class BackgroundImageV1 {
-    /// <summary>
-    /// Url for the image
-    /// </summary>
-    /// <value>Url for the image</value>
-    [DataMember(Name="url", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "url")]
-    public string Url { get; set; }
-
-    /// <summary>
-    /// Width of the image
-    /// </summary>
-    /// <value>Width of the image</value>
-    [DataMember(Name="width", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "width")]
-    public long? Width { get; set; }
-
-
+  public class BackgroundImageV1: HostedPaymentPageBackgroundImage {
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>
