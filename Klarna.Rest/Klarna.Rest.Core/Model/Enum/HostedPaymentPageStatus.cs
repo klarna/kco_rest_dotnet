@@ -11,6 +11,7 @@
         COMPLETED,
         CANCELLED,
         FAILED,
+        LEGACY,
         DISABLED,
         ERROR
     }

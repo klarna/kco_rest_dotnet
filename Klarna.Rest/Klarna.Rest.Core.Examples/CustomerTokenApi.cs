@@ -48,7 +48,7 @@ namespace Klarna.Rest.Core.Examples
 
             var klarna = new Klarna(username, password, KlarnaEnvironment.TestingEurope);
             var customerToken = "234534...345345....345";
-            var orderData = new Model.CustomerToken.CustomerTokenOrder//CustomerTokenOrder
+            var orderData = new Model.CustomerToken.CustomerTokenOrder
             {
                 PurchaseCurrency = "SEK",
                 OrderAmount = 1000,
