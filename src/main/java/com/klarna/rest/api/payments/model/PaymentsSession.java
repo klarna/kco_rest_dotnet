@@ -21,7 +21,6 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.klarna.rest.api.payments.model.PaymentsAddress;
 import com.klarna.rest.api.payments.model.PaymentsAttachment;
 import com.klarna.rest.api.payments.model.PaymentsCustomer;
-import com.klarna.rest.api.payments.model.PaymentsInstant;
 import com.klarna.rest.api.payments.model.PaymentsMerchantUrls;
 import com.klarna.rest.api.payments.model.PaymentsOptions;
 import com.klarna.rest.api.payments.model.PaymentsOrderLine;
@@ -30,6 +29,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * PaymentsSession
@@ -61,7 +61,7 @@ public class PaymentsSession {
   private String design = null;
 
   @JsonProperty("expires_at")
-  private PaymentsInstant expiresAt = null;
+  private OffsetDateTime expiresAt = null;
 
   @JsonProperty("locale")
   private String locale = null;
@@ -279,7 +279,7 @@ public class PaymentsSession {
    * @return expiresAt
   **/
   @ApiModelProperty(value = "Session expiration date")
-  public PaymentsInstant getExpiresAt() {
+  public OffsetDateTime getExpiresAt() {
     return expiresAt;
   }
 
