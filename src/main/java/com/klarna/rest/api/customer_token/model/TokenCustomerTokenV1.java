@@ -26,7 +26,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * TokenCustomerTokenV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:27:39.889Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:21:37.701Z")
 public class TokenCustomerTokenV1 {
   @JsonProperty("card")
   private TokenCardInformation card = null;

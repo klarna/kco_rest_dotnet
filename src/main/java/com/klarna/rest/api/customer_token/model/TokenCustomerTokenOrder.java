@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * TokenCustomerTokenOrder
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:27:39.889Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:21:37.701Z")
 public class TokenCustomerTokenOrder {
   @JsonProperty("attachment")
   private TokenAttachment attachment = null;
@@ -59,11 +59,17 @@ public class TokenCustomerTokenOrder {
   @JsonProperty("order_tax_amount")
   private Long orderTaxAmount = null;
 
+  @JsonProperty("payment_method_reference")
+  private String paymentMethodReference = null;
+
   @JsonProperty("purchase_currency")
   private String purchaseCurrency = null;
 
   @JsonProperty("shipping_address")
   private TokenAddress shippingAddress = null;
+
+  @JsonProperty("usage")
+  private String usage = null;
 
   public TokenCustomerTokenOrder attachment(TokenAttachment attachment) {
     this.attachment = attachment;
@@ -234,6 +240,24 @@ public class TokenCustomerTokenOrder {
     this.orderTaxAmount = orderTaxAmount;
   }
 
+  public TokenCustomerTokenOrder paymentMethodReference(String paymentMethodReference) {
+    this.paymentMethodReference = paymentMethodReference;
+    return this;
+  }
+
+   /**
+   * Used for slice it purchases to use termns
+   * @return paymentMethodReference
+  **/
+  @ApiModelProperty(example = "0b1d9815-165e-42e2-8867-35bc03789e00", value = "Used for slice it purchases to use termns")
+  public String getPaymentMethodReference() {
+    return paymentMethodReference;
+  }
+
+  public void setPaymentMethodReference(String paymentMethodReference) {
+    this.paymentMethodReference = paymentMethodReference;
+  }
+
   public TokenCustomerTokenOrder purchaseCurrency(String purchaseCurrency) {
     this.purchaseCurrency = purchaseCurrency;
     return this;
@@ -261,14 +285,15 @@ public class TokenCustomerTokenOrder {
     return shippingAddress;
   }
 
-  public TokenCustomerTokenOrder shippingAddress(TokenAddress shippingAddress) {
-    this.shippingAddress = shippingAddress;
-    return this;
+   /**
+   * Get usage
+   * @return usage
+  **/
+  @ApiModelProperty(value = "")
+  public String getUsage() {
+    return usage;
   }
 
-  public void setShippingAddress(TokenAddress shippingAddress) {
-    this.shippingAddress = shippingAddress;
-  }
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -288,13 +313,15 @@ public class TokenCustomerTokenOrder {
         Objects.equals(this.orderAmount, customerTokenOrder.orderAmount) &&
         Objects.equals(this.orderLines, customerTokenOrder.orderLines) &&
         Objects.equals(this.orderTaxAmount, customerTokenOrder.orderTaxAmount) &&
+        Objects.equals(this.paymentMethodReference, customerTokenOrder.paymentMethodReference) &&
         Objects.equals(this.purchaseCurrency, customerTokenOrder.purchaseCurrency) &&
-        Objects.equals(this.shippingAddress, customerTokenOrder.shippingAddress);
+        Objects.equals(this.shippingAddress, customerTokenOrder.shippingAddress) &&
+        Objects.equals(this.usage, customerTokenOrder.usage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(attachment, autoCapture, customerTokenOrderMerchantUrls, merchantData, merchantReference1, merchantReference2, orderAmount, orderLines, orderTaxAmount, purchaseCurrency, shippingAddress);
+    return Objects.hash(attachment, autoCapture, customerTokenOrderMerchantUrls, merchantData, merchantReference1, merchantReference2, orderAmount, orderLines, orderTaxAmount, paymentMethodReference, purchaseCurrency, shippingAddress, usage);
   }
 
 
@@ -312,8 +339,10 @@ public class TokenCustomerTokenOrder {
     sb.append("    orderAmount: ").append(toIndentedString(orderAmount)).append("\n");
     sb.append("    orderLines: ").append(toIndentedString(orderLines)).append("\n");
     sb.append("    orderTaxAmount: ").append(toIndentedString(orderTaxAmount)).append("\n");
+    sb.append("    paymentMethodReference: ").append(toIndentedString(paymentMethodReference)).append("\n");
     sb.append("    purchaseCurrency: ").append(toIndentedString(purchaseCurrency)).append("\n");
     sb.append("    shippingAddress: ").append(toIndentedString(shippingAddress)).append("\n");
+    sb.append("    usage: ").append(toIndentedString(usage)).append("\n");
     sb.append("}");
     return sb.toString();
   }
