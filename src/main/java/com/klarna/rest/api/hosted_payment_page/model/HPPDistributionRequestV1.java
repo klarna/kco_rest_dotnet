@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * HPPDistributionRequestV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:49:10.959Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:31:07.217Z")
 public class HPPDistributionRequestV1 {
   @JsonProperty("contact_information")
   private HPPDistributionContactV1 contactInformation = null;
