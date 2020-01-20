@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * CheckoutPaymentProvider
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:22:48.232Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:12:28.827Z")
 public class CheckoutPaymentProvider {
   @JsonProperty("name")
   private String name = null;
@@ -171,10 +171,10 @@ public class CheckoutPaymentProvider {
   }
 
    /**
-   * Controls label of buy buttonn&lt;ul&gt;&lt;li&gt;continue&lt;/li&gt;&lt;li&gt;complete&lt;/li&gt;&lt;/ul&gt;
+   * Controls label of buy button&lt;ul&gt;&lt;li&gt;continue&lt;/li&gt;&lt;li&gt;complete&lt;/li&gt;&lt;/ul&gt;
    * @return label
   **/
-  @ApiModelProperty(example = "continue", value = "Controls label of buy buttonn<ul><li>continue</li><li>complete</li></ul>")
+  @ApiModelProperty(example = "continue", value = "Controls label of buy button<ul><li>continue</li><li>complete</li></ul>")
   public String getLabel() {
     return label;
   }

@@ -26,7 +26,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * CheckoutOrderLine
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:22:48.232Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:12:28.827Z")
 public class CheckoutOrderLine {
   @JsonProperty("type")
   private String type = null;
@@ -79,10 +79,10 @@ public class CheckoutOrderLine {
   }
 
    /**
-   * Order line type. Possible values:&lt;ul&gt;&lt;li&gt;&lt;em&gt;physical&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;em&gt;discount&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;em&gt;shipping_fee&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;em&gt;sales_tax&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;em&gt;digital&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;em&gt;gift_card&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;em&gt;store_credit&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;em&gt;surcharge&lt;/em&gt;&lt;/li&gt;&lt;/ul&gt;
+   * Type of the order line item. The possible values are:&lt;ul&gt;&lt;li&gt;&lt;em&gt;physical (physical good)&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;em&gt;discount&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;em&gt;shipping_fee&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;em&gt;sales_tax (depends on the country/city, usually called VAT)&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;em&gt;digital (digital good)&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;em&gt;gift_card&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;em&gt;store_credit (credit from the merchant)&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;em&gt;surcharge (extra charge)&lt;/em&gt;&lt;/li&gt;&lt;/ul&gt;
    * @return type
   **/
-  @ApiModelProperty(example = "physical", value = "Order line type. Possible values:<ul><li><em>physical</em></li><li><em>discount</em></li><li><em>shipping_fee</em></li><li><em>sales_tax</em></li><li><em>digital</em></li><li><em>gift_card</em></li><li><em>store_credit</em></li><li><em>surcharge</em></li></ul>")
+  @ApiModelProperty(example = "physical", value = "Type of the order line item. The possible values are:<ul><li><em>physical (physical good)</em></li><li><em>discount</em></li><li><em>shipping_fee</em></li><li><em>sales_tax (depends on the country/city, usually called VAT)</em></li><li><em>digital (digital good)</em></li><li><em>gift_card</em></li><li><em>store_credit (credit from the merchant)</em></li><li><em>surcharge (extra charge)</em></li></ul>")
   public String getType() {
     return type;
   }
@@ -97,10 +97,10 @@ public class CheckoutOrderLine {
   }
 
    /**
-   * Article number, SKU or similar.
+   * Article number, SKU or similar. (max 64 characters)
    * @return reference
   **/
-  @ApiModelProperty(example = "19-402-USA", value = "Article number, SKU or similar.")
+  @ApiModelProperty(example = "19-402-USA", value = "Article number, SKU or similar. (max 64 characters)")
   public String getReference() {
     return reference;
   }
@@ -115,10 +115,10 @@ public class CheckoutOrderLine {
   }
 
    /**
-   * Descriptive item name.
+   * Descriptive name of the order line item (max 255 characters)
    * @return name
   **/
-  @ApiModelProperty(example = "Red T-Shirt", required = true, value = "Descriptive item name.")
+  @ApiModelProperty(example = "Red T-Shirt", required = true, value = "Descriptive name of the order line item (max 255 characters)")
   public String getName() {
     return name;
   }
@@ -133,11 +133,11 @@ public class CheckoutOrderLine {
   }
 
    /**
-   * Non-negative. The item quantity.
+   * Non-negative number. Quantity of the order line item.
    * minimum: 0
    * @return quantity
   **/
-  @ApiModelProperty(example = "5", required = true, value = "Non-negative. The item quantity.")
+  @ApiModelProperty(example = "5", required = true, value = "Non-negative number. Quantity of the order line item.")
   public Long getQuantity() {
     return quantity;
   }
@@ -170,11 +170,11 @@ public class CheckoutOrderLine {
   }
 
    /**
-   * Minor units. Includes tax, excludes discount. (max value: 100000000)
+   * Minor units. Includes tax, excludes discount. (max value: 100000000).  Example: 100 Euros should be 10000.
    * maximum: 100000000
    * @return unitPrice
   **/
-  @ApiModelProperty(example = "10000", required = true, value = "Minor units. Includes tax, excludes discount. (max value: 100000000)")
+  @ApiModelProperty(example = "10000", required = true, value = "Minor units. Includes tax, excludes discount. (max value: 100000000).  Example: 100 Euros should be 10000.")
   public Long getUnitPrice() {
     return unitPrice;
   }
@@ -189,11 +189,11 @@ public class CheckoutOrderLine {
   }
 
    /**
-   * Non-negative. In percent, two implicit decimals. I.e 2500 &#x3D; 25%. (max value: 10000)
+   * Non-negative value. The percentage value is represented with two implicit decimals. (max 10000)  Example: 25% should be 2500.
    * maximum: 10000
    * @return taxRate
   **/
-  @ApiModelProperty(example = "1000", required = true, value = "Non-negative. In percent, two implicit decimals. I.e 2500 = 25%. (max value: 10000)")
+  @ApiModelProperty(example = "1000", required = true, value = "Non-negative value. The percentage value is represented with two implicit decimals. (max 10000)  Example: 25% should be 2500.")
   public Long getTaxRate() {
     return taxRate;
   }
@@ -208,11 +208,11 @@ public class CheckoutOrderLine {
   }
 
    /**
-   * Includes tax and discount. Must match (quantity \\* unit_price) - total_discount_amount within ±quantity. (max value: 100000000)
+   * Minor units. Includes tax and discount.   Example: 25 euros should be 2500 Value &#x3D; (quantity x unit_price) - total_discount_amount. (max value: 100000000)
    * maximum: 100000000
    * @return totalAmount
   **/
-  @ApiModelProperty(example = "50000", required = true, value = "Includes tax and discount. Must match (quantity \\* unit_price) - total_discount_amount within ±quantity. (max value: 100000000)")
+  @ApiModelProperty(example = "50000", required = true, value = "Minor units. Includes tax and discount.   Example: 25 euros should be 2500 Value = (quantity x unit_price) - total_discount_amount. (max value: 100000000)")
   public Long getTotalAmount() {
     return totalAmount;
   }
@@ -227,11 +227,11 @@ public class CheckoutOrderLine {
   }
 
    /**
-   * Non-negative minor units. Includes tax.
+   * Non-negative minor units. Includes tax.  Example: 25 euros should be 2500
    * minimum: 0
    * @return totalDiscountAmount
   **/
-  @ApiModelProperty(example = "0", value = "Non-negative minor units. Includes tax.")
+  @ApiModelProperty(example = "0", value = "Non-negative minor units. Includes tax.  Example: 25 euros should be 2500")
   public Long getTotalDiscountAmount() {
     return totalDiscountAmount;
   }
@@ -264,10 +264,10 @@ public class CheckoutOrderLine {
   }
 
    /**
-   * Pass through field. (max 1024 characters)
+   * Property used to store additional metadata per item that will be returned whenever an order is read from Klarna. Pass through field. (max 1024 characters).
    * @return merchantData
   **/
-  @ApiModelProperty(example = "{\"marketplace_seller_info\":[{\"product_category\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}", value = "Pass through field. (max 1024 characters)")
+  @ApiModelProperty(example = "{\"marketplace_seller_info\":[{\"product_category\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}", value = "Property used to store additional metadata per item that will be returned whenever an order is read from Klarna. Pass through field. (max 1024 characters).")
   public String getMerchantData() {
     return merchantData;
   }
@@ -285,7 +285,7 @@ public class CheckoutOrderLine {
    * URL to the product page that can be later embedded in communications between Klarna and the customer. (max 1024 characters)
    * @return productUrl
   **/
-  @ApiModelProperty(example = "https://www.estore.com/products/f2a8d7e34", value = "URL to the product page that can be later embedded in communications between Klarna and the customer. (max 1024 characters)")
+  @ApiModelProperty(example = "https://www.example.com/products/f2a8d7e34", value = "URL to the product page that can be later embedded in communications between Klarna and the customer. (max 1024 characters)")
   public String getProductUrl() {
     return productUrl;
   }
@@ -300,10 +300,10 @@ public class CheckoutOrderLine {
   }
 
    /**
-   * URL to an image that can be later embedded in communications between Klarna and the customer. (max 1024 characters)
+   * URL to an image that can be later embedded in communications between Klarna and the customer. (max 1024 characters)  Improves post-purchase customer experiences.
    * @return imageUrl
   **/
-  @ApiModelProperty(example = "https://www.exampleobjects.com/logo.png", value = "URL to an image that can be later embedded in communications between Klarna and the customer. (max 1024 characters)")
+  @ApiModelProperty(example = "https://www.exampleobjects.com/logo.png", value = "URL to an image that can be later embedded in communications between Klarna and the customer. (max 1024 characters)  Improves post-purchase customer experiences.")
   public String getImageUrl() {
     return imageUrl;
   }

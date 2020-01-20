@@ -37,7 +37,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * CheckoutOrder
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:22:48.232Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:12:28.827Z")
 public class CheckoutOrder {
   @JsonProperty("order_id")
   private String orderId = null;
@@ -142,10 +142,10 @@ public class CheckoutOrder {
   private List<String> tags = null;
 
    /**
-   * The unique order ID (max 255 characters).
+   * Unique order ID that will be used for the entire lifecycle of the order. (max 255 characters)
    * @return orderId
   **/
-  @ApiModelProperty(example = "f3392f8b-6116-4073-ab96-e330819e2c07", value = "The unique order ID (max 255 characters).")
+  @ApiModelProperty(example = "f3392f8b-6116-4073-ab96-e330819e2c07", value = "Unique order ID that will be used for the entire lifecycle of the order. (max 255 characters)")
   public String getOrderId() {
     return orderId;
   }
@@ -165,10 +165,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * ISO 3166 alpha-2 purchase country.
+   * purchase country of the merchant&#39;s store. The format to be used is ISO 3166 alpha-2. Eg: GB, SE, DE, US, etc.   Note: purchase country and currency need to match the defined merchant configuration. For global configuration read this https://developers.klarna.com/documentation/klarna-checkout/kco-global/
    * @return purchaseCountry
   **/
-  @ApiModelProperty(example = "US", required = true, value = "ISO 3166 alpha-2 purchase country.")
+  @ApiModelProperty(example = "US", required = true, value = "purchase country of the merchant's store. The format to be used is ISO 3166 alpha-2. Eg: GB, SE, DE, US, etc.   Note: purchase country and currency need to match the defined merchant configuration. For global configuration read this https://developers.klarna.com/documentation/klarna-checkout/kco-global/")
   public String getPurchaseCountry() {
     return purchaseCountry;
   }
@@ -183,10 +183,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * ISO 4217 purchase currency.
+   * purchase currency of the merchant&#39;s store. The format to be used is ISO 4217. Eg: USD, EUR, SEK, GBP, etc.  Note: purchase country and currency need to match the defined merchant configuration. For global configuration read this https://developers.klarna.com/documentation/klarna-checkout/kco-global/
    * @return purchaseCurrency
   **/
-  @ApiModelProperty(example = "USD", required = true, value = "ISO 4217 purchase currency.")
+  @ApiModelProperty(example = "USD", required = true, value = "purchase currency of the merchant's store. The format to be used is ISO 4217. Eg: USD, EUR, SEK, GBP, etc.  Note: purchase country and currency need to match the defined merchant configuration. For global configuration read this https://developers.klarna.com/documentation/klarna-checkout/kco-global/")
   public String getPurchaseCurrency() {
     return purchaseCurrency;
   }
@@ -201,10 +201,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * RFC 1766 customer&#39;s locale.
+   * Used to define the language and region of the customer. RFC 1766 customer&#39;s locale.
    * @return locale
   **/
-  @ApiModelProperty(example = "en-US", required = true, value = "RFC 1766 customer's locale.")
+  @ApiModelProperty(example = "en-US", required = true, value = "Used to define the language and region of the customer. RFC 1766 customer's locale.")
   public String getLocale() {
     return locale;
   }
@@ -214,10 +214,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * The current status of the order.
+   * The current status of the order. The status will be ‘incomplete’ until the customer has been successfully authorized.
    * @return status
   **/
-  @ApiModelProperty(example = "CHECKOUT_INCOMPLETE", value = "The current status of the order.")
+  @ApiModelProperty(example = "CHECKOUT_INCOMPLETE", value = "The current status of the order. The status will be ‘incomplete’ until the customer has been successfully authorized.")
   public String getStatus() {
     return status;
   }
@@ -228,10 +228,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * Once the customer has provided any data in the checkout iframe, updates to this object will be ignored (without generating an error).
+   * Provide the billing address of the customer, if you have collected already. If not, then Klarna will collect the details inside the Klarna Checkout iFrame before authorization. The billing address is the &#39;home address&#39; where the credit cards and bank accounts are registered under the customer&#39;s name.  Note: Once the customer has provided any data in the checkout iframe, updates to this object will be ignored (without generating an error).
    * @return billingAddress
   **/
-  @ApiModelProperty(value = "Once the customer has provided any data in the checkout iframe, updates to this object will be ignored (without generating an error).")
+  @ApiModelProperty(value = "Provide the billing address of the customer, if you have collected already. If not, then Klarna will collect the details inside the Klarna Checkout iFrame before authorization. The billing address is the 'home address' where the credit cards and bank accounts are registered under the customer's name.  Note: Once the customer has provided any data in the checkout iframe, updates to this object will be ignored (without generating an error).")
   public CheckoutAddress getBillingAddress() {
     return billingAddress;
   }
@@ -241,21 +241,12 @@ public class CheckoutOrder {
   }
 
    /**
-   * Unless the customer has explicitly chosen to enter a separate shipping address, this is a clone of billing_address.
+   * Provide the shipping address of the customer, if you have collected already. Unless the customer has explicitly chosen to enter a separate shipping address, this is a clone of billing_address. The customer has the possibility of changing the shipping address inside the Klarna checkout. You will be notified about the change either through the merchant URLs that you provide or through Javascript callbacks.
    * @return shippingAddress
   **/
-  @ApiModelProperty(value = "Unless the customer has explicitly chosen to enter a separate shipping address, this is a clone of billing_address.")
+  @ApiModelProperty(value = "Provide the shipping address of the customer, if you have collected already. Unless the customer has explicitly chosen to enter a separate shipping address, this is a clone of billing_address. The customer has the possibility of changing the shipping address inside the Klarna checkout. You will be notified about the change either through the merchant URLs that you provide or through Javascript callbacks.")
   public CheckoutAddress getShippingAddress() {
     return shippingAddress;
-  }
-
-  public CheckoutOrder shippingAddress(CheckoutAddress shippingAddress) {
-    this.shippingAddress = shippingAddress;
-    return this;
-  }
-
-  public void setShippingAddress(CheckoutAddress shippingAddress) {
-    this.shippingAddress = shippingAddress;
   }
 
   public CheckoutOrder orderAmount(Long orderAmount) {
@@ -264,11 +255,11 @@ public class CheckoutOrder {
   }
 
    /**
-   * Non-negative, minor units. Total amount of the order, including tax and any discounts.
+   * \&quot;Total amount of the order including tax and any available discounts. The value should be in non-negative minor units.  Example: 25 Euros should be 2500.\&quot;
    * minimum: 0
    * @return orderAmount
   **/
-  @ApiModelProperty(example = "50000", required = true, value = "Non-negative, minor units. Total amount of the order, including tax and any discounts.")
+  @ApiModelProperty(example = "50000", required = true, value = "\"Total amount of the order including tax and any available discounts. The value should be in non-negative minor units.  Example: 25 Euros should be 2500.\"")
   public Long getOrderAmount() {
     return orderAmount;
   }
@@ -283,11 +274,11 @@ public class CheckoutOrder {
   }
 
    /**
-   * Non-negative, minor units. The total tax amount of the order.
+   * Total tax amount of the order. The value should be in non-negative minor units.  Example: 25 Euros should be 2500.
    * minimum: 0
    * @return orderTaxAmount
   **/
-  @ApiModelProperty(example = "4545", required = true, value = "Non-negative, minor units. The total tax amount of the order.")
+  @ApiModelProperty(example = "4545", required = true, value = "Total tax amount of the order. The value should be in non-negative minor units.  Example: 25 Euros should be 2500.")
   public Long getOrderTaxAmount() {
     return orderTaxAmount;
   }
@@ -307,10 +298,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * The applicable order lines (max 1000)
+   * An array containing list of line items that are part of this order. Maximum of 1000 line items could be processed in a single order.
    * @return orderLines
   **/
-  @ApiModelProperty(required = true, value = "The applicable order lines (max 1000)")
+  @ApiModelProperty(required = true, value = "An array containing list of line items that are part of this order. Maximum of 1000 line items could be processed in a single order.")
   public List<CheckoutOrderLine> getOrderLines() {
     return orderLines;
   }
@@ -325,10 +316,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * Information about the liable customer of the order.
+   * Object to provide the details of the customer making the payment.
    * @return customer
   **/
-  @ApiModelProperty(value = "Information about the liable customer of the order.")
+  @ApiModelProperty(value = "Object to provide the details of the customer making the payment.")
   public CheckoutCustomer getCustomer() {
     return customer;
   }
@@ -343,10 +334,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * The merchant_urls object.
+   * Used to send in the different merchant URLs that Klarna needs at different stages of the process.  Note: it should be HTTPS. Also, it can have {checkout.order.id}, {checkout.order.url} and/or {checkout.order.uri} and KCO will replace it accordingly.
    * @return merchantUrls
   **/
-  @ApiModelProperty(required = true, value = "The merchant_urls object.")
+  @ApiModelProperty(required = true, value = "Used to send in the different merchant URLs that Klarna needs at different stages of the process.  Note: it should be HTTPS. Also, it can have {checkout.order.id}, {checkout.order.url} and/or {checkout.order.uri} and KCO will replace it accordingly.")
   public CheckoutMerchantUrls getMerchantUrls() {
     return merchantUrls;
   }
@@ -370,10 +361,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * Used for storing merchant&#39;s internal order number or other reference. If set, will be shown on the confirmation page as \&quot;order number\&quot; (max 255 characters).
+   * Used for storing merchant&#39;s internal order number or other reference. If set, will be shown on the confirmation page as \&quot;order number\&quot; . The value is also available in the settlement files. (max 255 characters). Example: \&quot;45aa52f387871e3a210645d4\&quot;
    * @return merchantReference1
   **/
-  @ApiModelProperty(example = "45aa52f387871e3a210645d4", value = "Used for storing merchant's internal order number or other reference. If set, will be shown on the confirmation page as \"order number\" (max 255 characters).")
+  @ApiModelProperty(example = "45aa52f387871e3a210645d4", value = "Used for storing merchant's internal order number or other reference. If set, will be shown on the confirmation page as \"order number\" . The value is also available in the settlement files. (max 255 characters). Example: \"45aa52f387871e3a210645d4\"")
   public String getMerchantReference1() {
     return merchantReference1;
   }
@@ -388,10 +379,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * Used for storing merchant&#39;s internal order number or other reference (max 255 characters).
+   * Used for storing merchant&#39;s internal order number or other reference. The value is available in the settlement files. (max 255 characters). Example: \&quot;45aa52f387871e3a210645d4\&quot;
    * @return merchantReference2
   **/
-  @ApiModelProperty(example = "45aa52f387871e3a210645d4", value = "Used for storing merchant's internal order number or other reference (max 255 characters).")
+  @ApiModelProperty(example = "45aa52f387871e3a210645d4", value = "Used for storing merchant's internal order number or other reference. The value is available in the settlement files. (max 255 characters). Example: \"45aa52f387871e3a210645d4\"")
   public String getMerchantReference2() {
     return merchantReference2;
   }
@@ -401,28 +392,28 @@ public class CheckoutOrder {
   }
 
    /**
-   * ISO 8601 datetime. When the merchant created the order.
+   * ISO 8601 datetime. The date and time when the order has been created. The format will be as follows: \&quot;yyyy-mm-ddThh:mm:ssZ\&quot;
    * @return startedAt
   **/
-  @ApiModelProperty(value = "ISO 8601 datetime. When the merchant created the order.")
+  @ApiModelProperty(value = "ISO 8601 datetime. The date and time when the order has been created. The format will be as follows: \"yyyy-mm-ddThh:mm:ssZ\"")
   public OffsetDateTime getStartedAt() {
     return startedAt;
   }
 
    /**
-   * ISO 8601 datetime. When the customer completed the order.
+   * ISO 8601 datetime. The date and time when the order has been completed. The format will be as follows: \&quot;yyyy-mm-ddThh:mm:ssZ\&quot;
    * @return completedAt
   **/
-  @ApiModelProperty(value = "ISO 8601 datetime. When the customer completed the order.")
+  @ApiModelProperty(value = "ISO 8601 datetime. The date and time when the order has been completed. The format will be as follows: \"yyyy-mm-ddThh:mm:ssZ\"")
   public OffsetDateTime getCompletedAt() {
     return completedAt;
   }
 
    /**
-   * ISO 8601 datetime. When the order was last modified.
+   * ISO 8601 datetime. The date and time when the order was last modified. The format will be as follows: \&quot;yyyy-mm-ddThh:mm:ssZ\&quot;
    * @return lastModifiedAt
   **/
-  @ApiModelProperty(value = "ISO 8601 datetime. When the order was last modified.")
+  @ApiModelProperty(value = "ISO 8601 datetime. The date and time when the order was last modified. The format will be as follows: \"yyyy-mm-ddThh:mm:ssZ\"")
   public OffsetDateTime getLastModifiedAt() {
     return lastModifiedAt;
   }
@@ -433,10 +424,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * Options for this purchase.
+   * Customization options for the order.
    * @return options
   **/
-  @ApiModelProperty(value = "Options for this purchase.")
+  @ApiModelProperty(value = "Customization options for the order.")
   public CheckoutOptions getOptions() {
     return options;
   }
@@ -451,10 +442,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * Additional purchase information required for some industries.
+   * Extra Merchant Data (additional information) required for additional risk check. The required parameters will be described in the appendix of contract agreement.
    * @return attachment
   **/
-  @ApiModelProperty(value = "Additional purchase information required for some industries.")
+  @ApiModelProperty(value = "Extra Merchant Data (additional information) required for additional risk check. The required parameters will be described in the appendix of contract agreement.")
   public CheckoutAttachment getAttachment() {
     return attachment;
   }
@@ -477,10 +468,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * List of external payment methods.
+   * List of external payment methods that will be displayed as part of payment methods in the checkout.
    * @return externalPaymentMethods
   **/
-  @ApiModelProperty(value = "List of external payment methods.")
+  @ApiModelProperty(value = "List of external payment methods that will be displayed as part of payment methods in the checkout.")
   public List<CheckoutPaymentProvider> getExternalPaymentMethods() {
     return externalPaymentMethods;
   }
@@ -503,10 +494,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * List of external checkouts.
+   * List of external checkouts that will be displayed as part of payment methods in the checkout.
    * @return externalCheckouts
   **/
-  @ApiModelProperty(value = "List of external checkouts.")
+  @ApiModelProperty(value = "List of external checkouts that will be displayed as part of payment methods in the checkout.")
   public List<CheckoutPaymentProvider> getExternalCheckouts() {
     return externalCheckouts;
   }
@@ -529,10 +520,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * A list of countries (ISO 3166 alpha-2). Default is purchase_country only.
+   * List of allowed shipping countries for this order in ISO-3166 alpha-2 format.  If specified, the customer will be able to change the shipping country in the checkout and you will be notified through ‘address_update’ callback or the ‘shipping_address_change’ javascript event.   If not specified then the default value will be the purchase country.  Example: look at billing_countries example.
    * @return shippingCountries
   **/
-  @ApiModelProperty(example = "[\"us\",\"gb\"]", value = "A list of countries (ISO 3166 alpha-2). Default is purchase_country only.")
+  @ApiModelProperty(example = "[\"us\",\"gb\"]", value = "List of allowed shipping countries for this order in ISO-3166 alpha-2 format.  If specified, the customer will be able to change the shipping country in the checkout and you will be notified through ‘address_update’ callback or the ‘shipping_address_change’ javascript event.   If not specified then the default value will be the purchase country.  Example: look at billing_countries example.")
   public List<String> getShippingCountries() {
     return shippingCountries;
   }
@@ -573,10 +564,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * Pass through field (max 6000 characters).
+   * Pass through field to send any information about the order to be used later for reference while retrieving the order details (max 6000 characters).
    * @return merchantData
   **/
-  @ApiModelProperty(example = "{\"marketplace_seller_info\":[{\"product_category\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}", value = "Pass through field (max 6000 characters).")
+  @ApiModelProperty(example = "{\"marketplace_seller_info\":[{\"product_category\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}", value = "Pass through field to send any information about the order to be used later for reference while retrieving the order details (max 6000 characters).")
   public String getMerchantData() {
     return merchantData;
   }
@@ -604,10 +595,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * Stores merchant requested data.
+   * Provides information about the state of the fields requested by the merchant.
    * @return merchantRequested
   **/
-  @ApiModelProperty(value = "Stores merchant requested data.")
+  @ApiModelProperty(value = "Provides information about the state of the fields requested by the merchant.")
   public CheckoutMerchantRequested getMerchantRequested() {
     return merchantRequested;
   }
@@ -627,10 +618,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * Indicates whether this purchase will create a token that can be used by the merchant to create recurring purchases. This must be enabled for the merchant to use. Default: false
+   * Indicates whether this purchase will create a token that can be used by the merchant to create recurring purchases. This must be enabled for the merchant to use. Default: false  Depending on specified country, recurring could be used for the following payment methods: Pay Later, Direct Debit, Card.
    * @return recurring
   **/
-  @ApiModelProperty(value = "Indicates whether this purchase will create a token that can be used by the merchant to create recurring purchases. This must be enabled for the merchant to use. Default: false")
+  @ApiModelProperty(value = "Indicates whether this purchase will create a token that can be used by the merchant to create recurring purchases. This must be enabled for the merchant to use. Default: false  Depending on specified country, recurring could be used for the following payment methods: Pay Later, Direct Debit, Card.")
   public Boolean isRecurring() {
     return recurring;
   }
@@ -649,10 +640,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * Description recurring subscription.
+   * Description to be added to the recurring order.
    * @return recurringDescription
   **/
-  @ApiModelProperty(value = "Description recurring subscription.")
+  @ApiModelProperty(value = "Description to be added to the recurring order.")
   public String getRecurringDescription() {
     return recurringDescription;
   }
@@ -671,10 +662,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * A list of countries (ISO 3166 alpha-2) to specify allowed billing countries.
+   * List of allowed billing countries for this order. If specified, the customer will be able to change the billing country in the checkout and you will be notified through ‘country_change’ callback or the ‘billing_address_change’ javascript event. If not specified then the default value will be the purchase country.  Example: [\&quot;AD\&quot;, \&quot;AE\&quot;, \&quot;AG\&quot;, \&quot;AI\&quot;, \&quot;AL\&quot;, \&quot;AM\&quot;, \&quot;AQ\&quot;, \&quot;AR\&quot;, \&quot;AS\&quot;, \&quot;AT\&quot;, \&quot;AU\&quot;, \&quot;AW\&quot;, \&quot;AX\&quot;, \&quot;AZ\&quot;, \&quot;BA\&quot;, \&quot;BB\&quot;, \&quot;BD\&quot;, \&quot;BE\&quot;, \&quot;BF\&quot;, \&quot;BG\&quot;, \&quot;BH\&quot;, \&quot;BJ\&quot;, \&quot;BL\&quot;, \&quot;BM\&quot;, \&quot;BN\&quot;, \&quot;BO\&quot;, \&quot;BQ\&quot;, \&quot;BR\&quot;, \&quot;BS\&quot;, \&quot;BT\&quot;, \&quot;BW\&quot;, \&quot;BY\&quot;, \&quot;BZ\&quot;, \&quot;CA\&quot;, \&quot;CF\&quot;, \&quot;CH\&quot;, \&quot;CI\&quot;, \&quot;CK\&quot;, \&quot;CL\&quot;, \&quot;CM\&quot;, \&quot;CN\&quot;, \&quot;CO\&quot;, \&quot;CR\&quot;, \&quot;CU\&quot;, \&quot;CV\&quot;, \&quot;CW\&quot;, \&quot;CX\&quot;, \&quot;CY\&quot;, \&quot;CZ\&quot;, \&quot;DE\&quot;, \&quot;DJ\&quot;, \&quot;DK\&quot;, \&quot;DM\&quot;, \&quot;DO\&quot;, \&quot;DZ\&quot;, \&quot;EC\&quot;, \&quot;EE\&quot;, \&quot;EG\&quot;, \&quot;ER\&quot;, \&quot;ES\&quot;, \&quot;ET\&quot;, \&quot;FI\&quot;, \&quot;FJ\&quot;, \&quot;FK\&quot;, \&quot;FM\&quot;, \&quot;FO\&quot;, \&quot;FR\&quot;, \&quot;GA\&quot;, \&quot;GB\&quot;, \&quot;GD\&quot;, \&quot;GE\&quot;, \&quot;GF\&quot;, \&quot;GG\&quot;, \&quot;GH\&quot;, \&quot;GI\&quot;, \&quot;GL\&quot;, \&quot;GM\&quot;, \&quot;GN\&quot;, \&quot;GP\&quot;, \&quot;GR\&quot;, \&quot;GS\&quot;, \&quot;GT\&quot;, \&quot;GU\&quot;, \&quot;GY\&quot;, \&quot;HK\&quot;, \&quot;HN\&quot;, \&quot;HR\&quot;, \&quot;HU\&quot;, \&quot;ID\&quot;, \&quot;IE\&quot;, \&quot;IL\&quot;, \&quot;IM\&quot;, \&quot;IN\&quot;, \&quot;IS\&quot;, \&quot;IT\&quot;, \&quot;JE\&quot;, \&quot;JM\&quot;, \&quot;JO\&quot;, \&quot;JP\&quot;, \&quot;KE\&quot;, \&quot;KG\&quot;, \&quot;KI\&quot;, \&quot;KM\&quot;, \&quot;KN\&quot;, \&quot;KR\&quot;, \&quot;KW\&quot;, \&quot;KY\&quot;, \&quot;KZ\&quot;, \&quot;LA\&quot;, \&quot;LA\&quot;, \&quot;LB\&quot;, \&quot;LC\&quot;, \&quot;LI\&quot;, \&quot;LK\&quot;, \&quot;LR\&quot;, \&quot;LS\&quot;, \&quot;LT\&quot;, \&quot;LU\&quot;, \&quot;LV\&quot;, \&quot;MA\&quot;, \&quot;MC\&quot;, \&quot;MD\&quot;, \&quot;ME\&quot;, \&quot;MF\&quot;, \&quot;MG\&quot;, \&quot;MH\&quot;, \&quot;MK\&quot;, \&quot;MK\&quot;, \&quot;ML\&quot;, \&quot;MM\&quot;, \&quot;MN\&quot;, \&quot;MO\&quot;, \&quot;MP\&quot;, \&quot;MQ\&quot;, \&quot;MR\&quot;, \&quot;MT\&quot;, \&quot;MU\&quot;, \&quot;MV\&quot;, \&quot;MW\&quot;, \&quot;MX\&quot;, \&quot;MY\&quot;, \&quot;MZ\&quot;, \&quot;NA\&quot;, \&quot;NC\&quot;, \&quot;NE\&quot;, \&quot;NF\&quot;, \&quot;NG\&quot;, \&quot;NI\&quot;, \&quot;NL\&quot;, \&quot;NO\&quot;, \&quot;NP\&quot;, \&quot;NR\&quot;, \&quot;NU\&quot;, \&quot;NZ\&quot;, \&quot;OM\&quot;, \&quot;PA\&quot;, \&quot;PE\&quot;, \&quot;PF\&quot;, \&quot;PG\&quot;, \&quot;PH\&quot;, \&quot;PK\&quot;, \&quot;PL\&quot;, \&quot;PM\&quot;, \&quot;PR\&quot;, \&quot;PS\&quot;, \&quot;PT\&quot;, \&quot;PW\&quot;, \&quot;PY\&quot;, \&quot;QA\&quot;, \&quot;RE\&quot;, \&quot;RO\&quot;, \&quot;RS\&quot;, \&quot;RU\&quot;, \&quot;RW\&quot;, \&quot;SA\&quot;, \&quot;SB\&quot;, \&quot;SC\&quot;, \&quot;SE\&quot;, \&quot;SG\&quot;, \&quot;SH\&quot;, \&quot;SI\&quot;, \&quot;SJ\&quot;, \&quot;SK\&quot;, \&quot;SL\&quot;, \&quot;SM\&quot;, \&quot;SN\&quot;, \&quot;SR\&quot;, \&quot;ST\&quot;, \&quot;SV\&quot;, \&quot;SX\&quot;, \&quot;SZ\&quot;, \&quot;TC\&quot;, \&quot;TF\&quot;, \&quot;TG\&quot;, \&quot;TH\&quot;, \&quot;TJ\&quot;, \&quot;TK\&quot;, \&quot;TL\&quot;, \&quot;TO\&quot;, \&quot;TR\&quot;, \&quot;TT\&quot;, \&quot;TV\&quot;, \&quot;TW\&quot;, \&quot;TZ\&quot;, \&quot;UA\&quot;, \&quot;UG\&quot;, \&quot;UM\&quot;, \&quot;US\&quot;, \&quot;UY\&quot;, \&quot;UZ\&quot;, \&quot;VA\&quot;, \&quot;VC\&quot;, \&quot;VG\&quot;, \&quot;VI\&quot;, \&quot;VN\&quot;, \&quot;VU\&quot;, \&quot;WF\&quot;, \&quot;WS\&quot;, \&quot;XK\&quot;, \&quot;YT\&quot;, \&quot;ZA\&quot;, \&quot;ZM\&quot;, \&quot;ZW\&quot;]\&quot;
    * @return billingCountries
   **/
-  @ApiModelProperty(example = "[\"us\",\"gb\"]", value = "A list of countries (ISO 3166 alpha-2) to specify allowed billing countries.")
+  @ApiModelProperty(example = "[\"us\",\"gb\"]", value = "List of allowed billing countries for this order. If specified, the customer will be able to change the billing country in the checkout and you will be notified through ‘country_change’ callback or the ‘billing_address_change’ javascript event. If not specified then the default value will be the purchase country.  Example: [\"AD\", \"AE\", \"AG\", \"AI\", \"AL\", \"AM\", \"AQ\", \"AR\", \"AS\", \"AT\", \"AU\", \"AW\", \"AX\", \"AZ\", \"BA\", \"BB\", \"BD\", \"BE\", \"BF\", \"BG\", \"BH\", \"BJ\", \"BL\", \"BM\", \"BN\", \"BO\", \"BQ\", \"BR\", \"BS\", \"BT\", \"BW\", \"BY\", \"BZ\", \"CA\", \"CF\", \"CH\", \"CI\", \"CK\", \"CL\", \"CM\", \"CN\", \"CO\", \"CR\", \"CU\", \"CV\", \"CW\", \"CX\", \"CY\", \"CZ\", \"DE\", \"DJ\", \"DK\", \"DM\", \"DO\", \"DZ\", \"EC\", \"EE\", \"EG\", \"ER\", \"ES\", \"ET\", \"FI\", \"FJ\", \"FK\", \"FM\", \"FO\", \"FR\", \"GA\", \"GB\", \"GD\", \"GE\", \"GF\", \"GG\", \"GH\", \"GI\", \"GL\", \"GM\", \"GN\", \"GP\", \"GR\", \"GS\", \"GT\", \"GU\", \"GY\", \"HK\", \"HN\", \"HR\", \"HU\", \"ID\", \"IE\", \"IL\", \"IM\", \"IN\", \"IS\", \"IT\", \"JE\", \"JM\", \"JO\", \"JP\", \"KE\", \"KG\", \"KI\", \"KM\", \"KN\", \"KR\", \"KW\", \"KY\", \"KZ\", \"LA\", \"LA\", \"LB\", \"LC\", \"LI\", \"LK\", \"LR\", \"LS\", \"LT\", \"LU\", \"LV\", \"MA\", \"MC\", \"MD\", \"ME\", \"MF\", \"MG\", \"MH\", \"MK\", \"MK\", \"ML\", \"MM\", \"MN\", \"MO\", \"MP\", \"MQ\", \"MR\", \"MT\", \"MU\", \"MV\", \"MW\", \"MX\", \"MY\", \"MZ\", \"NA\", \"NC\", \"NE\", \"NF\", \"NG\", \"NI\", \"NL\", \"NO\", \"NP\", \"NR\", \"NU\", \"NZ\", \"OM\", \"PA\", \"PE\", \"PF\", \"PG\", \"PH\", \"PK\", \"PL\", \"PM\", \"PR\", \"PS\", \"PT\", \"PW\", \"PY\", \"QA\", \"RE\", \"RO\", \"RS\", \"RU\", \"RW\", \"SA\", \"SB\", \"SC\", \"SE\", \"SG\", \"SH\", \"SI\", \"SJ\", \"SK\", \"SL\", \"SM\", \"SN\", \"SR\", \"ST\", \"SV\", \"SX\", \"SZ\", \"TC\", \"TF\", \"TG\", \"TH\", \"TJ\", \"TK\", \"TL\", \"TO\", \"TR\", \"TT\", \"TV\", \"TW\", \"TZ\", \"UA\", \"UG\", \"UM\", \"US\", \"UY\", \"UZ\", \"VA\", \"VC\", \"VG\", \"VI\", \"VN\", \"VU\", \"WF\", \"WS\", \"XK\", \"YT\", \"ZA\", \"ZM\", \"ZW\"]\"")
   public List<String> getBillingCountries() {
     return billingCountries;
   }
@@ -697,10 +688,10 @@ public class CheckoutOrder {
   }
 
    /**
-   * The product&#39;s extra features
+   * \&quot;Extra information added to the order.  Example: [\&quot;dangerous_goods\&quot;, \&quot;bulky\&quot;]
    * @return tags
   **/
-  @ApiModelProperty(example = "\"[\\\"dangerous_goods\\\", \\\"bulky\\\"]\"", value = "The product's extra features")
+  @ApiModelProperty(example = "\"[\\\"dangerous_goods\\\", \\\"bulky\\\"]\"", value = "\"Extra information added to the order.  Example: [\"dangerous_goods\", \"bulky\"]")
   public List<String> getTags() {
     return tags;
   }

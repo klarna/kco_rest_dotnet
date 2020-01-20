@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * CheckoutShippingOption
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:22:48.232Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:12:28.827Z")
 public class CheckoutShippingOption {
   @JsonProperty("id")
   private String id = null;
@@ -56,6 +56,9 @@ public class CheckoutShippingOption {
 
   @JsonProperty("delivery_details")
   private CheckoutDeliveryDetailsV1 deliveryDetails = null;
+
+  @JsonProperty("tms_reference")
+  private String tmsReference = null;
 
   public CheckoutShippingOption id(String id) {
     this.id = id;
@@ -207,10 +210,10 @@ public class CheckoutShippingOption {
   }
 
    /**
-   * Shipping method. Possible values:&lt;ul&gt;&lt;li&gt;PickUpStore&lt;/li&gt;&lt;li&gt;Home&lt;/li&gt;&lt;li&gt;BoxReg&lt;/li&gt;&lt;li&gt;BoxUnreg&lt;/li&gt;&lt;li&gt;PickUpPoint&lt;/li&gt;&lt;li&gt;Own&lt;/li&gt;&lt;li&gt;Postal&lt;/li&gt;&lt;/ul&gt;
+   * Shipping method. Possible values:&lt;ul&gt;&lt;li&gt;PickUpStore&lt;/li&gt;&lt;li&gt;Home&lt;/li&gt;&lt;li&gt;BoxReg&lt;/li&gt;&lt;li&gt;BoxUnreg&lt;/li&gt;&lt;li&gt;PickUpPoint&lt;/li&gt;&lt;li&gt;Own&lt;/li&gt;&lt;li&gt;Postal&lt;/li&gt;&lt;li&gt;DHLPackstation&lt;/li&gt;&lt;li&gt;Digital&lt;/li&gt;&lt;/ul&gt; If DHLPackstation is selected the correct form will be displayed.
    * @return shippingMethod
   **/
-  @ApiModelProperty(example = "PickUpStore", value = "Shipping method. Possible values:<ul><li>PickUpStore</li><li>Home</li><li>BoxReg</li><li>BoxUnreg</li><li>PickUpPoint</li><li>Own</li><li>Postal</li></ul>")
+  @ApiModelProperty(example = "PickUpStore", value = "Shipping method. Possible values:<ul><li>PickUpStore</li><li>Home</li><li>BoxReg</li><li>BoxUnreg</li><li>PickUpPoint</li><li>Own</li><li>Postal</li><li>DHLPackstation</li><li>Digital</li></ul> If DHLPackstation is selected the correct form will be displayed.")
   public String getShippingMethod() {
     return shippingMethod;
   }
@@ -237,6 +240,24 @@ public class CheckoutShippingOption {
     this.deliveryDetails = deliveryDetails;
   }
 
+  public CheckoutShippingOption tmsReference(String tmsReference) {
+    this.tmsReference = tmsReference;
+    return this;
+  }
+
+   /**
+   * TMS reference. Required to map completed orders to shipments reserved in TMS.
+   * @return tmsReference
+  **/
+  @ApiModelProperty(example = "a1b2c3d4-e4f6-g7h8-i9j0-k1l2m3n4o5p6", value = "TMS reference. Required to map completed orders to shipments reserved in TMS.")
+  public String getTmsReference() {
+    return tmsReference;
+  }
+
+  public void setTmsReference(String tmsReference) {
+    this.tmsReference = tmsReference;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -256,12 +277,13 @@ public class CheckoutShippingOption {
         Objects.equals(this.taxRate, shippingOption.taxRate) &&
         Objects.equals(this.preselected, shippingOption.preselected) &&
         Objects.equals(this.shippingMethod, shippingOption.shippingMethod) &&
-        Objects.equals(this.deliveryDetails, shippingOption.deliveryDetails);
+        Objects.equals(this.deliveryDetails, shippingOption.deliveryDetails) &&
+        Objects.equals(this.tmsReference, shippingOption.tmsReference);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, promo, price, taxAmount, taxRate, preselected, shippingMethod, deliveryDetails);
+    return Objects.hash(id, name, description, promo, price, taxAmount, taxRate, preselected, shippingMethod, deliveryDetails, tmsReference);
   }
 
 
@@ -280,6 +302,7 @@ public class CheckoutShippingOption {
     sb.append("    preselected: ").append(toIndentedString(preselected)).append("\n");
     sb.append("    shippingMethod: ").append(toIndentedString(shippingMethod)).append("\n");
     sb.append("    deliveryDetails: ").append(toIndentedString(deliveryDetails)).append("\n");
+    sb.append("    tmsReference: ").append(toIndentedString(tmsReference)).append("\n");
     sb.append("}");
     return sb.toString();
   }

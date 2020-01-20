@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * CheckoutCheckbox
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:22:48.232Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:12:28.827Z")
 public class CheckoutCheckbox {
   @JsonProperty("text")
   private String text = null;
@@ -35,6 +35,11 @@ public class CheckoutCheckbox {
   @JsonProperty("required")
   private Boolean required = false;
 
+  public CheckoutCheckbox text(String text) {
+    this.text = text;
+    return this;
+  }
+
    /**
    * Text that will be displayed to the consumer aside the checkbox. Links and formatting can be added using Markdown. (max 255 characters)
    * @return text
@@ -42,6 +47,15 @@ public class CheckoutCheckbox {
   @ApiModelProperty(example = "Please add me to the newsletter list, read more here [link](http://www.google.com)", required = true, value = "Text that will be displayed to the consumer aside the checkbox. Links and formatting can be added using Markdown. (max 255 characters)")
   public String getText() {
     return text;
+  }
+
+  public void setText(String text) {
+    this.text = text;
+  }
+
+  public CheckoutCheckbox checked(Boolean checked) {
+    this.checked = checked;
+    return this;
   }
 
    /**
@@ -53,6 +67,15 @@ public class CheckoutCheckbox {
     return checked;
   }
 
+  public void setChecked(Boolean checked) {
+    this.checked = checked;
+  }
+
+  public CheckoutCheckbox required(Boolean required) {
+    this.required = required;
+    return this;
+  }
+
    /**
    * Whether it is required for the consumer to check the additional checkbox box or not in order to complete the purchase.
    * @return required
@@ -60,6 +83,10 @@ public class CheckoutCheckbox {
   @ApiModelProperty(required = true, value = "Whether it is required for the consumer to check the additional checkbox box or not in order to complete the purchase.")
   public Boolean isRequired() {
     return required;
+  }
+
+  public void setRequired(Boolean required) {
+    this.required = required;
   }
 
 
