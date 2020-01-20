@@ -21,21 +21,20 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.klarna.rest.api.payments.model.PaymentsAddress;
 import com.klarna.rest.api.payments.model.PaymentsAttachment;
 import com.klarna.rest.api.payments.model.PaymentsCustomer;
+import com.klarna.rest.api.payments.model.PaymentsInstant;
 import com.klarna.rest.api.payments.model.PaymentsMerchantUrls;
 import com.klarna.rest.api.payments.model.PaymentsOptions;
 import com.klarna.rest.api.payments.model.PaymentsOrderLine;
 import com.klarna.rest.api.payments.model.PaymentsPaymentMethodCategory;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.threeten.bp.OffsetDateTime;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * PaymentsCreateOrderRequest
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-11-05T12:55:42.744Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T11:12:59.490Z")
 public class PaymentsCreateOrderRequest {
   @JsonProperty("acquiring_channel")
   private String acquiringChannel = null;
@@ -65,7 +64,7 @@ public class PaymentsCreateOrderRequest {
   private String design = null;
 
   @JsonProperty("expires_at")
-  private OffsetDateTime expiresAt = null;
+  private PaymentsInstant expiresAt = null;
 
   @JsonProperty("locale")
   private String locale = null;
@@ -301,7 +300,7 @@ public class PaymentsCreateOrderRequest {
    * @return expiresAt
   **/
   @ApiModelProperty(value = "Session expiration date")
-  public OffsetDateTime getExpiresAt() {
+  public PaymentsInstant getExpiresAt() {
     return expiresAt;
   }
 
