@@ -28,13 +28,16 @@ import java.util.List;
 /**
  * OrderManagementCaptureObject
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T10:02:16.667Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T09:41:31.881Z")
 public class OrderManagementCaptureObject {
   @JsonProperty("captured_amount")
   private Long capturedAmount = null;
 
   @JsonProperty("description")
   private String description = null;
+
+  @JsonProperty("reference")
+  private String reference = null;
 
   @JsonProperty("order_lines")
   private List<OrderManagementOrderLine> orderLines = null;
@@ -81,6 +84,24 @@ public class OrderManagementCaptureObject {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public OrderManagementCaptureObject reference(String reference) {
+    this.reference = reference;
+    return this;
+  }
+
+   /**
+   * Internal reference to the capture. This will be included in the settlement files. Max length is 255 characters.
+   * @return reference
+  **/
+  @ApiModelProperty(value = "Internal reference to the capture. This will be included in the settlement files. Max length is 255 characters.")
+  public String getReference() {
+    return reference;
+  }
+
+  public void setReference(String reference) {
+    this.reference = reference;
   }
 
   public OrderManagementCaptureObject orderLines(List<OrderManagementOrderLine> orderLines) {
@@ -166,6 +187,7 @@ public class OrderManagementCaptureObject {
     OrderManagementCaptureObject captureObject = (OrderManagementCaptureObject) o;
     return Objects.equals(this.capturedAmount, captureObject.capturedAmount) &&
         Objects.equals(this.description, captureObject.description) &&
+        Objects.equals(this.reference, captureObject.reference) &&
         Objects.equals(this.orderLines, captureObject.orderLines) &&
         Objects.equals(this.shippingInfo, captureObject.shippingInfo) &&
         Objects.equals(this.shippingDelay, captureObject.shippingDelay);
@@ -173,7 +195,7 @@ public class OrderManagementCaptureObject {
 
   @Override
   public int hashCode() {
-    return Objects.hash(capturedAmount, description, orderLines, shippingInfo, shippingDelay);
+    return Objects.hash(capturedAmount, description, reference, orderLines, shippingInfo, shippingDelay);
   }
 
 
@@ -184,6 +206,7 @@ public class OrderManagementCaptureObject {
     
     sb.append("    capturedAmount: ").append(toIndentedString(capturedAmount)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    reference: ").append(toIndentedString(reference)).append("\n");
     sb.append("    orderLines: ").append(toIndentedString(orderLines)).append("\n");
     sb.append("    shippingInfo: ").append(toIndentedString(shippingInfo)).append("\n");
     sb.append("    shippingDelay: ").append(toIndentedString(shippingDelay)).append("\n");

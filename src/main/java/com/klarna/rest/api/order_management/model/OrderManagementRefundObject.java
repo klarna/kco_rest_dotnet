@@ -27,13 +27,16 @@ import java.util.List;
 /**
  * OrderManagementRefundObject
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T10:02:16.667Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T09:41:31.881Z")
 public class OrderManagementRefundObject {
   @JsonProperty("refunded_amount")
   private Long refundedAmount = null;
 
   @JsonProperty("description")
   private String description = null;
+
+  @JsonProperty("reference")
+  private String reference = null;
 
   @JsonProperty("order_lines")
   private List<OrderManagementOrderLine> orderLines = null;
@@ -76,6 +79,24 @@ public class OrderManagementRefundObject {
     this.description = description;
   }
 
+  public OrderManagementRefundObject reference(String reference) {
+    this.reference = reference;
+    return this;
+  }
+
+   /**
+   * Internal reference to the refund. This will be included in the settlement files. Max length is 255 characters.
+   * @return reference
+  **/
+  @ApiModelProperty(value = "Internal reference to the refund. This will be included in the settlement files. Max length is 255 characters.")
+  public String getReference() {
+    return reference;
+  }
+
+  public void setReference(String reference) {
+    this.reference = reference;
+  }
+
   public OrderManagementRefundObject orderLines(List<OrderManagementOrderLine> orderLines) {
     this.orderLines = orderLines;
     return this;
@@ -114,12 +135,13 @@ public class OrderManagementRefundObject {
     OrderManagementRefundObject refundObject = (OrderManagementRefundObject) o;
     return Objects.equals(this.refundedAmount, refundObject.refundedAmount) &&
         Objects.equals(this.description, refundObject.description) &&
+        Objects.equals(this.reference, refundObject.reference) &&
         Objects.equals(this.orderLines, refundObject.orderLines);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(refundedAmount, description, orderLines);
+    return Objects.hash(refundedAmount, description, reference, orderLines);
   }
 
 
@@ -130,6 +152,7 @@ public class OrderManagementRefundObject {
     
     sb.append("    refundedAmount: ").append(toIndentedString(refundedAmount)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    reference: ").append(toIndentedString(reference)).append("\n");
     sb.append("    orderLines: ").append(toIndentedString(orderLines)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * OrderManagementInitialPaymentMethodDto
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T10:02:16.667Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T09:41:31.881Z")
 public class OrderManagementInitialPaymentMethodDto {
   /**
    * The type of the initial payment method.
@@ -49,6 +49,10 @@ public class OrderManagementInitialPaymentMethodDto {
     INVOICE_BUSINESS("INVOICE_BUSINESS"),
     
     DEFERRED_INTEREST("DEFERRED_INTEREST"),
+    
+    FIXED_SUM_CREDIT("FIXED_SUM_CREDIT"),
+    
+    PAY_LATER_BY_CARD("PAY_LATER_BY_CARD"),
     
     OTHER("OTHER");
 
