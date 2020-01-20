@@ -15,78 +15,14 @@ package com.klarna.rest.api.instant_shopping.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * InstantShoppingMerchantCreateOrderResponseV1
+ * InstantShoppingShippingTagsV1
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
-public class InstantShoppingMerchantCreateOrderResponseV1 {
-  @JsonProperty("order_id")
-  private String orderId = null;
-
-  /**
-   * Fraud status for the order.
-   */
-  public enum FraudStatusEnum {
-    ACCEPTED("ACCEPTED"),
-    
-    PENDING("PENDING"),
-    
-    REJECTED("REJECTED");
-
-    private String value;
-
-    FraudStatusEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FraudStatusEnum fromValue(String text) {
-      for (FraudStatusEnum b : FraudStatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("fraud_status")
-  private FraudStatusEnum fraudStatus = null;
-
-   /**
-   * The unique order ID. No longer than 255 characters.
-   * @return orderId
-  **/
-  @ApiModelProperty(example = "45aa52f387871e3a210645d4", value = "The unique order ID. No longer than 255 characters.")
-  public String getOrderId() {
-    return orderId;
-  }
-
-   /**
-   * Fraud status for the order.
-   * @return fraudStatus
-  **/
-  @ApiModelProperty(example = "REJECTED", value = "Fraud status for the order.")
-  public FraudStatusEnum getFraudStatus() {
-    return fraudStatus;
-  }
-
+public class InstantShoppingShippingTagsV1 extends ArrayList<String> {
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -96,24 +32,20 @@ public class InstantShoppingMerchantCreateOrderResponseV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InstantShoppingMerchantCreateOrderResponseV1 merchantCreateOrderResponseV1 = (InstantShoppingMerchantCreateOrderResponseV1) o;
-    return Objects.equals(this.orderId, merchantCreateOrderResponseV1.orderId) &&
-        Objects.equals(this.fraudStatus, merchantCreateOrderResponseV1.fraudStatus);
+    return super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderId, fraudStatus);
+    return Objects.hash(super.hashCode());
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InstantShoppingMerchantCreateOrderResponseV1 {\n");
-    
-    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
-    sb.append("    fraudStatus: ").append(toIndentedString(fraudStatus)).append("\n");
+    sb.append("class InstantShoppingShippingTagsV1 {\n");
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();
   }

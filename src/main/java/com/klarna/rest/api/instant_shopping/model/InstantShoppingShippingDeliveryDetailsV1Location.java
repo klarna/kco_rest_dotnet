@@ -18,73 +18,76 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingLocationAddressV1;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * InstantShoppingMerchantCreateOrderResponseV1
+ * InstantShoppingShippingDeliveryDetailsV1Location
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
-public class InstantShoppingMerchantCreateOrderResponseV1 {
-  @JsonProperty("order_id")
-  private String orderId = null;
+public class InstantShoppingShippingDeliveryDetailsV1Location {
+  @JsonProperty("id")
+  private String id = null;
 
-  /**
-   * Fraud status for the order.
-   */
-  public enum FraudStatusEnum {
-    ACCEPTED("ACCEPTED"),
-    
-    PENDING("PENDING"),
-    
-    REJECTED("REJECTED");
+  @JsonProperty("name")
+  private String name = null;
 
-    private String value;
+  @JsonProperty("address")
+  private InstantShoppingLocationAddressV1 address = null;
 
-    FraudStatusEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FraudStatusEnum fromValue(String text) {
-      for (FraudStatusEnum b : FraudStatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("fraud_status")
-  private FraudStatusEnum fraudStatus = null;
-
-   /**
-   * The unique order ID. No longer than 255 characters.
-   * @return orderId
-  **/
-  @ApiModelProperty(example = "45aa52f387871e3a210645d4", value = "The unique order ID. No longer than 255 characters.")
-  public String getOrderId() {
-    return orderId;
+  public InstantShoppingShippingDeliveryDetailsV1Location id(String id) {
+    this.id = id;
+    return this;
   }
 
    /**
-   * Fraud status for the order.
-   * @return fraudStatus
+   * Identifier of the pickup location
+   * @return id
   **/
-  @ApiModelProperty(example = "REJECTED", value = "Fraud status for the order.")
-  public FraudStatusEnum getFraudStatus() {
-    return fraudStatus;
+  @ApiModelProperty(example = "location-1234", value = "Identifier of the pickup location")
+  public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public InstantShoppingShippingDeliveryDetailsV1Location name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * Name of the pickup location
+   * @return name
+  **/
+  @ApiModelProperty(example = "Kiosk ABC", value = "Name of the pickup location")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public InstantShoppingShippingDeliveryDetailsV1Location address(InstantShoppingLocationAddressV1 address) {
+    this.address = address;
+    return this;
+  }
+
+   /**
+   * The pickup location address
+   * @return address
+  **/
+  @ApiModelProperty(value = "The pickup location address")
+  public InstantShoppingLocationAddressV1 getAddress() {
+    return address;
+  }
+
+  public void setAddress(InstantShoppingLocationAddressV1 address) {
+    this.address = address;
   }
 
 
@@ -96,24 +99,26 @@ public class InstantShoppingMerchantCreateOrderResponseV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InstantShoppingMerchantCreateOrderResponseV1 merchantCreateOrderResponseV1 = (InstantShoppingMerchantCreateOrderResponseV1) o;
-    return Objects.equals(this.orderId, merchantCreateOrderResponseV1.orderId) &&
-        Objects.equals(this.fraudStatus, merchantCreateOrderResponseV1.fraudStatus);
+    InstantShoppingShippingDeliveryDetailsV1Location shippingDeliveryDetailsV1Location = (InstantShoppingShippingDeliveryDetailsV1Location) o;
+    return Objects.equals(this.id, shippingDeliveryDetailsV1Location.id) &&
+        Objects.equals(this.name, shippingDeliveryDetailsV1Location.name) &&
+        Objects.equals(this.address, shippingDeliveryDetailsV1Location.address);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderId, fraudStatus);
+    return Objects.hash(id, name, address);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InstantShoppingMerchantCreateOrderResponseV1 {\n");
+    sb.append("class InstantShoppingShippingDeliveryDetailsV1Location {\n");
     
-    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
-    sb.append("    fraudStatus: ").append(toIndentedString(fraudStatus)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("}");
     return sb.toString();
   }

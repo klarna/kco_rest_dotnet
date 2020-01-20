@@ -18,21 +18,24 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingProductAttributeV1;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingProductIdentifiersV1;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingShippingAttributesV1;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * InstantShoppingOrderLineV1
+ * InstantShoppingItemV1
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
-public class InstantShoppingOrderLineV1 {
+public class InstantShoppingItemV1 {
   @JsonProperty("name")
   private String name = null;
 
   /**
-   * Order line type. Possible values: physical
+   * The type of product variation. Choose between physical or digital.
    */
   public enum TypeEnum {
     DIGITAL("digital"),
@@ -84,23 +87,17 @@ public class InstantShoppingOrderLineV1 {
   @JsonProperty("reference")
   private String reference = null;
 
-  @JsonProperty("quantity")
-  private Long quantity = null;
-
-  @JsonProperty("quantity_unit")
-  private String quantityUnit = null;
-
   @JsonProperty("tax_rate")
   private Long taxRate = null;
 
   @JsonProperty("total_amount")
   private Long totalAmount = null;
 
-  @JsonProperty("total_discount_amount")
-  private Long totalDiscountAmount = null;
-
   @JsonProperty("total_tax_amount")
   private Long totalTaxAmount = null;
+
+  @JsonProperty("total_discount_amount")
+  private Long totalDiscountAmount = null;
 
   @JsonProperty("unit_price")
   private Long unitPrice = null;
@@ -120,16 +117,22 @@ public class InstantShoppingOrderLineV1 {
   @JsonProperty("shipping_attributes")
   private InstantShoppingShippingAttributesV1 shippingAttributes = null;
 
-  public InstantShoppingOrderLineV1 name(String name) {
+  @JsonProperty("group_identifier")
+  private String groupIdentifier = null;
+
+  @JsonProperty("product_attributes")
+  private List<InstantShoppingProductAttributeV1> productAttributes = new ArrayList<InstantShoppingProductAttributeV1>();
+
+  public InstantShoppingItemV1 name(String name) {
     this.name = name;
     return this;
   }
 
    /**
-   * Descriptive item name.
+   * Descriptive product name.
    * @return name
   **/
-  @ApiModelProperty(example = "Red T-Shirt", required = true, value = "Descriptive item name.")
+  @ApiModelProperty(example = "Red T-Shirt", required = true, value = "Descriptive product name.")
   public String getName() {
     return name;
   }
@@ -138,16 +141,16 @@ public class InstantShoppingOrderLineV1 {
     this.name = name;
   }
 
-  public InstantShoppingOrderLineV1 type(TypeEnum type) {
+  public InstantShoppingItemV1 type(TypeEnum type) {
     this.type = type;
     return this;
   }
 
    /**
-   * Order line type. Possible values: physical
+   * The type of product variation. Choose between physical or digital.
    * @return type
   **/
-  @ApiModelProperty(example = "physical", value = "Order line type. Possible values: physical")
+  @ApiModelProperty(example = "physical", required = true, value = "The type of product variation. Choose between physical or digital.")
   public TypeEnum getType() {
     return type;
   }
@@ -156,7 +159,7 @@ public class InstantShoppingOrderLineV1 {
     this.type = type;
   }
 
-  public InstantShoppingOrderLineV1 reference(String reference) {
+  public InstantShoppingItemV1 reference(String reference) {
     this.reference = reference;
     return this;
   }
@@ -174,44 +177,7 @@ public class InstantShoppingOrderLineV1 {
     this.reference = reference;
   }
 
-  public InstantShoppingOrderLineV1 quantity(Long quantity) {
-    this.quantity = quantity;
-    return this;
-  }
-
-   /**
-   * Non-negative. The item quantity.
-   * minimum: 0
-   * @return quantity
-  **/
-  @ApiModelProperty(example = "5", required = true, value = "Non-negative. The item quantity.")
-  public Long getQuantity() {
-    return quantity;
-  }
-
-  public void setQuantity(Long quantity) {
-    this.quantity = quantity;
-  }
-
-  public InstantShoppingOrderLineV1 quantityUnit(String quantityUnit) {
-    this.quantityUnit = quantityUnit;
-    return this;
-  }
-
-   /**
-   * Unit used to describe the quantity, e.g. \&quot;kg\&quot;, \&quot;pcs\&quot; If defined has to be 1-8 characters
-   * @return quantityUnit
-  **/
-  @ApiModelProperty(example = "pcs", value = "Unit used to describe the quantity, e.g. \"kg\", \"pcs\" If defined has to be 1-8 characters")
-  public String getQuantityUnit() {
-    return quantityUnit;
-  }
-
-  public void setQuantityUnit(String quantityUnit) {
-    this.quantityUnit = quantityUnit;
-  }
-
-  public InstantShoppingOrderLineV1 taxRate(Long taxRate) {
+  public InstantShoppingItemV1 taxRate(Long taxRate) {
     this.taxRate = taxRate;
     return this;
   }
@@ -230,7 +196,7 @@ public class InstantShoppingOrderLineV1 {
     this.taxRate = taxRate;
   }
 
-  public InstantShoppingOrderLineV1 totalAmount(Long totalAmount) {
+  public InstantShoppingItemV1 totalAmount(Long totalAmount) {
     this.totalAmount = totalAmount;
     return this;
   }
@@ -240,7 +206,7 @@ public class InstantShoppingOrderLineV1 {
    * maximum: 100000000
    * @return totalAmount
   **/
-  @ApiModelProperty(example = "50000", required = true, value = "Includes tax and discount. Must match (quantity unit_price) - total_discount_amount within ±quantity. (max value: 100000000)")
+  @ApiModelProperty(example = "50000", value = "Includes tax and discount. Must match (quantity unit_price) - total_discount_amount within ±quantity. (max value: 100000000)")
   public Long getTotalAmount() {
     return totalAmount;
   }
@@ -249,26 +215,7 @@ public class InstantShoppingOrderLineV1 {
     this.totalAmount = totalAmount;
   }
 
-  public InstantShoppingOrderLineV1 totalDiscountAmount(Long totalDiscountAmount) {
-    this.totalDiscountAmount = totalDiscountAmount;
-    return this;
-  }
-
-   /**
-   * Non-negative minor units. Includes tax.
-   * minimum: 0
-   * @return totalDiscountAmount
-  **/
-  @ApiModelProperty(example = "0", value = "Non-negative minor units. Includes tax.")
-  public Long getTotalDiscountAmount() {
-    return totalDiscountAmount;
-  }
-
-  public void setTotalDiscountAmount(Long totalDiscountAmount) {
-    this.totalDiscountAmount = totalDiscountAmount;
-  }
-
-  public InstantShoppingOrderLineV1 totalTaxAmount(Long totalTaxAmount) {
+  public InstantShoppingItemV1 totalTaxAmount(Long totalTaxAmount) {
     this.totalTaxAmount = totalTaxAmount;
     return this;
   }
@@ -287,7 +234,26 @@ public class InstantShoppingOrderLineV1 {
     this.totalTaxAmount = totalTaxAmount;
   }
 
-  public InstantShoppingOrderLineV1 unitPrice(Long unitPrice) {
+  public InstantShoppingItemV1 totalDiscountAmount(Long totalDiscountAmount) {
+    this.totalDiscountAmount = totalDiscountAmount;
+    return this;
+  }
+
+   /**
+   * Non-negative minor units. Includes tax.
+   * minimum: 0
+   * @return totalDiscountAmount
+  **/
+  @ApiModelProperty(example = "0", value = "Non-negative minor units. Includes tax.")
+  public Long getTotalDiscountAmount() {
+    return totalDiscountAmount;
+  }
+
+  public void setTotalDiscountAmount(Long totalDiscountAmount) {
+    this.totalDiscountAmount = totalDiscountAmount;
+  }
+
+  public InstantShoppingItemV1 unitPrice(Long unitPrice) {
     this.unitPrice = unitPrice;
     return this;
   }
@@ -306,7 +272,7 @@ public class InstantShoppingOrderLineV1 {
     this.unitPrice = unitPrice;
   }
 
-  public InstantShoppingOrderLineV1 merchantData(String merchantData) {
+  public InstantShoppingItemV1 merchantData(String merchantData) {
     this.merchantData = merchantData;
     return this;
   }
@@ -324,7 +290,7 @@ public class InstantShoppingOrderLineV1 {
     this.merchantData = merchantData;
   }
 
-  public InstantShoppingOrderLineV1 productUrl(String productUrl) {
+  public InstantShoppingItemV1 productUrl(String productUrl) {
     this.productUrl = productUrl;
     return this;
   }
@@ -342,16 +308,16 @@ public class InstantShoppingOrderLineV1 {
     this.productUrl = productUrl;
   }
 
-  public InstantShoppingOrderLineV1 imageUrl(String imageUrl) {
+  public InstantShoppingItemV1 imageUrl(String imageUrl) {
     this.imageUrl = imageUrl;
     return this;
   }
 
    /**
-   * URL to an image that can be later embedded in communications between Klarna and the customer. (max 1024 characters)
+   * URL of the image of the product. Will be used to help consumers selecting between product variations
    * @return imageUrl
   **/
-  @ApiModelProperty(example = "https://www.example.com/logo.png", value = "URL to an image that can be later embedded in communications between Klarna and the customer. (max 1024 characters)")
+  @ApiModelProperty(example = "https://www.example.com/logo.png", value = "URL of the image of the product. Will be used to help consumers selecting between product variations")
   public String getImageUrl() {
     return imageUrl;
   }
@@ -360,7 +326,7 @@ public class InstantShoppingOrderLineV1 {
     this.imageUrl = imageUrl;
   }
 
-  public InstantShoppingOrderLineV1 productIdentifiers(InstantShoppingProductIdentifiersV1 productIdentifiers) {
+  public InstantShoppingItemV1 productIdentifiers(InstantShoppingProductIdentifiersV1 productIdentifiers) {
     this.productIdentifiers = productIdentifiers;
     return this;
   }
@@ -378,7 +344,7 @@ public class InstantShoppingOrderLineV1 {
     this.productIdentifiers = productIdentifiers;
   }
 
-  public InstantShoppingOrderLineV1 shippingAttributes(InstantShoppingShippingAttributesV1 shippingAttributes) {
+  public InstantShoppingItemV1 shippingAttributes(InstantShoppingShippingAttributesV1 shippingAttributes) {
     this.shippingAttributes = shippingAttributes;
     return this;
   }
@@ -396,6 +362,47 @@ public class InstantShoppingOrderLineV1 {
     this.shippingAttributes = shippingAttributes;
   }
 
+  public InstantShoppingItemV1 groupIdentifier(String groupIdentifier) {
+    this.groupIdentifier = groupIdentifier;
+    return this;
+  }
+
+   /**
+   * Must not include the character &#39;_&#39;. Unique identifier of the product that is described in multiple variations in this &#39;items&#39; list.
+   * @return groupIdentifier
+  **/
+  @ApiModelProperty(required = true, value = "Must not include the character '_'. Unique identifier of the product that is described in multiple variations in this 'items' list.")
+  public String getGroupIdentifier() {
+    return groupIdentifier;
+  }
+
+  public void setGroupIdentifier(String groupIdentifier) {
+    this.groupIdentifier = groupIdentifier;
+  }
+
+  public InstantShoppingItemV1 productAttributes(List<InstantShoppingProductAttributeV1> productAttributes) {
+    this.productAttributes = productAttributes;
+    return this;
+  }
+
+  public InstantShoppingItemV1 addProductAttributesItem(InstantShoppingProductAttributeV1 productAttributesItem) {
+    this.productAttributes.add(productAttributesItem);
+    return this;
+  }
+
+   /**
+   * List of objects, each describe every possible product variation as a unique combination of product attributes, e.g. color, size, material.
+   * @return productAttributes
+  **/
+  @ApiModelProperty(required = true, value = "List of objects, each describe every possible product variation as a unique combination of product attributes, e.g. color, size, material.")
+  public List<InstantShoppingProductAttributeV1> getProductAttributes() {
+    return productAttributes;
+  }
+
+  public void setProductAttributes(List<InstantShoppingProductAttributeV1> productAttributes) {
+    this.productAttributes = productAttributes;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -405,50 +412,50 @@ public class InstantShoppingOrderLineV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InstantShoppingOrderLineV1 orderLineV1 = (InstantShoppingOrderLineV1) o;
-    return Objects.equals(this.name, orderLineV1.name) &&
-        Objects.equals(this.type, orderLineV1.type) &&
-        Objects.equals(this.reference, orderLineV1.reference) &&
-        Objects.equals(this.quantity, orderLineV1.quantity) &&
-        Objects.equals(this.quantityUnit, orderLineV1.quantityUnit) &&
-        Objects.equals(this.taxRate, orderLineV1.taxRate) &&
-        Objects.equals(this.totalAmount, orderLineV1.totalAmount) &&
-        Objects.equals(this.totalDiscountAmount, orderLineV1.totalDiscountAmount) &&
-        Objects.equals(this.totalTaxAmount, orderLineV1.totalTaxAmount) &&
-        Objects.equals(this.unitPrice, orderLineV1.unitPrice) &&
-        Objects.equals(this.merchantData, orderLineV1.merchantData) &&
-        Objects.equals(this.productUrl, orderLineV1.productUrl) &&
-        Objects.equals(this.imageUrl, orderLineV1.imageUrl) &&
-        Objects.equals(this.productIdentifiers, orderLineV1.productIdentifiers) &&
-        Objects.equals(this.shippingAttributes, orderLineV1.shippingAttributes);
+    InstantShoppingItemV1 itemV1 = (InstantShoppingItemV1) o;
+    return Objects.equals(this.name, itemV1.name) &&
+        Objects.equals(this.type, itemV1.type) &&
+        Objects.equals(this.reference, itemV1.reference) &&
+        Objects.equals(this.taxRate, itemV1.taxRate) &&
+        Objects.equals(this.totalAmount, itemV1.totalAmount) &&
+        Objects.equals(this.totalTaxAmount, itemV1.totalTaxAmount) &&
+        Objects.equals(this.totalDiscountAmount, itemV1.totalDiscountAmount) &&
+        Objects.equals(this.unitPrice, itemV1.unitPrice) &&
+        Objects.equals(this.merchantData, itemV1.merchantData) &&
+        Objects.equals(this.productUrl, itemV1.productUrl) &&
+        Objects.equals(this.imageUrl, itemV1.imageUrl) &&
+        Objects.equals(this.productIdentifiers, itemV1.productIdentifiers) &&
+        Objects.equals(this.shippingAttributes, itemV1.shippingAttributes) &&
+        Objects.equals(this.groupIdentifier, itemV1.groupIdentifier) &&
+        Objects.equals(this.productAttributes, itemV1.productAttributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, type, reference, quantity, quantityUnit, taxRate, totalAmount, totalDiscountAmount, totalTaxAmount, unitPrice, merchantData, productUrl, imageUrl, productIdentifiers, shippingAttributes);
+    return Objects.hash(name, type, reference, taxRate, totalAmount, totalTaxAmount, totalDiscountAmount, unitPrice, merchantData, productUrl, imageUrl, productIdentifiers, shippingAttributes, groupIdentifier, productAttributes);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InstantShoppingOrderLineV1 {\n");
+    sb.append("class InstantShoppingItemV1 {\n");
     
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    reference: ").append(toIndentedString(reference)).append("\n");
-    sb.append("    quantity: ").append(toIndentedString(quantity)).append("\n");
-    sb.append("    quantityUnit: ").append(toIndentedString(quantityUnit)).append("\n");
     sb.append("    taxRate: ").append(toIndentedString(taxRate)).append("\n");
     sb.append("    totalAmount: ").append(toIndentedString(totalAmount)).append("\n");
-    sb.append("    totalDiscountAmount: ").append(toIndentedString(totalDiscountAmount)).append("\n");
     sb.append("    totalTaxAmount: ").append(toIndentedString(totalTaxAmount)).append("\n");
+    sb.append("    totalDiscountAmount: ").append(toIndentedString(totalDiscountAmount)).append("\n");
     sb.append("    unitPrice: ").append(toIndentedString(unitPrice)).append("\n");
     sb.append("    merchantData: ").append(toIndentedString(merchantData)).append("\n");
     sb.append("    productUrl: ").append(toIndentedString(productUrl)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
     sb.append("    productIdentifiers: ").append(toIndentedString(productIdentifiers)).append("\n");
     sb.append("    shippingAttributes: ").append(toIndentedString(shippingAttributes)).append("\n");
+    sb.append("    groupIdentifier: ").append(toIndentedString(groupIdentifier)).append("\n");
+    sb.append("    productAttributes: ").append(toIndentedString(productAttributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

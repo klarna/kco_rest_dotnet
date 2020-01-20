@@ -19,9 +19,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingAttachmentV1;
-import com.klarna.rest.api.instant_shopping.model.InstantShoppingBrandingOptionsV1;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingItemV1;
-import com.klarna.rest.api.instant_shopping.model.InstantShoppingMerchantRequestButtonSetupOptionsV1;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingMerchantUrlsV1;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingOptionsV1;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingOrderLineV1;
@@ -38,7 +36,7 @@ import java.util.List;
  */
 @ApiModel(description = "ButtonSetupOptions defines the attributes for a button in Instant Shopping.")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
-public class InstantShoppingButtonSetupOptionsV1 {
+public class InstantShoppingMerchantRequestButtonSetupOptionsV1 {
   @JsonProperty("name")
   private String name = null;
 
@@ -93,10 +91,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
   @JsonProperty("styling")
   private InstantShoppingStylingOptionsV1 styling = null;
 
-  @JsonProperty("button_key")
-  private String buttonKey = null;
-
-  public InstantShoppingButtonSetupOptionsV1 name(String name) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 name(String name) {
     this.name = name;
     return this;
   }
@@ -114,7 +109,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.name = name;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 disabled(Boolean disabled) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 disabled(Boolean disabled) {
     this.disabled = disabled;
     return this;
   }
@@ -132,7 +127,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.disabled = disabled;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 merchantUrls(InstantShoppingMerchantUrlsV1 merchantUrls) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 merchantUrls(InstantShoppingMerchantUrlsV1 merchantUrls) {
     this.merchantUrls = merchantUrls;
     return this;
   }
@@ -150,7 +145,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.merchantUrls = merchantUrls;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 purchaseCurrency(String purchaseCurrency) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 purchaseCurrency(String purchaseCurrency) {
     this.purchaseCurrency = purchaseCurrency;
     return this;
   }
@@ -168,7 +163,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.purchaseCurrency = purchaseCurrency;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 purchaseCountry(String purchaseCountry) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 purchaseCountry(String purchaseCountry) {
     this.purchaseCountry = purchaseCountry;
     return this;
   }
@@ -186,12 +181,12 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.purchaseCountry = purchaseCountry;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 billingCountries(List<String> billingCountries) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 billingCountries(List<String> billingCountries) {
     this.billingCountries = billingCountries;
     return this;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 addBillingCountriesItem(String billingCountriesItem) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 addBillingCountriesItem(String billingCountriesItem) {
     if (this.billingCountries == null) {
       this.billingCountries = new ArrayList<String>();
     }
@@ -212,12 +207,12 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.billingCountries = billingCountries;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 shippingCountries(List<String> shippingCountries) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 shippingCountries(List<String> shippingCountries) {
     this.shippingCountries = shippingCountries;
     return this;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 addShippingCountriesItem(String shippingCountriesItem) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 addShippingCountriesItem(String shippingCountriesItem) {
     if (this.shippingCountries == null) {
       this.shippingCountries = new ArrayList<String>();
     }
@@ -238,7 +233,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.shippingCountries = shippingCountries;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 locale(String locale) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 locale(String locale) {
     this.locale = locale;
     return this;
   }
@@ -256,7 +251,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.locale = locale;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 merchantReference1(String merchantReference1) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 merchantReference1(String merchantReference1) {
     this.merchantReference1 = merchantReference1;
     return this;
   }
@@ -274,7 +269,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.merchantReference1 = merchantReference1;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 merchantReference2(String merchantReference2) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 merchantReference2(String merchantReference2) {
     this.merchantReference2 = merchantReference2;
     return this;
   }
@@ -292,7 +287,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.merchantReference2 = merchantReference2;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 options(InstantShoppingOptionsV1 options) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 options(InstantShoppingOptionsV1 options) {
     this.options = options;
     return this;
   }
@@ -310,7 +305,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.options = options;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 merchantData(String merchantData) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 merchantData(String merchantData) {
     this.merchantData = merchantData;
     return this;
   }
@@ -328,7 +323,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.merchantData = merchantData;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 attachment(InstantShoppingAttachmentV1 attachment) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 attachment(InstantShoppingAttachmentV1 attachment) {
     this.attachment = attachment;
     return this;
   }
@@ -346,12 +341,12 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.attachment = attachment;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 orderLines(List<InstantShoppingOrderLineV1> orderLines) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 orderLines(List<InstantShoppingOrderLineV1> orderLines) {
     this.orderLines = orderLines;
     return this;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 addOrderLinesItem(InstantShoppingOrderLineV1 orderLinesItem) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 addOrderLinesItem(InstantShoppingOrderLineV1 orderLinesItem) {
     if (this.orderLines == null) {
       this.orderLines = new ArrayList<InstantShoppingOrderLineV1>();
     }
@@ -372,12 +367,12 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.orderLines = orderLines;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 items(List<InstantShoppingItemV1> items) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 items(List<InstantShoppingItemV1> items) {
     this.items = items;
     return this;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 addItemsItem(InstantShoppingItemV1 itemsItem) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 addItemsItem(InstantShoppingItemV1 itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<InstantShoppingItemV1>();
     }
@@ -398,12 +393,12 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.items = items;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 shippingOptions(List<InstantShoppingShippingOptionV1> shippingOptions) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 shippingOptions(List<InstantShoppingShippingOptionV1> shippingOptions) {
     this.shippingOptions = shippingOptions;
     return this;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 addShippingOptionsItem(InstantShoppingShippingOptionV1 shippingOptionsItem) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 addShippingOptionsItem(InstantShoppingShippingOptionV1 shippingOptionsItem) {
     if (this.shippingOptions == null) {
       this.shippingOptions = new ArrayList<InstantShoppingShippingOptionV1>();
     }
@@ -424,7 +419,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.shippingOptions = shippingOptions;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 shippingAttributes(InstantShoppingShippingAttributesV1 shippingAttributes) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 shippingAttributes(InstantShoppingShippingAttributesV1 shippingAttributes) {
     this.shippingAttributes = shippingAttributes;
     return this;
   }
@@ -442,7 +437,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.shippingAttributes = shippingAttributes;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 styling(InstantShoppingStylingOptionsV1 styling) {
+  public InstantShoppingMerchantRequestButtonSetupOptionsV1 styling(InstantShoppingStylingOptionsV1 styling) {
     this.styling = styling;
     return this;
   }
@@ -460,24 +455,6 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.styling = styling;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 buttonKey(String buttonKey) {
-    this.buttonKey = buttonKey;
-    return this;
-  }
-
-   /**
-   * Identifier of the button key. Readonly value. Set by the server.
-   * @return buttonKey
-  **/
-  @ApiModelProperty(example = "123e4567-e89b-12d3-a456-426655440000", value = "Identifier of the button key. Readonly value. Set by the server.")
-  public String getButtonKey() {
-    return buttonKey;
-  }
-
-  public void setButtonKey(String buttonKey) {
-    this.buttonKey = buttonKey;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -487,38 +464,37 @@ public class InstantShoppingButtonSetupOptionsV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InstantShoppingButtonSetupOptionsV1 buttonSetupOptionsV1 = (InstantShoppingButtonSetupOptionsV1) o;
-    return Objects.equals(this.name, buttonSetupOptionsV1.name) &&
-        Objects.equals(this.disabled, buttonSetupOptionsV1.disabled) &&
-        Objects.equals(this.merchantUrls, buttonSetupOptionsV1.merchantUrls) &&
-        Objects.equals(this.purchaseCurrency, buttonSetupOptionsV1.purchaseCurrency) &&
-        Objects.equals(this.purchaseCountry, buttonSetupOptionsV1.purchaseCountry) &&
-        Objects.equals(this.billingCountries, buttonSetupOptionsV1.billingCountries) &&
-        Objects.equals(this.shippingCountries, buttonSetupOptionsV1.shippingCountries) &&
-        Objects.equals(this.locale, buttonSetupOptionsV1.locale) &&
-        Objects.equals(this.merchantReference1, buttonSetupOptionsV1.merchantReference1) &&
-        Objects.equals(this.merchantReference2, buttonSetupOptionsV1.merchantReference2) &&
-        Objects.equals(this.options, buttonSetupOptionsV1.options) &&
-        Objects.equals(this.merchantData, buttonSetupOptionsV1.merchantData) &&
-        Objects.equals(this.attachment, buttonSetupOptionsV1.attachment) &&
-        Objects.equals(this.orderLines, buttonSetupOptionsV1.orderLines) &&
-        Objects.equals(this.items, buttonSetupOptionsV1.items) &&
-        Objects.equals(this.shippingOptions, buttonSetupOptionsV1.shippingOptions) &&
-        Objects.equals(this.shippingAttributes, buttonSetupOptionsV1.shippingAttributes) &&
-        Objects.equals(this.styling, buttonSetupOptionsV1.styling) &&
-        Objects.equals(this.buttonKey, buttonSetupOptionsV1.buttonKey);
+    InstantShoppingMerchantRequestButtonSetupOptionsV1 merchantRequestButtonSetupOptionsV1 = (InstantShoppingMerchantRequestButtonSetupOptionsV1) o;
+    return Objects.equals(this.name, merchantRequestButtonSetupOptionsV1.name) &&
+        Objects.equals(this.disabled, merchantRequestButtonSetupOptionsV1.disabled) &&
+        Objects.equals(this.merchantUrls, merchantRequestButtonSetupOptionsV1.merchantUrls) &&
+        Objects.equals(this.purchaseCurrency, merchantRequestButtonSetupOptionsV1.purchaseCurrency) &&
+        Objects.equals(this.purchaseCountry, merchantRequestButtonSetupOptionsV1.purchaseCountry) &&
+        Objects.equals(this.billingCountries, merchantRequestButtonSetupOptionsV1.billingCountries) &&
+        Objects.equals(this.shippingCountries, merchantRequestButtonSetupOptionsV1.shippingCountries) &&
+        Objects.equals(this.locale, merchantRequestButtonSetupOptionsV1.locale) &&
+        Objects.equals(this.merchantReference1, merchantRequestButtonSetupOptionsV1.merchantReference1) &&
+        Objects.equals(this.merchantReference2, merchantRequestButtonSetupOptionsV1.merchantReference2) &&
+        Objects.equals(this.options, merchantRequestButtonSetupOptionsV1.options) &&
+        Objects.equals(this.merchantData, merchantRequestButtonSetupOptionsV1.merchantData) &&
+        Objects.equals(this.attachment, merchantRequestButtonSetupOptionsV1.attachment) &&
+        Objects.equals(this.orderLines, merchantRequestButtonSetupOptionsV1.orderLines) &&
+        Objects.equals(this.items, merchantRequestButtonSetupOptionsV1.items) &&
+        Objects.equals(this.shippingOptions, merchantRequestButtonSetupOptionsV1.shippingOptions) &&
+        Objects.equals(this.shippingAttributes, merchantRequestButtonSetupOptionsV1.shippingAttributes) &&
+        Objects.equals(this.styling, merchantRequestButtonSetupOptionsV1.styling);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, disabled, merchantUrls, purchaseCurrency, purchaseCountry, billingCountries, shippingCountries, locale, merchantReference1, merchantReference2, options, merchantData, attachment, orderLines, items, shippingOptions, shippingAttributes, styling, buttonKey);
+    return Objects.hash(name, disabled, merchantUrls, purchaseCurrency, purchaseCountry, billingCountries, shippingCountries, locale, merchantReference1, merchantReference2, options, merchantData, attachment, orderLines, items, shippingOptions, shippingAttributes, styling);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InstantShoppingButtonSetupOptionsV1 {\n");
+    sb.append("class InstantShoppingMerchantRequestButtonSetupOptionsV1 {\n");
     
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    disabled: ").append(toIndentedString(disabled)).append("\n");
@@ -538,7 +514,6 @@ public class InstantShoppingButtonSetupOptionsV1 {
     sb.append("    shippingOptions: ").append(toIndentedString(shippingOptions)).append("\n");
     sb.append("    shippingAttributes: ").append(toIndentedString(shippingAttributes)).append("\n");
     sb.append("    styling: ").append(toIndentedString(styling)).append("\n");
-    sb.append("    buttonKey: ").append(toIndentedString(buttonKey)).append("\n");
     sb.append("}");
     return sb.toString();
   }

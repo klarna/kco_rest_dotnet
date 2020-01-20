@@ -22,69 +22,50 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * InstantShoppingMerchantCreateOrderResponseV1
+ * InstantShoppingShippingDeliveryDetailsV1CarrierProduct
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
-public class InstantShoppingMerchantCreateOrderResponseV1 {
-  @JsonProperty("order_id")
-  private String orderId = null;
+public class InstantShoppingShippingDeliveryDetailsV1CarrierProduct {
+  @JsonProperty("identifier")
+  private String identifier = null;
 
-  /**
-   * Fraud status for the order.
-   */
-  public enum FraudStatusEnum {
-    ACCEPTED("ACCEPTED"),
-    
-    PENDING("PENDING"),
-    
-    REJECTED("REJECTED");
+  @JsonProperty("name")
+  private String name = null;
 
-    private String value;
-
-    FraudStatusEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FraudStatusEnum fromValue(String text) {
-      for (FraudStatusEnum b : FraudStatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("fraud_status")
-  private FraudStatusEnum fraudStatus = null;
-
-   /**
-   * The unique order ID. No longer than 255 characters.
-   * @return orderId
-  **/
-  @ApiModelProperty(example = "45aa52f387871e3a210645d4", value = "The unique order ID. No longer than 255 characters.")
-  public String getOrderId() {
-    return orderId;
+  public InstantShoppingShippingDeliveryDetailsV1CarrierProduct identifier(String identifier) {
+    this.identifier = identifier;
+    return this;
   }
 
    /**
-   * Fraud status for the order.
-   * @return fraudStatus
+   * The carrier product identifier
+   * @return identifier
   **/
-  @ApiModelProperty(example = "REJECTED", value = "Fraud status for the order.")
-  public FraudStatusEnum getFraudStatus() {
-    return fraudStatus;
+  @ApiModelProperty(example = "SP-869", value = "The carrier product identifier")
+  public String getIdentifier() {
+    return identifier;
+  }
+
+  public void setIdentifier(String identifier) {
+    this.identifier = identifier;
+  }
+
+  public InstantShoppingShippingDeliveryDetailsV1CarrierProduct name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * The carrier product name
+   * @return name
+  **/
+  @ApiModelProperty(example = "Service point", value = "The carrier product name")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -96,24 +77,24 @@ public class InstantShoppingMerchantCreateOrderResponseV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InstantShoppingMerchantCreateOrderResponseV1 merchantCreateOrderResponseV1 = (InstantShoppingMerchantCreateOrderResponseV1) o;
-    return Objects.equals(this.orderId, merchantCreateOrderResponseV1.orderId) &&
-        Objects.equals(this.fraudStatus, merchantCreateOrderResponseV1.fraudStatus);
+    InstantShoppingShippingDeliveryDetailsV1CarrierProduct shippingDeliveryDetailsV1CarrierProduct = (InstantShoppingShippingDeliveryDetailsV1CarrierProduct) o;
+    return Objects.equals(this.identifier, shippingDeliveryDetailsV1CarrierProduct.identifier) &&
+        Objects.equals(this.name, shippingDeliveryDetailsV1CarrierProduct.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderId, fraudStatus);
+    return Objects.hash(identifier, name);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InstantShoppingMerchantCreateOrderResponseV1 {\n");
+    sb.append("class InstantShoppingShippingDeliveryDetailsV1CarrierProduct {\n");
     
-    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
-    sb.append("    fraudStatus: ").append(toIndentedString(fraudStatus)).append("\n");
+    sb.append("    identifier: ").append(toIndentedString(identifier)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

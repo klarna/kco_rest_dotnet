@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
  *  
  */
 @ApiModel(description = " ")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-10T09:33:39.178Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
 public class InstantShoppingOptionsV1 {
   @JsonProperty("allow_separate_shipping_address")
   private Boolean allowSeparateShippingAddress = false;
@@ -120,10 +120,10 @@ public class InstantShoppingOptionsV1 {
   }
 
    /**
-   * \&quot;Makes the phone mandatory in the address form
+   * Makes the phone mandatory in the address form
    * @return titleMandatory
   **/
-  @ApiModelProperty(value = "\"Makes the phone mandatory in the address form")
+  @ApiModelProperty(value = "Makes the phone mandatory in the address form")
   public Boolean isTitleMandatory() {
     return titleMandatory;
   }

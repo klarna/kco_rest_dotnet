@@ -22,69 +22,72 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * InstantShoppingMerchantCreateOrderResponseV1
+ * The product&#39;s dimensions: height, width and length.
  */
+@ApiModel(description = "The product's dimensions: height, width and length.")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
-public class InstantShoppingMerchantCreateOrderResponseV1 {
-  @JsonProperty("order_id")
-  private String orderId = null;
+public class InstantShoppingShippingAttributesV1Dimensions {
+  @JsonProperty("height")
+  private Long height = null;
 
-  /**
-   * Fraud status for the order.
-   */
-  public enum FraudStatusEnum {
-    ACCEPTED("ACCEPTED"),
-    
-    PENDING("PENDING"),
-    
-    REJECTED("REJECTED");
+  @JsonProperty("width")
+  private Long width = null;
 
-    private String value;
+  @JsonProperty("length")
+  private Long length = null;
 
-    FraudStatusEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FraudStatusEnum fromValue(String text) {
-      for (FraudStatusEnum b : FraudStatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("fraud_status")
-  private FraudStatusEnum fraudStatus = null;
-
-   /**
-   * The unique order ID. No longer than 255 characters.
-   * @return orderId
-  **/
-  @ApiModelProperty(example = "45aa52f387871e3a210645d4", value = "The unique order ID. No longer than 255 characters.")
-  public String getOrderId() {
-    return orderId;
+  public InstantShoppingShippingAttributesV1Dimensions height(Long height) {
+    this.height = height;
+    return this;
   }
 
    /**
-   * Fraud status for the order.
-   * @return fraudStatus
+   * The product&#39;s height as used in the merchant&#39;s webshop. Non-negative. Measured in millimeters.
+   * @return height
   **/
-  @ApiModelProperty(example = "REJECTED", value = "Fraud status for the order.")
-  public FraudStatusEnum getFraudStatus() {
-    return fraudStatus;
+  @ApiModelProperty(example = "150", value = "The product's height as used in the merchant's webshop. Non-negative. Measured in millimeters.")
+  public Long getHeight() {
+    return height;
+  }
+
+  public void setHeight(Long height) {
+    this.height = height;
+  }
+
+  public InstantShoppingShippingAttributesV1Dimensions width(Long width) {
+    this.width = width;
+    return this;
+  }
+
+   /**
+   * The product&#39;s width as used in the merchant&#39;s webshop. Non-negative. Measured in millimeters.
+   * @return width
+  **/
+  @ApiModelProperty(example = "700", value = "The product's width as used in the merchant's webshop. Non-negative. Measured in millimeters.")
+  public Long getWidth() {
+    return width;
+  }
+
+  public void setWidth(Long width) {
+    this.width = width;
+  }
+
+  public InstantShoppingShippingAttributesV1Dimensions length(Long length) {
+    this.length = length;
+    return this;
+  }
+
+   /**
+   * The product&#39;s length as used in the merchant&#39;s webshop. Non-negative. Measured in millimeters.
+   * @return length
+  **/
+  @ApiModelProperty(example = "1000", value = "The product's length as used in the merchant's webshop. Non-negative. Measured in millimeters.")
+  public Long getLength() {
+    return length;
+  }
+
+  public void setLength(Long length) {
+    this.length = length;
   }
 
 
@@ -96,24 +99,26 @@ public class InstantShoppingMerchantCreateOrderResponseV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InstantShoppingMerchantCreateOrderResponseV1 merchantCreateOrderResponseV1 = (InstantShoppingMerchantCreateOrderResponseV1) o;
-    return Objects.equals(this.orderId, merchantCreateOrderResponseV1.orderId) &&
-        Objects.equals(this.fraudStatus, merchantCreateOrderResponseV1.fraudStatus);
+    InstantShoppingShippingAttributesV1Dimensions shippingAttributesV1Dimensions = (InstantShoppingShippingAttributesV1Dimensions) o;
+    return Objects.equals(this.height, shippingAttributesV1Dimensions.height) &&
+        Objects.equals(this.width, shippingAttributesV1Dimensions.width) &&
+        Objects.equals(this.length, shippingAttributesV1Dimensions.length);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderId, fraudStatus);
+    return Objects.hash(height, width, length);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InstantShoppingMerchantCreateOrderResponseV1 {\n");
+    sb.append("class InstantShoppingShippingAttributesV1Dimensions {\n");
     
-    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
-    sb.append("    fraudStatus: ").append(toIndentedString(fraudStatus)).append("\n");
+    sb.append("    height: ").append(toIndentedString(height)).append("\n");
+    sb.append("    width: ").append(toIndentedString(width)).append("\n");
+    sb.append("    length: ").append(toIndentedString(length)).append("\n");
     sb.append("}");
     return sb.toString();
   }

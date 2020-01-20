@@ -62,7 +62,7 @@ public class InstantShoppingExample {
                     );
 
                 InstantShoppingButtonSetupOptionsV1 options = new InstantShoppingButtonSetupOptionsV1()
-                        .merchantUrls(new InstantShoppingButtonSetupOptionsV1MerchantUrls()
+                        .merchantUrls(new InstantShoppingMerchantUrlsV1()
                                 .placeOrder("https://example.com/place")
                                 .push("https://example.com/push")
                                 .confirmation("https://example.com/confirm")
@@ -72,8 +72,6 @@ public class InstantShoppingExample {
                         .purchaseCountry("DE")
                         .purchaseCurrency("EUR")
                         .locale("de-DE")
-                        .orderAmount(6000L)
-                        .orderTaxAmount(0L)
                         .orderLines(lines)
                         .shippingOptions(Arrays.asList(new InstantShoppingShippingOptionV1()
                                 .id("dhl")
@@ -81,7 +79,7 @@ public class InstantShoppingExample {
                                 .price(10L)
                                 .taxAmount(0L)
                                 .taxRate(0L)
-                                .shippingMethod(InstantShoppingShippingOptionV1.ShippingMethodEnum.DHL_PACKSTATION)
+                                .shippingMethod("DHL_PACKSTATION")
                         ));
                 InstantShoppingButtonSetupOptionsV1 button = api.createButtonKey(options);
 
@@ -125,7 +123,7 @@ public class InstantShoppingExample {
                 );
 
                 InstantShoppingButtonSetupOptionsV1 options = new InstantShoppingButtonSetupOptionsV1()
-                        .merchantUrls(new InstantShoppingButtonSetupOptionsV1MerchantUrls()
+                        .merchantUrls(new InstantShoppingMerchantUrlsV1()
                                 .placeOrder("https://example.com/place")
                                 .push("https://example.com/push")
                                 .confirmation("https://example.com/confirm")
@@ -135,8 +133,6 @@ public class InstantShoppingExample {
                         .purchaseCountry("DE")
                         .purchaseCurrency("EUR")
                         .locale("de-DE")
-                        .orderAmount(6000L)
-                        .orderTaxAmount(0L)
                         .orderLines(lines)
                         .shippingOptions(Arrays.asList(new InstantShoppingShippingOptionV1()
                                 .id("dhl")
@@ -144,7 +140,7 @@ public class InstantShoppingExample {
                                 .price(10L)
                                 .taxAmount(0L)
                                 .taxRate(0L)
-                                .shippingMethod(InstantShoppingShippingOptionV1.ShippingMethodEnum.DHL_PACKSTATION)
+                                .shippingMethod("DHLPackstation")
                         ));
                 InstantShoppingButtonSetupOptionsV1 button = api.updateButtonKey(buttonKey, options);
                 System.out.println(button);
@@ -301,12 +297,10 @@ public class InstantShoppingExample {
                                         .brand("Intel")
                                 )
                         ))
-                        .merchantUrls(new InstantShoppingMerchantUrlsV1()
-                                .terms("https://example.com/terms")
+                        .merchantUrls(new InstantShoppingOrderMerchantUrlsV1()
                                 .notification("https://example.com/notification")
                                 .confirmation("https://example.com/confirn")
                                 .push("https://example.com/push")
-                                .placeOrder("https://example.com/place")
                         )
                         .customer(new InstantShoppingCustomerV1()
                                 .dateOfBirth("1995-10-20")
@@ -314,10 +308,6 @@ public class InstantShoppingExample {
                                 .gender("male")
                                 .lastFourSsn("0512")
                                 .nationalIdentificationNumber("3108971100")
-                                .type("person")
-                                .vatId("string")
-                                .organizationRegistrationId("556737-0431")
-                                .organizationEntityType("LIMITED_COMPANY")
                         );
 
 

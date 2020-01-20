@@ -22,113 +22,92 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * InstantShoppingCustomerV1
+ * InstantShoppingBaseMerchantUrlsV1
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
-public class InstantShoppingCustomerV1 {
-  @JsonProperty("date_of_birth")
-  private String dateOfBirth = null;
+public class InstantShoppingBaseMerchantUrlsV1 {
+  @JsonProperty("terms")
+  private String terms = null;
 
-  @JsonProperty("title")
-  private String title = null;
+  @JsonProperty("update")
+  private String update = null;
 
-  @JsonProperty("gender")
-  private String gender = null;
+  @JsonProperty("place_order")
+  private String placeOrder = null;
 
-  @JsonProperty("last_four_ssn")
-  private String lastFourSsn = null;
+  @JsonProperty("create_customer_token")
+  private String createCustomerToken = null;
 
-  @JsonProperty("national_identification_number")
-  private String nationalIdentificationNumber = null;
-
-  public InstantShoppingCustomerV1 dateOfBirth(String dateOfBirth) {
-    this.dateOfBirth = dateOfBirth;
+  public InstantShoppingBaseMerchantUrlsV1 terms(String terms) {
+    this.terms = terms;
     return this;
   }
 
    /**
-   * ISO 8601 date. The customer date of birth.
-   * @return dateOfBirth
+   * URL of a page on the merchant side describing the terms and conditions. (max 2000 characters)
+   * @return terms
   **/
-  @ApiModelProperty(example = "1995-10-20", value = "ISO 8601 date. The customer date of birth.")
-  public String getDateOfBirth() {
-    return dateOfBirth;
+  @ApiModelProperty(example = "https://example.com/terms", value = "URL of a page on the merchant side describing the terms and conditions. (max 2000 characters)")
+  public String getTerms() {
+    return terms;
   }
 
-  public void setDateOfBirth(String dateOfBirth) {
-    this.dateOfBirth = dateOfBirth;
+  public void setTerms(String terms) {
+    this.terms = terms;
   }
 
-  public InstantShoppingCustomerV1 title(String title) {
-    this.title = title;
+  public InstantShoppingBaseMerchantUrlsV1 update(String update) {
+    this.update = update;
     return this;
   }
 
    /**
-   * The customer&#39;s title
-   * @return title
+   * URL of an endpoint at the merchant side, which will receive a callback when an order is updated. (must be https, max 2000 characters)
+   * @return update
   **/
-  @ApiModelProperty(example = "Mr", value = "The customer's title")
-  public String getTitle() {
-    return title;
+  @ApiModelProperty(example = "https://example.com/update", value = "URL of an endpoint at the merchant side, which will receive a callback when an order is updated. (must be https, max 2000 characters)")
+  public String getUpdate() {
+    return update;
   }
 
-  public void setTitle(String title) {
-    this.title = title;
+  public void setUpdate(String update) {
+    this.update = update;
   }
 
-  public InstantShoppingCustomerV1 gender(String gender) {
-    this.gender = gender;
+  public InstantShoppingBaseMerchantUrlsV1 placeOrder(String placeOrder) {
+    this.placeOrder = placeOrder;
     return this;
   }
 
    /**
-   * The customer gender
-   * @return gender
+   * URL of an endpoint at the merchant side, which will receive a ping to place an order. (must be https, max 2000 characters)
+   * @return placeOrder
   **/
-  @ApiModelProperty(example = "male", value = "The customer gender")
-  public String getGender() {
-    return gender;
+  @ApiModelProperty(example = "https://example.com/place-order", value = "URL of an endpoint at the merchant side, which will receive a ping to place an order. (must be https, max 2000 characters)")
+  public String getPlaceOrder() {
+    return placeOrder;
   }
 
-  public void setGender(String gender) {
-    this.gender = gender;
+  public void setPlaceOrder(String placeOrder) {
+    this.placeOrder = placeOrder;
   }
 
-  public InstantShoppingCustomerV1 lastFourSsn(String lastFourSsn) {
-    this.lastFourSsn = lastFourSsn;
+  public InstantShoppingBaseMerchantUrlsV1 createCustomerToken(String createCustomerToken) {
+    this.createCustomerToken = createCustomerToken;
     return this;
   }
 
    /**
-   * Last four digits for customer social security number
-   * @return lastFourSsn
+   * URL of an endpoint at the merchant side, which will receive a ping to create a customer token. (must be https, max 2000 characters)
+   * @return createCustomerToken
   **/
-  @ApiModelProperty(example = "0512", value = "Last four digits for customer social security number")
-  public String getLastFourSsn() {
-    return lastFourSsn;
+  @ApiModelProperty(example = "https://example.com/create-customer-token", value = "URL of an endpoint at the merchant side, which will receive a ping to create a customer token. (must be https, max 2000 characters)")
+  public String getCreateCustomerToken() {
+    return createCustomerToken;
   }
 
-  public void setLastFourSsn(String lastFourSsn) {
-    this.lastFourSsn = lastFourSsn;
-  }
-
-  public InstantShoppingCustomerV1 nationalIdentificationNumber(String nationalIdentificationNumber) {
-    this.nationalIdentificationNumber = nationalIdentificationNumber;
-    return this;
-  }
-
-   /**
-   * The customer&#39;s national identification number
-   * @return nationalIdentificationNumber
-  **/
-  @ApiModelProperty(example = "3108971100", value = "The customer's national identification number")
-  public String getNationalIdentificationNumber() {
-    return nationalIdentificationNumber;
-  }
-
-  public void setNationalIdentificationNumber(String nationalIdentificationNumber) {
-    this.nationalIdentificationNumber = nationalIdentificationNumber;
+  public void setCreateCustomerToken(String createCustomerToken) {
+    this.createCustomerToken = createCustomerToken;
   }
 
 
@@ -140,30 +119,28 @@ public class InstantShoppingCustomerV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InstantShoppingCustomerV1 customerV1 = (InstantShoppingCustomerV1) o;
-    return Objects.equals(this.dateOfBirth, customerV1.dateOfBirth) &&
-        Objects.equals(this.title, customerV1.title) &&
-        Objects.equals(this.gender, customerV1.gender) &&
-        Objects.equals(this.lastFourSsn, customerV1.lastFourSsn) &&
-        Objects.equals(this.nationalIdentificationNumber, customerV1.nationalIdentificationNumber);
+    InstantShoppingBaseMerchantUrlsV1 baseMerchantUrlsV1 = (InstantShoppingBaseMerchantUrlsV1) o;
+    return Objects.equals(this.terms, baseMerchantUrlsV1.terms) &&
+        Objects.equals(this.update, baseMerchantUrlsV1.update) &&
+        Objects.equals(this.placeOrder, baseMerchantUrlsV1.placeOrder) &&
+        Objects.equals(this.createCustomerToken, baseMerchantUrlsV1.createCustomerToken);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dateOfBirth, title, gender, lastFourSsn, nationalIdentificationNumber);
+    return Objects.hash(terms, update, placeOrder, createCustomerToken);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InstantShoppingCustomerV1 {\n");
+    sb.append("class InstantShoppingBaseMerchantUrlsV1 {\n");
     
-    sb.append("    dateOfBirth: ").append(toIndentedString(dateOfBirth)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    gender: ").append(toIndentedString(gender)).append("\n");
-    sb.append("    lastFourSsn: ").append(toIndentedString(lastFourSsn)).append("\n");
-    sb.append("    nationalIdentificationNumber: ").append(toIndentedString(nationalIdentificationNumber)).append("\n");
+    sb.append("    terms: ").append(toIndentedString(terms)).append("\n");
+    sb.append("    update: ").append(toIndentedString(update)).append("\n");
+    sb.append("    placeOrder: ").append(toIndentedString(placeOrder)).append("\n");
+    sb.append("    createCustomerToken: ").append(toIndentedString(createCustomerToken)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -23,6 +23,8 @@ import com.klarna.rest.api.instant_shopping.model.InstantShoppingAttachmentV1;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingCustomerV1;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingMerchantUrlsV1;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingOrderLineV1;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingSelectedShippingOptionV1;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingShippingAttributesV1;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -31,7 +33,7 @@ import java.util.List;
 /**
  * InstantShoppingMerchantGetOrderResponseV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-10T09:33:39.178Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
 public class InstantShoppingMerchantGetOrderResponseV1 {
   @JsonProperty("name")
   private String name = null;
@@ -77,6 +79,15 @@ public class InstantShoppingMerchantGetOrderResponseV1 {
 
   @JsonProperty("attachment")
   private InstantShoppingAttachmentV1 attachment = null;
+
+  @JsonProperty("shipping_attributes")
+  private InstantShoppingShippingAttributesV1 shippingAttributes = null;
+
+  @JsonProperty("integrator_url")
+  private String integratorUrl = null;
+
+  @JsonProperty("selected_shipping_option")
+  private InstantShoppingSelectedShippingOptionV1 selectedShippingOption = null;
 
   public InstantShoppingMerchantGetOrderResponseV1 name(String name) {
     this.name = name;
@@ -156,10 +167,10 @@ public class InstantShoppingMerchantGetOrderResponseV1 {
   }
 
    /**
-   * Once the customer has provided any data in the checkout iframe, updates to this object will be ignored (without generating an error).
+   * The billing address of the customer
    * @return billingAddress
   **/
-  @ApiModelProperty(required = true, value = "Once the customer has provided any data in the checkout iframe, updates to this object will be ignored (without generating an error).")
+  @ApiModelProperty(required = true, value = "The billing address of the customer")
   public InstantShoppingAddressV1 getBillingAddress() {
     return billingAddress;
   }
@@ -213,7 +224,7 @@ public class InstantShoppingMerchantGetOrderResponseV1 {
    * Non-negative, minor units. The total tax amount of the order.
    * @return orderTaxAmount
   **/
-  @ApiModelProperty(example = "5000", required = true, value = "Non-negative, minor units. The total tax amount of the order.")
+  @ApiModelProperty(example = "4545", required = true, value = "Non-negative, minor units. The total tax amount of the order.")
   public Long getOrderTaxAmount() {
     return orderTaxAmount;
   }
@@ -353,6 +364,60 @@ public class InstantShoppingMerchantGetOrderResponseV1 {
     this.attachment = attachment;
   }
 
+  public InstantShoppingMerchantGetOrderResponseV1 shippingAttributes(InstantShoppingShippingAttributesV1 shippingAttributes) {
+    this.shippingAttributes = shippingAttributes;
+    return this;
+  }
+
+   /**
+   * Shipping Attributes of this order
+   * @return shippingAttributes
+  **/
+  @ApiModelProperty(value = "Shipping Attributes of this order")
+  public InstantShoppingShippingAttributesV1 getShippingAttributes() {
+    return shippingAttributes;
+  }
+
+  public void setShippingAttributes(InstantShoppingShippingAttributesV1 shippingAttributes) {
+    this.shippingAttributes = shippingAttributes;
+  }
+
+  public InstantShoppingMerchantGetOrderResponseV1 integratorUrl(String integratorUrl) {
+    this.integratorUrl = integratorUrl;
+    return this;
+  }
+
+   /**
+   * Get integratorUrl
+   * @return integratorUrl
+  **/
+  @ApiModelProperty(example = "https://example.com/page-that-includes-instant-shopping", value = "")
+  public String getIntegratorUrl() {
+    return integratorUrl;
+  }
+
+  public void setIntegratorUrl(String integratorUrl) {
+    this.integratorUrl = integratorUrl;
+  }
+
+  public InstantShoppingMerchantGetOrderResponseV1 selectedShippingOption(InstantShoppingSelectedShippingOptionV1 selectedShippingOption) {
+    this.selectedShippingOption = selectedShippingOption;
+    return this;
+  }
+
+   /**
+   * The selected shipping option details
+   * @return selectedShippingOption
+  **/
+  @ApiModelProperty(value = "The selected shipping option details")
+  public InstantShoppingSelectedShippingOptionV1 getSelectedShippingOption() {
+    return selectedShippingOption;
+  }
+
+  public void setSelectedShippingOption(InstantShoppingSelectedShippingOptionV1 selectedShippingOption) {
+    this.selectedShippingOption = selectedShippingOption;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -377,12 +442,15 @@ public class InstantShoppingMerchantGetOrderResponseV1 {
         Objects.equals(this.merchantUrls, merchantGetOrderResponseV1.merchantUrls) &&
         Objects.equals(this.customer, merchantGetOrderResponseV1.customer) &&
         Objects.equals(this.merchantData, merchantGetOrderResponseV1.merchantData) &&
-        Objects.equals(this.attachment, merchantGetOrderResponseV1.attachment);
+        Objects.equals(this.attachment, merchantGetOrderResponseV1.attachment) &&
+        Objects.equals(this.shippingAttributes, merchantGetOrderResponseV1.shippingAttributes) &&
+        Objects.equals(this.integratorUrl, merchantGetOrderResponseV1.integratorUrl) &&
+        Objects.equals(this.selectedShippingOption, merchantGetOrderResponseV1.selectedShippingOption);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, purchaseCountry, purchaseCurrency, locale, billingAddress, shippingAddress, orderAmount, orderTaxAmount, orderLines, merchantReference1, merchantReference2, merchantUrls, customer, merchantData, attachment);
+    return Objects.hash(name, purchaseCountry, purchaseCurrency, locale, billingAddress, shippingAddress, orderAmount, orderTaxAmount, orderLines, merchantReference1, merchantReference2, merchantUrls, customer, merchantData, attachment, shippingAttributes, integratorUrl, selectedShippingOption);
   }
 
 
@@ -406,6 +474,9 @@ public class InstantShoppingMerchantGetOrderResponseV1 {
     sb.append("    customer: ").append(toIndentedString(customer)).append("\n");
     sb.append("    merchantData: ").append(toIndentedString(merchantData)).append("\n");
     sb.append("    attachment: ").append(toIndentedString(attachment)).append("\n");
+    sb.append("    shippingAttributes: ").append(toIndentedString(shippingAttributes)).append("\n");
+    sb.append("    integratorUrl: ").append(toIndentedString(integratorUrl)).append("\n");
+    sb.append("    selectedShippingOption: ").append(toIndentedString(selectedShippingOption)).append("\n");
     sb.append("}");
     return sb.toString();
   }

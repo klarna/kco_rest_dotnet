@@ -19,15 +19,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingShippingDeliveryDetailsV1;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingShippingOptionV1;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- *  
+ * InstantShoppingSelectedShippingOptionV1
  */
-@ApiModel(description = " ")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
-public class InstantShoppingShippingOptionV1 {
+public class InstantShoppingSelectedShippingOptionV1 {
   @JsonProperty("id")
   private String id = null;
 
@@ -58,7 +58,10 @@ public class InstantShoppingShippingOptionV1 {
   @JsonProperty("delivery_details")
   private InstantShoppingShippingDeliveryDetailsV1 deliveryDetails = null;
 
-  public InstantShoppingShippingOptionV1 id(String id) {
+  @JsonProperty("tms_reference")
+  private String tmsReference = null;
+
+  public InstantShoppingSelectedShippingOptionV1 id(String id) {
     this.id = id;
     return this;
   }
@@ -76,7 +79,7 @@ public class InstantShoppingShippingOptionV1 {
     this.id = id;
   }
 
-  public InstantShoppingShippingOptionV1 name(String name) {
+  public InstantShoppingSelectedShippingOptionV1 name(String name) {
     this.name = name;
     return this;
   }
@@ -94,7 +97,7 @@ public class InstantShoppingShippingOptionV1 {
     this.name = name;
   }
 
-  public InstantShoppingShippingOptionV1 description(String description) {
+  public InstantShoppingSelectedShippingOptionV1 description(String description) {
     this.description = description;
     return this;
   }
@@ -112,7 +115,7 @@ public class InstantShoppingShippingOptionV1 {
     this.description = description;
   }
 
-  public InstantShoppingShippingOptionV1 promo(String promo) {
+  public InstantShoppingSelectedShippingOptionV1 promo(String promo) {
     this.promo = promo;
     return this;
   }
@@ -130,7 +133,7 @@ public class InstantShoppingShippingOptionV1 {
     this.promo = promo;
   }
 
-  public InstantShoppingShippingOptionV1 price(Long price) {
+  public InstantShoppingSelectedShippingOptionV1 price(Long price) {
     this.price = price;
     return this;
   }
@@ -148,7 +151,7 @@ public class InstantShoppingShippingOptionV1 {
     this.price = price;
   }
 
-  public InstantShoppingShippingOptionV1 taxAmount(Long taxAmount) {
+  public InstantShoppingSelectedShippingOptionV1 taxAmount(Long taxAmount) {
     this.taxAmount = taxAmount;
     return this;
   }
@@ -166,7 +169,7 @@ public class InstantShoppingShippingOptionV1 {
     this.taxAmount = taxAmount;
   }
 
-  public InstantShoppingShippingOptionV1 taxRate(Long taxRate) {
+  public InstantShoppingSelectedShippingOptionV1 taxRate(Long taxRate) {
     this.taxRate = taxRate;
     return this;
   }
@@ -185,7 +188,7 @@ public class InstantShoppingShippingOptionV1 {
     this.taxRate = taxRate;
   }
 
-  public InstantShoppingShippingOptionV1 preselected(Boolean preselected) {
+  public InstantShoppingSelectedShippingOptionV1 preselected(Boolean preselected) {
     this.preselected = preselected;
     return this;
   }
@@ -203,7 +206,7 @@ public class InstantShoppingShippingOptionV1 {
     this.preselected = preselected;
   }
 
-  public InstantShoppingShippingOptionV1 shippingMethod(String shippingMethod) {
+  public InstantShoppingSelectedShippingOptionV1 shippingMethod(String shippingMethod) {
     this.shippingMethod = shippingMethod;
     return this;
   }
@@ -221,7 +224,7 @@ public class InstantShoppingShippingOptionV1 {
     this.shippingMethod = shippingMethod;
   }
 
-  public InstantShoppingShippingOptionV1 deliveryDetails(InstantShoppingShippingDeliveryDetailsV1 deliveryDetails) {
+  public InstantShoppingSelectedShippingOptionV1 deliveryDetails(InstantShoppingShippingDeliveryDetailsV1 deliveryDetails) {
     this.deliveryDetails = deliveryDetails;
     return this;
   }
@@ -239,6 +242,24 @@ public class InstantShoppingShippingOptionV1 {
     this.deliveryDetails = deliveryDetails;
   }
 
+  public InstantShoppingSelectedShippingOptionV1 tmsReference(String tmsReference) {
+    this.tmsReference = tmsReference;
+    return this;
+  }
+
+   /**
+   * The transport management system reference
+   * @return tmsReference
+  **/
+  @ApiModelProperty(example = "a1b2c3d4-e4f6-g7h8-i9j0-k1l2m3n4o5p6", value = "The transport management system reference")
+  public String getTmsReference() {
+    return tmsReference;
+  }
+
+  public void setTmsReference(String tmsReference) {
+    this.tmsReference = tmsReference;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -248,29 +269,30 @@ public class InstantShoppingShippingOptionV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InstantShoppingShippingOptionV1 shippingOptionV1 = (InstantShoppingShippingOptionV1) o;
-    return Objects.equals(this.id, shippingOptionV1.id) &&
-        Objects.equals(this.name, shippingOptionV1.name) &&
-        Objects.equals(this.description, shippingOptionV1.description) &&
-        Objects.equals(this.promo, shippingOptionV1.promo) &&
-        Objects.equals(this.price, shippingOptionV1.price) &&
-        Objects.equals(this.taxAmount, shippingOptionV1.taxAmount) &&
-        Objects.equals(this.taxRate, shippingOptionV1.taxRate) &&
-        Objects.equals(this.preselected, shippingOptionV1.preselected) &&
-        Objects.equals(this.shippingMethod, shippingOptionV1.shippingMethod) &&
-        Objects.equals(this.deliveryDetails, shippingOptionV1.deliveryDetails);
+    InstantShoppingSelectedShippingOptionV1 selectedShippingOptionV1 = (InstantShoppingSelectedShippingOptionV1) o;
+    return Objects.equals(this.id, selectedShippingOptionV1.id) &&
+        Objects.equals(this.name, selectedShippingOptionV1.name) &&
+        Objects.equals(this.description, selectedShippingOptionV1.description) &&
+        Objects.equals(this.promo, selectedShippingOptionV1.promo) &&
+        Objects.equals(this.price, selectedShippingOptionV1.price) &&
+        Objects.equals(this.taxAmount, selectedShippingOptionV1.taxAmount) &&
+        Objects.equals(this.taxRate, selectedShippingOptionV1.taxRate) &&
+        Objects.equals(this.preselected, selectedShippingOptionV1.preselected) &&
+        Objects.equals(this.shippingMethod, selectedShippingOptionV1.shippingMethod) &&
+        Objects.equals(this.deliveryDetails, selectedShippingOptionV1.deliveryDetails) &&
+        Objects.equals(this.tmsReference, selectedShippingOptionV1.tmsReference);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, promo, price, taxAmount, taxRate, preselected, shippingMethod, deliveryDetails);
+    return Objects.hash(id, name, description, promo, price, taxAmount, taxRate, preselected, shippingMethod, deliveryDetails, tmsReference);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InstantShoppingShippingOptionV1 {\n");
+    sb.append("class InstantShoppingSelectedShippingOptionV1 {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
@@ -282,6 +304,7 @@ public class InstantShoppingShippingOptionV1 {
     sb.append("    preselected: ").append(toIndentedString(preselected)).append("\n");
     sb.append("    shippingMethod: ").append(toIndentedString(shippingMethod)).append("\n");
     sb.append("    deliveryDetails: ").append(toIndentedString(deliveryDetails)).append("\n");
+    sb.append("    tmsReference: ").append(toIndentedString(tmsReference)).append("\n");
     sb.append("}");
     return sb.toString();
   }

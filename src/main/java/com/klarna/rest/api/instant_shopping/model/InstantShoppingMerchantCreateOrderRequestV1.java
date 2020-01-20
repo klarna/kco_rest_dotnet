@@ -21,8 +21,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingAddressV1;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingAttachmentV1;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingCustomerV1;
-import com.klarna.rest.api.instant_shopping.model.InstantShoppingMerchantUrlsV1;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingOrderLineV1;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingOrderMerchantUrlsV1;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * InstantShoppingMerchantCreateOrderRequestV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-10T09:33:39.178Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
 public class InstantShoppingMerchantCreateOrderRequestV1 {
   @JsonProperty("name")
   private String name = null;
@@ -67,7 +67,7 @@ public class InstantShoppingMerchantCreateOrderRequestV1 {
   private String merchantReference2 = null;
 
   @JsonProperty("merchant_urls")
-  private InstantShoppingMerchantUrlsV1 merchantUrls = null;
+  private InstantShoppingOrderMerchantUrlsV1 merchantUrls = null;
 
   @JsonProperty("customer")
   private InstantShoppingCustomerV1 customer = null;
@@ -156,10 +156,10 @@ public class InstantShoppingMerchantCreateOrderRequestV1 {
   }
 
    /**
-   * Once the customer has provided any data in the checkout iframe, updates to this object will be ignored (without generating an error).
+   * The billing address of the customer
    * @return billingAddress
   **/
-  @ApiModelProperty(required = true, value = "Once the customer has provided any data in the checkout iframe, updates to this object will be ignored (without generating an error).")
+  @ApiModelProperty(required = true, value = "The billing address of the customer")
   public InstantShoppingAddressV1 getBillingAddress() {
     return billingAddress;
   }
@@ -213,7 +213,7 @@ public class InstantShoppingMerchantCreateOrderRequestV1 {
    * Non-negative, minor units. The total tax amount of the order.
    * @return orderTaxAmount
   **/
-  @ApiModelProperty(example = "5000", required = true, value = "Non-negative, minor units. The total tax amount of the order.")
+  @ApiModelProperty(example = "4545", required = true, value = "Non-negative, minor units. The total tax amount of the order.")
   public Long getOrderTaxAmount() {
     return orderTaxAmount;
   }
@@ -281,7 +281,7 @@ public class InstantShoppingMerchantCreateOrderRequestV1 {
     this.merchantReference2 = merchantReference2;
   }
 
-  public InstantShoppingMerchantCreateOrderRequestV1 merchantUrls(InstantShoppingMerchantUrlsV1 merchantUrls) {
+  public InstantShoppingMerchantCreateOrderRequestV1 merchantUrls(InstantShoppingOrderMerchantUrlsV1 merchantUrls) {
     this.merchantUrls = merchantUrls;
     return this;
   }
@@ -291,11 +291,11 @@ public class InstantShoppingMerchantCreateOrderRequestV1 {
    * @return merchantUrls
   **/
   @ApiModelProperty(value = "The merchant_urls object.")
-  public InstantShoppingMerchantUrlsV1 getMerchantUrls() {
+  public InstantShoppingOrderMerchantUrlsV1 getMerchantUrls() {
     return merchantUrls;
   }
 
-  public void setMerchantUrls(InstantShoppingMerchantUrlsV1 merchantUrls) {
+  public void setMerchantUrls(InstantShoppingOrderMerchantUrlsV1 merchantUrls) {
     this.merchantUrls = merchantUrls;
   }
 

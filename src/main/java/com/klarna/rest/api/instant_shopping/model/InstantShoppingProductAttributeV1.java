@@ -22,72 +22,92 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- *  
+ * InstantShoppingProductAttributeV1
  */
-@ApiModel(description = " ")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
-public class InstantShoppingErrorResponseV1 {
-  @JsonProperty("error_code")
-  private String errorCode = null;
+public class InstantShoppingProductAttributeV1 {
+  @JsonProperty("identifier")
+  private String identifier = null;
 
-  @JsonProperty("error_message")
-  private String errorMessage = null;
+  @JsonProperty("identifier_label")
+  private String identifierLabel = null;
 
-  @JsonProperty("correlation_id")
-  private String correlationId = null;
+  @JsonProperty("value")
+  private String value = null;
 
-  public InstantShoppingErrorResponseV1 errorCode(String errorCode) {
-    this.errorCode = errorCode;
+  @JsonProperty("value_label")
+  private String valueLabel = null;
+
+  public InstantShoppingProductAttributeV1 identifier(String identifier) {
+    this.identifier = identifier;
     return this;
   }
 
    /**
-   *  
-   * @return errorCode
+   * Must not include the character &#39;_&#39;. Unique identifier of this attribute. E.g. &#39;clr.22&#39; for a color attribute.
+   * @return identifier
   **/
-  @ApiModelProperty(value = " ")
-  public String getErrorCode() {
-    return errorCode;
+  @ApiModelProperty(required = true, value = "Must not include the character '_'. Unique identifier of this attribute. E.g. 'clr.22' for a color attribute.")
+  public String getIdentifier() {
+    return identifier;
   }
 
-  public void setErrorCode(String errorCode) {
-    this.errorCode = errorCode;
+  public void setIdentifier(String identifier) {
+    this.identifier = identifier;
   }
 
-  public InstantShoppingErrorResponseV1 errorMessage(String errorMessage) {
-    this.errorMessage = errorMessage;
+  public InstantShoppingProductAttributeV1 identifierLabel(String identifierLabel) {
+    this.identifierLabel = identifierLabel;
     return this;
   }
 
    /**
-   *  
-   * @return errorMessage
+   * This is a label that will be presented to the consumer when they will be asked to specify this attribute&#39;s value
+   * @return identifierLabel
   **/
-  @ApiModelProperty(value = " ")
-  public String getErrorMessage() {
-    return errorMessage;
+  @ApiModelProperty(example = "Size", required = true, value = "This is a label that will be presented to the consumer when they will be asked to specify this attribute's value")
+  public String getIdentifierLabel() {
+    return identifierLabel;
   }
 
-  public void setErrorMessage(String errorMessage) {
-    this.errorMessage = errorMessage;
+  public void setIdentifierLabel(String identifierLabel) {
+    this.identifierLabel = identifierLabel;
   }
 
-  public InstantShoppingErrorResponseV1 correlationId(String correlationId) {
-    this.correlationId = correlationId;
+  public InstantShoppingProductAttributeV1 value(String value) {
+    this.value = value;
     return this;
   }
 
    /**
-   *  
-   * @return correlationId
+   * Must not include the character &#39;_&#39;. Unique identifier of the value of this product attribute
+   * @return value
   **/
-  @ApiModelProperty(value = " ")
-  public String getCorrelationId() {
-    return correlationId;
+  @ApiModelProperty(example = "m", required = true, value = "Must not include the character '_'. Unique identifier of the value of this product attribute")
+  public String getValue() {
+    return value;
   }
 
-  public void setCorrelationId(String correlationId) {
-    this.correlationId = correlationId;
+  public void setValue(String value) {
+    this.value = value;
+  }
+
+  public InstantShoppingProductAttributeV1 valueLabel(String valueLabel) {
+    this.valueLabel = valueLabel;
+    return this;
+  }
+
+   /**
+   * The value presented to the consumer for selection for a specific product attribute
+   * @return valueLabel
+  **/
+  @ApiModelProperty(example = "Medium", required = true, value = "The value presented to the consumer for selection for a specific product attribute")
+  public String getValueLabel() {
+    return valueLabel;
+  }
+
+  public void setValueLabel(String valueLabel) {
+    this.valueLabel = valueLabel;
   }
 
 
@@ -99,26 +119,28 @@ public class InstantShoppingErrorResponseV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InstantShoppingErrorResponseV1 errorResponseV1 = (InstantShoppingErrorResponseV1) o;
-    return Objects.equals(this.errorCode, errorResponseV1.errorCode) &&
-        Objects.equals(this.errorMessage, errorResponseV1.errorMessage) &&
-        Objects.equals(this.correlationId, errorResponseV1.correlationId);
+    InstantShoppingProductAttributeV1 productAttributeV1 = (InstantShoppingProductAttributeV1) o;
+    return Objects.equals(this.identifier, productAttributeV1.identifier) &&
+        Objects.equals(this.identifierLabel, productAttributeV1.identifierLabel) &&
+        Objects.equals(this.value, productAttributeV1.value) &&
+        Objects.equals(this.valueLabel, productAttributeV1.valueLabel);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(errorCode, errorMessage, correlationId);
+    return Objects.hash(identifier, identifierLabel, value, valueLabel);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InstantShoppingErrorResponseV1 {\n");
+    sb.append("class InstantShoppingProductAttributeV1 {\n");
     
-    sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
-    sb.append("    errorMessage: ").append(toIndentedString(errorMessage)).append("\n");
-    sb.append("    correlationId: ").append(toIndentedString(correlationId)).append("\n");
+    sb.append("    identifier: ").append(toIndentedString(identifier)).append("\n");
+    sb.append("    identifierLabel: ").append(toIndentedString(identifierLabel)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    valueLabel: ").append(toIndentedString(valueLabel)).append("\n");
     sb.append("}");
     return sb.toString();
   }

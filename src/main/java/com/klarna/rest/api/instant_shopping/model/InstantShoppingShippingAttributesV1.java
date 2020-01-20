@@ -18,73 +18,77 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingShippingAttributesV1Dimensions;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingShippingTagsV1;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * InstantShoppingMerchantCreateOrderResponseV1
+ * InstantShoppingShippingAttributesV1
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
-public class InstantShoppingMerchantCreateOrderResponseV1 {
-  @JsonProperty("order_id")
-  private String orderId = null;
+public class InstantShoppingShippingAttributesV1 {
+  @JsonProperty("weight")
+  private Integer weight = null;
 
-  /**
-   * Fraud status for the order.
-   */
-  public enum FraudStatusEnum {
-    ACCEPTED("ACCEPTED"),
-    
-    PENDING("PENDING"),
-    
-    REJECTED("REJECTED");
+  @JsonProperty("dimensions")
+  private InstantShoppingShippingAttributesV1Dimensions dimensions = null;
 
-    private String value;
+  @JsonProperty("tags")
+  private InstantShoppingShippingTagsV1 tags = null;
 
-    FraudStatusEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FraudStatusEnum fromValue(String text) {
-      for (FraudStatusEnum b : FraudStatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("fraud_status")
-  private FraudStatusEnum fraudStatus = null;
-
-   /**
-   * The unique order ID. No longer than 255 characters.
-   * @return orderId
-  **/
-  @ApiModelProperty(example = "45aa52f387871e3a210645d4", value = "The unique order ID. No longer than 255 characters.")
-  public String getOrderId() {
-    return orderId;
+  public InstantShoppingShippingAttributesV1 weight(Integer weight) {
+    this.weight = weight;
+    return this;
   }
 
    /**
-   * Fraud status for the order.
-   * @return fraudStatus
+   * The product&#39;s weight as used in the merchant&#39;s webshop. Non-negative. Measured in grams.
+   * @return weight
   **/
-  @ApiModelProperty(example = "REJECTED", value = "Fraud status for the order.")
-  public FraudStatusEnum getFraudStatus() {
-    return fraudStatus;
+  @ApiModelProperty(example = "7500", value = "The product's weight as used in the merchant's webshop. Non-negative. Measured in grams.")
+  public Integer getWeight() {
+    return weight;
+  }
+
+  public void setWeight(Integer weight) {
+    this.weight = weight;
+  }
+
+  public InstantShoppingShippingAttributesV1 dimensions(InstantShoppingShippingAttributesV1Dimensions dimensions) {
+    this.dimensions = dimensions;
+    return this;
+  }
+
+   /**
+   * Get dimensions
+   * @return dimensions
+  **/
+  @ApiModelProperty(value = "")
+  public InstantShoppingShippingAttributesV1Dimensions getDimensions() {
+    return dimensions;
+  }
+
+  public void setDimensions(InstantShoppingShippingAttributesV1Dimensions dimensions) {
+    this.dimensions = dimensions;
+  }
+
+  public InstantShoppingShippingAttributesV1 tags(InstantShoppingShippingTagsV1 tags) {
+    this.tags = tags;
+    return this;
+  }
+
+   /**
+   * The product&#39;s extra features.
+   * @return tags
+  **/
+  @ApiModelProperty(value = "The product's extra features.")
+  public InstantShoppingShippingTagsV1 getTags() {
+    return tags;
+  }
+
+  public void setTags(InstantShoppingShippingTagsV1 tags) {
+    this.tags = tags;
   }
 
 
@@ -96,24 +100,26 @@ public class InstantShoppingMerchantCreateOrderResponseV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InstantShoppingMerchantCreateOrderResponseV1 merchantCreateOrderResponseV1 = (InstantShoppingMerchantCreateOrderResponseV1) o;
-    return Objects.equals(this.orderId, merchantCreateOrderResponseV1.orderId) &&
-        Objects.equals(this.fraudStatus, merchantCreateOrderResponseV1.fraudStatus);
+    InstantShoppingShippingAttributesV1 shippingAttributesV1 = (InstantShoppingShippingAttributesV1) o;
+    return Objects.equals(this.weight, shippingAttributesV1.weight) &&
+        Objects.equals(this.dimensions, shippingAttributesV1.dimensions) &&
+        Objects.equals(this.tags, shippingAttributesV1.tags);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderId, fraudStatus);
+    return Objects.hash(weight, dimensions, tags);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InstantShoppingMerchantCreateOrderResponseV1 {\n");
+    sb.append("class InstantShoppingShippingAttributesV1 {\n");
     
-    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
-    sb.append("    fraudStatus: ").append(toIndentedString(fraudStatus)).append("\n");
+    sb.append("    weight: ").append(toIndentedString(weight)).append("\n");
+    sb.append("    dimensions: ").append(toIndentedString(dimensions)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("}");
     return sb.toString();
   }

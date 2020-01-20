@@ -22,122 +22,71 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * InstantShoppingButtonSetupOptionsV1StylingTheme
+ * InstantShoppingShippingDeliveryDetailsV1Timeslot
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-10T09:33:39.178Z")
-public class InstantShoppingButtonSetupOptionsV1StylingTheme {
-  /**
-   * Gets or Sets variation
-   */
-  public enum VariationEnum {
-    KLARNA("klarna"),
-    
-    DARK("dark"),
-    
-    LIGHT("light");
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
+public class InstantShoppingShippingDeliveryDetailsV1Timeslot {
+  @JsonProperty("external_id")
+  private String externalId = null;
 
-    private String value;
+  @JsonProperty("start")
+  private String start = null;
 
-    VariationEnum(String value) {
-      this.value = value;
-    }
+  @JsonProperty("end")
+  private String end = null;
 
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static VariationEnum fromValue(String text) {
-      for (VariationEnum b : VariationEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("variation")
-  private VariationEnum variation = null;
-
-  /**
-   * Gets or Sets tagline
-   */
-  public enum TaglineEnum {
-    DARK("dark"),
-    
-    LIGHT("light");
-
-    private String value;
-
-    TaglineEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static TaglineEnum fromValue(String text) {
-      for (TaglineEnum b : TaglineEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("tagline")
-  private TaglineEnum tagline = null;
-
-  public InstantShoppingButtonSetupOptionsV1StylingTheme variation(VariationEnum variation) {
-    this.variation = variation;
+  public InstantShoppingShippingDeliveryDetailsV1Timeslot externalId(String externalId) {
+    this.externalId = externalId;
     return this;
   }
 
    /**
-   * Get variation
-   * @return variation
+   * Identifier of the timeslot
+   * @return externalId
   **/
-  @ApiModelProperty(value = "")
-  public VariationEnum getVariation() {
-    return variation;
+  @ApiModelProperty(example = "timeslot-1234", value = "Identifier of the timeslot")
+  public String getExternalId() {
+    return externalId;
   }
 
-  public void setVariation(VariationEnum variation) {
-    this.variation = variation;
+  public void setExternalId(String externalId) {
+    this.externalId = externalId;
   }
 
-  public InstantShoppingButtonSetupOptionsV1StylingTheme tagline(TaglineEnum tagline) {
-    this.tagline = tagline;
+  public InstantShoppingShippingDeliveryDetailsV1Timeslot start(String start) {
+    this.start = start;
     return this;
   }
 
    /**
-   * Get tagline
-   * @return tagline
+   * Timeslot start time
+   * @return start
   **/
-  @ApiModelProperty(value = "")
-  public TaglineEnum getTagline() {
-    return tagline;
+  @ApiModelProperty(example = "2019-11-15T08:07:31.207Z", value = "Timeslot start time")
+  public String getStart() {
+    return start;
   }
 
-  public void setTagline(TaglineEnum tagline) {
-    this.tagline = tagline;
+  public void setStart(String start) {
+    this.start = start;
+  }
+
+  public InstantShoppingShippingDeliveryDetailsV1Timeslot end(String end) {
+    this.end = end;
+    return this;
+  }
+
+   /**
+   * Timeslot end time
+   * @return end
+  **/
+  @ApiModelProperty(example = "2019-11-15T08:07:31.207Z", value = "Timeslot end time")
+  public String getEnd() {
+    return end;
+  }
+
+  public void setEnd(String end) {
+    this.end = end;
   }
 
 
@@ -149,24 +98,26 @@ public class InstantShoppingButtonSetupOptionsV1StylingTheme {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InstantShoppingButtonSetupOptionsV1StylingTheme buttonSetupOptionsV1StylingTheme = (InstantShoppingButtonSetupOptionsV1StylingTheme) o;
-    return Objects.equals(this.variation, buttonSetupOptionsV1StylingTheme.variation) &&
-        Objects.equals(this.tagline, buttonSetupOptionsV1StylingTheme.tagline);
+    InstantShoppingShippingDeliveryDetailsV1Timeslot shippingDeliveryDetailsV1Timeslot = (InstantShoppingShippingDeliveryDetailsV1Timeslot) o;
+    return Objects.equals(this.externalId, shippingDeliveryDetailsV1Timeslot.externalId) &&
+        Objects.equals(this.start, shippingDeliveryDetailsV1Timeslot.start) &&
+        Objects.equals(this.end, shippingDeliveryDetailsV1Timeslot.end);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(variation, tagline);
+    return Objects.hash(externalId, start, end);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InstantShoppingButtonSetupOptionsV1StylingTheme {\n");
+    sb.append("class InstantShoppingShippingDeliveryDetailsV1Timeslot {\n");
     
-    sb.append("    variation: ").append(toIndentedString(variation)).append("\n");
-    sb.append("    tagline: ").append(toIndentedString(tagline)).append("\n");
+    sb.append("    externalId: ").append(toIndentedString(externalId)).append("\n");
+    sb.append("    start: ").append(toIndentedString(start)).append("\n");
+    sb.append("    end: ").append(toIndentedString(end)).append("\n");
     sb.append("}");
     return sb.toString();
   }

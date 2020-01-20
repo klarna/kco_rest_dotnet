@@ -22,26 +22,23 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * InstantShoppingMerchantCreateOrderResponseV1
+ * InstantShoppingStylingOptionsV1Theme
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
-public class InstantShoppingMerchantCreateOrderResponseV1 {
-  @JsonProperty("order_id")
-  private String orderId = null;
-
+public class InstantShoppingStylingOptionsV1Theme {
   /**
-   * Fraud status for the order.
+   * Choose between Klarna themes
    */
-  public enum FraudStatusEnum {
-    ACCEPTED("ACCEPTED"),
+  public enum VariationEnum {
+    KLARNA("klarna"),
     
-    PENDING("PENDING"),
+    DARK("dark"),
     
-    REJECTED("REJECTED");
+    LIGHT("light");
 
     private String value;
 
-    FraudStatusEnum(String value) {
+    VariationEnum(String value) {
       this.value = value;
     }
 
@@ -56,8 +53,8 @@ public class InstantShoppingMerchantCreateOrderResponseV1 {
     }
 
     @JsonCreator
-    public static FraudStatusEnum fromValue(String text) {
-      for (FraudStatusEnum b : FraudStatusEnum.values()) {
+    public static VariationEnum fromValue(String text) {
+      for (VariationEnum b : VariationEnum.values()) {
         if (String.valueOf(b.value).equals(text)) {
           return b;
         }
@@ -66,25 +63,141 @@ public class InstantShoppingMerchantCreateOrderResponseV1 {
     }
   }
 
-  @JsonProperty("fraud_status")
-  private FraudStatusEnum fraudStatus = null;
+  @JsonProperty("variation")
+  private VariationEnum variation = VariationEnum.KLARNA;
 
-   /**
-   * The unique order ID. No longer than 255 characters.
-   * @return orderId
-  **/
-  @ApiModelProperty(example = "45aa52f387871e3a210645d4", value = "The unique order ID. No longer than 255 characters.")
-  public String getOrderId() {
-    return orderId;
+  /**
+   * Choose the color of the tagline, which appears below the button.
+   */
+  public enum TaglineEnum {
+    DARK("dark"),
+    
+    LIGHT("light");
+
+    private String value;
+
+    TaglineEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static TaglineEnum fromValue(String text) {
+      for (TaglineEnum b : TaglineEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("tagline")
+  private TaglineEnum tagline = TaglineEnum.DARK;
+
+  /**
+   * Choose between types that affect the text of the button
+   */
+  public enum TypeEnum {
+    BUY("buy"),
+    
+    EXPRESS("express"),
+    
+    PAY("pay"),
+    
+    DONATION("donation");
+
+    private String value;
+
+    TypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static TypeEnum fromValue(String text) {
+      for (TypeEnum b : TypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("type")
+  private TypeEnum type = TypeEnum.EXPRESS;
+
+  public InstantShoppingStylingOptionsV1Theme variation(VariationEnum variation) {
+    this.variation = variation;
+    return this;
   }
 
    /**
-   * Fraud status for the order.
-   * @return fraudStatus
+   * Choose between Klarna themes
+   * @return variation
   **/
-  @ApiModelProperty(example = "REJECTED", value = "Fraud status for the order.")
-  public FraudStatusEnum getFraudStatus() {
-    return fraudStatus;
+  @ApiModelProperty(value = "Choose between Klarna themes")
+  public VariationEnum getVariation() {
+    return variation;
+  }
+
+  public void setVariation(VariationEnum variation) {
+    this.variation = variation;
+  }
+
+  public InstantShoppingStylingOptionsV1Theme tagline(TaglineEnum tagline) {
+    this.tagline = tagline;
+    return this;
+  }
+
+   /**
+   * Choose the color of the tagline, which appears below the button.
+   * @return tagline
+  **/
+  @ApiModelProperty(value = "Choose the color of the tagline, which appears below the button.")
+  public TaglineEnum getTagline() {
+    return tagline;
+  }
+
+  public void setTagline(TaglineEnum tagline) {
+    this.tagline = tagline;
+  }
+
+  public InstantShoppingStylingOptionsV1Theme type(TypeEnum type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Choose between types that affect the text of the button
+   * @return type
+  **/
+  @ApiModelProperty(value = "Choose between types that affect the text of the button")
+  public TypeEnum getType() {
+    return type;
+  }
+
+  public void setType(TypeEnum type) {
+    this.type = type;
   }
 
 
@@ -96,24 +209,26 @@ public class InstantShoppingMerchantCreateOrderResponseV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InstantShoppingMerchantCreateOrderResponseV1 merchantCreateOrderResponseV1 = (InstantShoppingMerchantCreateOrderResponseV1) o;
-    return Objects.equals(this.orderId, merchantCreateOrderResponseV1.orderId) &&
-        Objects.equals(this.fraudStatus, merchantCreateOrderResponseV1.fraudStatus);
+    InstantShoppingStylingOptionsV1Theme stylingOptionsV1Theme = (InstantShoppingStylingOptionsV1Theme) o;
+    return Objects.equals(this.variation, stylingOptionsV1Theme.variation) &&
+        Objects.equals(this.tagline, stylingOptionsV1Theme.tagline) &&
+        Objects.equals(this.type, stylingOptionsV1Theme.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderId, fraudStatus);
+    return Objects.hash(variation, tagline, type);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InstantShoppingMerchantCreateOrderResponseV1 {\n");
+    sb.append("class InstantShoppingStylingOptionsV1Theme {\n");
     
-    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
-    sb.append("    fraudStatus: ").append(toIndentedString(fraudStatus)).append("\n");
+    sb.append("    variation: ").append(toIndentedString(variation)).append("\n");
+    sb.append("    tagline: ").append(toIndentedString(tagline)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

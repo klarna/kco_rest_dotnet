@@ -22,22 +22,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * InstantShoppingAddressV1
+ * InstantShoppingLocationAddressV1
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
-public class InstantShoppingAddressV1 {
-  @JsonProperty("given_name")
-  private String givenName = null;
-
-  @JsonProperty("family_name")
-  private String familyName = null;
-
-  @JsonProperty("email")
-  private String email = null;
-
-  @JsonProperty("title")
-  private String title = null;
-
+public class InstantShoppingLocationAddressV1 {
   @JsonProperty("street_address")
   private String streetAddress = null;
 
@@ -53,91 +41,10 @@ public class InstantShoppingAddressV1 {
   @JsonProperty("region")
   private String region = null;
 
-  @JsonProperty("phone")
-  private String phone = null;
-
   @JsonProperty("country")
   private String country = null;
 
-  @JsonProperty("care_of")
-  private String careOf = null;
-
-  @JsonProperty("attention")
-  private String attention = null;
-
-  public InstantShoppingAddressV1 givenName(String givenName) {
-    this.givenName = givenName;
-    return this;
-  }
-
-   /**
-   * Given name.
-   * @return givenName
-  **/
-  @ApiModelProperty(example = "Jane", value = "Given name.")
-  public String getGivenName() {
-    return givenName;
-  }
-
-  public void setGivenName(String givenName) {
-    this.givenName = givenName;
-  }
-
-  public InstantShoppingAddressV1 familyName(String familyName) {
-    this.familyName = familyName;
-    return this;
-  }
-
-   /**
-   * Family name.
-   * @return familyName
-  **/
-  @ApiModelProperty(example = "Doe", value = "Family name.")
-  public String getFamilyName() {
-    return familyName;
-  }
-
-  public void setFamilyName(String familyName) {
-    this.familyName = familyName;
-  }
-
-  public InstantShoppingAddressV1 email(String email) {
-    this.email = email;
-    return this;
-  }
-
-   /**
-   * E-mail address.
-   * @return email
-  **/
-  @ApiModelProperty(example = "jane@doe.com", value = "E-mail address.")
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public InstantShoppingAddressV1 title(String title) {
-    this.title = title;
-    return this;
-  }
-
-   /**
-   * Title.
-   * @return title
-  **/
-  @ApiModelProperty(example = "Ms", value = "Title.")
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public InstantShoppingAddressV1 streetAddress(String streetAddress) {
+  public InstantShoppingLocationAddressV1 streetAddress(String streetAddress) {
     this.streetAddress = streetAddress;
     return this;
   }
@@ -155,7 +62,7 @@ public class InstantShoppingAddressV1 {
     this.streetAddress = streetAddress;
   }
 
-  public InstantShoppingAddressV1 streetAddress2(String streetAddress2) {
+  public InstantShoppingLocationAddressV1 streetAddress2(String streetAddress2) {
     this.streetAddress2 = streetAddress2;
     return this;
   }
@@ -173,7 +80,7 @@ public class InstantShoppingAddressV1 {
     this.streetAddress2 = streetAddress2;
   }
 
-  public InstantShoppingAddressV1 postalCode(String postalCode) {
+  public InstantShoppingLocationAddressV1 postalCode(String postalCode) {
     this.postalCode = postalCode;
     return this;
   }
@@ -191,7 +98,7 @@ public class InstantShoppingAddressV1 {
     this.postalCode = postalCode;
   }
 
-  public InstantShoppingAddressV1 city(String city) {
+  public InstantShoppingLocationAddressV1 city(String city) {
     this.city = city;
     return this;
   }
@@ -209,7 +116,7 @@ public class InstantShoppingAddressV1 {
     this.city = city;
   }
 
-  public InstantShoppingAddressV1 region(String region) {
+  public InstantShoppingLocationAddressV1 region(String region) {
     this.region = region;
     return this;
   }
@@ -227,25 +134,7 @@ public class InstantShoppingAddressV1 {
     this.region = region;
   }
 
-  public InstantShoppingAddressV1 phone(String phone) {
-    this.phone = phone;
-    return this;
-  }
-
-   /**
-   * Phone number.
-   * @return phone
-  **/
-  @ApiModelProperty(example = "333444555", value = "Phone number.")
-  public String getPhone() {
-    return phone;
-  }
-
-  public void setPhone(String phone) {
-    this.phone = phone;
-  }
-
-  public InstantShoppingAddressV1 country(String country) {
+  public InstantShoppingLocationAddressV1 country(String country) {
     this.country = country;
     return this;
   }
@@ -263,42 +152,6 @@ public class InstantShoppingAddressV1 {
     this.country = country;
   }
 
-  public InstantShoppingAddressV1 careOf(String careOf) {
-    this.careOf = careOf;
-    return this;
-  }
-
-   /**
-   * Text for the care of information.
-   * @return careOf
-  **/
-  @ApiModelProperty(example = "Care of Ms Sunshine", value = "Text for the care of information.")
-  public String getCareOf() {
-    return careOf;
-  }
-
-  public void setCareOf(String careOf) {
-    this.careOf = careOf;
-  }
-
-  public InstantShoppingAddressV1 attention(String attention) {
-    this.attention = attention;
-    return this;
-  }
-
-   /**
-   * Get attention
-   * @return attention
-  **/
-  @ApiModelProperty(value = "")
-  public String getAttention() {
-    return attention;
-  }
-
-  public void setAttention(String attention) {
-    this.attention = attention;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -308,46 +161,32 @@ public class InstantShoppingAddressV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InstantShoppingAddressV1 addressV1 = (InstantShoppingAddressV1) o;
-    return Objects.equals(this.givenName, addressV1.givenName) &&
-        Objects.equals(this.familyName, addressV1.familyName) &&
-        Objects.equals(this.email, addressV1.email) &&
-        Objects.equals(this.title, addressV1.title) &&
-        Objects.equals(this.streetAddress, addressV1.streetAddress) &&
-        Objects.equals(this.streetAddress2, addressV1.streetAddress2) &&
-        Objects.equals(this.postalCode, addressV1.postalCode) &&
-        Objects.equals(this.city, addressV1.city) &&
-        Objects.equals(this.region, addressV1.region) &&
-        Objects.equals(this.phone, addressV1.phone) &&
-        Objects.equals(this.country, addressV1.country) &&
-        Objects.equals(this.careOf, addressV1.careOf) &&
-        Objects.equals(this.attention, addressV1.attention);
+    InstantShoppingLocationAddressV1 locationAddressV1 = (InstantShoppingLocationAddressV1) o;
+    return Objects.equals(this.streetAddress, locationAddressV1.streetAddress) &&
+        Objects.equals(this.streetAddress2, locationAddressV1.streetAddress2) &&
+        Objects.equals(this.postalCode, locationAddressV1.postalCode) &&
+        Objects.equals(this.city, locationAddressV1.city) &&
+        Objects.equals(this.region, locationAddressV1.region) &&
+        Objects.equals(this.country, locationAddressV1.country);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(givenName, familyName, email, title, streetAddress, streetAddress2, postalCode, city, region, phone, country, careOf, attention);
+    return Objects.hash(streetAddress, streetAddress2, postalCode, city, region, country);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InstantShoppingAddressV1 {\n");
+    sb.append("class InstantShoppingLocationAddressV1 {\n");
     
-    sb.append("    givenName: ").append(toIndentedString(givenName)).append("\n");
-    sb.append("    familyName: ").append(toIndentedString(familyName)).append("\n");
-    sb.append("    email: ").append(toIndentedString(email)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    streetAddress: ").append(toIndentedString(streetAddress)).append("\n");
     sb.append("    streetAddress2: ").append(toIndentedString(streetAddress2)).append("\n");
     sb.append("    postalCode: ").append(toIndentedString(postalCode)).append("\n");
     sb.append("    city: ").append(toIndentedString(city)).append("\n");
     sb.append("    region: ").append(toIndentedString(region)).append("\n");
-    sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    careOf: ").append(toIndentedString(careOf)).append("\n");
-    sb.append("    attention: ").append(toIndentedString(attention)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -22,69 +22,71 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * InstantShoppingMerchantCreateOrderResponseV1
+ * InstantShoppingOrderMerchantUrlsV1
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
-public class InstantShoppingMerchantCreateOrderResponseV1 {
-  @JsonProperty("order_id")
-  private String orderId = null;
+public class InstantShoppingOrderMerchantUrlsV1 {
+  @JsonProperty("notification")
+  private String notification = null;
 
-  /**
-   * Fraud status for the order.
-   */
-  public enum FraudStatusEnum {
-    ACCEPTED("ACCEPTED"),
-    
-    PENDING("PENDING"),
-    
-    REJECTED("REJECTED");
+  @JsonProperty("confirmation")
+  private String confirmation = null;
 
-    private String value;
+  @JsonProperty("push")
+  private String push = null;
 
-    FraudStatusEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static FraudStatusEnum fromValue(String text) {
-      for (FraudStatusEnum b : FraudStatusEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
-  @JsonProperty("fraud_status")
-  private FraudStatusEnum fraudStatus = null;
-
-   /**
-   * The unique order ID. No longer than 255 characters.
-   * @return orderId
-  **/
-  @ApiModelProperty(example = "45aa52f387871e3a210645d4", value = "The unique order ID. No longer than 255 characters.")
-  public String getOrderId() {
-    return orderId;
+  public InstantShoppingOrderMerchantUrlsV1 notification(String notification) {
+    this.notification = notification;
+    return this;
   }
 
    /**
-   * Fraud status for the order.
-   * @return fraudStatus
+   * URL of an endpoint at the merchant side, which will receive notifications on pending orders. (must be https, max 2000 characters)
+   * @return notification
   **/
-  @ApiModelProperty(example = "REJECTED", value = "Fraud status for the order.")
-  public FraudStatusEnum getFraudStatus() {
-    return fraudStatus;
+  @ApiModelProperty(example = "https://example.com/notify", value = "URL of an endpoint at the merchant side, which will receive notifications on pending orders. (must be https, max 2000 characters)")
+  public String getNotification() {
+    return notification;
+  }
+
+  public void setNotification(String notification) {
+    this.notification = notification;
+  }
+
+  public InstantShoppingOrderMerchantUrlsV1 confirmation(String confirmation) {
+    this.confirmation = confirmation;
+    return this;
+  }
+
+   /**
+   * URL of a page that the consumers will be redirected to after completing a purchase with Instant Shopping. (max 2000 characters)
+   * @return confirmation
+  **/
+  @ApiModelProperty(example = "https://example.com/", value = "URL of a page that the consumers will be redirected to after completing a purchase with Instant Shopping. (max 2000 characters)")
+  public String getConfirmation() {
+    return confirmation;
+  }
+
+  public void setConfirmation(String confirmation) {
+    this.confirmation = confirmation;
+  }
+
+  public InstantShoppingOrderMerchantUrlsV1 push(String push) {
+    this.push = push;
+    return this;
+  }
+
+   /**
+   * URL of an endpoint at the merchant side, which will receive a ping when an order is completed within Klarna&#39;s order management. (must be https, max 2000 characters)
+   * @return push
+  **/
+  @ApiModelProperty(example = "https://example.com/push", value = "URL of an endpoint at the merchant side, which will receive a ping when an order is completed within Klarna's order management. (must be https, max 2000 characters)")
+  public String getPush() {
+    return push;
+  }
+
+  public void setPush(String push) {
+    this.push = push;
   }
 
 
@@ -96,24 +98,26 @@ public class InstantShoppingMerchantCreateOrderResponseV1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InstantShoppingMerchantCreateOrderResponseV1 merchantCreateOrderResponseV1 = (InstantShoppingMerchantCreateOrderResponseV1) o;
-    return Objects.equals(this.orderId, merchantCreateOrderResponseV1.orderId) &&
-        Objects.equals(this.fraudStatus, merchantCreateOrderResponseV1.fraudStatus);
+    InstantShoppingOrderMerchantUrlsV1 orderMerchantUrlsV1 = (InstantShoppingOrderMerchantUrlsV1) o;
+    return Objects.equals(this.notification, orderMerchantUrlsV1.notification) &&
+        Objects.equals(this.confirmation, orderMerchantUrlsV1.confirmation) &&
+        Objects.equals(this.push, orderMerchantUrlsV1.push);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(orderId, fraudStatus);
+    return Objects.hash(notification, confirmation, push);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InstantShoppingMerchantCreateOrderResponseV1 {\n");
+    sb.append("class InstantShoppingOrderMerchantUrlsV1 {\n");
     
-    sb.append("    orderId: ").append(toIndentedString(orderId)).append("\n");
-    sb.append("    fraudStatus: ").append(toIndentedString(fraudStatus)).append("\n");
+    sb.append("    notification: ").append(toIndentedString(notification)).append("\n");
+    sb.append("    confirmation: ").append(toIndentedString(confirmation)).append("\n");
+    sb.append("    push: ").append(toIndentedString(push)).append("\n");
     sb.append("}");
     return sb.toString();
   }

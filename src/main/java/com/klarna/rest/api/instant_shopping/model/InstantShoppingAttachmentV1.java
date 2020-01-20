@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * InstantShoppingAttachmentV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-10T09:33:39.178Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
 public class InstantShoppingAttachmentV1 {
   @JsonProperty("body")
   private String body = null;
