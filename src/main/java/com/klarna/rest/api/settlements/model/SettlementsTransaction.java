@@ -26,7 +26,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * SettlementsTransaction
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T13:02:14.665Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T11:18:02.332Z")
 public class SettlementsTransaction {
   @JsonProperty("amount")
   private Long amount = null;
@@ -110,6 +110,95 @@ public class SettlementsTransaction {
 
   @JsonProperty("purchase_country")
   private String purchaseCountry = null;
+
+  @JsonProperty("vat_rate")
+  private Integer vatRate = null;
+
+  @JsonProperty("vat_amount")
+  private Integer vatAmount = null;
+
+  @JsonProperty("shipping_country")
+  private String shippingCountry = null;
+
+  @JsonProperty("initial_payment_method_type")
+  private String initialPaymentMethodType = null;
+
+  @JsonProperty("initial_number_of_installments")
+  private Integer initialNumberOfInstallments = null;
+
+  @JsonProperty("merchant_capture_reference")
+  private String merchantCaptureReference = null;
+
+  @JsonProperty("merchant_refund_reference")
+  private String merchantRefundReference = null;
+
+  /**
+   * Detailed description of the transaction type
+   */
+  public enum DetailedTypeEnum {
+    LOAN_AMORTISATION("LOAN_AMORTISATION"),
+    
+    COMMISSION("COMMISSION"),
+    
+    CREDITED_CORRECTION("CREDITED_CORRECTION"),
+    
+    LOAN_FEE("LOAN_FEE"),
+    
+    LOAN_PAYOUT("LOAN_PAYOUT"),
+    
+    FEE_REFUND("FEE_REFUND"),
+    
+    EXPIRY_FEE_GROSS("EXPIRY_FEE_GROSS"),
+    
+    LATE_RETURN_FEE("LATE_RETURN_FEE"),
+    
+    PURCHASE_FEE_FIXED("PURCHASE_FEE_FIXED"),
+    
+    PURCHASE_FEE_PERCENTAGE("PURCHASE_FEE_PERCENTAGE"),
+    
+    SERVICING_FEE("SERVICING_FEE"),
+    
+    PURCHASE_RETURN("PURCHASE_RETURN"),
+    
+    COMMISSION_RETURN("COMMISSION_RETURN"),
+    
+    REVERSAL("REVERSAL"),
+    
+    FRAUD_POLICY_CHARGE("FRAUD_POLICY_CHARGE"),
+    
+    FRAUD_POLICY_CREDIT_NET("FRAUD_POLICY_CREDIT_NET"),
+    
+    PURCHASE("PURCHASE");
+
+    private String value;
+
+    DetailedTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static DetailedTypeEnum fromValue(String text) {
+      for (DetailedTypeEnum b : DetailedTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("detailed_type")
+  private DetailedTypeEnum detailedType = null;
 
   public SettlementsTransaction amount(Long amount) {
     this.amount = amount;
@@ -363,6 +452,150 @@ public class SettlementsTransaction {
     this.purchaseCountry = purchaseCountry;
   }
 
+  public SettlementsTransaction vatRate(Integer vatRate) {
+    this.vatRate = vatRate;
+    return this;
+  }
+
+   /**
+   * VAT (Value added tax) rate on Klarna fees
+   * @return vatRate
+  **/
+  @ApiModelProperty(example = "2000", value = "VAT (Value added tax) rate on Klarna fees")
+  public Integer getVatRate() {
+    return vatRate;
+  }
+
+  public void setVatRate(Integer vatRate) {
+    this.vatRate = vatRate;
+  }
+
+  public SettlementsTransaction vatAmount(Integer vatAmount) {
+    this.vatAmount = vatAmount;
+    return this;
+  }
+
+   /**
+   * VAT (Value added tax) amount on Klarna fees, in minor units
+   * @return vatAmount
+  **/
+  @ApiModelProperty(example = "1000", value = "VAT (Value added tax) amount on Klarna fees, in minor units")
+  public Integer getVatAmount() {
+    return vatAmount;
+  }
+
+  public void setVatAmount(Integer vatAmount) {
+    this.vatAmount = vatAmount;
+  }
+
+  public SettlementsTransaction shippingCountry(String shippingCountry) {
+    this.shippingCountry = shippingCountry;
+    return this;
+  }
+
+   /**
+   * ISO Alpha-2 Country Code
+   * @return shippingCountry
+  **/
+  @ApiModelProperty(example = "PL", value = "ISO Alpha-2 Country Code")
+  public String getShippingCountry() {
+    return shippingCountry;
+  }
+
+  public void setShippingCountry(String shippingCountry) {
+    this.shippingCountry = shippingCountry;
+  }
+
+  public SettlementsTransaction initialPaymentMethodType(String initialPaymentMethodType) {
+    this.initialPaymentMethodType = initialPaymentMethodType;
+    return this;
+  }
+
+   /**
+   * Payment method the consumer chose during checkout
+   * @return initialPaymentMethodType
+  **/
+  @ApiModelProperty(example = "direct_debit", value = "Payment method the consumer chose during checkout")
+  public String getInitialPaymentMethodType() {
+    return initialPaymentMethodType;
+  }
+
+  public void setInitialPaymentMethodType(String initialPaymentMethodType) {
+    this.initialPaymentMethodType = initialPaymentMethodType;
+  }
+
+  public SettlementsTransaction initialNumberOfInstallments(Integer initialNumberOfInstallments) {
+    this.initialNumberOfInstallments = initialNumberOfInstallments;
+    return this;
+  }
+
+   /**
+   * Number of installments the consumer chose during checkout in case of installment payments
+   * @return initialNumberOfInstallments
+  **/
+  @ApiModelProperty(example = "3", value = "Number of installments the consumer chose during checkout in case of installment payments")
+  public Integer getInitialNumberOfInstallments() {
+    return initialNumberOfInstallments;
+  }
+
+  public void setInitialNumberOfInstallments(Integer initialNumberOfInstallments) {
+    this.initialNumberOfInstallments = initialNumberOfInstallments;
+  }
+
+  public SettlementsTransaction merchantCaptureReference(String merchantCaptureReference) {
+    this.merchantCaptureReference = merchantCaptureReference;
+    return this;
+  }
+
+   /**
+   * Your internal reference to the capture, that has been submitted during capturing an order via API
+   * @return merchantCaptureReference
+  **/
+  @ApiModelProperty(value = "Your internal reference to the capture, that has been submitted during capturing an order via API")
+  public String getMerchantCaptureReference() {
+    return merchantCaptureReference;
+  }
+
+  public void setMerchantCaptureReference(String merchantCaptureReference) {
+    this.merchantCaptureReference = merchantCaptureReference;
+  }
+
+  public SettlementsTransaction merchantRefundReference(String merchantRefundReference) {
+    this.merchantRefundReference = merchantRefundReference;
+    return this;
+  }
+
+   /**
+   * Your internal reference to the refund, that has been submitted during refunding an order via API
+   * @return merchantRefundReference
+  **/
+  @ApiModelProperty(value = "Your internal reference to the refund, that has been submitted during refunding an order via API")
+  public String getMerchantRefundReference() {
+    return merchantRefundReference;
+  }
+
+  public void setMerchantRefundReference(String merchantRefundReference) {
+    this.merchantRefundReference = merchantRefundReference;
+  }
+
+  public SettlementsTransaction detailedType(DetailedTypeEnum detailedType) {
+    this.detailedType = detailedType;
+    return this;
+  }
+
+   /**
+   * Detailed description of the transaction type
+   * @return detailedType
+  **/
+  @ApiModelProperty(example = "PURCHASE", value = "Detailed description of the transaction type")
+  public DetailedTypeEnum getDetailedType() {
+    return detailedType;
+  }
+
+  public void setDetailedType(DetailedTypeEnum detailedType) {
+    this.detailedType = detailedType;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -386,12 +619,20 @@ public class SettlementsTransaction {
         Objects.equals(this.shortOrderId, transaction.shortOrderId) &&
         Objects.equals(this.merchantReference2, transaction.merchantReference2) &&
         Objects.equals(this.currencyCode, transaction.currencyCode) &&
-        Objects.equals(this.purchaseCountry, transaction.purchaseCountry);
+        Objects.equals(this.purchaseCountry, transaction.purchaseCountry) &&
+        Objects.equals(this.vatRate, transaction.vatRate) &&
+        Objects.equals(this.vatAmount, transaction.vatAmount) &&
+        Objects.equals(this.shippingCountry, transaction.shippingCountry) &&
+        Objects.equals(this.initialPaymentMethodType, transaction.initialPaymentMethodType) &&
+        Objects.equals(this.initialNumberOfInstallments, transaction.initialNumberOfInstallments) &&
+        Objects.equals(this.merchantCaptureReference, transaction.merchantCaptureReference) &&
+        Objects.equals(this.merchantRefundReference, transaction.merchantRefundReference) &&
+        Objects.equals(this.detailedType, transaction.detailedType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(amount, captureId, merchantReference1, saleDate, type, captureDate, paymentReference, orderId, payout, refundId, shortOrderId, merchantReference2, currencyCode, purchaseCountry);
+    return Objects.hash(amount, captureId, merchantReference1, saleDate, type, captureDate, paymentReference, orderId, payout, refundId, shortOrderId, merchantReference2, currencyCode, purchaseCountry, vatRate, vatAmount, shippingCountry, initialPaymentMethodType, initialNumberOfInstallments, merchantCaptureReference, merchantRefundReference, detailedType);
   }
 
 
@@ -414,6 +655,14 @@ public class SettlementsTransaction {
     sb.append("    merchantReference2: ").append(toIndentedString(merchantReference2)).append("\n");
     sb.append("    currencyCode: ").append(toIndentedString(currencyCode)).append("\n");
     sb.append("    purchaseCountry: ").append(toIndentedString(purchaseCountry)).append("\n");
+    sb.append("    vatRate: ").append(toIndentedString(vatRate)).append("\n");
+    sb.append("    vatAmount: ").append(toIndentedString(vatAmount)).append("\n");
+    sb.append("    shippingCountry: ").append(toIndentedString(shippingCountry)).append("\n");
+    sb.append("    initialPaymentMethodType: ").append(toIndentedString(initialPaymentMethodType)).append("\n");
+    sb.append("    initialNumberOfInstallments: ").append(toIndentedString(initialNumberOfInstallments)).append("\n");
+    sb.append("    merchantCaptureReference: ").append(toIndentedString(merchantCaptureReference)).append("\n");
+    sb.append("    merchantRefundReference: ").append(toIndentedString(merchantRefundReference)).append("\n");
+    sb.append("    detailedType: ").append(toIndentedString(detailedType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

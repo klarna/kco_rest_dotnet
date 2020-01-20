@@ -25,7 +25,7 @@ import org.threeten.bp.OffsetDateTime;
 /**
  * SettlementsPayoutSummary
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T13:02:14.665Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T11:18:02.332Z")
 public class SettlementsPayoutSummary {
   @JsonProperty("summary_total_fee_correction_amount")
   private Long summaryTotalFeeCorrectionAmount = null;
