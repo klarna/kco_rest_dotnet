@@ -15,6 +15,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+## [4.0.0] - 2020-01-21 (Major release)
+
+> **⚠️ No backward compatibility**
+
+### Added
+
+- Fields in **Order Mangement**, **Checkout**, **Customer Token**, **Instant Shopping**, 
+**Settlements** models
+- New models in **Instant Shopping**
+
+### Changed
+
+**Instant Shopping API**
+- Removed `type`, `vat_id`, `organization_registration_id` and `organization_entity_type` from `InstantShoppingCustomerV1`
+- `InstantShoppingOrderMerchantUrlsV1` replaces `InstantShoppingMerchantUrlsV1` and `InstantShoppingButtonSetupOptionsV1MerchantUrls`
+- `shipping_method` in `InstantShoppingShippingOptionV1` becomes `String`
+
+**Checkout API**
+- `shipping_address` in `CheckoutOrder` is now read-only
 
 ## [3.2.1] - 2019-12-10
 
