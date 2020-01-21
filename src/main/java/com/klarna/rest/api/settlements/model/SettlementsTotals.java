@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * SettlementsTotals
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T13:02:14.665Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T11:18:02.332Z")
 public class SettlementsTotals {
   @JsonProperty("commission_amount")
   private Long commissionAmount = null;
@@ -58,6 +58,12 @@ public class SettlementsTotals {
 
   @JsonProperty("fee_amount")
   private Long feeAmount = null;
+
+  @JsonProperty("charge_amount")
+  private Long chargeAmount = null;
+
+  @JsonProperty("credit_amount")
+  private Long creditAmount = null;
 
   public SettlementsTotals commissionAmount(Long commissionAmount) {
     this.commissionAmount = commissionAmount;
@@ -257,6 +263,42 @@ public class SettlementsTotals {
     this.feeAmount = feeAmount;
   }
 
+  public SettlementsTotals chargeAmount(Long chargeAmount) {
+    this.chargeAmount = chargeAmount;
+    return this;
+  }
+
+   /**
+   * The total amount of charges, in minor units. The additional field detailed_type contains the purpose of the charge
+   * @return chargeAmount
+  **/
+  @ApiModelProperty(example = "500", value = "The total amount of charges, in minor units. The additional field detailed_type contains the purpose of the charge")
+  public Long getChargeAmount() {
+    return chargeAmount;
+  }
+
+  public void setChargeAmount(Long chargeAmount) {
+    this.chargeAmount = chargeAmount;
+  }
+
+  public SettlementsTotals creditAmount(Long creditAmount) {
+    this.creditAmount = creditAmount;
+    return this;
+  }
+
+   /**
+   * The total amount of credits, in minor units. The additional field detailed_type contains the purpose of the credit
+   * @return creditAmount
+  **/
+  @ApiModelProperty(example = "500", value = "The total amount of credits, in minor units. The additional field detailed_type contains the purpose of the credit")
+  public Long getCreditAmount() {
+    return creditAmount;
+  }
+
+  public void setCreditAmount(Long creditAmount) {
+    this.creditAmount = creditAmount;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -277,12 +319,14 @@ public class SettlementsTotals {
         Objects.equals(this.reversalAmount, totals.reversalAmount) &&
         Objects.equals(this.releaseAmount, totals.releaseAmount) &&
         Objects.equals(this.returnAmount, totals.returnAmount) &&
-        Objects.equals(this.feeAmount, totals.feeAmount);
+        Objects.equals(this.feeAmount, totals.feeAmount) &&
+        Objects.equals(this.chargeAmount, totals.chargeAmount) &&
+        Objects.equals(this.creditAmount, totals.creditAmount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(commissionAmount, repayAmount, saleAmount, holdbackAmount, taxAmount, settlementAmount, feeCorrectionAmount, reversalAmount, releaseAmount, returnAmount, feeAmount);
+    return Objects.hash(commissionAmount, repayAmount, saleAmount, holdbackAmount, taxAmount, settlementAmount, feeCorrectionAmount, reversalAmount, releaseAmount, returnAmount, feeAmount, chargeAmount, creditAmount);
   }
 
 
@@ -302,6 +346,8 @@ public class SettlementsTotals {
     sb.append("    releaseAmount: ").append(toIndentedString(releaseAmount)).append("\n");
     sb.append("    returnAmount: ").append(toIndentedString(returnAmount)).append("\n");
     sb.append("    feeAmount: ").append(toIndentedString(feeAmount)).append("\n");
+    sb.append("    chargeAmount: ").append(toIndentedString(chargeAmount)).append("\n");
+    sb.append("    creditAmount: ").append(toIndentedString(creditAmount)).append("\n");
     sb.append("}");
     return sb.toString();
   }

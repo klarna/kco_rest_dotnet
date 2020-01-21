@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * CheckoutProductIdentifiers
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:22:48.232Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:12:28.827Z")
 public class CheckoutProductIdentifiers {
   @JsonProperty("category_path")
   private String categoryPath = null;
@@ -44,10 +44,10 @@ public class CheckoutProductIdentifiers {
   }
 
    /**
-   * The product&#39;s category path as used in the merchant&#39;s webshop. Include the full and most detailed category and separate the segments with &#39; &gt; &#39;
+   * The product&#39;s category path as used in the merchant&#39;s webshop. Include the full and most detailed category and separate the segments with &#39; &gt; &#39;. (max 750 characters)  Example: \&quot;Electronics Store &gt; Computers &amp; Tablets &gt; Desktops\&quot;
    * @return categoryPath
   **/
-  @ApiModelProperty(example = "Electronics Store > Computers & Tablets > Desktops", value = "The product's category path as used in the merchant's webshop. Include the full and most detailed category and separate the segments with ' > '")
+  @ApiModelProperty(example = "Electronics Store > Computers & Tablets > Desktops", value = "The product's category path as used in the merchant's webshop. Include the full and most detailed category and separate the segments with ' > '. (max 750 characters)  Example: \"Electronics Store > Computers & Tablets > Desktops\"")
   public String getCategoryPath() {
     return categoryPath;
   }

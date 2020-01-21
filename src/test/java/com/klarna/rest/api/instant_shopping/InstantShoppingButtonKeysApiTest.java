@@ -137,19 +137,17 @@ public class InstantShoppingButtonKeysApiTest extends TestCase {
         InstantShoppingButtonKeysApi api = client.newInstantShoppingButtonKeysApi();
         InstantShoppingButtonSetupOptionsV1 data = new InstantShoppingButtonSetupOptionsV1()
                 .purchaseCurrency("EUR")
-                .locale("en-GB")
-                .orderAmount(100L);
+                .locale("en-GB");
 
         InstantShoppingButtonSetupOptionsV1 button = api.createButtonKey(data);
 
         assertEquals("string", button.getButtonKey());
-        assertEquals(InstantShoppingShippingOptionV1.ShippingMethodEnum.PICKUPSTORE, button.getShippingOptions().get(0).getShippingMethod());
+        assertEquals("PICKUPSTORE", button.getShippingOptions().get(0).getShippingMethod());
         verify(transport.conn, times(1)).setRequestMethod("POST");
         assertEquals("/instantshopping/v1/buttons", transport.requestPath);
 
         final String requestPayout = transport.requestPayout.toString();
         assertTrue(requestPayout.contains("\"purchase_currency\":\"EUR\""));
-        assertTrue(requestPayout.contains("\"order_amount\":100"));
     }
 
     @Test
@@ -165,21 +163,19 @@ public class InstantShoppingButtonKeysApiTest extends TestCase {
         InstantShoppingButtonKeysApi api = client.newInstantShoppingButtonKeysApi();
         InstantShoppingButtonSetupOptionsV1 data = new InstantShoppingButtonSetupOptionsV1()
                 .purchaseCurrency("EUR")
-                .locale("en-GB")
-                .orderAmount(100L);
+                .locale("en-GB");
 
         final String keyId = "test-button-key";
 
         InstantShoppingButtonSetupOptionsV1 button = api.updateButtonKey(keyId, data);
 
         assertEquals("string", button.getButtonKey());
-        assertEquals(InstantShoppingShippingOptionV1.ShippingMethodEnum.PICKUPSTORE, button.getShippingOptions().get(0).getShippingMethod());
+        assertEquals("PICKUPSTORE", button.getShippingOptions().get(0).getShippingMethod());
         verify(transport.conn, times(1)).setRequestMethod("PUT");
         assertEquals("/instantshopping/v1/buttons/" + keyId, transport.requestPath);
 
         final String requestPayout = transport.requestPayout.toString();
         assertTrue(requestPayout.contains("\"purchase_currency\":\"EUR\""));
-        assertTrue(requestPayout.contains("\"order_amount\":100"));
     }
 
     @Test
@@ -198,7 +194,7 @@ public class InstantShoppingButtonKeysApiTest extends TestCase {
         InstantShoppingButtonSetupOptionsV1 button = api.fetchButtonKeyOptions(keyId);
 
         assertEquals("string", button.getButtonKey());
-        assertEquals(InstantShoppingShippingOptionV1.ShippingMethodEnum.PICKUPSTORE, button.getShippingOptions().get(0).getShippingMethod());
+        assertEquals("PICKUPSTORE", button.getShippingOptions().get(0).getShippingMethod());
         verify(transport.conn, times(1)).setRequestMethod("GET");
         assertEquals("/instantshopping/v1/buttons/" + keyId, transport.requestPath);
     }

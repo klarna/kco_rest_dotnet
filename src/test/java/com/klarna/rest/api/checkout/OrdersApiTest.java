@@ -191,12 +191,6 @@ public class OrdersApiTest extends TestCase {
     @Test
     public void testShippingBillingAddressses() throws IOException {
         CheckoutOrder data = new CheckoutOrder()
-                .shippingAddress(new CheckoutAddress()
-                        .country("DE")
-                        .city("Berlin")
-                        .familyName("Test")
-                        .givenName("Name")
-                )
                 .billingAddress(new CheckoutAddress()
                         .country("SE")
                         .city("Stockholm")
@@ -204,20 +198,8 @@ public class OrdersApiTest extends TestCase {
                         .givenName("Doe")
                 );
 
-        assertEquals("DE", data.getShippingAddress().getCountry());
-        assertEquals("Test", data.getShippingAddress().getFamilyName());
         assertEquals("SE", data.getBillingAddress().getCountry());
         assertEquals("Stockholm", data.getBillingAddress().getCity());
-
-        data = new CheckoutOrder();
-        data.setShippingAddress(new CheckoutAddress()
-                .country("AA")
-                .city("BB")
-                .familyName("CC")
-                .givenName("DD")
-        );
-        assertEquals("AA", data.getShippingAddress().getCountry());
-        assertEquals("BB", data.getShippingAddress().getCity());
     }
 
     @Test

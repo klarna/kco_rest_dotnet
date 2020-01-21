@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * OrderManagementOrderLine
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T10:02:16.667Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T09:41:31.881Z")
 public class OrderManagementOrderLine {
   @JsonProperty("reference")
   private String reference = null;
@@ -227,7 +227,6 @@ public class OrderManagementOrderLine {
    /**
    * The tax rate in percent with two implicit decimals. Non-negative. Example: 2500 &#x3D; 25%.
    * minimum: 0
-   * maximum: 10000
    * @return taxRate
   **/
   @ApiModelProperty(required = true, value = "The tax rate in percent with two implicit decimals. Non-negative. Example: 2500 = 25%.")
@@ -264,10 +263,10 @@ public class OrderManagementOrderLine {
   }
 
    /**
-   * Data about the order line. Set at creation or update and returned when fetching the order through the API. Maximum 255 characters.
+   * Data about the order line. Set at creation or update and returned when fetching the order through the API. Maximum 1024 characters.
    * @return merchantData
   **/
-  @ApiModelProperty(example = "Some metadata", value = "Data about the order line. Set at creation or update and returned when fetching the order through the API. Maximum 255 characters.")
+  @ApiModelProperty(example = "Some metadata", value = "Data about the order line. Set at creation or update and returned when fetching the order through the API. Maximum 1024 characters.")
   public String getMerchantData() {
     return merchantData;
   }

@@ -18,16 +18,27 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingBaseMerchantUrlsV1;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingOrderMerchantUrlsV1;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
  * InstantShoppingMerchantUrlsV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-10T09:33:39.178Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
 public class InstantShoppingMerchantUrlsV1 {
   @JsonProperty("terms")
   private String terms = null;
+
+  @JsonProperty("update")
+  private String update = null;
+
+  @JsonProperty("place_order")
+  private String placeOrder = null;
+
+  @JsonProperty("create_customer_token")
+  private String createCustomerToken = null;
 
   @JsonProperty("notification")
   private String notification = null;
@@ -38,9 +49,6 @@ public class InstantShoppingMerchantUrlsV1 {
   @JsonProperty("push")
   private String push = null;
 
-  @JsonProperty("place_order")
-  private String placeOrder = null;
-
   public InstantShoppingMerchantUrlsV1 terms(String terms) {
     this.terms = terms;
     return this;
@@ -50,13 +58,67 @@ public class InstantShoppingMerchantUrlsV1 {
    * URL of a page on the merchant side describing the terms and conditions. (max 2000 characters)
    * @return terms
   **/
-  @ApiModelProperty(example = "https://theestore.se/terms", required = true, value = "URL of a page on the merchant side describing the terms and conditions. (max 2000 characters)")
+  @ApiModelProperty(example = "https://example.com/terms", value = "URL of a page on the merchant side describing the terms and conditions. (max 2000 characters)")
   public String getTerms() {
     return terms;
   }
 
   public void setTerms(String terms) {
     this.terms = terms;
+  }
+
+  public InstantShoppingMerchantUrlsV1 update(String update) {
+    this.update = update;
+    return this;
+  }
+
+   /**
+   * URL of an endpoint at the merchant side, which will receive a callback when an order is updated. (must be https, max 2000 characters)
+   * @return update
+  **/
+  @ApiModelProperty(example = "https://example.com/update", value = "URL of an endpoint at the merchant side, which will receive a callback when an order is updated. (must be https, max 2000 characters)")
+  public String getUpdate() {
+    return update;
+  }
+
+  public void setUpdate(String update) {
+    this.update = update;
+  }
+
+  public InstantShoppingMerchantUrlsV1 placeOrder(String placeOrder) {
+    this.placeOrder = placeOrder;
+    return this;
+  }
+
+   /**
+   * URL of an endpoint at the merchant side, which will receive a ping to place an order. (must be https, max 2000 characters)
+   * @return placeOrder
+  **/
+  @ApiModelProperty(example = "https://example.com/place-order", value = "URL of an endpoint at the merchant side, which will receive a ping to place an order. (must be https, max 2000 characters)")
+  public String getPlaceOrder() {
+    return placeOrder;
+  }
+
+  public void setPlaceOrder(String placeOrder) {
+    this.placeOrder = placeOrder;
+  }
+
+  public InstantShoppingMerchantUrlsV1 createCustomerToken(String createCustomerToken) {
+    this.createCustomerToken = createCustomerToken;
+    return this;
+  }
+
+   /**
+   * URL of an endpoint at the merchant side, which will receive a ping to create a customer token. (must be https, max 2000 characters)
+   * @return createCustomerToken
+  **/
+  @ApiModelProperty(example = "https://example.com/create-customer-token", value = "URL of an endpoint at the merchant side, which will receive a ping to create a customer token. (must be https, max 2000 characters)")
+  public String getCreateCustomerToken() {
+    return createCustomerToken;
+  }
+
+  public void setCreateCustomerToken(String createCustomerToken) {
+    this.createCustomerToken = createCustomerToken;
   }
 
   public InstantShoppingMerchantUrlsV1 notification(String notification) {
@@ -68,7 +130,7 @@ public class InstantShoppingMerchantUrlsV1 {
    * URL of an endpoint at the merchant side, which will receive notifications on pending orders. (must be https, max 2000 characters)
    * @return notification
   **/
-  @ApiModelProperty(example = "https://theestore.se/notify", value = "URL of an endpoint at the merchant side, which will receive notifications on pending orders. (must be https, max 2000 characters)")
+  @ApiModelProperty(example = "https://example.com/notify", value = "URL of an endpoint at the merchant side, which will receive notifications on pending orders. (must be https, max 2000 characters)")
   public String getNotification() {
     return notification;
   }
@@ -86,7 +148,7 @@ public class InstantShoppingMerchantUrlsV1 {
    * URL of a page that the consumers will be redirected to after completing a purchase with Instant Shopping. (max 2000 characters)
    * @return confirmation
   **/
-  @ApiModelProperty(example = "https://theestore.se/", required = true, value = "URL of a page that the consumers will be redirected to after completing a purchase with Instant Shopping. (max 2000 characters)")
+  @ApiModelProperty(example = "https://example.com/", value = "URL of a page that the consumers will be redirected to after completing a purchase with Instant Shopping. (max 2000 characters)")
   public String getConfirmation() {
     return confirmation;
   }
@@ -104,31 +166,13 @@ public class InstantShoppingMerchantUrlsV1 {
    * URL of an endpoint at the merchant side, which will receive a ping when an order is completed within Klarna&#39;s order management. (must be https, max 2000 characters)
    * @return push
   **/
-  @ApiModelProperty(example = "https://theestore.se/push", value = "URL of an endpoint at the merchant side, which will receive a ping when an order is completed within Klarna's order management. (must be https, max 2000 characters)")
+  @ApiModelProperty(example = "https://example.com/push", value = "URL of an endpoint at the merchant side, which will receive a ping when an order is completed within Klarna's order management. (must be https, max 2000 characters)")
   public String getPush() {
     return push;
   }
 
   public void setPush(String push) {
     this.push = push;
-  }
-
-  public InstantShoppingMerchantUrlsV1 placeOrder(String placeOrder) {
-    this.placeOrder = placeOrder;
-    return this;
-  }
-
-   /**
-   * URL of an endpoint at the merchant side, which will receive a ping to place an order. (must be https, max 2000 characters)
-   * @return placeOrder
-  **/
-  @ApiModelProperty(example = "https://theestore.se/place-order", required = true, value = "URL of an endpoint at the merchant side, which will receive a ping to place an order. (must be https, max 2000 characters)")
-  public String getPlaceOrder() {
-    return placeOrder;
-  }
-
-  public void setPlaceOrder(String placeOrder) {
-    this.placeOrder = placeOrder;
   }
 
 
@@ -142,15 +186,17 @@ public class InstantShoppingMerchantUrlsV1 {
     }
     InstantShoppingMerchantUrlsV1 merchantUrlsV1 = (InstantShoppingMerchantUrlsV1) o;
     return Objects.equals(this.terms, merchantUrlsV1.terms) &&
+        Objects.equals(this.update, merchantUrlsV1.update) &&
+        Objects.equals(this.placeOrder, merchantUrlsV1.placeOrder) &&
+        Objects.equals(this.createCustomerToken, merchantUrlsV1.createCustomerToken) &&
         Objects.equals(this.notification, merchantUrlsV1.notification) &&
         Objects.equals(this.confirmation, merchantUrlsV1.confirmation) &&
-        Objects.equals(this.push, merchantUrlsV1.push) &&
-        Objects.equals(this.placeOrder, merchantUrlsV1.placeOrder);
+        Objects.equals(this.push, merchantUrlsV1.push);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(terms, notification, confirmation, push, placeOrder);
+    return Objects.hash(terms, update, placeOrder, createCustomerToken, notification, confirmation, push);
   }
 
 
@@ -160,10 +206,12 @@ public class InstantShoppingMerchantUrlsV1 {
     sb.append("class InstantShoppingMerchantUrlsV1 {\n");
     
     sb.append("    terms: ").append(toIndentedString(terms)).append("\n");
+    sb.append("    update: ").append(toIndentedString(update)).append("\n");
+    sb.append("    placeOrder: ").append(toIndentedString(placeOrder)).append("\n");
+    sb.append("    createCustomerToken: ").append(toIndentedString(createCustomerToken)).append("\n");
     sb.append("    notification: ").append(toIndentedString(notification)).append("\n");
     sb.append("    confirmation: ").append(toIndentedString(confirmation)).append("\n");
     sb.append("    push: ").append(toIndentedString(push)).append("\n");
-    sb.append("    placeOrder: ").append(toIndentedString(placeOrder)).append("\n");
     sb.append("}");
     return sb.toString();
   }

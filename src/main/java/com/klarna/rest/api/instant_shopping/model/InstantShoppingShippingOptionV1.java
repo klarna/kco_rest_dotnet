@@ -18,6 +18,7 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingShippingDeliveryDetailsV1;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -25,7 +26,7 @@ import io.swagger.annotations.ApiModelProperty;
  *  
  */
 @ApiModel(description = " ")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-10T09:33:39.178Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
 public class InstantShoppingShippingOptionV1 {
   @JsonProperty("id")
   private String id = null;
@@ -51,57 +52,11 @@ public class InstantShoppingShippingOptionV1 {
   @JsonProperty("preselected")
   private Boolean preselected = null;
 
-  /**
-   * Type of basic shipping method
-   */
-  public enum ShippingMethodEnum {
-    PICKUPSTORE("PICKUPSTORE"),
-    
-    HOME("HOME"),
-    
-    BOXREG("BOXREG"),
-    
-    BOXUNREG("BOXUNREG"),
-    
-    PICKUPPOINT("PICKUPPOINT"),
-    
-    OWN("OWN"),
-    
-    DHL_PACKSTATION("DHL_PACKSTATION"),
-    
-    OTHER("OTHER"),
-    
-    UNDEFINED("UNDEFINED");
-
-    private String value;
-
-    ShippingMethodEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static ShippingMethodEnum fromValue(String text) {
-      for (ShippingMethodEnum b : ShippingMethodEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-  }
-
   @JsonProperty("shipping_method")
-  private ShippingMethodEnum shippingMethod = null;
+  private String shippingMethod = null;
+
+  @JsonProperty("delivery_details")
+  private InstantShoppingShippingDeliveryDetailsV1 deliveryDetails = null;
 
   public InstantShoppingShippingOptionV1 id(String id) {
     this.id = id;
@@ -112,7 +67,7 @@ public class InstantShoppingShippingOptionV1 {
    * Shipping option identifier
    * @return id
   **/
-  @ApiModelProperty(required = true, value = "Shipping option identifier")
+  @ApiModelProperty(example = "express_priority", required = true, value = "Shipping option identifier")
   public String getId() {
     return id;
   }
@@ -130,7 +85,7 @@ public class InstantShoppingShippingOptionV1 {
    * Name of shipping option
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "Name of shipping option")
+  @ApiModelProperty(example = "Express 1-2 days", required = true, value = "Name of shipping option")
   public String getName() {
     return name;
   }
@@ -148,7 +103,7 @@ public class InstantShoppingShippingOptionV1 {
    * Description of shipping option
    * @return description
   **/
-  @ApiModelProperty(value = "Description of shipping option")
+  @ApiModelProperty(example = "Delivery by 4:30pm", value = "Description of shipping option")
   public String getDescription() {
     return description;
   }
@@ -166,7 +121,7 @@ public class InstantShoppingShippingOptionV1 {
    * Promotion name. To be used if this shipping option is promotional
    * @return promo
   **/
-  @ApiModelProperty(value = "Promotion name. To be used if this shipping option is promotional")
+  @ApiModelProperty(example = "Summer promotion", value = "Promotion name. To be used if this shipping option is promotional")
   public String getPromo() {
     return promo;
   }
@@ -248,22 +203,40 @@ public class InstantShoppingShippingOptionV1 {
     this.preselected = preselected;
   }
 
-  public InstantShoppingShippingOptionV1 shippingMethod(ShippingMethodEnum shippingMethod) {
+  public InstantShoppingShippingOptionV1 shippingMethod(String shippingMethod) {
     this.shippingMethod = shippingMethod;
     return this;
   }
 
    /**
-   * Type of basic shipping method
+   * Type of basic shipping method. Possible values:&lt;ul&gt;&lt;li&gt;PickUpStore&lt;/li&gt;&lt;li&gt;Home&lt;/li&gt;&lt;li&gt;BoxReg&lt;/li&gt;&lt;li&gt;BoxUnreg&lt;/li&gt;&lt;li&gt;PickUpPoint&lt;/li&gt;&lt;li&gt;Own&lt;/li&gt;&lt;li&gt;Postal&lt;/li&gt;&lt;li&gt;DHLPackstation&lt;/li&gt;&lt;li&gt;Other&lt;/li&gt;&lt;/ul&gt;
    * @return shippingMethod
   **/
-  @ApiModelProperty(value = "Type of basic shipping method")
-  public ShippingMethodEnum getShippingMethod() {
+  @ApiModelProperty(example = "PickUpStore", value = "Type of basic shipping method. Possible values:<ul><li>PickUpStore</li><li>Home</li><li>BoxReg</li><li>BoxUnreg</li><li>PickUpPoint</li><li>Own</li><li>Postal</li><li>DHLPackstation</li><li>Other</li></ul>")
+  public String getShippingMethod() {
     return shippingMethod;
   }
 
-  public void setShippingMethod(ShippingMethodEnum shippingMethod) {
+  public void setShippingMethod(String shippingMethod) {
     this.shippingMethod = shippingMethod;
+  }
+
+  public InstantShoppingShippingOptionV1 deliveryDetails(InstantShoppingShippingDeliveryDetailsV1 deliveryDetails) {
+    this.deliveryDetails = deliveryDetails;
+    return this;
+  }
+
+   /**
+   * The delivery details, to be used as fallback when TMS is not available
+   * @return deliveryDetails
+  **/
+  @ApiModelProperty(value = "The delivery details, to be used as fallback when TMS is not available")
+  public InstantShoppingShippingDeliveryDetailsV1 getDeliveryDetails() {
+    return deliveryDetails;
+  }
+
+  public void setDeliveryDetails(InstantShoppingShippingDeliveryDetailsV1 deliveryDetails) {
+    this.deliveryDetails = deliveryDetails;
   }
 
 
@@ -284,12 +257,13 @@ public class InstantShoppingShippingOptionV1 {
         Objects.equals(this.taxAmount, shippingOptionV1.taxAmount) &&
         Objects.equals(this.taxRate, shippingOptionV1.taxRate) &&
         Objects.equals(this.preselected, shippingOptionV1.preselected) &&
-        Objects.equals(this.shippingMethod, shippingOptionV1.shippingMethod);
+        Objects.equals(this.shippingMethod, shippingOptionV1.shippingMethod) &&
+        Objects.equals(this.deliveryDetails, shippingOptionV1.deliveryDetails);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, description, promo, price, taxAmount, taxRate, preselected, shippingMethod);
+    return Objects.hash(id, name, description, promo, price, taxAmount, taxRate, preselected, shippingMethod, deliveryDetails);
   }
 
 
@@ -307,6 +281,7 @@ public class InstantShoppingShippingOptionV1 {
     sb.append("    taxRate: ").append(toIndentedString(taxRate)).append("\n");
     sb.append("    preselected: ").append(toIndentedString(preselected)).append("\n");
     sb.append("    shippingMethod: ").append(toIndentedString(shippingMethod)).append("\n");
+    sb.append("    deliveryDetails: ").append(toIndentedString(deliveryDetails)).append("\n");
     sb.append("}");
     return sb.toString();
   }

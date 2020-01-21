@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * CheckoutCheckboxV2
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:22:48.232Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:12:28.827Z")
 public class CheckoutCheckboxV2 {
   @JsonProperty("id")
   private String id = null;
@@ -38,6 +38,11 @@ public class CheckoutCheckboxV2 {
   @JsonProperty("required")
   private Boolean required = false;
 
+  public CheckoutCheckboxV2 id(String id) {
+    this.id = id;
+    return this;
+  }
+
    /**
    * Identifier used when presenting data back to merchant
    * @return id
@@ -45,6 +50,15 @@ public class CheckoutCheckboxV2 {
   @ApiModelProperty(example = "newsletter_opt_in", required = true, value = "Identifier used when presenting data back to merchant")
   public String getId() {
     return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public CheckoutCheckboxV2 text(String text) {
+    this.text = text;
+    return this;
   }
 
    /**
@@ -56,6 +70,15 @@ public class CheckoutCheckboxV2 {
     return text;
   }
 
+  public void setText(String text) {
+    this.text = text;
+  }
+
+  public CheckoutCheckboxV2 checked(Boolean checked) {
+    this.checked = checked;
+    return this;
+  }
+
    /**
    * Default state of the additional checkbox. It will use this value when loaded for the first time.
    * @return checked
@@ -65,6 +88,15 @@ public class CheckoutCheckboxV2 {
     return checked;
   }
 
+  public void setChecked(Boolean checked) {
+    this.checked = checked;
+  }
+
+  public CheckoutCheckboxV2 required(Boolean required) {
+    this.required = required;
+    return this;
+  }
+
    /**
    * Whether it is required for the consumer to check the additional checkbox box or not in order to complete the purchase.
    * @return required
@@ -72,6 +104,10 @@ public class CheckoutCheckboxV2 {
   @ApiModelProperty(required = true, value = "Whether it is required for the consumer to check the additional checkbox box or not in order to complete the purchase.")
   public Boolean isRequired() {
     return required;
+  }
+
+  public void setRequired(Boolean required) {
+    this.required = required;
   }
 
 

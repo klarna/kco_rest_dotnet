@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * InstantShoppingAddressV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-10T09:33:39.178Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
 public class InstantShoppingAddressV1 {
   @JsonProperty("given_name")
   private String givenName = null;
@@ -59,8 +59,8 @@ public class InstantShoppingAddressV1 {
   @JsonProperty("country")
   private String country = null;
 
-  @JsonProperty("organization_name")
-  private String organizationName = null;
+  @JsonProperty("care_of")
+  private String careOf = null;
 
   @JsonProperty("attention")
   private String attention = null;
@@ -263,22 +263,22 @@ public class InstantShoppingAddressV1 {
     this.country = country;
   }
 
-  public InstantShoppingAddressV1 organizationName(String organizationName) {
-    this.organizationName = organizationName;
+  public InstantShoppingAddressV1 careOf(String careOf) {
+    this.careOf = careOf;
     return this;
   }
 
    /**
-   * Get organizationName
-   * @return organizationName
+   * Text for the care of information.
+   * @return careOf
   **/
-  @ApiModelProperty(value = "")
-  public String getOrganizationName() {
-    return organizationName;
+  @ApiModelProperty(example = "Care of Ms Sunshine", value = "Text for the care of information.")
+  public String getCareOf() {
+    return careOf;
   }
 
-  public void setOrganizationName(String organizationName) {
-    this.organizationName = organizationName;
+  public void setCareOf(String careOf) {
+    this.careOf = careOf;
   }
 
   public InstantShoppingAddressV1 attention(String attention) {
@@ -320,13 +320,13 @@ public class InstantShoppingAddressV1 {
         Objects.equals(this.region, addressV1.region) &&
         Objects.equals(this.phone, addressV1.phone) &&
         Objects.equals(this.country, addressV1.country) &&
-        Objects.equals(this.organizationName, addressV1.organizationName) &&
+        Objects.equals(this.careOf, addressV1.careOf) &&
         Objects.equals(this.attention, addressV1.attention);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(givenName, familyName, email, title, streetAddress, streetAddress2, postalCode, city, region, phone, country, organizationName, attention);
+    return Objects.hash(givenName, familyName, email, title, streetAddress, streetAddress2, postalCode, city, region, phone, country, careOf, attention);
   }
 
 
@@ -346,7 +346,7 @@ public class InstantShoppingAddressV1 {
     sb.append("    region: ").append(toIndentedString(region)).append("\n");
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
-    sb.append("    organizationName: ").append(toIndentedString(organizationName)).append("\n");
+    sb.append("    careOf: ").append(toIndentedString(careOf)).append("\n");
     sb.append("    attention: ").append(toIndentedString(attention)).append("\n");
     sb.append("}");
     return sb.toString();

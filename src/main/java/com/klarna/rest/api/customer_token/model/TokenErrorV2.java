@@ -27,10 +27,10 @@ import java.util.List;
 /**
  * TokenErrorV2
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:27:39.889Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:21:37.701Z")
 public class TokenErrorV2 {
-  @JsonProperty("authorized_payment_method_v1")
-  private TokenAuthorizedPaymentMethod authorizedPaymentMethodV1 = null;
+  @JsonProperty("authorized_payment_method")
+  private TokenAuthorizedPaymentMethod authorizedPaymentMethod = null;
 
   @JsonProperty("correlation_id")
   private String correlationId = null;
@@ -47,22 +47,22 @@ public class TokenErrorV2 {
   @JsonProperty("reason")
   private String reason = null;
 
-  public TokenErrorV2 authorizedPaymentMethodV1(TokenAuthorizedPaymentMethod authorizedPaymentMethodV1) {
-    this.authorizedPaymentMethodV1 = authorizedPaymentMethodV1;
+  public TokenErrorV2 authorizedPaymentMethod(TokenAuthorizedPaymentMethod authorizedPaymentMethod) {
+    this.authorizedPaymentMethod = authorizedPaymentMethod;
     return this;
   }
 
    /**
-   * Get authorizedPaymentMethodV1
-   * @return authorizedPaymentMethodV1
+   * Get authorizedPaymentMethod
+   * @return authorizedPaymentMethod
   **/
   @ApiModelProperty(value = "")
-  public TokenAuthorizedPaymentMethod getAuthorizedPaymentMethodV1() {
-    return authorizedPaymentMethodV1;
+  public TokenAuthorizedPaymentMethod getAuthorizedPaymentMethod() {
+    return authorizedPaymentMethod;
   }
 
-  public void setAuthorizedPaymentMethodV1(TokenAuthorizedPaymentMethod authorizedPaymentMethodV1) {
-    this.authorizedPaymentMethodV1 = authorizedPaymentMethodV1;
+  public void setAuthorizedPaymentMethod(TokenAuthorizedPaymentMethod authorizedPaymentMethod) {
+    this.authorizedPaymentMethod = authorizedPaymentMethod;
   }
 
   public TokenErrorV2 correlationId(String correlationId) {
@@ -173,7 +173,7 @@ public class TokenErrorV2 {
       return false;
     }
     TokenErrorV2 errorV2 = (TokenErrorV2) o;
-    return Objects.equals(this.authorizedPaymentMethodV1, errorV2.authorizedPaymentMethodV1) &&
+    return Objects.equals(this.authorizedPaymentMethod, errorV2.authorizedPaymentMethod) &&
         Objects.equals(this.correlationId, errorV2.correlationId) &&
         Objects.equals(this.errorCode, errorV2.errorCode) &&
         Objects.equals(this.errorMessages, errorV2.errorMessages) &&
@@ -183,7 +183,7 @@ public class TokenErrorV2 {
 
   @Override
   public int hashCode() {
-    return Objects.hash(authorizedPaymentMethodV1, correlationId, errorCode, errorMessages, fraudStatus, reason);
+    return Objects.hash(authorizedPaymentMethod, correlationId, errorCode, errorMessages, fraudStatus, reason);
   }
 
 
@@ -192,7 +192,7 @@ public class TokenErrorV2 {
     StringBuilder sb = new StringBuilder();
     sb.append("class TokenErrorV2 {\n");
     
-    sb.append("    authorizedPaymentMethodV1: ").append(toIndentedString(authorizedPaymentMethodV1)).append("\n");
+    sb.append("    authorizedPaymentMethod: ").append(toIndentedString(authorizedPaymentMethod)).append("\n");
     sb.append("    correlationId: ").append(toIndentedString(correlationId)).append("\n");
     sb.append("    errorCode: ").append(toIndentedString(errorCode)).append("\n");
     sb.append("    errorMessages: ").append(toIndentedString(errorMessages)).append("\n");

@@ -25,7 +25,7 @@ import org.threeten.bp.LocalDate;
 /**
  * OrderManagementCustomer
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T10:02:16.667Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T09:41:31.881Z")
 public class OrderManagementCustomer {
   @JsonProperty("date_of_birth")
   private LocalDate dateOfBirth = null;

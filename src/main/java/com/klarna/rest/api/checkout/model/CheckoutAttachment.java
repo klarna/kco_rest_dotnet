@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * CheckoutAttachment
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:22:48.232Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:12:28.827Z")
 public class CheckoutAttachment {
   @JsonProperty("content_type")
   private String contentType = null;
@@ -38,10 +38,10 @@ public class CheckoutAttachment {
   }
 
    /**
-   * The content type of the body property.
+   * The content type of the body. It is usually represented as \&quot;application/vnd.klarna.internal.emd-v2+json\&quot;
    * @return contentType
   **/
-  @ApiModelProperty(example = "application/vnd.klarna.internal.emd-v2+json", required = true, value = "The content type of the body property.")
+  @ApiModelProperty(example = "application/vnd.klarna.internal.emd-v2+json", required = true, value = "The content type of the body. It is usually represented as \"application/vnd.klarna.internal.emd-v2+json\"")
   public String getContentType() {
     return contentType;
   }
@@ -56,10 +56,10 @@ public class CheckoutAttachment {
   }
 
    /**
-   * This field should be a &lt;b&gt;string&lt;/b&gt; containing the body of the attachment. The body should be an object containing any of the keys and sub objects described below serialised to JSON.
+   * The content of the extra merchant data which should be presented as a string inside this property. The body should be an object containing any of the keys and sub objects described below serialised to JSON.
    * @return body
   **/
-  @ApiModelProperty(example = "{\"marketplace_seller_info\":[{\"product_category\":\"Women's Fashion\",\"product_name\":\"Women Sweatshirt\"}]}", required = true, value = "This field should be a <b>string</b> containing the body of the attachment. The body should be an object containing any of the keys and sub objects described below serialised to JSON.")
+  @ApiModelProperty(example = "{\"hotel_reservation_details\": [{\"pnr\": \"VH67899\",\"hotel_intinerary\": [{\"hotel_name\": \"Hotel ltd.\",\"address\": {\"street_address\": \"Storgatan 3\",\"postal_code\": \"113 35\",\"city\": \"Stockholm\",\"country\": \"Sweden\"},\"start_time\": \"2019-01-31T15:00:00Z\",\"end_time\": \"2019-01-31T15:30:00Z\",\"number_of_rooms\": 2,\"ticket_delivery_method\": \"email\",\"ticket_delivery_recipient\": \"jonas.larlsson@klarna.com\",\"hotel_price\": 23050,\"class\": \"Business\",\"passenger_id\": [1]}],\"passengers\": [{\"id\": 1,\"title\": \"mr\",\"first_name\": \"Adam\",\"last_name\": \"Adamson\"}],\"insurance\": [{\"insurance_company\": \"Insurance Company X\",\"insurance_type\": \"travel\",\"insurance_price\": 0}],\"affiliate_name\": \"TradeMaxi AB\"}],\"air_reservation_details\": [{\"pnr\": \"VH67899\",\"intinerary\": [{\"departure\": \"ARN\",\"departure_city\": \"Stockholm\",\"arrival\": \"NCE\",\"arrival_city\": \"Nice\",\"carrier\": \"SK\",\"segment_price\": 34000,\"departure_date\": \"2019-01-30T15:00:00Z\",\"ticket_delivery_method\": \"email\",\"ticket_delivery_recipient\": \"jonas.larlsson@klarna.com\",\"passenger_id\": [1]}],\"passengers\": [{\"id\": 1,\"title\": \"mr\",\"first_name\": \"Adam\",\"last_name\": \"Adamson\"}],\"insurance\": [{\"insurance_company\": \"Insurance Company X\",\"insurance_type\": \"travel\",\"insurance_price\": 0}],\"affiliate_name\": \"TradeMaxi AB\"}],\"customer_account_info\": [{\"unique_account_identifier\": \"12345\",\"account_registration_date\": \"2016-01-24T15:00:00Z\",\"account_last_modified\": \"2017-01-24T15:00:00Z\"}],\"payment_history_full\": [{\"payment_option\": \"card\",\"number_paid_purchases\": 2,\"total_amount_paid_purchases\": 1234,\"date_of_last_paid_purchase\": \"2018-01-24T15:00:00Z\",\"date_of_first_paid_purchase\": \"2018-01-24T15:00:00Z\"}]}", required = true, value = "The content of the extra merchant data which should be presented as a string inside this property. The body should be an object containing any of the keys and sub objects described below serialised to JSON.")
   public String getBody() {
     return body;
   }

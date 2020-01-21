@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * InstantShoppingCustomerV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-10T09:33:39.178Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
 public class InstantShoppingCustomerV1 {
   @JsonProperty("date_of_birth")
   private String dateOfBirth = null;
@@ -40,18 +40,6 @@ public class InstantShoppingCustomerV1 {
 
   @JsonProperty("national_identification_number")
   private String nationalIdentificationNumber = null;
-
-  @JsonProperty("type")
-  private String type = null;
-
-  @JsonProperty("vat_id")
-  private String vatId = null;
-
-  @JsonProperty("organization_registration_id")
-  private String organizationRegistrationId = null;
-
-  @JsonProperty("organization_entity_type")
-  private String organizationEntityType = null;
 
   public InstantShoppingCustomerV1 dateOfBirth(String dateOfBirth) {
     this.dateOfBirth = dateOfBirth;
@@ -143,78 +131,6 @@ public class InstantShoppingCustomerV1 {
     this.nationalIdentificationNumber = nationalIdentificationNumber;
   }
 
-  public InstantShoppingCustomerV1 type(String type) {
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Type
-   * @return type
-  **/
-  @ApiModelProperty(example = "person", value = "Type")
-  public String getType() {
-    return type;
-  }
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
-  public InstantShoppingCustomerV1 vatId(String vatId) {
-    this.vatId = vatId;
-    return this;
-  }
-
-   /**
-   * VAT id
-   * @return vatId
-  **/
-  @ApiModelProperty(value = "VAT id")
-  public String getVatId() {
-    return vatId;
-  }
-
-  public void setVatId(String vatId) {
-    this.vatId = vatId;
-  }
-
-  public InstantShoppingCustomerV1 organizationRegistrationId(String organizationRegistrationId) {
-    this.organizationRegistrationId = organizationRegistrationId;
-    return this;
-  }
-
-   /**
-   * Organization registration id
-   * @return organizationRegistrationId
-  **/
-  @ApiModelProperty(example = "556737-0431", value = "Organization registration id")
-  public String getOrganizationRegistrationId() {
-    return organizationRegistrationId;
-  }
-
-  public void setOrganizationRegistrationId(String organizationRegistrationId) {
-    this.organizationRegistrationId = organizationRegistrationId;
-  }
-
-  public InstantShoppingCustomerV1 organizationEntityType(String organizationEntityType) {
-    this.organizationEntityType = organizationEntityType;
-    return this;
-  }
-
-   /**
-   * Organization entity type
-   * @return organizationEntityType
-  **/
-  @ApiModelProperty(example = "LIMITED_COMPANY", value = "Organization entity type")
-  public String getOrganizationEntityType() {
-    return organizationEntityType;
-  }
-
-  public void setOrganizationEntityType(String organizationEntityType) {
-    this.organizationEntityType = organizationEntityType;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -229,16 +145,12 @@ public class InstantShoppingCustomerV1 {
         Objects.equals(this.title, customerV1.title) &&
         Objects.equals(this.gender, customerV1.gender) &&
         Objects.equals(this.lastFourSsn, customerV1.lastFourSsn) &&
-        Objects.equals(this.nationalIdentificationNumber, customerV1.nationalIdentificationNumber) &&
-        Objects.equals(this.type, customerV1.type) &&
-        Objects.equals(this.vatId, customerV1.vatId) &&
-        Objects.equals(this.organizationRegistrationId, customerV1.organizationRegistrationId) &&
-        Objects.equals(this.organizationEntityType, customerV1.organizationEntityType);
+        Objects.equals(this.nationalIdentificationNumber, customerV1.nationalIdentificationNumber);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(dateOfBirth, title, gender, lastFourSsn, nationalIdentificationNumber, type, vatId, organizationRegistrationId, organizationEntityType);
+    return Objects.hash(dateOfBirth, title, gender, lastFourSsn, nationalIdentificationNumber);
   }
 
 
@@ -252,10 +164,6 @@ public class InstantShoppingCustomerV1 {
     sb.append("    gender: ").append(toIndentedString(gender)).append("\n");
     sb.append("    lastFourSsn: ").append(toIndentedString(lastFourSsn)).append("\n");
     sb.append("    nationalIdentificationNumber: ").append(toIndentedString(nationalIdentificationNumber)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    vatId: ").append(toIndentedString(vatId)).append("\n");
-    sb.append("    organizationRegistrationId: ").append(toIndentedString(organizationRegistrationId)).append("\n");
-    sb.append("    organizationEntityType: ").append(toIndentedString(organizationEntityType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -19,11 +19,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingAttachmentV1;
-import com.klarna.rest.api.instant_shopping.model.InstantShoppingButtonSetupOptionsV1MerchantUrls;
-import com.klarna.rest.api.instant_shopping.model.InstantShoppingButtonSetupOptionsV1Styling;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingBrandingOptionsV1;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingItemV1;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingMerchantRequestButtonSetupOptionsV1;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingMerchantUrlsV1;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingOptionsV1;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingOrderLineV1;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingShippingAttributesV1;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingShippingOptionV1;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingStylingOptionsV1;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
@@ -33,16 +37,16 @@ import java.util.List;
  * ButtonSetupOptions defines the attributes for a button in Instant Shopping.
  */
 @ApiModel(description = "ButtonSetupOptions defines the attributes for a button in Instant Shopping.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-10T09:33:39.178Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
 public class InstantShoppingButtonSetupOptionsV1 {
-  @JsonProperty("button_key")
-  private String buttonKey = null;
+  @JsonProperty("name")
+  private String name = null;
 
   @JsonProperty("disabled")
   private Boolean disabled = null;
 
   @JsonProperty("merchant_urls")
-  private InstantShoppingButtonSetupOptionsV1MerchantUrls merchantUrls = null;
+  private InstantShoppingMerchantUrlsV1 merchantUrls = null;
 
   @JsonProperty("purchase_currency")
   private String purchaseCurrency = null;
@@ -58,12 +62,6 @@ public class InstantShoppingButtonSetupOptionsV1 {
 
   @JsonProperty("locale")
   private String locale = null;
-
-  @JsonProperty("order_amount")
-  private Long orderAmount = null;
-
-  @JsonProperty("order_tax_amount")
-  private Long orderTaxAmount = null;
 
   @JsonProperty("merchant_reference1")
   private String merchantReference1 = null;
@@ -83,28 +81,37 @@ public class InstantShoppingButtonSetupOptionsV1 {
   @JsonProperty("order_lines")
   private List<InstantShoppingOrderLineV1> orderLines = null;
 
+  @JsonProperty("items")
+  private List<InstantShoppingItemV1> items = null;
+
   @JsonProperty("shipping_options")
   private List<InstantShoppingShippingOptionV1> shippingOptions = null;
 
-  @JsonProperty("styling")
-  private InstantShoppingButtonSetupOptionsV1Styling styling = null;
+  @JsonProperty("shipping_attributes")
+  private InstantShoppingShippingAttributesV1 shippingAttributes = null;
 
-  public InstantShoppingButtonSetupOptionsV1 buttonKey(String buttonKey) {
-    this.buttonKey = buttonKey;
+  @JsonProperty("styling")
+  private InstantShoppingStylingOptionsV1 styling = null;
+
+  @JsonProperty("button_key")
+  private String buttonKey = null;
+
+  public InstantShoppingButtonSetupOptionsV1 name(String name) {
+    this.name = name;
     return this;
   }
 
    /**
-   * Identifier of the button key. Readonly value. Set by the server.
-   * @return buttonKey
+   * Name of the button key.
+   * @return name
   **/
-  @ApiModelProperty(value = "Identifier of the button key. Readonly value. Set by the server.")
-  public String getButtonKey() {
-    return buttonKey;
+  @ApiModelProperty(example = "Blogger X campaign", value = "Name of the button key.")
+  public String getName() {
+    return name;
   }
 
-  public void setButtonKey(String buttonKey) {
-    this.buttonKey = buttonKey;
+  public void setName(String name) {
+    this.name = name;
   }
 
   public InstantShoppingButtonSetupOptionsV1 disabled(Boolean disabled) {
@@ -116,7 +123,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
    * Controls the visibility of an Instant Shopping button
    * @return disabled
   **/
-  @ApiModelProperty(value = "Controls the visibility of an Instant Shopping button")
+  @ApiModelProperty(example = "false", value = "Controls the visibility of an Instant Shopping button")
   public Boolean isDisabled() {
     return disabled;
   }
@@ -125,21 +132,21 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.disabled = disabled;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 merchantUrls(InstantShoppingButtonSetupOptionsV1MerchantUrls merchantUrls) {
+  public InstantShoppingButtonSetupOptionsV1 merchantUrls(InstantShoppingMerchantUrlsV1 merchantUrls) {
     this.merchantUrls = merchantUrls;
     return this;
   }
 
    /**
-   * Get merchantUrls
+   *  
    * @return merchantUrls
   **/
-  @ApiModelProperty(required = true, value = "")
-  public InstantShoppingButtonSetupOptionsV1MerchantUrls getMerchantUrls() {
+  @ApiModelProperty(required = true, value = " ")
+  public InstantShoppingMerchantUrlsV1 getMerchantUrls() {
     return merchantUrls;
   }
 
-  public void setMerchantUrls(InstantShoppingButtonSetupOptionsV1MerchantUrls merchantUrls) {
+  public void setMerchantUrls(InstantShoppingMerchantUrlsV1 merchantUrls) {
     this.merchantUrls = merchantUrls;
   }
 
@@ -152,7 +159,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
    * Get purchaseCurrency
    * @return purchaseCurrency
   **/
-  @ApiModelProperty(example = "US", value = "")
+  @ApiModelProperty(example = "SEK", value = "")
   public String getPurchaseCurrency() {
     return purchaseCurrency;
   }
@@ -170,7 +177,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
    * ISO 3166 alpha-2 purchase country
    * @return purchaseCountry
   **/
-  @ApiModelProperty(value = "ISO 3166 alpha-2 purchase country")
+  @ApiModelProperty(example = "SE", value = "ISO 3166 alpha-2 purchase country")
   public String getPurchaseCountry() {
     return purchaseCountry;
   }
@@ -196,7 +203,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
    * A list of countries (ISO 3166 alpha-2) to specify allowed billing countries.
    * @return billingCountries
   **/
-  @ApiModelProperty(value = "A list of countries (ISO 3166 alpha-2) to specify allowed billing countries.")
+  @ApiModelProperty(example = "[\"SE\",\"NO\",\"FI\"]", value = "A list of countries (ISO 3166 alpha-2) to specify allowed billing countries.")
   public List<String> getBillingCountries() {
     return billingCountries;
   }
@@ -222,7 +229,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
    * A list of countries (ISO 3166 alpha-2). Default is purchase_country only.
    * @return shippingCountries
   **/
-  @ApiModelProperty(value = "A list of countries (ISO 3166 alpha-2). Default is purchase_country only.")
+  @ApiModelProperty(example = "[\"SE\",\"NO\",\"FI\"]", value = "A list of countries (ISO 3166 alpha-2). Default is purchase_country only.")
   public List<String> getShippingCountries() {
     return shippingCountries;
   }
@@ -240,49 +247,13 @@ public class InstantShoppingButtonSetupOptionsV1 {
    * RFC 1766 customer&#39;s locale.
    * @return locale
   **/
-  @ApiModelProperty(value = "RFC 1766 customer's locale.")
+  @ApiModelProperty(example = "en-SE", value = "RFC 1766 customer's locale.")
   public String getLocale() {
     return locale;
   }
 
   public void setLocale(String locale) {
     this.locale = locale;
-  }
-
-  public InstantShoppingButtonSetupOptionsV1 orderAmount(Long orderAmount) {
-    this.orderAmount = orderAmount;
-    return this;
-  }
-
-   /**
-   * minor units according to ISO 4217 - should be calculated if not already set and order_lines are given
-   * @return orderAmount
-  **/
-  @ApiModelProperty(value = "minor units according to ISO 4217 - should be calculated if not already set and order_lines are given")
-  public Long getOrderAmount() {
-    return orderAmount;
-  }
-
-  public void setOrderAmount(Long orderAmount) {
-    this.orderAmount = orderAmount;
-  }
-
-  public InstantShoppingButtonSetupOptionsV1 orderTaxAmount(Long orderTaxAmount) {
-    this.orderTaxAmount = orderTaxAmount;
-    return this;
-  }
-
-   /**
-   * minor units according to ISO 4217 - should be calculated if not already set and order_lines are given
-   * @return orderTaxAmount
-  **/
-  @ApiModelProperty(value = "minor units according to ISO 4217 - should be calculated if not already set and order_lines are given")
-  public Long getOrderTaxAmount() {
-    return orderTaxAmount;
-  }
-
-  public void setOrderTaxAmount(Long orderTaxAmount) {
-    this.orderTaxAmount = orderTaxAmount;
   }
 
   public InstantShoppingButtonSetupOptionsV1 merchantReference1(String merchantReference1) {
@@ -294,7 +265,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
    * Used for storing merchant&#39;s internal order number or other reference
    * @return merchantReference1
   **/
-  @ApiModelProperty(value = "Used for storing merchant's internal order number or other reference")
+  @ApiModelProperty(example = "45aa52f387871e3a210645d4", value = "Used for storing merchant's internal order number or other reference")
   public String getMerchantReference1() {
     return merchantReference1;
   }
@@ -312,7 +283,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
    * Used for storing merchant&#39;s internal order number or other reference.
    * @return merchantReference2
   **/
-  @ApiModelProperty(value = "Used for storing merchant's internal order number or other reference.")
+  @ApiModelProperty(example = "45aa52f387871e3a210645d4", value = "Used for storing merchant's internal order number or other reference.")
   public String getMerchantReference2() {
     return merchantReference2;
   }
@@ -348,7 +319,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
    * Pass through field (max 1024 characters).
    * @return merchantData
   **/
-  @ApiModelProperty(value = "Pass through field (max 1024 characters).")
+  @ApiModelProperty(example = "some reference", value = "Pass through field (max 1024 characters).")
   public String getMerchantData() {
     return merchantData;
   }
@@ -401,6 +372,32 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.orderLines = orderLines;
   }
 
+  public InstantShoppingButtonSetupOptionsV1 items(List<InstantShoppingItemV1> items) {
+    this.items = items;
+    return this;
+  }
+
+  public InstantShoppingButtonSetupOptionsV1 addItemsItem(InstantShoppingItemV1 itemsItem) {
+    if (this.items == null) {
+      this.items = new ArrayList<InstantShoppingItemV1>();
+    }
+    this.items.add(itemsItem);
+    return this;
+  }
+
+   /**
+   * List of elements, each describe every possible product variation as a unique combination of product attributes, e.g. color, size, material.
+   * @return items
+  **/
+  @ApiModelProperty(value = "List of elements, each describe every possible product variation as a unique combination of product attributes, e.g. color, size, material.")
+  public List<InstantShoppingItemV1> getItems() {
+    return items;
+  }
+
+  public void setItems(List<InstantShoppingItemV1> items) {
+    this.items = items;
+  }
+
   public InstantShoppingButtonSetupOptionsV1 shippingOptions(List<InstantShoppingShippingOptionV1> shippingOptions) {
     this.shippingOptions = shippingOptions;
     return this;
@@ -427,7 +424,25 @@ public class InstantShoppingButtonSetupOptionsV1 {
     this.shippingOptions = shippingOptions;
   }
 
-  public InstantShoppingButtonSetupOptionsV1 styling(InstantShoppingButtonSetupOptionsV1Styling styling) {
+  public InstantShoppingButtonSetupOptionsV1 shippingAttributes(InstantShoppingShippingAttributesV1 shippingAttributes) {
+    this.shippingAttributes = shippingAttributes;
+    return this;
+  }
+
+   /**
+   * Shipping attributes of this item
+   * @return shippingAttributes
+  **/
+  @ApiModelProperty(value = "Shipping attributes of this item")
+  public InstantShoppingShippingAttributesV1 getShippingAttributes() {
+    return shippingAttributes;
+  }
+
+  public void setShippingAttributes(InstantShoppingShippingAttributesV1 shippingAttributes) {
+    this.shippingAttributes = shippingAttributes;
+  }
+
+  public InstantShoppingButtonSetupOptionsV1 styling(InstantShoppingStylingOptionsV1 styling) {
     this.styling = styling;
     return this;
   }
@@ -437,12 +452,30 @@ public class InstantShoppingButtonSetupOptionsV1 {
    * @return styling
   **/
   @ApiModelProperty(value = "")
-  public InstantShoppingButtonSetupOptionsV1Styling getStyling() {
+  public InstantShoppingStylingOptionsV1 getStyling() {
     return styling;
   }
 
-  public void setStyling(InstantShoppingButtonSetupOptionsV1Styling styling) {
+  public void setStyling(InstantShoppingStylingOptionsV1 styling) {
     this.styling = styling;
+  }
+
+  public InstantShoppingButtonSetupOptionsV1 buttonKey(String buttonKey) {
+    this.buttonKey = buttonKey;
+    return this;
+  }
+
+   /**
+   * Identifier of the button key. Readonly value. Set by the server.
+   * @return buttonKey
+  **/
+  @ApiModelProperty(example = "123e4567-e89b-12d3-a456-426655440000", value = "Identifier of the button key. Readonly value. Set by the server.")
+  public String getButtonKey() {
+    return buttonKey;
+  }
+
+  public void setButtonKey(String buttonKey) {
+    this.buttonKey = buttonKey;
   }
 
 
@@ -455,7 +488,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
       return false;
     }
     InstantShoppingButtonSetupOptionsV1 buttonSetupOptionsV1 = (InstantShoppingButtonSetupOptionsV1) o;
-    return Objects.equals(this.buttonKey, buttonSetupOptionsV1.buttonKey) &&
+    return Objects.equals(this.name, buttonSetupOptionsV1.name) &&
         Objects.equals(this.disabled, buttonSetupOptionsV1.disabled) &&
         Objects.equals(this.merchantUrls, buttonSetupOptionsV1.merchantUrls) &&
         Objects.equals(this.purchaseCurrency, buttonSetupOptionsV1.purchaseCurrency) &&
@@ -463,21 +496,22 @@ public class InstantShoppingButtonSetupOptionsV1 {
         Objects.equals(this.billingCountries, buttonSetupOptionsV1.billingCountries) &&
         Objects.equals(this.shippingCountries, buttonSetupOptionsV1.shippingCountries) &&
         Objects.equals(this.locale, buttonSetupOptionsV1.locale) &&
-        Objects.equals(this.orderAmount, buttonSetupOptionsV1.orderAmount) &&
-        Objects.equals(this.orderTaxAmount, buttonSetupOptionsV1.orderTaxAmount) &&
         Objects.equals(this.merchantReference1, buttonSetupOptionsV1.merchantReference1) &&
         Objects.equals(this.merchantReference2, buttonSetupOptionsV1.merchantReference2) &&
         Objects.equals(this.options, buttonSetupOptionsV1.options) &&
         Objects.equals(this.merchantData, buttonSetupOptionsV1.merchantData) &&
         Objects.equals(this.attachment, buttonSetupOptionsV1.attachment) &&
         Objects.equals(this.orderLines, buttonSetupOptionsV1.orderLines) &&
+        Objects.equals(this.items, buttonSetupOptionsV1.items) &&
         Objects.equals(this.shippingOptions, buttonSetupOptionsV1.shippingOptions) &&
-        Objects.equals(this.styling, buttonSetupOptionsV1.styling);
+        Objects.equals(this.shippingAttributes, buttonSetupOptionsV1.shippingAttributes) &&
+        Objects.equals(this.styling, buttonSetupOptionsV1.styling) &&
+        Objects.equals(this.buttonKey, buttonSetupOptionsV1.buttonKey);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(buttonKey, disabled, merchantUrls, purchaseCurrency, purchaseCountry, billingCountries, shippingCountries, locale, orderAmount, orderTaxAmount, merchantReference1, merchantReference2, options, merchantData, attachment, orderLines, shippingOptions, styling);
+    return Objects.hash(name, disabled, merchantUrls, purchaseCurrency, purchaseCountry, billingCountries, shippingCountries, locale, merchantReference1, merchantReference2, options, merchantData, attachment, orderLines, items, shippingOptions, shippingAttributes, styling, buttonKey);
   }
 
 
@@ -486,7 +520,7 @@ public class InstantShoppingButtonSetupOptionsV1 {
     StringBuilder sb = new StringBuilder();
     sb.append("class InstantShoppingButtonSetupOptionsV1 {\n");
     
-    sb.append("    buttonKey: ").append(toIndentedString(buttonKey)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    disabled: ").append(toIndentedString(disabled)).append("\n");
     sb.append("    merchantUrls: ").append(toIndentedString(merchantUrls)).append("\n");
     sb.append("    purchaseCurrency: ").append(toIndentedString(purchaseCurrency)).append("\n");
@@ -494,16 +528,17 @@ public class InstantShoppingButtonSetupOptionsV1 {
     sb.append("    billingCountries: ").append(toIndentedString(billingCountries)).append("\n");
     sb.append("    shippingCountries: ").append(toIndentedString(shippingCountries)).append("\n");
     sb.append("    locale: ").append(toIndentedString(locale)).append("\n");
-    sb.append("    orderAmount: ").append(toIndentedString(orderAmount)).append("\n");
-    sb.append("    orderTaxAmount: ").append(toIndentedString(orderTaxAmount)).append("\n");
     sb.append("    merchantReference1: ").append(toIndentedString(merchantReference1)).append("\n");
     sb.append("    merchantReference2: ").append(toIndentedString(merchantReference2)).append("\n");
     sb.append("    options: ").append(toIndentedString(options)).append("\n");
     sb.append("    merchantData: ").append(toIndentedString(merchantData)).append("\n");
     sb.append("    attachment: ").append(toIndentedString(attachment)).append("\n");
     sb.append("    orderLines: ").append(toIndentedString(orderLines)).append("\n");
+    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    shippingOptions: ").append(toIndentedString(shippingOptions)).append("\n");
+    sb.append("    shippingAttributes: ").append(toIndentedString(shippingAttributes)).append("\n");
     sb.append("    styling: ").append(toIndentedString(styling)).append("\n");
+    sb.append("    buttonKey: ").append(toIndentedString(buttonKey)).append("\n");
     sb.append("}");
     return sb.toString();
   }

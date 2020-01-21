@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * InstantShoppingMerchantDeclineOrderRequestV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-10T09:33:39.178Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
 public class InstantShoppingMerchantDeclineOrderRequestV1 {
   @JsonProperty("deny_redirect_url")
   private String denyRedirectUrl = null;
@@ -44,7 +44,7 @@ public class InstantShoppingMerchantDeclineOrderRequestV1 {
    * If you specify a redirect_url then we will redirect the consumer to this page and do not show any information dialog within the Instant Shopping flow.
    * @return denyRedirectUrl
   **/
-  @ApiModelProperty(example = "https://theestore.se/rejected.html", value = "If you specify a redirect_url then we will redirect the consumer to this page and do not show any information dialog within the Instant Shopping flow.")
+  @ApiModelProperty(example = "https://example.com/rejected.html", value = "If you specify a redirect_url then we will redirect the consumer to this page and do not show any information dialog within the Instant Shopping flow.")
   public String getDenyRedirectUrl() {
     return denyRedirectUrl;
   }

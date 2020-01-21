@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * CheckoutMerchantUrls
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:22:48.232Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:12:28.827Z")
 public class CheckoutMerchantUrls {
   @JsonProperty("terms")
   private String terms = null;
@@ -62,10 +62,10 @@ public class CheckoutMerchantUrls {
   }
 
    /**
-   * URL of merchant terms and conditions. Should be different than checkout, confirmation and push URLs.(max 2000 characters)
+   * URL for the terms and conditions page of the merchant. The URL will be displayed inside the Klarna Checkout iFrame.(max 2000 characters) Example: \&quot;https://merchant.com/terms\&quot;
    * @return terms
   **/
-  @ApiModelProperty(example = "https://www.estore.com/terms.html", required = true, value = "URL of merchant terms and conditions. Should be different than checkout, confirmation and push URLs.(max 2000 characters)")
+  @ApiModelProperty(example = "https://www.example.com/terms.html", required = true, value = "URL for the terms and conditions page of the merchant. The URL will be displayed inside the Klarna Checkout iFrame.(max 2000 characters) Example: \"https://merchant.com/terms\"")
   public String getTerms() {
     return terms;
   }
@@ -80,10 +80,10 @@ public class CheckoutMerchantUrls {
   }
 
    /**
-   * URL of merchant cancellation terms.(max 2000 characters)
+   * URL for the cancellation terms page of the merchant. The URL will be displayed in the email that is sent to the customer after the order is captured.(max 2000 characters) Example: \&quot;https://merchant.com/terms/cancelation\&quot;
    * @return cancellationTerms
   **/
-  @ApiModelProperty(example = "https://www.estore.com/terms/cancellation.html", value = "URL of merchant cancellation terms.(max 2000 characters)")
+  @ApiModelProperty(example = "https://www.example.com/terms/cancellation.html", value = "URL for the cancellation terms page of the merchant. The URL will be displayed in the email that is sent to the customer after the order is captured.(max 2000 characters) Example: \"https://merchant.com/terms/cancelation\"")
   public String getCancellationTerms() {
     return cancellationTerms;
   }
@@ -98,10 +98,10 @@ public class CheckoutMerchantUrls {
   }
 
    /**
-   * URL of merchant checkout page. Should be different than terms, confirmation and push URLs. (max 2000 characters)
+   * URL for the checkout page of the merchant. (max 2000 characters) Example: \&quot;https://merchant.com/checkout\&quot;
    * @return checkout
   **/
-  @ApiModelProperty(example = "https://www.estore.com/checkout.html", required = true, value = "URL of merchant checkout page. Should be different than terms, confirmation and push URLs. (max 2000 characters)")
+  @ApiModelProperty(example = "https://www.example.com/checkout.html", required = true, value = "URL for the checkout page of the merchant. (max 2000 characters) Example: \"https://merchant.com/checkout\"")
   public String getCheckout() {
     return checkout;
   }
@@ -116,10 +116,10 @@ public class CheckoutMerchantUrls {
   }
 
    /**
-   * URL of merchant confirmation page. Should be different than checkout and confirmation URLs. (max 2000 characters)
+   * URL of the merchant confirmation page. The consumer will be redirected back to the confirmation page if the authorization is successful after the customer clicks on the ‘Place Order’ button inside checkout.(max 2000 characters) Example: \&quot;https://merchant.com/confirmation\&quot;
    * @return confirmation
   **/
-  @ApiModelProperty(example = "https://www.estore.com/confirmation.html", required = true, value = "URL of merchant confirmation page. Should be different than checkout and confirmation URLs. (max 2000 characters)")
+  @ApiModelProperty(example = "https://www.example.com/confirmation.html", required = true, value = "URL of the merchant confirmation page. The consumer will be redirected back to the confirmation page if the authorization is successful after the customer clicks on the ‘Place Order’ button inside checkout.(max 2000 characters) Example: \"https://merchant.com/confirmation\"")
   public String getConfirmation() {
     return confirmation;
   }
@@ -134,10 +134,10 @@ public class CheckoutMerchantUrls {
   }
 
    /**
-   * URL that will be requested when an order is completed. Should be different than checkout and confirmation URLs. (max 2000 characters)
+   * URL that will be used for push notification when an order is completed. Should be different than checkout and confirmation URLs. (max 2000 characters) Example: \&quot;https://merchant.com/push\&quot;
    * @return push
   **/
-  @ApiModelProperty(example = "https://www.estore.com/api/push", required = true, value = "URL that will be requested when an order is completed. Should be different than checkout and confirmation URLs. (max 2000 characters)")
+  @ApiModelProperty(example = "https://www.example.com/api/push", required = true, value = "URL that will be used for push notification when an order is completed. Should be different than checkout and confirmation URLs. (max 2000 characters) Example: \"https://merchant.com/push\"")
   public String getPush() {
     return push;
   }
@@ -152,10 +152,10 @@ public class CheckoutMerchantUrls {
   }
 
    /**
-   * URL that will be requested for final merchant validation. (must be https, max 2000 characters)
+   * URL that will be requested for final merchant validation. (must be https, max 2000 characters) Example: \&quot;https://merchant.com/validation\&quot;
    * @return validation
   **/
-  @ApiModelProperty(example = "https://www.estore.com/api/validation", value = "URL that will be requested for final merchant validation. (must be https, max 2000 characters)")
+  @ApiModelProperty(example = "https://www.example.com/api/validation", value = "URL that will be requested for final merchant validation. (must be https, max 2000 characters) Example: \"https://merchant.com/validation\"")
   public String getValidation() {
     return validation;
   }
@@ -170,10 +170,10 @@ public class CheckoutMerchantUrls {
   }
 
    /**
-   * URL for shipping option update. (must be https, max 2000 characters)
+   * URL for shipping option update. (must be https, max 2000 characters) Example: \&quot;https://merchant.com/shippingoptionupdate\&quot;
    * @return shippingOptionUpdate
   **/
-  @ApiModelProperty(example = "https://www.estore.com/api/shipment", value = "URL for shipping option update. (must be https, max 2000 characters)")
+  @ApiModelProperty(example = "https://www.example.com/api/shipment", value = "URL for shipping option update. (must be https, max 2000 characters) Example: \"https://merchant.com/shippingoptionupdate\"")
   public String getShippingOptionUpdate() {
     return shippingOptionUpdate;
   }
@@ -188,10 +188,10 @@ public class CheckoutMerchantUrls {
   }
 
    /**
-   * URL for shipping, tax and purchase currency updates. Will be called on address changes. (must be https, max 2000 characters)
+   * URL for shipping, tax and purchase currency updates. Will be called on address changes. (must be https, max 2000 characters) Example: \&quot;https://merchant.com/addressupdate\&quot;
    * @return addressUpdate
   **/
-  @ApiModelProperty(example = "https://www.estore.com/api/address", value = "URL for shipping, tax and purchase currency updates. Will be called on address changes. (must be https, max 2000 characters)")
+  @ApiModelProperty(example = "https://www.example.com/api/address", value = "URL for shipping, tax and purchase currency updates. Will be called on address changes. (must be https, max 2000 characters) Example: \"https://merchant.com/addressupdate\"")
   public String getAddressUpdate() {
     return addressUpdate;
   }
@@ -206,10 +206,10 @@ public class CheckoutMerchantUrls {
   }
 
    /**
-   * URL for notifications on pending orders. (max 2000 characters)
+   * URL for notifications on pending orders. (max 2000 characters) Example: \&quot;https://merchant.com/notification/{checkout.order.id}\&quot;
    * @return notification
   **/
-  @ApiModelProperty(example = "https://www.estore.com/api/pending", value = "URL for notifications on pending orders. (max 2000 characters)")
+  @ApiModelProperty(example = "https://www.example.com/api/pending", value = "URL for notifications on pending orders. (max 2000 characters) Example: \"https://merchant.com/notification/{checkout.order.id}\"")
   public String getNotification() {
     return notification;
   }
@@ -224,10 +224,10 @@ public class CheckoutMerchantUrls {
   }
 
    /**
-   * URL for shipping, tax and purchase currency updates. Will be called on purchase country changes. (must be https, max 2000 characters)
+   * URL for shipping, tax and purchase currency updates. Will be called on billing or shipping country changes. (must be https, max 2000 characters) Example: \&quot;https://merchant.com/countrychange\&quot;
    * @return countryChange
   **/
-  @ApiModelProperty(example = "https://www.estore.com/api/country", value = "URL for shipping, tax and purchase currency updates. Will be called on purchase country changes. (must be https, max 2000 characters)")
+  @ApiModelProperty(example = "https://www.example.com/api/country", value = "URL for shipping, tax and purchase currency updates. Will be called on billing or shipping country changes. (must be https, max 2000 characters) Example: \"https://merchant.com/countrychange\"")
   public String getCountryChange() {
     return countryChange;
   }

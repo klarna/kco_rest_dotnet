@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * OrderManagementAddress
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T10:02:16.667Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T09:41:31.881Z")
 public class OrderManagementAddress {
   @JsonProperty("given_name")
   private String givenName = null;
@@ -191,10 +191,10 @@ public class OrderManagementAddress {
   }
 
    /**
-   * State/Region. Required for some countries. Maximum 200 characters.
+   * State/Region. Required for US. Maximum 200 characters.
    * @return region
   **/
-  @ApiModelProperty(example = "TN", value = "State/Region. Required for some countries. Maximum 200 characters.")
+  @ApiModelProperty(example = "TN", value = "State/Region. Required for US. Maximum 200 characters.")
   public String getRegion() {
     return region;
   }

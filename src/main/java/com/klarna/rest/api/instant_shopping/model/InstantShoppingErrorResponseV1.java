@@ -25,7 +25,7 @@ import io.swagger.annotations.ApiModelProperty;
  *  
  */
 @ApiModel(description = " ")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-10T09:33:39.178Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
 public class InstantShoppingErrorResponseV1 {
   @JsonProperty("error_code")
   private String errorCode = null;

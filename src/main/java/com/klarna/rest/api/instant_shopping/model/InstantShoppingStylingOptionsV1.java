@@ -18,19 +18,19 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.klarna.rest.api.instant_shopping.model.InstantShoppingButtonSetupOptionsV1StylingTheme;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingStylingOptionsV1Theme;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * InstantShoppingButtonSetupOptionsV1Styling
+ * InstantShoppingStylingOptionsV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-10T09:33:39.178Z")
-public class InstantShoppingButtonSetupOptionsV1Styling {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
+public class InstantShoppingStylingOptionsV1 {
   @JsonProperty("theme")
-  private InstantShoppingButtonSetupOptionsV1StylingTheme theme = null;
+  private InstantShoppingStylingOptionsV1Theme theme = null;
 
-  public InstantShoppingButtonSetupOptionsV1Styling theme(InstantShoppingButtonSetupOptionsV1StylingTheme theme) {
+  public InstantShoppingStylingOptionsV1 theme(InstantShoppingStylingOptionsV1Theme theme) {
     this.theme = theme;
     return this;
   }
@@ -40,11 +40,11 @@ public class InstantShoppingButtonSetupOptionsV1Styling {
    * @return theme
   **/
   @ApiModelProperty(value = "")
-  public InstantShoppingButtonSetupOptionsV1StylingTheme getTheme() {
+  public InstantShoppingStylingOptionsV1Theme getTheme() {
     return theme;
   }
 
-  public void setTheme(InstantShoppingButtonSetupOptionsV1StylingTheme theme) {
+  public void setTheme(InstantShoppingStylingOptionsV1Theme theme) {
     this.theme = theme;
   }
 
@@ -57,8 +57,8 @@ public class InstantShoppingButtonSetupOptionsV1Styling {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InstantShoppingButtonSetupOptionsV1Styling buttonSetupOptionsV1Styling = (InstantShoppingButtonSetupOptionsV1Styling) o;
-    return Objects.equals(this.theme, buttonSetupOptionsV1Styling.theme);
+    InstantShoppingStylingOptionsV1 stylingOptionsV1 = (InstantShoppingStylingOptionsV1) o;
+    return Objects.equals(this.theme, stylingOptionsV1.theme);
   }
 
   @Override
@@ -70,7 +70,7 @@ public class InstantShoppingButtonSetupOptionsV1Styling {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InstantShoppingButtonSetupOptionsV1Styling {\n");
+    sb.append("class InstantShoppingStylingOptionsV1 {\n");
     
     sb.append("    theme: ").append(toIndentedString(theme)).append("\n");
     sb.append("}");

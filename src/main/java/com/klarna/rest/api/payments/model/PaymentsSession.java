@@ -27,15 +27,14 @@ import com.klarna.rest.api.payments.model.PaymentsOrderLine;
 import com.klarna.rest.api.payments.model.PaymentsPaymentMethodCategory;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import org.threeten.bp.OffsetDateTime;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.threeten.bp.OffsetDateTime;
 
 /**
  * PaymentsSession
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-11-05T12:55:42.744Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T11:12:59.490Z")
 public class PaymentsSession {
   @JsonProperty("acquiring_channel")
   private String acquiringChannel = null;

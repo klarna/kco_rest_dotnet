@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * CheckoutCustomer
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:22:48.232Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:12:28.827Z")
 public class CheckoutCustomer {
   @JsonProperty("date_of_birth")
   private String dateOfBirth = null;
@@ -44,10 +44,10 @@ public class CheckoutCustomer {
   }
 
    /**
-   * ISO 8601 date. The customer date of birth.
+   * Customer’s date of birth. The format is ‘yyyy-mm-dd’. ISO 8601 date.
    * @return dateOfBirth
   **/
-  @ApiModelProperty(example = "1995-10-20", value = "ISO 8601 date. The customer date of birth.")
+  @ApiModelProperty(example = "1995-10-20", value = "Customer’s date of birth. The format is ‘yyyy-mm-dd’. ISO 8601 date.")
   public String getDateOfBirth() {
     return dateOfBirth;
   }
@@ -80,10 +80,10 @@ public class CheckoutCustomer {
   }
 
    /**
-   * The organization&#39;s official registration id (organization number). Applicable only for B2B orders
+   * \&quot;The organization&#39;s official registration id (organization number).  Note: Applicable only for B2B orders.\&quot;
    * @return organizationRegistrationId
   **/
-  @ApiModelProperty(example = "556737-0431", value = "The organization's official registration id (organization number). Applicable only for B2B orders")
+  @ApiModelProperty(example = "556737-0431", value = "\"The organization's official registration id (organization number).  Note: Applicable only for B2B orders.\"")
   public String getOrganizationRegistrationId() {
     return organizationRegistrationId;
   }
@@ -98,10 +98,10 @@ public class CheckoutCustomer {
   }
 
    /**
-   * The gender of the person. This is not known in all markets 
+   * Customer’s gender - ‘male’ or ‘female’.
    * @return gender
   **/
-  @ApiModelProperty(example = "male", value = "The gender of the person. This is not known in all markets ")
+  @ApiModelProperty(example = "male", value = "Customer’s gender - ‘male’ or ‘female’.")
   public String getGender() {
     return gender;
   }

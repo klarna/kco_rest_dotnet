@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * PaymentsErrorV2
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-11-05T12:55:42.744Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T11:12:59.490Z")
 public class PaymentsErrorV2 {
   @JsonProperty("authorized_payment_method")
   private PaymentsAuthorizedPaymentMethod authorizedPaymentMethod = null;

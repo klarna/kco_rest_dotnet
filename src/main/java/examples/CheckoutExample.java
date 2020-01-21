@@ -187,7 +187,6 @@ public class CheckoutExample {
             );
             CheckoutOrder data = new CheckoutOrder()
                 .billingAddress(address)
-                .shippingAddress(address)
                 .orderAmount(10000L)
                 .orderTaxAmount(2000L)
                 .orderLines(lines);

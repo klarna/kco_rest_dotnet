@@ -27,19 +27,19 @@ import java.util.List;
 /**
  * CheckoutAggregatedOrderCartV2
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:22:48.232Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:12:28.827Z")
 public class CheckoutAggregatedOrderCartV2 {
   @JsonProperty("items")
   private List<CheckoutAggregatedOrderCartItemV2> items = null;
-
-  @JsonProperty("total_price_excluding_tax")
-  private Long totalPriceExcludingTax = null;
 
   @JsonProperty("total_price_including_tax")
   private Long totalPriceIncludingTax = null;
 
   @JsonProperty("total_tax_amount")
   private Long totalTaxAmount = null;
+
+  @JsonProperty("total_price_excluding_tax")
+  private Long totalPriceExcludingTax = null;
 
   public CheckoutAggregatedOrderCartV2 items(List<CheckoutAggregatedOrderCartItemV2> items) {
     this.items = items;
@@ -65,24 +65,6 @@ public class CheckoutAggregatedOrderCartV2 {
 
   public void setItems(List<CheckoutAggregatedOrderCartItemV2> items) {
     this.items = items;
-  }
-
-  public CheckoutAggregatedOrderCartV2 totalPriceExcludingTax(Long totalPriceExcludingTax) {
-    this.totalPriceExcludingTax = totalPriceExcludingTax;
-    return this;
-  }
-
-   /**
-   * Get totalPriceExcludingTax
-   * @return totalPriceExcludingTax
-  **/
-  @ApiModelProperty(value = "")
-  public Long getTotalPriceExcludingTax() {
-    return totalPriceExcludingTax;
-  }
-
-  public void setTotalPriceExcludingTax(Long totalPriceExcludingTax) {
-    this.totalPriceExcludingTax = totalPriceExcludingTax;
   }
 
   public CheckoutAggregatedOrderCartV2 totalPriceIncludingTax(Long totalPriceIncludingTax) {
@@ -121,6 +103,24 @@ public class CheckoutAggregatedOrderCartV2 {
     this.totalTaxAmount = totalTaxAmount;
   }
 
+  public CheckoutAggregatedOrderCartV2 totalPriceExcludingTax(Long totalPriceExcludingTax) {
+    this.totalPriceExcludingTax = totalPriceExcludingTax;
+    return this;
+  }
+
+   /**
+   * Get totalPriceExcludingTax
+   * @return totalPriceExcludingTax
+  **/
+  @ApiModelProperty(value = "")
+  public Long getTotalPriceExcludingTax() {
+    return totalPriceExcludingTax;
+  }
+
+  public void setTotalPriceExcludingTax(Long totalPriceExcludingTax) {
+    this.totalPriceExcludingTax = totalPriceExcludingTax;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -132,14 +132,14 @@ public class CheckoutAggregatedOrderCartV2 {
     }
     CheckoutAggregatedOrderCartV2 aggregatedOrderCartV2 = (CheckoutAggregatedOrderCartV2) o;
     return Objects.equals(this.items, aggregatedOrderCartV2.items) &&
-        Objects.equals(this.totalPriceExcludingTax, aggregatedOrderCartV2.totalPriceExcludingTax) &&
         Objects.equals(this.totalPriceIncludingTax, aggregatedOrderCartV2.totalPriceIncludingTax) &&
-        Objects.equals(this.totalTaxAmount, aggregatedOrderCartV2.totalTaxAmount);
+        Objects.equals(this.totalTaxAmount, aggregatedOrderCartV2.totalTaxAmount) &&
+        Objects.equals(this.totalPriceExcludingTax, aggregatedOrderCartV2.totalPriceExcludingTax);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items, totalPriceExcludingTax, totalPriceIncludingTax, totalTaxAmount);
+    return Objects.hash(items, totalPriceIncludingTax, totalTaxAmount, totalPriceExcludingTax);
   }
 
 
@@ -149,9 +149,9 @@ public class CheckoutAggregatedOrderCartV2 {
     sb.append("class CheckoutAggregatedOrderCartV2 {\n");
     
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
-    sb.append("    totalPriceExcludingTax: ").append(toIndentedString(totalPriceExcludingTax)).append("\n");
     sb.append("    totalPriceIncludingTax: ").append(toIndentedString(totalPriceIncludingTax)).append("\n");
     sb.append("    totalTaxAmount: ").append(toIndentedString(totalTaxAmount)).append("\n");
+    sb.append("    totalPriceExcludingTax: ").append(toIndentedString(totalPriceExcludingTax)).append("\n");
     sb.append("}");
     return sb.toString();
   }

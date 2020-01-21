@@ -90,7 +90,6 @@ public class CustomerTokenExample {
                 );
 
                 TokenCustomerTokenOrder request = new TokenCustomerTokenOrder()
-                    .shippingAddress(address)
                     .purchaseCurrency("gbp")
                     .orderAmount(10000L)
                     .orderTaxAmount(2000L)

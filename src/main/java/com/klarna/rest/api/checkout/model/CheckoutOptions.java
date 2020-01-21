@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * CheckoutOptions
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:22:48.232Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:12:28.827Z")
 public class CheckoutOptions {
   @JsonProperty("acquiring_channel")
   private String acquiringChannel = null;
@@ -93,16 +93,22 @@ public class CheckoutOptions {
   @JsonProperty("vat_removed")
   private Boolean vatRemoved = false;
 
+  @JsonProperty("verify_national_identification_number")
+  private Boolean verifyNationalIdentificationNumber = false;
+
+  @JsonProperty("show_vat_registration_number_field")
+  private Boolean showVatRegistrationNumberField = false;
+
   public CheckoutOptions acquiringChannel(String acquiringChannel) {
     this.acquiringChannel = acquiringChannel;
     return this;
   }
 
    /**
-   * Acquiring channel for the order. Use MOTO for \&quot;Mail Order Telephone Order\&quot; or ECOMMERCE for \&quot;E-commerce\&quot; or IN_STORE for \&quot;Purchase in boutique\&quot; or TELESALES for \&quot;Telesales/telemarketing\&quot;. Default : ECOMMERCE
+   * Acquiring channel for the order. The possible values are: &lt;ul&gt;&lt;li&gt;&lt;em&gt;MOTO for \&quot;Mail Order Telephone Order\&quot;&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;em&gt;ECOMMERCE for \&quot;E-commerce\&quot;&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;em&gt;IN_STORE for \&quot;Purchase in boutique\&quot;&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;em&gt;TELESALES for \&quot;Telesales/telemarketing\&quot;&lt;/em&gt;&lt;/li&gt;&lt;li&gt;&lt;em&gt;Default : ECOMMERCE&lt;/em&gt;&lt;/li&gt;&lt;/ul&gt;
    * @return acquiringChannel
   **/
-  @ApiModelProperty(example = "eCommerce", value = "Acquiring channel for the order. Use MOTO for \"Mail Order Telephone Order\" or ECOMMERCE for \"E-commerce\" or IN_STORE for \"Purchase in boutique\" or TELESALES for \"Telesales/telemarketing\". Default : ECOMMERCE")
+  @ApiModelProperty(example = "eCommerce", value = "Acquiring channel for the order. The possible values are: <ul><li><em>MOTO for \"Mail Order Telephone Order\"</em></li><li><em>ECOMMERCE for \"E-commerce\"</em></li><li><em>IN_STORE for \"Purchase in boutique\"</em></li><li><em>TELESALES for \"Telesales/telemarketing\"</em></li><li><em>Default : ECOMMERCE</em></li></ul>")
   public String getAcquiringChannel() {
     return acquiringChannel;
   }
@@ -135,10 +141,10 @@ public class CheckoutOptions {
   }
 
    /**
-   * CSS hex color, e.g. \&quot;#FF9900\&quot;
+   * Color for the buttons within the iFrame. Value should be a CSS hex color, e.g. \&quot;#FF9900\&quot;
    * @return colorButton
   **/
-  @ApiModelProperty(example = "#FF9900", value = "CSS hex color, e.g. \"#FF9900\"")
+  @ApiModelProperty(example = "#FF9900", value = "Color for the buttons within the iFrame. Value should be a CSS hex color, e.g. \"#FF9900\"")
   public String getColorButton() {
     return colorButton;
   }
@@ -153,10 +159,10 @@ public class CheckoutOptions {
   }
 
    /**
-   * CSS hex color, e.g. \&quot;#FF9900\&quot;
+   * Color for the text inside the buttons within the iFrame. Value should be a CSS hex color, e.g. \&quot;#FF9900\&quot;
    * @return colorButtonText
   **/
-  @ApiModelProperty(example = "#FF9900", value = "CSS hex color, e.g. \"#FF9900\"")
+  @ApiModelProperty(example = "#FF9900", value = "Color for the text inside the buttons within the iFrame. Value should be a CSS hex color, e.g. \"#FF9900\"")
   public String getColorButtonText() {
     return colorButtonText;
   }
@@ -171,10 +177,10 @@ public class CheckoutOptions {
   }
 
    /**
-   * CSS hex color, e.g. \&quot;#FF9900\&quot;
+   * Color for the checkboxes within the iFrame. Value should be a CSS hex color, e.g. \&quot;#FF9900\&quot;
    * @return colorCheckbox
   **/
-  @ApiModelProperty(example = "#FF9900", value = "CSS hex color, e.g. \"#FF9900\"")
+  @ApiModelProperty(example = "#FF9900", value = "Color for the checkboxes within the iFrame. Value should be a CSS hex color, e.g. \"#FF9900\"")
   public String getColorCheckbox() {
     return colorCheckbox;
   }
@@ -189,10 +195,10 @@ public class CheckoutOptions {
   }
 
    /**
-   * CSS hex color, e.g. \&quot;#FF9900\&quot;
+   * Color for the checkboxes checkmark within the iFrame. Value should be a CSS hex color, e.g. \&quot;#FF9900\&quot;
    * @return colorCheckboxCheckmark
   **/
-  @ApiModelProperty(example = "#FF9900", value = "CSS hex color, e.g. \"#FF9900\"")
+  @ApiModelProperty(example = "#FF9900", value = "Color for the checkboxes checkmark within the iFrame. Value should be a CSS hex color, e.g. \"#FF9900\"")
   public String getColorCheckboxCheckmark() {
     return colorCheckboxCheckmark;
   }
@@ -207,10 +213,10 @@ public class CheckoutOptions {
   }
 
    /**
-   * CSS hex color, e.g. \&quot;#FF9900\&quot;
+   * Color for the headers within the iFrame. Value should be a CSS hex color, e.g. \&quot;#FF9900\&quot;
    * @return colorHeader
   **/
-  @ApiModelProperty(example = "#FF9900", value = "CSS hex color, e.g. \"#FF9900\"")
+  @ApiModelProperty(example = "#FF9900", value = "Color for the headers within the iFrame. Value should be a CSS hex color, e.g. \"#FF9900\"")
   public String getColorHeader() {
     return colorHeader;
   }
@@ -225,10 +231,10 @@ public class CheckoutOptions {
   }
 
    /**
-   * CSS hex color, e.g. \&quot;#FF9900\&quot;
+   * Color for the hyperlinks within the iFrame. Value should be a CSS hex color, e.g. \&quot;#FF9900\&quot;
    * @return colorLink
   **/
-  @ApiModelProperty(example = "#FF9900", value = "CSS hex color, e.g. \"#FF9900\"")
+  @ApiModelProperty(example = "#FF9900", value = "Color for the hyperlinks within the iFrame. Value should be a CSS hex color, e.g. \"#FF9900\"")
   public String getColorLink() {
     return colorLink;
   }
@@ -261,10 +267,10 @@ public class CheckoutOptions {
   }
 
    /**
-   * A message that will be presented on the confirmation page under the headline \&quot;Delivery\&quot;.
+   * A message that will be presented on the confirmation page under the headline \&quot;Delivery\&quot; (max 255 characters).
    * @return shippingDetails
   **/
-  @ApiModelProperty(example = "Delivered within 1-3 working days", value = "A message that will be presented on the confirmation page under the headline \"Delivery\".")
+  @ApiModelProperty(example = "Delivered within 1-3 working days", value = "A message that will be presented on the confirmation page under the headline \"Delivery\" (max 255 characters).")
   public String getShippingDetails() {
     return shippingDetails;
   }
@@ -333,10 +339,10 @@ public class CheckoutOptions {
   }
 
    /**
-   * Additional merchant defined field. e.g. Extra terms and conditions to show.
+   * Additional merchant defined field. e.g. Extra terms and conditions to show.  Example: \&quot;ADDITIONAL MERCHANT TERMS! [terms link](https://merchant.com/extra_terms)\&quot;
    * @return additionalMerchantTerms
   **/
-  @ApiModelProperty(value = "Additional merchant defined field. e.g. Extra terms and conditions to show.")
+  @ApiModelProperty(value = "Additional merchant defined field. e.g. Extra terms and conditions to show.  Example: \"ADDITIONAL MERCHANT TERMS! [terms link](https://merchant.com/extra_terms)\"")
   public String getAdditionalMerchantTerms() {
     return additionalMerchantTerms;
   }
@@ -351,10 +357,10 @@ public class CheckoutOptions {
   }
 
    /**
-   * If true, the consumer can not skip phone (in countries were this usually is possible). Only available for orders for DACH countries.
+   * If false, the consumer can skip the phone. Only available for orders in DACH countries.
    * @return phoneMandatory
   **/
-  @ApiModelProperty(value = "If true, the consumer can not skip phone (in countries were this usually is possible). Only available for orders for DACH countries.")
+  @ApiModelProperty(value = "If false, the consumer can skip the phone. Only available for orders in DACH countries.")
   public Boolean isPhoneMandatory() {
     return phoneMandatory;
   }
@@ -369,10 +375,10 @@ public class CheckoutOptions {
   }
 
    /**
-   * Border radius in pixels
+   * Radius for the border of elements within the iFrame.
    * @return radiusBorder
   **/
-  @ApiModelProperty(example = "5", value = "Border radius in pixels")
+  @ApiModelProperty(example = "5", value = "Radius for the border of elements within the iFrame.")
   public String getRadiusBorder() {
     return radiusBorder;
   }
@@ -395,10 +401,10 @@ public class CheckoutOptions {
   }
 
    /**
-   * A list of allowed customer types. Supported types: &lt;b&gt;person&lt;/b&gt; &amp; &lt;b&gt;organization&lt;/b&gt;.
+   * A list of allowed customer types. Supported types: &lt;b&gt;person&lt;/b&gt; &amp; &lt;b&gt;organization&lt;/b&gt;. Example: [\&quot;person\&quot;,\&quot;organization\&quot;]
    * @return allowedCustomerTypes
   **/
-  @ApiModelProperty(example = "\"[\\\"person\\\", \\\"organization\\\"]\"", value = "A list of allowed customer types. Supported types: <b>person</b> & <b>organization</b>.")
+  @ApiModelProperty(example = "\"[\\\"person\\\", \\\"organization\\\"]\"", value = "A list of allowed customer types. Supported types: <b>person</b> & <b>organization</b>. Example: [\"person\",\"organization\"]")
   public List<String> getAllowedCustomerTypes() {
     return allowedCustomerTypes;
   }
@@ -413,10 +419,10 @@ public class CheckoutOptions {
   }
 
    /**
-   * If true, the Order Detail subtotals view is expanded. Default: false
+   * If true, the Order Detail subtotals view is expanded when the Klarna Checkout iFrame is loaded. Default: false
    * @return showSubtotalDetail
   **/
-  @ApiModelProperty(value = "If true, the Order Detail subtotals view is expanded. Default: false")
+  @ApiModelProperty(value = "If true, the Order Detail subtotals view is expanded when the Klarna Checkout iFrame is loaded. Default: false")
   public Boolean isShowSubtotalDetail() {
     return showSubtotalDetail;
   }
@@ -475,16 +481,52 @@ public class CheckoutOptions {
   }
 
    /**
-   * If true, VAT is not included in total price
+   * If true, VAT is not displayed in Checkout&#39;s Order Summary page.
    * @return vatRemoved
   **/
-  @ApiModelProperty(value = "If true, VAT is not included in total price")
+  @ApiModelProperty(value = "If true, VAT is not displayed in Checkout's Order Summary page.")
   public Boolean isVatRemoved() {
     return vatRemoved;
   }
 
   public void setVatRemoved(Boolean vatRemoved) {
     this.vatRemoved = vatRemoved;
+  }
+
+  public CheckoutOptions verifyNationalIdentificationNumber(Boolean verifyNationalIdentificationNumber) {
+    this.verifyNationalIdentificationNumber = verifyNationalIdentificationNumber;
+    return this;
+  }
+
+   /**
+   * Enable verification of National Identification Numbers in Sweden and Norway.This option also make the national identification number mandatory 
+   * @return verifyNationalIdentificationNumber
+  **/
+  @ApiModelProperty(value = "Enable verification of National Identification Numbers in Sweden and Norway.This option also make the national identification number mandatory ")
+  public Boolean isVerifyNationalIdentificationNumber() {
+    return verifyNationalIdentificationNumber;
+  }
+
+  public void setVerifyNationalIdentificationNumber(Boolean verifyNationalIdentificationNumber) {
+    this.verifyNationalIdentificationNumber = verifyNationalIdentificationNumber;
+  }
+
+  public CheckoutOptions showVatRegistrationNumberField(Boolean showVatRegistrationNumberField) {
+    this.showVatRegistrationNumberField = showVatRegistrationNumberField;
+    return this;
+  }
+
+   /**
+   * If true, a optional VAT registration number field will be shown in the address form. Only applies for b2b orders.
+   * @return showVatRegistrationNumberField
+  **/
+  @ApiModelProperty(value = "If true, a optional VAT registration number field will be shown in the address form. Only applies for b2b orders.")
+  public Boolean isShowVatRegistrationNumberField() {
+    return showVatRegistrationNumberField;
+  }
+
+  public void setShowVatRegistrationNumberField(Boolean showVatRegistrationNumberField) {
+    this.showVatRegistrationNumberField = showVatRegistrationNumberField;
   }
 
 
@@ -517,12 +559,14 @@ public class CheckoutOptions {
         Objects.equals(this.showSubtotalDetail, options.showSubtotalDetail) &&
         Objects.equals(this.additionalCheckboxes, options.additionalCheckboxes) &&
         Objects.equals(this.requireValidateCallbackSuccess, options.requireValidateCallbackSuccess) &&
-        Objects.equals(this.vatRemoved, options.vatRemoved);
+        Objects.equals(this.vatRemoved, options.vatRemoved) &&
+        Objects.equals(this.verifyNationalIdentificationNumber, options.verifyNationalIdentificationNumber) &&
+        Objects.equals(this.showVatRegistrationNumberField, options.showVatRegistrationNumberField);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(acquiringChannel, allowSeparateShippingAddress, colorButton, colorButtonText, colorCheckbox, colorCheckboxCheckmark, colorHeader, colorLink, dateOfBirthMandatory, shippingDetails, titleMandatory, additionalCheckbox, nationalIdentificationNumberMandatory, additionalMerchantTerms, phoneMandatory, radiusBorder, allowedCustomerTypes, showSubtotalDetail, additionalCheckboxes, requireValidateCallbackSuccess, vatRemoved);
+    return Objects.hash(acquiringChannel, allowSeparateShippingAddress, colorButton, colorButtonText, colorCheckbox, colorCheckboxCheckmark, colorHeader, colorLink, dateOfBirthMandatory, shippingDetails, titleMandatory, additionalCheckbox, nationalIdentificationNumberMandatory, additionalMerchantTerms, phoneMandatory, radiusBorder, allowedCustomerTypes, showSubtotalDetail, additionalCheckboxes, requireValidateCallbackSuccess, vatRemoved, verifyNationalIdentificationNumber, showVatRegistrationNumberField);
   }
 
 
@@ -552,6 +596,8 @@ public class CheckoutOptions {
     sb.append("    additionalCheckboxes: ").append(toIndentedString(additionalCheckboxes)).append("\n");
     sb.append("    requireValidateCallbackSuccess: ").append(toIndentedString(requireValidateCallbackSuccess)).append("\n");
     sb.append("    vatRemoved: ").append(toIndentedString(vatRemoved)).append("\n");
+    sb.append("    verifyNationalIdentificationNumber: ").append(toIndentedString(verifyNationalIdentificationNumber)).append("\n");
+    sb.append("    showVatRegistrationNumberField: ").append(toIndentedString(showVatRegistrationNumberField)).append("\n");
     sb.append("}");
     return sb.toString();
   }

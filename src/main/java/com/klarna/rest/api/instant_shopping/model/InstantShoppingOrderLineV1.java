@@ -19,13 +19,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.klarna.rest.api.instant_shopping.model.InstantShoppingProductIdentifiersV1;
+import com.klarna.rest.api.instant_shopping.model.InstantShoppingShippingAttributesV1;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
  * InstantShoppingOrderLineV1
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-10T09:33:39.178Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T10:47:29.611Z")
 public class InstantShoppingOrderLineV1 {
   @JsonProperty("name")
   private String name = null;
@@ -115,6 +116,9 @@ public class InstantShoppingOrderLineV1 {
 
   @JsonProperty("product_identifiers")
   private InstantShoppingProductIdentifiersV1 productIdentifiers = null;
+
+  @JsonProperty("shipping_attributes")
+  private InstantShoppingShippingAttributesV1 shippingAttributes = null;
 
   public InstantShoppingOrderLineV1 name(String name) {
     this.name = name;
@@ -274,7 +278,7 @@ public class InstantShoppingOrderLineV1 {
    * maximum: 100000000
    * @return totalTaxAmount
   **/
-  @ApiModelProperty(example = "5000", required = true, value = "Must be within ±1 of total_amount - total_amount 10000 / (10000 + tax_rate). Negative when type is discount.")
+  @ApiModelProperty(example = "4545", required = true, value = "Must be within ±1 of total_amount - total_amount 10000 / (10000 + tax_rate). Negative when type is discount.")
   public Long getTotalTaxAmount() {
     return totalTaxAmount;
   }
@@ -329,7 +333,7 @@ public class InstantShoppingOrderLineV1 {
    * URL to an image that can be later embedded in communications between Klarna and the customer. (max 1024 characters)
    * @return productUrl
   **/
-  @ApiModelProperty(example = "https://www.estore.com/products/f2a8d7e34", value = "URL to an image that can be later embedded in communications between Klarna and the customer. (max 1024 characters)")
+  @ApiModelProperty(example = "https://www.example.com/products/f2a8d7e34", value = "URL to an image that can be later embedded in communications between Klarna and the customer. (max 1024 characters)")
   public String getProductUrl() {
     return productUrl;
   }
@@ -347,7 +351,7 @@ public class InstantShoppingOrderLineV1 {
    * URL to an image that can be later embedded in communications between Klarna and the customer. (max 1024 characters)
    * @return imageUrl
   **/
-  @ApiModelProperty(example = "https://www.exampleobjects.com/logo.png", value = "URL to an image that can be later embedded in communications between Klarna and the customer. (max 1024 characters)")
+  @ApiModelProperty(example = "https://www.example.com/logo.png", value = "URL to an image that can be later embedded in communications between Klarna and the customer. (max 1024 characters)")
   public String getImageUrl() {
     return imageUrl;
   }
@@ -374,6 +378,24 @@ public class InstantShoppingOrderLineV1 {
     this.productIdentifiers = productIdentifiers;
   }
 
+  public InstantShoppingOrderLineV1 shippingAttributes(InstantShoppingShippingAttributesV1 shippingAttributes) {
+    this.shippingAttributes = shippingAttributes;
+    return this;
+  }
+
+   /**
+   * Shipping attributes of this item
+   * @return shippingAttributes
+  **/
+  @ApiModelProperty(value = "Shipping attributes of this item")
+  public InstantShoppingShippingAttributesV1 getShippingAttributes() {
+    return shippingAttributes;
+  }
+
+  public void setShippingAttributes(InstantShoppingShippingAttributesV1 shippingAttributes) {
+    this.shippingAttributes = shippingAttributes;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -397,12 +419,13 @@ public class InstantShoppingOrderLineV1 {
         Objects.equals(this.merchantData, orderLineV1.merchantData) &&
         Objects.equals(this.productUrl, orderLineV1.productUrl) &&
         Objects.equals(this.imageUrl, orderLineV1.imageUrl) &&
-        Objects.equals(this.productIdentifiers, orderLineV1.productIdentifiers);
+        Objects.equals(this.productIdentifiers, orderLineV1.productIdentifiers) &&
+        Objects.equals(this.shippingAttributes, orderLineV1.shippingAttributes);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, type, reference, quantity, quantityUnit, taxRate, totalAmount, totalDiscountAmount, totalTaxAmount, unitPrice, merchantData, productUrl, imageUrl, productIdentifiers);
+    return Objects.hash(name, type, reference, quantity, quantityUnit, taxRate, totalAmount, totalDiscountAmount, totalTaxAmount, unitPrice, merchantData, productUrl, imageUrl, productIdentifiers, shippingAttributes);
   }
 
 
@@ -425,6 +448,7 @@ public class InstantShoppingOrderLineV1 {
     sb.append("    productUrl: ").append(toIndentedString(productUrl)).append("\n");
     sb.append("    imageUrl: ").append(toIndentedString(imageUrl)).append("\n");
     sb.append("    productIdentifiers: ").append(toIndentedString(productIdentifiers)).append("\n");
+    sb.append("    shippingAttributes: ").append(toIndentedString(shippingAttributes)).append("\n");
     sb.append("}");
     return sb.toString();
   }

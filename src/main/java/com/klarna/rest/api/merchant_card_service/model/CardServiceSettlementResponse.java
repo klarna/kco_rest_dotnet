@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * CardServiceSettlementResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T14:59:55.645Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2020-01-20T11:07:02.754Z")
 public class CardServiceSettlementResponse {
   @JsonProperty("settlement_id")
   private String settlementId = null;
