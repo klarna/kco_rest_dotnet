@@ -7,6 +7,7 @@
 
 Shop at your favorite stores today and experience the freedom to pay later with Klarna.
 
+> ⚠️ 22/01/20 Release of v4.0.0, see [CHANGELOG](CHANGELOG.md) for an overview of what changed.
 
 ## Getting started
 
@@ -37,7 +38,7 @@ To install the Java SDK from the Central Maven repository using Maven, add the f
 <dependency>
     <groupId>com.klarna</groupId>
     <artifactId>kco-rest</artifactId>
-    <version>[3.2,)</version>
+    <version>[4.0,)</version>
 </dependency>
 ```
 
@@ -47,7 +48,7 @@ To install the Java SDK from the Central Maven repository using Gradle, add the 
 
 ```groovy
 dependencies {
-    compile group: 'com.klarna', name: 'kco-rest', version:'3.1+'
+    compile group: 'com.klarna', name: 'kco-rest', version:'4.0+'
 }
 ```
 
