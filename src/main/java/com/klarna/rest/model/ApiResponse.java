@@ -214,7 +214,7 @@ public class ApiResponse {
      * @see ErrorMessage
      */
     public ApiResponse expectSuccessful() throws ApiException {
-        Family family = Status.fromStatusCode(this.getStatus()).getFamily();
+        Family family = Family.familyOf(this.getStatus());
 
         if (family.equals(SUCCESSFUL)) {
             return this;
