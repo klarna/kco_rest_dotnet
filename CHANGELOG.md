@@ -15,6 +15,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+## [3.2.2] - 2020-01-22
+
+### Fixed
+
+- Fix response code processing issue where NullPointerException is thrown when status code does not appear in 
+https://docs.oracle.com/javaee/7/api/javax/ws/rs/core/Response.Status.html. Now, all status codes are handled and
+ApiException will be thrown as expected. Fixes issue #39. 
+
 
 ## [3.2.1] - 2019-12-10
 
@@ -280,7 +288,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **NEW MINT-1842** Support checkout v3 and ordermanagement v1 APIs - *Joakim.L*
 
-[Unreleased]: https://github.com/klarna/kco_rest_java/compare/v3.2.1...HEAD
+[Unreleased]: https://github.com/klarna/kco_rest_java/compare/v3.2.2...HEAD
+[3.2.2]: https://github.com/klarna/kco_rest_java/compare/v3.2.0...v3.2.2
 [3.2.1]: https://github.com/klarna/kco_rest_java/compare/v3.2.0...v3.2.1
 [3.2.0]: https://github.com/klarna/kco_rest_java/compare/v3.1.1...v3.2.0
 [3.1.1]: https://github.com/klarna/kco_rest_java/compare/v3.1.0...v3.1.1
