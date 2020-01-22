@@ -136,4 +136,17 @@ public class ApiResponseTest extends TestCase {
             assertEquals("111: Wrong order_total (#123-123-123)", e.getMessage());
         }
     }
+
+    @Test
+    public void testAbsentResponseCode() {
+        try {
+            response.setStatus(422);
+            response.setBody("{ \"error_code\" : \"UNPROCESSABLE_ENTITY\", \"error_messages\" : [\"'refunded_amount' may not be null\"], \"correlation_id\" : \"123-123-123\" }".getBytes());
+            response.expectSuccessful();
+            fail();
+        } catch (ApiException e) {
+            System.out.println(e);
+            assertEquals("UNPROCESSABLE_ENTITY: 'refunded_amount' may not be null (#123-123-123)", e.getMessage());
+        }
+    }
 }
