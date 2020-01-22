@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix response code processing issue where NullPointerException is thrown when status code does not appear in 
 https://docs.oracle.com/javaee/7/api/javax/ws/rs/core/Response.Status.html. Now, all status codes are handled and
-ApiException will be thrown as expected. Fixes issue #39. 
+ApiException will be thrown as expected. Fixes issue #39.
 
 ## [4.0.0] - 2020-01-21 (Major release)
 
@@ -42,6 +42,14 @@ ApiException will be thrown as expected. Fixes issue #39.
 
 **Checkout API**
 - `shipping_address` in `CheckoutOrder` is now read-only
+
+## [3.2.2] - 2020-01-22 (Backport Patch Release)
+
+### Fixed
+
+- Backport from [4.0.1]: Fix response code processing issue where NullPointerException is thrown when status code does not appear in 
+https://docs.oracle.com/javaee/7/api/javax/ws/rs/core/Response.Status.html. Now, all status codes are handled and
+ApiException will be thrown as expected. Fixes issue #39.
 
 ## [3.2.1] - 2019-12-10
 
@@ -309,7 +317,8 @@ ApiException will be thrown as expected. Fixes issue #39.
 
 [Unreleased]: https://github.com/klarna/kco_rest_java/compare/v4.0.1...HEAD
 [4.0.1]: https://github.com/klarna/kco_rest_java/compare/v4.0.0...v4.0.1
-[4.0.0]: https://github.com/klarna/kco_rest_java/compare/v3.2.1...v4.0.0
+[4.0.0]: https://github.com/klarna/kco_rest_java/compare/v3.2.2...v4.0.0
+[3.2.2]: https://github.com/klarna/kco_rest_java/compare/v3.2.1...v3.2.2
 [3.2.1]: https://github.com/klarna/kco_rest_java/compare/v3.2.0...v3.2.1
 [3.2.0]: https://github.com/klarna/kco_rest_java/compare/v3.1.1...v3.2.0
 [3.1.1]: https://github.com/klarna/kco_rest_java/compare/v3.1.0...v3.1.1
