@@ -1,4 +1,5 @@
 # Official Klarna REST Java SDK
+
 [![Maven Version][maven-image]](https://search.maven.org/search?q=a:kco-rest)
 [![Build Status][travis-image]](https://travis-ci.org/klarna/kco_rest_java)
 [![Coverage Status][coveralls-image]](https://coveralls.io/r/klarna/kco_rest_java)
@@ -21,10 +22,10 @@ SDK covers all of Klarna API: https://developers.klarna.com/api/
 ### API Credentials
 
 Before getting a production account you can get a playground one.
-Register here to be able to test your SDK integration before go live:
+Register below to be able to test your SDK integration before go live, by selecting your region:
 
-* [https://playground.eu.portal.klarna.com/developer-sign-up](https://playground.eu.portal.klarna.com/developer-sign-up) - for EU countries
-* [https://playground.us.portal.klarna.com/developer-sign-up](https://playground.us.portal.klarna.com/developer-sign-up) - for the US
+[https://developers.klarna.com/documentation/testing-environment/#developer-signup-test-credentials](https://developers.klarna.com/documentation/testing-environment/#developer-signup-test-credentials)
+
 
 ## Installing the Java SDK
 
