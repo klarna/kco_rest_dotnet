@@ -10,6 +10,16 @@ Shop at your favorite stores today and experience the freedom to pay later with 
 
 > ⚠️ 22/01/20 Release of v4.0.0, see [CHANGELOG](CHANGELOG.md) for an overview of what changed.
 
+>Due to security vulnerability in com.fasterxml.jackson.core:jackson-databind we highly recommend you upgrade your 
+>Java SDK to version **>=3.1.1**.
+>
+>More information about the issue:
+>- https://nvd.nist.gov/vuln/detail/CVE-2017-17485
+>- https://nvd.nist.gov/vuln/detail/CVE-2019-12086
+>- https://nvd.nist.gov/vuln/detail/CVE-2018-7489
+>- https://nvd.nist.gov/vuln/detail/CVE-2017-7525
+
+
 ## Getting started
 
 SDK covers all of Klarna API: https://developers.klarna.com/api/
