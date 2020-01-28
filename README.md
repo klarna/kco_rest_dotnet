@@ -47,7 +47,7 @@ To install the Java SDK from the Central Maven repository using Gradle, add the 
 
 ```groovy
 dependencies {
-    compile group: 'com.klarna', name: 'kco-rest', version:'3.1+'
+    compile group: 'com.klarna', name: 'kco-rest', version:'3.2+'
 }
 ```
 
