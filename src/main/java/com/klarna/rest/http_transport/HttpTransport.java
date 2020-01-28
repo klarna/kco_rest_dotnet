@@ -70,6 +70,16 @@ public interface HttpTransport {
     URI NA_TEST_BASE_URL = URI.create("https://api-na.playground.klarna.com");
 
     /**
+     * API base URL for Oceania.
+     */
+    URI OC_BASE_URL = URI.create("https://api-oc.klarna.com");
+
+    /**
+     * Testing API base URL for Oceania.
+     */
+    URI OC_TEST_BASE_URL = URI.create("https://api-oc.playground.klarna.com");
+
+    /**
      * Sends HTTP GET request to specified path.
      *
      * @param path URL path.
