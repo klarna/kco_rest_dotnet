@@ -1,12 +1,10 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
 {
     /// <summary>
     /// Customer token merchant URLs object
     /// </summary>
-    [Obsolete("This model is being deprecated. Use the MerchantUrls model from Klarna.Rest.Core.Model.CustomerToken namespace instead")]
     public class CustomerTokenMerchantUrls
     {
         /// <summary>

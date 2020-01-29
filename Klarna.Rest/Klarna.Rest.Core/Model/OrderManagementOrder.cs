@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Klarna.Rest.Core.Model.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -9,7 +8,6 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     /// 
     /// </summary>
-    [Obsolete("This model is being deprecated. Use the Order model from Klarna.Rest.Core.Model.OrderManagement namespace instead")] 
     public class OrderManagementOrder
     {
         /// <summary>
@@ -117,21 +115,21 @@ namespace Klarna.Rest.Core.Model
         /// </summary>
         /// <value>Information about the customer placing the order.</value>
         [JsonProperty(PropertyName = "customer")]
-        public OrderManagement.Customer Customer { get; set; }
+        public OrderManagementCustomer Customer { get; set; }
 
         /// <summary>
         /// Customer billing address.
         /// </summary>
         /// <value>Customer billing address.</value>
         [JsonProperty(PropertyName = "billing_address")]
-        public OrderManagement.Address BillingAddress { get; set; }
+        public OrderManagementAddressInfo BillingAddress { get; set; }
 
         /// <summary>
         /// Customer shipping address.
         /// </summary>
         /// <value>Customer shipping address.</value>
         [JsonProperty(PropertyName = "shipping_address")]
-        public OrderManagement.Address ShippingAddress { get; set; }
+        public OrderManagementAddressInfo ShippingAddress { get; set; }
 
         /// <summary>
         /// The time for the purchase. Formatted according to ISO 8601.
@@ -159,14 +157,14 @@ namespace Klarna.Rest.Core.Model
         /// </summary>
         /// <value>List of captures for this order.</value>
         [JsonProperty(PropertyName = "captures")]
-        public ICollection<OrderManagement.Capture> Captures { get; set; }
+        public ICollection<OrderManagementCapture> Captures { get; set; }
 
         /// <summary>
         /// List of refunds for this order.
         /// </summary>
         /// <value>List of refunds for this order.</value>
         [JsonProperty(PropertyName = "refunds")]
-        public ICollection<OrderManagement.Refund> Refunds { get; set; }
+        public ICollection<OrderManagementRefund> Refunds { get; set; }
 
         /// <summary>
         /// Text field for storing data about the order. Set at order creation.
@@ -180,6 +178,6 @@ namespace Klarna.Rest.Core.Model
         /// </summary>
         /// <value>Initial payment method for this order</value>
         [JsonProperty(PropertyName = "initial_payment_method")]
-        public OrderManagement.InitialPaymentMethodDto InitialPaymentMethod { get; set; }
+        public OrderManagementInitialPaymentMethod InitialPaymentMethod { get; set; }
     }
 }

@@ -9,7 +9,6 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     ///
     /// </summary>
-    [Obsolete("This model is being deprecated. Use the Session model from Klarna.Rest.Core.Model.Payments namespace instead")]
     public class PaymentCreditSession
     {
         /// <summary>
@@ -39,12 +38,12 @@ namespace Klarna.Rest.Core.Model
         /// Once the customer has provided any data in the checkout iframe, updates to this object will be ignored (without generating an error).
         /// </summary>
         [JsonProperty(PropertyName = "billing_address")]
-        public Payments.Address BillingAddress { get; set; }
+        public PaymentAddressInfo BillingAddress { get; set; }
         /// <summary>
         /// Unless the customer has explicitly chosen to enter a separate shipping address, this is a clone of billing_address.
         /// </summary>
         [JsonProperty(PropertyName = "shipping_address")]
-        public Payments.Address ShippingAddress { get; set; }
+        public PaymentAddressInfo ShippingAddress { get; set; }
         /// <summary>
         /// Non-negative, minor units. Total amount of the order, including tax and any discounts.
         /// </summary>
@@ -62,17 +61,17 @@ namespace Klarna.Rest.Core.Model
         /// </summary>
         /// <remarks>Required</remarks>
         [JsonProperty(PropertyName = "order_lines")]
-        public ICollection<Payments.OrderLine> OrderLines { get; set; }
+        public ICollection<OrderLine> OrderLines { get; set; }
         /// <summary>
         /// Information about the liable customer of the order.
         /// </summary>
         [JsonProperty(PropertyName = "customer")]
-        public Payments.Customer Customer { get; set; }
+        public PaymentCustomer Customer { get; set; }
         /// <summary>
         /// The merchant_urls object.
         /// </summary>
         [JsonProperty(PropertyName = "merchant_urls")]
-        public Payments.MerchantUrls MerchantUrls { get; set; }
+        public PaymentMerchantUrls MerchantUrls { get; set; }
         /// <summary>
         /// Used for storing merchant's internal order number or other reference. If set, will be shown on the confirmation page as "order number" (max 255 characters).
         /// </summary>
@@ -92,12 +91,12 @@ namespace Klarna.Rest.Core.Model
         /// Options for this purchase.
         /// </summary>
         [JsonProperty(PropertyName = "options")]
-        public Payments.Options Options { get; set; }
+        public PaymentOptions Options { get; set; }
         /// <summary>
         /// Additional purchase information required for some industries.
         /// </summary>
         [JsonProperty(PropertyName = "attachment")]
-        public Payments.Attachment Attachment { get; set; }
+        public Attachment Attachment { get; set; }
         /// <summary>
         /// Ids for custom payment methods available in a given order. Only applicable in GB/US sessions.
         /// </summary>

@@ -5,15 +5,12 @@ namespace Klarna.Rest.Core.Model.Enum
     /// </summary>
     public enum ShippingMethod
     {
-        PickupStore,
-        PickUpStore,
-        Home,
+        PickupStore, 
+        Home, 
         BoxReg,
         BoxUnreg,
         PickUpPoint,
         Own,
-        Postal,
-        DHLPackstation,
-        Digital
+        Postal
     }
 }

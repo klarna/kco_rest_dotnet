@@ -8,7 +8,7 @@ namespace Klarna.Rest.Core.Model.HostedPaymentPage {
   /// 
   /// </summary>
   [DataContract]
-  public class MerchantUrlsV1: HostedPaymentPageMerchantUrls {
+  public class MerchantUrlsV1 {
     /// <summary>
     /// Back URL
     /// </summary>
@@ -16,6 +16,14 @@ namespace Klarna.Rest.Core.Model.HostedPaymentPage {
     [DataMember(Name="back", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "back")]
     public string Back { get; set; }
+
+    /// <summary>
+    /// Cancel URL
+    /// </summary>
+    /// <value>Cancel URL</value>
+    [DataMember(Name="cancel", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "cancel")]
+    public string Cancel { get; set; }
 
     /// <summary>
     /// System error URL
@@ -26,12 +34,45 @@ namespace Klarna.Rest.Core.Model.HostedPaymentPage {
     public string Error { get; set; }
 
     /// <summary>
+    /// Failure URL
+    /// </summary>
+    /// <value>Failure URL</value>
+    [DataMember(Name="failure", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "failure")]
+    public string Failure { get; set; }
+
+    /// <summary>
+    /// Privacy policy URL
+    /// </summary>
+    /// <value>Privacy policy URL</value>
+    [DataMember(Name="privacy_policy", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "privacy_policy")]
+    public string PrivacyPolicy { get; set; }
+
+    /// <summary>
     /// Status update URL
     /// </summary>
     /// <value>Status update URL</value>
     [DataMember(Name="status_update", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "status_update")]
     public string StatusUpdate { get; set; }
+
+    /// <summary>
+    /// Success URL
+    /// </summary>
+    /// <value>Success URL</value>
+    [DataMember(Name="success", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "success")]
+    public string Success { get; set; }
+
+    /// <summary>
+    /// Terms URL
+    /// </summary>
+    /// <value>Terms URL</value>
+    [DataMember(Name="terms", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "terms")]
+    public string Terms { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object

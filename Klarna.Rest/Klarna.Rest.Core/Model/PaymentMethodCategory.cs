@@ -1,12 +1,10 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
 {
     /// <summary>
     ///
     /// </summary>
-    [Obsolete("This model is being deprecated. Use the PaymentMethodCategory model from Klarna.Rest.Core.Model.Payments namespace instead")]
     public class PaymentMethodCategory
     {
         /// <summary>
@@ -23,6 +21,6 @@ namespace Klarna.Rest.Core.Model
         /// Asset URLs
         /// </summary>
         [JsonProperty(PropertyName = "asset_urls")]
-        public Payments.AssetUrls AssetUrls { get; set; }
+        public PaymentMethodCategoryAssetUrls AssetUrls { get; set; }
     }
 }

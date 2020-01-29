@@ -8,7 +8,31 @@ namespace Klarna.Rest.Core.Model.HostedPaymentPage {
   /// 
   /// </summary>
   [DataContract]
-  public class DistributionRequestV1: HostedPaymentPageDistributeLink {
+  public class DistributionRequestV1 {
+    /// <summary>
+    /// Contact information for the link distribution
+    /// </summary>
+    /// <value>Contact information for the link distribution</value>
+    [DataMember(Name="contact_information", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "contact_information")]
+    public DistributionContactV1 ContactInformation { get; set; }
+
+    /// <summary>
+    /// Method used for distribution
+    /// </summary>
+    /// <value>Method used for distribution</value>
+    [DataMember(Name="method", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "method")]
+    public string Method { get; set; }
+
+    /// <summary>
+    /// Gets or Sets Template
+    /// </summary>
+    [DataMember(Name="template", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "template")]
+    public string Template { get; set; }
+
+
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

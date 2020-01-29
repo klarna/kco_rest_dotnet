@@ -1,12 +1,10 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
 {
     /// <summary>
     /// Customer token details object
     /// </summary>
-    [Obsolete("This model is being deprecated. Use the CustomerTokenV1 model from Klarna.Rest.Core.Model.CustomerToken namespace instead")]
     public class CustomerTokenDetails
     {
         /// <summary>
@@ -27,13 +25,13 @@ namespace Klarna.Rest.Core.Model
         /// </summary>
         /// <value>The card details.</value>
         [JsonProperty(PropertyName = "card")]
-        public CustomerToken.CardInformation CardDetails { get; set; }
+        public CustomerTokenCardDetails CardDetails { get; set; }
         /// <summary>
         /// The direct debit details of the token. Is only populated if the token is based on direct debit
         /// </summary>
         /// <value>The direct debit token details.</value>
         [JsonProperty(PropertyName = "direct_debit")]
-        public CustomerToken.DirectDebitInformation DirectDebitTokenDetails  { get; set; }
+        public CustomerDirectDebitTokenDetails DirectDebitTokenDetails  { get; set; }
     }
 
 

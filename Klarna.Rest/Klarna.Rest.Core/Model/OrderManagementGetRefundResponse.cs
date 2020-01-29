@@ -6,7 +6,7 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     /// Deprecated
     /// </summary>
-    [System.Obsolete("This model is being deprecated. Use the OrderManagementRefund model from Klarna.Rest.Core.Model.OrderManagement instead")]
+    [System.Obsolete("Use OrderManagementRefund model instead")]
     public class OrderManagementGetRefundResponse : OrderManagementRefund
     {
     }

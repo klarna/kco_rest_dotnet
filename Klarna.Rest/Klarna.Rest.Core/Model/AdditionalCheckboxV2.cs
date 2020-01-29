@@ -1,4 +1,3 @@
-using System;
 using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
@@ -6,7 +5,6 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     /// 
     /// </summary>
-    [Obsolete("This model is being deprecated. Use CheckboxV2 from Klarna.Rest.Core.Model.Checkout namespace instead")]
     public class AdditionalCheckboxV2
     {
         /// <summary>

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
@@ -7,14 +6,13 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     /// Customer token order object
     /// </summary>
-    [Obsolete("This model is being deprecated. Use the Order model from Klarna.Rest.Core.Model.CustomerToken namespace instead")]
     public class CustomerTokenOrder
     {
         /// <summary>
         /// Additional purchase information required for some industries.
         /// </summary>
         [JsonProperty(PropertyName = "attachment")]
-        public CustomerToken.Attachment Attachment { get; set; }
+        public Attachment Attachment { get; set; }
         /// <summary>
         /// Allow merchant to trigger auto capturing.
         /// </summary>
@@ -24,7 +22,7 @@ namespace Klarna.Rest.Core.Model
         /// The merchant_urls object.
         /// </summary>
         [JsonProperty(PropertyName = "customer_token_order_merchant_urls")]
-        public CustomerToken.MerchantUrls MerchantUrls { get; set; }
+        public CustomerTokenMerchantUrls MerchantUrls { get; set; }
         /// <summary>
         /// Pass through field (max 1024 characters).
         /// </summary>
@@ -49,7 +47,7 @@ namespace Klarna.Rest.Core.Model
         /// The applicable order lines (max 1000)
         /// </summary>
         [JsonProperty(PropertyName = "order_lines")]
-        public ICollection<CustomerToken.OrderLine> OrderLines { get; set; }
+        public ICollection<OrderLine> OrderLines { get; set; }
         /// <summary>
         /// Non-negative, minor units. The total tax amount of the order.
         /// </summary>
@@ -64,6 +62,6 @@ namespace Klarna.Rest.Core.Model
         /// Shipping address
         /// </summary>
         [JsonProperty(PropertyName = "shipping_address")]
-        public CustomerToken.Address ShippingAddress { get; set; }
+        public CustomerTokenAddressInfo ShippingAddress { get; set; }
     }
 }

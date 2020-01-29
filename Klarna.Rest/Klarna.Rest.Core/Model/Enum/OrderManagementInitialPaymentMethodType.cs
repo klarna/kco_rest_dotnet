@@ -15,8 +15,6 @@
         PAY_IN_X,
         INVOICE_BUSINESS,
         DEFERRED_INTEREST,
-        FIXED_SUM_CREDIT,
-        PAY_LATER_BY_CARD,
         OTHER
     }
 }

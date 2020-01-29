@@ -1,5 +1,4 @@
-﻿using System;
-using Klarna.Rest.Core.Model.Enum;
+﻿using Klarna.Rest.Core.Model.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -8,7 +7,6 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     ///
     /// </summary>
-    [Obsolete("This model is being deprecated. Use the Order model from Klarna.Rest.Core.Model.Payments namespace instead")]
     public class PaymentOrderResponse
     {
         /// <summary>

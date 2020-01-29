@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
@@ -7,7 +6,6 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     ///
     /// </summary>
-    [Obsolete("This model is being deprecated. Use the Refund model from Klarna.Rest.Core.Model.OrderManagement namespace instead")]
     public class OrderManagementRefund
     {
         /// <summary>
@@ -38,6 +36,6 @@ namespace Klarna.Rest.Core.Model
         /// Order lines for the refund shown to the customer. Optional but increases the customer experience. Maximum 1000 order lines.
         /// </summary>
         [JsonProperty(PropertyName = "order_lines")]
-        public ICollection<OrderManagement.OrderLine> OrderLines { get; set; }
+        public ICollection<OrderLine> OrderLines { get; set; }
     }
 }

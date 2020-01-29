@@ -1,11 +1,9 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 namespace Klarna.Rest.Core.Model
 {
     /// <summary>
     ///
     /// </summary>
-    [Obsolete("This model is being deprecated. Use the CardInformation model from Klarna.Rest.Core.Model.CustomerToken namespace instead")]
     public class CustomerTokenCardDetails
     {
         [JsonProperty(PropertyName = "brand")]
