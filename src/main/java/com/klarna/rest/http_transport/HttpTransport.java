@@ -36,7 +36,7 @@ public interface HttpTransport {
     /**
      * API library client version.
      */
-    String VERSION = "3.2.2";
+    String VERSION = "3.2.3";
 
     /**
      * API library default user agent.
@@ -68,6 +68,16 @@ public interface HttpTransport {
      * Testing API base URL for North America.
      */
     URI NA_TEST_BASE_URL = URI.create("https://api-na.playground.klarna.com");
+
+    /**
+     * API base URL for Oceania.
+     */
+    URI OC_BASE_URL = URI.create("https://api-oc.klarna.com");
+
+    /**
+     * Testing API base URL for Oceania.
+     */
+    URI OC_TEST_BASE_URL = URI.create("https://api-oc.playground.klarna.com");
 
     /**
      * Sends HTTP GET request to specified path.
