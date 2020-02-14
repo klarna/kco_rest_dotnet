@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Namespace Klarna.Rest.Core.Store
+   | Klarna Checkout REST.Core .NET SDK </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Namespace Klarna.Rest.Core.Store
+   | Klarna Checkout REST.Core .NET SDK ">
+    <meta name="generator" content="docfx 2.46.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <div class="subnav navbar navbar-default" style="display: table; width:100%;">
+          <a href="index.html" style="display: table-cell; vertical-align: middle;">
+            <img id="logo" class="svg" src="../api/logo.png" alt="" style="height: 40px; margin: 10px 15px 10px 10px">
+          </a>
+          <div class="container hide-when-search" id="breadcrumb" style="display: table-cell; vertical-align: middle; padding: 4px 0 0 0;">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Klarna.Rest.Core.Store">
+  
+  <h1 id="Klarna_Rest_Core_Store" data-uid="Klarna.Rest.Core.Store" class="text-break">Namespace Klarna.Rest.Core.Store
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="Klarna.Rest.Core.Store.CheckoutStore.html">CheckoutStore</a></h4>
+      <section><p>The checkout API is used to create a checkout with Klarna and update the checkout order during the purchase.
+As soon as the purchase is completed the order should be read and handled using the Order Management API.</p>
+</section>
+      <h4><a class="xref" href="Klarna.Rest.Core.Store.CustomerTokenStore.html">CustomerTokenStore</a></h4>
+      <section><p>Customer Token API
+The Customer Token API is used to charge customers with a tokenized Klarna payment method and can be used
+for recurring purchases, subscriptions and for storing a customer's payment method. Tokens are created using
+the generate a customer token call in the payments API.</p>
+</section>
+      <h4><a class="xref" href="Klarna.Rest.Core.Store.HostedPaymentPageStore.html">HostedPaymentPageStore</a></h4>
+      <section><p>Hosted Payment Page API
+Hosted Payment Page (HPP) API is a service that lets you integrate Klarna Payments without the need of hosting
+the web page that manages the client side of Klarna Payments.</p>
+<p>A complete HPP payment session will involve three of Klarna services:</p>
+<ul>
+<li>Klarna Payments API to start a payment session.</li>
+<li>Hosted Payment Page API to distribute a payment session.</li>
+<li>Order Management API to capture payment or refund consumer.</li>
+</ul>
+</section>
+      <h4><a class="xref" href="Klarna.Rest.Core.Store.OrderManagementStore.html">OrderManagementStore</a></h4>
+      <section><p>The Order Management API is used for handling an order after the customer has completed the purchase.
+It is used for updating, capturing and refunding an order as well as to see the history of events that
+have affected this order.</p>
+</section>
+      <h4><a class="xref" href="Klarna.Rest.Core.Store.PaymentStore.html">PaymentStore</a></h4>
+      <section><p>The payments API is used to create a session to offer Klarna's payment methods as part of your checkout.
+As soon as the purchase is completed the order should be read and handled using the Order Management API.</p>
+</section>
+      <h4><a class="xref" href="Klarna.Rest.Core.Store.SettlementStore.html">SettlementStore</a></h4>
+      <section><p>This API gives you access to your payouts and transactions.
+Resources are split into two broad types:</p>
+<ul>
+<li>Collections, including pagination information: collections are queryable, typically by the attributes of
+the sub-resource as well as pagination.</li>
+<li>Entity resources containing a single entity.</li>
+</ul>
+</section>
+      <h4><a class="xref" href="Klarna.Rest.Core.Store.VirtualCardServiceStore.html">VirtualCardServiceStore</a></h4>
+      <section><p>Merchant Card Service API
+The Merchant Card Service (MCS) API is used to settle orders with virtual credit cards.</p>
+</section>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) 2005-2019 Klarna Bank AB (publ). All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

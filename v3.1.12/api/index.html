@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Official Klarna .NET Core SDK | Klarna Checkout REST.Core .NET SDK </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Official Klarna .NET Core SDK | Klarna Checkout REST.Core .NET SDK ">
+    <meta name="generator" content="docfx 2.46.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <div class="subnav navbar navbar-default" style="display: table; width:100%;">
+          <a href="index.html" style="display: table-cell; vertical-align: middle;">
+            <img id="logo" class="svg" src="../api/logo.png" alt="" style="height: 40px; margin: 10px 15px 10px 10px">
+          </a>
+          <div class="container hide-when-search" id="breadcrumb" style="display: table-cell; vertical-align: middle; padding: 4px 0 0 0;">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="official-klarna-net-core-sdk">Official Klarna .NET Core SDK</h1>
+
+<p><a href="https://www.nuget.org/packages/Klarna.Rest.Core/"><img src="https://img.shields.io/nuget/v/Klarna.Rest.Core.svg?style=flat" alt="NuGet Version"></a>
+<a href="https://travis-ci.org/klarna/kco_rest_dotnet"><img src="https://img.shields.io/travis/klarna/kco_rest_dotnet/v3.x.svg?style=flat" alt="Build Status"></a>
+<a href="https://coveralls.io/r/klarna/kco_rest_dotnet?branch=v3.x"><img src="https://img.shields.io/coveralls/klarna/kco_rest_dotnet/v3.x.svg?style=flat" alt="Coverage Status"></a></p>
+<h2 id="shop-now-pay-later">Shop now. Pay later.</h2>
+<p>Shop at your favorite stores today and experience the freedom to pay later with Klarna.</p>
+<h2 id="get-started">Get started</h2>
+<p>The Klarna .NET Core SDK covers all of Klarna APIs under: <a href="https://developers.klarna.com/api/">https://developers.klarna.com/api/</a></p>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Microsoft .NET Framework 4 or above</li>
+<li><a href="#api-credentials">API credentials</a></li>
+</ul>
+<h3 id="api-credentials">API Credentials</h3>
+<p>Before getting a production account you can get a playground one.
+Register here to be able to test your SDK integration before go live:</p>
+<ul>
+<li><a href="https://playground.eu.portal.klarna.com/developer-sign-up">https://playground.eu.portal.klarna.com/developer-sign-up</a> - for EU countries</li>
+<li><a href="https://playground.eu.portal.klarna.com/developer-sign-up">https://playground.us.portal.klarna.com/developer-sign-up</a> - for the US</li>
+</ul>
+<h2 id="installation-and-usage">Installation and Usage</h2>
+<h3 id="examples">Examples</h3>
+<p>Example files can be found in the <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/Klarna.Rest.Core.Examples">examples</a> project.</p>
+<h3 id="sample-apps">Sample Apps</h3>
+<p>Also you can check for the <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/SampleProjects">Sample projects</a>:</p>
+<ul>
+<li><a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/SampleProjects/Sample">Sample</a>
+Simple projects for demonstrating a backend API call</li>
+<li><a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/SampleProjects/KlarnaCheckoutWebApp">WebApp MVC</a>
+MVC project for demonstrating Klarna Checkout and Klarna Payment</li>
+<li><a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/Klarna.Rest/SampleProjects/WebForms">WebForms</a>
+WebForms project with Klarna Checkout integrated</li>
+</ul>
+<h3 id="installation-with-package-manager">Installation with Package Manager</h3>
+<p>To install the Klarna .NET Core SDK, run the following command in the <em>Package Manager Console</em>:</p>
+<pre><code class="lang-bash">PM&gt; Install-Package Klarna.Rest.Core -Version x.y.z
+</code></pre>
+<h3 id="net-cli">.NET CLI</h3>
+<pre><code class="lang-bash">dotnet add package Klarna.Rest.Core --version x.y.z
+</code></pre>
+<h3 id="paket-cli">Paket CLI</h3>
+<pre><code class="lang-bash">paket add Klarna.Rest.Core --version x.y.z
+</code></pre>
+<h3 id="usage">Usage</h3>
+<p>Check the <a href="https://www.nuget.org/packages/Klarna.Rest.Core/">https://www.nuget.org/packages/Klarna.Rest.Core/</a> to get information about the latest version.</p>
+<h2 id="documentation">Documentation</h2>
+<p>Klarna API documentation: <a href="https://developers.klarna.com/api/">https://developers.klarna.com/api/</a><br>
+SDK References: <a href="https://klarna.github.io/kco_rest_dotnet/">https://klarna.github.io/kco_rest_dotnet/</a></p>
+<p>Example files can be found in the <a href="examples">Klarna.Rest/Klarna.Rest.Core.Examples/</a> project.<br>
+Additional documentation can be found at <a href="https://developers.klarna.com">https://developers.klarna.com</a>.</p>
+<h2 id="questions-and-feedback">Questions and feedback</h2>
+<p>If you have any questions concerning this product or the implementation,
+please create an issue: <a href="https://github.com/klarna/kco_rest_dotnet/issues/new/choose">https://github.com/klarna/kco_rest_dotnet/issues/new/choose</a></p>
+<p>or use the Contact Us form at <a href="https://klarna.com">https://klarna.com</a> website.</p>
+<h2 id="how-to-contribute">How to contribute</h2>
+<p>At Klarna, we strive toward achieving the highest possible quality for our
+products. Therefore, we require you to follow these guidelines if you wish
+to contribute.</p>
+<p>To contribute, the following criteria need to be fulfilled:</p>
+<ul>
+<li>Provide a description of what has been changed and why</li>
+<li>Pull requests should implement a boxed change</li>
+<li>All code and documentation must follow the style specified by
+the <a href="http://stylecop.codeplex.com/">StyleCop</a> standard.</li>
+<li>New features and bug fixes must have accompanying unit tests:
+<ul>
+<li>Positive tests</li>
+<li>Negative tests</li>
+<li>Boundary tests (if possible)</li>
+<li>No less than 90% decision coverage</li>
+</ul>
+</li>
+<li>All unit tests should pass</li>
+</ul>
+<h2 id="license">License</h2>
+<p>The Klarna .NET Core SDK is licensed under
+<a href="http://www.apache.org/LICENSE-2.0">Apache License, Version 2.0</a></p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/klarna/kco_rest_dotnet/blob/v3.x/docfx_project/api/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) 2005-2019 Klarna Bank AB (publ). All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
