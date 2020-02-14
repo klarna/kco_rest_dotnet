@@ -27,6 +27,10 @@ Register here to be able to test your SDK integration before go live:
 
 ## Installation and Usage
 
+### Important Notices
+
+⚠️ v3.1.10 is marked as **broken/deprecated**. Consider to use v3.1.12 instead.
+
 ### Examples
 
 Example files can be found in the [examples](Klarna.Rest/Klarna.Rest.Core.Examples) project.    

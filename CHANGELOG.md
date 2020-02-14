@@ -30,6 +30,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [3.1.10] (Enhancements Release/Auto-generated models) - 2019-12-10
 
+⚠️ This version is marked as **broken/deprecated**. Consider to use v3.1.12 instead.
+
 This release contains fully updated API models. All the models were split by appropriate API entitities
 and all the models are auto-generated now. This change simplifies keeping up-to-date changes in the API 
 request/response.
