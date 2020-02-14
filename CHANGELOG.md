@@ -11,14 +11,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Rolled back previous model changes. Remove obsolescence notices.
-
 ### Added
 
 ### Fixed
 
 
+
+## [3.1.12] - 2020-02-14
+
+### Changed
+
+- Rolled back previous model changes. Remove obsolescence notices.
+
+### Added
+
+- HTTP Transport: Oceania Base URLs (playground and production)
+
+
 ## [3.1.10] (Enhancements Release/Auto-generated models) - 2019-12-10
+
+⚠️ This version is marked as **broken/deprecated**. Consider to use v3.1.12 instead.
 
 This release contains fully updated API models. All the models were split by appropriate API entitities
 and all the models are auto-generated now. This change simplifies keeping up-to-date changes in the API 
@@ -258,7 +270,8 @@ and fixes [#77](https://github.com/klarna/kco_rest_dotnet/issues/77)
 
 - **NEW MINT-1912** Support checkout v3 and ordermanagement v1 APIs - *Joakim.L*
 
-[Unreleased]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.10...HEAD
+[Unreleased]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.12...HEAD
+[3.1.12]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.10...v3.1.12
 [3.1.10]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.9...v3.1.10
 [3.1.9]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.8...v3.1.9
 [3.1.8]: https://github.com/klarna/kco_rest_dotnet/compare/v3.1.7...v3.1.8
