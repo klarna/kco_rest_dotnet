@@ -15,6 +15,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+## [4.0.2] - 2020-02-14
+
+### Added
+
+- HTTP Transport: Oceania Base URLs (playground and production)
+
+
 ## [4.0.1] - 2020-01-22
 
 ### Fixed
@@ -315,7 +322,8 @@ ApiException will be thrown as expected. Fixes issue #39.
 
 - **NEW MINT-1842** Support checkout v3 and ordermanagement v1 APIs - *Joakim.L*
 
-[Unreleased]: https://github.com/klarna/kco_rest_java/compare/v4.0.1...HEAD
+[Unreleased]: https://github.com/klarna/kco_rest_java/compare/v4.0.2...HEAD
+[4.0.2]: https://github.com/klarna/kco_rest_java/compare/v4.0.1...v4.0.2
 [4.0.1]: https://github.com/klarna/kco_rest_java/compare/v4.0.0...v4.0.1
 [4.0.0]: https://github.com/klarna/kco_rest_java/compare/v3.2.2...v4.0.0
 [3.2.2]: https://github.com/klarna/kco_rest_java/compare/v3.2.1...v3.2.2
