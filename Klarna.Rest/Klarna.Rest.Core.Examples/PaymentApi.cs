@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Klarna.Rest.Core.Common;
 using Klarna.Rest.Core.Communication;
 using Klarna.Rest.Core.Model.Enum;
-using Klarna.Rest.Core.Model.Payments;
+using Klarna.Rest.Core.Model;
 
 namespace Klarna.Rest.Core.Examples
 {
@@ -17,7 +17,7 @@ namespace Klarna.Rest.Core.Examples
             var klarna = new Klarna(username, password, KlarnaEnvironment.TestingEurope);
             try
             {
-                var paymentSession = new Session
+                var paymentSession = new PaymentCreditSession
                 {
                     PurchaseCountry = "SE",
                     PurchaseCurrency = "SEK",
@@ -39,10 +39,10 @@ namespace Klarna.Rest.Core.Examples
                             }
                     },
                     MerchantReference1 ="StoreOrderId",
-                    Options = new Options{
+                    Options = new PaymentOptions{
                         ColorButton ="000000"
                     },
-                    BillingAddress = new Address
+                    BillingAddress = new PaymentAddressInfo
                     {
                         GivenName ="John",
                         FamilyName ="Doe",
@@ -158,8 +158,8 @@ namespace Klarna.Rest.Core.Examples
 
             var klarna = new Klarna(username, password, KlarnaEnvironment.TestingEurope);
             var authorization_token = "234534...345345....345";
-            var consumertokenreqest = new CustomerTokenCreationRequest() {
-                BillingAddress = new Address {
+            var consumertokenreqest = new PaymentGenerateConsumerTokenRequest {
+                BillingAddress = new PaymentAddressInfo {
                     GivenName = "John",
                     FamilyName = "Doe",
                     StreetAddress = "Sveavägen 46",

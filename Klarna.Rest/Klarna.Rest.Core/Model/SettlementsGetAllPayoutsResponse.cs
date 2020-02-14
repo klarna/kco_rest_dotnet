@@ -5,16 +5,18 @@ using Newtonsoft.Json;
 namespace Klarna.Rest.Core.Model
 {
     /// <summary>
+    ///
+    /// </summary>
+    /// <summary>
     /// Get all payouts response object
     /// </summary>
-    [Obsolete("This model is being deprecated. Please use the PayoutCollection model from Klarna.Rest.Core.Model.Settlements")]
     public class SettlementsGetAllPayoutsResponse
     {
         /// <summary>
         /// Array of payouts
         /// </summary>
         [JsonProperty(PropertyName = "payouts")]
-        public ICollection<Settlements.Payout> Payouts { get; set; }
+        public ICollection<SettlementsPayout> Payouts { get; set; }
         /// <summary>
         /// Pagination information
         /// </summary>

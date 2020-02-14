@@ -8,7 +8,32 @@ namespace Klarna.Rest.Core.Model.HostedPaymentPage {
   /// 
   /// </summary>
   [DataContract]
-  public class DistributionContactV1: HostedPaymentPageContactInformation {
+  public class DistributionContactV1 {
+    /// <summary>
+    /// Email where to send the email with the HPP link. Only required if distribution method is 'email'
+    /// </summary>
+    /// <value>Email where to send the email with the HPP link. Only required if distribution method is 'email'</value>
+    [DataMember(Name="email", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "email")]
+    public string Email { get; set; }
+
+    /// <summary>
+    /// Phone number where to send the sms with the HPP link. Only required if distribution method is 'sms'
+    /// </summary>
+    /// <value>Phone number where to send the sms with the HPP link. Only required if distribution method is 'sms'</value>
+    [DataMember(Name="phone", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "phone")]
+    public string Phone { get; set; }
+
+    /// <summary>
+    /// ISO 3166 alpha-2 phone country. Only required if distribution method is 'sms'
+    /// </summary>
+    /// <value>ISO 3166 alpha-2 phone country. Only required if distribution method is 'sms'</value>
+    [DataMember(Name="phone_country", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "phone_country")]
+    public string PhoneCountry { get; set; }
+
+
     /// <summary>
     /// Get the string presentation of the object
     /// </summary>

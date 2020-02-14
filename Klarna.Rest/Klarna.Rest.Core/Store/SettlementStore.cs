@@ -1,14 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Collections.Generic;
-using Klarna.Rest.Core.Serialization;
-using Klarna.Rest.Core.Model;
-using Klarna.Rest.Core.Model.Settlements;
+using System.IO;
+using System.Threading.Tasks;
+using Klarna.Rest.Core.Common;
 using Klarna.Rest.Core.Communication;
 using Klarna.Rest.Core.Communication.Dto;
-using Klarna.Rest.Core.Common;
+using Klarna.Rest.Core.Model;
+using Klarna.Rest.Core.Serialization;
 
 namespace Klarna.Rest.Core.Store
 {
@@ -30,9 +28,8 @@ namespace Klarna.Rest.Core.Store
         /// <param name="startDate">ISO-8601 formatted date with optional time string</param>
         /// <param name="endDate">ISO-8601 formatted date with optional time string</param>
         /// <param name="currencyCode">ISO-3166 Currency Code.</param>
-        /// <returns>Collection of <see cref="PayoutSummary"/></returns>
-        [Obsolete("HostedPaymentPageDistributeLink using the old model. Please use DistributionRequestV1 instead")]
-        public async Task<ICollection<PayoutSummary>> GetPayoutsSummary(string startDate, string endDate, string currencyCode)
+        /// <returns>Collection of <see cref="SettlementsPayoutSummary"/></returns>
+        public async Task<ICollection<SettlementsPayoutSummary>> GetPayoutsSummary(string startDate, string endDate, string currencyCode)
         {
             var nvm = new NameValueCollection
             {
@@ -42,18 +39,18 @@ namespace Klarna.Rest.Core.Store
             };
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, "summary", nvm);
 
-            return await Get<ICollection<PayoutSummary>>(url).ConfigureAwait(false);
+            return await Get<ICollection<SettlementsPayoutSummary>>(url).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Returns a specific payout based on a given payment reference.
         /// </summary>
         /// <param name="paymentReference">The reference id of the payout</param>
-        /// <returns>A single <see cref="Payout"/> object</returns>
-        public async Task<Payout> GetPayout(string paymentReference)
+        /// <returns>A single <see cref="SettlementsPayout"/> object</returns>
+        public async Task<SettlementsPayout> GetPayout(string paymentReference)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, paymentReference);
-            return await Get<Payout>(url).ConfigureAwait(false);
+            return await Get<SettlementsPayout>(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -67,8 +64,8 @@ namespace Klarna.Rest.Core.Store
         ///     a default of 20 will be used.
         /// </param>
         /// <param name="offset">Optional. The current offset. Describes "where" in a collection the current starts.</param>
-        /// <returns><see cref="PayoutCollection"/></returns>
-        public async Task<PayoutCollection> GetAllPayouts(string startDate = "",
+        /// <returns><see cref="SettlementsGetAllPayoutsResponse"/></returns>
+        public async Task<SettlementsGetAllPayoutsResponse> GetAllPayouts(string startDate = "",
             string endDate = "",
             string currencyCode = "",
             int size = 0, int offset = 0)
@@ -100,7 +97,7 @@ namespace Klarna.Rest.Core.Store
             }
 
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, null, parameters);
-            return await Get<PayoutCollection>(url).ConfigureAwait(false);
+            return await Get<SettlementsGetAllPayoutsResponse>(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -113,8 +110,8 @@ namespace Klarna.Rest.Core.Store
         ///     a default of 20 will be used.
         /// </param>
         /// <param name="offset">Optional. The current offset. Describes "where" in a collection the current starts.</param>
-        /// <returns><see cref="TransactionCollection"/></returns>
-        public async Task<TransactionCollection> GetTransactions(string paymentReference = "", string orderId = "",
+        /// <returns></returns>
+        public async Task<SettlementsGetTransactionsResponse> GetTransactions(string paymentReference = "", string orderId = "",
             int size = 0, int offset = 0)
         {
             var parameters = new NameValueCollection();
@@ -142,14 +139,14 @@ namespace Klarna.Rest.Core.Store
                 ApiControllers.SettlementTransactions,
                 null,
                 parameters);
-            return await Get<TransactionCollection>(url).ConfigureAwait(false);
+            return await Get<SettlementsGetTransactionsResponse>(url).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Gets CSV Payout Report
         /// More information about this CSV format is available at:
-        /// <a href="https://developers.klarna.com/documentation/settlement-files/">
-        ///     https://developers.klarna.com/documentation/settlement-files/
+        /// <a href="https://developers.klarna.com/en/gb/kco-v3/settlement-files">
+        ///     https://developers.klarna.com/en/gb/kco-v3/settlement-files
         /// </a>
         /// </summary>
         /// <param name="paymentReference">The reference id of the payout</param>
@@ -168,8 +165,8 @@ namespace Klarna.Rest.Core.Store
         /// <summary>
         /// Gets CSV summary
         /// More information about this CSV format is available at:
-        /// <a href="https://developers.klarna.com/documentation/settlement-files/">
-        ///     https://developers.klarna.com/documentation/settlement-files/
+        /// <a href="https://developers.klarna.com/en/gb/kco-v3/settlement-files">
+        ///     https://developers.klarna.com/en/gb/kco-v3/settlement-files
         /// </a>
         /// </summary>
         /// <param name="startDate">Required. ISO-8601 formatted date with optional time string</param>

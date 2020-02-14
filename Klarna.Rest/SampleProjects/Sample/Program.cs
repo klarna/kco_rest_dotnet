@@ -20,7 +20,7 @@
 using System;
 using System.Collections.Generic;
 using Klarna.Rest.Core.Common;
-using Klarna.Rest.Core.Communication;
+using Klarna.Rest.Core.Commuication;
 using Klarna.Rest.Core.Model;
 using Klarna.Rest.Core.Model.Enum;
 

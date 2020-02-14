@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
@@ -7,7 +6,6 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     ///
     /// </summary>
-    [Obsolete("This model is being deprecated. Use the Options model from Klarna.Rest.Core.Model.Checkout namespace instead")]
     public class CheckoutOptions
     {
         /// <summary>
@@ -70,7 +68,7 @@ namespace Klarna.Rest.Core.Model
         /// </summary>
         /// <remarks>Required</remarks>
         [JsonProperty(PropertyName = "additional_checkbox")]
-        public Checkout.Checkbox AdditionalCheckbox { get; set; }
+        public AdditionalCheckbox AdditionalCheckbox { get; set; }
         /// <summary>
         /// Additional merchant defined field. e.g. for purchases that MUST have a national insurance number.
         /// </summary>
@@ -100,7 +98,7 @@ namespace Klarna.Rest.Core.Model
         /// Additional merchant defined checkboxes. e.g. for Newsletter opt-in.
         /// </summary>
         [JsonProperty(PropertyName = "additional_checkboxes")]
-        public ICollection<Checkout.CheckboxV2> AdditionalCheckboxes { get; set; }
+        public ICollection<AdditionalCheckboxV2> AdditionalCheckboxes { get; set; }
         /// <summary>
         /// If true, validate callback must get a positive response to not stop purchase. Default: false.
         /// </summary>

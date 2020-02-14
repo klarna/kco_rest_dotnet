@@ -7,7 +7,6 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     /// Virtual card create settlement request
     /// </summary>
-    [Obsolete("This model is being deprecated. Use the SettlementRequest model from Klarna.Rest.Core.Model.MerchantCardService namespace instead")]
     public class VirtualCardCreateSettlementRequest
     {
         /// <summary>

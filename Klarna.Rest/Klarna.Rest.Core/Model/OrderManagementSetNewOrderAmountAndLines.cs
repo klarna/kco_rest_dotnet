@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
@@ -7,7 +6,6 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     ///
     /// </summary>
-    [Obsolete("This model is being deprecated. Use the UpdateAuthorization model from Klarna.Rest.Core.Model.OrderManagement namespace instead")]
     public class OrderManagementSetNewOrderAmountAndLines
     {
         /// <summary>
@@ -24,6 +22,6 @@ namespace Klarna.Rest.Core.Model
         /// New set of order lines for the order.
         /// </summary>
         [JsonProperty(PropertyName = "order_lines")]
-        public ICollection<OrderManagement.OrderLine> OrderLines { get; set; }
+        public ICollection<OrderLine> OrderLines { get; set; }
     }
 }

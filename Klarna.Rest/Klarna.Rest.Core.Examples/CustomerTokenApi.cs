@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Klarna.Rest.Core.Common;
 using Klarna.Rest.Core.Communication;
 using Klarna.Rest.Core.Model.Enum;
+using Klarna.Rest.Core.Model;
 
 namespace Klarna.Rest.Core.Examples
 {
@@ -48,16 +49,16 @@ namespace Klarna.Rest.Core.Examples
 
             var klarna = new Klarna(username, password, KlarnaEnvironment.TestingEurope);
             var customerToken = "234534...345345....345";
-            var orderData = new Model.CustomerToken.CustomerTokenOrder
+            var orderData = new CustomerTokenOrder
             {
                 PurchaseCurrency = "SEK",
                 OrderAmount = 1000,
                 OrderTaxAmount = 2000,
                 MerchantReference1 = "StoreOrderId",
                 AutoCapture = true, 
-                OrderLines = new List<Model.CustomerToken.OrderLine>()
+                OrderLines = new List<OrderLine>()
                 {
-                    new Model.CustomerToken.OrderLine
+                    new OrderLine
                     {
                         Type = OrderLineType.physical,
                         Name = "Foo",

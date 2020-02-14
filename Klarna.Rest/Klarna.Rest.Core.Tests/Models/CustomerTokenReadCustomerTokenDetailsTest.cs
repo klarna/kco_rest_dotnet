@@ -3,7 +3,6 @@ using System.IO;
 using Klarna.Rest.Core.Model;
 using Klarna.Rest.Core.Model.Enum;
 using Klarna.Rest.Core.Model.HostedPaymentPage;
-using Klarna.Rest.Core.Model.MerchantCardService;
 using Newtonsoft.Json;
 using Xunit;
 
@@ -77,14 +76,14 @@ namespace Klarna.Rest.Core.Tests.Models
         public void CanDeserializeRequest()
         {
             var json = File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "Data", "HostedPaymentPageCreateSessionRequest.json"));
-            var request = JsonConvert.DeserializeObject<Model.HostedPaymentPage.SessionCreationRequestV1>(json);
+            var request = JsonConvert.DeserializeObject<HostedPaymentPageCreateSessionRequest>(json);
         }
 
         [Fact]
         public void CanDeserializeResponse()
         {
             var json = File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "Data", "HostedPaymentPageCreateSessionResponse.json"));
-            var response = JsonConvert.DeserializeObject<Model.HostedPaymentPage.SessionCreationResponseV1>(json);
+            var response = JsonConvert.DeserializeObject<HostedPaymentPageCreateSessionResponse>(json);
         }
         
         [Fact]
@@ -95,7 +94,7 @@ namespace Klarna.Rest.Core.Tests.Models
             responseObject.AuthorizationToken = "b4bd3423-24e3";
             responseObject.UpdatedAt = "2038-01-19T03:14:07.000Z";
             responseObject.SessionId = "1234";
-            Model.HostedPaymentPage.SessionResponseV1 casted = responseObject;
+            HostedPaymentPageSessionStatus casted = responseObject;
             Assert.True(casted.AuthorizationToken.Equals("b4bd3423-24e3"));
         }
     }
@@ -196,21 +195,6 @@ namespace Klarna.Rest.Core.Tests.Models
         {
             var json = File.ReadAllText(Path.Combine(System.Environment.CurrentDirectory, "Data", "VirtualCardServiceGetSettledOrdersSettlementResponse.json"));
             var response = JsonConvert.DeserializeObject<VirtualCardSettlement>(json);
-        }
-        
-        [Fact]
-        public void TestClient()
-        {
-            SettlementResponse newResponse = new SettlementResponse();
-            newResponse.SettlementId = "ABCD1234";
-            newResponse.OrderId = "DEFG5678";
-            newResponse.CreatedAt = "2038-01-19T03:14:07.000Z";
-            newResponse.ExpiresAt = "2038-01-27T03:14:07.000Z";
-            VirtualCardSettlement casted = newResponse;
-            Assert.True(casted.SettlementId.Equals("ABCD1234"));
-            Assert.True(casted.OrderId.Equals("DEFG5678"));
-            Assert.True(casted.CreatedAt.Equals("2038-01-19T03:14:07.000Z"));
-            Assert.True(casted.ExpiresAt.Equals("2038-01-27T03:14:07.000Z"));
         }
     }
 

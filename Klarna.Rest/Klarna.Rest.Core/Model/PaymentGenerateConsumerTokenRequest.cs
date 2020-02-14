@@ -1,12 +1,10 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
 {
     /// <summary>
     ///
     /// </summary>
-    [Obsolete("This model is being deprecated. Use the CustomerTokenCreationRequest model from Klarna.Rest.Core.Model.Payments namespace instead")]
     public class PaymentGenerateConsumerTokenRequest
     {
         /// <summary>
@@ -28,7 +26,7 @@ namespace Klarna.Rest.Core.Model
         /// Once the customer has provided any data, updates to this object will be ignored (without generating an error).
         /// </summary>
         [JsonProperty(PropertyName = "billing_address")]
-        public Payments.Address BillingAddress { get; set; }
+        public PaymentAddressInfo BillingAddress { get; set; }
         /// <summary>
         /// Information about the liable customer of the order.
         /// </summary>

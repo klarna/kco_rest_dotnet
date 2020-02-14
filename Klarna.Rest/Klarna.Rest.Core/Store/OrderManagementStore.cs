@@ -6,7 +6,6 @@ using Klarna.Rest.Core.Common;
 using Klarna.Rest.Core.Communication;
 using Klarna.Rest.Core.Communication.Dto;
 using Klarna.Rest.Core.Model;
-using Klarna.Rest.Core.Model.OrderManagement;
 using Klarna.Rest.Core.Serialization;
 
 namespace Klarna.Rest.Core.Store
@@ -58,24 +57,7 @@ namespace Klarna.Rest.Core.Store
         /// <param name="orderId">Id of order to update</param>
         /// <param name="customerAddresses">The <see cref="UpdateCustomerAddresses"/>object</param>
         /// <returns></returns>
-        [Obsolete("UpdateCustomerAddresses method with OrderManagementCustomerAddresses model " +
-                  "marked as obsolete. Use UpdateConsumer model instead")]
         public Task UpdateCustomerAddresses(string orderId, OrderManagementCustomerAddresses customerAddresses)
-        {
-            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/customer-details");
-            return Patch(url, customerAddresses);
-        }
-
-        /// <summary>
-        /// Updates customer addresses
-        /// <a href="https://developers.klarna.com/api/#order-management-api-update-customer-addresses">
-        ///     https://developers.klarna.com/api/#order-management-api-update-customer-addresses
-        /// </a>
-        /// </summary>
-        /// <param name="orderId">Id of order to update</param>
-        /// <param name="customerAddresses">The <see cref="UpdateConsumer"/>object</param>
-        /// <returns></returns>
-        public Task UpdateCustomerAddresses(string orderId, UpdateConsumer customerAddresses)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/customer-details");
             return Patch(url, customerAddresses);
@@ -104,24 +86,7 @@ namespace Klarna.Rest.Core.Store
         /// <param name="orderId">Id of order to update</param>
         /// <param name="merchantReferences">The <see cref="OrderManagementMerchantReferences"/> object</param>
         /// <returns></returns>
-        [Obsolete("UpdateMerchantReferences method with OrderManagementMerchantReferences model " +
-                  "marked as obsolete. Use UpdateMerchantReferences model instead")]
         public Task UpdateMerchantReferences(string orderId, OrderManagementMerchantReferences merchantReferences)
-        {
-            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/merchant-references");
-            return Patch(url, merchantReferences);
-        }
-
-        /// <summary>
-        /// Updates merchant references
-        /// <a href="https://developers.klarna.com/api/#order-management-api-update-merchant-references">
-        ///     https://developers.klarna.com/api/#order-management-api-update-merchant-references
-        /// </a>
-        /// </summary>
-        /// <param name="orderId">Id of order to update</param>
-        /// <param name="merchantReferences">The <see cref="UpdateMerchantReferences"/> object</param>
-        /// <returns></returns>
-        public Task UpdateMerchantReferences(string orderId, UpdateMerchantReferences merchantReferences)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/merchant-references");
             return Patch(url, merchantReferences);
@@ -149,10 +114,10 @@ namespace Klarna.Rest.Core.Store
         /// </summary>
         /// <param name="orderId">Id of order to retrieve</param>
         /// <returns><see cref="OrderManagementOrder"/></returns>
-        public async Task<Order> GetOrder(string orderId)
+        public async Task<OrderManagementOrder> GetOrder(string orderId)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}");
-            return await Get<Order>(url).ConfigureAwait(false);
+            return await Get<OrderManagementOrder>(url).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -164,24 +129,7 @@ namespace Klarna.Rest.Core.Store
         /// <param name="orderId">Id of order to update</param>
         /// <param name="newOrderAmountAndLines">The <see cref="OrderManagementSetNewOrderAmountAndLines"/> object</param>
         /// <returns></returns>
-        [Obsolete("SetNewOrderAmountAndOrderLines method with OrderManagementSetNewOrderAmountAndLines model " +
-                  "marked as obsolete. Use UpdateAuthorization model instead")]
         public Task SetNewOrderAmountAndOrderLines(string orderId, OrderManagementSetNewOrderAmountAndLines newOrderAmountAndLines)
-        {
-            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/authorization");
-            return Patch(url, newOrderAmountAndLines);
-        }
-
-        /// <summary>
-        /// Sets new order amount and order lines
-        /// <a href="https://developers.klarna.com/api/#order-management-api-set-new-order-amount-and-order-lines">
-        ///     https://developers.klarna.com/api/#order-management-api-set-new-order-amount-and-order-lines
-        /// </a>
-        /// </summary>
-        /// <param name="orderId">Id of order to update</param>
-        /// <param name="newOrderAmountAndLines">The <see cref="UpdateAuthorization"/> object</param>
-        /// <returns></returns>
-        public Task SetNewOrderAmountAndOrderLines(string orderId, UpdateAuthorization newOrderAmountAndLines)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/authorization");
             return Patch(url, newOrderAmountAndLines);
@@ -195,11 +143,11 @@ namespace Klarna.Rest.Core.Store
         /// </summary>
         /// <param name="orderId">Id of order that contains the capture</param>
         /// <param name="captureId">Id of capture to retrieve</param>
-        /// <returns><see cref="Capture"/></returns>
-        public async Task<Capture> GetCapture(string orderId, string captureId)
+        /// <returns><see cref="OrderManagementCapture"/></returns>
+        public async Task<OrderManagementCapture> GetCapture(string orderId, string captureId)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/captures/{captureId}");
-            return await Get<Capture>(url);
+            return await Get<OrderManagementCapture>(url);
         }
 
         /// <summary>
@@ -224,11 +172,11 @@ namespace Klarna.Rest.Core.Store
         /// </a>
         /// </summary>
         /// <param name="orderId">Id of order to retrieve captures</param>
-        /// <returns>Collection of <see cref="Capture"/></returns>
-        public async Task<ICollection<Capture>> GetCapturesForOrder(string orderId)
+        /// <returns>Collection of <see cref="OrderManagementCapture"/></returns>
+        public async Task<ICollection<OrderManagementCapture>> GetCapturesForOrder(string orderId)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/captures");
-            return await Get<ICollection<Capture>>(url);
+            return await Get<ICollection<OrderManagementCapture>>(url);
         }
 
         /// <summary>
@@ -239,30 +187,13 @@ namespace Klarna.Rest.Core.Store
         /// </summary>
         /// <param name="orderId">Id of order to create capture</param>
         /// <param name="capture">The <see cref="OrderManagementCapture"/> object</param>
-        /// <returns></returns>
-        [Obsolete("CreateCapture method with OrderManagementCreateCapture model " +
-                  "marked as obsolete. Use CaptureObject model instead")]
+        /// <returns>Object of <see cref="OrderManagementCapture"/> </returns>
         public Task CreateCapture(string orderId, OrderManagementCreateCapture capture)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/captures");
             return Post(url, capture);
         }
-
-        /// <summary>
-        /// Creates capture
-        /// <a href="https://developers.klarna.com/api/#order-management-api-create-capture">
-        ///     https://developers.klarna.com/api/#order-management-api-create-capture
-        /// </a>
-        /// </summary>
-        /// <param name="orderId">Id of order to create capture</param>
-        /// <param name="capture">The <see cref="CaptureObject"/> object</param>
-        /// <returns></returns>
-        public Task CreateCapture(string orderId, CaptureObject capture)
-        {
-            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/captures");
-            return Post(url, capture);
-        }
-
+        
         /// <summary>
         /// Creates capture and follow the Location header to fetch the data
         /// <a href="https://developers.klarna.com/api/#order-management-api-create-capture">
@@ -272,8 +203,6 @@ namespace Klarna.Rest.Core.Store
         /// <param name="orderId">Id of order to create capture</param>
         /// <param name="capture">The <see cref="OrderManagementCapture"/> object</param>
         /// <returns>Object of <see cref="OrderManagementCapture"/> </returns>
-        [Obsolete("CreateAndFetchCapture method with OrderManagementCreateCapture model " +
-                  "marked as obsolete. Use CaptureObject model instead")]
         public async Task<OrderManagementCapture> CreateAndFetchCapture(string orderId, OrderManagementCreateCapture capture)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/captures");
@@ -293,33 +222,6 @@ namespace Klarna.Rest.Core.Store
         }
 
         /// <summary>
-        /// Creates capture and follow the Location header to fetch the data
-        /// <a href="https://developers.klarna.com/api/#order-management-api-create-capture">
-        ///     https://developers.klarna.com/api/#order-management-api-create-capture
-        /// </a>
-        /// </summary>
-        /// <param name="orderId">Id of order to create capture</param>
-        /// <param name="capture">The <see cref="OrderManagementCapture"/> object</param>
-        /// <returns>Object of <see cref="OrderManagementCapture"/> </returns>
-        public async Task<Capture> CreateAndFetchCapture(string orderId, CaptureObject capture)
-        {
-            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/captures");
-            var response = new Ref<HttpResponseMessage>();
-
-            await Post(url, capture, null, response).ConfigureAwait(false);
-
-            var headers = response.Value.Headers;
-            url = headers.Location.ToString();
-
-            if (!string.IsNullOrEmpty(url))
-            {
-                return await Get<Capture>(url).ConfigureAwait(false);
-            }
-
-            return default(Capture);
-        }
-
-        /// <summary>
         /// Adds shipping info to a capture
         /// <a href="https://developers.klarna.com/api/#order-management-api-add-shipping-info-to-a-capture">
         ///     https://developers.klarna.com/api/#order-management-api-add-shipping-info-to-a-capture
@@ -329,8 +231,6 @@ namespace Klarna.Rest.Core.Store
         /// <param name="captureId">Id of capture to add shipping info</param>
         /// <param name="shippingInfo">The <see cref="OrderManagementAddShippingInfo"/> object</param>
         /// <returns></returns>
-        [Obsolete("AddShippingInfoToCapture method with OrderManagementAddShippingInfo model " +
-                  "marked as obsolete. Use UpdateShippingInfo model instead")]
         public Task AddShippingInfoToCapture(string orderId, string captureId, OrderManagementAddShippingInfo shippingInfo)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/captures/{captureId}/shipping-info");
@@ -338,22 +238,6 @@ namespace Klarna.Rest.Core.Store
         }
 
         /// <summary>
-        /// Adds shipping info to a capture
-        /// <a href="https://developers.klarna.com/api/#order-management-api-add-shipping-info-to-a-capture">
-        ///     https://developers.klarna.com/api/#order-management-api-add-shipping-info-to-a-capture
-        /// </a>
-        /// </summary>
-        /// <param name="orderId">Id of order to add shipping info</param>
-        /// <param name="captureId">Id of capture to add shipping info</param>
-        /// <param name="shippingInfo">The <see cref="UpdateShippingInfo"/> object</param>
-        /// <returns></returns>
-        public Task AddShippingInfoToCapture(string orderId, string captureId, UpdateShippingInfo shippingInfo)
-        {
-            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/captures/{captureId}/shipping-info");
-            return Post(url, shippingInfo);
-        }
-
-        /// <summary>
         /// Creates a refund
         /// <a href="https://developers.klarna.com/api/#order-management-api-create-a-refund">
         ///     https://developers.klarna.com/api/#order-management-api-create-a-refund
@@ -362,24 +246,7 @@ namespace Klarna.Rest.Core.Store
         /// <param name="orderId">Id of order to create a refund</param>
         /// <param name="refund">The <see cref="OrderManagementRefund"/> object</param>
         /// <returns></returns>
-        [Obsolete("CreateRefund method with OrderManagementRefund model " +
-                  "marked as obsolete. Use RefundObject model instead")]
         public Task CreateRefund(string orderId, OrderManagementRefund refund)
-        {
-            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/refunds");
-            return Post(url, refund);
-        }
-
-        /// <summary>
-        /// Creates a refund
-        /// <a href="https://developers.klarna.com/api/#order-management-api-create-a-refund">
-        ///     https://developers.klarna.com/api/#order-management-api-create-a-refund
-        /// </a>
-        /// </summary>
-        /// <param name="orderId">Id of order to create a refund</param>
-        /// <param name="refund">The <see cref="OrderManagementRefund"/> object</param>
-        /// <returns></returns>
-        public Task CreateRefund(string orderId, RefundObject refund)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/refunds");
             return Post(url, refund);
@@ -394,8 +261,6 @@ namespace Klarna.Rest.Core.Store
         /// <param name="orderId">Id of order to create a refund</param>
         /// <param name="refund">The <see cref="OrderManagementRefund"/> object</param>
         /// <returns>Object of <see cref="OrderManagementGetRefundResponse"/> </returns>
-        [Obsolete("CreateAndFetchRefund method with OrderManagementRefund model " +
-                  "marked as obsolete. Use RefundObject model instead")]
         public async Task<OrderManagementGetRefundResponse> CreateAndFetchRefund(string orderId, OrderManagementRefund refund)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/refunds");
@@ -415,33 +280,6 @@ namespace Klarna.Rest.Core.Store
         }
 
         /// <summary>
-        /// Creates a refund and follow the Location header to fetch the data
-        /// <a href="https://developers.klarna.com/api/#order-management-api-create-a-refund">
-        ///     https://developers.klarna.com/api/#order-management-api-create-a-refund
-        /// </a>
-        /// </summary>
-        /// <param name="orderId">Id of order to create a refund</param>
-        /// <param name="refund">The <see cref="OrderManagementRefund"/> object</param>
-        /// <returns>Object of <see cref="OrderManagementGetRefundResponse"/> </returns>
-        public async Task<Refund> CreateAndFetchRefund(string orderId, RefundObject refund)
-        {
-            var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/refunds");
-
-            var response = new Ref<HttpResponseMessage>();
-            await Post(url, refund, null, response).ConfigureAwait(false);
-
-            var headers = response.Value.Headers;
-            url = headers.Location.ToString();
-
-            if (!string.IsNullOrEmpty(url))
-            {
-                return await Get<Refund>(url).ConfigureAwait(false);
-            }
-
-            return default(Refund);
-        }
-
-        /// <summary>
         /// Gets refund
         /// <a href="https://developers.klarna.com/api/#order-management-api-get-refund">
         ///     https://developers.klarna.com/api/#order-management-api-get-refund
@@ -449,11 +287,11 @@ namespace Klarna.Rest.Core.Store
         /// </summary>
         /// <param name="orderId">Id of order to get refund</param>
         /// <param name="refundId">Id of refund</param>
-        /// <returns>Object of <see cref="Refund"/> </returns>
-        public async Task<Refund> GetRefundForOrder(string orderId, string refundId)
+        /// <returns>Object of <see cref="OrderManagementGetRefundResponse"/> </returns>
+        public async Task<OrderManagementGetRefundResponse> GetRefundForOrder(string orderId, string refundId)
         {
             var url = ApiUrlHelper.GetApiUrlForController(ApiSession.ApiUrl, ApiControllerUri, $"{orderId}/refunds/{refundId}");
-            return await Get<Refund>(url).ConfigureAwait(false);
+            return await Get<OrderManagementGetRefundResponse>(url).ConfigureAwait(false);
         }
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
@@ -7,7 +6,6 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     /// 
     /// </summary>
-    [Obsolete("This model is being deprecated. Use the Order model from Klarna.Rest.Core.Model.Checkout namespace instead")]
     public class CheckoutOrder
     {
         /// <summary>
@@ -57,14 +55,14 @@ namespace Klarna.Rest.Core.Model
         /// </summary>
         /// <value>Once the customer has provided any data in the checkout iframe, updates to this object will be ignored (without generating an error).</value>
         [JsonProperty(PropertyName = "billing_address")]
-        public Checkout.Address BillingCheckoutAddress { get; set; }
+        public CheckoutAddressInfo BillingCheckoutAddress { get; set; }
 
         /// <summary>
         /// Unless the customer has explicitly chosen to enter a separate shipping address, this is a clone of billing_address.
         /// </summary>
         /// <value>Unless the customer has explicitly chosen to enter a separate shipping address, this is a clone of billing_address.</value>
         [JsonProperty(PropertyName = "shipping_address")]
-        public Checkout.Address ShippingCheckoutAddress { get; set; }
+        public CheckoutAddressInfo ShippingCheckoutAddress { get; set; }
 
         /// <summary>
         /// Non-negative, minor units. Total amount of the order, including tax and any discounts.
@@ -85,21 +83,21 @@ namespace Klarna.Rest.Core.Model
         /// </summary>
         /// <value>The applicable order lines (max 1000)</value>
         [JsonProperty(PropertyName = "order_lines")]
-        public ICollection<Checkout.OrderLine> OrderLines { get; set; }
+        public ICollection<OrderLine> OrderLines { get; set; }
 
         /// <summary>
         /// Information about the liable customer of the order.
         /// </summary>
         /// <value>Information about the liable customer of the order.</value>
         [JsonProperty(PropertyName = "customer")]
-        public Checkout.Customer CheckoutCustomer { get; set; }
+        public CheckoutCustomer CheckoutCustomer { get; set; }
 
         /// <summary>
         /// The merchant_urls object.
         /// </summary>
         /// <value>The merchant_urls object.</value>
         [JsonProperty(PropertyName = "merchant_urls")]
-        public Checkout.MerchantUrls MerchantUrls { get; set; }
+        public CheckoutMerchantUrls MerchantUrls { get; set; }
 
         /// <summary>
         /// The HTML snippet that is used to render the checkout in an iframe.
@@ -148,28 +146,28 @@ namespace Klarna.Rest.Core.Model
         /// </summary>
         /// <value>Options for this purchase.</value>
         [JsonProperty(PropertyName = "options")]
-        public Checkout.Options CheckoutOptions { get; set; }
+        public CheckoutOptions CheckoutOptions { get; set; }
 
         /// <summary>
         /// Additional purchase information required for some industries.
         /// </summary>
         /// <value>Additional purchase information required for some industries.</value>
         [JsonProperty(PropertyName = "attachment")]
-        public Checkout.Attachment Attachment { get; set; }
+        public Attachment Attachment { get; set; }
 
         /// <summary>
         /// List of external payment methods.
         /// </summary>
         /// <value>List of external payment methods.</value>
         [JsonProperty(PropertyName = "external_payment_methods")]
-        public ICollection<Checkout.PaymentProvider> ExternalPaymentMethods { get; set; }
+        public ICollection<PaymentProvider> ExternalPaymentMethods { get; set; }
 
         /// <summary>
         /// List of external checkouts.
         /// </summary>
         /// <value>List of external checkouts.</value>
         [JsonProperty(PropertyName = "external_checkouts")]
-        public ICollection<Checkout.PaymentProvider> ExternalCheckouts { get; set; }
+        public ICollection<PaymentProvider> ExternalCheckouts { get; set; }
 
         /// <summary>
         /// A list of countries (ISO 3166 alpha-2). Default is purchase_country only.
@@ -183,7 +181,7 @@ namespace Klarna.Rest.Core.Model
         /// </summary>
         /// <value>A list of shipping options available for this order.</value>
         [JsonProperty(PropertyName = "shipping_options")]
-        public ICollection<Checkout.ShippingOption> ShippingOptions { get; set; }
+        public ICollection<ShippingOption> ShippingOptions { get; set; }
 
         /// <summary>
         /// Pass through field (max 6000 characters).
@@ -197,21 +195,21 @@ namespace Klarna.Rest.Core.Model
         /// </summary>
         /// <value>The gui object.</value>
         [JsonProperty(PropertyName = "gui")]
-        public Checkout.Gui Gui { get; set; }
+        public Gui Gui { get; set; }
 
         /// <summary>
         /// Stores merchant requested data.
         /// </summary>
         /// <value>Stores merchant requested data.</value>
         [JsonProperty(PropertyName = "merchant_requested")]
-        public Checkout.MerchantRequested MerchantRequested { get; set; }
+        public MerchantRequested MerchantRequested { get; set; }
 
         /// <summary>
         /// Current shipping options selected by the customer.
         /// </summary>
         /// <value>Current shipping options selected by the customer.</value>
         [JsonProperty(PropertyName = "selected_shipping_option")]
-        public Checkout.ShippingOption SelectedShippingOption { get; set; }
+        public ShippingOption SelectedShippingOption { get; set; }
 
         /// <summary>
         /// Indicates whether this purchase will create a token that can be used by the merchant to create recurring purchases. This must be enabled for the merchant to use. Default: false

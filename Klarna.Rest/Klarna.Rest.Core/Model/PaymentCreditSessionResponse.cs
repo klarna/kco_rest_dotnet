@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
@@ -7,7 +6,6 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     ///
     /// </summary>
-    [Obsolete("This model is being deprecated. Use the MerchantSession model from Klarna.Rest.Core.Model.Payments namespace instead")]
     public class PaymentCreditSessionResponse
     {
         /// <summary>
@@ -26,6 +24,6 @@ namespace Klarna.Rest.Core.Model
         /// Available payment method categories
         /// </summary>
         [JsonProperty(PropertyName = "payment_method_categories")]
-        public ICollection<Payments.PaymentMethodCategory> PaymentMethodCategories { get; set; }
+        public ICollection<PaymentMethodCategory> PaymentMethodCategories { get; set; }
     }
 }

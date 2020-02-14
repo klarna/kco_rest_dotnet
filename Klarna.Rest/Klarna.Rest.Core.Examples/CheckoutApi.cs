@@ -4,7 +4,6 @@ using Klarna.Rest.Core.Common;
 using Klarna.Rest.Core.Communication;
 using Klarna.Rest.Core.Model;
 using Klarna.Rest.Core.Model.Enum;
-using Klarna.Rest.Core.Model.Checkout;
 
 namespace Klarna.Rest.Core.Examples
 {
@@ -24,23 +23,23 @@ namespace Klarna.Rest.Core.Examples
 
             var client = new Klarna(username, password, KlarnaEnvironment.TestingEurope);
 
-            var order = new Order
+            var order = new CheckoutOrder
             {
                 PurchaseCountry = "se",
                 PurchaseCurrency = "sek",
                 Locale = "sv-se",
                 OrderAmount = 10000,
                 OrderTaxAmount = 2000,
-                MerchantUrls = new MerchantUrls
+                MerchantUrls = new CheckoutMerchantUrls
                 {
                     Terms = "https://www.example.com/terms.html",
                     Checkout = "https://www.example.com/checkout.html",
                     Confirmation = "https://www.example.com/confirmation.html",
                     Push = "https://www.example.com/push.html"
                 },
-                OrderLines = new List<Model.Checkout.OrderLine>()
+                OrderLines = new List<OrderLine>()
                 {
-                    new Model.Checkout.OrderLine
+                    new OrderLine
                     {
                         Type = OrderLineType.physical,
                         Name = "Foo",
@@ -52,7 +51,7 @@ namespace Klarna.Rest.Core.Examples
                         TotalDiscountAmount = 0,
                     }
                 },
-                CheckoutOptions = new Options
+                CheckoutOptions = new CheckoutOptions
                 {
                     AllowSeparateShippingAddress = false,
                     ColorButton = "#FF9900",
@@ -105,23 +104,23 @@ namespace Klarna.Rest.Core.Examples
 
             var client = new Klarna(username, password, KlarnaEnvironment.TestingEurope);
 
-            var order = new Order
+            var order = new CheckoutOrder
             {
                 PurchaseCountry = "gb",
                 PurchaseCurrency = "gbp",
                 Locale = "en-gb",
                 OrderAmount = 9000,
                 OrderTaxAmount = 818,
-                MerchantUrls = new Model.Checkout.MerchantUrls
+                MerchantUrls = new CheckoutMerchantUrls
                 {
                     Terms = "https://www.example.com/terms.html",
                     Checkout = "https://www.example.com/checkout.html",
                     Confirmation = "https://www.example.com/confirmation.html",
                     Push = "https://www.example.com/push.html"
                 },
-                OrderLines = new List<Model.Checkout.OrderLine>()
+                OrderLines = new List<OrderLine>()
                 {
-                    new Model.Checkout.OrderLine
+                    new OrderLine
                     {
                         Type = OrderLineType.physical,
                         Reference = "19-402-USA",
@@ -135,7 +134,7 @@ namespace Klarna.Rest.Core.Examples
                     },
 
                     // Set a discount
-                    new Model.Checkout.OrderLine
+                    new OrderLine
                     {
                         Type = OrderLineType.discount,
                         Reference = "10-gbp-order-discount",
@@ -234,9 +233,9 @@ namespace Klarna.Rest.Core.Examples
                     var order = client.Checkout.GetOrder(orderId).Result;
                     order.OrderAmount = 20000;
                     order.OrderTaxAmount = 4000;
-                    order.OrderLines = new List<Model.Checkout.OrderLine>
+                    order.OrderLines = new List<OrderLine>
                     {
-                        new Model.Checkout.OrderLine
+                        new OrderLine
                         {
                             Type = OrderLineType.physical,
                             Name = "Foo",
@@ -247,7 +246,7 @@ namespace Klarna.Rest.Core.Examples
                             TotalTaxAmount = 2000,
                             TotalDiscountAmount = 0,
                         },
-                        new Model.Checkout.OrderLine
+                        new OrderLine
                         {
                             Type = OrderLineType.physical,
                             Name = "Foo2",

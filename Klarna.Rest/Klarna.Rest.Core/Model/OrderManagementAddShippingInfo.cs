@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Klarna.Rest.Core.Model
@@ -7,7 +6,6 @@ namespace Klarna.Rest.Core.Model
     /// <summary>
     ///
     /// </summary>
-    [Obsolete("This model is being deprecated. Use the UpdateShippingInfo model from Klarna.Rest.Core.Model.OrderManagement namespace instead")]
     public class OrderManagementAddShippingInfo
     {
         /// <summary>
